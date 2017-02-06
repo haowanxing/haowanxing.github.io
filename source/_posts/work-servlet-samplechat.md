@@ -15,7 +15,7 @@ date: 2015-09-28 17:08:55
 最后结果展示：<del>http://demo.dshui.wang/tomcat/First_chat_room/</del>
 首先,需要一个登陆页面。
 Login.jsp
-<pre lang="java">
+```
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
     Cookie[] cookies = request.getCookies();
@@ -72,9 +72,12 @@ Login.jsp
         </div>
     </body>
 </html>
-</pre>
+```
 新建一个用来处理登录信息的Servlet: Main.java 所有的处理都在DoPost()完成
-<pre lang="java">
+
+<!--more-->
+
+```
 /*
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
@@ -201,9 +204,9 @@ public class Main extends HttpServlet {
     }// </editor-fold>
 }
 
-</pre>
+```
 如果登录失败,跳转到LoginFail.jsp
-<pre lang="java">
+```
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -216,9 +219,9 @@ public class Main extends HttpServlet {
         **嗨,登陆失败了哟,3秒后跳转到登录页重新登陆哟! [点击此处直接跳转](Login.html)**
     </body>
 </html>
-</pre>
+```
 登录成功，则跳转到FrameSet窗口框架 LoginSuccess.jsp
-<pre lang='c'>
+```
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
   session = request.getSession(true);
@@ -244,10 +247,10 @@ public class Main extends HttpServlet {
         <frame name="uinput" src="userinput.jsp"/>
     </frameset>
 </html>
-</pre>
+```
 上面的Frame加载了两个页面，一个是用来展示Messagebox聊天记录的，一个是用户的输入框
 Messagebox.Java
-<pre lang="java">
+```
 /*
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
@@ -376,9 +379,9 @@ public class messagebox extends HttpServlet {
         return "Short description";
     }// </editor-fold>
 }
-</pre>
+```
 用户填写框：userinput.jsp
-<pre lang="java">
+```
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <% session = request.getSession(true);%>
 <!DOCTYPE html>
@@ -424,9 +427,13 @@ public class messagebox extends HttpServlet {
         }
     </script>
 </html>
-</pre>
+
+```
+
 我们还需要一个退出登录的功能：Loginout.jsp
-<pre lang="java">
+
+```
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <% 
     session = request.getSession(true);
@@ -434,7 +441,7 @@ public class messagebox extends HttpServlet {
     session.removeAttribute("IsLogin");
 %>
 <!DOCTYPE html>
-<html>
+  <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta http-equiv="refresh" content ="2;url=LoginSuccess.jsp">
@@ -445,10 +452,14 @@ public class messagebox extends HttpServlet {
 # 成功退出!
 
     </body>
-</html>
-</pre>
+  </html>
+
+```
+
 注意了，既然是聊天室的话，也要知道当前有多少人在线吧，这个用监听来实现：SessionListrner.java
-<pre lang="java">
+
+```
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -517,6 +528,6 @@ public class SessionListenr implements HttpSessionListener, HttpSessionAttribute
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }
-</pre>
+```
 附上NetBean项目工程：
 链接: http://pan.baidu.com/s/1qWL2xRm <del>密码: 22wa</del>

@@ -15,7 +15,8 @@ date: 2015-10-15 19:36:37
 另外，本次作业中我加入了BootStrap来做一个小小风格美化。
 不多说，直接上代码！
 index.jsp 首页，也是登陆界面
-<pre lang="java">
+
+```
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
     Cookie[] cookies = request.getCookies();
@@ -81,10 +82,13 @@ index.jsp 首页，也是登陆界面
         </div>
     </body>
 </html>
-</pre>
+```
 
 dologin.jsp 登陆信息处理页面
-<pre lang="java">
+
+<!--more-->
+
+```
 <%-- 
     Document   : dologin
     Created on : 2015-10-9, 11:28:29
@@ -130,11 +134,12 @@ dologin.jsp 登陆信息处理页面
         %>
     </body>
 </html>
-</pre> 
+
+```
 
 goods.jsp 商品列表页面
 
-<pre lang="java">
+```
 <%-- 
     Document   : goods
     Created on : 2015-10-15, 17:11:28
@@ -183,10 +188,11 @@ goods.jsp 商品列表页面
         </div>
     </body>
 </html>
-</pre> 
+```
 
 order.jsp 订单信息页面
-<pre lang="java">
+
+```
 <%-- 
     Document   : order
     Created on : 2015-10-15, 18:28:05
@@ -246,11 +252,12 @@ order.jsp 订单信息页面
         </jsp:useBean>
     </body>
 </html>
-</pre> 
+```
+
 
 另外，还需要一个JavaBean CountPrice.java
 
-<pre lang="java" >
+```
 package Cart;
 
 /*
@@ -398,7 +405,8 @@ public class CountPrice {
         this.p_fires = p_fires;
     }
 
-}</pre> 
+}
+``` 
 
 附上NetBean项目工程：
 链接: http://pan.baidu.com/s/1o66DrjO <del>密码: yksy</del>

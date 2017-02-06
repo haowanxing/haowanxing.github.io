@@ -13,16 +13,16 @@ date: 2017-01-16 18:52:38
 ![](http://ojrm4585k.bkt.clouddn.com/20170116148456405447908.jpg?imageView2/0/format/jpg)
 由于项目和学习的需要，本机曾经升级到了5.5.38已经不够折腾了，所以时候升级一波5.6了（没必要到7的时候，我是不会去升级的）。
 首先直接去搜索引擎找便捷的方法呗，直接就选中了一款来自“简书”的文章，因为它就简单的一条命令：
-<pre lang="bash">
+```
 curl -s http://php-osx.liip.ch/install.sh | bash -s 5.6
-</pre>
+```
 看到这个地址，我心里就放心了！因为上一个版本也是liip的。
 我首先看了一下这个install.sh的内容，确定没有什么危险，里面其实就是检测一下设备的系统版本和cpu类型是否可以升级。
 环境检测没问题就去下载了一个叫做“packager.tgz”的压缩包，然后解压，运行里面的pythony脚本。
-<pre lang="bash">
+```
 #TYPE = 5.6-10.10
 sudo packager.py install $TYPE-frontenddev
-</pre>
+```
 <!--more-->
 
 看到了sudo哦，嘻嘻，自己下载那个packager.tgz看看python代码。好，打开packager.py，找到脚本入口:
@@ -30,16 +30,17 @@ c = Cli()
 c.run()
 嗯，好！     看不懂了。。。管他呢 直接运行吧。。。
 然而结果是，install.sh运行没啥问题，到了python脚本的时候，要下载一个更新包，就一直不动了。
-<pre lang="bash">
+```
 downloading https://s3-eu-west-1.amazonaws.com/php-osx.liip.ch/install/5.6-10.10-frontenddev-latest.dat
 downloading https://s3-eu-west-1.amazonaws.com/php-osx.liip.ch/install/5.6-10.10/frontenddev/5.6-10.10-frontenddev-5.6.29-20170114-210819.tar.bz2
-</pre>
+```
 第一行是获取最新的更新包url，第二行是下载并保存这个更新包。
 然而我却傻傻的等了一下午！！！！！一个下午，喝了两杯水，改了一个BUG，上了两次厕所！  等不了了，control+c终止脚本运行，重新运行试一下，结果还是一样。
 所以我直接去浏览器打开这个URL，发现真的龟速啊！
 机智的我直接用迅雷下好了，但是不知道这个包怎么用呀，里面除了包含编译好的php一整套，还有别的，我也不知是干嘛的和该怎么用，不行，不能自己覆盖，想看一下python脚本都执行了些什么，自己手动操作吧，但是打开python代码文件的之后，跑来跑去，给绕晕了。
 最终，我选择在它下载这个更新文件的时候，替换成直接使用我本地下好的文件。（不得不说，我还是挺会想办法的）
-<pre lang="python">
+
+```
 def __fetchIndividual(self, url):
         try:
             print "downloading %s" % url
@@ -53,9 +54,10 @@ def __fetchIndividual(self, url):
             return False
         except tarfile.ReadError:
             return False
-</pre>
+```
 果断修改成：
-<pre lang="python">
+
+```
 def __fetchIndividual(self, url):
         try:
             print "downloading %s" % url
@@ -74,12 +76,12 @@ def __fetchIndividual(self, url):
             return False
         except tarfile.ReadError:
             return False
-</pre>
+```
 那一串字符其实就是要下载的文件的名字，这样他就不会去网上下载了直接用本地的。
 好！ 然后自己手动执行这个python脚本
-<pre lang="bash">
+```
 sudo /usr/local/packager/packager.py install 5.6-10.10-frontenddev
-</pre>
+```
 没毛病，自己乖乖的执行完了。。。
 最终：/usr/local/php5/bin/php -v
 输出：

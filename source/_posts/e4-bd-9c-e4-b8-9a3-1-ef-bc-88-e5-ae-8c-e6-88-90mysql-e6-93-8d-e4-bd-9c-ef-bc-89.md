@@ -9,7 +9,7 @@ tags:
 ---
 
 [![作业3-1要求](/wp-content/uploads/2015/05/QQ20150509-1@2x-285x300.png)](/wp-content/uploads/2015/05/QQ20150509-1@2x.png)
-<pre lang="sql" line="1" escaped="true">
+```
 第一步，创建数据库'XSGL': 
 create database XSGL;
 
@@ -48,5 +48,5 @@ select * from student where Sname LIKE '王%';
 select COUNT(*) as '人数',Sdept from student GROUP BY Sdept;
 //如果一张表里面学号有重复的，必须去重！使用下面语句：
 select COUNT(DISTINCT Sno) as '人数',Sdept from student GROUP BY Sdept;
-</pre>
+```
 到此，作业3-1就做完了！

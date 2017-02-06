@@ -10,7 +10,8 @@ tags:
 代码包：[ExcelToMysql](http://zhanzhang.fandouzi.com/?attachment_id=105)
 此项功能的实现依赖PHPExcelReader，下载压缩包可得。
 下面贴出PHP主要实现代码：
-<pre lang="php" line="1" escaped="true">
+
+```
 <form id="form1" name="form1" method="post" action="">
   <label>
   <input name="file" type="file" id="file13"/>
@@ -48,4 +49,4 @@ alert('数据已经提交失败');window.top.location='a.php'
 }
 ?>
 
-</pre>
+```

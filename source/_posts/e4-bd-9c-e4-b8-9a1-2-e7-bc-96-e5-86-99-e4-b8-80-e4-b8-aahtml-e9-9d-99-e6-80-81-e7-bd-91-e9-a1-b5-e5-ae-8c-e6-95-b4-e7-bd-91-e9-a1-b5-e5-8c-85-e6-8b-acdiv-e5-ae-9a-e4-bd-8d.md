@@ -10,7 +10,7 @@ tags:
 
 [![作业1-2要求](/wp-content/uploads/2015/05/QQ20150507-3@2x-300x205.png)](/wp-content/uploads/2015/05/QQ20150507-3@2x.png)
 [展示页面：http://www.dshui.wang/html/firstwork2.html](/html/firstwork2.html)
-<pre lang="html" line="1" escaped="true">
+```
 <!doctype html>
 <html>
 <head>
@@ -109,4 +109,4 @@ tags:
 </body>
 </html>
 
-</pre>
+```

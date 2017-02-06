@@ -10,7 +10,7 @@ tags:
 
 [![作业2-2](/wp-content/uploads/2015/05/QQ20150507-5@2x-300x197.png)](/wp-content/uploads/2015/05/QQ20150507-5@2x.png)
 [展示页面：http://www.dshui.wang/html/work2.php](/html/work2.php)
-<pre lang="php" line="1" escaped="true">
+```
 <?php
 #Designed By Anthony_Box
 #Date: 2015-05-07
@@ -69,4 +69,4 @@ tags:
 </body>
 </html>
 <?php }?>
-</pre>
+```

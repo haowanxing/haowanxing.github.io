@@ -12,7 +12,7 @@ tags:
 [展示页面：http://www.dshui.wang/html/work1.php](/html/work1.php)
 可以在地址后面加参数哟！
 如：http://www.dshui.wang/html/work1.php?colnum=7 试试看吧！最大31
-<pre lang="php" line="1" escaped="true">
+```
 <?php
 #Designed By Anthony_Box
 #Date: 2015-05-07
@@ -36,4 +36,4 @@ for($i=0;$i<$colnum*$colnum;$i++){
 }
 echo "\n\t</tr></table>";
 ?>
-</pre>
+```

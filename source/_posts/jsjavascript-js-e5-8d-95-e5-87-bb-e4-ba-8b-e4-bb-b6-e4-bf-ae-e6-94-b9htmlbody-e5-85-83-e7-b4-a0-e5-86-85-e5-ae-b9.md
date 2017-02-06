@@ -7,7 +7,7 @@ date: 2014-08-07 15:42:49
 tags:
 ---
 
-<pre lang="java">
+```
 <script>
 function myFunction()
 {
@@ -25,4 +25,4 @@ x.innerHTML="JavaScript 能改变 HTML 元素的内容。";    // 改变内容
 <button type="button" onclick="myFunction()">点击这里</button>
 <button type="button" onclick="myFunction1()">点击这里</button>
 
-</pre>
+```

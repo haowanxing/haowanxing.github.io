@@ -8,8 +8,7 @@ categories:
 date: 2014-07-21 10:28:14
 ---
 
-<pre lang="java" line="1" escaped="true">
-
+```
 <script language="javascript">
 //点击提交按钮触发下面的函数
 function submitit(){
@@ -35,4 +34,4 @@ tform2.submit();
  <input name="tname" type="text" value="李四" />
  <input type="button" value="提交" onClick="javascript:submitit();" />
 </form>
-</pre>
+```

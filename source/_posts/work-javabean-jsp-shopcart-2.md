@@ -14,7 +14,8 @@ date: 2015-10-17 18:24:36
 在前一次作业的基础上（[[作业]JavaBean+Jsp简易购物车实现](http://www.dshui.wang/2015-10-15/work-javabean-jsp-shopcart-1.html)）,加上数据库来管理商品和购买记录。
 最后结果展示：<del>http://demo.dshui.wang/tomcat/ShopCartDemo/</del>
 首先，建立数据表：
-<pre lang='sql'>
+
+```
 #用户表
 CREATE TABLE `cart_users` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
@@ -47,9 +48,12 @@ CREATE TABLE `cart_lists` (
   CONSTRAINT `goodid` FOREIGN KEY (`gid`) REFERENCES `cart_goods` (`id`),
   CONSTRAINT `users` FOREIGN KEY (`username`) REFERENCES `cart_users` (`username`)
 ) ENGINE=InnoDB AUTO_INCREMENT=60 DEFAULT CHARSET=utf8;
-</pre>
+```
 写入测试数据：
-<pre lang="sql">
+
+<!--more-->
+
+```
 INSERT INTO `cart_users` (`id`, `username`, `password`)
 VALUES
 	(1, '201321092028', '123456'),
@@ -61,12 +65,13 @@ VALUES
 	(2, '橘子', 8, 'orange'),
 	(3, '西瓜', 2, 'watermalon'),
 	(4, '火龙果', 15, 'fires');
+```
 
-</pre>
 上面我们在用户表中写入了两个用户 用户名201321092028和201321092027 密码都是123456，在商品表里面写入了4个水果，并给了价格和变量名。
 接下来就是用到之前作业写的JSP和JavaBean了，其中一些文件有所改动。
 index.jsp
-<pre lang='java'>
+
+```
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
 //判断用户是否登陆，若登陆过则直接跳转商品页面
@@ -143,9 +148,11 @@ index.jsp
         </div>
     </body>
 </html>
-</pre>
+```
+
 dologin.jsp
-<pre lang='java'>
+
+```
 <%-- 
     Document   : dologin
     Created on : 2015-10-9, 11:28:29
@@ -194,9 +201,11 @@ dologin.jsp
         %>
     </body>
 </html>
-</pre>
+```
+
 goods.jsp
-<pre lang='java'>
+
+```
 <%-- 
     Document   : goods
     Created on : 2015-10-15, 17:11:28
@@ -261,10 +270,11 @@ goods.jsp
         </div>
     </body>
 </html>
-</pre>
+```
 
 order.jsp
-<pre lang='java'>
+
+```
 <%-- 
     Document   : order
     Created on : 2015-10-15, 18:28:05
@@ -331,9 +341,10 @@ order.jsp
         </jsp:useBean>
     </body>
 </html>
-</pre>
+```
 delcart.jsp 删除处理页面（新增的)
-<pre lang='java'>
+
+```
 <%-- 
     Document   : delcart
     Created on : 2015-10-17, 16:00:26
@@ -384,10 +395,12 @@ delcart.jsp 删除处理页面（新增的)
         %>
     </body>
 </html>
-</pre>
+```
+
 接下来来写javabean:
 我们首先要一个操作数据库的Bean: MysqlBean.java 在包 Mysql里面
-<pre lang='java'>
+
+```
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -473,10 +486,11 @@ public class MysqlBean {
         }
     }
 }
-</pre>
+```
 
 在Cart包中新建一个Bean: CountPriceByDb.java 这是调取了数据库的
-<pre lang='java'>
+
+```
 package Cart;
 
 /*
@@ -692,7 +706,8 @@ public class CountPriceByDb {
     }
 }
 
-</pre>
+```
+
 NetBean项目工程文件：
 链接: http://pan.baidu.com/s/1gdvwzrd <del>密码: 84ru</del>
 项目需自行添加mysql的connector Java库

@@ -8,9 +8,9 @@ categories:
 date: 2015-08-17 10:36:04
 ---
 
-<center>[![hospital](/wp-content/uploads/2015/08/hospital-300x176.png)](/wp-content/uploads/2015/08/hospital.png)</center>
+![20170206148636277144832.png](http://ojrm4585k.bkt.clouddn.com/20170206148636277144832.png)
 下面是围栏的创建，写入main()或者OnGameModeInit()函数即可；
-<pre lang='c'>
+```
 	CreateObject(966, 1209.32813, -1384.90000, 12.24180,   0.00000, 0.00000, 0.00000);//障碍底座
 	CreateObject(967, 1210.39294, -1384.90000, 12.24560,   0.00000, 0.00000, -90.00000);//看守台
 	CreateObject(970, 1187.95776, -1384.87561, 12.78820,   0.00000, 0.00000, 0.00000);//前面大门围栏
@@ -38,20 +38,20 @@ date: 2015-08-17 10:36:04
 	CreateObject(978, 1206.48462, -1290.66870, 13.21470,   0.00000, 0.00000, 0.00000);//后面障碍
 	CreateObject(978, 1197.15100, -1290.66504, 13.21470,   0.00000, 0.00000, 0.00000);//后面障碍
 	CreateObject(978, 1187.76526, -1290.66870, 13.21470,   0.00000, 0.00000, 0.00000);//后面障碍
-</pre>
+```
 
 新建障碍门变量：
-<pre lang='c'>
+```
 new hospitalgate1;//门关
 new hospitalgate2;//门开
-</pre>
+```
 
-<pre lang='c'>
+```
 //写入OnGameModeInit()函数
 hospitalgate1 = CreateObject(968, 1209.4478, -1384.9000, 13.0276, 0.00000, -90.00000, 0.00000);
-</pre>
+```
 
-<pre lang='c'>
+```
 public GateCloseHspt()
 {
       DestroyObject( hospitalgate2 );
@@ -59,9 +59,9 @@ public GateCloseHspt()
       lshospital = 0;
       return 1;
 }
-</pre>
+```
 
-<pre lang='c'>
+```
 //此段代码在输入指令/go（开门的指令）相关代码里面加入
 else if(PlayerInfo[playerid][pMember] == 4 || PlayerInfo[playerid][pLeader] == 4)//医院
 		{
@@ -84,4 +84,4 @@ else if(PlayerInfo[playerid][pMember] == 4 || PlayerInfo[playerid][pLeader] == 4
 				return 1;
 			}
 		}
-</pre>
+```
