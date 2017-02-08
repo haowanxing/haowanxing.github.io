@@ -9,6 +9,8 @@ categories:
 
 > 我的学习是项目驱动，这次遇到的需求是上传进度条。
 
+`注意：此方法仅在Apache下运行PHP时有效，如果您采用FastCGI方式(如：Nginx+fpm)，这个不适用！`
+
 通过查PHP手册，了解到PHP版本5.4+有一个新特性`uploadprogress`，也可以说是新扩展吧！
 
 ```
@@ -46,8 +48,7 @@ categories:
 * 获得上传进度部分：
  - 需要打开session支持`session_start()`，然后通过`ini_get("session.upload_progress.prefix")`和`KEY`获取$_SEESION，在通过`bytes_processed`和`content_length`的比值x100%获取传输进度；
  
-参考：
+> 参考：
 
-[基于session.upload_progress 的文件上传进度显示](http://blog.csdn.net/koastal/article/details/52980757)
-
-[PHP:Session 上传进度](http://php.net/manual/zh/session.upload-progress.php)
+- [基于session.upload_progress 的文件上传进度显示](http://blog.csdn.net/koastal/article/details/52980757)
+- [PHP:Session 上传进度](http://php.net/manual/zh/session.upload-progress.php)
