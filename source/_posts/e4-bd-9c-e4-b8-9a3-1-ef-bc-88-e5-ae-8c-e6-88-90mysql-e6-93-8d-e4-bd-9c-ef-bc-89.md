@@ -8,7 +8,8 @@ date: 2015-05-09 10:40:51
 tags:
 ---
 
-[![作业3-1要求](/wp-content/uploads/2015/05/QQ20150509-1@2x-285x300.png)](/wp-content/uploads/2015/05/QQ20150509-1@2x.png)
+[![作业3-1要求](/uploads/2015/05/QQ20150509-1@2x-285x300.png)](/uploads/2015/05/QQ20150509-1@2x.png)
+
 ```
 第一步，创建数据库'XSGL': 
 create database XSGL;

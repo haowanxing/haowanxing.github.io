@@ -9,9 +9,10 @@ categories:
 date: 2016-10-27 15:32:50
 ---
 
-昨天在做土巴兔的校招笔试题的时候遇到的题目，就这一个编程题，然而当时却没有拿下，把它和字符串匹配中的子串包含给弄混了，哎！
+昨天在做某兔的校招笔试题的时候遇到的题目，就这一个编程题，然而当时却没有拿下，把它和字符串匹配中的子串包含给弄混了，哎！
 废话少说，上代码！
-<pre lang="php">
+
+```
 <?php
 function MaxSubCommonStr($str1,$str2){
     $a = str_split($str1);	//字符串分割成数组
@@ -42,5 +43,5 @@ $str1 = 'abcdefgabc';
 $str2 = 'defghijabc';
 echo MaxSubCommonStr($str1,$str2);
 ?>
-</pre>
+```
 没什么含金量，只是写出来练练手，思路照搬过来的。

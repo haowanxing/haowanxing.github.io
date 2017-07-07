@@ -1,0 +1,47 @@
+<!-- 
+Author:Anthony
+uid:201321092028
+-->
+<html>
+	<head>
+		<title>显示XML元素和属性</title>
+	</head>
+	<body>
+		<xml id="xmldata" src="employee.xml"></xml>
+		<h1 align="center">职工基本信息</h1>
+		<table datasrc="#xmldata" border="1" align="center" cellpadding="3">
+			<thead>
+				<tr>
+					<th><span>职工编号</span></th>
+					<th><span>姓名</span></th>
+					<th><span>职称</span></th>
+					<th><span>性别</span></th>
+					<th><span>部门</span></th>
+					<th><span>联系电话</span></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td><span datafld="职工编号"></span></td>
+					<td>
+						<table datasrc="#xmldata" datafld="姓名">
+							<tr>
+								<td><span datafld="$text"></span></td>
+							</tr>
+						</table>
+					</td>
+					<td>
+						<table datasrc="#xmldata" datafld="姓名">
+							<tr>
+								<td><span datafld="职称"></span></td>
+							</tr>
+						</table>
+					</td>
+					<td><span datafld="性别"></span></td>
+					<td><span datafld="部门"></span></td>
+					<td><span datafld="联系电话"></span></td>
+				</tr>
+			</tbody>
+		</table>
+	</body>
+</html>

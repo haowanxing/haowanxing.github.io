@@ -20,36 +20,34 @@ date: 2016-10-24 13:19:03
 
 ### 冒泡：
 
-<pre lang="php">
-<?php
-$arr = array(4,3,5,6,8,0,10,15,11);
-echo implode(' ',$arr);
-//冒泡排序 最坏 平均O(N^2) 最好O(N)
-function BubbleSort($arr){
-	$length = count($arr);
-	if($length <= 1){
-		return $arr;
-	}
-	for($i=0;$i<$length;$i++){
-		for($j=0;$j<$length-$i-1;$j++){
-			if($arr[$j] > $arr[$j+1]){
-				$tmp = $arr[$j];
-				$arr[$j] = $arr[$j+1];
-				$arr[$j+1] = $tmp;
+	<?php
+	$arr = array(4,3,5,6,8,0,10,15,11);
+	echo implode(' ',$arr);
+	//冒泡排序 最坏 平均O(N^2) 最好O(N)
+	function BubbleSort($arr){
+		$length = count($arr);
+		if($length <= 1){
+			return $arr;
+		}
+		for($i=0;$i<$length;$i++){
+			for($j=0;$j<$length-$i-1;$j++){
+				if($arr[$j] > $arr[$j+1]){
+					$tmp = $arr[$j];
+					$arr[$j] = $arr[$j+1];
+					$arr[$j+1] = $tmp;
+				}
 			}
 		}
+		return $arr;
 	}
-	return $arr;
-}
-echo "\nBubbleSort:\n";
-echo implode(' ',BubbleSort($arr))."\n";
-?>
-</pre>
+	echo "\nBubbleSort:\n";
+	echo implode(' ',BubbleSort($arr))."\n";
+	?>
 <!--more-->
 
 ### 插入：
 
-<pre lang="php" >
+```
 <?php
 header("Content-type:text/html;charset=utf-8");
 $arr = array(4,3,5,6,8,0,10,15,11);
@@ -72,11 +70,10 @@ function InsertSort($arr){
 }
 echo "\nInsertSort:\n";
 echo implode(' ',InsertSort($arr))."\n";
-</pre>
-
+```
 ### 直接选择：
 
-<pre lang="php" >
+```
 <?php
 header("Content-type:text/html;charset=utf-8");
 $arr = array(4,3,5,6,8,0,10,15,11);
@@ -104,11 +101,11 @@ function SelectSort($arr){
 }
 echo "\nSelectSort:\n";
 echo implode(' ',SelectSort($arr))."\n";
-</pre>
+```
 
 ### 快排:
 
-<pre lang="php" >
+```
 <?php
 header("Content-type:text/html;charset=utf-8");
 $arr = array(4,3,5,6,8,0,10,15,11);
@@ -137,13 +134,12 @@ function QuickSort($arr){
 }
 echo "\nQuickSort:\n";
 echo implode(' ',QuickSort($arr))."\n";
-</pre>
-
+```
 还有一个，排好序的数组，进行查找key的位置：
 
 ### 二分查找：
 
-<pre lang="php" >
+```
 <?php
 header("Content-type:text/html;charset=utf-8");
 $arr = array(0,1,2,3,4,5,6,7,8,9,10);
@@ -165,4 +161,4 @@ function BinarySearch($arr,$low,$hight,$key){
 $key = 4;
 echo "\nBinarySearch:{$key}\n";
 echo BinarySearch($arr,0,count($arr)-1,$key)."\n";
-</pre>
+```

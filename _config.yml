@@ -3,12 +3,12 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Mr.Sorry的博客
-subtitle: 中南民族大学13级，现阶段在某互联网公司实习，从事PHP后端开发。
+title: 爱莫能助
+subtitle: I'm sorry for you, but you can do it on your own account
 description: 待人以儒墨，不热爱前端技术的后端开发不是一个好的吃货。
 keyword: 开发者,程序猿,程序媛,极客,编程,代码,Developer,Programmer,Coder,Geek
 author: Anthony
-email: york_mail@qq.com
+email: smoothest@yeah.net
 language: zh-CN
 timezone:
 
@@ -80,7 +80,10 @@ theme: yilia
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: git
-  repository: https://github.com/haowanxing/haowanxing.github.io.git
+  repo:
+    github: https://github.com/haowanxing/haowanxing.github.io.git
+    coding: https://git.coding.net/anthony_box/anthony_box.coding.me.git
+  #repository: https://github.com/haowanxing/haowanxing.github.io.git
   branch: master
 
 jsonContent:
@@ -119,3 +122,4 @@ sitemap:
   path: sitemap.xml
 baidusitemap:
   path: baidusitemap.xm
+disqus_shortname: imsry

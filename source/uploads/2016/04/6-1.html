@@ -1,0 +1,20 @@
+<!-- 
+Author:Anthony
+uid:201321092028
+-->
+<script language="JavaScript">
+//定义变量
+var XMLDoc;
+//将该变量赋予XML Document对象类型
+XMLDoc = new ActiveXObject("Microsoft.XMLDOM");
+//禁止异步加载，即当文档加载完毕后，控制权才会返回给调用进程
+XMLDoc.async = false;
+//加载XML文档
+XMLDoc.load("6-1.xml");
+//定义变量 studentNode
+var studentNode;
+//将XML文档中根元素的第一个子元素赋给studentNode
+studentNode = XMLDoc.documentElement.firstChild;
+//显示studentNode的子元素的个数
+alert(studentNode.childNodes.length);
+</script>

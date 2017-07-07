@@ -37,7 +37,7 @@ no
 370 371
 `
 
-<pre lang="php">
+```
 <?php
 echo "Please Input\n";
 $in = '';
@@ -70,7 +70,7 @@ foreach ($args as $item) {
 	echo empty($res)?"No\n":implode(' ',$res)."\n";
 }
 ?>
-</pre>
+```
 
 第二题：
 <!--more-->
@@ -98,7 +98,8 @@ foreach ($args as $item) {
 3.41`
 
 之前为了赶火车，现在到宿舍整理好了重新写了下面的代码
-<pre lang="php">
+
+```
 <?php
 echo 'Please Input 2 Intger:';
 $in = ' ';
@@ -128,5 +129,6 @@ foreach($args as $item){
 }
 
 ?>
-</pre>
+```
+
 整个思路很简单，所以这里的代码就[an]没有注释[/an]

@@ -1,7 +1,7 @@
 ---
 title: Hi! Github Pages
 date: 2017-01-19 15:41:23
-tags: 随笔
+tags: essay
 ---
 
 |时间|事件|

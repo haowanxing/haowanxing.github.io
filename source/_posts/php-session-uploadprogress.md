@@ -27,17 +27,16 @@ categories:
 	session.upload_progress.freq = "1%"
 	session.upload_progress.min_freq = "1"
 
-当然，我按照官方的示例操作了N久，就是读不到此类session的值。一开始以为是公司框架的问题，后来自己在本地单独写文件来测试，结果还是一样！
+　　当然，我按照官方的示例操作了N久，就是读不到此类session的值。一开始以为是公司框架的问题，后来自己在本地单独写文件来测试，结果还是一样！
 
-在网上查找各种此类问题的解决办法，虽说有相同提问的，但是解答问题的人根本就没找到根本的原因。其实很简单：`上传的文件Size太小`
+　　在网上查找各种此类问题的解决办法，虽说有相同提问的，但是解答问题的人根本就没找到根本的原因。其实很简单：`上传的文件Size太小`
 
 <!--more-->
 
-如果在本地测试，上传文件就相当于复制粘贴一个文件到磁盘的另一个地方，一般来说小于50M就是秒传了，因为我这里是SSD硬盘，所以会更快。所以本次测试一定要选一个大一点文件来进行，起码100M是要的。
+　　如果在本地测试，上传文件就相当于复制粘贴一个文件到磁盘的另一个地方，一般来说小于50M就是秒传了，因为我这里是SSD硬盘，所以会更快。所以本次测试一定要选一个大一点文件来进行，起码100M是要的。
 
-好的，大文件上传也是要注意的，因为PHP默认限制的`upload_max_filesize`为2M，`post_max_size`为8M；所以尽可能设置大一点，我测试文件900M左右，就给这两项都设置为1024M(可能我疯了^_-)。
-
-然后就是写测试程序了，代码就不贴了，讲讲思路：
+　　好的，大文件上传也是要注意的，因为PHP默认限制的`upload_max_filesize`为2M，`post_max_size`为8M；所以尽可能设置大一点，我测试文件900M左右，就给这两项都设置为1024M(可能我疯了^_-)。  
+　　然后就是写测试程序了，代码就不贴了，讲讲思路：
 
 * 测试页：
  - 创建表单，添加`session.upload_progress.prefix`字段，value=KEY的值；
@@ -48,7 +47,13 @@ categories:
 * 获得上传进度部分：
  - 需要打开session支持`session_start()`，然后通过`ini_get("session.upload_progress.prefix")`和`KEY`获取$_SEESION，在通过`bytes_processed`和`content_length`的比值x100%获取传输进度；
  
+　　最后讲一下前面提到的为何PHP以FastCGI模式运行的时候这个扩展不适用：  
+　　PHP以`FastCGI模式`运行的时候，仅且仅当数据传送完毕后，PHP才获取到数据，此时文件已经发送完毕，所以相关的session这时候才开始创建，而默认情况下，这个session在文件传送完毕又会自动销毁，所以这个根本没有任何意义。  
+　　如果想要在以`FastCGI模式`下使用PHP的`uploadprogress`是不可能的了，在Nginx下可以选择使用`NGINX Upload Progress Module`来达到这个需求。
+
+
 > 参考：
 
 - [基于session.upload_progress 的文件上传进度显示](http://blog.csdn.net/koastal/article/details/52980757)
 - [PHP:Session 上传进度](http://php.net/manual/zh/session.upload-progress.php)
+- [Does session upload progress work with nginx and php-fpm?](http://stackoverflow.com/questions/12502775/does-session-upload-progress-work-with-nginx-and-php-fpm)
