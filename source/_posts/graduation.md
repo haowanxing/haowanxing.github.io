@@ -1,7 +1,7 @@
 ---
 title: 毕业了
 date: 2017-07-13 14:41:43
-tags:
+tags: essay
 categories:
 ---
 
