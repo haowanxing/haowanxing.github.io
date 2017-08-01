@@ -7,7 +7,7 @@ date: 2014-09-22 18:10:26
 tags:
 ---
 
-[![120031avxwmscar1wg6w1z](http://zhanzhang.fandouzi.com/wp-content/uploads/2014/09/120031avxwmscar1wg6w1z-300x58.jpg)](http://zhanzhang.fandouzi.com/wp-content/uploads/2014/09/120031avxwmscar1wg6w1z.jpg)Mac OS X系统下，几乎绝大部分文件夹中都包含 .DS_Store 隐藏文件，这里保存着针对这个目录的特殊信息和设置配置，例如查看方式，图标大小以及这个目录的一些附属元数据。
+![120031avxwmscar1wg6w1z](https://i.loli.net/2017/08/01/5980839a7e05a.png)Mac OS X系统下，几乎绝大部分文件夹中都包含 .DS_Store 隐藏文件，这里保存着针对这个目录的特殊信息和设置配置，例如查看方式，图标大小以及这个目录的一些附属元数据。
 
 在Mac下这些 .DS_Store 文件默认是隐藏的，看不见。不过当将文件转移共享到Windows的时候，那么就是可见的了，并且感觉像是一些垃圾文件一样的存在。
 

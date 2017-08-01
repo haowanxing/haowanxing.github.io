@@ -7,14 +7,15 @@ date: 2014-07-20 15:17:38
 tags:
 ---
 
-[点击打开效果](http://zhanzhang.fandouzi.com/wp-content/uploads/2014/07/12233.html)
-<pre lang="java" line="1" escaped="true">
-&lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"&gt;
-&lt;html xmlns="http://www.w3.org/1999/xhtml"&gt;
-&lt;head&gt;
-&lt;meta http-equiv="Content-Type" content="text/html; charset=GB2312" /&gt;
-&lt;title&gt;弹出提示&lt;/title&gt;
-&lt;style&gt;
+[点击打开效果](/uploads/2014/07/12233.html)
+
+```
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312" />
+<title>弹出提示</title>
+<style>
 * {margin:0;padding:0;font-size:12px;}
 html,body {height:100%;width:100%;}
 #content {background:#f8f8f8;padding:30px;height:100%;}
@@ -27,21 +28,21 @@ html,body {height:100%;width:100%;}
 #alert p input {width:120px;margin-left:20px;}
 #alert p input.myinp {border:1px solid #ccc;height:16px;}
 #alert p input.sub {width:60px;margin-left:30px;}
-&lt;/style&gt;
+</style>
 
-&lt;/head&gt;
+</head>
 
-&lt;body&gt;
-&lt;div id="content"&gt;
-&lt;a href="#"&gt;注册&lt;/a&gt;
-&lt;/div&gt;
-&lt;div id="alert"&gt;
-&lt;h4&gt;&lt;span&gt;现在注册&lt;/span&gt;&lt;span id="close"&gt;关闭&lt;/span&gt;&lt;/h4&gt;
-&lt;p&gt;&lt;label&gt;用户名&lt;/label&gt;&lt;input type="text" class="myinp" onmouseover="this.style.border='1px solid #f60'" onfoucs="this.style.border='1px solid #f60'" onblur="this.style.border='1px solid #ccc'" /&gt;&lt;/p&gt;
-&lt;p&gt;&lt;label&gt;密　码&lt;/label&gt;&lt;input type="password" class="myinp" onmouseover="this.style.border='1px solid #f60'" onfoucs="this.style.border='1px solid #f60'" onblur="this.style.border='1px solid #ccc'" /&gt;&lt;/p&gt;
-&lt;p&gt;&lt;input type="submit" value="注册" class="sub" /&gt;&lt;input type="reset" value="重置" class="sub" /&gt;&lt;/p&gt;
-&lt;/div&gt;
-&lt;script type="text/javascript"&gt;
+<body>
+<div id="content">
+<a href="#">注册</a>
+</div>
+<div id="alert">
+<h4><span>现在注册</span><span id="close">关闭</span></h4>
+<p><label>用户名</label><input type="text" class="myinp" onmouseover="this.style.border='1px solid #f60'" onfoucs="this.style.border='1px solid #f60'" onblur="this.style.border='1px solid #ccc'" /></p>
+<p><label>密　码</label><input type="password" class="myinp" onmouseover="this.style.border='1px solid #f60'" onfoucs="this.style.border='1px solid #f60'" onblur="this.style.border='1px solid #ccc'" /></p>
+<p><input type="submit" value="注册" class="sub" /><input type="reset" value="重置" class="sub" /></p>
+</div>
+<script type="text/javascript">
 var myAlert = document.getElementById("alert");
 var reg = document.getElementById("content").getElementsByTagName("a")[0];
 var mClose = document.getElementById("close");
@@ -75,6 +76,7 @@ mClose.onclick = function()
 myAlert.style.display = "none";
 mybg.style.display = "none";
 }
-&lt;/script&gt;
-&lt;/body&gt;
-&lt;/html&gt;</pre>
+</script>
+</body>
+</html>
+```
