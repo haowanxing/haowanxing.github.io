@@ -1,7 +1,7 @@
 ---
 title: Pazzle on array_column
 date: 2017-11-10 10:28:18
-tags:
+tags: php
 categories:
 ---
 
@@ -36,7 +36,7 @@ var_dump($student_names);
 
 输出结果：
 
-```
+```bash
 array (size=4)
   0 => string 'Jerry' (length=5)
   1 => string 'Tom' (length=3)
@@ -44,6 +44,8 @@ array (size=4)
   3 => string 'Bob' (length=3)
 ```
 　　这样就得到了一个所有名字的数组，想必对于一个PHPER来说并不陌生。但是今天要讲的重点是`array_column`的另外一个用法，如果给它第三个参数，那么它将以第三个参数对应的数组中的值作为返回数组的键，用例如下：
+
+<!--more-->
 
 ```php
 $studentID_name = array_column($students,'name','id');
@@ -71,7 +73,7 @@ var_dump($studentID_student);
 
 　　输出结果：
 
-```
+```bash
 array (size=4)
   1 => 
     array (size=2)
@@ -130,7 +132,7 @@ var_dump($studentID_student);
 
 　　看结果：
 
-```
+```bash
 array (size=5)
   1 => 
     array (size=2)
