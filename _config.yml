@@ -122,4 +122,4 @@ sitemap:
   path: sitemap.xml
 baidusitemap:
   path: baidusitemap.xm
-disqus_shortname: imsry
+disqus_shortname: false #imsry
