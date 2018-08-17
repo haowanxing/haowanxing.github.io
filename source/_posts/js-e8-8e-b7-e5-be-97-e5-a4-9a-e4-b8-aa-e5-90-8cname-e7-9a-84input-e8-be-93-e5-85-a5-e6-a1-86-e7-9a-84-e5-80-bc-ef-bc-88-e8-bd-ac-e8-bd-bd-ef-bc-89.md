@@ -3,6 +3,7 @@ title: js 获得多个同name 的input输入框的值 （转载）
 id: 68
 categories:
   - JS分享
+abbrlink: e38058a2
 date: 2014-08-19 16:08:11
 tags:
 ---

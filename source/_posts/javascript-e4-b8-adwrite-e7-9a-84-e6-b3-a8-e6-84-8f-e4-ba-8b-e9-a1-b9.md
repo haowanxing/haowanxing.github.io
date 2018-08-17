@@ -3,6 +3,7 @@ title: Javascript中write的注意事项
 id: 39
 categories:
   - Linxu分享
+abbrlink: '383e8964'
 date: 2014-07-07 10:08:15
 tags:
 ---

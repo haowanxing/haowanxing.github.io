@@ -3,6 +3,7 @@ title: 如何让局域网（内网）服务器被广域网用户访问
 id: 30
 categories:
   - 学习笔记
+abbrlink: 7478fcfd
 date: 2014-07-06 12:17:47
 tags:
 ---

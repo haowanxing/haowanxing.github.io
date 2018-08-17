@@ -3,6 +3,7 @@ title: 删除Mac中所有 .DS_Store 隐藏文件&不再产生.DS_Store文件
 id: 74
 categories:
   - 我的分享
+abbrlink: 6c975ddb
 date: 2014-09-22 18:10:26
 tags:
 ---

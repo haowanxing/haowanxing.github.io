@@ -4,6 +4,7 @@ id: 153
 categories:
   - PHP
   - 学习笔记
+abbrlink: 25b754f7
 date: 2015-05-07 22:44:02
 tags:
 ---

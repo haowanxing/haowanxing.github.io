@@ -4,6 +4,7 @@ id: 246
 categories:
   - Linux
   - Linxu分享
+abbrlink: d4ca8601
 date: 2015-10-13 08:54:10
 tags:
 ---

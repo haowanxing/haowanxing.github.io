@@ -1,10 +1,11 @@
 ---
 title: php上传进度之uploadprogress
-date: 2017-02-07 11:29:13
 tags:
-	- php上传进度
+  - php上传进度
 categories:
-	- PHP
+  - PHP
+abbrlink: f0dc176
+date: 2017-02-07 11:29:13
 ---
 
 > 我的学习是项目驱动，这次遇到的需求是上传进度条。

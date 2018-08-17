@@ -1,10 +1,11 @@
 ---
 title: Learning-Markdown
-date: 2017-01-19 16:57:03
-tags: 
- - essay
- - MarkDown
+tags:
+  - essay
+  - MarkDown
 categories: 我的分享
+abbrlink: bb4e3702
+date: 2017-01-19 16:57:03
 ---
 # MarkDown的学习
 > 这里面就是一些简单的MarkDown语法，提供给我自己看一下，刚开始还是需要不断练习来接受这种语法，必然能够在码字的过程中体验乐趣！

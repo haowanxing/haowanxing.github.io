@@ -3,6 +3,7 @@ title: '安装CentOS7之后win7引导没了,Grub解决'
 id: 175
 categories:
   - Linux
+abbrlink: 57c492d1
 date: 2015-06-09 10:37:03
 tags:
 ---

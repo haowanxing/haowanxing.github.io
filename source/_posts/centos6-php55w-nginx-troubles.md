@@ -3,6 +3,7 @@ title: CentOS 6下更新PHP版本到5.5后与Nginx发生的小事情
 id: 334
 categories:
   - Linux
+abbrlink: 4490487e
 date: 2016-01-29 00:32:33
 tags:
 ---

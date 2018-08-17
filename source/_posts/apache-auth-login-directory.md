@@ -1,7 +1,8 @@
 ---
 title: Apache设置目录的访问权限（用户名和密码）
-date: 2018-02-01 14:58:17
 tags: Apache
+abbrlink: b54dd86c
+date: 2018-02-01 14:58:17
 categories:
 ---
 

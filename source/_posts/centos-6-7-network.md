@@ -3,6 +3,7 @@ title: Linux之CentOS 6.7 下无网络? 原来是网卡没启动！
 id: 226
 categories:
   - Linux
+abbrlink: 3be490a0
 date: 2015-08-26 16:37:12
 tags:
 ---

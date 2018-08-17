@@ -1,7 +1,8 @@
 ---
 title: mysql中几种Log和打开方法
+tags: mysql
+abbrlink: 2e28f02f
 date: 2018-05-17 18:45:18
-tags:	mysql
 categories:
 ---
 

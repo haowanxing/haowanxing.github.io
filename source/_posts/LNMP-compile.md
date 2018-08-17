@@ -1,7 +1,8 @@
 ---
 title: 完全源码编译LNMP环境
-date: 2017-11-06 15:45:46
 tags: Linux
+abbrlink: 7db5313c
+date: 2017-11-06 15:45:46
 categories:
 ---
 

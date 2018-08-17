@@ -3,6 +3,7 @@ title: 'linux下使用yum安装Apache+php+Mysql+phpMyAdmin [转载]'
 id: 120
 categories:
   - Linxu分享
+abbrlink: bc861775
 date: 2014-12-23 21:32:44
 tags:
 ---

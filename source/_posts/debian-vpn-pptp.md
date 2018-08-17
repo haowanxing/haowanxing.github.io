@@ -3,6 +3,7 @@ title: Debian中搭建VPN(PPTP协议)实战，实现VPN上网
 id: 319
 categories:
   - Linux
+abbrlink: a363805e
 date: 2015-11-30 13:46:34
 tags:
 ---

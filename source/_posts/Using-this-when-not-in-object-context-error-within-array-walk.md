@@ -1,5 +1,6 @@
 ---
-title: array_walk中的$this报错 
+title: array_walk中的$this报错
+abbrlink: 82527d05
 date: 2017-04-14 16:46:59
 tags:
 categories:

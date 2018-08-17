@@ -1,7 +1,8 @@
 ---
 title: skip-name-resolve可以解决远程连接mysql数据库时候的缓慢或超时
+tags: mysql
+abbrlink: '65123244'
 date: 2018-03-22 18:18:39
-tags:	mysql
 categories:
 ---
 

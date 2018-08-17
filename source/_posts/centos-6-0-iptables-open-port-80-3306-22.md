@@ -3,6 +3,7 @@ title: ' CENTOS 6.0 iptables 开放端口80 3306 22端口'
 id: 312
 categories:
   - Linxu分享
+abbrlink: 2e6f46f8
 date: 2015-11-11 21:13:01
 tags:
 ---

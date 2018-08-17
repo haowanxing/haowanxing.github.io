@@ -6,6 +6,7 @@ tags:
 id: 552
 categories:
   - PHP
+abbrlink: 28c3b503
 date: 2016-10-27 15:32:50
 ---
 

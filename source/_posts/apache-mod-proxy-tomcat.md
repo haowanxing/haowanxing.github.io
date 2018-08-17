@@ -9,6 +9,7 @@ tags:
 id: 275
 categories:
   - Linux
+abbrlink: c178ca6
 date: 2015-10-22 21:27:58
 ---
 

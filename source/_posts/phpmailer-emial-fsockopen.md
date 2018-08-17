@@ -7,6 +7,7 @@ tags:
 id: 502
 categories:
   - PHP
+abbrlink: 101ef104
 date: 2016-09-11 21:02:45
 ---
 

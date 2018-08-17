@@ -1,10 +1,11 @@
 ---
 title: PHP时区默认为Europe/zurich且修改php.ini无效的困惑
-date: 2017-03-21 17:03:57
 tags:
-	- php困惑
+  - php困惑
 categories:
-	- PHP
+  - PHP
+abbrlink: b9f89962
+date: 2017-03-21 17:03:57
 ---
 
 > 为何我的date("Y/m/d H:i:s")相差了7个小时？

@@ -1,8 +1,9 @@
 ---
 title: 【干货】本地git对应多个远程仓库
-date: 2017-07-24 10:18:41
 tags: git
 categories: 干货
+abbrlink: ab967d99
+date: 2017-07-24 10:18:41
 ---
 
 > 当Githuber发现GitOSChina能发布项目演示，想把自己的项目也同步到OSChina上去时，同时维护两个本地仓库或者remote显得太过麻烦

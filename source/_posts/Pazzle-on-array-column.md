@@ -1,7 +1,8 @@
 ---
 title: Pazzle on array_column
-date: 2017-11-10 10:28:18
 tags: php
+abbrlink: 25a92a3d
+date: 2017-11-10 10:28:18
 categories:
 ---
 

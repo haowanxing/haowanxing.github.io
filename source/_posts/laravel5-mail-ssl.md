@@ -1,7 +1,8 @@
 ---
 title: Laravel5.5 发送邮件遇到Connection could not be established with host xxxxx
-date: 2018-02-11 15:08:38
 tags: Laravel
+abbrlink: ac505287
+date: 2018-02-11 15:08:38
 categories:
 ---
 

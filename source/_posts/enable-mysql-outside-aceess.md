@@ -4,6 +4,7 @@ id: 108
 categories:
   - Linux
   - 数据库
+abbrlink: 8db5876f
 date: 2014-11-18 11:48:17
 tags:
 ---

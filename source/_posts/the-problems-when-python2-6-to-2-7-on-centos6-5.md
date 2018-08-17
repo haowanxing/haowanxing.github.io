@@ -1,10 +1,9 @@
 ---
 title: The Problems When Python2.6 to 2.7 on CentOS6.5
+tags: '-Python2.7'
+categories: '-Python'
+abbrlink: 91af55e9
 date: 2017-04-24 16:41:20
-tags:
-	-Python2.7
-categories:
-	-Python
 ---
 
 >当Python从2.6升级到2.7后，pip找不到了？

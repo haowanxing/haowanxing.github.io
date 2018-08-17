@@ -3,6 +3,7 @@ title: 数据库系统的基本概念
 id: 190
 categories:
   - 数据库
+abbrlink: d6f39244
 date: 2015-07-04 13:08:36
 tags:
 ---

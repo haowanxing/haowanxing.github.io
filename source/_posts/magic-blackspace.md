@@ -1,7 +1,8 @@
 ---
 title: 神奇的空格符
-date: 2017-07-20 10:25:44
 tags: 怪谈
+abbrlink: ece045fd
+date: 2017-07-20 10:25:44
 categories:
 ---
 

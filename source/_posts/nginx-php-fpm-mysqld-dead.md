@@ -7,6 +7,7 @@ tags:
 id: 390
 categories:
   - Linux
+abbrlink: 86e6b4be
 date: 2016-05-22 00:57:47
 ---
 

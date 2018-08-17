@@ -1,7 +1,8 @@
 ---
 title: Go语言中的切片(Slice)是引用类型还是值类型？
-date: 2018-05-31 14:51:10
 tags: Golang
+abbrlink: d83c494c
+date: 2018-05-31 14:51:10
 categories:
 ---
 

@@ -7,6 +7,7 @@ tags:
 id: 42
 categories:
   - Linxu分享
+abbrlink: d9eb5165
 date: 2014-07-07 14:17:25
 ---
 
