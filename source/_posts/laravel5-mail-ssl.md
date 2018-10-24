@@ -7,7 +7,7 @@ categories:
 ---
 
 Laravel输出的错误页面如下图：
-![Laravel异常捕获-mail](http://ojrm4585k.bkt.clouddn.com/20180211151833306552899.png)
+![Laravel异常捕获-mail](http://cdn.pipipa.cn/20180211151833306552899.png)
 
 服务器：阿里云香港节点（B区） CentOS6.8 64bit
 
