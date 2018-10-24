@@ -7,7 +7,7 @@ abbrlink: 1b3229fb
 date: 2018-08-10 16:56:48
 categories:
 ---
-
+![计算时间对比图](http://ojrm4585k.bkt.clouddn.com/20180822153492626124054.png)
 测试机器配置：
 
 * MacBook Air (13-inch, Early 2014)
@@ -282,7 +282,7 @@ Go time: 2.255374 s
 ```
 
 
-##JavaScript(NodeJS)
+## JavaScript(NodeJS)
 ```
 ~/Sites » node -v
 v9.11.1
