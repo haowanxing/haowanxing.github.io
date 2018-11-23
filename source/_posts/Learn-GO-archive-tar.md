@@ -258,3 +258,5 @@ func ReadArchive(){
 ```
 
 **注意：代码中有关myDir目录和myDir2目录的创建方式不一样，但是效果差异不大**
+
+* 扩展阅读：利用compress/gzip压缩和解压:[https://golang.org/pkg/compress/gzip/](https://golang.org/pkg/compress/gzip/)
