@@ -2,8 +2,7 @@
 title: Go语言包-bufio
 categories: Learn-GO
 tags:
-  - archive
-  - zip
+  - bufio
 abbrlink: e06b9990
 date: 2018-11-26 14:41:54
 ---
