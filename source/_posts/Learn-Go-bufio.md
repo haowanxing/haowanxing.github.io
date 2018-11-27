@@ -39,7 +39,7 @@ date: 2018-11-26 14:41:54
 > Reader结构体
 
 ```Go
-// Reader implements buffering for an io.Reader object.
+// Reader 实现了对io.Reader对象的缓冲功能
 type Reader struct {
 	buf          []byte
 	rd           io.Reader // reader provided by the client
@@ -105,7 +105,7 @@ type Reader struct {
 // 如果底层Reader支持WriteTo方法，则直接调用底层方法，无需缓存。
 
 
-Reader的用例：
+Reader的示例：
 
 ```Go
 package bufio
@@ -119,66 +119,83 @@ import (
 func Reader(){
 	testB := bytes.NewReader([]byte("abcdefg\nABCDEFG\nh i j k\nH I J K\n\nline."))
 	bufRd := bufio.NewReader(testB)
-	fmt.Println(bufRd.Buffered(), bufRd.Size())	// 0 4096
+	fmt.Println(bufRd.Buffered(), bufRd.Size())
+	// 0 4096
 
 	b, _ := bufRd.ReadByte()
-	fmt.Println(bufRd.Buffered(), b, string(b))	// 37 97 a
+	fmt.Println(bufRd.Buffered(), b, string(b))
+	// 37 97 a
 
 	bs, _ := bufRd.ReadBytes('d')
-	fmt.Println(bufRd.Buffered(), bs, string(bs))	// 34 [98 99 100] bcd
+	fmt.Println(bufRd.Buffered(), bs, string(bs))
+	// 34 [98 99 100] bcd
 
 	discard, _ := bufRd.Discard(1)
-	fmt.Println("discard:", discard, "bufferd:", bufRd.Buffered()) // discard: 1 bufferd: 33
+	fmt.Println("discard:", discard, "bufferd:", bufRd.Buffered())
+	// discard: 1 bufferd: 33
 
 	b, _ = bufRd.ReadByte()
-	fmt.Println(bufRd.Buffered(), b, string(b))	// 32 102 f
+	fmt.Println(bufRd.Buffered(), b, string(b))
+	// 32 102 f
 
 	bs, _  = bufRd.Peek(7)
-	fmt.Println(bufRd.Buffered(), bs, string(bs))	// 32 [103 10 65 66 67 68 69] g"换行"ABCDE
+	fmt.Println(bufRd.Buffered(), bs, string(bs))
+	// 32 [103 10 65 66 67 68 69] g
+	// ABCDE
 
 	line, isPrefix, _ := bufRd.ReadLine()
-	fmt.Println(bufRd.Buffered(), line, string(line), isPrefix)	// 30 [103] g false
+	fmt.Println(bufRd.Buffered(), line, string(line), isPrefix)
+	// 30 [103] g false
 
 	r, size, _ := bufRd.ReadRune()
-	fmt.Println(bufRd.Buffered(), r, string(r), size)	// 29 65 A 1
+	fmt.Println(bufRd.Buffered(), r, string(r), size)
+	// 29 65 A 1
 
 	slice, _ := bufRd.ReadSlice('D')
-	fmt.Println(bufRd.Buffered(), slice, string(slice))	// 26 [66 67 68] BCD
+	fmt.Println(bufRd.Buffered(), slice, string(slice))
+	// 26 [66 67 68] BCD
 
 	str, _ := bufRd.ReadString('G')
-	fmt.Println(bufRd.Buffered(), str)	// 23 EFG
+	fmt.Println(bufRd.Buffered(), str)
+	// 23 EFG
 
 	bufRd.Reset(bytes.NewReader([]byte("Hello World.\nMy World.")))
 
 	str, _ = bufRd.ReadString('r')
-	fmt.Println(bufRd.Buffered(), str)	// 13 Hello Wor
+	fmt.Println(bufRd.Buffered(), str)
+	// 13 Hello Wor
 
 	bufRd.UnreadByte()
-	fmt.Println(bufRd.Buffered())	// 14
+	fmt.Println(bufRd.Buffered())
+	// 14
 
 	str, _ = bufRd.ReadString('\n')
-	fmt.Println(bufRd.Buffered(), str)	// 9 rld."换行符"
+	fmt.Println(bufRd.Buffered(), str)
+	// 9 rld.
+	// 
 
 	r, size, _ = bufRd.ReadRune()
-	fmt.Println(bufRd.Buffered(), r, string(r), size)	// 8 77 M 1
+	fmt.Println(bufRd.Buffered(), r, string(r), size)
+	// 8 77 M 1
 
 	bufRd.UnreadRune()
-	fmt.Println(bufRd.Buffered())	// 9
+	fmt.Println(bufRd.Buffered())
+	// 9
 
 	str, _ = bufRd.ReadString('\n')
-	fmt.Println(bufRd.Buffered(), str)	// 0 My World.
+	fmt.Println(bufRd.Buffered(), str)
+	// 0 My World.
+
 }
 ```
+***
 
 > Writer结构体
 
 ```Go
-// Writer implements buffering for an io.Writer object.
-// If an error occurs writing to a Writer, no more data will be
-// accepted and all subsequent writes, and Flush, will return the error.
-// After all data has been written, the client should call the
-// Flush method to guarantee all data has been forwarded to
-// the underlying io.Writer.
+// Writer 实现了对io.Writer对象的缓冲功能
+// 如果在写入Writer时发生错误，则会停止继续写入和后续操作并返回这个错误。
+// 在所有数据被写入后，应当调用Flush方法来保证所有数据都被写入底层Writer。
 type Writer struct {
 	err error
 	buf []byte
@@ -225,6 +242,79 @@ type Writer struct {
 `func (b *Writer) WriteString(s string) (int, error)`
 // 写入一个字符串，返回写入的字节数
 
+Writer的示列：
+
+```Go
+package bufio
+
+import (
+	"bufio"
+	"bytes"
+	"fmt"
+)
+
+func Writer(){
+	bt := make([]byte, 0)
+	Bt := bytes.NewBuffer(bt)
+	bufWt := bufio.NewWriter(Bt)
+
+	fmt.Println(bufWt.Available(), bufWt.Buffered())	// 4096 0
+
+	// Write
+	nn, _ := bufWt.Write([]byte{65, 66})
+	fmt.Println(bufWt.Available(), bufWt.Buffered())	// 4094 2
+	fmt.Println(nn, Bt)	// 2 "空"
+	bufWt.Flush()
+	fmt.Println(bufWt.Available(), bufWt.Buffered())	// 4096 0
+	fmt.Println(nn, Bt)	// 2 AB
+
+	// WriteByte
+	bufWt.WriteByte('C')
+	fmt.Println(bufWt.Available(), bufWt.Buffered())	// 4095 1
+	fmt.Println(Bt)	// AB
+	bufWt.Flush()
+	fmt.Println(bufWt.Available(), bufWt.Buffered())	// 4096 0
+	fmt.Println(Bt)	// ABC
+
+	// WriteRune
+	size, _ := bufWt.WriteRune('D')
+	fmt.Println(bufWt.Available(), bufWt.Buffered())	// 4095 1
+	fmt.Println(size, Bt)	// 1 ABC
+	bufWt.Flush()
+	fmt.Println(bufWt.Available(), bufWt.Buffered())	// 4096 0
+	fmt.Println(Bt)	// ABCD
+
+	// WriteString
+	n, _ := bufWt.WriteString("EFG")
+	fmt.Println(bufWt.Available(), bufWt.Buffered())	// 4093 3
+	fmt.Println(n, Bt)	// 3 ABCD
+	bufWt.Flush()
+	fmt.Println(bufWt.Available(), bufWt.Buffered())	// 4096 0
+	fmt.Println(Bt)	// ABCDEFG
+
+	fmt.Println(bufWt.Size())	// 4096
+
+	// ReadFrom without buffered
+	some := bytes.NewReader([]byte("HIJKLMN"))
+	nChar, _ := bufWt.ReadFrom(some)
+	fmt.Println(bufWt.Available(), bufWt.Buffered())	//4096 0
+	fmt.Println(nChar, Bt)	//7 ABCDEFGHIJKLMN
+	// 这里不用调用flush，因为在ReadForm之前缓存中没有数据，直接调用底层的ReadFrom写入了数据
+	// 下面看下有缓存的情况，先写入一个换行
+	bufWt.WriteByte('\n')
+	fmt.Println(bufWt.Available(), bufWt.Buffered())	// 4095 1
+	fmt.Println(Bt)	// ABCDEFGHIJKLMN
+	// 紧接着不Flash而是直接ReadForm
+	some2 := bytes.NewReader([]byte("OPQRST"))
+	nChar, _ = bufWt.ReadFrom(some2)
+	fmt.Println(bufWt.Available(), bufWt.Buffered())	//4089 7
+	fmt.Println(nChar, Bt)	//6 ABCDEFGHIJKLMN
+	// 现在Flush然后看各个变量
+	bufWt.Flush()
+	fmt.Println(bufWt.Available(), bufWt.Buffered())	// 4096 0
+	fmt.Println(Bt)	// ABCDEFGHIJKLMN"换行"OPQRST
+}
+```
 
 
 ****
@@ -232,61 +322,103 @@ type Writer struct {
 > Scanner结构体
 
 ```Go
-// Scanner provides a convenient interface for reading data such as
-// a file of newline-delimited lines of text. Successive calls to
-// the Scan method will step through the 'tokens' of a file, skipping
-// the bytes between the tokens. The specification of a token is
-// defined by a split function of type SplitFunc; the default split
-// function breaks the input into lines with line termination stripped. Split
-// functions are defined in this package for scanning a file into
-// lines, bytes, UTF-8-encoded runes, and space-delimited words. The
-// client may instead provide a custom split function.
-//
-// Scanning stops unrecoverably at EOF, the first I/O error, or a token too
-// large to fit in the buffer. When a scan stops, the reader may have
-// advanced arbitrarily far past the last token. Programs that need more
-// control over error handling or large tokens, or must run sequential scans
-// on a reader, should use bufio.Reader instead.
-//
+// Scanner为读取数据提供了便捷的接口，这些数据包括但不限于有换行分界符的文本文件。
+// 连续调用Scan方法将会遍历文件的'Token'(指定部分)且跳过指定部分之间的字节。
+// 指定部分的格式由SplitFunc类型的函数定义，默认的切分函数根据行尾将输入拆分成行但不包括行尾
+// 本包下定义并提供的切分函数用于将文件扫描成line,bytes,UTF-8Encoded runes和空格拆分的单词。用户也可以使用自己的切分函数来替换它。
+// 当扫描遇到EOF、第一次I/O错误或'指定部分'太大无法存入缓冲区时停止。
+// 当一次扫描停止时，读取器有可能早已超出'指定部分'很远。如果程序想要对数据进行更多的控制，如错误处理或扫描更大的'指定部分'或顺序扫描，则应当使用bufio.reader来代替。
 type Scanner struct {
-	r            io.Reader // The reader provided by the client.
-	split        SplitFunc // The function to split the tokens.
-	maxTokenSize int       // Maximum size of a token; modified by tests.
-	token        []byte    // Last token returned by split.
-	buf          []byte    // Buffer used as argument to split.
-	start        int       // First non-processed byte in buf.
-	end          int       // End of data in buf.
+	r            io.Reader // 用户提供的reader.
+	split        SplitFunc // 拆分token的方法.
+	maxTokenSize int       // token的上限
+	token        []byte    // split返回的最后token.
+	buf          []byte    // 作为参数给split的缓冲区.
+	start        int       // 缓冲区起始位.
+	end          int       // 缓冲区终止位.
 	err          error     // Sticky error.
-	empties      int       // Count of successive empty tokens.
-	scanCalled   bool      // Scan has been called; buffer is in use.
-	done         bool      // Scan has finished.
+	empties      int       // 连续出现空token的次数.
+	scanCalled   bool      // 扫描是否开始.
+	done         bool      // 扫描完毕.
 }
 ```
 
-`func NewScanner(r io.Reader) *Scanner`
-
-
 `func (s *Scanner) Buffer(buf []byte, max int)`
-
+// 用于设置自定义缓存以及可扩展范围，如果max小于len(buf)，则buf的尺寸将固定不可调。
+// Buffer必须在第一次Scan之前设置，否则引发Panic。
+// 默认情况下，Scanner将会使用一个4096-bufio.MaxScanTokenSize大小的内部缓存。
 
 `func (s *Scanner) Bytes() []byte`
-
+// 将最后一次扫描出的‘指定部分’作为切片（引用）返回
+// 下一次的扫描会覆盖本结果
 
 `func (s *Scanner) Err() error`
-
+// 返回扫描过程中遇到的非EOF错误
 
 `func (s *Scanner) Scan() bool`
-
+// 扫描数据中的‘指定部分’
 
 `func (s *Scanner) Split(split SplitFunc)`
-
+// 设置Scanner的分切函数，必须在Scan方法之前调用
 
 `func (s *Scanner) Text() string`
+// 最后一次扫描出的‘指定部分’作为String返回
 
 
+Scanner的示例：
 
+```Go
+package bufio
 
+import (
+	"bufio"
+	"bytes"
+	"fmt"
+)
 
+func Scan(){
+	b1 := bytes.NewReader([]byte("ABC\nDEF\r\nGHI\nJKL"))
+	bs := bufio.NewScanner(b1)
+	for bs.Scan() {
+		fmt.Printf("%s %v\n", bs.Bytes(), bs.Text())
+	}
+	// ABC ABC
+	// DEF DEF
+	// GHI GHI
+	// JKL JKL
+	b2 := bytes.NewReader([]byte("ABC\nDEF GHI JKL"))
+	bs = bufio.NewScanner(b2)
+	bs.Split(bufio.ScanWords)
+	for bs.Scan() {
+		fmt.Println(bs.Text())
+	}
+	// ABC
+	// DEF
+	// GHI
+	// JKL
+	b3 := bytes.NewReader([]byte("Hello 世界！"))
+	bs = bufio.NewScanner(b3)
+	bs.Split(bufio.ScanRunes)
+	for bs.Scan() {
+		fmt.Printf("%v ", bs.Text())
+	}
+	// H e l l o   世 界 ！
+	fmt.Println()
+	b4 := bytes.NewReader([]byte("我的天哪!"))
+	bs = bufio.NewScanner(b4)
+	bs.Split(bufio.ScanBytes)
+	for bs.Scan() {
+		fmt.Printf("%v ", bs.Bytes())
+	}
+	// [230] [136] [145] [231] [154] [132] [229] [164] [169] [229] [147] [170] [33]
+	fmt.Println()
+}
+```
+
+另外的参考：
+
+* [https://studygolang.com/articles/4367](https://studygolang.com/articles/4367)
+* [https://www.cnblogs.com/golove/p/3282667.html](https://www.cnblogs.com/golove/p/3282667.html)
 
 
 
