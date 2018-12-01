@@ -36,6 +36,8 @@ date: 2018-11-26 14:41:54
 `func NewWriterSize(w io.Writer, size int) *Writer`
 //将w封装成一个拥有size大小缓存的bufio.Writer对象
 
+<!---more--->
+
 > Reader结构体
 
 ```Go

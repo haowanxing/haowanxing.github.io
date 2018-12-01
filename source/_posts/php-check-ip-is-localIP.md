@@ -24,6 +24,8 @@ C类：192.168.0.0-192.168.255.255
 
 ### 方法一： PHP自带函数
 
+<!---more--->
+
 > filter_var($IP, FILTER_VALIDATE_IP, FILTER_FLAG_NO_PRIV_RANGE | FILTER_FLAG_NO_RES_RANGE)
 
 如果$IP是内网IP则会返回`false`，否则返回ip字符串。

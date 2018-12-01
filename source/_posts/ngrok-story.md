@@ -24,6 +24,8 @@ categories:
 
 所以我最终尝试了内网穿透服务器：Ngrok。（当然还有别的比如：frp）
 
+<!---more--->
+
 ## Ngrok简介
 
 Ngrok是一款使用GO语言开发的开源软件（仅针对1.x，2.x不开源），是一个反向代理软件。它可以在你本地运行的服务和公网服务器端点建立一条安全的隧道，这样任何一个和公网连通的客户端都可以访问和使用你的本地服务。Ngrok还可以捕获和分析所有通道上的流量，对后期的分析和处理也有相当好的支持。
@@ -31,8 +33,6 @@ Ngrok是一款使用GO语言开发的开源软件（仅针对1.x，2.x不开源�
 ![](http://qiniu.0x4f5da2.cn/20180905153613761191428.png)
 
 Ngrok的git仓库地址：[https://github.com/inconshreveable/ngrok](https://github.com/inconshreveable/ngrok)
-
-<!--more-->
 
 ## 需要的宝贝
 

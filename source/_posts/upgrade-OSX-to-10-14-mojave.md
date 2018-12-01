@@ -13,6 +13,8 @@ categories:
 
 > 既然App Store推送了本次更新，我也就傻傻的更新了，谁知道会发生什么呢？
 
+<!---more--->
+
 很不开心的是，第二天上班来发现系统更新好了，直接登录！一切安好。然鹅！！！发现了好几个惊喜：
 
 1. svn和git命令无法执行，提示`xcrun: error: invalid active developer path (/Library/Developer/CommandLineTools), missing xcrun at: /Library/Developer/CommandLineTools/usr/bin/xcrun`

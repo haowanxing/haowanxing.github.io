@@ -3,6 +3,8 @@ title: 不同语言对网络IO的效率对比
 tags:
   - 测试
   - 性能
+  - Go
+  - PHP
 abbrlink: 55e3ba30
 date: 2018-08-21 17:07:37
 categories:
@@ -14,6 +16,8 @@ categories:
 * MacBook Air (13-inch, Early 2014)
 * 处理器：1.4 GHz Intel Core i5
 * 内存：4 GB 1600 MHz DDR3
+
+<!---more--->
 
 ## PHP
 ```
@@ -64,7 +68,7 @@ java version "10.0.1" 2018-04-17
 Java(TM) SE Runtime Environment 18.3 (build 10.0.1+10)
 Java HotSpot(TM) 64-Bit Server VM 18.3 (build 10.0.1+10, mixed mode)
 ```
-<!---more--->
+
 ```Java
 public class Main {
  

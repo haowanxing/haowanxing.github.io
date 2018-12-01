@@ -27,6 +27,9 @@ date: 2018-11-29 10:30:23
 `func Match(pattern, name string) (matched bool, err error)`
 `func Split(path string) (dir, file string)`
 // 以上8种方法跟path包同名方法功能类似
+
+<!---more--->
+
 ***
 
 `func Abs(path string) (string, error)`

@@ -50,6 +50,8 @@ date: 2018-11-27 14:45:01
 	// ABC, ABCD, -1
 	// ABCD, ABC, 1
 ```
+<!---more--->
+
 ***
 
 `func Contains(b, subslice []byte) bool`

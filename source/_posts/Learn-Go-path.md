@@ -30,6 +30,9 @@ date: 2018-11-28 17:08:15
 	fmt.Println(path.Base("."))		// .
 	fmt.Println(path.Base(""))			// .
 ```
+
+<!---more--->
+
 ***
 
 `func Clean(path string) string`
