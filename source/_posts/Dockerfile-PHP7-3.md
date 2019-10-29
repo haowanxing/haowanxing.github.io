@@ -68,7 +68,7 @@ EXPOSE 22
 EXPOSE 9000
 
 # 容器启动时的执行指令
-CMD ["./sbin/php-fpm","-c","/usr/local/php/etc/php-fpm.conf"]
+CMD ["./sbin/php-fpm","-c","/usr/local/php/etc/php.ini","-y","/usr/local/php/etc/php-fpm.conf"]
 ```
 
 一切都准备好了以后，打开shell终端，cd到Dockerfile目录，目录结构如下:
