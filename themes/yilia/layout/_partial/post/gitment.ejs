@@ -1,0 +1,23 @@
+<div id="gitmentContainer"></div>
+<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+<style>
+#gitmentContainer { margin:30px;padding:0px 10px;}
+.gitment-comment-header {background-color: #eaeaea;}
+.gitment-editor-body textarea {background-color: #e4e4e4;}
+.gitment-editor-tab.gitment-selected {background-color: #e4e4e4;}
+</style>
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script src="https://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.min.js"></script>
+<script>
+var gitment = new Gitment({
+  //id: location.href,
+  id: md5(window.location.pathname),
+  owner: 'haowanxing',
+  repo: 'imsry.cn',
+  oauth: {
+    client_id: '7e6b078394a99b7940d2',
+    client_secret: 'ff64a6b066e97af64358c44a96e0c7dd398aba1e',
+  },
+})
+gitment.render('gitmentContainer')
+</script>
