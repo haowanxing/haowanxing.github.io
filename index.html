@@ -165,6 +165,288 @@ var _hmt = _hmt || [];
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-Linear-Interpolation-of-Array" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/posts/babba23d.html">线性插值算法之一维数组矩阵</a>
+    </h1>
+  
+
+        
+        <a href="/posts/babba23d.html" class="archive-article-date">
+  	<time datetime="2020-01-08T08:56:19.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-08</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>此篇文章用于记录工作中所需的数据插值算法：线性插值（以两个相邻数据的均值作为中间值插入两数之间）</p>
+</blockquote>
+<p>惊喜预览图：</p>
+<p>原始数据：<img src="../uploads/2020/01/screenrecord-linearx1.gif" alt="原始采集动图" style="zoom:20%;">一次插值数据：<img src="../uploads/2020/01/screenrecord-linearx2.gif" alt="1次插值数据动图" style="zoom:35%;">二次插值数据：<img src="../uploads/2020/01/screenrecord-linearx3.gif" alt="2次插值数据动图" style="zoom:43%;"></p>
+<p>现有数据是一个8x8的温度矩阵(值为真实温度的100倍)，存放在一个长度为64的一维数组中，测试数据如下：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">2275</span>,<span class="number">2250</span>,<span class="number">2350</span>,<span class="number">2350</span>,<span class="number">2325</span>,<span class="number">2350</span>,<span class="number">2325</span>,<span class="number">2400</span>,<span class="number">2325</span>,<span class="number">2275</span>,<span class="number">2350</span>,<span class="number">2350</span>,<span class="number">2350</span>,<span class="number">2350</span>,<span class="number">2325</span>,<span class="number">2350</span>,<span class="number">2275</span>,<span class="number">2300</span>,<span class="number">2325</span>,<span class="number">2350</span>,<span class="number">2325</span>,<span class="number">2300</span>,<span class="number">2350</span>,<span class="number">2325</span>,<span class="number">2200</span>,<span class="number">2275</span>,<span class="number">2250</span>,<span class="number">2275</span>,<span class="number">2325</span>,<span class="number">2275</span>,<span class="number">2300</span>,<span class="number">2275</span>,<span class="number">2250</span>,<span class="number">2250</span>,<span class="number">2225</span>,<span class="number">2250</span>,<span class="number">2275</span>,<span class="number">2325</span>,<span class="number">2325</span>,<span class="number">2350</span>,<span class="number">2200</span>,<span class="number">2250</span>,<span class="number">2275</span>,<span class="number">2250</span>,<span class="number">2300</span>,<span class="number">2275</span>,<span class="number">2300</span>,<span class="number">2325</span>,<span class="number">2200</span>,<span class="number">2250</span>,<span class="number">2200</span>,<span class="number">2250</span>,<span class="number">2375</span>,<span class="number">2325</span>,<span class="number">2250</span>,<span class="number">2250</span>,<span class="number">2100</span>,<span class="number">2125</span>,<span class="number">2225</span>,<span class="number">2300</span>,<span class="number">2450</span>,<span class="number">2325</span>,<span class="number">2200</span>,<span class="number">2225</span></span><br></pre></td></tr></table></figure>
+<h2 id="问题分析"><a href="#问题分析" class="headerlink" title="问题分析"></a>问题分析</h2><p>将8x8的矩阵利用插值算法转化成15x15（8个数据中插入7个虚拟值）矩阵根本思路：</p>
+<ol>
+<li>将8x8的数据进行横向插值为一个15x8的数组；</li>
+<li>将15x8的数字进行纵向插值为一个15x15的数组；</li>
+</ol>
+<p>转化公式的分析：</p>
+<p>先将问题简化，分析一个4x4的矩阵：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">0</th>
+<th style="text-align:center">1</th>
+<th style="text-align:center">2</th>
+<th style="text-align:center">3</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">4</td>
+<td style="text-align:center">5</td>
+<td style="text-align:center">6</td>
+<td style="text-align:center">7</td>
+</tr>
+<tr>
+<td style="text-align:center">8</td>
+<td style="text-align:center">9</td>
+<td style="text-align:center">10</td>
+<td style="text-align:center">11</td>
+</tr>
+<tr>
+<td style="text-align:center">12</td>
+<td style="text-align:center">13</td>
+<td style="text-align:center">14</td>
+<td style="text-align:center">15</td>
+</tr>
+</tbody>
+</table>
+<p>横向插值后的数据位置变化：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">0</th>
+<th style="text-align:left">x</th>
+<th style="text-align:left">1</th>
+<th style="text-align:left">x</th>
+<th style="text-align:left">2</th>
+<th style="text-align:left">x</th>
+<th style="text-align:left">3</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">4</td>
+<td style="text-align:left">x</td>
+<td style="text-align:left">5</td>
+<td style="text-align:left">x</td>
+<td style="text-align:left">6</td>
+<td style="text-align:left">x</td>
+<td style="text-align:left">7</td>
+</tr>
+<tr>
+<td style="text-align:left">8</td>
+<td style="text-align:left">x</td>
+<td style="text-align:left">9</td>
+<td style="text-align:left">x</td>
+<td style="text-align:left">10</td>
+<td style="text-align:left">x</td>
+<td style="text-align:left">11</td>
+</tr>
+<tr>
+<td style="text-align:left">12</td>
+<td style="text-align:left">x</td>
+<td style="text-align:left">13</td>
+<td style="text-align:left">x</td>
+<td style="text-align:left">14</td>
+<td style="text-align:left">x</td>
+<td style="text-align:left">15</td>
+</tr>
+</tbody>
+</table>
+<h3 id="分析一："><a href="#分析一：" class="headerlink" title="分析一："></a>分析一：</h3><p>位置：0=&gt;0，1=&gt;2，2=&gt;4，3=&gt;6，4=&gt;7，5=&gt;9，6=&gt;11，7=&gt;13，8=&gt;14……</p>
+<p>由此推断原始数据的新位置，设原每行长度为w，原位置为i，则新每行长度为2w-1，新位置为n=i*2-i/w。</p>
+<p>那么当i满足条件：i不为第一列数据（即i%w不为0）时，可计算前一个插值数据。</p>
+<p>设插值为x，上述表格数据存放a数组，则x的数据位为k-1，根据插值算法，则值x=a[k-1]=(a[k-2]+a[k])/2。</p>
+<p>现在问题变为分析一个7*4的矩阵：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">0</th>
+<th style="text-align:center">1</th>
+<th style="text-align:center">2</th>
+<th style="text-align:center">3</th>
+<th style="text-align:center">4</th>
+<th style="text-align:center">5</th>
+<th style="text-align:center">6</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">7</td>
+<td style="text-align:center">8</td>
+<td style="text-align:center">9</td>
+<td style="text-align:center">10</td>
+<td style="text-align:center">11</td>
+<td style="text-align:center">12</td>
+<td style="text-align:center">13</td>
+</tr>
+<tr>
+<td style="text-align:center">14</td>
+<td style="text-align:center">15</td>
+<td style="text-align:center">16</td>
+<td style="text-align:center">17</td>
+<td style="text-align:center">18</td>
+<td style="text-align:center">19</td>
+<td style="text-align:center">20</td>
+</tr>
+<tr>
+<td style="text-align:center">21</td>
+<td style="text-align:center">22</td>
+<td style="text-align:center">23</td>
+<td style="text-align:center">24</td>
+<td style="text-align:center">25</td>
+<td style="text-align:center">26</td>
+<td style="text-align:center">27</td>
+</tr>
+</tbody>
+</table>
+<p>纵向插值后的数据位置变化：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">0</th>
+<th style="text-align:left">1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">x</td>
+<td style="text-align:left">x</td>
+<td>x</td>
+<td>x</td>
+<td>x</td>
+<td>x</td>
+<td>x</td>
+</tr>
+<tr>
+<td style="text-align:left">7</td>
+<td style="text-align:left">8</td>
+<td>9</td>
+<td>10</td>
+<td>11</td>
+<td>12</td>
+<td>13</td>
+</tr>
+<tr>
+<td style="text-align:left">x</td>
+<td style="text-align:left">x</td>
+<td>x</td>
+<td>x</td>
+<td>x</td>
+<td>x</td>
+<td>x</td>
+</tr>
+<tr>
+<td style="text-align:left">14</td>
+<td style="text-align:left">15</td>
+<td>16</td>
+<td>17</td>
+<td>18</td>
+<td>19</td>
+<td>20</td>
+</tr>
+<tr>
+<td style="text-align:left">x</td>
+<td style="text-align:left">x</td>
+<td>x</td>
+<td>x</td>
+<td>x</td>
+<td>x</td>
+<td>x</td>
+</tr>
+<tr>
+<td style="text-align:left">21</td>
+<td style="text-align:left">22</td>
+<td>23</td>
+<td>24</td>
+<td>25</td>
+<td>26</td>
+<td>27</td>
+</tr>
+</tbody>
+</table>
+<h3 id="分析二："><a href="#分析二：" class="headerlink" title="分析二："></a>分析二：</h3><p>第一行位置0-6不变，从第二行的7开始：7=&gt;14，8=&gt;15……，从第三行的14开始：14=&gt;21，15=&gt;22…… 以此类推</p>
+<p>由此推断原始数据的新位置：设原位置为i，则新位置为：i*2-i%w。</p>
+<p>那么当满足条件：从原始数据的第二行开始（即i&gt;=w）时，可计算当前位置上一行的插值数据。</p>
+<p>设插值为x，上述表格存放在a数组中，则x的数据位为k-w，根据插值算法，则值x=a[k-w]=(a[k-2w]+a[k])/2。</p>
+<p>由此经过两步的演算，得出了一个7x7的长度为49的数组。</p>
+<h2 id="代码示例："><a href="#代码示例：" class="headerlink" title="代码示例："></a>代码示例：</h2><p>JavaScript版本</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Linear</span>(<span class="params">old, width</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">let</span> data = [];</span><br><span class="line">  <span class="comment">//横向插值</span></span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">let</span> i <span class="keyword">in</span> old)&#123;</span><br><span class="line">    i = <span class="built_in">parseInt</span>(i);</span><br><span class="line">    <span class="keyword">let</span> v = old[i];</span><br><span class="line">    <span class="keyword">let</span> k = i*<span class="number">2</span>-<span class="built_in">parseInt</span>(i/width);</span><br><span class="line">    data[k] = v;</span><br><span class="line">    <span class="keyword">if</span>(i%width != <span class="number">0</span>)&#123;</span><br><span class="line">      data[k<span class="number">-1</span>] = (<span class="built_in">parseInt</span>(data[k<span class="number">-2</span>])+<span class="built_in">parseInt</span>(data[k]))/<span class="number">2</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">let</span> data2 = data;</span><br><span class="line">  data = [];</span><br><span class="line">  width = width*<span class="number">2</span><span class="number">-1</span>;</span><br><span class="line">  <span class="comment">//纵向插值</span></span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">let</span> i <span class="keyword">in</span> data2)&#123;</span><br><span class="line">    i = <span class="built_in">parseInt</span>(i);</span><br><span class="line">    <span class="keyword">let</span> v = data2[i];</span><br><span class="line">    <span class="keyword">let</span> k = i*<span class="number">2</span>-i%width;</span><br><span class="line">    data[k] = v;</span><br><span class="line">    <span class="keyword">if</span>(k&gt;=width)&#123;</span><br><span class="line">      data[k-width] = (<span class="built_in">parseInt</span>(data[k])+<span class="built_in">parseInt</span>(data[k-width*<span class="number">2</span>]))/<span class="number">2</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> data;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>用HTML渲染数据并上色结果：</p>
+<ul>
+<li><p>原始数据</p>
+<p><img src="../uploads/2020/01/WX20200108-181859@2x.png" alt="原始数据结果图片" style="zoom:50%;"></p>
+</li>
+<li><p>一次插值数据</p>
+<p><img src="../uploads/2020/01/WX20200108-181928@2x.png" alt="一次插值数据图片" style="zoom:33%;"></p>
+</li>
+<li><p>二次差值数据</p>
+<p><img src="../uploads/2020/01/WX20200108-182016@2x.png" alt="二次插值数据图片" style="zoom:25%;"></p>
+</li>
+</ul>
+<h3 id="Demo代码"><a href="#Demo代码" class="headerlink" title="Demo代码"></a>Demo代码</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">title</span>&gt;</span>Demo<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">"text/css"</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined">		span &#123;margin: 0px; display:inline-block; text-align:center;color: #ccc&#125;</span></span><br><span class="line"><span class="undefined">		.canvascfg .num &#123;width: 20px;&#125;</span></span><br><span class="line"><span class="undefined">	</span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"data"</span> <span class="attr">style</span>=<span class="string">"width: 100%;height: 100%;line-height: 20px"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript">		<span class="keyword">let</span> originalData = [<span class="number">2275</span>,<span class="number">2250</span>,<span class="number">2350</span>,<span class="number">2350</span>,<span class="number">2325</span>,<span class="number">2350</span>,<span class="number">2325</span>,<span class="number">2400</span>,<span class="number">2325</span>,<span class="number">2275</span>,<span class="number">2350</span>,<span class="number">2350</span>,<span class="number">2350</span>,<span class="number">2350</span>,<span class="number">2325</span>,<span class="number">2350</span>,<span class="number">2275</span>,<span class="number">2300</span>,<span class="number">2325</span>,<span class="number">2350</span>,<span class="number">2325</span>,<span class="number">2300</span>,<span class="number">2350</span>,<span class="number">2325</span>,<span class="number">2200</span>,<span class="number">2275</span>,<span class="number">2250</span>,<span class="number">2275</span>,<span class="number">2325</span>,<span class="number">2275</span>,<span class="number">2300</span>,<span class="number">2275</span>,<span class="number">2250</span>,<span class="number">2250</span>,<span class="number">2225</span>,<span class="number">2250</span>,<span class="number">2275</span>,<span class="number">2325</span>,<span class="number">2325</span>,<span class="number">2350</span>,<span class="number">2200</span>,<span class="number">2250</span>,<span class="number">2275</span>,<span class="number">2250</span>,<span class="number">2300</span>,<span class="number">2275</span>,<span class="number">2300</span>,<span class="number">2325</span>,<span class="number">2200</span>,<span class="number">2250</span>,<span class="number">2200</span>,<span class="number">2250</span>,<span class="number">2375</span>,<span class="number">2325</span>,<span class="number">2250</span>,<span class="number">2250</span>,<span class="number">2100</span>,<span class="number">2125</span>,<span class="number">2225</span>,<span class="number">2300</span>,<span class="number">2450</span>,<span class="number">2325</span>,<span class="number">2200</span>,<span class="number">2225</span>];</span></span><br><span class="line"><span class="javascript">		<span class="keyword">let</span> Color = &#123;</span></span><br><span class="line"><span class="undefined">			Blue:[0,0,255],</span></span><br><span class="line"><span class="undefined">			Yellow:[255,255,0],</span></span><br><span class="line"><span class="undefined">			Red:[255,0,0]</span></span><br><span class="line"><span class="undefined">		&#125;;</span></span><br><span class="line"><span class="javascript">		<span class="keyword">let</span> Config = &#123;</span></span><br><span class="line"><span class="undefined">			canvasWidth:8,</span></span><br><span class="line"><span class="undefined">			canvasHeight:8,</span></span><br><span class="line"><span class="javascript">			xValue:<span class="number">2</span>,	<span class="comment">//线性插值次数为xVlaue-1</span></span></span><br><span class="line"><span class="undefined">		&#125;;</span></span><br><span class="line"><span class="undefined">		Draw(originalData);</span></span><br><span class="line"><span class="javascript">		<span class="function"><span class="keyword">function</span> <span class="title">Linear</span>(<span class="params">old, width</span>)</span>&#123;</span></span><br><span class="line"><span class="javascript">        	<span class="keyword">let</span> data = [];</span></span><br><span class="line"><span class="javascript">        	<span class="comment">//横向插值</span></span></span><br><span class="line"><span class="javascript">        	<span class="keyword">for</span>(<span class="keyword">let</span> i <span class="keyword">in</span> old)&#123;</span></span><br><span class="line"><span class="javascript">        		i = <span class="built_in">parseInt</span>(i);</span></span><br><span class="line"><span class="javascript">        		<span class="keyword">let</span> v = old[i];</span></span><br><span class="line"><span class="javascript">        		<span class="keyword">let</span> k = i*<span class="number">2</span>-<span class="built_in">parseInt</span>(i/width);</span></span><br><span class="line"><span class="undefined">        		data[k] = v;</span></span><br><span class="line"><span class="javascript">        		<span class="keyword">if</span>(i%width != <span class="number">0</span>)&#123;</span></span><br><span class="line"><span class="javascript">        			data[k<span class="number">-1</span>] = (<span class="built_in">parseInt</span>(data[k<span class="number">-2</span>])+<span class="built_in">parseInt</span>(data[k]))/<span class="number">2</span>;</span></span><br><span class="line"><span class="undefined">        		&#125;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined">        	&#125;</span></span><br><span class="line"><span class="javascript">        	<span class="keyword">let</span> data2 = data;</span></span><br><span class="line"><span class="undefined">        	data = [];</span></span><br><span class="line"><span class="undefined">        	width = width*2-1;</span></span><br><span class="line"><span class="javascript">        	<span class="comment">//纵向插值</span></span></span><br><span class="line"><span class="javascript">        	<span class="keyword">for</span>(<span class="keyword">let</span> i <span class="keyword">in</span> data2)&#123;</span></span><br><span class="line"><span class="javascript">        		i = <span class="built_in">parseInt</span>(i);</span></span><br><span class="line"><span class="javascript">        		<span class="keyword">let</span> v = data2[i];</span></span><br><span class="line"><span class="javascript">        		<span class="keyword">let</span> k = i*<span class="number">2</span>-i%width;</span></span><br><span class="line"><span class="undefined">    			data[k] = v;</span></span><br><span class="line"><span class="javascript">    			<span class="keyword">if</span>(k&gt;=width)&#123;</span></span><br><span class="line"><span class="javascript">    				data[k-width] = (<span class="built_in">parseInt</span>(data[k])+<span class="built_in">parseInt</span>(data[k-width*<span class="number">2</span>]))/<span class="number">2</span>;</span></span><br><span class="line"><span class="undefined">    			&#125;</span></span><br><span class="line"><span class="undefined">        	&#125;</span></span><br><span class="line"><span class="javascript">        	<span class="keyword">return</span> data;</span></span><br><span class="line"><span class="undefined">		&#125;</span></span><br><span class="line"><span class="javascript">		<span class="function"><span class="keyword">function</span> <span class="title">ComputeColor</span>(<span class="params">from,to,ratio</span>)</span>&#123;</span></span><br><span class="line"><span class="javascript">        	<span class="keyword">var</span> r = <span class="built_in">Math</span>.round(<span class="keyword">from</span>[<span class="number">0</span>]*(<span class="number">1</span>-ratio)+to[<span class="number">0</span>]*ratio);</span></span><br><span class="line"><span class="javascript">        	<span class="keyword">var</span> g = <span class="built_in">Math</span>.round(<span class="keyword">from</span>[<span class="number">1</span>]*(<span class="number">1</span>-ratio)+to[<span class="number">1</span>]*ratio);</span></span><br><span class="line"><span class="javascript">        	<span class="keyword">var</span> b = <span class="built_in">Math</span>.round(<span class="keyword">from</span>[<span class="number">2</span>]*(<span class="number">1</span>-ratio)+to[<span class="number">2</span>]*ratio);</span></span><br><span class="line"><span class="javascript">        	<span class="keyword">return</span> [r,g,b];</span></span><br><span class="line"><span class="undefined">        &#125;</span></span><br><span class="line"><span class="javascript">		<span class="function"><span class="keyword">function</span> <span class="title">GetColor</span>(<span class="params">num, max, min</span>)</span>&#123;</span></span><br><span class="line"><span class="javascript">        	<span class="keyword">var</span> ratio = (num - min) / (max - min);</span></span><br><span class="line"><span class="javascript">        	<span class="keyword">var</span> color = ComputeColor(Color.Blue, Color.Red, ratio);</span></span><br><span class="line"><span class="javascript">        	<span class="keyword">return</span> color;</span></span><br><span class="line"><span class="undefined">        &#125;</span></span><br><span class="line"><span class="javascript">        <span class="function"><span class="keyword">function</span> <span class="title">Draw</span>(<span class="params">tmp</span>)</span>&#123;</span></span><br><span class="line"><span class="javascript">        	<span class="keyword">let</span> canvasHeight = Config.canvasHeight;</span></span><br><span class="line"><span class="javascript">    		<span class="keyword">let</span> canvasWidth = Config.canvasWidth;</span></span><br><span class="line"><span class="javascript">    		<span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">1</span>;i&lt;Config.xValue;i++)&#123;</span></span><br><span class="line"><span class="javascript">    			tmp = Linear(tmp, (canvasWidth<span class="number">-1</span>)*<span class="built_in">Math</span>.pow(<span class="number">2</span>,i<span class="number">-1</span>)+<span class="number">1</span>);</span></span><br><span class="line"><span class="undefined">    		&#125;</span></span><br><span class="line"><span class="javascript">        	<span class="keyword">if</span>(Config.xValue &gt; <span class="number">1</span>)&#123;</span></span><br><span class="line"><span class="javascript">        		canvasHeight = (Config.canvasHeight<span class="number">-1</span>)*<span class="built_in">Math</span>.pow(<span class="number">2</span>,Config.xValue<span class="number">-1</span>)+<span class="number">1</span>;</span></span><br><span class="line"><span class="javascript">        		canvasWidth = (Config.canvasWidth<span class="number">-1</span>)*<span class="built_in">Math</span>.pow(<span class="number">2</span>,Config.xValue<span class="number">-1</span>)+<span class="number">1</span>;</span></span><br><span class="line"><span class="undefined">        	&#125;</span></span><br><span class="line"><span class="undefined">        	low = high = tmp[0];</span></span><br><span class="line"><span class="javascript">        	<span class="keyword">for</span> (<span class="keyword">var</span> i = tmp.length - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--) &#123;</span></span><br><span class="line"><span class="javascript">        		<span class="keyword">if</span>( tmp[i] &gt; high ) high = tmp[i];</span></span><br><span class="line"><span class="javascript">        		<span class="keyword">if</span>( tmp[i] &lt; low ) low = tmp[i];</span></span><br><span class="line"><span class="undefined">        	&#125;</span></span><br><span class="line"><span class="javascript">        	<span class="keyword">let</span> index = <span class="number">2</span>;</span></span><br><span class="line"><span class="javascript">        	<span class="keyword">let</span> span = <span class="string">''</span>;</span></span><br><span class="line"><span class="javascript">        	<span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">1</span>; i &lt;=canvasHeight; i++,index++)&#123;</span></span><br><span class="line"><span class="javascript">        		<span class="keyword">for</span>(<span class="keyword">var</span> j = <span class="number">1</span>; j &lt;= canvasWidth; j++)&#123;</span></span><br><span class="line"><span class="javascript">        			<span class="comment">// var idx = (i)*canvasWidth-j;</span></span></span><br><span class="line"><span class="javascript">        			<span class="comment">// var idx = (i-1)*canvasWidth+j-1;</span></span></span><br><span class="line"><span class="javascript">        			<span class="keyword">var</span> idx = canvasWidth*(canvasHeight-i+<span class="number">1</span>)-j;</span></span><br><span class="line"><span class="javascript">        			<span class="keyword">var</span> color = GetColor(tmp[idx], high, low);</span></span><br><span class="line"><span class="undefined">        			span += GetSpan(color,tmp[idx]);</span></span><br><span class="line"><span class="undefined">        		&#125;</span></span><br><span class="line"><span class="javascript">        		span += <span class="string">'&lt;br&gt;'</span>;</span></span><br><span class="line"><span class="undefined">        	&#125;</span></span><br><span class="line"><span class="javascript">        	$(<span class="string">"#data"</span>).html(span);</span></span><br><span class="line"><span class="undefined">        &#125;</span></span><br><span class="line"><span class="javascript">        <span class="function"><span class="keyword">function</span> <span class="title">GetSpan</span>(<span class="params">color,num</span>)</span>&#123;</span></span><br><span class="line"><span class="javascript">        	<span class="keyword">var</span> span = <span class="string">'&lt;span style="width:50px;height:50px;background-color:rgb('</span>+color[<span class="number">0</span>]+<span class="string">','</span>+color[<span class="number">1</span>]+<span class="string">','</span>+color[<span class="number">2</span>]+<span class="string">')"&gt;'</span>+(num/<span class="number">100</span>)+<span class="string">'&lt;/span&gt;'</span>;</span></span><br><span class="line"><span class="javascript">        	<span class="keyword">return</span> span;</span></span><br><span class="line"><span class="javascript">        	$(<span class="string">"#wind"</span>).append(span);</span></span><br><span class="line"><span class="undefined">        &#125;</span></span><br><span class="line"><span class="undefined">	</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/posts/babba23d.html">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+  
     <article id="post-Network-Static-IP" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -347,7 +629,7 @@ var _hmt = _hmt || [];
         <h2 id="关于Docker以及Dockerfile"><a href="#关于Docker以及Dockerfile" class="headerlink" title="关于Docker以及Dockerfile"></a>关于Docker以及Dockerfile</h2><p>Docker容器就不详细介绍了，把它理解成类似“虚拟机”的一种介质吧。至于如何创建一个镜像，主要有两种方法：1. 从现有的镜像基础上，创建容器并自定义后Commit成镜像；2. 利用Dockerfile，根据自己的需要，如同写shell脚本一般，将自己需要搭建的容器环境所需的指令一条一条的汇集成指令集，然后让Docker根据Dockerfile来自动创建你想要的镜像</p>
 <h2 id="创建自己的PHP7-3镜像"><a href="#创建自己的PHP7-3镜像" class="headerlink" title="创建自己的PHP7.3镜像"></a>创建自己的PHP7.3镜像</h2><p>下载PHP源码：<a href="https://www.php.net/downloads.php" target="_blank" rel="noopener">https://www.php.net/downloads.php</a></p>
 <p>我这里下载了php-7.3.6.tar.bz2</p>
-<h3 id="Dockerfile内容"><a href="#Dockerfile内容" class="headerlink" title="Dockerfile内容"></a>Dockerfile内容</h3><figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 指定基于ubuntu:16.04创建</span></span><br><span class="line"><span class="keyword">FROM</span> ubuntu:<span class="number">16.04</span></span><br><span class="line"><span class="comment"># 声明作者</span></span><br><span class="line"><span class="keyword">MAINTAINER</span> haowanxing &lt;haowanxing@gmail.com&gt;</span><br><span class="line"><span class="comment"># 定义环境变量，设置时区时使用</span></span><br><span class="line"><span class="keyword">ENV</span> TIME_ZONE Asia/Shanghai</span><br><span class="line"></span><br><span class="line"><span class="comment"># 修改root账号密码</span></span><br><span class="line"><span class="keyword">RUN</span> /bin/echo 'root:0x4f5da2.cn' | chpasswd</span><br><span class="line"># 新增一个prod账号，并设置密码</span><br><span class="line">RUN useradd prod</span><br><span class="line">RUN /bin/echo 'prod:123456' | chpasswd</span><br><span class="line"></span><br><span class="line"># 安装编译依赖</span><br><span class="line">RUN apt-get update</span><br><span class="line">RUN apt-get install -y gcc make openssl libssl-dev curl libbz2-dev libxml2-dev libjpeg-dev libpng-dev libfreetype6-dev libzip-dev</span><br><span class="line">RUN apt-get install -y libcurl4-gnutls-dev</span><br><span class="line">RUN ln -s /usr/lib/x86_64-linux-gnu/libssl.so /usr/lib</span><br><span class="line"></span><br><span class="line"># 拷贝源码到环境中</span><br><span class="line">ADD php-7.3.6.tar.bz2 /tmp/</span><br><span class="line"># 编译和安装</span><br><span class="line">RUN cd /tmp/php-7.3.6 &amp;&amp; \</span><br><span class="line">	./configure --prefix=/usr/local/php --with-config-file-path=/usr/local/php/etc --enable-fpm --with-fpm-user=prod --with-fpm-group=prod --with-mysqli --with-pdo-mysql --with-iconv-dir --with-freetype-dir --with-jpeg-dir --with-png-dir --with-zlib --with-libxml-dir=/usr --enable-xml --disable-rpath --enable-bcmath --enable-shmop --enable-sysvsem --enable-inline-optimization --with-curl --enable-mbregex --enable-mbstring --enable-ftp --with-gd --with-openssl --with-mhash --enable-pcntl --enable-sockets --with-xmlrpc --enable-zip --enable-soap --without-pear --with-gettext --disable-fileinfo --enable-maintainer-zts &amp;&amp; \</span><br><span class="line">	make &amp;&amp; \</span><br><span class="line">	make install</span><br><span class="line"></span><br><span class="line"># 后续配置</span><br><span class="line">RUN cp /usr/local/php/etc/php-fpm.conf.default /usr/local/php/etc/php-fpm.conf &amp;&amp; \</span><br><span class="line">	sed -i 's/127.0.0.1/0.0.0.0/g' /usr/local/php/etc/php-fpm.conf &amp;&amp; \</span><br><span class="line">	sed -i "21a daemonize=no" /usr/local/php/etc/php-fpm.conf &amp;&amp; \</span><br><span class="line">	echo "$&#123;TIME_ZONE&#125;" &gt; /etc/timezone &amp;&amp; \</span><br><span class="line">	ln -sf /usr/share/zoneinfo/$&#123;TIME_ZONE&#125; /etc/localtime</span><br><span class="line"></span><br><span class="line"># 清理无用缓存</span><br><span class="line">RUN rm -rf /tmp/php-* &amp;&amp; apt-get clean</span><br><span class="line"></span><br><span class="line"># 拷贝已定义好的配置文件到环境中</span><br><span class="line">COPY php.ini /usr/local/php/etc/</span><br><span class="line"></span><br><span class="line"># 设置默认工作目录</span><br><span class="line">WORKDIR /usr/local/php/</span><br><span class="line"></span><br><span class="line"># 声明端口</span><br><span class="line">EXPOSE 22</span><br><span class="line">EXPOSE 9000</span><br><span class="line"></span><br><span class="line"># 容器启动时的执行指令</span><br><span class="line">CMD ["./sbin/php-fpm","-c","/usr/local/php/etc/php.ini","-y","/usr/local/php/etc/php-fpm.conf"]</span><br></pre></td></tr></table></figure>
+<h3 id="Dockerfile内容"><a href="#Dockerfile内容" class="headerlink" title="Dockerfile内容"></a>Dockerfile内容</h3><figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 指定基于ubuntu:16.04创建</span></span><br><span class="line"><span class="keyword">FROM</span> ubuntu:<span class="number">16.04</span></span><br><span class="line"><span class="comment"># 声明作者</span></span><br><span class="line"><span class="keyword">MAINTAINER</span> haowanxing &lt;haowanxing@gmail.com&gt;</span><br><span class="line"><span class="comment"># 定义环境变量，设置时区时使用</span></span><br><span class="line"><span class="keyword">ENV</span> TIME_ZONE Asia/Shanghai</span><br><span class="line"></span><br><span class="line"><span class="comment"># 修改root账号密码</span></span><br><span class="line"><span class="keyword">RUN</span><span class="bash"> /bin/<span class="built_in">echo</span> <span class="string">'root:0x4f5da2.cn'</span> | chpasswd</span></span><br><span class="line"><span class="bash"><span class="comment"># 新增一个prod账号，并设置密码</span></span></span><br><span class="line"><span class="bash">RUN useradd prod</span></span><br><span class="line"><span class="bash">RUN /bin/<span class="built_in">echo</span> <span class="string">'prod:123456'</span> | chpasswd</span></span><br><span class="line"><span class="bash"></span></span><br><span class="line"><span class="bash"><span class="comment"># 安装编译依赖</span></span></span><br><span class="line"><span class="bash">RUN apt-get update</span></span><br><span class="line"><span class="bash">RUN apt-get install -y gcc make openssl libssl-dev curl libbz2-dev libxml2-dev libjpeg-dev libpng-dev libfreetype6-dev libzip-dev</span></span><br><span class="line"><span class="bash">RUN apt-get install -y libcurl4-gnutls-dev</span></span><br><span class="line"><span class="bash">RUN ln <span class="_">-s</span> /usr/lib/x86_64-linux-gnu/libssl.so /usr/lib</span></span><br><span class="line"><span class="bash"></span></span><br><span class="line"><span class="bash"><span class="comment"># 拷贝源码到环境中</span></span></span><br><span class="line"><span class="bash">ADD php-7.3.6.tar.bz2 /tmp/</span></span><br><span class="line"><span class="bash"><span class="comment"># 编译和安装</span></span></span><br><span class="line"><span class="bash">RUN <span class="built_in">cd</span> /tmp/php-7.3.6 &amp;&amp; \</span></span><br><span class="line"><span class="bash">	./configure --prefix=/usr/<span class="built_in">local</span>/php --with-config-file-path=/usr/<span class="built_in">local</span>/php/etc --enable-fpm --with-fpm-user=prod --with-fpm-group=prod --with-mysqli --with-pdo-mysql --with-iconv-dir --with-freetype-dir --with-jpeg-dir --with-png-dir --with-zlib --with-libxml-dir=/usr --enable-xml --disable-rpath --enable-bcmath --enable-shmop --enable-sysvsem --enable-inline-optimization --with-curl --enable-mbregex --enable-mbstring --enable-ftp --with-gd --with-openssl --with-mhash --enable-pcntl --enable-sockets --with-xmlrpc --enable-zip --enable-soap --without-pear --with-gettext --disable-fileinfo --enable-maintainer-zts &amp;&amp; \</span></span><br><span class="line"><span class="bash">	make &amp;&amp; \</span></span><br><span class="line"><span class="bash">	make install</span></span><br><span class="line"><span class="bash"></span></span><br><span class="line"><span class="bash"><span class="comment"># 后续配置</span></span></span><br><span class="line"><span class="bash">RUN cp /usr/<span class="built_in">local</span>/php/etc/php-fpm.conf.default /usr/<span class="built_in">local</span>/php/etc/php-fpm.conf &amp;&amp; \</span></span><br><span class="line"><span class="bash">	sed -i <span class="string">'s/127.0.0.1/0.0.0.0/g'</span> /usr/<span class="built_in">local</span>/php/etc/php-fpm.conf &amp;&amp; \</span></span><br><span class="line"><span class="bash">	sed -i <span class="string">"21a daemonize=no"</span> /usr/<span class="built_in">local</span>/php/etc/php-fpm.conf &amp;&amp; \</span></span><br><span class="line"><span class="bash">	<span class="built_in">echo</span> <span class="string">"<span class="variable">$&#123;TIME_ZONE&#125;</span>"</span> &gt; /etc/timezone &amp;&amp; \</span></span><br><span class="line"><span class="bash">	ln -sf /usr/share/zoneinfo/<span class="variable">$&#123;TIME_ZONE&#125;</span> /etc/localtime</span></span><br><span class="line"><span class="bash"></span></span><br><span class="line"><span class="bash"><span class="comment"># 清理无用缓存</span></span></span><br><span class="line"><span class="bash">RUN rm -rf /tmp/php-* &amp;&amp; apt-get clean</span></span><br><span class="line"><span class="bash"></span></span><br><span class="line"><span class="bash"><span class="comment"># 拷贝已定义好的配置文件到环境中</span></span></span><br><span class="line"><span class="bash">COPY php.ini /usr/<span class="built_in">local</span>/php/etc/</span></span><br><span class="line"><span class="bash"></span></span><br><span class="line"><span class="bash"><span class="comment"># 设置默认工作目录</span></span></span><br><span class="line"><span class="bash">WORKDIR /usr/<span class="built_in">local</span>/php/</span></span><br><span class="line"><span class="bash"></span></span><br><span class="line"><span class="bash"><span class="comment"># 声明端口</span></span></span><br><span class="line"><span class="bash">EXPOSE 22</span></span><br><span class="line"><span class="bash">EXPOSE 9000</span></span><br><span class="line"><span class="bash"></span></span><br><span class="line"><span class="bash"><span class="comment"># 容器启动时的执行指令</span></span></span><br><span class="line"><span class="bash">CMD [<span class="string">"./sbin/php-fpm"</span>,<span class="string">"-c"</span>,<span class="string">"/usr/local/php/etc/php.ini"</span>,<span class="string">"-y"</span>,<span class="string">"/usr/local/php/etc/php-fpm.conf"</span>]</span></span><br></pre></td></tr></table></figure>
 <p>一切都准备好了以后，打开shell终端，cd到Dockerfile目录，目录结构如下:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">~/DockerSpace/phpserver/php » tree ./                                                                                                                                           anthony@Anthony-Macbook-Air</span><br><span class="line">./</span><br><span class="line">├── Dockerfile</span><br><span class="line">├── php-7.3.6.tar.bz2</span><br><span class="line">└── php.ini</span><br></pre></td></tr></table></figure>
 <p>将源码和Dockerfile放在同一目录，此目录中还有一个php.ini，放置此文件是方便在创建镜像的时候直接将PHP的配置文件替换进去，这样就省去后期手动修改配置的麻烦了。</p>
@@ -920,90 +1202,6 @@ var _hmt = _hmt || [];
 
 
   
-    <article id="post-Learn-Go-path-filepath" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/posts/6ac47315.html">Go语言包-path/filepath</a>
-    </h1>
-  
-
-        
-        <a href="/posts/6ac47315.html" class="archive-article-date">
-  	<time datetime="2018-11-29T02:30:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-29</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>一天一个Golang包，慢慢学习之“path/filepath”</p>
-</blockquote>
-<p>上一篇学习了<a href="./66c90df8.html">path包</a>，了解了几个对路径处理的方法。今天继续完成它的子包“filepath”，包中的函数会根据不同平台做不同的处理，如路径分隔符、卷名等。</p>
-<h4 id="阅读文档："><a href="#阅读文档：" class="headerlink" title="阅读文档："></a>阅读文档：</h4><p>官方pkg地址：<a href="https://golang.org/pkg/path/filepath" target="_blank" rel="noopener">https://golang.org/pkg/path/filepath</a></p>
-<blockquote>
-<p>包方法</p>
-</blockquote>
-<p><code>func Base(path string) string</code><br><code>func Clean(path string) string</code><br><code>func Dir(path string) string</code><br><code>func Ext(path string) string</code><br><code>func IsAbs(path string) bool</code><br><code>func Join(elem ...string) string</code><br><code>func Match(pattern, name string) (matched bool, err error)</code><br><code>func Split(path string) (dir, file string)</code><br>// 以上8种方法跟path包同名方法功能类似</p>
-        
-          <a class="article-more-a" href="/posts/6ac47315.html#more">继续阅读 >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">path</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">filepath</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Learn-GO/" class="article-tag-list-link color4">Learn-GO</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/posts/6ac47315.html">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -1018,7 +1216,7 @@ var _hmt = _hmt || [];
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2019 Anthony
+    		&copy; 2020 Anthony
     	</div>
       	<div class="footer-right">
       		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
@@ -1103,19 +1301,19 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Golang</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">PHP</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Docker</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Golang</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">essay</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1127,11 +1325,11 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
+                <a href="javascript:void(0)" class="js-tag color4">zip</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">zip</a>
+                <a href="javascript:void(0)" class="js-tag color1">essay</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1143,11 +1341,19 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">算法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">path</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">filepath</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">php</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1167,19 +1373,15 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">php</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">算法</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">时间复杂度</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">定理</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Apache</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1195,7 +1397,11 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Apache</a>
+                <a href="javascript:void(0)" class="js-tag color3">提问</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">面试</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1208,14 +1414,6 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">反向代理</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">提问</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">面试</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1283,10 +1481,6 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Laravel</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">MarkDown</a>
               </li>
              
@@ -1300,6 +1494,10 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">链表</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Laravel</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1323,18 +1521,6 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">mysqld</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Nginx</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">php-fpm</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">ngrok</a>
               </li>
              
@@ -1347,6 +1533,26 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">子串</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">mysqld</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Nginx</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">php-fpm</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">php上传进度</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">openssl</a>
               </li>
              
@@ -1356,14 +1562,6 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">xtea</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">子串</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">php上传进度</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1459,14 +1657,6 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">XML</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">实验</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">mail</a>
               </li>
              
@@ -1476,6 +1666,14 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">终端</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">XML</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">实验</a>
               </li>
             
             <div class="clearfix"></div>

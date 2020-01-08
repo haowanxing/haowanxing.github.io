@@ -165,6 +165,93 @@ var _hmt = _hmt || [];
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-multi-git-repository" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/posts/ab967d99.html">【干货】本地git对应多个远程仓库</a>
+    </h1>
+  
+
+        
+        <a href="/posts/ab967d99.html" class="archive-article-date">
+  	<time datetime="2017-07-24T02:18:41.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-24</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>当Githuber发现GitOSChina能发布项目演示，想把自己的项目也同步到OSChina上去时，同时维护两个本地仓库或者remote显得太过麻烦</p>
+</blockquote>
+<h2 id="提要"><a href="#提要" class="headerlink" title="提要"></a>提要</h2><p>　　首先，为本地git仓库添加远程仓库，我们使用命令：<code>git remote add origin [url]</code>，这样一来，本地仓库就对应有了一个远程仓库的地址，包括<code>push</code>和<code>fetch</code>源，如下图所示：</p>
+<p><img src="https://i.loli.net/2017/07/24/59755adb887fd.png" alt="remote-v"></p>
+<p>　　但是，我们如何才能做到既能将本地git仓库<code>PUSH</code>到Github，也能够<code>PUSH</code>到OSChina上呢？</p>
+<p>　　可能有以下方式是你想到的：</p>
+<ol>
+<li>本地创建两个仓库，一一对应（你不嫌麻烦的话的确可行）</li>
+<li>添加多个远程库，即<code>git remote add [another-origin]</code>(那每次都要<code>PUSH</code>两次咯？)</li>
+</ol>
+<p>　　其实，git的一个远程库本来就可以配置成多个地址，即一个origin拥有多个url。</p>
+<h2 id="敲黑板了（实现）"><a href="#敲黑板了（实现）" class="headerlink" title="敲黑板了（实现）"></a>敲黑板了（实现）</h2><p>　　前提条件是，我们已经为本地仓库添加了一个origin远程库（没有添加的自行添加，方法前面说了）。我们现在为本地库继续添加url地址：<code>https://git.oschina.net/anthony_box/hitools.git</code></p>
+<p>　　这个命令是：<code>git remote set-url --add origin [url]</code>（url替换成如上地址）</p>
+<p><img src="https://i.loli.net/2017/07/24/59755ea083267.png" alt="set-url"></p>
+<h2 id="擦黑板了（原理）"><a href="#擦黑板了（原理）" class="headerlink" title="擦黑板了（原理）"></a>擦黑板了（原理）</h2><p>　　其实该条命令执行就是在git项目的config文件里的<code>[remote &quot;origin&quot;]</code>配置新增一条记录，我们打开config文件看看，输入<code>git config -e</code>（文件路径:[repo]/.git/config）：</p>
+<p><img src="https://i.loli.net/2017/07/24/59755fe85b743.png" alt="config-e"></p>
+<p>　　所以说，执行<code>git remote set-url -add origin</code>和编辑<code>config文件</code>，一码子事。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">git</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/干货/" class="article-tag-list-link color3">干货</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/posts/ab967d99.html">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+  
     <article id="post-magic-blackspace" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -861,67 +948,6 @@ session.upload_progress.min_freq = &quot;1&quot;
 
 
   
-    <article id="post-the-year-about-2017" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/posts/5fc11633.html">2017年的开篇，居然是这个！</a>
-    </h1>
-  
-
-        
-        <a href="/posts/5fc11633.html" class="archive-article-date">
-  	<time datetime="2016-12-31T16:13:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-01-01</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>今天一天其实可以说，相～当～累！ 因为去了一趟八达岭长城，徒步北长城让我精疲力竭。回来已经晚上9点了，收拾收拾东西，洗漱完。坐着等2017的到来。<br>然后就干了这么一件事：<br><img src="http://qiniu.0x4f5da2.cn/20170206148636027922625.png" alt="20170206148636027922625.png"></p>
-<p>然后产生的结果是：<br><img src="http://qiniu.0x4f5da2.cn/20170206148636024291000.png" alt="20170206148636024291000.png"></p>
-<p>对于这个，2017年1月1日 00时00分01秒，我露出了无奈的笑容～</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/我的分享/" class="article-tag-list-link color5">我的分享</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/posts/5fc11633.html">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/3/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><a class="extend next" rel="next" href="/page/5/">Next &raquo;</a>
@@ -936,7 +962,7 @@ session.upload_progress.min_freq = &quot;1&quot;
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2019 Anthony
+    		&copy; 2020 Anthony
     	</div>
       	<div class="footer-right">
       		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
@@ -1021,19 +1047,19 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Golang</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">PHP</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Docker</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Golang</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">essay</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1045,11 +1071,11 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
+                <a href="javascript:void(0)" class="js-tag color4">zip</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">zip</a>
+                <a href="javascript:void(0)" class="js-tag color1">essay</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1061,11 +1087,19 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">算法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">path</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">filepath</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">php</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1085,19 +1119,15 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">php</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">算法</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">时间复杂度</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">定理</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Apache</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1113,7 +1143,11 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Apache</a>
+                <a href="javascript:void(0)" class="js-tag color3">提问</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">面试</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1126,14 +1160,6 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">反向代理</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">提问</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">面试</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1201,10 +1227,6 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Laravel</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">MarkDown</a>
               </li>
              
@@ -1218,6 +1240,10 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">链表</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Laravel</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1241,18 +1267,6 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">mysqld</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Nginx</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">php-fpm</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">ngrok</a>
               </li>
              
@@ -1265,6 +1279,26 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">子串</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">mysqld</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Nginx</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">php-fpm</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">php上传进度</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">openssl</a>
               </li>
              
@@ -1274,14 +1308,6 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">xtea</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">子串</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">php上传进度</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1377,14 +1403,6 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">XML</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">实验</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">mail</a>
               </li>
              
@@ -1394,6 +1412,14 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">终端</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">XML</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">实验</a>
               </li>
             
             <div class="clearfix"></div>

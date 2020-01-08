@@ -165,6 +165,67 @@ var _hmt = _hmt || [];
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-position-noeffect-to-div" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/posts/276126bb.html">做侧边菜单之弹出二级菜单-position定位不影响其他DIV</a>
+    </h1>
+  
+
+        
+        <a href="/posts/276126bb.html" class="archive-article-date">
+  	<time datetime="2014-09-24T11:48:19.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2014-09-24</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="https://i.loli.net/2017/08/01/5980843667be0.png" alt="二级展现菜单"><br>常常使用position用于层的绝对定位，比如我们让一个层位于一个层内具体什么位置，为即可使用position:absolute和position:relative实现。</p>
+<p>position:absolute；position:relative绝对定位使用通常是父级定义position:relative定位，子级定义position:absolute绝对定位属性，并且子级使用left或right和top或bottom进行绝对定位。</p>
+<p>例子：<br>首先是JS实现二级菜单的展现</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">&lt;script language=&quot;javascript&quot;&gt;</span><br><span class="line">    function tab(tag, className, isDisplay) &#123;</span><br><span class="line">        var list = document.getElementsByTagName(tag);</span><br><span class="line">        for (var i = 0,</span><br><span class="line">        len = list.length; i &lt; len; i++) &#123;</span><br><span class="line">            if (list[i].className == className) &#123;</span><br><span class="line">                if (isDisplay == 1) &#123;</span><br><span class="line">                    list[i].style.display = &quot;block&quot;</span><br><span class="line">                &#125; else &#123;</span><br><span class="line">                    list[i].style.display = &quot;none&quot;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line">&lt;/pre&gt;</span><br><span class="line">页面代码：</span><br><span class="line">&lt;pre lang=&quot;html&quot; line=&quot;1&quot; escaped=&quot;true&quot;&gt;</span><br><span class="line">&lt;div style=&quot;float:left; position:relative&quot;&gt;</span><br><span class="line"></span><br><span class="line">##学校</span><br><span class="line">&lt;span class=&quot;bianh&quot;&gt;</span><br><span class="line">&lt;a herf=&quot;#&quot;&gt;[切换]&lt;/a&gt;&lt;/span&gt;</span><br><span class="line">&lt;div style=&quot;position:absolute; left:40px;&quot; onmousemove=&quot;tab(&apos;div&apos;,&apos;selectschool&apos;,1)&quot; onclick=&quot;tab(&apos;div&apos;,&apos;selectschool&apos;,2)&quot;&gt;</span><br><span class="line">&lt;a herf=&quot;#&quot;&gt;中南民族大学&lt;/a&gt;</span><br><span class="line">&lt;a herf=&quot;#&quot;&gt;XXXX大学&lt;/a&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/JavaScript/" class="article-tag-list-link color1">JavaScript</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/posts/276126bb.html">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+  
     <article id="post-delete-mac-dot-dsstore" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1165,85 +1226,6 @@ alert(els[i].value);
 
 
   
-    <article id="post-mac-mysql-5-6-19-default-charset-utf8" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/posts/d9eb5165.html">mac(Linux)下批改mysql服务器的默认字符集为utf8</a>
-    </h1>
-  
-
-        
-        <a href="/posts/d9eb5165.html" class="archive-article-date">
-  	<time datetime="2014-07-07T06:17:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2014-07-07</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>在终端操作数据库：<br>mysql&gt; show variables like ‘%char%’;<br>+————————–+——————————————————–+<br>| Variable_name | Value |<br>+————————–+——————————————————–+<br>| character_set_client | utf8 |<br>| character_set_connection | utf8 |<br>| character_set_database | latin1 |<br>| character_set_filesystem | binary |<br>| character_set_results | utf8 |<br>| character_set_server | latin1 |<br>| character_set_system | utf8 |<br>| character_sets_dir | /usr/local/mysql-5.6.19-osx10.7-x86_64/share/charsets/ |<br>+————————–+——————————————————–+<br>这里可以看见 character_set_database 和 character_set_server 都是默认的latin1，这就表明创建的数据库和表都是以latin1为字符集的，在这种情况下，无法正常使用中文！ 下面简单说一下怎么更改这个默认字符集：<br>1.将本地mysql目录中的支持文件my-xxxx.cnf copy到/etc/my.cnf 命令：（ sudo cp /usr/local/mysql/support-files/my-default.cnf /etc/my.cnf ）<br>2.编辑my.cnf 命令（sudo vi /etc/my.cnf )<br>3.在文件中添加两段代码：“括号中没有的自己补上”<br>在[client]部分加入：<br>default-character-set = utf8<br>在[mysqld]部分加入：<br>character-set-server = utf8<br>4.重启mysql;<br>(提示，如果重启失败，尝试将<span style="color: #ff0000;">[client]</span>下面的<span style="text-decoration: underline;">default-character-set=utf8</span>改成[mysqld]中的一样)</p>
-<p>然后就可以查看字符集是否修改成功了，登录mysql 命令查询：<br>mysql&gt; show variables like ‘%char%’;<br>+————————–+——————————————————–+<br>| Variable_name | Value |<br>+————————–+——————————————————–+<br>| character_set_client | utf8 |<br>| character_set_connection | utf8 |<br>| character_set_database | utf8 |<br>| character_set_filesystem | binary |<br>| character_set_results | utf8 |<br>| character_set_server | utf8 |<br>| character_set_system | utf8 |<br>| character_sets_dir | /usr/local/mysql-5.6.19-osx10.7-x86_64/share/charsets/ |<br>+————————–+——————————————————–+<br>8 rows in set (0.00 sec)<br>这样就成功了。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">mysql</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">MacBook</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">utf8</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Linxu分享/" class="article-tag-list-link color3">Linxu分享</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/posts/d9eb5165.html">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/9/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="page-number" href="/page/9/">9</a><span class="page-number current">10</span><a class="page-number" href="/page/11/">11</a><a class="extend next" rel="next" href="/page/11/">Next &raquo;</a>
@@ -1258,7 +1240,7 @@ alert(els[i].value);
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2019 Anthony
+    		&copy; 2020 Anthony
     	</div>
       	<div class="footer-right">
       		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
@@ -1343,19 +1325,19 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Golang</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">PHP</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Docker</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Golang</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">essay</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1367,11 +1349,11 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
+                <a href="javascript:void(0)" class="js-tag color4">zip</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">zip</a>
+                <a href="javascript:void(0)" class="js-tag color1">essay</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1383,11 +1365,19 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">算法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">path</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">filepath</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">php</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1407,19 +1397,15 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">php</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">算法</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">时间复杂度</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">定理</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Apache</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1435,7 +1421,11 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Apache</a>
+                <a href="javascript:void(0)" class="js-tag color3">提问</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">面试</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1448,14 +1438,6 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">反向代理</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">提问</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">面试</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1523,10 +1505,6 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Laravel</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">MarkDown</a>
               </li>
              
@@ -1540,6 +1518,10 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">链表</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Laravel</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1563,18 +1545,6 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">mysqld</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Nginx</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">php-fpm</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">ngrok</a>
               </li>
              
@@ -1587,6 +1557,26 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">子串</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">mysqld</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Nginx</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">php-fpm</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">php上传进度</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">openssl</a>
               </li>
              
@@ -1596,14 +1586,6 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">xtea</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">子串</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">php上传进度</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1699,14 +1681,6 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">XML</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">实验</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">mail</a>
               </li>
              
@@ -1716,6 +1690,14 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">终端</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">XML</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">实验</a>
               </li>
             
             <div class="clearfix"></div>
