@@ -208,7 +208,7 @@ var _hmt = _hmt || [];
 <p><img src="http://qiniu.0x4f5da2.cn/2017020614863606689156.png" alt="2017020614863606689156.png"></p>
 <h2 id="5、在配置界面的JNDI-Name中配置JNDI的名字为jdbc-test-这个名字可以自己取-至此，连接池和数据源都以配置完成。"><a href="#5、在配置界面的JNDI-Name中配置JNDI的名字为jdbc-test-这个名字可以自己取-至此，连接池和数据源都以配置完成。" class="headerlink" title="5、在配置界面的JNDI Name中配置JNDI的名字为jdbc/test(这个名字可以自己取).至此，连接池和数据源都以配置完成。"></a>5、在配置界面的JNDI Name中配置JNDI的名字为jdbc/test(这个名字可以自己取).至此，连接池和数据源都以配置完成。</h2><p>相关配置到这里就完成了，我们还需要做一个事情，那就是，测试。</p>
 <h2 id="6、测试连接数据库是否成功："><a href="#6、测试连接数据库是否成功：" class="headerlink" title="6、测试连接数据库是否成功："></a>6、测试连接数据库是否成功：</h2><p>我们在Jave Web 项目中新建一个jsp页面来测试，代码如下：</p>
-<p><pre lang="java"><br>&lt;%–<br>    Document   : jdbc_test<br>    Created on : 2015-11-8, 13:24:37<br>    Author     : 刘经济 <a href="&#109;&#97;&#105;&#108;&#116;&#x6f;&#58;&#x79;&#111;&#114;&#x6b;&#x5f;&#109;&#97;&#x69;&#108;&#64;&#x71;&#113;&#x2e;&#99;&#111;&#109;">&#x79;&#111;&#114;&#x6b;&#x5f;&#109;&#97;&#x69;&#108;&#64;&#x71;&#113;&#x2e;&#99;&#111;&#109;</a><br>–%&gt;<br>&lt;%@page contentType=”text/html” pageEncoding=”UTF-8”%&gt;<br>&lt;%@ page import=”javax.naming.<em>“ %&gt;<br>&lt;%@ page import=”javax.sql.</em>“ %&gt;<br>&lt;%@ page import=”java.sql.*” %&gt;</pre></p>
+<p><pre lang="java"><br>&lt;%–<br>    Document   : jdbc_test<br>    Created on : 2015-11-8, 13:24:37<br>    Author     : 刘经济 <a href="&#109;&#97;&#x69;&#108;&#116;&#x6f;&#x3a;&#x79;&#111;&#x72;&#x6b;&#x5f;&#x6d;&#x61;&#105;&#108;&#x40;&#113;&#x71;&#46;&#x63;&#x6f;&#x6d;">&#x79;&#111;&#x72;&#x6b;&#x5f;&#x6d;&#x61;&#105;&#108;&#x40;&#113;&#x71;&#46;&#x63;&#x6f;&#x6d;</a><br>–%&gt;<br>&lt;%@page contentType=”text/html” pageEncoding=”UTF-8”%&gt;<br>&lt;%@ page import=”javax.naming.<em>“ %&gt;<br>&lt;%@ page import=”javax.sql.</em>“ %&gt;<br>&lt;%@ page import=”java.sql.*” %&gt;</pre></p>
 <p><html><br>    <head><meta name="generator" content="Hexo 3.9.0"><br>        <title>测试GlassFish配置的Mysql数据库连接池</title><br>    </head><br>    <body></body></html></p>
 <h1 id="下面是测试结果："><a href="#下面是测试结果：" class="headerlink" title="下面是测试结果："></a>下面是测试结果：</h1><pre><code>&lt;%
     Connection conn = null;
@@ -401,8 +401,8 @@ var _hmt = _hmt || [];
 .gitment-editor-body textarea {background-color: #e4e4e4;}
 .gitment-editor-tab.gitment-selected {background-color: #e4e4e4;}
 </style>
-<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
-<!--<script src="/uploads/js/gitment.browser.js"></script>-->
+<!--<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>-->
+<script src="/uploads/js/gitment.browser.js"></script>
 <script src="https://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.min.js"></script>
 <script>
 var gitment = new Gitment({
@@ -515,19 +515,19 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">PHP</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Docker</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Golang</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">essay</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">PHP</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Docker</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -539,15 +539,15 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">tar</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">zip</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">bufio</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">tar</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -563,7 +563,7 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">算法</a>
+                <a href="javascript:void(0)" class="js-tag color4">php</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -583,7 +583,7 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">php</a>
+                <a href="javascript:void(0)" class="js-tag color3">算法</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -611,6 +611,14 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">提问</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">面试</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Proxy</a>
               </li>
              
@@ -620,14 +628,6 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">反向代理</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">提问</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">面试</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -723,11 +723,11 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">macosx</a>
+                <a href="javascript:void(0)" class="js-tag color3">怪谈</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">怪谈</a>
+                <a href="javascript:void(0)" class="js-tag color2">macosx</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -739,39 +739,15 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">mysqld</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Nginx</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">php-fpm</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">ini</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">openssl</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">mcrypt</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">xtea</a>
+                <a href="javascript:void(0)" class="js-tag color5">排序算法</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">子串</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">排序算法</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -787,7 +763,35 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">mysqld</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Nginx</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">php-fpm</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">openssl</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">mcrypt</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">xtea</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">ei capitan</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">php困惑</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -796,10 +800,6 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">索引文件</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">php困惑</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -851,10 +851,6 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">servlet</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">WordPress</a>
               </li>
              
@@ -868,6 +864,10 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">漏洞</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">servlet</a>
               </li>
              
               <li class="article-tag-list-item">
