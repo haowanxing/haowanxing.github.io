@@ -2852,7 +2852,7 @@ function renderHeader(_ref, instance) {
     return reaction.content === 'heart' && reaction.user.login === user.login;
   });
   likeButton.className = 'gitment-header-like-btn';
-  likeButton.innerHTML = '\n    ' + _icons.heart + '\n    ' + (likedReaction ? 'Unlike' : 'Like') + '\n    ' + (meta.reactions && meta.reactions.heart ? ' \u2022 <strong>' + meta.reactions.heart + '</strong> Liked' : '') + '\n  ';
+  likeButton.innerHTML = '\n    ' + _icons.heart + '\n    ' + (likedReaction ? '不喜欢' : '喜欢') + '\n    ' + (meta.reactions && meta.reactions.heart ? ' \u2022 <strong>' + meta.reactions.heart + '</strong> 人喜欢' : '') + '\n  ';
 
   if (likedReaction) {
     likeButton.classList.add('liked');
@@ -2875,7 +2875,7 @@ function renderHeader(_ref, instance) {
   issueLink.className = 'gitment-header-issue-link';
   issueLink.href = meta.html_url;
   issueLink.target = '_blank';
-  issueLink.innerText = 'Issue Page';
+  issueLink.innerText = 'Issue 页面';
   container.appendChild(issueLink);
 
   return container;
