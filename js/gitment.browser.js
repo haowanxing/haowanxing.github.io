@@ -2908,7 +2908,7 @@ function renderComments(_ref2, instance) {
           alert(e);
         });
       };
-      initButton.innerText = 'Initialize Comments';
+      initButton.innerText = '评论区初始化...';
       initHint.appendChild(initButton);
       errorBlock.appendChild(initHint);
     } else {
@@ -2918,14 +2918,14 @@ function renderComments(_ref2, instance) {
     return container;
   } else if (comments === undefined) {
     var loading = document.createElement('div');
-    loading.innerText = 'Loading comments...';
+    loading.innerText = '加载评论...';
     loading.className = 'gitment-comments-loading';
     container.appendChild(loading);
     return container;
   } else if (!comments.length) {
     var emptyBlock = document.createElement('div');
     emptyBlock.className = 'gitment-comments-empty';
-    emptyBlock.innerText = 'No Comment Yet';
+    emptyBlock.innerText = '暂无评论';
     container.appendChild(emptyBlock);
     return container;
   }
@@ -2990,7 +2990,7 @@ function renderComments(_ref2, instance) {
       if (currentPage > 1) {
         var previousButton = document.createElement('li');
         previousButton.className = 'gitment-comments-page-item';
-        previousButton.innerText = 'Previous';
+        previousButton.innerText = '上一页';
         previousButton.onclick = function () {
           return instance.goto(currentPage - 1);
         };
@@ -3015,7 +3015,7 @@ function renderComments(_ref2, instance) {
       if (currentPage < pageCount) {
         var nextButton = document.createElement('li');
         nextButton.className = 'gitment-comments-page-item';
-        nextButton.innerText = 'Next';
+        nextButton.innerText = '下一页';
         nextButton.onclick = function () {
           return instance.goto(currentPage + 1);
         };
@@ -3083,11 +3083,11 @@ function renderEditor(_ref3, instance) {
     var preview = previewField.querySelector('.gitment-editor-preview');
     var content = textarea.value.trim();
     if (!content) {
-      preview.innerText = 'Nothing to preview';
+      preview.innerText = '暂无预览';
       return;
     }
 
-    preview.innerText = 'Loading preview...';
+    preview.innerText = '加载预览中...';
     instance.markdown(content).then(function (html) {
       return preview.innerHTML = html;
     });
@@ -3095,17 +3095,17 @@ function renderEditor(_ref3, instance) {
 
   var submitButton = container.querySelector('.gitment-editor-submit');
   submitButton.onclick = function () {
-    submitButton.innerText = 'Submitting...';
+    submitButton.innerText = '正在提交...';
     submitButton.setAttribute('disabled', true);
     instance.post(textarea.value.trim()).then(function (data) {
       textarea.value = '';
       textarea.style.height = 'auto';
       submitButton.removeAttribute('disabled');
-      submitButton.innerText = 'Comment';
+      submitButton.innerText = '提交评论';
     }).catch(function (e) {
       alert(e);
       submitButton.removeAttribute('disabled');
-      submitButton.innerText = 'Comment';
+      submitButton.innerText = '提交评论';
     });
   };
 
