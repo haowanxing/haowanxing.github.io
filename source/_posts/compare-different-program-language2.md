@@ -9,7 +9,7 @@ abbrlink: 55e3ba30
 date: 2018-08-21 17:07:37
 categories:
 ---
-![网络IO时间对比图](http://qiniu.0x4f5da2.cn/20180822153492632352365.png)
+![网络IO时间对比图](../uploads/qiniu/20180822153492632352365.png)
 
 测试机器配置：
 

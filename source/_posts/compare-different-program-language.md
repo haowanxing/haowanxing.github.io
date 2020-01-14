@@ -9,7 +9,7 @@ abbrlink: 1b3229fb
 date: 2018-08-10 16:56:48
 categories:
 ---
-![计算时间对比图](http://qiniu.0x4f5da2.cn/20180822153492626124054.png)
+![计算时间对比图](../uploads/qiniu/20180822153492626124054.png)
 测试机器配置：
 
 * MacBook Air (13-inch, Early 2014)
