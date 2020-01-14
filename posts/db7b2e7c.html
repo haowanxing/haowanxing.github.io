@@ -15,12 +15,12 @@
 <meta property="og:site_name" content="牛牛大作栈">
 <meta property="og:description" content="演示页面：http://www.dshui.wang/html/board2.php本次作业基于作业4-1完成，部分文件在4-1中给出：所需要的数据表： 1234567CREATE TABLE `msg` (  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,  `content` varchar(254) NOT NULL DEFAULT &amp;apos;">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://qiniu.0x4f5da2.cn/20170206148636263061226.png">
-<meta property="og:updated_time" content="2019-11-18T13:27:48.000Z">
+<meta property="og:image" content="http://www.imsry.cn/uploads/qiniu/20170206148636263061226.png">
+<meta property="og:updated_time" content="2020-01-14T08:28:41.973Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="作业4-2（带用户的留言板）单页面实现！">
 <meta name="twitter:description" content="演示页面：http://www.dshui.wang/html/board2.php本次作业基于作业4-1完成，部分文件在4-1中给出：所需要的数据表： 1234567CREATE TABLE `msg` (  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,  `content` varchar(254) NOT NULL DEFAULT &amp;apos;">
-<meta name="twitter:image" content="http://qiniu.0x4f5da2.cn/20170206148636263061226.png">
+<meta name="twitter:image" content="http://www.imsry.cn/uploads/qiniu/20170206148636263061226.png">
   
     <link rel="alternative" href="/atom.xml" title="牛牛大作栈" type="application/atom+xml">
   
@@ -186,7 +186,7 @@ var _hmt = _hmt || [];
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><img src="http://qiniu.0x4f5da2.cn/20170206148636263061226.png" alt="作业4-2要求"><br><a href="/html/board2.php">演示页面：http://www.dshui.wang/html/board2.php</a><br>本次作业基于作业4-1完成，部分文件在4-1中给出：<a href="/?p=161" title="http://www.dshui.wang/?p=161"></a><br>所需要的数据表：</p>
+        <p><img src="../uploads/qiniu/20170206148636263061226.png" alt="作业4-2要求"><br><a href="/html/board2.php">演示页面：http://www.dshui.wang/html/board2.php</a><br>本次作业基于作业4-1完成，部分文件在4-1中给出：<a href="/?p=161" title="http://www.dshui.wang/?p=161"></a><br>所需要的数据表：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE `msg` (</span><br><span class="line">  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,</span><br><span class="line">  `content` varchar(254) NOT NULL DEFAULT &apos;&apos;,</span><br><span class="line">  `username` char(10) DEFAULT &apos;&apos;,</span><br><span class="line">  `stime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,</span><br><span class="line">  PRIMARY KEY (`id`)</span><br><span class="line">) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;</span><br></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE `user` (</span><br><span class="line">  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,</span><br><span class="line">  `username` char(20) NOT NULL DEFAULT &apos;&apos;,</span><br><span class="line">  `pwd` varchar(20) NOT NULL DEFAULT &apos;&apos;,</span><br><span class="line">  `registtime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,</span><br><span class="line">  PRIMARY KEY (`id`)</span><br><span class="line">) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;</span><br></pre></td></tr></table></figure>
 <p>文件board2.php</p>
@@ -641,11 +641,11 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Laravel</a>
+                <a href="javascript:void(0)" class="js-tag color4">MarkDown</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">MarkDown</a>
+                <a href="javascript:void(0)" class="js-tag color3">Laravel</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -681,6 +681,10 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">ngrok</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">mysqld</a>
               </li>
              
@@ -690,10 +694,6 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">php-fpm</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">ngrok</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -714,14 +714,6 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">xtea</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">子串</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">php上传进度</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -746,6 +738,10 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">索引文件</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">子串</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -774,6 +770,10 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">数据库</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">php上传进度</a>
               </li>
              
               <li class="article-tag-list-item">

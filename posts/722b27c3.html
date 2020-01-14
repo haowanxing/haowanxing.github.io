@@ -16,22 +16,22 @@
 <meta property="og:site_name" content="牛牛大作栈">
 <meta property="og:description" content="渐进符号是分析算法时间复杂度的常用记号，对于某个规模为n的问题，当n足够大时，就可以忽略掉复杂度表达式中的低阶项和最高次项的系数，由此引出“渐进复杂度”，并且用渐进符号来对“渐进复杂度”进行表达。 一、渐进符号1、O(大O符号）：上界定义：若存在两个正的常数 c 和 n0 , 对于任意 n≥n0 , 都有 T( n)≤cf( n) ,则称T( n) = O( f( n) )(或称算法在 O( f(">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://qiniu.0x4f5da2.cn/2019052215584876484907.png">
-<meta property="og:image" content="http://qiniu.0x4f5da2.cn/2019052215584876868380.png">
-<meta property="og:image" content="http://qiniu.0x4f5da2.cn/20190522155848770263496.png">
-<meta property="og:image" content="http://qiniu.0x4f5da2.cn/20190522155848772454074.png">
-<meta property="og:image" content="http://qiniu.0x4f5da2.cn/20190522155848774110336.png">
-<meta property="og:image" content="http://qiniu.0x4f5da2.cn/20190522155848775620104.png">
-<meta property="og:image" content="http://qiniu.0x4f5da2.cn/20190522155848776866787.png">
-<meta property="og:image" content="http://qiniu.0x4f5da2.cn/20190522155848779761775.png">
-<meta property="og:image" content="http://qiniu.0x4f5da2.cn/20190522155848780987257.png">
-<meta property="og:image" content="http://qiniu.0x4f5da2.cn/20190522155848781870147.png">
-<meta property="og:image" content="http://qiniu.0x4f5da2.cn/20190522155848782726579.png">
-<meta property="og:updated_time" content="2019-11-18T13:27:48.000Z">
+<meta property="og:image" content="http://www.imsry.cn/uploads/qiniu/2019052215584876484907.png">
+<meta property="og:image" content="http://www.imsry.cn/uploads/qiniu/2019052215584876868380.png">
+<meta property="og:image" content="http://www.imsry.cn/uploads/qiniu/20190522155848770263496.png">
+<meta property="og:image" content="http://www.imsry.cn/uploads/qiniu/20190522155848772454074.png">
+<meta property="og:image" content="http://www.imsry.cn/uploads/qiniu/20190522155848774110336.png">
+<meta property="og:image" content="http://www.imsry.cn/uploads/qiniu/20190522155848775620104.png">
+<meta property="og:image" content="http://www.imsry.cn/uploads/qiniu/20190522155848776866787.png">
+<meta property="og:image" content="http://www.imsry.cn/uploads/qiniu/20190522155848779761775.png">
+<meta property="og:image" content="http://www.imsry.cn/uploads/qiniu/20190522155848780987257.png">
+<meta property="og:image" content="http://www.imsry.cn/uploads/qiniu/20190522155848781870147.png">
+<meta property="og:image" content="http://www.imsry.cn/uploads/qiniu/20190522155848782726579.png">
+<meta property="og:updated_time" content="2020-01-14T08:28:41.970Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="(抄)算法时间复杂度的表达-渐进符号与主定理">
 <meta name="twitter:description" content="渐进符号是分析算法时间复杂度的常用记号，对于某个规模为n的问题，当n足够大时，就可以忽略掉复杂度表达式中的低阶项和最高次项的系数，由此引出“渐进复杂度”，并且用渐进符号来对“渐进复杂度”进行表达。 一、渐进符号1、O(大O符号）：上界定义：若存在两个正的常数 c 和 n0 , 对于任意 n≥n0 , 都有 T( n)≤cf( n) ,则称T( n) = O( f( n) )(或称算法在 O( f(">
-<meta name="twitter:image" content="http://qiniu.0x4f5da2.cn/2019052215584876484907.png">
+<meta name="twitter:image" content="http://www.imsry.cn/uploads/qiniu/2019052215584876484907.png">
   
     <link rel="alternative" href="/atom.xml" title="牛牛大作栈" type="application/atom+xml">
   
@@ -200,20 +200,20 @@ var _hmt = _hmt || [];
         <p>渐进符号是分析算法时间复杂度的常用记号，对于某个规模为n的问题，当n足够大时，就可以忽略掉复杂度表达式中的低阶项和最高次项的系数，由此引出“渐进复杂度”，并且用渐进符号来对“渐进复杂度”进行表达。</p>
 <h3 id="一、渐进符号"><a href="#一、渐进符号" class="headerlink" title="一、渐进符号"></a>一、渐进符号</h3><p>1、O(大O符号）：上界<br>定义：若存在两个正的常数 c 和 n0 , 对于任意 n≥n0 , 都有 T( n)≤cf( n) ,则称T( n) = O( f( n) )(或称算法在 O( f( n))中)。</p>
 <p>大 O 符号用来描述增长率的上限,表示 T( n)的增长最多像 f( n)增长的那样快,也就是说, 当输入规模为 n时, 算法消耗时间的最大值,这个上限的阶越低, 结果就越有价值。上界是对算法效率的一种承诺。</p>
-<p>大O符号的含义如下图所示：<br><img src="http://qiniu.0x4f5da2.cn/2019052215584876484907.png" alt="大O符号的含义"></p>
+<p>大O符号的含义如下图所示：<br><img src="../uploads/qiniu/2019052215584876484907.png" alt="大O符号的含义"></p>
 <p>2、Ω（大Ω符号）：下界<br>定义：若存在两个正的常数 c和 n0 ,对于任意 n≥ n0 , 都有 T( n)≥cg( n) ,则称T( n) = Ω( g( n) )(或称算法在 Ω( g( n) )中)。</p>
 <p>大 Ω符号用来描述增长率的下限, 也就是说, 当输入规模为 n 时,算法消耗时间的最小值。与大 O 符号对称, 这个下限的阶越高,结果就越有价值。</p>
-<p>大Ω号的含义如下图所示：<br><img src="http://qiniu.0x4f5da2.cn/2019052215584876868380.png" alt="大Ω号的含义"></p>
+<p>大Ω号的含义如下图所示：<br><img src="../uploads/qiniu/2019052215584876868380.png" alt="大Ω号的含义"></p>
 <p>大 Ω符号常用来分析某个问题或某类算法的时间下界。例如, 矩阵乘法问题的时间下界为 Ω( n^2) , 是指任何两个 n×n 矩阵相乘的算法的时间复杂性不会小于 n^2<br>, 基于比较的排序算法的时间下界为 Ω( nlog 2 n) ,是指无法设计出基于比较的排序算法, 其时间复杂性小于 nlog 2 n。</p>
 <p>大 Ω符号常常与大 O 符号配合以证明某问题的一个特定算法是该问题的最优算法,或是该问题中的某算法类中的最优算法。</p>
 <p>3、Θ(theta) ：紧确界<br>定义：若存在 3 个正的常数 c1 、 c2 和 n0 ,对于任意 n≥ n0 , 都有 c1f(n)≥ T(n)≥ c2f(n) , 则称 T( n) = Θ( f(n))。<br>Θ符号意味着 T( n)与 f( n)同阶, 用来表示算法的精确阶。</p>
-<p>Θ符号的含义如下图所示。<br><img src="http://qiniu.0x4f5da2.cn/20190522155848770263496.png" alt="Θ符号的含义"></p>
+<p>Θ符号的含义如下图所示。<br><img src="../uploads/qiniu/20190522155848770263496.png" alt="Θ符号的含义"></p>
 <h3 id="二、主定理"><a href="#二、主定理" class="headerlink" title="二、主定理"></a>二、主定理</h3><p>主定理主要用于对一些递归算法进行复杂性分析，这类算法的特征是：其复杂性表达式是以递推关系式表达的。主定理并不适用于所有类型的递推关系式。</p>
-<p>假设有递推关系式：<br><img src="http://qiniu.0x4f5da2.cn/20190522155848772454074.png" alt="递推关系式"></p>
+<p>假设有递推关系式：<br><img src="../uploads/qiniu/20190522155848772454074.png" alt="递推关系式"></p>
 <p>其中 n为问题规模， a为递推的子问题数量， n/b 为每个子问题的规模（假设每个子问题的规模基本一样）， f(n)为递推以外进行的计算工作。<br>a≥1，b&gt;1为常数，f(n) 为函数，T(n) 为非负整数。则有以下结果：</p>
-<p>(1)若：<img src="http://qiniu.0x4f5da2.cn/20190522155848774110336.png" alt="等式一">那么：<img src="http://qiniu.0x4f5da2.cn/20190522155848775620104.png" alt="渐进式一"></p>
-<p>(2)若：<img src="http://qiniu.0x4f5da2.cn/20190522155848776866787.png" alt="等式二">，那么：<img src="http://qiniu.0x4f5da2.cn/20190522155848779761775.png" alt="渐进式二"></p>
-<p>(3)若：<img src="http://qiniu.0x4f5da2.cn/20190522155848780987257.png" alt="等式三">，且对于某个常数c&lt;1, 和所有充分大的 n有:<img src="http://qiniu.0x4f5da2.cn/20190522155848781870147.png" alt="不等式三">，那么<img src="http://qiniu.0x4f5da2.cn/20190522155848782726579.png" alt="渐进式为Fn的紧确界"></p>
+<p>(1)若：<img src="../uploads/qiniu/20190522155848774110336.png" alt="等式一">那么：<img src="../uploads/qiniu/20190522155848775620104.png" alt="渐进式一"></p>
+<p>(2)若：<img src="../uploads/qiniu/20190522155848776866787.png" alt="等式二">，那么：<img src="../uploads/qiniu/20190522155848779761775.png" alt="渐进式二"></p>
+<p>(3)若：<img src="../uploads/qiniu/20190522155848780987257.png" alt="等式三">，且对于某个常数c&lt;1, 和所有充分大的 n有:<img src="../uploads/qiniu/20190522155848781870147.png" alt="不等式三">，那么<img src="../uploads/qiniu/20190522155848782726579.png" alt="渐进式为Fn的紧确界"></p>
 <p>下面举几个例子来说明主定理的应用过程：</p>
 <p>1、设某个算法的复杂性的递推关系式为：T(n)=4T(n/2)+n<br>对比主定理中递推关系式的标准形式：a=4,b=2,f(n)=n<br>所以n^(logba)=n^2,取 0&lt;ε&lt;1即可满足第一种情况，所以T(n)=Θ(n^2)</p>
 <p>2、归并排序是一种很适合用递归实现的排序方法，其复杂性递推关系式为：T(n)=2T(n/2)+Θ(n)<br>满足主定理的第二种情况，所以其时间复杂度为：T(n)=nlogn</p>
@@ -679,11 +679,11 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Laravel</a>
+                <a href="javascript:void(0)" class="js-tag color4">MarkDown</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">MarkDown</a>
+                <a href="javascript:void(0)" class="js-tag color3">Laravel</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -719,6 +719,10 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">ngrok</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">mysqld</a>
               </li>
              
@@ -728,10 +732,6 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">php-fpm</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">ngrok</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -752,14 +752,6 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">xtea</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">子串</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">php上传进度</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -784,6 +776,10 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">索引文件</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">子串</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -812,6 +808,10 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">数据库</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">php上传进度</a>
               </li>
              
               <li class="article-tag-list-item">

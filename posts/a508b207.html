@@ -16,15 +16,15 @@
 <meta property="og:site_name" content="牛牛大作栈">
 <meta property="og:description" content="又是周一，上班的日子总是来的太快，来到公司的第一件事，打开IDE并更新代码库。看看上周做到哪里了，还有什么BUG是待修复的？ 　　然鹅，意想不到的事情就这么发生了，为什么本地环境访问不了？ 　　localhost能访问，本地服务器没问题；其他的本地域名可以访问，Apache配置没动过应该不是这个问题；试了试公司项目的其他域名，都是同样的报错；然后我注意了一下URL，被加上了https协议，去掉">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://qiniu.0x4f5da2.cn/20171211151297573775954.png">
-<meta property="og:image" content="http://qiniu.0x4f5da2.cn/20171211151297617476829.png">
-<meta property="og:image" content="http://qiniu.0x4f5da2.cn/2018010315149750616257.png">
-<meta property="og:image" content="http://qiniu.0x4f5da2.cn/2018010315149751936425.png">
-<meta property="og:updated_time" content="2019-11-18T13:27:48.000Z">
+<meta property="og:image" content="http://www.imsry.cn/uploads/qiniu/20171211151297573775954.png">
+<meta property="og:image" content="http://www.imsry.cn/uploads/qiniu/20171211151297617476829.png">
+<meta property="og:image" content="http://www.imsry.cn/uploads/qiniu/2018010315149750616257.png">
+<meta property="og:image" content="http://www.imsry.cn/uploads/qiniu/2018010315149751936425.png">
+<meta property="og:updated_time" content="2020-01-14T08:28:41.972Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="解决Chrome更新到63后.dev&#x2F;.app后缀域名强制HTTPS的问题">
 <meta name="twitter:description" content="又是周一，上班的日子总是来的太快，来到公司的第一件事，打开IDE并更新代码库。看看上周做到哪里了，还有什么BUG是待修复的？ 　　然鹅，意想不到的事情就这么发生了，为什么本地环境访问不了？ 　　localhost能访问，本地服务器没问题；其他的本地域名可以访问，Apache配置没动过应该不是这个问题；试了试公司项目的其他域名，都是同样的报错；然后我注意了一下URL，被加上了https协议，去掉">
-<meta name="twitter:image" content="http://qiniu.0x4f5da2.cn/20171211151297573775954.png">
+<meta name="twitter:image" content="http://www.imsry.cn/uploads/qiniu/20171211151297573775954.png">
   
     <link rel="alternative" href="/atom.xml" title="牛牛大作栈" type="application/atom+xml">
   
@@ -191,10 +191,10 @@ var _hmt = _hmt || [];
     <div class="article-entry" itemprop="articleBody">
       
         <p>　　又是周一，上班的日子总是来的太快，来到公司的第一件事，打开IDE并更新代码库。看看上周做到哪里了，还有什么BUG是待修复的？</p>
-<p>　　然鹅，意想不到的事情就这么发生了，为什么本地环境访问不了？<br><img src="http://qiniu.0x4f5da2.cn/20171211151297573775954.png" alt="请求被拒绝"></p>
+<p>　　然鹅，意想不到的事情就这么发生了，为什么本地环境访问不了？<br><img src="../uploads/qiniu/20171211151297573775954.png" alt="请求被拒绝"></p>
 <p>　　localhost能访问，本地服务器没问题；其他的本地域名可以访问，Apache配置没动过应该不是这个问题；试了试公司项目的其他域名，都是同样的报错；然后我注意了一下URL，被加上了https协议，去掉s再回车没解决；换个浏览器，行了？？ 好吧，可能谷歌抽风了，我试了清空缓存和浏览历史，完全不行。后来发现问题没那么简单，网上也很难找到相关的结果，发现自己遇到了难题。</p>
 <p>　　然后我发现了<a href="https://segmentfault.com/q/1010000012339191" target="_blank" rel="noopener">SegmentFault</a>有人问了相同的问题，才在回答里面找到了答案：</p>
-<p><img src="http://qiniu.0x4f5da2.cn/20171211151297617476829.png" alt="Chrome update news"></p>
+<p><img src="../uploads/qiniu/20171211151297617476829.png" alt="Chrome update news"></p>
 <p>　　原文地址：<a href="https://laravel-news.com/chrome-63-now-forces-dev-domains-https" target="_blank" rel="noopener">Chrome 63 now forces .dev domains to HTTPS</a></p>
 <p>　　既然如此，强大的谷歌对自己拥有的顶级域名（.dev和.app）进行了合法干涉，那么我们也只能认怂了吧。 默默的把原来的.dev改成了.local后缀。</p>
 <p>　　但是有强迫症的我有点不甘心，相信有很多人跟我一样，都是执着的没事干的人！不找出一个能在chrome上用.dev的后缀的方法，心里面还是稍微有那么一点难受的（^_-!）</p>
@@ -202,8 +202,8 @@ var _hmt = _hmt || [];
 <p>　　咱们可以自己在本地生成一个xxx.dev的域名证书来直接让TA支持https访问！！！！ 具体的使用方法在上面链接有介绍</p>
 <p>　　服务器端如何配置支持https自行搜索，这里不做解释了。</p>
 <p>　　最终实现.dev的https访问，如图：</p>
-<p><img src="http://qiniu.0x4f5da2.cn/2018010315149750616257.png" alt="url地址栏"></p>
-<p><img src="http://qiniu.0x4f5da2.cn/2018010315149751936425.png" alt="浏览器证书">
+<p><img src="../uploads/qiniu/2018010315149750616257.png" alt="url地址栏"></p>
+<p><img src="../uploads/qiniu/2018010315149751936425.png" alt="浏览器证书">
 　　</p>
 
       
@@ -652,11 +652,11 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Laravel</a>
+                <a href="javascript:void(0)" class="js-tag color4">MarkDown</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">MarkDown</a>
+                <a href="javascript:void(0)" class="js-tag color3">Laravel</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -692,6 +692,10 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">ngrok</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">mysqld</a>
               </li>
              
@@ -701,10 +705,6 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">php-fpm</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">ngrok</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -725,14 +725,6 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">xtea</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">子串</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">php上传进度</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -757,6 +749,10 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">索引文件</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">子串</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -785,6 +781,10 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">数据库</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">php上传进度</a>
               </li>
              
               <li class="article-tag-list-item">

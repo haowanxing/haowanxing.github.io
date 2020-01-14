@@ -16,13 +16,13 @@
 <meta property="og:site_name" content="牛牛大作栈">
 <meta property="og:description" content="使用场景 公司A是一家服务提供商，公司B是一家知名企业。现在公司B中的一个软件服务出现了故障，需要公司A的专业人员来排查。由于两家公司相隔甚远，他们采用了远程排查方案。但是公司B的这个软件部署在内网环境的机器C上，层层网关以及种种原因（和谐部分）导致无法将机器C映射到公司B的公网端口。为了解决这种需要打通从一个局域网到另外一个局域网的网络通路，我们叫它‘内网穿透’。  总所周知，处在同一个局域网的">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://qiniu.0x4f5da2.cn/20180905153613761191428.png">
-<meta property="og:image" content="http://qiniu.0x4f5da2.cn/20180905153613967714626.png">
-<meta property="og:updated_time" content="2019-11-18T13:27:48.000Z">
+<meta property="og:image" content="http://www.imsry.cn/uploads/qiniu/20180905153613761191428.png">
+<meta property="og:image" content="http://www.imsry.cn/uploads/qiniu/20180905153613967714626.png">
+<meta property="og:updated_time" content="2020-01-14T08:28:41.977Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux下的安装Ngrok服务器的故事">
 <meta name="twitter:description" content="使用场景 公司A是一家服务提供商，公司B是一家知名企业。现在公司B中的一个软件服务出现了故障，需要公司A的专业人员来排查。由于两家公司相隔甚远，他们采用了远程排查方案。但是公司B的这个软件部署在内网环境的机器C上，层层网关以及种种原因（和谐部分）导致无法将机器C映射到公司B的公网端口。为了解决这种需要打通从一个局域网到另外一个局域网的网络通路，我们叫它‘内网穿透’。  总所周知，处在同一个局域网的">
-<meta name="twitter:image" content="http://qiniu.0x4f5da2.cn/20180905153613761191428.png">
+<meta name="twitter:image" content="http://www.imsry.cn/uploads/qiniu/20180905153613761191428.png">
   
     <link rel="alternative" href="/atom.xml" title="牛牛大作栈" type="application/atom+xml">
   
@@ -202,7 +202,7 @@ var _hmt = _hmt || [];
 <p>所以我最终尝试了内网穿透服务器：Ngrok。（当然还有别的比如：frp）</p>
 <a id="more"></a>
 <h2 id="Ngrok简介"><a href="#Ngrok简介" class="headerlink" title="Ngrok简介"></a>Ngrok简介</h2><p>Ngrok是一款使用GO语言开发的开源软件（仅针对1.x，2.x不开源），是一个反向代理软件。它可以在你本地运行的服务和公网服务器端点建立一条安全的隧道，这样任何一个和公网连通的客户端都可以访问和使用你的本地服务。Ngrok还可以捕获和分析所有通道上的流量，对后期的分析和处理也有相当好的支持。</p>
-<p><img src="http://qiniu.0x4f5da2.cn/20180905153613761191428.png" alt></p>
+<p><img src="../uploads/qiniu/20180905153613761191428.png" alt></p>
 <p>Ngrok的git仓库地址：<a href="https://github.com/inconshreveable/ngrok" target="_blank" rel="noopener">https://github.com/inconshreveable/ngrok</a></p>
 <h2 id="需要的宝贝"><a href="#需要的宝贝" class="headerlink" title="需要的宝贝"></a>需要的宝贝</h2><h3 id="云服务器（有公网IP的服务器）"><a href="#云服务器（有公网IP的服务器）" class="headerlink" title="云服务器（有公网IP的服务器）"></a>云服务器（有公网IP的服务器）</h3><blockquote>
 <p>提供这种服务的像阿里云/腾讯云/百度云等等，随便挑</p>
@@ -210,7 +210,7 @@ var _hmt = _hmt || [];
 <h3 id="域名"><a href="#域名" class="headerlink" title="域名"></a>域名</h3><blockquote>
 <p>随便什么域名，只要是你的域名，你能对其配置解析（最好能泛解析）。</p>
 </blockquote>
-<p><img src="http://qiniu.0x4f5da2.cn/20180905153613967714626.png" alt="我的域名解析"></p>
+<p><img src="../uploads/qiniu/20180905153613967714626.png" alt="我的域名解析"></p>
 <h2 id="环境要求"><a href="#环境要求" class="headerlink" title="环境要求"></a>环境要求</h2><h3 id="Linux服务器：CentOS、Ubuntu"><a href="#Linux服务器：CentOS、Ubuntu" class="headerlink" title="Linux服务器：CentOS、Ubuntu"></a>Linux服务器：CentOS、Ubuntu</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#centos</span></span><br><span class="line">yum -y install zlib-devel openssl-devel perl hg cpio expat-devel gettext-devel curl curl-devel perl-ExtUtils-MakeMaker hg wget gcc gcc-c++ git golang</span><br><span class="line"></span><br><span class="line"><span class="comment">#ubuntu</span></span><br><span class="line"><span class="comment">#自行对应缺啥用'apt-get'补啥，openssl golang make 等等的都得有</span></span><br></pre></td></tr></table></figure>
 <h2 id="安装服务器"><a href="#安装服务器" class="headerlink" title="安装服务器"></a>安装服务器</h2><h3 id="克隆Ngrok到本地"><a href="#克隆Ngrok到本地" class="headerlink" title="克隆Ngrok到本地"></a>克隆Ngrok到本地</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/inconshreveable/ngrok.git</span><br></pre></td></tr></table></figure>
 <h3 id="制作和生成证书"><a href="#制作和生成证书" class="headerlink" title="制作和生成证书"></a>制作和生成证书</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> ngrok</span><br><span class="line">mkdir cert</span><br><span class="line"><span class="built_in">cd</span> cert</span><br><span class="line">NGROK_DOMAIN=<span class="string">"ngrok.imsry.cn"</span></span><br><span class="line">openssl genrsa -out base.key 2048</span><br><span class="line">openssl req -new -x509 -nodes -key base.key -days 10000 -subj <span class="string">"/CN=<span class="variable">$NGROK_DOMAIN</span>"</span> -out base.pem</span><br><span class="line">openssl genrsa -out server.key 2048</span><br><span class="line">openssl req -new -key server.key -subj <span class="string">"/CN=<span class="variable">$NGROK_DOMAIN</span>"</span> -out server.csr</span><br><span class="line">openssl x509 -req -in server.csr -CA base.pem -CAkey base.key -CAcreateserial -days 10000 -out server.crt</span><br></pre></td></tr></table></figure>
@@ -672,11 +672,11 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Laravel</a>
+                <a href="javascript:void(0)" class="js-tag color4">MarkDown</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">MarkDown</a>
+                <a href="javascript:void(0)" class="js-tag color3">Laravel</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -712,6 +712,10 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">ngrok</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">mysqld</a>
               </li>
              
@@ -721,10 +725,6 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">php-fpm</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">ngrok</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -745,14 +745,6 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">xtea</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">子串</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">php上传进度</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -777,6 +769,10 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">索引文件</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">子串</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -805,6 +801,10 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">数据库</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">php上传进度</a>
               </li>
              
               <li class="article-tag-list-item">
