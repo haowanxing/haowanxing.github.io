@@ -165,6 +165,89 @@ var _hmt = _hmt || [];
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-qcloud-iothub-dynreg-device" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/posts/4ede204f.html">腾讯云物联网通信平台设备动态注册鉴权流程</a>
+    </h1>
+  
+
+        
+        <a href="/posts/4ede204f.html" class="archive-article-date">
+  	<time datetime="2020-02-26T07:16:22.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-26</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="前置条件"><a href="#前置条件" class="headerlink" title="前置条件"></a>前置条件</h2><h3 id="物联网平台"><a href="#物联网平台" class="headerlink" title="物联网平台"></a>物联网平台</h3><ol>
+<li>在物联网平台创建新产品（普通产品），认证方式选用“秘钥认证”。</li>
+<li>在产品设置中打开动态注册配置开关，并允许自动创建设备。</li>
+<li>记录产品ID和产品秘钥（ProductID/ProductSecret）。</li>
+</ol>
+<h3 id="设备端"><a href="#设备端" class="headerlink" title="设备端"></a>设备端</h3><ol>
+<li>命名设备的唯一标识（如设备MAC、IMEI号、芯片ID等）即DeviceName。</li>
+<li>将物联网平台获取的产品ID和产品秘钥烧录至设备中。</li>
+</ol>
+<h2 id="注册流程"><a href="#注册流程" class="headerlink" title="注册流程"></a>注册流程</h2><h4 id="第一步：生成验签参数"><a href="#第一步：生成验签参数" class="headerlink" title="第一步：生成验签参数"></a>第一步：生成验签参数</h4><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">deviceName:</span> <span class="comment">#设备名称</span></span><br><span class="line"><span class="attr">nonce:</span> <span class="comment">#随机整数</span></span><br><span class="line"><span class="attr">productId:</span> <span class="comment">#产品ID</span></span><br><span class="line"><span class="attr">timestamp:</span> <span class="comment">#时间戳</span></span><br></pre></td></tr></table></figure>
+<p>拼接字符串“deviceName=%s&amp;nonce=%d&amp;productId=%s&amp;timestamp=%d”，使用HMAC_SHA1算法，ProductSecret作为Key对字符串进行摘要，然后使用Base64编码该摘要获得验签参数(Signature)的值</p>
+<h4 id="第二步：封装请求参数并发送鉴权请求"><a href="#第二步：封装请求参数并发送鉴权请求" class="headerlink" title="第二步：封装请求参数并发送鉴权请求"></a>第二步：封装请求参数并发送鉴权请求</h4><p>拼接JSON格式的字符串为Body：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 请求地址：http(s)://gateway.tencentdevices.com/register/dev</span></span><br><span class="line"><span class="comment"># Body内容：</span></span><br><span class="line">&#123;\<span class="string">"deviceName\":\"%s\",\"nonce\":%d,\"productId\":\"%s\",\"timestamp\":%d,\"signature\":\"%s\"&#125;</span></span><br><span class="line"><span class="string"># 请求Header</span></span><br><span class="line"><span class="string">Accept: text/xml,application/json;*/*</span></span><br><span class="line"><span class="string">Content-type: application/x-www-form-urlencoded</span></span><br><span class="line"><span class="string">Content-Length: 实际的Body长度</span></span><br><span class="line"><span class="string"># 如果使用https方式，需要设置不校验证书，或者信任tencent自签发的证书</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"># CA证书内容如下：</span><br><span class="line">-----BEGIN CERTIFICATE-----</span><br><span class="line">MIIDxTCCAq2gAwIBAgIJALM1winYO2xzMA0GCSqGSIb3DQEBCwUAMHkxCzAJBgNV</span><br><span class="line">BAYTAkNOMRIwEAYDVQQIDAlHdWFuZ0RvbmcxETAPBgNVBAcMCFNoZW5aaGVuMRAw</span><br><span class="line">DgYDVQQKDAdUZW5jZW50MRcwFQYDVQQLDA5UZW5jZW50IElvdGh1YjEYMBYGA1UE</span><br><span class="line">AwwPd3d3LnRlbmNlbnQuY29tMB4XDTE3MTEyNzA0MjA1OVoXDTMyMTEyMzA0MjA1</span><br><span class="line">OVoweTELMAkGA1UEBhMCQ04xEjAQBgNVBAgMCUd1YW5nRG9uZzERMA8GA1UEBwwI</span><br><span class="line">U2hlblpoZW4xEDAOBgNVBAoMB1RlbmNlbnQxFzAVBgNVBAsMDlRlbmNlbnQgSW90</span><br><span class="line">aHViMRgwFgYDVQQDDA93d3cudGVuY2VudC5jb20wggEiMA0GCSqGSIb3DQEBAQUA</span><br><span class="line">A4IBDwAwggEKAoIBAQDVxwDZRVkU5WexneBEkdaKs4ehgQbzpbufrWo5Lb5gJ3i0</span><br><span class="line">eukbOB81yAaavb23oiNta4gmMTq2F6/hAFsRv4J2bdTs5SxwEYbiYU1teGHuUQHO</span><br><span class="line">iQsZCdNTJgcikga9JYKWcBjFEnAxKycNsmqsq4AJ0CEyZbo//IYX3czEQtYWHjp7</span><br><span class="line">FJOlPPd1idKtFMVNG6LGXEwS/TPElE+grYOxwB7Anx3iC5ZpE5lo5tTioFTHzqbT</span><br><span class="line">qTN7rbFZRytAPk/JXMTLgO55fldm4JZTP3GQsPzwIh4wNNKhi4yWG1o2u3hAnZDv</span><br><span class="line">UVFV7al2zFdOfuu0KMzuLzrWrK16SPadRDd9eT17AgMBAAGjUDBOMB0GA1UdDgQW</span><br><span class="line">BBQrr48jv4FxdKs3r0BkmJO7zH4ALzAfBgNVHSMEGDAWgBQrr48jv4FxdKs3r0Bk</span><br><span class="line">mJO7zH4ALzAMBgNVHRMEBTADAQH/MA0GCSqGSIb3DQEBCwUAA4IBAQDRSjXnBc3T</span><br><span class="line">d9VmtTCuALXrQELY8KtM+cXYYNgtodHsxmrRMpJofsPGiqPfb82klvswpXxPK8Xx</span><br><span class="line">SuUUo74Fo+AEyJxMrRKlbJvlEtnpSilKmG6rO9+bFq3nbeOAfat4lPl0DIscWUx3</span><br><span class="line">ajXtvMCcSwTlF8rPgXbOaSXZidRYNqSyUjC2Q4m93Cv+KlyB+FgOke8x4aKAkf5p</span><br><span class="line">XR8i1BN1OiMTIRYhGSfeZbVRq5kTdvtahiWFZu9DGO+hxDZObYGIxGHWPftrhBKz</span><br><span class="line">RT16Amn780rQLWojr70q7o7QP5tO0wDPfCdFSc6CQFq/ngOzYag0kJ2F+O5U6+kS</span><br><span class="line">QVrcRBDxzx/G</span><br><span class="line">-----END CERTIFICATE-----</span><br></pre></td></tr></table></figure>
+<h4 id="第三步：根据响应结果进一步处理和解密payload"><a href="#第三步：根据响应结果进一步处理和解密payload" class="headerlink" title="第三步：根据响应结果进一步处理和解密payload"></a>第三步：根据响应结果进一步处理和解密payload</h4><p>响应结果格式：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;<span class="attr">"code"</span>:<span class="number">0</span>,<span class="attr">"message"</span>:<span class="string">""</span>,<span class="attr">"len"</span>:<span class="number">53</span>,<span class="attr">"payload"</span>:<span class="string">"+b93hoyyPKdArkNo+FIwCJXYQi+zVppqBGM+1kWuMxgHbfknWh2udKorHnb4t9RywJM8g23ryT/sTL1rmGGTyA=="</span>&#125;</span><br></pre></td></tr></table></figure>
+<p>其中，code为0表示鉴权成功，message为错误时的提示信息，payload为返回的注册结果密文，len为payload的明文长度。</p>
+<p>解密步骤：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 将payload使用base64解码获得原始密文,记为$raw</span></span><br><span class="line"><span class="comment"># 将$raw使用AES_128_CBC算法进行解密，Key为ProductSecret的前16字节，IV向量为16个字节的'0'，填充方式为ZERO_PADDING</span></span><br></pre></td></tr></table></figure>
+<p>解密后的字符串长度应该为16的整数倍，需要将字符串尾部多余的<code>0</code>字节去除（或者直接截取字符串的前len个字节）得到一个最终json串，格式为：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;<span class="attr">"encryptionType"</span>:<span class="number">2</span>,<span class="attr">"psk"</span>:<span class="string">"MpKyD0rDNaAwq+zsDvGY9w=="</span>&#125;</span><br></pre></td></tr></table></figure>
+<p>其中，<code>encryptionType</code>表示认证类型（1证书，2秘钥），<code>psk</code>表示秘钥。</p>
+<h4 id="第四步：将秘钥烧录到设备"><a href="#第四步：将秘钥烧录到设备" class="headerlink" title="第四步：将秘钥烧录到设备"></a>第四步：将秘钥烧录到设备</h4><p>将psk烧录到设备中存储，对应的内容应该是一个3元组或4元组：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">productId:</span> <span class="comment">#产品ID</span></span><br><span class="line"><span class="attr">productSecret:</span> <span class="comment">#产品秘钥</span></span><br><span class="line"><span class="attr">deviceName:</span>	<span class="comment">#设备名称</span></span><br><span class="line"><span class="attr">deviceSecret:</span> <span class="comment">#设备认证秘钥</span></span><br></pre></td></tr></table></figure>
+<h4 id="第五步：设备认证-上线"><a href="#第五步：设备认证-上线" class="headerlink" title="第五步：设备认证+上线"></a>第五步：设备认证+上线</h4><p>此处参照文档：<a href="https://cloud.tencent.com/document/product/634/32546" target="_blank" rel="noopener">腾讯云物联网通信文档中心-设备接入-设备基于MQTT接入</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">qcloud</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/posts/4ede204f.html">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+  
     <article id="post-Linear-Interpolation-of-Array" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -629,7 +712,7 @@ var _hmt = _hmt || [];
         <h2 id="关于Docker以及Dockerfile"><a href="#关于Docker以及Dockerfile" class="headerlink" title="关于Docker以及Dockerfile"></a>关于Docker以及Dockerfile</h2><p>Docker容器就不详细介绍了，把它理解成类似“虚拟机”的一种介质吧。至于如何创建一个镜像，主要有两种方法：1. 从现有的镜像基础上，创建容器并自定义后Commit成镜像；2. 利用Dockerfile，根据自己的需要，如同写shell脚本一般，将自己需要搭建的容器环境所需的指令一条一条的汇集成指令集，然后让Docker根据Dockerfile来自动创建你想要的镜像</p>
 <h2 id="创建自己的PHP7-3镜像"><a href="#创建自己的PHP7-3镜像" class="headerlink" title="创建自己的PHP7.3镜像"></a>创建自己的PHP7.3镜像</h2><p>下载PHP源码：<a href="https://www.php.net/downloads.php" target="_blank" rel="noopener">https://www.php.net/downloads.php</a></p>
 <p>我这里下载了php-7.3.6.tar.bz2</p>
-<h3 id="Dockerfile内容"><a href="#Dockerfile内容" class="headerlink" title="Dockerfile内容"></a>Dockerfile内容</h3><figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 指定基于ubuntu:16.04创建</span></span><br><span class="line"><span class="keyword">FROM</span> ubuntu:<span class="number">16.04</span></span><br><span class="line"><span class="comment"># 声明作者</span></span><br><span class="line"><span class="keyword">MAINTAINER</span> haowanxing &lt;haowanxing@gmail.com&gt;</span><br><span class="line"><span class="comment"># 定义环境变量，设置时区时使用</span></span><br><span class="line"><span class="keyword">ENV</span> TIME_ZONE Asia/Shanghai</span><br><span class="line"></span><br><span class="line"><span class="comment"># 修改root账号密码</span></span><br><span class="line"><span class="keyword">RUN</span><span class="bash"> /bin/<span class="built_in">echo</span> <span class="string">'root:0x4f5da2.cn'</span> | chpasswd</span></span><br><span class="line"><span class="bash"><span class="comment"># 新增一个prod账号，并设置密码</span></span></span><br><span class="line"><span class="bash">RUN useradd prod</span></span><br><span class="line"><span class="bash">RUN /bin/<span class="built_in">echo</span> <span class="string">'prod:123456'</span> | chpasswd</span></span><br><span class="line"><span class="bash"></span></span><br><span class="line"><span class="bash"><span class="comment"># 安装编译依赖</span></span></span><br><span class="line"><span class="bash">RUN apt-get update</span></span><br><span class="line"><span class="bash">RUN apt-get install -y gcc make openssl libssl-dev curl libbz2-dev libxml2-dev libjpeg-dev libpng-dev libfreetype6-dev libzip-dev</span></span><br><span class="line"><span class="bash">RUN apt-get install -y libcurl4-gnutls-dev</span></span><br><span class="line"><span class="bash">RUN ln <span class="_">-s</span> /usr/lib/x86_64-linux-gnu/libssl.so /usr/lib</span></span><br><span class="line"><span class="bash"></span></span><br><span class="line"><span class="bash"><span class="comment"># 拷贝源码到环境中</span></span></span><br><span class="line"><span class="bash">ADD php-7.3.6.tar.bz2 /tmp/</span></span><br><span class="line"><span class="bash"><span class="comment"># 编译和安装</span></span></span><br><span class="line"><span class="bash">RUN <span class="built_in">cd</span> /tmp/php-7.3.6 &amp;&amp; \</span></span><br><span class="line"><span class="bash">	./configure --prefix=/usr/<span class="built_in">local</span>/php --with-config-file-path=/usr/<span class="built_in">local</span>/php/etc --enable-fpm --with-fpm-user=prod --with-fpm-group=prod --with-mysqli --with-pdo-mysql --with-iconv-dir --with-freetype-dir --with-jpeg-dir --with-png-dir --with-zlib --with-libxml-dir=/usr --enable-xml --disable-rpath --enable-bcmath --enable-shmop --enable-sysvsem --enable-inline-optimization --with-curl --enable-mbregex --enable-mbstring --enable-ftp --with-gd --with-openssl --with-mhash --enable-pcntl --enable-sockets --with-xmlrpc --enable-zip --enable-soap --without-pear --with-gettext --disable-fileinfo --enable-maintainer-zts &amp;&amp; \</span></span><br><span class="line"><span class="bash">	make &amp;&amp; \</span></span><br><span class="line"><span class="bash">	make install</span></span><br><span class="line"><span class="bash"></span></span><br><span class="line"><span class="bash"><span class="comment"># 后续配置</span></span></span><br><span class="line"><span class="bash">RUN cp /usr/<span class="built_in">local</span>/php/etc/php-fpm.conf.default /usr/<span class="built_in">local</span>/php/etc/php-fpm.conf &amp;&amp; \</span></span><br><span class="line"><span class="bash">	sed -i <span class="string">'s/127.0.0.1/0.0.0.0/g'</span> /usr/<span class="built_in">local</span>/php/etc/php-fpm.conf &amp;&amp; \</span></span><br><span class="line"><span class="bash">	sed -i <span class="string">"21a daemonize=no"</span> /usr/<span class="built_in">local</span>/php/etc/php-fpm.conf &amp;&amp; \</span></span><br><span class="line"><span class="bash">	<span class="built_in">echo</span> <span class="string">"<span class="variable">$&#123;TIME_ZONE&#125;</span>"</span> &gt; /etc/timezone &amp;&amp; \</span></span><br><span class="line"><span class="bash">	ln -sf /usr/share/zoneinfo/<span class="variable">$&#123;TIME_ZONE&#125;</span> /etc/localtime</span></span><br><span class="line"><span class="bash"></span></span><br><span class="line"><span class="bash"><span class="comment"># 清理无用缓存</span></span></span><br><span class="line"><span class="bash">RUN rm -rf /tmp/php-* &amp;&amp; apt-get clean</span></span><br><span class="line"><span class="bash"></span></span><br><span class="line"><span class="bash"><span class="comment"># 拷贝已定义好的配置文件到环境中</span></span></span><br><span class="line"><span class="bash">COPY php.ini /usr/<span class="built_in">local</span>/php/etc/</span></span><br><span class="line"><span class="bash"></span></span><br><span class="line"><span class="bash"><span class="comment"># 设置默认工作目录</span></span></span><br><span class="line"><span class="bash">WORKDIR /usr/<span class="built_in">local</span>/php/</span></span><br><span class="line"><span class="bash"></span></span><br><span class="line"><span class="bash"><span class="comment"># 声明端口</span></span></span><br><span class="line"><span class="bash">EXPOSE 22</span></span><br><span class="line"><span class="bash">EXPOSE 9000</span></span><br><span class="line"><span class="bash"></span></span><br><span class="line"><span class="bash"><span class="comment"># 容器启动时的执行指令</span></span></span><br><span class="line"><span class="bash">CMD [<span class="string">"./sbin/php-fpm"</span>,<span class="string">"-c"</span>,<span class="string">"/usr/local/php/etc/php.ini"</span>,<span class="string">"-y"</span>,<span class="string">"/usr/local/php/etc/php-fpm.conf"</span>]</span></span><br></pre></td></tr></table></figure>
+<h3 id="Dockerfile内容"><a href="#Dockerfile内容" class="headerlink" title="Dockerfile内容"></a>Dockerfile内容</h3><figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 指定基于ubuntu:16.04创建</span></span><br><span class="line"><span class="keyword">FROM</span> ubuntu:<span class="number">16.04</span></span><br><span class="line"><span class="comment"># 声明作者</span></span><br><span class="line"><span class="keyword">MAINTAINER</span> haowanxing &lt;haowanxing@gmail.com&gt;</span><br><span class="line"><span class="comment"># 定义环境变量，设置时区时使用</span></span><br><span class="line"><span class="keyword">ENV</span> TIME_ZONE Asia/Shanghai</span><br><span class="line"></span><br><span class="line"><span class="comment"># 修改root账号密码</span></span><br><span class="line"><span class="keyword">RUN</span> /bin/echo 'root:0x4f5da2.cn' | chpasswd</span><br><span class="line"># 新增一个prod账号，并设置密码</span><br><span class="line">RUN useradd prod</span><br><span class="line">RUN /bin/echo 'prod:123456' | chpasswd</span><br><span class="line"></span><br><span class="line"># 安装编译依赖</span><br><span class="line">RUN apt-get update</span><br><span class="line">RUN apt-get install -y gcc make openssl libssl-dev curl libbz2-dev libxml2-dev libjpeg-dev libpng-dev libfreetype6-dev libzip-dev</span><br><span class="line">RUN apt-get install -y libcurl4-gnutls-dev</span><br><span class="line">RUN ln -s /usr/lib/x86_64-linux-gnu/libssl.so /usr/lib</span><br><span class="line"></span><br><span class="line"># 拷贝源码到环境中</span><br><span class="line">ADD php-7.3.6.tar.bz2 /tmp/</span><br><span class="line"># 编译和安装</span><br><span class="line">RUN cd /tmp/php-7.3.6 &amp;&amp; \</span><br><span class="line">	./configure --prefix=/usr/local/php --with-config-file-path=/usr/local/php/etc --enable-fpm --with-fpm-user=prod --with-fpm-group=prod --with-mysqli --with-pdo-mysql --with-iconv-dir --with-freetype-dir --with-jpeg-dir --with-png-dir --with-zlib --with-libxml-dir=/usr --enable-xml --disable-rpath --enable-bcmath --enable-shmop --enable-sysvsem --enable-inline-optimization --with-curl --enable-mbregex --enable-mbstring --enable-ftp --with-gd --with-openssl --with-mhash --enable-pcntl --enable-sockets --with-xmlrpc --enable-zip --enable-soap --without-pear --with-gettext --disable-fileinfo --enable-maintainer-zts &amp;&amp; \</span><br><span class="line">	make &amp;&amp; \</span><br><span class="line">	make install</span><br><span class="line"></span><br><span class="line"># 后续配置</span><br><span class="line">RUN cp /usr/local/php/etc/php-fpm.conf.default /usr/local/php/etc/php-fpm.conf &amp;&amp; \</span><br><span class="line">	sed -i 's/127.0.0.1/0.0.0.0/g' /usr/local/php/etc/php-fpm.conf &amp;&amp; \</span><br><span class="line">	sed -i "21a daemonize=no" /usr/local/php/etc/php-fpm.conf &amp;&amp; \</span><br><span class="line">	echo "$&#123;TIME_ZONE&#125;" &gt; /etc/timezone &amp;&amp; \</span><br><span class="line">	ln -sf /usr/share/zoneinfo/$&#123;TIME_ZONE&#125; /etc/localtime</span><br><span class="line"></span><br><span class="line"># 清理无用缓存</span><br><span class="line">RUN rm -rf /tmp/php-* &amp;&amp; apt-get clean</span><br><span class="line"></span><br><span class="line"># 拷贝已定义好的配置文件到环境中</span><br><span class="line">COPY php.ini /usr/local/php/etc/</span><br><span class="line"></span><br><span class="line"># 设置默认工作目录</span><br><span class="line">WORKDIR /usr/local/php/</span><br><span class="line"></span><br><span class="line"># 声明端口</span><br><span class="line">EXPOSE 22</span><br><span class="line">EXPOSE 9000</span><br><span class="line"></span><br><span class="line"># 容器启动时的执行指令</span><br><span class="line">CMD ["./sbin/php-fpm","-c","/usr/local/php/etc/php.ini","-y","/usr/local/php/etc/php-fpm.conf"]</span><br></pre></td></tr></table></figure>
 <p>一切都准备好了以后，打开shell终端，cd到Dockerfile目录，目录结构如下:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">~/DockerSpace/phpserver/php » tree ./                                                                                                                                           anthony@Anthony-Macbook-Air</span><br><span class="line">./</span><br><span class="line">├── Dockerfile</span><br><span class="line">├── php-7.3.6.tar.bz2</span><br><span class="line">└── php.ini</span><br></pre></td></tr></table></figure>
 <p>将源码和Dockerfile放在同一目录，此目录中还有一个php.ini，放置此文件是方便在创建镜像的时候直接将PHP的配置文件替换进去，这样就省去后期手动修改配置的麻烦了。</p>
@@ -1122,86 +1205,6 @@ var _hmt = _hmt || [];
 
 
   
-    <article id="post-Tring-GRPC-Between-Go-and-PHP" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/posts/b37f5033.html">Go-Server/Client以及PHP-Client之间的GRPC初次尝试</a>
-    </h1>
-  
-
-        
-        <a href="/posts/b37f5033.html" class="archive-article-date">
-  	<time datetime="2018-12-02T05:47:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-02</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>写这篇笔记的目的</p>
-</blockquote>
-<p>为了应对后续开发生涯中可能遇到的种种情况以及分布式计算的趋势（讲白了就是后续对工作会很有帮助）。如若总是依赖http-api/restful编写并提供外部调用接口，当接口数量不断上升，文档内容不断增加，这给设计者和使用者都带来非常不好的体验，而RPC在这体就现出了非常大的优势。我将自己的理解和体会以及学习的过程记录在这里，以便今后遇到问题能够从这儿获得些许的线索以及提供一个参考给同道中人。</p>
-<blockquote>
-<p>前提</p>
-</blockquote>
-<p>不妨思考这样一个情形：作为接口设计者，我早已经定义好的接口的请求方式(RESTFul)和返回结构(json)，但是每个接口我还需要另外维护一个文档来说明各个接口的用法(请求参数)和解释返回的结果(字段描述)。而对于接口的调用者而言，不但要去文档中查找自己需要的接口并阅读说明，在实际调用中，还要以防接口提供者返回非既定结构的结果而导致的报错。</p>
-        
-          <a class="article-more-a" href="/posts/b37f5033.html#more">继续阅读 >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">PHP</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Go</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">gRPC</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">RPC</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/posts/b37f5033.html">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -1301,14 +1304,6 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Golang</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">PHP</a>
               </li>
              
@@ -1317,11 +1312,7 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">archive</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">tar</a>
+                <a href="javascript:void(0)" class="js-tag color2">Golang</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1329,11 +1320,15 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">path</a>
+                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">filepath</a>
+                <a href="javascript:void(0)" class="js-tag color3">archive</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">tar</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1349,11 +1344,15 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">算法</a>
+                <a href="javascript:void(0)" class="js-tag color5">path</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">php</a>
+                <a href="javascript:void(0)" class="js-tag color4">filepath</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">算法</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1373,6 +1372,18 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">php</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">时间复杂度</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">定理</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Go</a>
               </li>
              
@@ -1382,14 +1393,6 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">RPC</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">时间复杂度</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">定理</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1457,10 +1460,6 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">js</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">html</a>
               </li>
              
@@ -1477,7 +1476,19 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">js</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">表单</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">MarkDown</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Laravel</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1493,14 +1504,6 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Laravel</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">表单</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">MacBook</a>
               </li>
              
@@ -1509,15 +1512,15 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">macosx</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">怪谈</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">git</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">macosx</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1533,15 +1536,15 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">ngrok</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">ini</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">排序算法</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">子串</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1557,7 +1560,7 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">ngrok</a>
+                <a href="javascript:void(0)" class="js-tag color3">子串</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1581,11 +1584,31 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">qcloud</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">samp</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">软考</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">索引文件</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">ssl</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">https</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">free ssl cert</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1601,23 +1624,7 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">samp</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">-Python2.7</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">ssl</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">https</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">free ssl cert</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1641,6 +1648,22 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">WordPress</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">云盾</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">修复</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">漏洞</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">XML</a>
               </li>
              
@@ -1658,22 +1681,6 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">终端</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">WordPress</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">云盾</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">修复</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">漏洞</a>
               </li>
             
             <div class="clearfix"></div>
