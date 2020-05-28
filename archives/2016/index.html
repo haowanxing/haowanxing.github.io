@@ -61,10 +61,6 @@ var _hmt = _hmt || [];
             </li>
             
             <li rel="/archives/2016/index.html" class="item ">
-                <a href="/lab/" title="实验室" class="icon-lab">&nbsp;实验室</a>
-            </li>
-            
-            <li rel="/archives/2016/index.html" class="item ">
                 <a href="/about/" title="关于" class="icon-about">&nbsp;关于</a>
             </li>
             
@@ -197,11 +193,11 @@ var _hmt = _hmt || [];
             标签：
             
     
+        <a href="/tags/数据库/" title="数据库">数据库</a> / 
+    
         <a href="/tags/MongoDB/" title="MongoDB">MongoDB</a> / 
     
-        <a href="/tags/授权/" title="授权">授权</a> / 
-    
-        <a href="/tags/数据库/" title="数据库">数据库</a>
+        <a href="/tags/授权/" title="授权">授权</a>
     
 
         </span>
@@ -235,7 +231,7 @@ var _hmt = _hmt || [];
     <header>
         <!-- 标签这有且只能显示一个 -->
         
-        <a class="cat-link" href="/categories/PHP/">PHP</a>
+        <a class="cat-link" href="/categories/算法/">算法</a>
         
         <!-- 文章标题 -->
         
@@ -290,7 +286,7 @@ var _hmt = _hmt || [];
     <header>
         <!-- 标签这有且只能显示一个 -->
         
-        <a class="cat-link" href="/categories/我的分享/">我的分享</a>
+        <a class="cat-link" href="/categories/面试/">面试</a>
         
         <!-- 文章标题 -->
         
@@ -308,8 +304,6 @@ var _hmt = _hmt || [];
         <span class="post-tags">
             标签：
             
-    
-        <a href="/tags/提问/" title="提问">提问</a> / 
     
         <a href="/tags/面试/" title="面试">面试</a>
     
@@ -358,7 +352,7 @@ var _hmt = _hmt || [];
     <header>
         <!-- 标签这有且只能显示一个 -->
         
-        <a class="cat-link" href="/categories/PHP/">PHP</a>
+        <a class="cat-link" href="/categories/算法/">算法</a>
         
         <!-- 文章标题 -->
         
@@ -496,7 +490,7 @@ echo implode(&apos; &apos;,BubbleSort($arr)).&quot;\n&quot;;
     <header>
         <!-- 标签这有且只能显示一个 -->
         
-        <a class="cat-link" href="/categories/PHP/">PHP</a>
+        <a class="cat-link" href="/categories/算法/">算法</a>
         
         <!-- 文章标题 -->
         
@@ -562,7 +556,7 @@ echo implode(&apos; &apos;,BubbleSort($arr)).&quot;\n&quot;;
     <header>
         <!-- 标签这有且只能显示一个 -->
         
-        <a class="cat-link" href="/categories/Linux/">Linux</a>
+        <a class="cat-link" href="/categories/学习笔记/">学习笔记</a>
         
         <!-- 文章标题 -->
         
@@ -618,7 +612,7 @@ echo implode(&apos; &apos;,BubbleSort($arr)).&quot;\n&quot;;
     <header>
         <!-- 标签这有且只能显示一个 -->
         
-        <a class="cat-link" href="/categories/Linxu分享/">Linxu分享</a>
+        <a class="cat-link" href="/categories/Linux/">Linux</a>
         
         <!-- 文章标题 -->
         
@@ -677,7 +671,7 @@ echo implode(&apos; &apos;,BubbleSort($arr)).&quot;\n&quot;;
     <header>
         <!-- 标签这有且只能显示一个 -->
         
-        <a class="cat-link" href="/categories/我的分享/">我的分享</a>
+        <a class="cat-link" href="/categories/学习笔记/">学习笔记</a>
         
         <!-- 文章标题 -->
         
@@ -792,7 +786,7 @@ Starting MySQL.The server quit without updating PID file (/usr/local/mysql/data/
     <header>
         <!-- 标签这有且只能显示一个 -->
         
-        <a class="cat-link" href="/categories/JavaScript/">JavaScript</a>
+        <a class="cat-link" href="/categories/Web/">Web</a>
         
         <!-- 文章标题 -->
         
@@ -842,7 +836,7 @@ Starting MySQL.The server quit without updating PID file (/usr/local/mysql/data/
     <header>
         <!-- 标签这有且只能显示一个 -->
         
-        <a class="cat-link" href="/categories/学习笔记/">学习笔记</a>
+        <a class="cat-link" href="/categories/编程语言/">编程语言</a>
         
         <!-- 文章标题 -->
         
@@ -865,9 +859,7 @@ Starting MySQL.The server quit without updating PID file (/usr/local/mysql/data/
     
         <a href="/tags/C/" title="C">C</a> / 
     
-        <a href="/tags/Java/" title="Java">Java</a> / 
-    
-        <a href="/tags/方法/" title="方法">方法</a>
+        <a href="/tags/Java/" title="Java">Java</a>
     
 
         </span>
@@ -981,8 +973,9 @@ Starting MySQL.The server quit without updating PID file (/usr/local/mysql/data/
     <div class="post-content">
         <div class="post-excerpt">
             
-                <p>今天在写API的时候用到了php中新版本的json<em>encode()方法，在5.4以后支持了不对中文进行Unicode编码，而我在服务器上的php版本还停留在yum源包自带的5.3版本，只有升级来满足需要了。<br>首先，找了一些关于升级PHP的文章，各不相同，我还是坚持简单、易操作的方法，使用yum来更新。<br>当然，yum update php 是完全不能解决的，因为它告诉我5.3是最新的版本了。不能怪它，因为没人告诉它今年是哪一年了^</em>^!<br>这个不行，肯定要换一个源包了。。<br>不过首先是要卸载已经安装的php。在这之前，先看看当前安装的PHP有哪些依赖包吧：</p>
-<p><pre lang="bash"><br>yum list installed | grep php<br></pre><br>结果如下：<br>[root@iZ28l1ca1vhZ scuec]# yum list installed | grep php<br>php.x86_64                           5.3.3-46.el6_6                     @updates<br>php-bcmath.x86_64                    5.3.3-46.el6_6                     @updates<br>php-cli.x86_64                       5.3.3-46.el6_6                     @updates<br>php-common.x86_64                    5.3.3-46.el6_6                     @updates<br>php-fpm.x86_64                       5.3.3-46.el6_6                     @updates<br>php-gd.x86_64                        5.3.3-46.el6_6                     @updates<br>php-imap.x86_64                      5.3.3-46.el6_6                     @updates<br>php-ldap.x86_64                      5.3.3-46.el6_6                     @updates<br>php-mbstring.x86_64                  5.3.3-46.el6_6                     @updates<br>php-mcrypt.x86_64                    5.3.3-4.el6                        @epel<br>php-mysql.x86_64                     5.3.3-46.el6_6                     @updates<br>php-odbc.x86_64                      5.3.3-46.el6_6                     @updates<br>php-pdo.x86_64                       5.3.3-46.el6_6                     @updates<br>php-pear.noarch                      1:1.9.4-4.el6                      @base<br>php-xml.x86_64                       5.3.3-46.el6_6                     @updates<br>php-xmlrpc.x86_64                    5.3.3-46.el6_6                     @updates<br>上面这些本来有的，安装新版本后还是加上去比较好办，对！<br>接着卸载php吧<br>
+                <p>今天在写API的时候用到了php中新版本的json<em>encode()方法，在5.4以后支持了不对中文进行Unicode编码，而我在服务器上的php版本还停留在yum源包自带的5.3版本，只有升级来满足需要了。<br>首先，找了一些关于升级PHP的文章，各不相同，我还是坚持简单、易操作的方法，使用yum来更新。<br>当然，yum update php 是完全不能解决的，因为它告诉我5.3是最新的版本了。不能怪它，因为没人告诉它今年是哪一年了^</em>^!<br>这个不行，肯定要换一个源包了。。<br>不过首先是要卸载已经安装的php。在这之前，先看看当前安装的PHP有哪些依赖包吧：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum list installed | grep php</span><br></pre></td></tr></table></figure></p>
+<p>结果如下：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">[root@iZ28l1ca1vhZ scuec]<span class="comment"># yum list installed | grep php</span></span><br><span class="line">php.x86_64                           5.3.3-46.el6_6                     @updates</span><br><span class="line">php-bcmath.x86_64                    5.3.3-46.el6_6                     @updates</span><br><span class="line">php-cli.x86_64                       5.3.3-46.el6_6                     @updates</span><br><span class="line">php-common.x86_64                    5.3.3-46.el6_6                     @updates</span><br><span class="line">php-fpm.x86_64                       5.3.3-46.el6_6                     @updates</span><br><span class="line">php-gd.x86_64                        5.3.3-46.el6_6                     @updates</span><br><span class="line">php-imap.x86_64                      5.3.3-46.el6_6                     @updates</span><br><span class="line">php-ldap.x86_64                      5.3.3-46.el6_6                     @updates</span><br><span class="line">php-mbstring.x86_64                  5.3.3-46.el6_6                     @updates</span><br><span class="line">php-mcrypt.x86_64                    5.3.3-4.el6                        @epel   </span><br><span class="line">php-mysql.x86_64                     5.3.3-46.el6_6                     @updates</span><br><span class="line">php-odbc.x86_64                      5.3.3-46.el6_6                     @updates</span><br><span class="line">php-pdo.x86_64                       5.3.3-46.el6_6                     @updates</span><br><span class="line">php-pear.noarch                      1:1.9.4-4.el6                      @base   </span><br><span class="line">php-xml.x86_64                       5.3.3-46.el6_6                     @updates</span><br><span class="line">php-xmlrpc.x86_64                    5.3.3-46.el6_6                     @updates</span><br></pre></td></tr></table></figure></p>
+<p>上面这些本来有的，安装新版本后还是加上去比较好办，对！<br>接着卸载php吧</p>
             
             <p class="more">
                 <a href="http://www.imsry.cn/posts/4490487e.html">阅读剩下更多</a>
@@ -1044,112 +1037,87 @@ Starting MySQL.The server quit without updating PID file (/usr/local/mysql/data/
 <ul class="widget-bd">
     
     <li>
+        <a href="/categories/编程语言/">编程语言</a>
+        <span class="badge">(5)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/学习笔记/">学习笔记</a>
+        <span class="badge">(46)</span>
+    </li>
+    
+    <li>
         <a href="/categories/Learn-GO/">Learn-GO</a>
         <span class="badge">(6)</span>
     </li>
     
     <li>
-        <a href="/categories/我的分享/">我的分享</a>
+        <a href="/categories/Linux/">Linux</a>
         <span class="badge">(16)</span>
     </li>
     
     <li>
-        <a href="/categories/Linxu分享/">Linxu分享</a>
-        <span class="badge">(9)</span>
-    </li>
-    
-    <li>
-        <a href="/categories/Linux/">Linux</a>
-        <span class="badge">(11)</span>
-    </li>
-    
-    <li>
-        <a href="/categories/数据库/">数据库</a>
-        <span class="badge">(3)</span>
-    </li>
-    
-    <li>
-        <a href="/categories/Html/">Html</a>
-        <span class="badge">(2)</span>
+        <a href="/categories/开发板/">开发板</a>
+        <span class="badge">(1)</span>
     </li>
     
     <li>
         <a href="/categories/PHP/">PHP</a>
-        <span class="badge">(12)</span>
+        <span class="badge">(9)</span>
     </li>
     
     <li>
-        <a href="/categories/学习笔记/">学习笔记</a>
-        <span class="badge">(4)</span>
-    </li>
-    
-    <li>
-        <a href="/categories/JavaScript/">JavaScript</a>
-        <span class="badge">(3)</span>
-    </li>
-    
-    <li>
-        <a href="/categories/JS分享/">JS分享</a>
-        <span class="badge">(6)</span>
-    </li>
-    
-    <li>
-        <a href="/categories/Web技术/">Web技术</a>
-        <span class="badge">(3)</span>
-    </li>
-    
-    <li>
-        <a href="/categories/干货/">干货</a>
-        <span class="badge">(1)</span>
-    </li>
-    
-    <li>
-        <a href="/categories/Python/">-Python</a>
-        <span class="badge">(1)</span>
-    </li>
-    
-    <li>
-        <a href="/categories/我的分享/未分类/">未分类</a>
-        <span class="badge">(2)</span>
-    </li>
-    
-    <li>
-        <a href="/categories/Html/学习笔记/">学习笔记</a>
-        <span class="badge">(2)</span>
-    </li>
-    
-    <li>
-        <a href="/categories/PHP/学习笔记/">学习笔记</a>
+        <a href="/categories/算法/">算法</a>
         <span class="badge">(5)</span>
     </li>
     
     <li>
-        <a href="/categories/学习笔记/数据库/">数据库</a>
+        <a href="/categories/面试/">面试</a>
         <span class="badge">(1)</span>
     </li>
     
     <li>
-        <a href="/categories/Linux/数据库/">数据库</a>
+        <a href="/categories/网络安全/">网络安全</a>
+        <span class="badge">(2)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/数据库/">数据库</a>
+        <span class="badge">(2)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/MacOS/">MacOS</a>
         <span class="badge">(1)</span>
     </li>
     
     <li>
-        <a href="/categories/Web技术/数据库/">数据库</a>
+        <a href="/categories/Web/">Web</a>
+        <span class="badge">(3)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/我的分享/">我的分享</a>
         <span class="badge">(1)</span>
     </li>
     
     <li>
-        <a href="/categories/Linux/Linxu分享/">Linxu分享</a>
+        <a href="/categories/考试/">考试</a>
         <span class="badge">(1)</span>
     </li>
     
     <li>
-        <a href="/categories/Linxu分享/PHP/">PHP</a>
+        <a href="/categories/游戏/">游戏</a>
+        <span class="badge">(2)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/开放平台/">开放平台</a>
         <span class="badge">(1)</span>
     </li>
     
     <li>
-        <a href="/categories/Web技术/学习笔记/">学习笔记</a>
+        <a href="/categories/杂谈/">杂谈</a>
         <span class="badge">(1)</span>
     </li>
     
@@ -1168,23 +1136,23 @@ Starting MySQL.The server quit without updating PID file (/usr/local/mysql/data/
   
     <a class="tag-item" href="/tags/Docker/" title="Docker">Docker (1)</a>
   
-    <a class="tag-item" href="/tags/Linux/" title="Linux">Linux (4)</a>
-  
     <a class="tag-item" href="/tags/essay/" title="essay">essay (3)</a>
   
     <a class="tag-item" href="/tags/archive/" title="archive">archive (2)</a>
   
-    <a class="tag-item" href="/tags/tar/" title="tar">tar (1)</a>
-  
     <a class="tag-item" href="/tags/zip/" title="zip">zip (1)</a>
   
-    <a class="tag-item" href="/tags/bufio/" title="bufio">bufio (1)</a>
-  
-    <a class="tag-item" href="/tags/bytes/" title="bytes">bytes (1)</a>
+    <a class="tag-item" href="/tags/Linux/" title="Linux">Linux (5)</a>
   
     <a class="tag-item" href="/tags/path/" title="path">path (2)</a>
   
-    <a class="tag-item" href="/tags/php/" title="php">php (7)</a>
+    <a class="tag-item" href="/tags/filepath/" title="filepath">filepath (1)</a>
+  
+    <a class="tag-item" href="/tags/bufio/" title="bufio">bufio (1)</a>
+  
+    <a class="tag-item" href="/tags/tar/" title="tar">tar (1)</a>
+  
+    <a class="tag-item" href="/tags/bytes/" title="bytes">bytes (1)</a>
   
     <a class="tag-item" href="/tags/OrangePi/" title="OrangePi">OrangePi (2)</a>
   
@@ -1194,13 +1162,15 @@ Starting MySQL.The server quit without updating PID file (/usr/local/mysql/data/
   
     <a class="tag-item" href="/tags/IP/" title="IP">IP (2)</a>
   
-    <a class="tag-item" href="/tags/filepath/" title="filepath">filepath (1)</a>
-  
     <a class="tag-item" href="/tags/算法/" title="算法">算法 (2)</a>
+  
+    <a class="tag-item" href="/tags/php/" title="php">php (7)</a>
   
     <a class="tag-item" href="/tags/时间复杂度/" title="时间复杂度">时间复杂度 (1)</a>
   
     <a class="tag-item" href="/tags/定理/" title="定理">定理 (1)</a>
+  
+    <a class="tag-item" href="/tags/Apache/" title="Apache">Apache (3)</a>
   
     <a class="tag-item" href="/tags/Go/" title="Go">Go (4)</a>
   
@@ -1208,37 +1178,35 @@ Starting MySQL.The server quit without updating PID file (/usr/local/mysql/data/
   
     <a class="tag-item" href="/tags/RPC/" title="RPC">RPC (1)</a>
   
-    <a class="tag-item" href="/tags/Apache/" title="Apache">Apache (3)</a>
-  
     <a class="tag-item" href="/tags/Proxy/" title="Proxy">Proxy (1)</a>
   
     <a class="tag-item" href="/tags/Tomcat/" title="Tomcat">Tomcat (1)</a>
   
     <a class="tag-item" href="/tags/反向代理/" title="反向代理">反向代理 (1)</a>
   
-    <a class="tag-item" href="/tags/提问/" title="提问">提问 (1)</a>
-  
     <a class="tag-item" href="/tags/面试/" title="面试">面试 (1)</a>
   
-    <a class="tag-item" href="/tags/Chrome-https/" title="Chrome https">Chrome https (1)</a>
-  
-    <a class="tag-item" href="/tags/测试/" title="测试">测试 (4)</a>
+    <a class="tag-item" href="/tags/https/" title="https">https (2)</a>
   
     <a class="tag-item" href="/tags/性能/" title="性能">性能 (3)</a>
+  
+    <a class="tag-item" href="/tags/VPN/" title="VPN">VPN (1)</a>
+  
+    <a class="tag-item" href="/tags/数据库/" title="数据库">数据库 (2)</a>
   
     <a class="tag-item" href="/tags/C/" title="C">C (1)</a>
   
     <a class="tag-item" href="/tags/Java/" title="Java">Java (1)</a>
   
-    <a class="tag-item" href="/tags/方法/" title="方法">方法 (1)</a>
+    <a class="tag-item" href="/tags/测试/" title="测试">测试 (1)</a>
+  
+    <a class="tag-item" href="/tags/笔试/" title="笔试">笔试 (1)</a>
+  
+    <a class="tag-item" href="/tags/编程/" title="编程">编程 (1)</a>
   
     <a class="tag-item" href="/tags/Glassfish/" title="Glassfish">Glassfish (1)</a>
   
     <a class="tag-item" href="/tags/Java-Web/" title="Java Web">Java Web (1)</a>
-  
-    <a class="tag-item" href="/tags/mysql/" title="mysql">mysql (5)</a>
-  
-    <a class="tag-item" href="/tags/连接池/" title="连接池">连接池 (1)</a>
   
 </div>
     </section>
@@ -1282,6 +1250,6 @@ Starting MySQL.The server quit without updating PID file (/usr/local/mysql/data/
 
     <!--博客js脚本 -->
     <!-- 这里放网站js脚本 -->
-<script src="/js/main.js?v=1590659533024"></script>
+<script src="/js/main.js?v=1590662257400"></script>
 </body>
 </html>

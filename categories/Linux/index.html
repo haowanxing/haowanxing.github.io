@@ -61,10 +61,6 @@ var _hmt = _hmt || [];
             </li>
             
             <li rel="/categories/Linux/index.html" class="item ">
-                <a href="/lab/" title="实验室" class="icon-lab">&nbsp;实验室</a>
-            </li>
-            
-            <li rel="/categories/Linux/index.html" class="item ">
                 <a href="/about/" title="关于" class="icon-about">&nbsp;关于</a>
             </li>
             
@@ -135,27 +131,29 @@ var _hmt = _hmt || [];
         <!-- 文章标题 -->
         
     <h3 class="post-title">
-    	<a href="http://www.imsry.cn/posts/413689f.html">
-    		You have new mail - Mac OS
+    	<a href="http://www.imsry.cn/posts/15ab52a4.html">
+    		Linux配置网卡（静态）IP地址
     	</a>
     </h3>
 
     </header>
     <p class="post-meta">
         Anthony 发表于
-        <time datetime="2016-08-31T07:49:10.000Z">2016-08-31 15:49:10</time>
+        <time datetime="2019-09-23T07:00:08.000Z">2019-09-23 15:00:08</time>
         &nbsp;&nbsp;
         <span class="post-tags">
             标签：
             
     
-        <a href="/tags/Mac/" title="Mac">Mac</a> / 
+        <a href="/tags/Linux/" title="Linux">Linux</a> / 
     
-        <a href="/tags/mail/" title="mail">mail</a> / 
+        <a href="/tags/OrangePi/" title="OrangePi">OrangePi</a> / 
     
-        <a href="/tags/Terminal/" title="Terminal">Terminal</a> / 
+        <a href="/tags/Network/" title="Network">Network</a> / 
     
-        <a href="/tags/终端/" title="终端">终端</a>
+        <a href="/tags/网卡/" title="网卡">网卡</a> / 
+    
+        <a href="/tags/IP/" title="IP">IP</a>
     
 
         </span>
@@ -164,16 +162,152 @@ var _hmt = _hmt || [];
     <div class="post-content">
         <div class="post-excerpt">
             
-                <p>奇了怪了，莫名其妙！平时打开终端都没怎么注意，今天发现打开终端的时候，除了常规的上次登录提示，居然有一句“You have new mail”紧接着在下面出现了。<br>平时都不用自带的邮件.app的 打开邮件，却没有啥。<br>好的，本着好奇的心理，开始摸索。<br>
+                <blockquote>
+<p>上一篇记录了在OrangePi-Zero连接WIFI的过程，今天试着给自带默认网卡配置一下静态IP地址，以方便在整个局域网内能够访问设备。</p>
+</blockquote>
+<h2 id="首先"><a href="#首先" class="headerlink" title="首先"></a>首先</h2><p>还是得通过ssh等方式登录Server，然后查看网卡的名称。执行<code>ifconfig</code>命令，找到eth开头的网卡，我这里是<code>eth0</code>。</p>
+<h2 id="再者"><a href="#再者" class="headerlink" title="再者"></a>再者</h2><p>使用<code>vim</code>编辑文件<code>/etc/network/interfaces</code>，增加新行如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">auto eht0</span><br><span class="line"><span class="comment">#iface eth0 inet dhcp #此处为DHCP自动获取IP，注释掉了哟</span></span><br><span class="line">iface eth0 inet static <span class="comment">#声明接口为静态的</span></span><br><span class="line">address 172.16.105.134 <span class="comment">#IP地址</span></span><br><span class="line">network 172.16.105.0	<span class="comment">#网段</span></span><br><span class="line">netmask 255.255.255.0	<span class="comment">#子网掩码</span></span><br><span class="line">broadcast 172.16.105.255	<span class="comment">#广播地址</span></span><br><span class="line">gateway 172.16.105.254	<span class="comment">#网关IP</span></span><br></pre></td></tr></table></figure>
+<p>保存！</p>
+<p>然后重启网卡，这里我使用<code>ifconfig eth0 down</code>和<code>ifconfig eth0 up</code>达到关闭和重新打开的效果。</p>
+<h2 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h2><p>执行<code>ifconfig eth0</code>查看IP是否正确配置，并且可以在局域网内<code>ping</code>通该地址和<code>ssh</code>到Server。</p>
+<p>本篇仅为给自己的小记录，供大家参考！</p>
+
             
             <p class="more">
-                <a href="http://www.imsry.cn/posts/413689f.html">阅读剩下更多</a>
+                <a href="http://www.imsry.cn/posts/15ab52a4.html">阅读剩下更多</a>
             </p>
         </div>
         <div class="post-thumbnail" data-img="">
-            <a href="http://www.imsry.cn/posts/413689f.html" title="You have new mail - Mac OS">
+            <a href="http://www.imsry.cn/posts/15ab52a4.html" title="Linux配置网卡（静态）IP地址">
+                
+                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/3.jpg" alt="默认配图" >
+                
+            </a>
+        </div>
+    </div>
+</article>
+
+    
+        <!-- 文章列表 item -->
+<article class="post">
+    <header>
+        <!-- 标签这有且只能显示一个 -->
+        
+        <a class="cat-link" href="/categories/Linux/">Linux</a>
+        
+        <!-- 文章标题 -->
+        
+    <h3 class="post-title">
+    	<a href="http://www.imsry.cn/posts/b54dd86c.html">
+    		Apache设置目录的访问权限（用户名和密码）
+    	</a>
+    </h3>
+
+    </header>
+    <p class="post-meta">
+        Anthony 发表于
+        <time datetime="2018-02-01T06:58:17.000Z">2018-02-01 14:58:17</time>
+        &nbsp;&nbsp;
+        <span class="post-tags">
+            标签：
+            
+    
+        <a href="/tags/Apache/" title="Apache">Apache</a>
+    
+
+        </span>
+    </p>
+
+    <div class="post-content">
+        <div class="post-excerpt">
+            
+                <p>　　最近重新搞了个阿里云香港ECS用来科学上网，另外使用<a href="https://lamp.sh" target="_blank" rel="noopener">LAMP一键安装包</a>搭环境，搭建完成后开放云盾端口即可通过IP访问到web默认页，这默认页有些实用的小工具，如：探针、MyAdmin啥的。如图：</p>
+<p>　　<img src="../uploads/qiniu/20180201151746870535154.png" alt></p>
+<p>　　然后我想让这默认页只有我自己能看到，其他人最好不要看到，毕竟其他人看到也没啥用，最多给服务器施压而已，然后就想弄个如下图的效果：</p>
+<p>　　<img src="../uploads/qiniu/20180201151746846888519.png" alt></p>
+<p>　　下面来讲讲如何实现此效果的步骤，假设需要设置权限的目录(DIR)为”/data/www/default”</p>
+<ul>
+<li><p>修改apache的配置文件（可以是httpd.conf，也可以是具体的vhost的单独配置文件）,内容如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;Directory &quot;/data/www/default&quot;&gt;</span><br><span class="line">    Options Indexes</span><br><span class="line">    AllowOverride AuthConfig</span><br><span class="line">    Order allow,deny</span><br><span class="line">    Allow from all</span><br><span class="line">&lt;/Directory&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在DIR下新增.htaccess文件，内容如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">AuthName &quot;sys&quot;</span><br><span class="line">AuthType Basic</span><br><span class="line">AuthUserFile /data/www/default/.htpasswd</span><br><span class="line">require user username</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用Apache的htpasswd创建.htpasswd文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">/usr/local/apache/bin/htpasswd -c /data/www/default/.htpasswd username</span><br><span class="line">##这里会提示你输入两次密码##</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>　　完成上述步骤后，重启Apache即可</p>
+
+            
+            <p class="more">
+                <a href="http://www.imsry.cn/posts/b54dd86c.html">阅读剩下更多</a>
+            </p>
+        </div>
+        <div class="post-thumbnail" data-img="">
+            <a href="http://www.imsry.cn/posts/b54dd86c.html" title="Apache设置目录的访问权限（用户名和密码）">
                 
                     <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/1.jpg" alt="默认配图" >
+                
+            </a>
+        </div>
+    </div>
+</article>
+
+    
+        <!-- 文章列表 item -->
+<article class="post">
+    <header>
+        <!-- 标签这有且只能显示一个 -->
+        
+        <a class="cat-link" href="/categories/Linux/">Linux</a>
+        
+        <!-- 文章标题 -->
+        
+    <h3 class="post-title">
+    	<a href="http://www.imsry.cn/posts/539cda52.html">
+    		[修复]wordpress WP_Image_Editor_Imagick 指令注入漏洞
+    	</a>
+    </h3>
+
+    </header>
+    <p class="post-meta">
+        Anthony 发表于
+        <time datetime="2016-07-28T08:15:00.000Z">2016-07-28 16:15:00</time>
+        &nbsp;&nbsp;
+        <span class="post-tags">
+            标签：
+            
+    
+        <a href="/tags/WordPress/" title="WordPress">WordPress</a> / 
+    
+        <a href="/tags/云盾/" title="云盾">云盾</a> / 
+    
+        <a href="/tags/修复/" title="修复">修复</a> / 
+    
+        <a href="/tags/漏洞/" title="漏洞">漏洞</a>
+    
+
+        </span>
+    </p>
+
+    <div class="post-content">
+        <div class="post-excerpt">
+            
+                <p>漏洞描述：该修复方案为临时修复方案，可能存在兼容性风险，为了防止WP_Image_Editor_Imagick扩展的指令注入风险，将wordpress的默认图片处理库优先顺序改为GD优先，用户可在/wp-includes/media.php的_wp_image_editor_choose()函数中看到被修改的部分<br>云盾不提供自动修复，咱们自己来修复吧。根据提示，我们打开media.php 找到相关函数的内容：</p>
+<p><pre lang="php"><br>$implementations = apply_filters( ‘wp_image_editors’, array( ‘WP_Image_Editor_Imagick’, ‘WP_Image_Editor_GD’ ) );<br></pre><br>做如下顺序调整：</p>
+<p><pre lang="php"><br>$implementations = apply_filters( ‘wp_image_editors’, array( ‘WP_Image_Editor_GD’, ‘WP_Image_Editor_Imagick’ ) );<br></pre><br>正如上面的描述所说，临时方案嘛。Wordpress官方不做处理的话，你每次升级了程序，都会出现这样的报错，每次都得自己去修改。不过如果不在乎这个提示的话，不理也行！<br><!--more （下面好像没有了...）--><br>附当时的图片一张<br><img src="http://www.dshui.wang/wp-content/uploads/2016/07/wp-Image-300x99.png" alt="wp-Image 注入漏洞"></p>
+
+            
+            <p class="more">
+                <a href="http://www.imsry.cn/posts/539cda52.html">阅读剩下更多</a>
+            </p>
+        </div>
+        <div class="post-thumbnail" data-img="">
+            <a href="http://www.imsry.cn/posts/539cda52.html" title="[修复]wordpress WP_Image_Editor_Imagick 指令注入漏洞">
+                
+                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/8.jpg" alt="默认配图" >
                 
             </a>
         </div>
@@ -271,8 +405,9 @@ Starting MySQL.The server quit without updating PID file (/usr/local/mysql/data/
     <div class="post-content">
         <div class="post-excerpt">
             
-                <p>今天在写API的时候用到了php中新版本的json<em>encode()方法，在5.4以后支持了不对中文进行Unicode编码，而我在服务器上的php版本还停留在yum源包自带的5.3版本，只有升级来满足需要了。<br>首先，找了一些关于升级PHP的文章，各不相同，我还是坚持简单、易操作的方法，使用yum来更新。<br>当然，yum update php 是完全不能解决的，因为它告诉我5.3是最新的版本了。不能怪它，因为没人告诉它今年是哪一年了^</em>^!<br>这个不行，肯定要换一个源包了。。<br>不过首先是要卸载已经安装的php。在这之前，先看看当前安装的PHP有哪些依赖包吧：</p>
-<p><pre lang="bash"><br>yum list installed | grep php<br></pre><br>结果如下：<br>[root@iZ28l1ca1vhZ scuec]# yum list installed | grep php<br>php.x86_64                           5.3.3-46.el6_6                     @updates<br>php-bcmath.x86_64                    5.3.3-46.el6_6                     @updates<br>php-cli.x86_64                       5.3.3-46.el6_6                     @updates<br>php-common.x86_64                    5.3.3-46.el6_6                     @updates<br>php-fpm.x86_64                       5.3.3-46.el6_6                     @updates<br>php-gd.x86_64                        5.3.3-46.el6_6                     @updates<br>php-imap.x86_64                      5.3.3-46.el6_6                     @updates<br>php-ldap.x86_64                      5.3.3-46.el6_6                     @updates<br>php-mbstring.x86_64                  5.3.3-46.el6_6                     @updates<br>php-mcrypt.x86_64                    5.3.3-4.el6                        @epel<br>php-mysql.x86_64                     5.3.3-46.el6_6                     @updates<br>php-odbc.x86_64                      5.3.3-46.el6_6                     @updates<br>php-pdo.x86_64                       5.3.3-46.el6_6                     @updates<br>php-pear.noarch                      1:1.9.4-4.el6                      @base<br>php-xml.x86_64                       5.3.3-46.el6_6                     @updates<br>php-xmlrpc.x86_64                    5.3.3-46.el6_6                     @updates<br>上面这些本来有的，安装新版本后还是加上去比较好办，对！<br>接着卸载php吧<br>
+                <p>今天在写API的时候用到了php中新版本的json<em>encode()方法，在5.4以后支持了不对中文进行Unicode编码，而我在服务器上的php版本还停留在yum源包自带的5.3版本，只有升级来满足需要了。<br>首先，找了一些关于升级PHP的文章，各不相同，我还是坚持简单、易操作的方法，使用yum来更新。<br>当然，yum update php 是完全不能解决的，因为它告诉我5.3是最新的版本了。不能怪它，因为没人告诉它今年是哪一年了^</em>^!<br>这个不行，肯定要换一个源包了。。<br>不过首先是要卸载已经安装的php。在这之前，先看看当前安装的PHP有哪些依赖包吧：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum list installed | grep php</span><br></pre></td></tr></table></figure></p>
+<p>结果如下：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">[root@iZ28l1ca1vhZ scuec]<span class="comment"># yum list installed | grep php</span></span><br><span class="line">php.x86_64                           5.3.3-46.el6_6                     @updates</span><br><span class="line">php-bcmath.x86_64                    5.3.3-46.el6_6                     @updates</span><br><span class="line">php-cli.x86_64                       5.3.3-46.el6_6                     @updates</span><br><span class="line">php-common.x86_64                    5.3.3-46.el6_6                     @updates</span><br><span class="line">php-fpm.x86_64                       5.3.3-46.el6_6                     @updates</span><br><span class="line">php-gd.x86_64                        5.3.3-46.el6_6                     @updates</span><br><span class="line">php-imap.x86_64                      5.3.3-46.el6_6                     @updates</span><br><span class="line">php-ldap.x86_64                      5.3.3-46.el6_6                     @updates</span><br><span class="line">php-mbstring.x86_64                  5.3.3-46.el6_6                     @updates</span><br><span class="line">php-mcrypt.x86_64                    5.3.3-4.el6                        @epel   </span><br><span class="line">php-mysql.x86_64                     5.3.3-46.el6_6                     @updates</span><br><span class="line">php-odbc.x86_64                      5.3.3-46.el6_6                     @updates</span><br><span class="line">php-pdo.x86_64                       5.3.3-46.el6_6                     @updates</span><br><span class="line">php-pear.noarch                      1:1.9.4-4.el6                      @base   </span><br><span class="line">php-xml.x86_64                       5.3.3-46.el6_6                     @updates</span><br><span class="line">php-xmlrpc.x86_64                    5.3.3-46.el6_6                     @updates</span><br></pre></td></tr></table></figure></p>
+<p>上面这些本来有的，安装新版本后还是加上去比较好办，对！<br>接着卸载php吧</p>
             
             <p class="more">
                 <a href="http://www.imsry.cn/posts/4490487e.html">阅读剩下更多</a>
@@ -312,6 +447,10 @@ Starting MySQL.The server quit without updating PID file (/usr/local/mysql/data/
         <span class="post-tags">
             标签：
             
+    
+        <a href="/tags/VPN/" title="VPN">VPN</a>
+    
+
         </span>
     </p>
 
@@ -349,50 +488,38 @@ Starting MySQL.The server quit without updating PID file (/usr/local/mysql/data/
         <!-- 文章标题 -->
         
     <h3 class="post-title">
-    	<a href="http://www.imsry.cn/posts/ce23f4b0.html">
-    		有关MacBook从10.9.5升级到10.11(EI capitan)后的问题及解决方法
+    	<a href="http://www.imsry.cn/posts/2e6f46f8.html">
+    		 CENTOS 6.0 iptables 开放端口80 3306 22端口
     	</a>
     </h3>
 
     </header>
     <p class="post-meta">
         Anthony 发表于
-        <time datetime="2015-10-26T12:16:55.000Z">2015-10-26 20:16:55</time>
+        <time datetime="2015-11-11T13:13:01.000Z">2015-11-11 21:13:01</time>
         &nbsp;&nbsp;
         <span class="post-tags">
             标签：
             
-    
-        <a href="/tags/Linux/" title="Linux">Linux</a> / 
-    
-        <a href="/tags/Apache/" title="Apache">Apache</a> / 
-    
-        <a href="/tags/mysql/" title="mysql">mysql</a> / 
-    
-        <a href="/tags/macosx/" title="macosx">macosx</a> / 
-    
-        <a href="/tags/ei-capitan/" title="ei capitan">ei capitan</a>
-    
-
         </span>
     </p>
 
     <div class="post-content">
         <div class="post-excerpt">
             
-                <p>看到别人的MAC在用最新的EI Capitan系统之后，我终于打破了自己坚持使用旧系统的原则，本着更好的体验和更高的性能，我将自己的本子也更新到最新，既然是更新升级上来的，不免有些小问题会出现，下面就逐个来说说我遇到的问题吧。</p>
-<h2 id="问题一：Apache无法正常启动？"><a href="#问题一：Apache无法正常启动？" class="headerlink" title="问题一：Apache无法正常启动？"></a>问题一：Apache无法正常启动？</h2><p>首先遇到这个问题时，当然是去找日志了，因为在终端输入启动命令：sudo apachectl start之后，没有任何报错和提示，只是本地浏览器访问localhost or 127.0.0.1失败。但是，这个错误日志真的不好找，最后我干脆去配置文件etc/apache2/httpd.conf中寻找。</p>
-<p>嗯！找到了！ ErrorLog “/private/var/log/apache2/error_log” 好的，我去看看到底是什么原因。可是，“/private/var/log/apache2/” 目录根本没有任何文件！想着自己给它创建这个错误日志文件吧，创建好了之后使用命令启动apache，结果文件里面没有任何内容！</p>
-<p>这也不行，看来通过错误日志是行不通了，于是乎，在网上查找各种资料，终于看到有个人在网页上写到：现在尝试启动一下Apache: sudo apachectl -k start。看到这个，带着好奇我也输入了一遍，好奇心真的不会害死猫！终于出现了报错了！第一次这么开心地看见报错信息，于是乎根据提示找到错误点并屏蔽掉了这个错误的配置。<br>
+                <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">/sbin/iptables -I INPUT -p tcp --dport 80 -j ACCEPT</span><br><span class="line">/sbin/iptables -I INPUT -p tcp --dport 22 -j ACCEPT</span><br><span class="line">/sbin/iptables -I INPUT -p tcp --dport 3306 -j ACCEPT</span><br></pre></td></tr></table></figure>
+<p>然后保存：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/etc/rc.d/init.d/iptables save</span><br></pre></td></tr></table></figure></p>
+<p>查看打开的端口：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/etc/init.d/iptables status</span><br></pre></td></tr></table></figure></p>
+<p>补充说明：<br>
             
             <p class="more">
-                <a href="http://www.imsry.cn/posts/ce23f4b0.html">阅读剩下更多</a>
+                <a href="http://www.imsry.cn/posts/2e6f46f8.html">阅读剩下更多</a>
             </p>
         </div>
         <div class="post-thumbnail" data-img="">
-            <a href="http://www.imsry.cn/posts/ce23f4b0.html" title="有关MacBook从10.9.5升级到10.11(EI capitan)后的问题及解决方法">
+            <a href="http://www.imsry.cn/posts/2e6f46f8.html" title=" CENTOS 6.0 iptables 开放端口80 3306 22端口">
                 
-                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/6.jpg" alt="默认配图" >
+                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/1.jpg" alt="默认配图" >
                 
             </a>
         </div>
@@ -548,7 +675,7 @@ Starting MySQL.The server quit without updating PID file (/usr/local/mysql/data/
     <div class="post-content">
         <div class="post-excerpt">
             
-                <p><img src="http://www.dshui.wang/wp-content/uploads/2015/08/CentOS-Network-eth0.jpg" alt="CentOS-Network-eth0"><br>今天用Vbox安装了CentOS 6.7 准备测试游戏服务器,需要下载一个服务端，使用wget时发现无wget命令，聪明的我马上想到使用yum install wget 来安装一个，谁知道出现了无法连接镜像列表的报错，通过查看ifconfig发现，原来是网卡没有启动，于是查看了资料：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/sysconfig/network-scripts/ifcfg-eth0</span><br></pre></td></tr></table></figure></p>
+                <p><img src="../uploads/2015/08/CentOS-Network-eth0.jpg" alt="CentOS-Network-eth0"><br>今天用Vbox安装了CentOS 6.7 准备测试游戏服务器,需要下载一个服务端，使用wget时发现无wget命令，聪明的我马上想到使用yum install wget 来安装一个，谁知道出现了无法连接镜像列表的报错，通过查看ifconfig发现，原来是网卡没有启动，于是查看了资料：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/sysconfig/network-scripts/ifcfg-eth0</span><br></pre></td></tr></table></figure></p>
 <p>修改开启自启:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">DEVICE=eth0</span><br><span class="line">HWADDR=00:0C:29:2E:37:F0</span><br><span class="line">TYPE=Ethernet</span><br><span class="line">UUID=69cd9740-184f-49b7-857f-e397e57f265b</span><br><span class="line">ONBOOT=yes          //修改此处</span><br><span class="line">NM_CONTROLLED=yes   //修改此处</span><br><span class="line">BOOTPROTO=dhcp</span><br></pre></td></tr></table></figure></p>
 <p>然后重启网络：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">//重启网络</span><br><span class="line">/etc/init.d/network restart</span><br><span class="line">//查看IP</span><br></pre></td></tr></table></figure></p>
 
@@ -561,113 +688,6 @@ Starting MySQL.The server quit without updating PID file (/usr/local/mysql/data/
             <a href="http://www.imsry.cn/posts/3be490a0.html" title="Linux之CentOS 6.7 下无网络? 原来是网卡没启动！">
                 
                     <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/6.jpg" alt="默认配图" >
-                
-            </a>
-        </div>
-    </div>
-</article>
-
-    
-        <!-- 文章列表 item -->
-<article class="post">
-    <header>
-        <!-- 标签这有且只能显示一个 -->
-        
-        <a class="cat-link" href="/categories/Linux/">Linux</a>
-        
-        <!-- 文章标题 -->
-        
-    <h3 class="post-title">
-    	<a href="http://www.imsry.cn/posts/24c6b55d.html">
-    		Mac OS(苹果电脑) 如何清空DNS缓存？
-    	</a>
-    </h3>
-
-    </header>
-    <p class="post-meta">
-        Anthony 发表于
-        <time datetime="2015-06-14T01:59:54.000Z">2015-06-14 09:59:54</time>
-        &nbsp;&nbsp;
-        <span class="post-tags">
-            标签：
-            
-        </span>
-    </p>
-
-    <div class="post-content">
-        <div class="post-excerpt">
-            
-                <p>很多时候,因为域名的解析长时间未生效,我们无法通过域名访问刚刚解析的主机,最快的方法就是清空本地DNS缓存。<br>我们都知道,在Windows下面,想要清空本地dns缓存只需要执行一条CMD命令：</p>
-<blockquote>
-<p>ipconfig/flushdns<br>但是在使用苹果这样高大上的Mac系统的时候,就得用它独特的命令了。不过，不同的MAC系统版本命令也不一样！<br>Tiger或更低版本 Mac OS：</p>
-<p><pre lang="php" line="1" escaped="true">sudo lookupd -flushcache<br></pre><br>Leopard和Snow Leopard：</p>
-<p><pre lang="linux" line="1" escaped="true">sudo dscacheutil -flushcache<br></pre><br>而到了Lion、Mountain Lion和Mavericks：</p>
-<p><pre lang="linux" line="1" escaped="true">sudo killall -HUP mDNSResponder<br></pre><br>然后是Yosemite:</p>
-<p><pre lang="c" line="1" escaped="true">sudo discoveryutil mdnsflushcache</pre></p>
-</blockquote>
-<p>最后就到了EI Caption：</p>
-<p>sudo dscacheutil -flushcache<br>另外，提一下，Linux下通用命令:</p>
-<pre lang="linux" line="1" escaped="true">sudo /etc/init.d/dns-clean start
-</pre>
-            
-            <p class="more">
-                <a href="http://www.imsry.cn/posts/24c6b55d.html">阅读剩下更多</a>
-            </p>
-        </div>
-        <div class="post-thumbnail" data-img="">
-            <a href="http://www.imsry.cn/posts/24c6b55d.html" title="Mac OS(苹果电脑) 如何清空DNS缓存？">
-                
-                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/4.jpg" alt="默认配图" >
-                
-            </a>
-        </div>
-    </div>
-</article>
-
-    
-        <!-- 文章列表 item -->
-<article class="post">
-    <header>
-        <!-- 标签这有且只能显示一个 -->
-        
-        <a class="cat-link" href="/categories/Linux/">Linux</a>
-        
-        <!-- 文章标题 -->
-        
-    <h3 class="post-title">
-    	<a href="http://www.imsry.cn/posts/57c492d1.html">
-    		安装CentOS7之后win7引导没了,Grub解决
-    	</a>
-    </h3>
-
-    </header>
-    <p class="post-meta">
-        Anthony 发表于
-        <time datetime="2015-06-09T02:37:03.000Z">2015-06-09 10:37:03</time>
-        &nbsp;&nbsp;
-        <span class="post-tags">
-            标签：
-            
-        </span>
-    </p>
-
-    <div class="post-content">
-        <div class="post-excerpt">
-            
-                <pre><code>因为学习linux需要，虚拟机安装又显得太简单，所以在实验室win7电脑上装个windows和linux的双系统，自然采用最新的centos7来试着玩一玩咯！但是没想到装完cnetos7之后，windows进不去了（没有windows的引导），上网查了各种资料，最终确定了修改Grub的配置文件来增加对windows的引导。
-首先我们要登陆Centos,打开Grub的配置文件：
-</code></pre><p><pre><br>执行命令：<br>vi /boot/grub2/grub.cfg<br></pre><br>找到 ### BEGIN /etc/grub.d/30_os-prober ### 在下面添加：</p>
-<p><pre><br>menuentry “Windows 7 Loader On Dev/sda1” {<br>     insmod ntfs<br>     set root=(hd0,1)<br>     chainloader +1<br>}<br></pre><br>关键代码：set root=(hd0,1) 其中 hd0 表示硬盘，1 表示C盘 ，因为我这里win7是安装在C盘的，所以是1，如果你不是C盘（第一个分区），那么就要需改成你对应的分区号了。</p>
-
-            
-            <p class="more">
-                <a href="http://www.imsry.cn/posts/57c492d1.html">阅读剩下更多</a>
-            </p>
-        </div>
-        <div class="post-thumbnail" data-img="">
-            <a href="http://www.imsry.cn/posts/57c492d1.html" title="安装CentOS7之后win7引导没了,Grub解决">
-                
-                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/9.jpg" alt="默认配图" >
                 
             </a>
         </div>
@@ -720,112 +740,87 @@ Starting MySQL.The server quit without updating PID file (/usr/local/mysql/data/
 <ul class="widget-bd">
     
     <li>
+        <a href="/categories/编程语言/">编程语言</a>
+        <span class="badge">(5)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/学习笔记/">学习笔记</a>
+        <span class="badge">(46)</span>
+    </li>
+    
+    <li>
         <a href="/categories/Learn-GO/">Learn-GO</a>
         <span class="badge">(6)</span>
     </li>
     
     <li>
-        <a href="/categories/我的分享/">我的分享</a>
+        <a href="/categories/Linux/">Linux</a>
         <span class="badge">(16)</span>
     </li>
     
     <li>
-        <a href="/categories/Linxu分享/">Linxu分享</a>
-        <span class="badge">(9)</span>
-    </li>
-    
-    <li>
-        <a href="/categories/Linux/">Linux</a>
-        <span class="badge">(11)</span>
-    </li>
-    
-    <li>
-        <a href="/categories/数据库/">数据库</a>
-        <span class="badge">(3)</span>
-    </li>
-    
-    <li>
-        <a href="/categories/Html/">Html</a>
-        <span class="badge">(2)</span>
+        <a href="/categories/开发板/">开发板</a>
+        <span class="badge">(1)</span>
     </li>
     
     <li>
         <a href="/categories/PHP/">PHP</a>
-        <span class="badge">(12)</span>
+        <span class="badge">(9)</span>
     </li>
     
     <li>
-        <a href="/categories/学习笔记/">学习笔记</a>
-        <span class="badge">(4)</span>
-    </li>
-    
-    <li>
-        <a href="/categories/JavaScript/">JavaScript</a>
-        <span class="badge">(3)</span>
-    </li>
-    
-    <li>
-        <a href="/categories/JS分享/">JS分享</a>
-        <span class="badge">(6)</span>
-    </li>
-    
-    <li>
-        <a href="/categories/Web技术/">Web技术</a>
-        <span class="badge">(3)</span>
-    </li>
-    
-    <li>
-        <a href="/categories/干货/">干货</a>
-        <span class="badge">(1)</span>
-    </li>
-    
-    <li>
-        <a href="/categories/Python/">-Python</a>
-        <span class="badge">(1)</span>
-    </li>
-    
-    <li>
-        <a href="/categories/我的分享/未分类/">未分类</a>
-        <span class="badge">(2)</span>
-    </li>
-    
-    <li>
-        <a href="/categories/Html/学习笔记/">学习笔记</a>
-        <span class="badge">(2)</span>
-    </li>
-    
-    <li>
-        <a href="/categories/PHP/学习笔记/">学习笔记</a>
+        <a href="/categories/算法/">算法</a>
         <span class="badge">(5)</span>
     </li>
     
     <li>
-        <a href="/categories/学习笔记/数据库/">数据库</a>
+        <a href="/categories/面试/">面试</a>
         <span class="badge">(1)</span>
     </li>
     
     <li>
-        <a href="/categories/Linux/数据库/">数据库</a>
+        <a href="/categories/网络安全/">网络安全</a>
+        <span class="badge">(2)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/数据库/">数据库</a>
+        <span class="badge">(2)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/MacOS/">MacOS</a>
         <span class="badge">(1)</span>
     </li>
     
     <li>
-        <a href="/categories/Web技术/数据库/">数据库</a>
+        <a href="/categories/Web/">Web</a>
+        <span class="badge">(3)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/我的分享/">我的分享</a>
         <span class="badge">(1)</span>
     </li>
     
     <li>
-        <a href="/categories/Linux/Linxu分享/">Linxu分享</a>
+        <a href="/categories/考试/">考试</a>
         <span class="badge">(1)</span>
     </li>
     
     <li>
-        <a href="/categories/Linxu分享/PHP/">PHP</a>
+        <a href="/categories/游戏/">游戏</a>
+        <span class="badge">(2)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/开放平台/">开放平台</a>
         <span class="badge">(1)</span>
     </li>
     
     <li>
-        <a href="/categories/Web技术/学习笔记/">学习笔记</a>
+        <a href="/categories/杂谈/">杂谈</a>
         <span class="badge">(1)</span>
     </li>
     
@@ -844,23 +839,23 @@ Starting MySQL.The server quit without updating PID file (/usr/local/mysql/data/
   
     <a class="tag-item" href="/tags/Docker/" title="Docker">Docker (1)</a>
   
-    <a class="tag-item" href="/tags/Linux/" title="Linux">Linux (4)</a>
-  
     <a class="tag-item" href="/tags/essay/" title="essay">essay (3)</a>
   
     <a class="tag-item" href="/tags/archive/" title="archive">archive (2)</a>
   
-    <a class="tag-item" href="/tags/tar/" title="tar">tar (1)</a>
-  
     <a class="tag-item" href="/tags/zip/" title="zip">zip (1)</a>
   
-    <a class="tag-item" href="/tags/bufio/" title="bufio">bufio (1)</a>
-  
-    <a class="tag-item" href="/tags/bytes/" title="bytes">bytes (1)</a>
+    <a class="tag-item" href="/tags/Linux/" title="Linux">Linux (5)</a>
   
     <a class="tag-item" href="/tags/path/" title="path">path (2)</a>
   
-    <a class="tag-item" href="/tags/php/" title="php">php (7)</a>
+    <a class="tag-item" href="/tags/filepath/" title="filepath">filepath (1)</a>
+  
+    <a class="tag-item" href="/tags/bufio/" title="bufio">bufio (1)</a>
+  
+    <a class="tag-item" href="/tags/tar/" title="tar">tar (1)</a>
+  
+    <a class="tag-item" href="/tags/bytes/" title="bytes">bytes (1)</a>
   
     <a class="tag-item" href="/tags/OrangePi/" title="OrangePi">OrangePi (2)</a>
   
@@ -870,13 +865,15 @@ Starting MySQL.The server quit without updating PID file (/usr/local/mysql/data/
   
     <a class="tag-item" href="/tags/IP/" title="IP">IP (2)</a>
   
-    <a class="tag-item" href="/tags/filepath/" title="filepath">filepath (1)</a>
-  
     <a class="tag-item" href="/tags/算法/" title="算法">算法 (2)</a>
+  
+    <a class="tag-item" href="/tags/php/" title="php">php (7)</a>
   
     <a class="tag-item" href="/tags/时间复杂度/" title="时间复杂度">时间复杂度 (1)</a>
   
     <a class="tag-item" href="/tags/定理/" title="定理">定理 (1)</a>
+  
+    <a class="tag-item" href="/tags/Apache/" title="Apache">Apache (3)</a>
   
     <a class="tag-item" href="/tags/Go/" title="Go">Go (4)</a>
   
@@ -884,37 +881,35 @@ Starting MySQL.The server quit without updating PID file (/usr/local/mysql/data/
   
     <a class="tag-item" href="/tags/RPC/" title="RPC">RPC (1)</a>
   
-    <a class="tag-item" href="/tags/Apache/" title="Apache">Apache (3)</a>
-  
     <a class="tag-item" href="/tags/Proxy/" title="Proxy">Proxy (1)</a>
   
     <a class="tag-item" href="/tags/Tomcat/" title="Tomcat">Tomcat (1)</a>
   
     <a class="tag-item" href="/tags/反向代理/" title="反向代理">反向代理 (1)</a>
   
-    <a class="tag-item" href="/tags/提问/" title="提问">提问 (1)</a>
-  
     <a class="tag-item" href="/tags/面试/" title="面试">面试 (1)</a>
   
-    <a class="tag-item" href="/tags/Chrome-https/" title="Chrome https">Chrome https (1)</a>
-  
-    <a class="tag-item" href="/tags/测试/" title="测试">测试 (4)</a>
+    <a class="tag-item" href="/tags/https/" title="https">https (2)</a>
   
     <a class="tag-item" href="/tags/性能/" title="性能">性能 (3)</a>
+  
+    <a class="tag-item" href="/tags/VPN/" title="VPN">VPN (1)</a>
+  
+    <a class="tag-item" href="/tags/数据库/" title="数据库">数据库 (2)</a>
   
     <a class="tag-item" href="/tags/C/" title="C">C (1)</a>
   
     <a class="tag-item" href="/tags/Java/" title="Java">Java (1)</a>
   
-    <a class="tag-item" href="/tags/方法/" title="方法">方法 (1)</a>
+    <a class="tag-item" href="/tags/测试/" title="测试">测试 (1)</a>
+  
+    <a class="tag-item" href="/tags/笔试/" title="笔试">笔试 (1)</a>
+  
+    <a class="tag-item" href="/tags/编程/" title="编程">编程 (1)</a>
   
     <a class="tag-item" href="/tags/Glassfish/" title="Glassfish">Glassfish (1)</a>
   
     <a class="tag-item" href="/tags/Java-Web/" title="Java Web">Java Web (1)</a>
-  
-    <a class="tag-item" href="/tags/mysql/" title="mysql">mysql (5)</a>
-  
-    <a class="tag-item" href="/tags/连接池/" title="连接池">连接池 (1)</a>
   
 </div>
     </section>
@@ -958,6 +953,6 @@ Starting MySQL.The server quit without updating PID file (/usr/local/mysql/data/
 
     <!--博客js脚本 -->
     <!-- 这里放网站js脚本 -->
-<script src="/js/main.js?v=1590659533408"></script>
+<script src="/js/main.js?v=1590662257834"></script>
 </body>
 </html>

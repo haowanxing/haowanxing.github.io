@@ -61,10 +61,6 @@ var _hmt = _hmt || [];
             </li>
             
             <li rel="/categories/PHP/index.html" class="item ">
-                <a href="/lab/" title="实验室" class="icon-lab">&nbsp;实验室</a>
-            </li>
-            
-            <li rel="/categories/PHP/index.html" class="item ">
                 <a href="/about/" title="关于" class="icon-about">&nbsp;关于</a>
             </li>
             
@@ -124,6 +120,251 @@ var _hmt = _hmt || [];
             
         </strong>
     </h3>
+    
+        <!-- 文章列表 item -->
+<article class="post">
+    <header>
+        <!-- 标签这有且只能显示一个 -->
+        
+        <a class="cat-link" href="/categories/PHP/">PHP</a>
+        
+        <!-- 文章标题 -->
+        
+    <h3 class="post-title">
+    	<a href="http://www.imsry.cn/posts/5f047c20.html">
+    		引用符号&#39;&amp;&#39;在foreach循环中的惊喜
+    	</a>
+    </h3>
+
+    </header>
+    <p class="post-meta">
+        Anthony 发表于
+        <time datetime="2019-06-21T06:51:27.000Z">2019-06-21 14:51:27</time>
+        &nbsp;&nbsp;
+        <span class="post-tags">
+            标签：
+            
+    
+        <a href="/tags/PHP/" title="PHP">PHP</a>
+    
+
+        </span>
+    </p>
+
+    <div class="post-content">
+        <div class="post-excerpt">
+            
+                <blockquote>
+<p>工作中总会遇到一些奇奇怪怪的由前人所写下的不可置疑的代码，如果你仅仅跟着眼前所见的代码去理解他人的思路，Well You have fell into a terrible situation.</p>
+</blockquote>
+<p>贴一段示例代码：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">$students = [</span><br><span class="line">    [<span class="string">'name'</span>=&gt;<span class="string">'Jackson'</span>,<span class="string">'age'</span>=&gt;<span class="number">15</span>],</span><br><span class="line">    [<span class="string">'name'</span>=&gt;<span class="string">'Jerry'</span>,<span class="string">'age'</span>=&gt;<span class="number">14</span>],</span><br><span class="line">    [<span class="string">'name'</span>=&gt;<span class="string">'Amy'</span>,<span class="string">'age'</span>=&gt;<span class="number">14</span>]</span><br><span class="line">];</span><br><span class="line">$classes = [</span><br><span class="line">    <span class="string">'CL001'</span>=&gt;[<span class="string">'name'</span>=&gt;<span class="string">'Language'</span>,<span class="string">'classTime'</span>=&gt;<span class="number">30</span>],</span><br><span class="line">    <span class="string">'CL002'</span>=&gt;[<span class="string">'name'</span>=&gt;<span class="string">'PE'</span>,<span class="string">'classTime'</span>=&gt;<span class="number">13</span>]</span><br><span class="line">];</span><br><span class="line"></span><br><span class="line"><span class="comment">/* </span></span><br><span class="line"><span class="comment"> * 循环$students,为其添加一个属性'name-age'</span></span><br><span class="line"><span class="comment"> * 这里使用了&amp;$v以获得数组内部元素的引用，使的可以在循环体内修改元素内容</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">foreach</span> ($students <span class="keyword">as</span> $k=&gt;&amp;$v)&#123;</span><br><span class="line">    $v[<span class="string">'name-age'</span>] = $v[<span class="string">'name'</span>] . <span class="string">'-'</span> .$v[<span class="string">'age'</span>];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">$classString = <span class="string">''</span>;	<span class="comment">//定义一个空串</span></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * 循环$classes,将所有课程ID和名称联结成串</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">foreach</span> ($classes <span class="keyword">as</span> $k=&gt;$v)&#123;</span><br><span class="line">    $classString .= <span class="string">'ClassID:'</span>.$k.<span class="string">'-'</span>.$v[<span class="string">'name'</span>].PHP_EOL;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">echo</span> $classString;</span><br><span class="line">var_dump($students);	<span class="comment">//Think here!</span></span><br></pre></td></tr></table></figure>
+<p>你也许会回答这样一个输出结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">ClassID:CL001-Language</span><br><span class="line">ClassID:CL002-PE</span><br><span class="line">array(3) &#123;</span><br><span class="line">  [0]=&gt;</span><br><span class="line">  array(3) &#123;</span><br><span class="line">    [&quot;name&quot;]=&gt;</span><br><span class="line">    string(7) &quot;Jackson&quot;</span><br><span class="line">    [&quot;age&quot;]=&gt;</span><br><span class="line">    int(15)</span><br><span class="line">    [&quot;name-age&quot;]=&gt;</span><br><span class="line">    string(10) &quot;Jackson-15&quot;</span><br><span class="line">  &#125;</span><br><span class="line">  [1]=&gt;</span><br><span class="line">  array(3) &#123;</span><br><span class="line">    [&quot;name&quot;]=&gt;</span><br><span class="line">    string(5) &quot;Jerry&quot;</span><br><span class="line">    [&quot;age&quot;]=&gt;</span><br><span class="line">    int(14)</span><br><span class="line">    [&quot;name-age&quot;]=&gt;</span><br><span class="line">    string(8) &quot;Jerry-14&quot;</span><br><span class="line">  &#125;</span><br><span class="line">  [2]=&gt;</span><br><span class="line">  array(3) &#123;</span><br><span class="line">    [&quot;name&quot;]=&gt;</span><br><span class="line">    string(3) &quot;Amy&quot;</span><br><span class="line">    [&quot;age&quot;]=&gt;</span><br><span class="line">    int(14)</span><br><span class="line">    [&quot;name-age&quot;]=&gt;</span><br><span class="line">    string(6) &quot;Amy-14&quot;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>也许会有不少人会使用foreach+引用符号’&amp;’来遍历更新数组内容，这样也的确可行。但是！这里就惊现了这样一个巨坑，为何在循环<code>$classes</code>之后，<code>$students</code>变得面目全非？来看看实际输出结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">ClassID:CL001-Language</span><br><span class="line">ClassID:CL002-PE</span><br><span class="line">array(3) &#123;</span><br><span class="line">  [0]=&gt;</span><br><span class="line">  array(3) &#123;</span><br><span class="line">    [&quot;name&quot;]=&gt;</span><br><span class="line">    string(7) &quot;Jackson&quot;</span><br><span class="line">    [&quot;age&quot;]=&gt;</span><br><span class="line">    int(15)</span><br><span class="line">    [&quot;name-age&quot;]=&gt;</span><br><span class="line">    string(10) &quot;Jackson-15&quot;</span><br><span class="line">  &#125;</span><br><span class="line">  [1]=&gt;</span><br><span class="line">  array(3) &#123;</span><br><span class="line">    [&quot;name&quot;]=&gt;</span><br><span class="line">    string(5) &quot;Jerry&quot;</span><br><span class="line">    [&quot;age&quot;]=&gt;</span><br><span class="line">    int(14)</span><br><span class="line">    [&quot;name-age&quot;]=&gt;</span><br><span class="line">    string(8) &quot;Jerry-14&quot;</span><br><span class="line">  &#125;</span><br><span class="line">  [2]=&gt;</span><br><span class="line">  &amp;array(2) &#123;</span><br><span class="line">    [&quot;name&quot;]=&gt;</span><br><span class="line">    string(2) &quot;PE&quot;</span><br><span class="line">    [&quot;classTime&quot;]=&gt;</span><br><span class="line">    int(13)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>发现了吧，最后一项为什么是<code>$classes</code>的元素？而且是其最后一项？聪明的你现在应该在开始思考’&amp;’符号了！</p>
+<p>两次foreach循环我们都用了<code>$k</code>和<code>$v</code>来代替键和值，但在<code>&amp;</code>符号作用在<code>$v</code>上的时候，这个<code>$v</code>实际是每次循环的元素地址。而在第二个foreach中使用的<code>$v</code>实际上已经是一个存在的引用（指向上一个数组的最后一次访问的元素），在对他进行赋值修改时，就会导致与其实际指向的数据发生修改，因为他们就是逻辑上的“相同内存”。</p>
+<p>我所举例的代码比较容易发现问题，其实我实际遇到的问题却糟糕的多，因为第二次循环是为了给第一次循环的内容进行填补，所以元素结构是一模一样的，这样出现的现象就是同一个元素在数组中出现了两次，其中原数组的最后一个元素指向第二次循环的数组的最后一个。</p>
+<p>这里举例的是当<code>&amp;</code>符号用在<code>=&gt;</code>后面的值变量，如果用在<code>=&gt;</code>前面的键变量呢？？？</p>
+<p>实在可怕！ 还好我喜欢用array_walk来代替此类做法。</p>
+
+            
+            <p class="more">
+                <a href="http://www.imsry.cn/posts/5f047c20.html">阅读剩下更多</a>
+            </p>
+        </div>
+        <div class="post-thumbnail" data-img="">
+            <a href="http://www.imsry.cn/posts/5f047c20.html" title="引用符号&#39;&amp;&#39;在foreach循环中的惊喜">
+                
+                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/1.jpg" alt="默认配图" >
+                
+            </a>
+        </div>
+    </div>
+</article>
+
+    
+        <!-- 文章列表 item -->
+<article class="post">
+    <header>
+        <!-- 标签这有且只能显示一个 -->
+        
+        <a class="cat-link" href="/categories/PHP/">PHP</a>
+        
+        <!-- 文章标题 -->
+        
+    <h3 class="post-title">
+    	<a href="http://www.imsry.cn/posts/5c3bf0b6.html">
+    		PHP加解密算法使用openssl替换mcrypt扩展
+    	</a>
+    </h3>
+
+    </header>
+    <p class="post-meta">
+        Anthony 发表于
+        <time datetime="2019-02-20T10:02:20.000Z">2019-02-20 18:02:20</time>
+        &nbsp;&nbsp;
+        <span class="post-tags">
+            标签：
+            
+    
+        <a href="/tags/PHP/" title="PHP">PHP</a> / 
+    
+        <a href="/tags/openssl/" title="openssl">openssl</a> / 
+    
+        <a href="/tags/mcrypt/" title="mcrypt">mcrypt</a> / 
+    
+        <a href="/tags/xtea/" title="xtea">xtea</a>
+    
+
+        </span>
+    </p>
+
+    <div class="post-content">
+        <div class="post-excerpt">
+            
+                <p>PHP版本从7.2开始不再支持mcrypt扩展，所以我们需要使用OpenSSl对其进行替换。本文仅列出部分算法的替换示例，所以不在本文出现的算法或模式需要自行尝试，顺水推舟。</p>
+<p>本文替换案例：</p>
+<ol>
+<li>MCRYPT_RIJNDAEL_128 | MCRYPT_MODE_ECB =&gt; AES-128-ECB</li>
+<li>MCRYPT_DES | MCRYPT_MODE_CBC =&gt; DES-CBC</li>
+<li>MCRYPT_RIJNDAEL_128 | MCRYPT_MODE_CBC =&gt; AES-128-CBC</li>
+<li>MCRYPT_XTEA | MCRYPT_MODE_CBC</li>
+</ol>
+<blockquote>
+<p>在使用 MCRYPT_RIJNDAEL_128 的地方，如果秘钥长度分别为16、24、32，则加密算法用 AES-128-ECB、AES-192-ECB、AES-256-ECB，BlockSize为16、24、32。</p>
+</blockquote>
+<p>首先列出需要用到的数据填充方法：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">ZeroPadding</span><span class="params">($str, $block = <span class="number">16</span>)</span> </span>&#123;</span><br><span class="line">    $pad = $block - (strlen($str) % $block);</span><br><span class="line">    <span class="keyword">if</span>($pad == $block) <span class="keyword">return</span> $str;</span><br><span class="line">    <span class="keyword">return</span> $str.str_repeat(chr(<span class="number">0</span>),$pad);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">ZeroUnPadding</span><span class="params">($str)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> rtrim($str, <span class="string">"\0"</span>);</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">PKCS7Padding</span><span class="params">($str, $block_size)</span> </span>&#123;</span><br><span class="line">    $padding_char = $block_size - (strlen($str) % $block_size);</span><br><span class="line">    $padding_str = str_repeat(chr($padding_char),$padding_char);</span><br><span class="line">    <span class="keyword">return</span> $str.$padding_str;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">PKCS7UnPadding</span><span class="params">($str)</span> </span>&#123;</span><br><span class="line">    $char=substr($str,<span class="number">-1</span>,<span class="number">1</span>);</span><br><span class="line">    $num=ord($char);</span><br><span class="line">    <span class="keyword">if</span>($num&gt;<span class="number">0</span> &amp;&amp; $num &lt;= strlen($str)) &#123;</span><br><span class="line">        $str = substr($str, <span class="number">0</span>, <span class="number">-1</span> * $num);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> $str;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+            
+            <p class="more">
+                <a href="http://www.imsry.cn/posts/5c3bf0b6.html">阅读剩下更多</a>
+            </p>
+        </div>
+        <div class="post-thumbnail" data-img="">
+            <a href="http://www.imsry.cn/posts/5c3bf0b6.html" title="PHP加解密算法使用openssl替换mcrypt扩展">
+                
+                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/0.jpg" alt="默认配图" >
+                
+            </a>
+        </div>
+    </div>
+</article>
+
+    
+        <!-- 文章列表 item -->
+<article class="post">
+    <header>
+        <!-- 标签这有且只能显示一个 -->
+        
+        <a class="cat-link" href="/categories/PHP/">PHP</a>
+        
+        <!-- 文章标题 -->
+        
+    <h3 class="post-title">
+    	<a href="http://www.imsry.cn/posts/25a92a3d.html">
+    		Pazzle on array_column
+    	</a>
+    </h3>
+
+    </header>
+    <p class="post-meta">
+        Anthony 发表于
+        <time datetime="2017-11-10T02:28:18.000Z">2017-11-10 10:28:18</time>
+        &nbsp;&nbsp;
+        <span class="post-tags">
+            标签：
+            
+    
+        <a href="/tags/php/" title="php">php</a>
+    
+
+        </span>
+    </p>
+
+    <div class="post-content">
+        <div class="post-excerpt">
+            
+                <p>　　在PHP中内置的对数组操作的方法（函数）有一个叫做’array_column’的非常实用，它可以用作返回一个二维数组的指定列。</p>
+<p>　　先介绍一下它！</p>
+<p>　　好比这样一个用法：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">$students = <span class="keyword">array</span>(</span><br><span class="line">	<span class="keyword">array</span>(</span><br><span class="line">		<span class="string">'id'</span>=&gt;<span class="number">1</span>,</span><br><span class="line">		<span class="string">'name'</span>=&gt;<span class="string">'Jerry'</span></span><br><span class="line">		),</span><br><span class="line">	<span class="keyword">array</span>(</span><br><span class="line">		<span class="string">'id'</span>=&gt;<span class="number">3</span>,</span><br><span class="line">		<span class="string">'name'</span>=&gt;<span class="string">'Tom'</span></span><br><span class="line">		),</span><br><span class="line">	<span class="keyword">array</span>(</span><br><span class="line">		<span class="string">'id'</span>=&gt;<span class="number">6</span>,</span><br><span class="line">		<span class="string">'name'</span>=&gt;<span class="string">'Lily'</span></span><br><span class="line">		),</span><br><span class="line">	<span class="keyword">array</span>(</span><br><span class="line">		<span class="string">'id'</span>=&gt;<span class="number">11</span>,</span><br><span class="line">		<span class="string">'name'</span>=&gt;<span class="string">'Bob'</span></span><br><span class="line">		),</span><br><span class="line">	);</span><br><span class="line">$student_names = array_column($students,<span class="string">'name'</span>);</span><br><span class="line">var_dump($student_names);</span><br></pre></td></tr></table></figure>
+<p>输出结果：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">array (size=4)</span><br><span class="line">  0 =&gt; string <span class="string">'Jerry'</span> (length=5)</span><br><span class="line">  1 =&gt; string <span class="string">'Tom'</span> (length=3)</span><br><span class="line">  2 =&gt; string <span class="string">'Lily'</span> (length=4)</span><br><span class="line">  3 =&gt; string <span class="string">'Bob'</span> (length=3)</span><br></pre></td></tr></table></figure>
+<p>　　这样就得到了一个所有名字的数组，想必对于一个PHPER来说并不陌生。但是今天要讲的重点是<code>array_column</code>的另外一个用法，如果给它第三个参数，那么它将以第三个参数对应的数组中的值作为返回数组的键，用例如下：</p>
+            
+            <p class="more">
+                <a href="http://www.imsry.cn/posts/25a92a3d.html">阅读剩下更多</a>
+            </p>
+        </div>
+        <div class="post-thumbnail" data-img="">
+            <a href="http://www.imsry.cn/posts/25a92a3d.html" title="Pazzle on array_column">
+                
+                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/0.jpg" alt="默认配图" >
+                
+            </a>
+        </div>
+    </div>
+</article>
+
+    
+        <!-- 文章列表 item -->
+<article class="post">
+    <header>
+        <!-- 标签这有且只能显示一个 -->
+        
+        <a class="cat-link" href="/categories/PHP/">PHP</a>
+        
+        <!-- 文章标题 -->
+        
+    <h3 class="post-title">
+    	<a href="http://www.imsry.cn/posts/82527d05.html">
+    		array_walk中的$this报错
+    	</a>
+    </h3>
+
+    </header>
+    <p class="post-meta">
+        Anthony 发表于
+        <time datetime="2017-04-14T08:46:59.000Z">2017-04-14 16:46:59</time>
+        &nbsp;&nbsp;
+        <span class="post-tags">
+            标签：
+            
+        </span>
+    </p>
+
+    <div class="post-content">
+        <div class="post-excerpt">
+            
+                <blockquote>
+<p>Fatal Error:Using $this when not in object context on line 54</p>
+</blockquote>
+<p>　　今天在完成一个小功能开发并提交SVN后，收到前端的求助，说是更新了我的代码后页面打不开了。很着急啊，我这里都是测试成功才提交版本的。现在只能麻溜的跑过查看了。</p>
+<p>　　首先，出现的情况是空白页面（对，没有任何输出）。报错肯定没打开，帮他打开E_ALL后就看到了今天的重点报错提示了。说是在54行有个<code>$this</code>不在对象环境中？</p>
+<p>　　然后我去看了，那个<code>$this</code>出现在array_walk方法的function中，从语句上来看是完全没有问题的，在类的方法里面用<code>$this</code>肯定没毛病啊，可是为什么他那里就报错呢？</p>
+<p>　　我突然想起来，如果要在array_walk里面使用外面的变量的时候需要使用<code>use</code>方法。所以改进一下:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$user_id = $this-&gt;user-&gt;id;</span><br><span class="line">array_walk($arr,function(&amp;$v) use($user_id) &#123;</span><br><span class="line">	$v[&apos;user_id&apos;]=$user_id;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>　　这样就没毛病了。看来这个<code>array_walk</code>还挺调皮啊，不得不说这个方法的使用还真有许多需要注意的地方呢。</p>
+<p>　　通过查资料，得知这个$this在PHP版本低于5.4的情况下是会出现问题的。高版本的不会出现。</p>
+<p>参考：<a href="http://stackoverflow.com/questions/19033184/using-this-when-not-in-object-context-error-within-array-walk" target="_blank" rel="noopener">Using $this when not in object context error within array_walk</a></p>
+
+            
+            <p class="more">
+                <a href="http://www.imsry.cn/posts/82527d05.html">阅读剩下更多</a>
+            </p>
+        </div>
+        <div class="post-thumbnail" data-img="">
+            <a href="http://www.imsry.cn/posts/82527d05.html" title="array_walk中的$this报错">
+                
+                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/4.jpg" alt="默认配图" >
+                
+            </a>
+        </div>
+    </div>
+</article>
+
     
         <!-- 文章列表 item -->
 <article class="post">
@@ -265,144 +506,6 @@ session.upload_progress.min_freq = &quot;1&quot;
         <!-- 文章标题 -->
         
     <h3 class="post-title">
-    	<a href="http://www.imsry.cn/posts/28c3b503.html">
-    		实现寻找两个字符串的最大公子串的方法
-    	</a>
-    </h3>
-
-    </header>
-    <p class="post-meta">
-        Anthony 发表于
-        <time datetime="2016-10-27T07:32:50.000Z">2016-10-27 15:32:50</time>
-        &nbsp;&nbsp;
-        <span class="post-tags">
-            标签：
-            
-    
-        <a href="/tags/php/" title="php">php</a> / 
-    
-        <a href="/tags/子串/" title="子串">子串</a>
-    
-
-        </span>
-    </p>
-
-    <div class="post-content">
-        <div class="post-excerpt">
-            
-                <p>昨天在做某兔的校招笔试题的时候遇到的题目，就这一个编程题，然而当时却没有拿下，把它和字符串匹配中的子串包含给弄混了，哎！<br>废话少说，上代码！</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">function MaxSubCommonStr($str1,$str2)&#123;</span><br><span class="line">    $a = str_split($str1);	//字符串分割成数组</span><br><span class="line">    $b = str_split($str2);</span><br><span class="line">    $len1 = strlen($str1);	//字符串的长度</span><br><span class="line">    $len2 = strlen($str2);</span><br><span class="line">    $maxlen = 0;	//最大计数器</span><br><span class="line">    for($i=0;$i&lt;$len1;$i++)&#123;</span><br><span class="line">        for($j=0;$j&lt;$len2;$j++)&#123;</span><br><span class="line">            if($a[$i] == $b[$j])&#123;	//找到第一个相等的字符</span><br><span class="line">                $as = $i;	//拷贝字符串1的起点</span><br><span class="line">                $bs = $j;	//拷贝字符串2的起点</span><br><span class="line">                $count = 1;	//有一个相等的字符了</span><br><span class="line">                while ($as + 1 &lt; $len1 &amp;&amp; $bs + 1 &lt; $len2 &amp;&amp; $a[++$as] == $b[++$bs])</span><br><span class="line">                    $count++;	//往后比较，每匹配一个计数+1，直到其中一个查完或者出现不相等</span><br><span class="line">                if($count &gt; $maxlen)&#123;	//当本次计数长度大于最大记录时</span><br><span class="line">                    $maxlen = $count;	//更新最大计数长度</span><br><span class="line">                    $start1 = $i;		//更新本次比较的字符串1起点</span><br><span class="line">                    $start2 = $j;		//更新本次比较的字符串2起点</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;    </span><br><span class="line">    return substr($str1,$start1,$maxlen);	//直接返回字符串1，从$start1起点往后$maxlen最大匹配长度个数的子串</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">$str1 = &apos;abcdefgabc&apos;;</span><br><span class="line">$str2 = &apos;defghijabc&apos;;</span><br><span class="line">echo MaxSubCommonStr($str1,$str2);</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
-<p>没什么含金量，只是写出来练练手，思路照搬过来的。</p>
-
-            
-            <p class="more">
-                <a href="http://www.imsry.cn/posts/28c3b503.html">阅读剩下更多</a>
-            </p>
-        </div>
-        <div class="post-thumbnail" data-img="">
-            <a href="http://www.imsry.cn/posts/28c3b503.html" title="实现寻找两个字符串的最大公子串的方法">
-                
-                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/7.jpg" alt="默认配图" >
-                
-            </a>
-        </div>
-    </div>
-</article>
-
-    
-        <!-- 文章列表 item -->
-<article class="post">
-    <header>
-        <!-- 标签这有且只能显示一个 -->
-        
-        <a class="cat-link" href="/categories/PHP/">PHP</a>
-        
-        <!-- 文章标题 -->
-        
-    <h3 class="post-title">
-    	<a href="http://www.imsry.cn/posts/eecfc875.html">
-    		PHP常用算法的方法实现(冒泡、选择、插入、快排、二分查找)
-    	</a>
-    </h3>
-
-    </header>
-    <p class="post-meta">
-        Anthony 发表于
-        <time datetime="2016-10-24T05:19:03.000Z">2016-10-24 13:19:03</time>
-        &nbsp;&nbsp;
-        <span class="post-tags">
-            标签：
-            
-    
-        <a href="/tags/php/" title="php">php</a> / 
-    
-        <a href="/tags/排序算法/" title="排序算法">排序算法</a>
-    
-
-        </span>
-    </p>
-
-    <div class="post-content">
-        <div class="post-excerpt">
-            
-                <p>以前说起写算法，基本上都是拿C语言来写，因为用C可以更清楚的理解各种排序算法和数据结构。今天遍换成使用PHP语言来写几个常用的算法。<br>这次要写的算法包括：</p>
-<ul>
-<li>冒泡排序</li>
-<li>插入排序</li>
-<li>选择排序（直接）</li>
-<li>快速排序</li>
-<li>二分查找</li>
-</ul>
-<h3 id="冒泡："><a href="#冒泡：" class="headerlink" title="冒泡："></a>冒泡：</h3><pre><code>&lt;?php
-$arr = array(4,3,5,6,8,0,10,15,11);
-echo implode(&apos; &apos;,$arr);
-//冒泡排序 最坏 平均O(N^2) 最好O(N)
-function BubbleSort($arr){
-    $length = count($arr);
-    if($length &lt;= 1){
-        return $arr;
-    }
-    for($i=0;$i&lt;$length;$i++){
-        for($j=0;$j&lt;$length-$i-1;$j++){
-            if($arr[$j] &gt; $arr[$j+1]){
-                $tmp = $arr[$j];
-                $arr[$j] = $arr[$j+1];
-                $arr[$j+1] = $tmp;
-            }
-        }
-    }
-    return $arr;
-}
-echo &quot;\nBubbleSort:\n&quot;;
-echo implode(&apos; &apos;,BubbleSort($arr)).&quot;\n&quot;;
-?&gt;
-</code></pre>
-            
-            <p class="more">
-                <a href="http://www.imsry.cn/posts/eecfc875.html">阅读剩下更多</a>
-            </p>
-        </div>
-        <div class="post-thumbnail" data-img="">
-            <a href="http://www.imsry.cn/posts/eecfc875.html" title="PHP常用算法的方法实现(冒泡、选择、插入、快排、二分查找)">
-                
-                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/4.jpg" alt="默认配图" >
-                
-            </a>
-        </div>
-    </div>
-</article>
-
-    
-        <!-- 文章列表 item -->
-<article class="post">
-    <header>
-        <!-- 标签这有且只能显示一个 -->
-        
-        <a class="cat-link" href="/categories/PHP/">PHP</a>
-        
-        <!-- 文章标题 -->
-        
-    <h3 class="post-title">
     	<a href="http://www.imsry.cn/posts/101ef104.html">
     		一种较好的实现PHP异步发送邮件的实现
     	</a>
@@ -441,72 +544,6 @@ echo implode(&apos; &apos;,BubbleSort($arr)).&quot;\n&quot;;
             <a href="http://www.imsry.cn/posts/101ef104.html" title="一种较好的实现PHP异步发送邮件的实现">
                 
                     <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/1.jpg" alt="默认配图" >
-                
-            </a>
-        </div>
-    </div>
-</article>
-
-    
-        <!-- 文章列表 item -->
-<article class="post">
-    <header>
-        <!-- 标签这有且只能显示一个 -->
-        
-        <a class="cat-link" href="/categories/PHP/">PHP</a>
-        
-        <!-- 文章标题 -->
-        
-    <h3 class="post-title">
-    	<a href="http://www.imsry.cn/posts/673af3cd.html">
-    		通用笔试-PHP测试编程题[2题]
-    	</a>
-    </h3>
-
-    </header>
-    <p class="post-meta">
-        Anthony 发表于
-        <time datetime="2016-09-02T01:53:21.000Z">2016-09-02 09:53:21</time>
-        &nbsp;&nbsp;
-        <span class="post-tags">
-            标签：
-            
-    
-        <a href="/tags/测试/" title="测试">测试</a> / 
-    
-        <a href="/tags/笔试/" title="笔试">笔试</a> / 
-    
-        <a href="/tags/编程/" title="编程">编程</a>
-    
-
-        </span>
-    </p>
-
-    <div class="post-content">
-        <div class="post-excerpt">
-            
-                <h3 id="水仙花数"><a href="#水仙花数" class="headerlink" title="水仙花数"></a>水仙花数</h3><p>题目描述：<br><code>春天是鲜花的季节，水仙花就是其中最迷人的代表，数学上有个水仙花数，他是这样定义的：
-“水仙花数”是指一个三位数，它的各位数字的立方和等于其本身，比如：153=1^3+5^3+3^3。
-现在要求输出所有在m和n范围内的水仙花数。</code></p>
-<p>输入<br><code>输入数据有多组，每组占一行，包括两个整数m和n（100&lt;=m&lt;=n&lt;=999）。</code></p>
-<p>输出<br><code>对于每个测试实例，要求输出所有在给定范围内的水仙花数，就是说，输出的水仙花数必须大于等于m,并且小于等于n，如果有多个，则要求从小到大排列在一行内输出，之间用一个空格隔开;
-如果给定的范围内不存在水仙花数，则输出no;
-每个测试实例的输出占一行。</code></p>
-<p>样例输入<br><code>100 120
-300 380</code></p>
-<p>样例输出<br><code>no
-370 371</code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">echo &quot;Please Input\n&quot;;</span><br><span class="line">$in = &apos;&apos;;</span><br><span class="line">while($in != &quot;\n&quot;)&#123;</span><br><span class="line">	$first = false;</span><br><span class="line">	// $stdin = fopen(&quot;php://stdin&quot;,&apos;r&apos;);</span><br><span class="line">    // $in = fgets($stdin);</span><br><span class="line">    $in = fgets(STDIN);//使用标准输入</span><br><span class="line">    $args[] = explode(&apos; &apos;,trim($in));</span><br><span class="line">&#125;</span><br><span class="line">// fclose($stdin);</span><br><span class="line">array_pop($args);</span><br><span class="line">foreach ($args as $item) &#123;</span><br><span class="line">	if($item[0] &lt;100 || $item[1]&gt;999 || $item[0]&gt;=$item[1]) &#123;</span><br><span class="line">	  	echo &quot;输入参数不合法！\n&quot;;</span><br><span class="line">	   	exit(0);</span><br><span class="line">	&#125;</span><br><span class="line">	$start = $item[0];</span><br><span class="line">	$end = $item[1];</span><br><span class="line">	$res = array();</span><br><span class="line">	while($start &lt;= $end)&#123;</span><br><span class="line">		$a = floor($start/100);</span><br><span class="line">		$b = floor(($start-$a*100)/10);</span><br><span class="line">		$c = $start%10;</span><br><span class="line">		if($start == ($a*$a*$a+$b*$b*$b+$c*$c*$c))&#123;</span><br><span class="line">		    $res[] = $start;</span><br><span class="line">		&#125;</span><br><span class="line">		$start += 1;</span><br><span class="line">	&#125;</span><br><span class="line">	echo empty($res)?&quot;No\n&quot;:implode(&apos; &apos;,$res).&quot;\n&quot;;</span><br><span class="line">&#125;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
-<p>第二题：<br>
-            
-            <p class="more">
-                <a href="http://www.imsry.cn/posts/673af3cd.html">阅读剩下更多</a>
-            </p>
-        </div>
-        <div class="post-thumbnail" data-img="">
-            <a href="http://www.imsry.cn/posts/673af3cd.html" title="通用笔试-PHP测试编程题[2题]">
-                
-                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/2.jpg" alt="默认配图" >
                 
             </a>
         </div>
@@ -577,202 +614,40 @@ echo implode(&apos; &apos;,BubbleSort($arr)).&quot;\n&quot;;
         <!-- 文章标题 -->
         
     <h3 class="post-title">
-    	<a href="http://www.imsry.cn/posts/576af78f.html">
-    		利用PHP实现QQ的登陆和发送消息
+    	<a href="http://www.imsry.cn/posts/178115be.html">
+    		上传Excel表格写入数据表（上传订单功能）
     	</a>
     </h3>
 
     </header>
     <p class="post-meta">
         Anthony 发表于
-        <time datetime="2015-06-17T14:32:46.000Z">2015-06-17 22:32:46</time>
+        <time datetime="2014-10-22T05:08:51.000Z">2014-10-22 13:08:51</time>
         &nbsp;&nbsp;
         <span class="post-tags">
             标签：
             
-        </span>
-    </p>
-
-    <div class="post-content">
-        <div class="post-excerpt">
-            
-                <p>利用CURL抓取3GQQ的网页实现的。<br>这里只是简单实现了功能，可以修改代码实现更多可能。<br>如：定时发送消息、机器人客服等高级功能。<br>展示代码，分两个步骤完成。</p>
-<p>第一步：登录获取sid，有sid是发送消息的前提。</p>
-<pre lang="php" line="1" escaped="true">
-//发送方QQ账号和密码
-$qq  = '';
-$pwd = '';
-//准备要POST数据
-$data = array(
-    'qq'            => $qq,
-    'pwd'           => $pwd,
-    'bid_code'      => '3GQQ',
-    'toQQchat'      => true,
-    'login_url'     => 'http://pt.3g.qq.com/s?aid=nLoginnew&q_from=3GQQ',
-    'q_from'        => '',
-    'modifySKey'    => 0,
-    'loginType:'    => 1,
-    'aid'           => 'nLoginHandle',
-    'i_p_w'         => 'qq|pwd|',
-);
-//开始CURL模拟登录
-$ch = curl_init();
-curl_setopt($ch,CURLOPT_URL,'http://pt.3g.qq.com/psw3gqqLogin');
-curl_setopt($ch,CURLOPT_RETURNTRANSFER,1);
-curl_setopt($ch,CURLOPT_POST,true);
-curl_setopt($ch,CURLOPT_POSTFIELDS,http_build_query($data));
-$file = curl_exec($ch);
-curl_close($ch);
-//分析登录是否成功
-preg_match('%sid=(.*?)&%si',$file,$sid);
-$sid = $sid[1];
-if($sid){
-    echo '登陆成功！'.$sid;
-}else{
-    echo '登陆失败！请检查用户名和密码是否正确！';
-    exit();
-}
-</pre>
-
-<p>获取到sid后就可以发送消息了。<br>第二步：发送消息，利用上一步获取到的sid。</p>
-<pre lang="php" line="1" escaped="true">
-$sid='';
-$qq   = "909047801";
-$text = "你好，豆豆！";
-//准备要POST的数据
-$data = array(
-    'u'         => $qq,
-    'saveUrl'   => 0,
-    'do'        => 'send',
-    'on'        => 1,
-    'aid'       => '发送',
-    'msg'       => $text,
-);
-//开始CURL模拟发送
-$ch = curl_init();
-curl_setopt($ch,CURLOPT_URL,'http://q16.3g.qq.com/g/s?sid=' . $sid);
-curl_setopt($ch,CURLOPT_RETURNTRANSFER,1);
-curl_setopt($ch,CURLOPT_POST,true);
-curl_setopt($ch,CURLOPT_POSTFIELDS,http_build_query($data));
-$file = curl_exec($ch);
-curl_close($ch);
-//分析发送是否成功
-preg_match('%<p align="left">(.*?)
-%si',$file,$callback);
-$callback = $callback[1];
-echo $callback;
-</p></pre>
-            
-            <p class="more">
-                <a href="http://www.imsry.cn/posts/576af78f.html">阅读剩下更多</a>
-            </p>
-        </div>
-        <div class="post-thumbnail" data-img="">
-            <a href="http://www.imsry.cn/posts/576af78f.html" title="利用PHP实现QQ的登陆和发送消息">
-                
-                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/7.jpg" alt="默认配图" >
-                
-            </a>
-        </div>
-    </div>
-</article>
-
     
-        <!-- 文章列表 item -->
-<article class="post">
-    <header>
-        <!-- 标签这有且只能显示一个 -->
-        
-        <a class="cat-link" href="/categories/PHP/">PHP</a>
-        
-        <!-- 文章标题 -->
-        
-    <h3 class="post-title">
-    	<a href="http://www.imsry.cn/posts/db7b2e7c.html">
-    		作业4-2（带用户的留言板）单页面实现！
-    	</a>
-    </h3>
-
-    </header>
-    <p class="post-meta">
-        Anthony 发表于
-        <time datetime="2015-05-09T07:14:28.000Z">2015-05-09 15:14:28</time>
-        &nbsp;&nbsp;
-        <span class="post-tags">
-            标签：
-            
-        </span>
-    </p>
-
-    <div class="post-content">
-        <div class="post-excerpt">
-            
-                <p><img src="../uploads/qiniu/20170206148636263061226.png" alt="作业4-2要求"><br><a href="/html/board2.php">演示页面：http://www.dshui.wang/html/board2.php</a><br>本次作业基于作业4-1完成，部分文件在4-1中给出：<a href="/?p=161" title="http://www.dshui.wang/?p=161"></a><br>所需要的数据表：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE `msg` (</span><br><span class="line">  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,</span><br><span class="line">  `content` varchar(254) NOT NULL DEFAULT &apos;&apos;,</span><br><span class="line">  `username` char(10) DEFAULT &apos;&apos;,</span><br><span class="line">  `stime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,</span><br><span class="line">  PRIMARY KEY (`id`)</span><br><span class="line">) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE `user` (</span><br><span class="line">  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,</span><br><span class="line">  `username` char(20) NOT NULL DEFAULT &apos;&apos;,</span><br><span class="line">  `pwd` varchar(20) NOT NULL DEFAULT &apos;&apos;,</span><br><span class="line">  `registtime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,</span><br><span class="line">  PRIMARY KEY (`id`)</span><br><span class="line">) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;</span><br></pre></td></tr></table></figure>
-<p>文件board2.php</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">include &apos;./mysqlconfig.php&apos;;</span><br><span class="line">session_start();</span><br><span class="line">if($_POST[&apos;do&apos;]==&quot;login&quot;)&#123;</span><br><span class="line">	$username = $_POST[&apos;username&apos;];</span><br><span class="line">	$pwd = $_POST[&apos;passwd&apos;];</span><br><span class="line">	$sql = &quot;select * from user where username=&apos;$username&apos; and pwd=&apos;$pwd&apos;;&quot;;</span><br><span class="line">	$res = mysql_query($sql);</span><br><span class="line">	$row = mysql_fetch_assoc($res);</span><br><span class="line">	if ($row[&apos;id&apos;] &lt;&gt; &apos;&apos;)&#123;</span><br><span class="line">		$_SESSION[&apos;username&apos;] = $row[&apos;username&apos;];</span><br><span class="line">		echo &quot;&lt;script&gt;alert(&apos;登陆成功！&apos;)&lt;/script&gt;&quot;;</span><br><span class="line">	&#125;else&#123;</span><br><span class="line">		echo &quot;&lt;script&gt;alert(&apos;登录失败！用户名或密码错误！&apos;)&lt;/script&gt;&quot;;</span><br><span class="line">	&#125;</span><br><span class="line">	header ( &quot;refresh:0;url=&quot; );</span><br><span class="line">&#125;elseif($_POST[&apos;do&apos;]==&quot;registe&quot;)&#123;</span><br><span class="line">	$rname = $_POST[&apos;rname&apos;];</span><br><span class="line">	$rpwd = $_POST[&apos;rpasswd&apos;];</span><br><span class="line">	$sql = &quot;insert into user(username,pwd) values (&apos;$rname&apos;,&apos;$rpwd&apos;);&quot;;</span><br><span class="line">	if(mysql_query($sql))&#123;</span><br><span class="line">		$_SESSION[&apos;username&apos;] = $rname;</span><br><span class="line">		echo &quot;&lt;script&gt;alert(&apos;注册成功！已经为您自动登录！&apos;)&lt;/script&gt;&quot;;</span><br><span class="line">	&#125;else&#123;</span><br><span class="line">		echo &quot;&lt;script&gt;alert(&apos;注册失败！&apos;)&lt;/script&gt;&quot;;</span><br><span class="line">	&#125;</span><br><span class="line">	header ( &quot;refresh:0;url=&quot; );</span><br><span class="line">&#125;elseif($_POST[&apos;do&apos;]==&quot;submit&quot;)&#123;</span><br><span class="line">	$content = $_POST[&apos;content&apos;];</span><br><span class="line">	echo $content;</span><br><span class="line">	$sql = &quot;insert into msg(content,username) values (\&quot;&#123;$content&#125;\&quot;,&apos;&quot;.$_SESSION[&apos;username&apos;].&quot;&apos;);&quot;;</span><br><span class="line">	if(mysql_query($sql))&#123;</span><br><span class="line">		echo &quot;&lt;script&gt;alert(&apos;留言成功！&apos;)&lt;/script&gt;&quot;;</span><br><span class="line">		header ( &quot;refresh:0;url=&quot; );</span><br><span class="line">	&#125;else&#123;</span><br><span class="line">		echo &quot;&lt;script&gt;alert(&apos;不知道怎么的，留言失败了。&apos;)&lt;/script&gt;&quot;;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;elseif($_POST[&apos;do&apos;]==&quot;logout&quot;)&#123;</span><br><span class="line">	session_unset();</span><br><span class="line">	session_destroy();</span><br><span class="line">	echo &quot;&lt;script&gt;alert(&apos;成功退出登陆！&apos;)&lt;/script&gt;&quot;;</span><br><span class="line">	header ( &quot;refresh:0;url=&quot; );</span><br><span class="line">&#125;</span><br><span class="line">$sql = &quot;select * from msg order by id desc;&quot;;</span><br><span class="line">$result = mysql_query($sql);</span><br><span class="line">?&gt;</span><br><span class="line">&lt;!doctype html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">&lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">&lt;title&gt;简易留言板(带用户验证)&lt;/title&gt;</span><br><span class="line">&lt;style type=&quot;text/css&quot;&gt;</span><br><span class="line">#tab &#123;</span><br><span class="line">BORDER-BOTTOM: #c2130e 3px solid; HEIGHT: 60px</span><br><span class="line">&#125;</span><br><span class="line">#tab p&#123;</span><br><span class="line">FLOAT: left; LINE-HEIGHT: 21px; text-align:center</span><br><span class="line">&#125;</span><br><span class="line">#tab p.hit &#123;</span><br><span class="line">BACKGROUND: #dcdcdc; BORDER-LEFT: #f2f2f2 1px solid; WIDTH: 40px; CURSOR: pointer</span><br><span class="line">&#125;</span><br><span class="line">#tab p.nhit &#123;</span><br><span class="line">BACKGROUND: #c2130e; BORDER-LEFT: #f2f2f2 1px solid; WIDTH: 40px; COLOR: #fff</span><br><span class="line">&#125;</span><br><span class="line">&lt;/style&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line"></span><br><span class="line">&lt;body bgcolor=&quot;#56FF00&quot;&gt;</span><br><span class="line">	&lt;div style=&quot;margin:0 auto;width:400px;&quot;&gt;</span><br><span class="line">	&lt;?php if(!isset($_SESSION[&apos;username&apos;]) || $_SESSION[&apos;username&apos;]==&apos;&apos;)&#123;?&gt;</span><br><span class="line">		&lt;div id=&quot;usertip&quot; class=&quot;login&quot;&gt;</span><br><span class="line"></span><br><span class="line">注意：只有登陆之后才能进行留言哦！</span><br><span class="line"></span><br><span class="line">			&lt;div id=&quot;tab&quot;&gt;</span><br><span class="line"></span><br><span class="line">登陆</span><br><span class="line"></span><br><span class="line">注册</span><br><span class="line"></span><br><span class="line">			&lt;/div&gt;</span><br><span class="line">			&lt;div id=&quot;login&quot;&gt;</span><br><span class="line">				&lt;form name=&quot;login&quot; method=&quot;post&quot;&gt;</span><br><span class="line">					&lt;input type=&quot;hidden&quot; name=&quot;do&quot; value=&quot;login&quot;&gt;</span><br><span class="line">					&lt;table&gt;</span><br><span class="line">						&lt;tr&gt;</span><br><span class="line">							&lt;td&gt;用户名：&lt;/td&gt;</span><br><span class="line">							&lt;td&gt;&lt;input type=&quot;text&quot; name=&quot;username&quot; &gt;&lt;/td&gt;</span><br><span class="line">						&lt;/tr&gt;</span><br><span class="line">						&lt;tr&gt;</span><br><span class="line">							&lt;td&gt;密&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;码：&lt;/td&gt;</span><br><span class="line">							&lt;td&gt;&lt;input type=&quot;password&quot; name=&quot;passwd&quot; &gt;&lt;/td&gt;</span><br><span class="line">						&lt;/tr&gt;</span><br><span class="line">						&lt;tr&gt;</span><br><span class="line">							&lt;td&gt;&lt;/td&gt;</span><br><span class="line">							&lt;td align=&quot;right&quot;&gt;&lt;input type=&quot;submit&quot; value=&quot;登陆&quot; /&gt;&lt;/td&gt;</span><br><span class="line">						&lt;/tr&gt;</span><br><span class="line">					&lt;/table&gt;</span><br><span class="line">				&lt;/form&gt;</span><br><span class="line">			&lt;/div&gt;</span><br><span class="line">			&lt;div id=&quot;reg&quot; style=&quot;display: none;&quot;&gt;</span><br><span class="line">				&lt;form name=&quot;registe&quot; method=&quot;post&quot;&gt;</span><br><span class="line">					&lt;input type=&quot;hidden&quot; name=&quot;do&quot; value=&quot;registe&quot;&gt;</span><br><span class="line">					&lt;table&gt;</span><br><span class="line">						&lt;tr&gt;</span><br><span class="line">							&lt;td&gt;用户名：&lt;/td&gt;</span><br><span class="line">							&lt;td&gt;&lt;input type=&quot;text&quot; name=&quot;rname&quot; &gt;&lt;/td&gt;</span><br><span class="line">						&lt;/tr&gt;</span><br><span class="line">						&lt;tr&gt;</span><br><span class="line">							&lt;td&gt;密&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;码：&lt;/td&gt;</span><br><span class="line">							&lt;td&gt;&lt;input type=&quot;password&quot; name=&quot;rpasswd&quot; &gt;&lt;/td&gt;</span><br><span class="line">						&lt;/tr&gt;</span><br><span class="line">						&lt;tr&gt;</span><br><span class="line">							&lt;td&gt;&lt;/td&gt;</span><br><span class="line">							&lt;td align=&quot;right&quot;&gt;&lt;input type=&quot;submit&quot; value=&quot;注册&quot; /&gt;&lt;/td&gt;</span><br><span class="line">						&lt;/tr&gt;</span><br><span class="line">					&lt;/table&gt;</span><br><span class="line">				&lt;/form&gt;</span><br><span class="line">			&lt;/div&gt;</span><br><span class="line">		&lt;/div&gt;</span><br><span class="line">	&lt;?php &#125;else&#123;?&gt;</span><br><span class="line">        &lt;div class=&quot;form&quot;&gt;</span><br><span class="line"></span><br><span class="line">        		当前用户：&lt;?php echo $_SESSION[&apos;username&apos;];?&gt;</span><br><span class="line">        		&lt;form method=&quot;post&quot;&gt;</span><br><span class="line">        		&lt;input type=&quot;hidden&quot; name=&quot;do&quot; value=&quot;logout&quot;&gt;</span><br><span class="line">        		&lt;input type=&quot;submit&quot;value=&quot;退出登录&quot;&gt;</span><br><span class="line">        		&lt;/form&gt;</span><br><span class="line"></span><br><span class="line">            &lt;form method=&quot;post&quot;&gt;</span><br><span class="line">            &lt;textarea name=&quot;content&quot; cols=&quot;45&quot; rows=&quot;5&quot; style=&quot;width: 400px; height: 88px;&quot;&gt;&lt;/textarea&gt;</span><br><span class="line"></span><br><span class="line">			&lt;input type=&quot;hidden&quot; name=&quot;do&quot; value=&quot;submit&quot;&gt;</span><br><span class="line">            &lt;div align=&quot;right&quot;&gt;&lt;input type=&quot;submit&quot; value=&quot;留言&quot; /&gt;&amp;nbsp;&lt;/div&gt;</span><br><span class="line">            &lt;/form&gt;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">    &lt;?php &#125;?&gt;</span><br><span class="line">        &lt;div class=&quot;msg&quot;&gt;</span><br><span class="line">        	&lt;table border=&quot;1&quot; bordercolor=&quot;#FFFFFF&quot;&gt;</span><br><span class="line">        	&lt;?php while ($rows = mysql_fetch_assoc($result))&#123;?&gt;</span><br><span class="line">            	&lt;tr&gt;</span><br><span class="line">                	&lt;td&gt;&lt;span&gt;&lt;?php echo $rows[&apos;username&apos;];?&gt; &lt;/span&gt;&lt;span class=&quot;datetime&quot;&gt;（&lt;?php echo $rows[&apos;stime&apos;];?&gt;）&lt;/span&gt;</span><br><span class="line">&lt;span class=&quot;content&quot;&gt;&lt;?php echo $rows[&apos;content&apos;];?&gt;&lt;/span&gt;&lt;/td&gt;</span><br><span class="line">                &lt;/tr&gt;</span><br><span class="line">            &lt;?php &#125;?&gt;</span><br><span class="line">            &lt;/table&gt;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">	&lt;/div&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">var Tags=document.getElementById(&apos;tab&apos;).getElementsByTagName(&apos;p&apos;); </span><br><span class="line">var usertip=document.getElementById(&apos;usertip&apos;).getElementsByTagName(&apos;div&apos;);</span><br><span class="line">var len=Tags.length; </span><br><span class="line">var flag=0;//修改默认值</span><br><span class="line">for(i=0;i&lt;len;i++)&#123;</span><br><span class="line">Tags[i].value = i;</span><br><span class="line">Tags[i].onmouseover=function()&#123;changeNav(this.value)&#125;; </span><br><span class="line">&#125;</span><br><span class="line">Tags[flag].className=&apos;nhit&apos;;</span><br><span class="line">function changeNav(v)&#123; </span><br><span class="line">	Tags[flag].className=&apos;hit&apos;;</span><br><span class="line">	usertip[flag+1].style.display=&quot;none&quot;;</span><br><span class="line">	flag=v; </span><br><span class="line">	Tags[v].className=&apos;nhit&apos;;</span><br><span class="line">	usertip[v+1].style.display=&quot;&quot;;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
-            
-            <p class="more">
-                <a href="http://www.imsry.cn/posts/db7b2e7c.html">阅读剩下更多</a>
-            </p>
-        </div>
-        <div class="post-thumbnail" data-img="">
-            <a href="http://www.imsry.cn/posts/db7b2e7c.html" title="作业4-2（带用户的留言板）单页面实现！">
-                
-                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/9.jpg" alt="默认配图" >
-                
-            </a>
-        </div>
-    </div>
-</article>
-
+        <a href="/tags/Excel/" title="Excel">Excel</a>
     
-        <!-- 文章列表 item -->
-<article class="post">
-    <header>
-        <!-- 标签这有且只能显示一个 -->
-        
-        <a class="cat-link" href="/categories/PHP/">PHP</a>
-        
-        <!-- 文章标题 -->
-        
-    <h3 class="post-title">
-    	<a href="http://www.imsry.cn/posts/aee0563f.html">
-    		作业4-1（简易留言板）
-    	</a>
-    </h3>
 
-    </header>
-    <p class="post-meta">
-        Anthony 发表于
-        <time datetime="2015-05-09T04:58:47.000Z">2015-05-09 12:58:47</time>
-        &nbsp;&nbsp;
-        <span class="post-tags">
-            标签：
-            
         </span>
     </p>
 
     <div class="post-content">
         <div class="post-excerpt">
             
-                <p><a href="/uploads/2015/05/QQ20150509-2@2x.png"><img src="/uploads/2015/05/QQ20150509-2@2x-273x300.png" alt="作业4-1（简易留言板）"></a><br><a href="/html/board1.php">演示页面：http://www.dshui.wang/html/board1.php</a><br>首先我们得建立一个数据表用来存放留言信息：（由于之前作业有建立数据库’XSGL’，我们就直接用这个数据库啦）</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE `msg` (</span><br><span class="line">  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,</span><br><span class="line">  `content` varchar(254) NOT NULL DEFAULT &apos;&apos;,</span><br><span class="line">  `username` char(10) DEFAULT &apos;&apos;,</span><br><span class="line">  `stime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,</span><br><span class="line">  PRIMARY KEY (`id`)</span><br><span class="line">) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;</span><br></pre></td></tr></table></figure>
-<p>建立一个mysql的连接文件： mysqlconfig.php</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">error_reporting(0);</span><br><span class="line">header ( &quot;Content-type:text/html;charset=utf-8&quot; );</span><br><span class="line">$dbhost = &apos;localhost&apos;;</span><br><span class="line">$dbname = &apos;XSGL&apos;;</span><br><span class="line">$user = &apos;root&apos;;</span><br><span class="line">$pwd = &apos;1234&apos;;</span><br><span class="line">$conn = mysql_connect($dbhost,$user,$pwd) or die ( &quot;could not connect mysql&quot; );</span><br><span class="line">mysql_select_db ( $dbname, $conn ) or die ( &quot;could not open database&quot; );</span><br><span class="line">mysql_query ( &quot;set names utf8;&quot; );</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
-<p>新建一个留言本程序：board1.php</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">include &apos;./mysqlconfig.php&apos;;</span><br><span class="line">if($_POST[&apos;issubmit&apos;]!=null)&#123;</span><br><span class="line">	$content = $_POST[&apos;content&apos;];</span><br><span class="line">	$sql = &quot;insert into msg(content) values (&apos;&quot;.$content.&quot;&apos;);&quot;;</span><br><span class="line">	$res = mysql_query($sql);</span><br><span class="line">	header ( &quot;refresh:0;url=&quot; );</span><br><span class="line">&#125;</span><br><span class="line">$sql = &quot;select * from msg order by id desc;&quot;;</span><br><span class="line">$result = mysql_query($sql);</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">&lt;!doctype html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">&lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">&lt;title&gt;简易留言板&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line"></span><br><span class="line">&lt;body bgcolor=&quot;#56FF00&quot;&gt;</span><br><span class="line">	&lt;div style=&quot;margin:0 auto;width:400px;&quot;&gt;</span><br><span class="line">        &lt;div class=&quot;form&quot;&gt;</span><br><span class="line">            &lt;form method=&quot;post&quot;&gt;</span><br><span class="line">            &lt;textarea name=&quot;content&quot; cols=&quot;45&quot; rows=&quot;5&quot; style=&quot;width: 400px; height: 88px;&quot;&gt;&lt;/textarea&gt;</span><br><span class="line"></span><br><span class="line">            &lt;div align=&quot;right&quot;&gt;&lt;input type=&quot;submit&quot; name=&quot;issubmit&quot; value=&quot;留言&quot; /&gt;&amp;nbsp;&lt;/div&gt;</span><br><span class="line">            &lt;/form&gt;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">        &lt;div class=&quot;msg&quot;&gt;</span><br><span class="line">        	&lt;table border=&quot;1&quot; bordercolor=&quot;#FFFFFF&quot;&gt;</span><br><span class="line">        	&lt;?php while ($rows = mysql_fetch_assoc($result))&#123;?&gt;</span><br><span class="line">            	&lt;tr&gt;</span><br><span class="line">                	&lt;td&gt;&lt;span class=&quot;datetime&quot;&gt;（&lt;?php echo $rows[&apos;stime&apos;];?&gt;）&lt;/span&gt;</span><br><span class="line">&lt;span class=&quot;content&quot;&gt;&lt;?php echo $rows[&apos;content&apos;];?&gt;&lt;/span&gt;&lt;/td&gt;</span><br><span class="line">                &lt;/tr&gt;</span><br><span class="line">            &lt;?php &#125;?&gt;</span><br><span class="line">            &lt;/table&gt;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">	&lt;/div&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+                <p>代码包：<a href="http://zhanzhang.fandouzi.com/?attachment_id=105" target="_blank" rel="noopener">ExcelToMysql</a><br>此项功能的实现依赖PHPExcelReader，下载压缩包可得。<br>下面贴出PHP主要实现代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">&lt;form id=&quot;form1&quot; name=&quot;form1&quot; method=&quot;post&quot; action=&quot;&quot;&gt;</span><br><span class="line">  &lt;label&gt;</span><br><span class="line">  &lt;input name=&quot;file&quot; type=&quot;file&quot; id=&quot;file13&quot;/&gt;</span><br><span class="line">  &lt;input type=&quot;submit&quot; name=&quot;Submit&quot; value=&quot;提交&quot; /&gt;</span><br><span class="line">  &lt;/label&gt;</span><br><span class="line">&lt;/form&gt;</span><br><span class="line">&lt;p&gt;</span><br><span class="line">&lt;?php</span><br><span class="line">require_once &apos;reader.php&apos;;  </span><br><span class="line">$Reader = new Spreadsheet_Excel_Reader(); </span><br><span class="line">$Reader-&gt;setOutputEncoding(&apos;gbk&apos;);</span><br><span class="line">$conn= mysql_connect(&apos;localhost&apos;,&apos;root&apos;,&apos;root&apos;) or die(&quot;Can not connect to database.&quot;);  </span><br><span class="line">mysql_query(&quot;set names &apos;gbk&apos;&quot;);//设置编码输出</span><br><span class="line">mysql_select_db(&apos;my_db&apos;); //选择数据库</span><br><span class="line">if($_POST[&apos;Submit&apos;])</span><br><span class="line">&#123;</span><br><span class="line">$Reader-&gt;read($_POST[&apos;file&apos;]);</span><br><span class="line"></span><br><span class="line">for ($i = 2; $i &lt;= $Reader-&gt;sheets[0][&apos;numRows&apos;]; $i++) &#123;</span><br><span class="line">	//将EXCEL里面从第二行开始写入数据表&apos;my_table&apos;中</span><br><span class="line">  $sql = &quot;INSERT INTO my_table VALUES (null,&apos;&quot;.$Reader-&gt;sheets[0][&apos;cells&apos;][$i][1].&quot;&apos;,&apos;&quot;.$Reader-&gt;sheets[0][&apos;cells&apos;][$i][2].&quot;&apos;,&apos;&quot;.$Reader-&gt;sheets[0][&apos;cells&apos;][$i][3].&quot;&apos;,&apos;&quot;.$Reader-&gt;sheets[0][&apos;cells&apos;][$i][4].&quot;&apos;,&apos;&quot;.$Reader-&gt;sheets[0][&apos;cells&apos;][$i][5].&quot;&apos;,&apos;&quot;.$Reader-&gt;sheets[0][&apos;cells&apos;][$i][6].&quot;&apos;,&apos;&quot;.$Reader-&gt;sheets[0][&apos;cells&apos;][$i][7].&quot;&apos;,&apos;&quot;.$Reader-&gt;sheets[0][&apos;cells&apos;][$i][8].&quot;&apos;,&apos;&quot;.$Reader-&gt;sheets[0][&apos;cells&apos;][$i][9].&quot;&apos;)&quot;; </span><br><span class="line"></span><br><span class="line">  $query=mysql_query($sql);</span><br><span class="line">  if($query)</span><br><span class="line">    &#123;</span><br><span class="line">     echo &quot;&lt;script type=\&quot;text/javascript\&quot;&gt;&lt;!--</span><br><span class="line">alert(&apos;数据已经提交成功&apos;);window.top.location=&apos;a.php&apos;</span><br><span class="line">// --&gt;&lt;/script&gt;&quot;;</span><br><span class="line">     &#125;else&#123;</span><br><span class="line">     echo &quot;&lt;script type=\&quot;text/javascript\&quot;&gt;&lt;!--</span><br><span class="line">alert(&apos;数据已经提交失败&apos;);window.top.location=&apos;a.php&apos;</span><br><span class="line">// --&gt;&lt;/script&gt;&quot;;</span><br><span class="line">     &#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
             
             <p class="more">
-                <a href="http://www.imsry.cn/posts/aee0563f.html">阅读剩下更多</a>
+                <a href="http://www.imsry.cn/posts/178115be.html">阅读剩下更多</a>
             </p>
         </div>
         <div class="post-thumbnail" data-img="">
-            <a href="http://www.imsry.cn/posts/aee0563f.html" title="作业4-1（简易留言板）">
+            <a href="http://www.imsry.cn/posts/178115be.html" title="上传Excel表格写入数据表（上传订单功能）">
                 
-                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/9.jpg" alt="默认配图" >
+                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/2.jpg" alt="默认配图" >
                 
             </a>
         </div>
@@ -783,7 +658,7 @@ echo $callback;
 
     
     <nav class="page-navigator">
-        <span class="page-number current">1</span><a class="page-number" href="/categories/PHP/page/2/">2</a><a class="extend next" rel="next" href="/categories/PHP/page/2/">后一页</a>
+        <span class="page-number current">1</span>
     </nav>
     
 
@@ -825,112 +700,87 @@ echo $callback;
 <ul class="widget-bd">
     
     <li>
+        <a href="/categories/编程语言/">编程语言</a>
+        <span class="badge">(5)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/学习笔记/">学习笔记</a>
+        <span class="badge">(46)</span>
+    </li>
+    
+    <li>
         <a href="/categories/Learn-GO/">Learn-GO</a>
         <span class="badge">(6)</span>
     </li>
     
     <li>
-        <a href="/categories/我的分享/">我的分享</a>
+        <a href="/categories/Linux/">Linux</a>
         <span class="badge">(16)</span>
     </li>
     
     <li>
-        <a href="/categories/Linxu分享/">Linxu分享</a>
-        <span class="badge">(9)</span>
-    </li>
-    
-    <li>
-        <a href="/categories/Linux/">Linux</a>
-        <span class="badge">(11)</span>
-    </li>
-    
-    <li>
-        <a href="/categories/数据库/">数据库</a>
-        <span class="badge">(3)</span>
-    </li>
-    
-    <li>
-        <a href="/categories/Html/">Html</a>
-        <span class="badge">(2)</span>
+        <a href="/categories/开发板/">开发板</a>
+        <span class="badge">(1)</span>
     </li>
     
     <li>
         <a href="/categories/PHP/">PHP</a>
-        <span class="badge">(12)</span>
+        <span class="badge">(9)</span>
     </li>
     
     <li>
-        <a href="/categories/学习笔记/">学习笔记</a>
-        <span class="badge">(4)</span>
-    </li>
-    
-    <li>
-        <a href="/categories/JavaScript/">JavaScript</a>
-        <span class="badge">(3)</span>
-    </li>
-    
-    <li>
-        <a href="/categories/JS分享/">JS分享</a>
-        <span class="badge">(6)</span>
-    </li>
-    
-    <li>
-        <a href="/categories/Web技术/">Web技术</a>
-        <span class="badge">(3)</span>
-    </li>
-    
-    <li>
-        <a href="/categories/干货/">干货</a>
-        <span class="badge">(1)</span>
-    </li>
-    
-    <li>
-        <a href="/categories/Python/">-Python</a>
-        <span class="badge">(1)</span>
-    </li>
-    
-    <li>
-        <a href="/categories/我的分享/未分类/">未分类</a>
-        <span class="badge">(2)</span>
-    </li>
-    
-    <li>
-        <a href="/categories/Html/学习笔记/">学习笔记</a>
-        <span class="badge">(2)</span>
-    </li>
-    
-    <li>
-        <a href="/categories/PHP/学习笔记/">学习笔记</a>
+        <a href="/categories/算法/">算法</a>
         <span class="badge">(5)</span>
     </li>
     
     <li>
-        <a href="/categories/学习笔记/数据库/">数据库</a>
+        <a href="/categories/面试/">面试</a>
         <span class="badge">(1)</span>
     </li>
     
     <li>
-        <a href="/categories/Linux/数据库/">数据库</a>
+        <a href="/categories/网络安全/">网络安全</a>
+        <span class="badge">(2)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/数据库/">数据库</a>
+        <span class="badge">(2)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/MacOS/">MacOS</a>
         <span class="badge">(1)</span>
     </li>
     
     <li>
-        <a href="/categories/Web技术/数据库/">数据库</a>
+        <a href="/categories/Web/">Web</a>
+        <span class="badge">(3)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/我的分享/">我的分享</a>
         <span class="badge">(1)</span>
     </li>
     
     <li>
-        <a href="/categories/Linux/Linxu分享/">Linxu分享</a>
+        <a href="/categories/考试/">考试</a>
         <span class="badge">(1)</span>
     </li>
     
     <li>
-        <a href="/categories/Linxu分享/PHP/">PHP</a>
+        <a href="/categories/游戏/">游戏</a>
+        <span class="badge">(2)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/开放平台/">开放平台</a>
         <span class="badge">(1)</span>
     </li>
     
     <li>
-        <a href="/categories/Web技术/学习笔记/">学习笔记</a>
+        <a href="/categories/杂谈/">杂谈</a>
         <span class="badge">(1)</span>
     </li>
     
@@ -949,23 +799,23 @@ echo $callback;
   
     <a class="tag-item" href="/tags/Docker/" title="Docker">Docker (1)</a>
   
-    <a class="tag-item" href="/tags/Linux/" title="Linux">Linux (4)</a>
-  
     <a class="tag-item" href="/tags/essay/" title="essay">essay (3)</a>
   
     <a class="tag-item" href="/tags/archive/" title="archive">archive (2)</a>
   
-    <a class="tag-item" href="/tags/tar/" title="tar">tar (1)</a>
-  
     <a class="tag-item" href="/tags/zip/" title="zip">zip (1)</a>
   
-    <a class="tag-item" href="/tags/bufio/" title="bufio">bufio (1)</a>
-  
-    <a class="tag-item" href="/tags/bytes/" title="bytes">bytes (1)</a>
+    <a class="tag-item" href="/tags/Linux/" title="Linux">Linux (5)</a>
   
     <a class="tag-item" href="/tags/path/" title="path">path (2)</a>
   
-    <a class="tag-item" href="/tags/php/" title="php">php (7)</a>
+    <a class="tag-item" href="/tags/filepath/" title="filepath">filepath (1)</a>
+  
+    <a class="tag-item" href="/tags/bufio/" title="bufio">bufio (1)</a>
+  
+    <a class="tag-item" href="/tags/tar/" title="tar">tar (1)</a>
+  
+    <a class="tag-item" href="/tags/bytes/" title="bytes">bytes (1)</a>
   
     <a class="tag-item" href="/tags/OrangePi/" title="OrangePi">OrangePi (2)</a>
   
@@ -975,13 +825,15 @@ echo $callback;
   
     <a class="tag-item" href="/tags/IP/" title="IP">IP (2)</a>
   
-    <a class="tag-item" href="/tags/filepath/" title="filepath">filepath (1)</a>
-  
     <a class="tag-item" href="/tags/算法/" title="算法">算法 (2)</a>
+  
+    <a class="tag-item" href="/tags/php/" title="php">php (7)</a>
   
     <a class="tag-item" href="/tags/时间复杂度/" title="时间复杂度">时间复杂度 (1)</a>
   
     <a class="tag-item" href="/tags/定理/" title="定理">定理 (1)</a>
+  
+    <a class="tag-item" href="/tags/Apache/" title="Apache">Apache (3)</a>
   
     <a class="tag-item" href="/tags/Go/" title="Go">Go (4)</a>
   
@@ -989,37 +841,35 @@ echo $callback;
   
     <a class="tag-item" href="/tags/RPC/" title="RPC">RPC (1)</a>
   
-    <a class="tag-item" href="/tags/Apache/" title="Apache">Apache (3)</a>
-  
     <a class="tag-item" href="/tags/Proxy/" title="Proxy">Proxy (1)</a>
   
     <a class="tag-item" href="/tags/Tomcat/" title="Tomcat">Tomcat (1)</a>
   
     <a class="tag-item" href="/tags/反向代理/" title="反向代理">反向代理 (1)</a>
   
-    <a class="tag-item" href="/tags/提问/" title="提问">提问 (1)</a>
-  
     <a class="tag-item" href="/tags/面试/" title="面试">面试 (1)</a>
   
-    <a class="tag-item" href="/tags/Chrome-https/" title="Chrome https">Chrome https (1)</a>
-  
-    <a class="tag-item" href="/tags/测试/" title="测试">测试 (4)</a>
+    <a class="tag-item" href="/tags/https/" title="https">https (2)</a>
   
     <a class="tag-item" href="/tags/性能/" title="性能">性能 (3)</a>
+  
+    <a class="tag-item" href="/tags/VPN/" title="VPN">VPN (1)</a>
+  
+    <a class="tag-item" href="/tags/数据库/" title="数据库">数据库 (2)</a>
   
     <a class="tag-item" href="/tags/C/" title="C">C (1)</a>
   
     <a class="tag-item" href="/tags/Java/" title="Java">Java (1)</a>
   
-    <a class="tag-item" href="/tags/方法/" title="方法">方法 (1)</a>
+    <a class="tag-item" href="/tags/测试/" title="测试">测试 (1)</a>
+  
+    <a class="tag-item" href="/tags/笔试/" title="笔试">笔试 (1)</a>
+  
+    <a class="tag-item" href="/tags/编程/" title="编程">编程 (1)</a>
   
     <a class="tag-item" href="/tags/Glassfish/" title="Glassfish">Glassfish (1)</a>
   
     <a class="tag-item" href="/tags/Java-Web/" title="Java Web">Java Web (1)</a>
-  
-    <a class="tag-item" href="/tags/mysql/" title="mysql">mysql (5)</a>
-  
-    <a class="tag-item" href="/tags/连接池/" title="连接池">连接池 (1)</a>
   
 </div>
     </section>
@@ -1063,6 +913,6 @@ echo $callback;
 
     <!--博客js脚本 -->
     <!-- 这里放网站js脚本 -->
-<script src="/js/main.js?v=1590659533446"></script>
+<script src="/js/main.js?v=1590662257861"></script>
 </body>
 </html>
