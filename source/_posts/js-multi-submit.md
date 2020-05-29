@@ -1,15 +1,14 @@
 ---
 title: JS实现同时提交多个form基础方法
 tags:
-  - 表单
 id: 53
 categories:
-  - JS分享
+  - 学习笔记
 abbrlink: be0a1834
 date: 2014-07-21 10:28:14
 ---
 
-```
+```javascript
 <script language="javascript">
 //点击提交按钮触发下面的函数
 function submitit(){

@@ -1,11 +1,11 @@
 ---
 title: PHP常用算法的方法实现(冒泡、选择、插入、快排、二分查找)
 tags:
-  - php
+  - PHP
   - 排序算法
 id: 516
 categories:
-  - PHP
+  - 算法
 abbrlink: eecfc875
 date: 2016-10-24 13:19:03
 ---

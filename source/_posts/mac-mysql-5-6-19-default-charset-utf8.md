@@ -1,12 +1,10 @@
 ---
 title: mac(Linux)下批改mysql服务器的默认字符集为utf8
 tags:
-  - MacBook
-  - mysql
-  - utf8
+  - MySQL
 id: 42
 categories:
-  - Linxu分享
+  - 学习笔记
 abbrlink: d9eb5165
 date: 2014-07-07 14:17:25
 ---

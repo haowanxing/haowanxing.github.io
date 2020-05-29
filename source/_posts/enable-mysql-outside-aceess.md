@@ -1,12 +1,12 @@
 ---
 title: linux下允许外网对mysql的访问
 id: 108
-categories:
-  - Linux
-  - 数据库
+categories: Linux
 abbrlink: 8db5876f
 date: 2014-11-18 11:48:17
 tags:
+  - Linux
+  - MySQL
 ---
 
 从阿里云镜像市场安装的ubuntu(Apache+Mysql+VsFtp)里面Mysql默认是外网无法访问的，而在实际开发过程中需要对数据库的可视化比对操作，这样我们可以通过本地计算机来事实查改服务器的数据库。

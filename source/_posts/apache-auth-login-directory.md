@@ -3,7 +3,7 @@ title: Apache设置目录的访问权限（用户名和密码）
 tags: Apache
 abbrlink: b54dd86c
 date: 2018-02-01 14:58:17
-categories:
+categories: Linux
 ---
 
 　　最近重新搞了个阿里云香港ECS用来科学上网，另外使用[LAMP一键安装包](https://lamp.sh)搭环境，搭建完成后开放云盾端口即可通过IP访问到web默认页，这默认页有些实用的小工具，如：探针、MyAdmin啥的。如图：

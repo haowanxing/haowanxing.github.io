@@ -1,11 +1,10 @@
 ---
 title: 利用Dockerfile创建PHP7.3环境镜像
 tags:
-  - PHP
   - Docker
 abbrlink: a05a90fb
 date: 2019-07-04 10:39:55
-categories:
+categories: 学习笔记
 ---
 
 ## 关于Docker以及Dockerfile
@@ -17,6 +16,9 @@ Docker容器就不详细介绍了，把它理解成类似“虚拟机”的一�
 下载PHP源码：https://www.php.net/downloads.php
 
 我这里下载了php-7.3.6.tar.bz2
+
+<!--more-->
+
 ### Dockerfile内容
 
 ```Dockerfile

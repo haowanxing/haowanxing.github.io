@@ -2,13 +2,13 @@
 title: JS遍历Table的所有单元格内容 （转载）
 id: 70
 categories:
-  - JS分享
+  - 学习笔记
 abbrlink: be7cd8d7
 date: 2014-08-19 16:48:06
 tags:
 ---
 
-<pre lang="java" line="1" escaped="true">
+```javascript
 function GetInfoFromTable(tableid) {
 var tableInfo = "";
 var tableObj = document.getElementById(tableid);
@@ -20,4 +20,5 @@ tableInfo += "   ";
 tableInfo += "\n";
 }
 return tableInfo;
-}</pre>
+}
+```

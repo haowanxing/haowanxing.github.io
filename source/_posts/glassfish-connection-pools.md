@@ -2,13 +2,10 @@
 title: GlassFish配置数据库连接池
 tags:
   - Glassfish
-  - Java Web
-  - mysql
-  - 连接池
+  - Java
+  - MySQL
 id: 298
-categories:
-  - Web技术
-  - 数据库
+categories: Web
 abbrlink: '88376848'
 date: 2015-11-08 14:31:38
 ---

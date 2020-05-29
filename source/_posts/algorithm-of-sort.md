@@ -2,7 +2,7 @@
 title: 各种排序算法介绍
 id: 240
 categories:
-  - 我的分享
+  - 算法
 abbrlink: f996716f
 date: 2015-10-08 18:26:59
 tags:
@@ -57,7 +57,7 @@ int main(int argc, const char * argv[]) {
 }
 ```
    运行结果：
-   
+
 1:5 6 1 3 2 8 9 7 
 
 2:1 5 6 3 2 8 9 7 

@@ -1,0 +1,148 @@
+#############################
+# Xups for Hexo 主题配置文件
+# Jelon
+# http://jelon.top
+#############################
+
+#----------------------------
+# 头部导航
+#----------------------------
+menu:
+  home:
+    name: 首页
+    link: /
+    icon: icon-home
+#  lab:
+#    name: 实验室
+#    link: /lab/
+#    icon: icon-lab
+  about:
+    name: 关于
+    link: /about/
+    icon: icon-about
+  comment:
+    name: 留言
+    link: /comment/
+    icon: icon-comment
+
+#----------------------------
+# 副导航
+#----------------------------
+subnav:
+  github: "#"
+  weibo: "#"
+  rss: "#"
+  zhihu: "#"
+
+#----------------------------
+# RSS
+#----------------------------
+rss: /atom.xml
+
+#----------------------------
+# Favicon
+#----------------------------
+favicon: /favicon.ico
+
+#----------------------------
+# 头像url
+#----------------------------
+#avatar: /img/jelon.jpg
+avatar: /uploads/qiniu/20181010153914990649885.png
+
+#----------------------------
+# 是否开启分享
+#----------------------------
+share: true
+
+#----------------------------
+# 侧栏是否显示微博秀
+#----------------------------
+weibo_show:
+  enable: false
+  code: <iframe id="myWeibo" width="100%" height="550" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=550&fansRow=2&ptype=1&speed=0&skin=1&isTitle=0&noborder=0&isWeibo=1&isFans=0&uid=2376003112&verifier=796ea597&dpc=1"></iframe>
+
+#----------------------------
+# 是否开启评论
+#----------------------------
+comment:
+  enable: true
+  owner: haowanxing
+  repo: haowanxing.github.io
+  client_id: 7e6b078394a99b7940d2
+  client_secret: ff64a6b066e97af64358c44a96e0c7dd398aba1e
+
+#----------------------------
+# 是否开启云标签
+#----------------------------
+tagcloud: true
+
+#----------------------------
+# 友情链接
+#----------------------------
+friends:
+  enable: true
+  list:
+    1:
+      name: Jerry Qu
+      title: Jerry Qu
+      link: https://imququ.com/
+    2:
+      name: Jelon
+      title: Zhang Delong
+      link: https://jelon.info/
+#----------------------------
+# 头部链接
+#----------------------------
+head_links:
+  enable: true
+  list:
+    sup:
+      0:
+        name: Github
+        link: https://github.com/haowanxing
+      last:
+        name: Hosted by Coding Pages
+        link: https://pages.coding.me
+    sub:
+      sinaweibo:
+        name: 新浪微博
+        link: http://weibo.com/u/2214092525
+      qqweibo:
+        name: Facebook
+        link: https://www.facebook.com/york.mail/
+#----------------------------
+# SEO
+#----------------------------
+SEO:
+  keywords: Anthony, 刘经济, 技术博客
+  description: 待人以儒墨，不热爱前端技术的后端开发不是一个好的吃货。
+
+#----------------------------
+# 百度分析
+#----------------------------
+baidu_analytics: true
+
+#----------------------------
+# 高亮样式
+#----------------------------
+highlight_theme: normal
+#----------------------------
+# CDN
+# 如: //7xs305.com1.z0.glb.clouddn.com/
+# 主要以下两个目录进行 cdn 存储
+#   - img 图片资源下的 thumbnail 目录
+#   - css 样式资源下的 fonts 目录
+#----------------------------
+CDN:
+
+#----------------------------
+# 是否开启搜索
+#----------------------------
+search:
+  enable: true
+  placeholder: 输入关键字搜索
+
+# 访问量统计（不蒜子）
+busuanzi:
+  enable: true

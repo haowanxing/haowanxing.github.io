@@ -2,12 +2,12 @@
 title: PHP加解密算法使用openssl替换mcrypt扩展
 tags:
   - PHP
-  - openssl
+  - OpenSSL
   - mcrypt
   - xtea
 abbrlink: 5c3bf0b6
 date: 2019-02-20 18:02:20
-categories:
+categories: PHP
 ---
 
 PHP版本从7.2开始不再支持mcrypt扩展，所以我们需要使用OpenSSl对其进行替换。本文仅列出部分算法的替换示例，所以不在本文出现的算法或模式需要自行尝试，顺水推舟。

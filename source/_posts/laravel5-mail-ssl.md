@@ -3,7 +3,7 @@ title: Laravel5.5 发送邮件遇到Connection could not be established with hos
 tags: Laravel
 abbrlink: ac505287
 date: 2018-02-11 15:08:38
-categories:
+categories: 学习笔记
 ---
 
 Laravel输出的错误页面如下图：

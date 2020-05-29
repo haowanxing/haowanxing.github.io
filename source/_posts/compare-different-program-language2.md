@@ -1,13 +1,11 @@
 ---
 title: 不同语言对网络IO的效率对比
 tags:
-  - 测试
   - 性能
-  - Go
-  - PHP
 abbrlink: 55e3ba30
 date: 2018-08-21 17:07:37
-categories:
+categories: 编程语言
+thumbnail: /uploads/qiniu/20180822153492632352365.png
 ---
 ![网络IO时间对比图](../uploads/qiniu/20180822153492632352365.png)
 

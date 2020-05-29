@@ -1,12 +1,10 @@
 ---
 title: '通用笔试-PHP测试编程题[2题]'
 tags:
-  - 测试
-  - 笔试
-  - 编程
+  - PHP
 id: 488
 categories:
-  - PHP
+  - 算法
 abbrlink: 673af3cd
 date: 2016-09-02 09:53:21
 ---

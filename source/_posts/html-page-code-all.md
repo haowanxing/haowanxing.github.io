@@ -2,10 +2,8 @@
 title: 网页特殊符号HTML代码大全
 tags:
   - html
-  - 实体
 id: 58
-categories:
-  - 我的分享
+categories: 学习笔记
 abbrlink: '67134e92'
 date: 2014-07-24 19:28:33
 ---

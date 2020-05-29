@@ -2,7 +2,6 @@
 title: 初探MongoDB安全之RBAC（基于角色的访问控制）
 tags:
   - MongoDB
-  - 授权
   - 数据库
 id: 557
 categories:
@@ -94,7 +93,7 @@ mongod --port 27017 --dbpath ~/mongodata
 mongo --port 27017
 </pre>
     3.  #### 创建用户管理员：
-
+    
     在'admin'数据库中创建角色为“userAdminAnyDatabase”的用户“anthony”：
 
 <pre lang="bash">
@@ -108,7 +107,7 @@ db.createUser(
 )
 </pre>
     4.  #### 以授权模式重启MongoDB服务端：
-
+    
     命令行启动直接带上--auth参数即可，如果是使用的配置文件的形式，设置'security.authorization'。
 
 <pre lang="bash">
@@ -116,11 +115,11 @@ mongod --auth --port 27017 --dbpath ~/mongodata
 </pre>
 
     现在，连接到服务端的客户需要进行授权才能执行角色权限内的操作。
-
+    
         5.  #### 连接服务端并使用用户管理员('anthony')进行授权验证：
-
+    
     两种方式，连接时指定或在连接后使用db.auth()方法验证
-
+    
     直接带上验证参数：
 
 <pre lang="bash">
@@ -141,11 +140,11 @@ switched to db admin
 > 
 </pre>
     6.  #### 添加你所需要的附加用户：
-
+    
     当你使用用户管理员身份验证之后，你可以使用db.createUser()方法创建用户并给其分配角色。
-
+    
     用户管理员（本文中的'anthony'）只能够进行用户的管理和角色分配，如果进行其他的操作的话就会报错。
-
+    
     下面的例子将创建一个用户，他拥有两个不同数据库的不同权限：
 
 <pre lang="bash">

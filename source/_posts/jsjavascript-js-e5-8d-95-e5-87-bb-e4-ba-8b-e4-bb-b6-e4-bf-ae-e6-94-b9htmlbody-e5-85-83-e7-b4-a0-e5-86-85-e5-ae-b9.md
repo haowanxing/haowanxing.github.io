@@ -2,13 +2,13 @@
 title: js&javascript js单击&事件修改html&body元素内容
 id: 60
 categories:
-  - JS分享
+  - 学习笔记
 abbrlink: 82b0582a
 date: 2014-08-07 15:42:49
 tags:
 ---
 
-```
+```html
 <script>
 function myFunction()
 {

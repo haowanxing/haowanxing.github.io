@@ -2,7 +2,7 @@
 title: 百度新闻代码（去LOGO方法）- JS实现
 id: 98
 categories:
-  - JavaScript
+  - 学习笔记
 abbrlink: 33921fa9
 date: 2014-09-26 18:35:11
 tags:

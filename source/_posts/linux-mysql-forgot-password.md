@@ -3,10 +3,9 @@ title: linux下mysql的root密码忘记解决方法
 id: 246
 categories:
   - Linux
-  - Linxu分享
 abbrlink: d4ca8601
 date: 2015-10-13 08:54:10
-tags:
+tags: MySQL
 ---
 
 1．首先确认服务器出于安全的状态，也就是没有人能够任意地连接MySQL数据库。

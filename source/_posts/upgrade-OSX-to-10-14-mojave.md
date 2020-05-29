@@ -1,9 +1,9 @@
 ---
 title: 更新升级MacOSX到10.14 Mojave (MacBook Air 13-inch early 2014)
-tags: Mac
+tags: MacOS
 abbrlink: 106d7501
 date: 2018-10-24 15:13:17
-categories:
+categories: 学习笔记
 ---
 
 ### 写在前面的话：

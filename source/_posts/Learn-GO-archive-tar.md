@@ -1,9 +1,7 @@
 ---
 title: Go语言包-archive/tar
 categories: Learn-GO
-tags:
-  - archive
-  - tar
+tags: 
 abbrlink: 5df3d88
 date: 2018-11-22 17:33:52
 ---

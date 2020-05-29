@@ -1,9 +1,8 @@
 ---
 title: Learning-Markdown
 tags:
-  - essay
   - MarkDown
-categories: 我的分享
+categories: 学习笔记
 abbrlink: bb4e3702
 date: 2017-01-19 16:57:03
 ---
@@ -47,7 +46,7 @@ date: 2017-01-19 16:57:03
 ## 图片与超链接
 
 	超链接：[点我跳转吧](http://www.imsry.cn)
-
+	
 	图片：
 	![一张图片](http://img.cm-soft.cn/2017011975502me.png)
 

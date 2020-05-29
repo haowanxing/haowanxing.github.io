@@ -7,7 +7,7 @@ tags:
   - 漏洞
 id: 453
 categories:
-  - Linxu分享
+  - Linux
 abbrlink: 539cda52
 date: 2016-07-28 16:15:00
 ---

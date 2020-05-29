@@ -2,7 +2,7 @@
 title: mac系统如何显示和隐藏文件（转载）
 id: 66
 categories:
-  - Linxu分享
+  - 学习笔记
 abbrlink: 41de9b2c
 date: 2014-08-15 17:40:46
 tags:

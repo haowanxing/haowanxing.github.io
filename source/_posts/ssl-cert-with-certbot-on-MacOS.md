@@ -1,12 +1,13 @@
 ---
 title: 免费获得SSL证书-Let's Encrypt
 tags:
-  - ssl
-  - https
-  - free ssl cert
+  - SSL
+  - HTTPS
+  - Cert
+  - TLS
 abbrlink: 7e214f75
 date: 2019-04-22 18:18:33
-categories:
+categories: 网络安全
 ---
 
 - 使用工具：CertBot https://certbot.eff.org
@@ -34,6 +35,8 @@ sudo apt-get install certbot python-certbot-nginx
 ### 第二步，运行certbot
 
 #### type-1.仅仅制作证书
+
+<!--more-->
 
 ```Bash
 sudo certbot --nginx certonly

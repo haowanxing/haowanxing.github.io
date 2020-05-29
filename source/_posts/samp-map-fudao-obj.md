@@ -1,10 +1,10 @@
 ---
 title: SAMP-地图-新鞋停车场围栏Obj
 tags:
-  - samp
+  - SAMP
 id: 208
 categories:
-  - 我的分享
+  - 游戏
 abbrlink: c8c99f10
 date: 2015-07-28 14:59:27
 ---

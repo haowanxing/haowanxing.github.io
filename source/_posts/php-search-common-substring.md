@@ -1,11 +1,10 @@
 ---
 title: 实现寻找两个字符串的最大公子串的方法
 tags:
-  - php
-  - 子串
+  - PHP
 id: 552
 categories:
-  - PHP
+  - 算法
 abbrlink: 28c3b503
 date: 2016-10-27 15:32:50
 ---

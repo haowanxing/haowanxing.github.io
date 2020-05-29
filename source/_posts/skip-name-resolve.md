@@ -1,9 +1,9 @@
 ---
 title: skip-name-resolve可以解决远程连接mysql数据库时候的缓慢或超时
-tags: mysql
+tags: MySQL
 abbrlink: '65123244'
 date: 2018-03-22 18:18:39
-categories:
+categories: 学习笔记
 ---
 
 　　咳咳，迁了新的机器，全新的机器但是环境还是跟以前一样，基本没变过什么配置。但是远程连接mysql却很慢，甚至10s超时都还没连上！！！ 当然，仅仅只是建立连接的时候，连接成功后一切操作都行如流水。

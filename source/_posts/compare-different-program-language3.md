@@ -1,13 +1,11 @@
 ---
 title: 不同语言下文件读取和排序测试
 tags:
-  - 测试
   - 性能
-  - Go
-  - PHP
 abbrlink: 9739d7d7
 date: 2018-08-22 14:32:38
-categories:
+categories: 编程语言
+thumbnail: /uploads/qiniu/20180822153492641115673.png
 ---
 
 ![排序时间对比图](../uploads/qiniu/20180822153492641115673.png)

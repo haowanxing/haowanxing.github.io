@@ -1,12 +1,10 @@
 ---
 title: '[作业]JavaBean+Jsp简易购物车实现'
 tags:
-  - javaee
-  - netbean
-  - web
+  - Web
 id: 250
 categories:
-  - 我的分享
+  - 学习笔记
 abbrlink: 6efe4b6c
 date: 2015-10-15 19:36:37
 ---
@@ -407,7 +405,7 @@ public class CountPrice {
     }
 
 }
-``` 
+```
 
 附上NetBean项目工程：
 链接: http://pan.baidu.com/s/1o66DrjO <del>密码: yksy</del>

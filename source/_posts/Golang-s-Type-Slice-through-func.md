@@ -3,7 +3,7 @@ title: Go语言中的切片(Slice)是引用类型还是值类型？
 tags: Golang
 abbrlink: d83c494c
 date: 2018-05-31 14:51:10
-categories:
+categories: 编程语言
 ---
 
 在最近的学习和实践中，照着别人的代码敲，仅仅只是把别人写在方法内的片段直接拿出来用，结果却出人意料，所以很纳闷！

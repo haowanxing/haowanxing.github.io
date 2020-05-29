@@ -1,7 +1,7 @@
 ---
 title: 【干货】本地git对应多个远程仓库
-tags: git
-categories: 干货
+tags: Git
+categories: 学习笔记
 abbrlink: ab967d99
 date: 2017-07-24 10:18:41
 ---

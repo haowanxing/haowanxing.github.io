@@ -2,13 +2,12 @@
 title: 有关MacBook从10.9.5升级到10.11(EI capitan)后的问题及解决方法
 tags:
   - Apache
-  - ei capitan
   - Linux
-  - macosx
-  - mysql
+  - MacOS
+  - MySQL
 id: 282
 categories:
-  - Linux
+  - 学习笔记
 abbrlink: ce23f4b0
 date: 2015-10-26 20:16:55
 ---
@@ -31,12 +30,17 @@ date: 2015-10-26 20:16:55
 对于之前安装过Mysql的用户，当然不想重装啦，毕竟重装的话以前的数据库怎么办！至少我还不知道怎么恢复那么多的数据。我检查了一下目录，发现Mysql的文件 都在，只是命令失效而已。既然是这样的话，找到相关指令的目录不就解决了嘛！ 不！ 太麻烦了。我们应该设置环境变量，将命令全局使用。
 
 Mysql的默认安装目录：/usr/local/mysql 相关命令都在目录的bin文件夹内。
-> 执行命令：cd ~> 
-> 执行命令：vi ./.bash_profile> 
+> 执行命令：cd ~
 > 
-> 然后在里面写入一下信息并保存：> 
-> alias mysql=/usr/local/mysql/bin/mysql> 
-> alias mysqld=/usr/local/mysql/bin/mysqld> 
+> 执行命令：vi ./.bash_profile
+> 
+> 
+> 然后在里面写入一下信息并保存：
+> 
+> alias mysql=/usr/local/mysql/bin/mysql
+> 
+> alias mysqld=/usr/local/mysql/bin/mysqld
+> 
 > alias mysqladmin=/usr/local/mysql/bin/mysqladmin
 这样就可以使用这3个命令了。不过mysqld start是不能启动Mysql的，目前原因未知，但是有两个方法可以启动。第一种就是在系统偏好设置里面通过Mysql按钮启动；第二种就是通过终端输入命令：/Library/StartupItems/MySQLCOM/MySQLCOM [start | stop | restart] 这三种方式控制。
 

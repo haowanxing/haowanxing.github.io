@@ -2,10 +2,8 @@
 title: 《XML实用教程》课后实验1-7章文件
 tags:
   - XML
-  - 实验
 id: 363
-categories:
-  - 学习笔记
+categories: 学习笔记
 abbrlink: c5989a68
 date: 2016-04-11 13:06:42
 ---

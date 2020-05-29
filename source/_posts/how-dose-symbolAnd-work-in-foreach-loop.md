@@ -3,7 +3,7 @@ title: 引用符号'&'在foreach循环中的惊喜
 tags: PHP
 abbrlink: 5f047c20
 date: 2019-06-21 14:51:27
-categories:
+categories: PHP
 ---
 
 > 工作中总会遇到一些奇奇怪怪的由前人所写下的不可置疑的代码，如果你仅仅跟着眼前所见的代码去理解他人的思路，Well You have fell into a terrible situation.
@@ -42,6 +42,8 @@ var_dump($students);	//Think here!
 ```
 
 你也许会回答这样一个输出结果：
+
+<!--more-->
 
 ```
 ClassID:CL001-Language

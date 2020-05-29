@@ -1,12 +1,9 @@
 ---
 title: '[作业]Servlet简易聊天室'
 tags:
-  - netbean
-  - servlet
-  - web
+  - Web
 id: 234
-categories:
-  - Web技术
+categories: 学习笔记
 abbrlink: 9c7a95bd
 date: 2015-09-28 17:08:55
 ---

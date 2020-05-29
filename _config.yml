@@ -3,7 +3,7 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: 牛牛大作栈
+title: 小牛试一刀
 subtitle: 斯人笔记本
 description: 待人以儒墨，不热爱前端技术的后端开发不是一个好的吃货。
 keyword: 刘经济,Anthony,Sorry,PHP,Golang,最好的语言
@@ -78,7 +78,9 @@ pagination_dir: page
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
 #theme: landscape
-theme: yilia
+#theme: yilia
+#theme: next
+theme: xups
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html

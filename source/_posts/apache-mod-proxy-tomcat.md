@@ -4,8 +4,6 @@ tags:
   - Apache
   - Linux
   - Proxy
-  - Tomcat
-  - 反向代理
 id: 275
 categories:
   - Linux

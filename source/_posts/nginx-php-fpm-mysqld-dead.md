@@ -1,9 +1,7 @@
 ---
 title: nginx+php-fpm环境下的mysqld痛不欲生
 tags:
-  - mysqld
-  - Nginx
-  - php-fpm
+  - LNMP
 id: 390
 categories:
   - Linux

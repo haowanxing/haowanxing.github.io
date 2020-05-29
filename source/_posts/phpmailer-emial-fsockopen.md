@@ -1,9 +1,8 @@
 ---
 title: 一种较好的实现PHP异步发送邮件的实现
 tags:
-  - email
-  - php
-  - 异步发送
+  - Email
+  - PHP
 id: 502
 categories:
   - PHP

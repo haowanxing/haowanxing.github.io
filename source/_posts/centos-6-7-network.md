@@ -6,10 +6,12 @@ categories:
 abbrlink: 3be490a0
 date: 2015-08-26 16:37:12
 tags:
+  - CentOS
 ---
 
-![CentOS-Network-eth0](http://www.dshui.wang/wp-content/uploads/2015/08/CentOS-Network-eth0.jpg)
+![CentOS-Network-eth0](../uploads/2015/08/CentOS-Network-eth0.jpg)
 今天用Vbox安装了CentOS 6.7 准备测试游戏服务器,需要下载一个服务端，使用wget时发现无wget命令，聪明的我马上想到使用yum install wget 来安装一个，谁知道出现了无法连接镜像列表的报错，通过查看ifconfig发现，原来是网卡没有启动，于是查看了资料：
+
 ```
  vi /etc/sysconfig/network-scripts/ifcfg-eth0
 ```

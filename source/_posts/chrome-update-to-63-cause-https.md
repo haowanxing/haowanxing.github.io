@@ -1,9 +1,11 @@
 ---
 title: 解决Chrome更新到63后.dev/.app后缀域名强制HTTPS的问题
-tags: Chrome https
+tags:
+  - https
+  - Chrome
 abbrlink: a508b207
 date: 2017-12-11 14:57:18
-categories:
+categories: 网络安全
 ---
 
 　　又是周一，上班的日子总是来的太快，来到公司的第一件事，打开IDE并更新代码库。看看上周做到哪里了，还有什么BUG是待修复的？

@@ -1,9 +1,9 @@
 ---
 title: Pazzle on array_column
-tags: php
+tags: PHP
 abbrlink: 25a92a3d
 date: 2017-11-10 10:28:18
-categories:
+categories: PHP
 ---
 
 　　在PHP中内置的对数组操作的方法（函数）有一个叫做'array_column'的非常实用，它可以用作返回一个二维数组的指定列。

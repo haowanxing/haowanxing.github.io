@@ -1,13 +1,11 @@
 ---
 title: 不同语言的基本性能测试
 tags:
-  - 测试
   - 性能
-  - Go
-  - PHP
 abbrlink: 1b3229fb
 date: 2018-08-10 16:56:48
-categories:
+categories: 编程语言
+thumbnail: /uploads/qiniu/20180822153492626124054.png
 ---
 ![计算时间对比图](../uploads/qiniu/20180822153492626124054.png)
 测试机器配置：

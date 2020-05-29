@@ -2,10 +2,10 @@
 title: 'linux下使用yum安装Apache+php+Mysql+phpMyAdmin [转载]'
 id: 120
 categories:
-  - Linxu分享
+  - Linux
 abbrlink: bc861775
 date: 2014-12-23 21:32:44
-tags:
+tags: LAMP
 ---
 
 适用redhat于32位及64位，前提架设好本地源。在这里不再赘述。

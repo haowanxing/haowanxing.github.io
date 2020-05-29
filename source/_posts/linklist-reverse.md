@@ -1,12 +1,10 @@
 ---
 title: 已知单链表，写一算法将其倒置
 tags:
-  - 倒置
   - 数据结构
-  - 链表
 id: 412
 categories:
-  - 我的分享
+  - 学习笔记
 abbrlink: 2da191b
 date: 2016-07-23 01:26:03
 ---
@@ -129,16 +127,16 @@ int main(int argc, const char * argv[]) {
     link_insert_before(link, 5);
     link_insert_before(link, 9);
     link_insert_before(link, 20);
-
+    
     //往尾部插数据
     link_insert_after(link, 22);
-
+    
     link_print(link);   //打印
-
+    
     link_reverse(link); //逆序
-
+    
     link_print(link);   //打印
-
+    
     link_clear(link);   //清空
     return 0;
 }

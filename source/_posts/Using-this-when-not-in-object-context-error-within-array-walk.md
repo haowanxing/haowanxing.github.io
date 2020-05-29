@@ -3,7 +3,7 @@ title: array_walk中的$this报错
 abbrlink: 82527d05
 date: 2017-04-14 16:46:59
 tags:
-categories:
+categories: PHP
 ---
 
 >Fatal Error:Using $this when not in object context on line 54

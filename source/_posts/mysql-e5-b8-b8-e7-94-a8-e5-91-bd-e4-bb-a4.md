@@ -2,10 +2,10 @@
 title: MySQL常用命令
 id: 17
 categories:
-  - 数据库
+  - 学习笔记
 abbrlink: 92cd9797
 date: 2014-07-03 16:36:30
-tags:
+tags: MySQL
 ---
 
 连接MySQL数据库：

@@ -1,7 +1,7 @@
 ---
 title: php上传进度之uploadprogress
 tags:
-  - php上传进度
+  - 上传进度
 categories:
   - PHP
 abbrlink: f0dc176
@@ -47,7 +47,7 @@ date: 2017-02-07 11:29:13
  - 主要是接收上传文件，然后将$_FILE中的文件保存到本地文件；
 * 获得上传进度部分：
  - 需要打开session支持`session_start()`，然后通过`ini_get("session.upload_progress.prefix")`和`KEY`获取$_SEESION，在通过`bytes_processed`和`content_length`的比值x100%获取传输进度；
- 
+
 　　最后讲一下前面提到的为何PHP以FastCGI模式运行的时候这个扩展不适用：  
 　　PHP以`FastCGI模式`运行的时候，仅且仅当数据传送完毕后，PHP才获取到数据，此时文件已经发送完毕，所以相关的session这时候才开始创建，而默认情况下，这个session在文件传送完毕又会自动销毁，所以这个根本没有任何意义。  
 　　如果想要在以`FastCGI模式`下使用PHP的`uploadprogress`是不可能的了，在Nginx下可以选择使用`NGINX Upload Progress Module`来达到这个需求。

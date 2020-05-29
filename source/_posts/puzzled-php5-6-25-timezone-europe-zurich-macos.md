@@ -1,7 +1,7 @@
 ---
 title: PHP时区默认为Europe/zurich且修改php.ini无效的困惑
 tags:
-  - php困惑
+  - php
 categories:
   - PHP
 abbrlink: b9f89962

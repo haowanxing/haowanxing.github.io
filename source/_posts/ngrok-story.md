@@ -1,10 +1,12 @@
 ---
 title: Linux下的安装Ngrok服务器的故事
 tags:
-  - ngrok
+  - Ngrok
 abbrlink: 39d9f6df
 date: 2018-09-05 16:22:19
-categories:
+categories: 
+  - 学习笔记
+  - Linux
 ---
 
 ## 使用场景

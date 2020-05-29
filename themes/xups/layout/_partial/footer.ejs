@@ -1,0 +1,24 @@
+<footer class="footer">
+<div style="margin-bottom:1em;">
+<% if (theme.busuanzi && theme.busuanzi.enable){ %>
+        <!-- 不蒜子统计 -->
+        <span id="busuanzi_container_site_pv">
+                本站总访问量<span id="busuanzi_value_site_pv"></span>次
+        </span>
+        <span class="post-meta-divider">|</span>
+        <span id="busuanzi_container_site_uv" style='display:none'>
+                本站访客数<span id="busuanzi_value_site_uv"></span>人
+        </span>
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  <% } %>
+</div>
+    &copy;
+    <% if (new Date().getFullYear() == 2014) { %>
+        <%- new Date().getFullYear() %>
+    <% } else { %>
+        2014-<%- new Date().getFullYear() %>
+    <% } %>
+
+    <a href="<%- url_for() %>">Best Wishes</a>
+</footer>
+<div class="back-to-top" id="JELON__backToTop" title="返回顶部">返回顶部</div>

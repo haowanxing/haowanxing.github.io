@@ -2,10 +2,10 @@
 title: Linux上vi(vim)编辑器使用教程 - 转载
 id: 118
 categories:
-  - Linxu分享
+  - Linux
 abbrlink: 1beb1f62
 date: 2014-11-29 23:29:48
-tags:
+tags: Vim
 ---
 
 vi(vim)是上Linux非常常用的编辑器，很多Linux发行版都默认安装了vi(vim)。vi(vim)命令繁多但是如果使用灵活之后将会大大提高效率。vi是“visual interface”的缩写，vim是vi IMproved(增强版的vi)。在一般的系统管理维护中vi就够用，如果想使用代码加亮的话可以使用vim。下面vps侦探整理一下vi的使用教程：包含vi的基本介绍、使用模式、文件的打开关闭保存、插入文本或新建行、移动光标、删除、恢复字符或行、搜索等等，算是一篇比较适合新手学习vi的教程。

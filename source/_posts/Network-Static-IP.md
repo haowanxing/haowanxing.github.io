@@ -1,14 +1,10 @@
 ---
 title: Linux配置网卡（静态）IP地址
 tags:
-  - Linux
-  - OrangePi
-  - Network
   - 网卡
-  - IP
 abbrlink: 15ab52a4
 date: 2019-09-23 15:00:08
-categories:
+categories: Linux
 ---
 
 > 上一篇记录了在OrangePi-Zero连接WIFI的过程，今天试着给自带默认网卡配置一下静态IP地址，以方便在整个局域网内能够访问设备。
@@ -20,6 +16,8 @@ categories:
 ## 再者
 
 使用`vim`编辑文件`/etc/network/interfaces`，增加新行如下：
+
+<!--more-->
 
 ```bash
 auto eht0

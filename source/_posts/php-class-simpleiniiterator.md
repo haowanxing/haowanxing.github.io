@@ -1,8 +1,8 @@
 ---
 title: 分享一个PHP修改ini配置文件的类
 tags:
-  - ini
-  - php
+  - INI
+  - PHP
 id: 288
 categories:
   - PHP
@@ -55,7 +55,7 @@ write_buffer = 2M
 			$this->filename = $filename;			
 			$this->setIniContent();						
 		}
-
+	
 		/**
 		 * 
 		 * 初始化Ini文件数组
@@ -66,19 +66,19 @@ write_buffer = 2M
 			$arrTemp = preg_split('/\\r\\n/', $this->fileContentString);
 			$this->iniContent = array();
 			$this->originalIniContent = array();
-
+	
 			foreach ($arrTemp as $key => $value)
 			{
 				$arrValue = explode('=', $value);
 				if(empty($arrValue[0]))continue;
 				$arrKeyOrginal = $arrValue[0];
 				$arrKey = strtoupper($arrValue[0]);
-
+	
 				$this->iniContent["$arrKey"] = $arrValue[1];
 				$this->originalIniContent["$arrKeyOrginal"] = $arrValue[1];
 			}
 		}
-
+	
 		/**
 		 * 
 		 * 获得INI文件的整体信息
@@ -87,7 +87,7 @@ write_buffer = 2M
 		{
 			return $this->originalIniContent;
 		}
-
+	
 		/**
 		 * 
 		 * 根据键名，获得该键名的值
@@ -99,7 +99,7 @@ write_buffer = 2M
 			$keyName = strtoupper($keyName);
 			return $this->iniContent["$keyName"];
 		}
-
+	
 		/**
 		 * 
 		 * 设置INI
@@ -148,7 +148,7 @@ write_buffer = 2M
 		{
 			$iniNewContent = '';
 			$arrKey = $this->originalIniContent;
-
+	
 			foreach ($arrKey as $k => $v)
 			{
 				if(empty($k))continue;	
@@ -185,7 +185,7 @@ write_buffer = 2M
 			$this->filename = $filename;			
 			$this->setIniContent();						
 		}
-
+	
 		/**
 		 * 
 		 * 初始化Ini文件数组
@@ -196,7 +196,7 @@ write_buffer = 2M
 			$arrTemp = preg_split('/\\r\\n/', $this->fileContentString);
 			$this->iniContent = array();
 			$this->originalIniContent = array();
-
+	
 			foreach ($arrTemp as $key => $value)
 			{
 				if(!strpos($value, '='))
@@ -209,15 +209,15 @@ write_buffer = 2M
 					$arrKeyOrginal = $arrValue[0];
 					$arrKey = strtoupper($arrValue[0]);
 					$arrCurKey = strtoupper($this->curKey);
-
+	
 					$this->iniContent["$arrCurKey"]["$arrKey"] = $arrValue[1];
 					$this->originalIniContent["$this->curKey"]["$arrKeyOrginal"] = $arrValue[1];
 				}
 			}
-
+	
 			if(count($this->iniContent) > 1) { $this->bMulNodeFlag = true; } 
 		}
-
+	
 		/**
 		 * 
 		 * 获得INI文件的整体信息
@@ -226,7 +226,7 @@ write_buffer = 2M
 		{
 			return $this->originalIniContent;
 		}
-
+	
 		/**
 		 * 
 		 * 根据节点名和键名，获得该节点下该键名的值
@@ -240,7 +240,7 @@ write_buffer = 2M
 			$keyName = strtoupper($keyName);
 			return $this->iniContent["$nodeName"]["$keyName"];
 		}
-
+	
 		/**
 		 * 
 		 * 设置INI
@@ -262,7 +262,7 @@ write_buffer = 2M
 				$strNewIniContent .= '['.$nodeName.']'."\r\n";
 				$strNewIniContent .= $keyName.'='.$value."\r\n";
 			}
-
+	
 			if(file_exists($this->filename) && file_put_contents($this->filename, $strNewIniContent))
 			{
 				$this->setIniContent();
@@ -273,7 +273,7 @@ write_buffer = 2M
 				return false;
 			}			
 		}
-
+	
 		/**
 		 * 
 		 * 获取新的INI文件内容
@@ -286,7 +286,7 @@ write_buffer = 2M
 		{
 			$iniNewContent = '';
 			$arrKey = array_keys($this->originalIniContent);
-
+	
 			foreach ($arrKey as $k => $v)
 			{
 				$iniNewContent .= '['.$v.']'."\r\n";
@@ -305,7 +305,7 @@ write_buffer = 2M
 			return $iniNewContent;
 		}
 	}
-
+	
 	$content = new SimpleIniIterator('XML/test.ini');
 	echo '<pre>';
 	var_dump($content->getIniContent());

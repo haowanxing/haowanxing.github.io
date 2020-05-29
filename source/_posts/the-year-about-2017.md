@@ -2,7 +2,7 @@
 title: 2017年的开篇，居然是这个！
 id: 584
 categories:
-  - 我的分享
+  - 杂谈
 abbrlink: 5fc11633
 date: 2017-01-01 00:13:27
 tags:

@@ -1,0 +1,206 @@
+---
+title: 作业4-2（带用户的留言板）单页面实现！
+id: 164
+categories: 学习笔记
+abbrlink: db7b2e7c
+date: 2015-05-09 15:14:28
+tags:
+---
+
+![作业4-2要求](../uploads/qiniu/20170206148636263061226.png)
+[演示页面：http://www.dshui.wang/html/board2.php](/html/board2.php)
+本次作业基于作业4-1完成，部分文件在4-1中给出：[](/?p=161 "http://www.dshui.wang/?p=161")
+所需要的数据表：
+
+```
+CREATE TABLE `msg` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `content` varchar(254) NOT NULL DEFAULT '',
+  `username` char(10) DEFAULT '',
+  `stime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+```
+```
+CREATE TABLE `user` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `username` char(20) NOT NULL DEFAULT '',
+  `pwd` varchar(20) NOT NULL DEFAULT '',
+  `registtime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+```
+
+文件board2.php
+
+```
+<?php
+include './mysqlconfig.php';
+session_start();
+if($_POST['do']=="login"){
+	$username = $_POST['username'];
+	$pwd = $_POST['passwd'];
+	$sql = "select * from user where username='$username' and pwd='$pwd';";
+	$res = mysql_query($sql);
+	$row = mysql_fetch_assoc($res);
+	if ($row['id'] <> ''){
+		$_SESSION['username'] = $row['username'];
+		echo "<script>alert('登陆成功！')</script>";
+	}else{
+		echo "<script>alert('登录失败！用户名或密码错误！')</script>";
+	}
+	header ( "refresh:0;url=" );
+}elseif($_POST['do']=="registe"){
+	$rname = $_POST['rname'];
+	$rpwd = $_POST['rpasswd'];
+	$sql = "insert into user(username,pwd) values ('$rname','$rpwd');";
+	if(mysql_query($sql)){
+		$_SESSION['username'] = $rname;
+		echo "<script>alert('注册成功！已经为您自动登录！')</script>";
+	}else{
+		echo "<script>alert('注册失败！')</script>";
+	}
+	header ( "refresh:0;url=" );
+}elseif($_POST['do']=="submit"){
+	$content = $_POST['content'];
+	echo $content;
+	$sql = "insert into msg(content,username) values (\"{$content}\",'".$_SESSION['username']."');";
+	if(mysql_query($sql)){
+		echo "<script>alert('留言成功！')</script>";
+		header ( "refresh:0;url=" );
+	}else{
+		echo "<script>alert('不知道怎么的，留言失败了。')</script>";
+	}
+}elseif($_POST['do']=="logout"){
+	session_unset();
+	session_destroy();
+	echo "<script>alert('成功退出登陆！')</script>";
+	header ( "refresh:0;url=" );
+}
+$sql = "select * from msg order by id desc;";
+$result = mysql_query($sql);
+?>
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>简易留言板(带用户验证)</title>
+<style type="text/css">
+#tab {
+BORDER-BOTTOM: #c2130e 3px solid; HEIGHT: 60px
+}
+#tab p{
+FLOAT: left; LINE-HEIGHT: 21px; text-align:center
+}
+#tab p.hit {
+BACKGROUND: #dcdcdc; BORDER-LEFT: #f2f2f2 1px solid; WIDTH: 40px; CURSOR: pointer
+}
+#tab p.nhit {
+BACKGROUND: #c2130e; BORDER-LEFT: #f2f2f2 1px solid; WIDTH: 40px; COLOR: #fff
+}
+</style>
+</head>
+
+<body bgcolor="#56FF00">
+	<div style="margin:0 auto;width:400px;">
+	<?php if(!isset($_SESSION['username']) || $_SESSION['username']==''){?>
+		<div id="usertip" class="login">
+
+注意：只有登陆之后才能进行留言哦！
+
+			<div id="tab">
+
+登陆
+
+注册
+
+			</div>
+			<div id="login">
+				<form name="login" method="post">
+					<input type="hidden" name="do" value="login">
+					<table>
+						<tr>
+							<td>用户名：</td>
+							<td><input type="text" name="username" ></td>
+						</tr>
+						<tr>
+							<td>密&nbsp;&nbsp;&nbsp;&nbsp;码：</td>
+							<td><input type="password" name="passwd" ></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td align="right"><input type="submit" value="登陆" /></td>
+						</tr>
+					</table>
+				</form>
+			</div>
+			<div id="reg" style="display: none;">
+				<form name="registe" method="post">
+					<input type="hidden" name="do" value="registe">
+					<table>
+						<tr>
+							<td>用户名：</td>
+							<td><input type="text" name="rname" ></td>
+						</tr>
+						<tr>
+							<td>密&nbsp;&nbsp;&nbsp;&nbsp;码：</td>
+							<td><input type="password" name="rpasswd" ></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td align="right"><input type="submit" value="注册" /></td>
+						</tr>
+					</table>
+				</form>
+			</div>
+		</div>
+	<?php }else{?>
+        <div class="form">
+
+        		当前用户：<?php echo $_SESSION['username'];?>
+        		<form method="post">
+        		<input type="hidden" name="do" value="logout">
+        		<input type="submit"value="退出登录">
+        		</form>
+
+            <form method="post">
+            <textarea name="content" cols="45" rows="5" style="width: 400px; height: 88px;"></textarea>
+
+			<input type="hidden" name="do" value="submit">
+            <div align="right"><input type="submit" value="留言" />&nbsp;</div>
+            </form>
+        </div>
+    <?php }?>
+        <div class="msg">
+        	<table border="1" bordercolor="#FFFFFF">
+        	<?php while ($rows = mysql_fetch_assoc($result)){?>
+            	<tr>
+                	<td><span><?php echo $rows['username'];?> </span><span class="datetime">（<?php echo $rows['stime'];?>）</span>
+<span class="content"><?php echo $rows['content'];?></span></td>
+                </tr>
+            <?php }?>
+            </table>
+        </div>
+	</div>
+<script>
+var Tags=document.getElementById('tab').getElementsByTagName('p'); 
+var usertip=document.getElementById('usertip').getElementsByTagName('div');
+var len=Tags.length; 
+var flag=0;//修改默认值
+for(i=0;i<len;i++){
+Tags[i].value = i;
+Tags[i].onmouseover=function(){changeNav(this.value)}; 
+}
+Tags[flag].className='nhit';
+function changeNav(v){ 
+	Tags[flag].className='hit';
+	usertip[flag+1].style.display="none";
+	flag=v; 
+	Tags[v].className='nhit';
+	usertip[v+1].style.display="";
+}
+</script>
+</body>
+</html>
+
+```
