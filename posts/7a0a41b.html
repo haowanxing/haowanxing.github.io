@@ -120,6 +120,13 @@ var _hmt = _hmt || [];
     <p class="post-meta text-center">
          发表于
         <time datetime="2015-09-26T15:06:48.000Z">2015-09-26 23:06:48</time>
+
+        <!-- 不蒜子统计 -->
+        <span id="busuanzi_container_page_pv" style='display:none'">
+              <i class="icon-smile icon"></i> 阅读数：<span id="busuanzi_value_page_pv"></span>次
+        </span>
+
+
     </p>
     <div class="post-content">
         <p>如果WEB服务器迁移，除了将论坛所有的文件转移到新的服务器上之外，还需要将数据库一同迁移。文件转移完毕之后，并不能算完成了，因为这里还有数据库的配置没有修改。<br>Discuz论坛，如果需要迁移数据库，那么我们在转移的数据库的所有数据之后，还需要重新配置一下Discuz的配置文件：<br>论坛连接Ucenter的配置：config/config_ucenter.php<br>论坛的配置：config/config_global.php<br>Ucenter的配置：uc_server/data/config.inc.php<br>在这三个文件里面，修改对应的数据库地址、数据库名称、用户名、密码。<br>全部配置完毕之后，保存就可以了。</p>
@@ -293,23 +300,18 @@ var _hmt = _hmt || [];
 <ul class="widget-bd">
     
     <li>
-        <a href="/categories/学习笔记/">学习笔记</a>
-        <span class="badge">(46)</span>
-    </li>
-    
-    <li>
         <a href="/categories/编程语言/">编程语言</a>
         <span class="badge">(5)</span>
     </li>
     
     <li>
-        <a href="/categories/Learn-GO/">Learn-GO</a>
-        <span class="badge">(6)</span>
+        <a href="/categories/学习笔记/">学习笔记</a>
+        <span class="badge">(46)</span>
     </li>
     
     <li>
-        <a href="/categories/开发板/">开发板</a>
-        <span class="badge">(1)</span>
+        <a href="/categories/Learn-GO/">Learn-GO</a>
+        <span class="badge">(6)</span>
     </li>
     
     <li>
@@ -320,6 +322,11 @@ var _hmt = _hmt || [];
     <li>
         <a href="/categories/PHP/">PHP</a>
         <span class="badge">(9)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/开发板/">开发板</a>
+        <span class="badge">(1)</span>
     </li>
     
     <li>
@@ -386,21 +393,19 @@ var _hmt = _hmt || [];
         <!-- 文章标签 -->
 <div class="widget-bd tag-wrap">
   
+    <a class="tag-item" href="/tags/Golang/" title="Golang">Golang (1)</a>
+  
     <a class="tag-item" href="/tags/PHP/" title="PHP">PHP (8)</a>
   
     <a class="tag-item" href="/tags/Docker/" title="Docker">Docker (1)</a>
   
     <a class="tag-item" href="/tags/essay/" title="essay">essay (3)</a>
   
-    <a class="tag-item" href="/tags/Golang/" title="Golang">Golang (1)</a>
-  
-    <a class="tag-item" href="/tags/Linux/" title="Linux">Linux (5)</a>
-  
     <a class="tag-item" href="/tags/archive/" title="archive">archive (2)</a>
   
-    <a class="tag-item" href="/tags/tar/" title="tar">tar (1)</a>
-  
     <a class="tag-item" href="/tags/zip/" title="zip">zip (1)</a>
+  
+    <a class="tag-item" href="/tags/Linux/" title="Linux">Linux (5)</a>
   
     <a class="tag-item" href="/tags/bufio/" title="bufio">bufio (1)</a>
   
@@ -408,7 +413,7 @@ var _hmt = _hmt || [];
   
     <a class="tag-item" href="/tags/filepath/" title="filepath">filepath (1)</a>
   
-    <a class="tag-item" href="/tags/bytes/" title="bytes">bytes (1)</a>
+    <a class="tag-item" href="/tags/tar/" title="tar">tar (1)</a>
   
     <a class="tag-item" href="/tags/OrangePi/" title="OrangePi">OrangePi (2)</a>
   
@@ -418,9 +423,11 @@ var _hmt = _hmt || [];
   
     <a class="tag-item" href="/tags/IP/" title="IP">IP (2)</a>
   
-    <a class="tag-item" href="/tags/php/" title="php">php (7)</a>
+    <a class="tag-item" href="/tags/bytes/" title="bytes">bytes (1)</a>
   
     <a class="tag-item" href="/tags/算法/" title="算法">算法 (2)</a>
+  
+    <a class="tag-item" href="/tags/php/" title="php">php (7)</a>
   
     <a class="tag-item" href="/tags/时间复杂度/" title="时间复杂度">时间复杂度 (1)</a>
   
@@ -495,9 +502,22 @@ var _hmt = _hmt || [];
 
     <!-- 博客底部 -->
     <footer class="footer">
+<div style="margin-bottom:1em;">
+
+        <!-- 不蒜子统计 -->
+        <span id="busuanzi_container_site_pv">
+                本站总访问量<span id="busuanzi_value_site_pv"></span>次
+        </span>
+        <span class="post-meta-divider">|</span>
+        <span id="busuanzi_container_site_uv" style='display:none'>
+                本站访客数<span id="busuanzi_value_site_uv"></span>人
+        </span>
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  
+</div>
     &copy;
     
-        2016-2020
+        2014-2020
     
 
     <a href="/">Best Wishes</a>
@@ -506,6 +526,6 @@ var _hmt = _hmt || [];
 
     <!--博客js脚本 -->
     <!-- 这里放网站js脚本 -->
-<script src="/js/main.js?v=1590718997141"></script>
+<script src="/js/main.js?v=1590721893237"></script>
 </body>
 </html>

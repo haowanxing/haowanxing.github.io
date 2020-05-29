@@ -120,6 +120,13 @@ var _hmt = _hmt || [];
     <p class="post-meta text-center">
          发表于
         <time datetime="2016-05-05T04:27:51.000Z">2016-05-05 12:27:51</time>
+
+        <!-- 不蒜子统计 -->
+        <span id="busuanzi_container_page_pv" style='display:none'">
+              <i class="icon-smile icon"></i> 阅读数：<span id="busuanzi_value_page_pv"></span>次
+        </span>
+
+
     </p>
     <div class="post-content">
         <p>之前在做阿里笔试的时候，其中就有那么一个题，要求你用js写一个函数，用来判断两个Div是否相交，当时在那个上面并没有很快的写出来，结果时间到了。回头好好又想想，还是把他写一下，就算是最笨的方法，也得实现。<br><a id="more"></a><br>提醒，这里讨论的都没有考虑到浏览器的兼容性差异，对于盒子模型不同的需要注意改写代码。</p>
@@ -413,23 +420,18 @@ function check(div1,div2){
 <ul class="widget-bd">
     
     <li>
-        <a href="/categories/学习笔记/">学习笔记</a>
-        <span class="badge">(46)</span>
-    </li>
-    
-    <li>
         <a href="/categories/编程语言/">编程语言</a>
         <span class="badge">(5)</span>
     </li>
     
     <li>
-        <a href="/categories/Learn-GO/">Learn-GO</a>
-        <span class="badge">(6)</span>
+        <a href="/categories/学习笔记/">学习笔记</a>
+        <span class="badge">(46)</span>
     </li>
     
     <li>
-        <a href="/categories/开发板/">开发板</a>
-        <span class="badge">(1)</span>
+        <a href="/categories/Learn-GO/">Learn-GO</a>
+        <span class="badge">(6)</span>
     </li>
     
     <li>
@@ -440,6 +442,11 @@ function check(div1,div2){
     <li>
         <a href="/categories/PHP/">PHP</a>
         <span class="badge">(9)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/开发板/">开发板</a>
+        <span class="badge">(1)</span>
     </li>
     
     <li>
@@ -506,21 +513,19 @@ function check(div1,div2){
         <!-- 文章标签 -->
 <div class="widget-bd tag-wrap">
   
+    <a class="tag-item" href="/tags/Golang/" title="Golang">Golang (1)</a>
+  
     <a class="tag-item" href="/tags/PHP/" title="PHP">PHP (8)</a>
   
     <a class="tag-item" href="/tags/Docker/" title="Docker">Docker (1)</a>
   
     <a class="tag-item" href="/tags/essay/" title="essay">essay (3)</a>
   
-    <a class="tag-item" href="/tags/Golang/" title="Golang">Golang (1)</a>
-  
-    <a class="tag-item" href="/tags/Linux/" title="Linux">Linux (5)</a>
-  
     <a class="tag-item" href="/tags/archive/" title="archive">archive (2)</a>
   
-    <a class="tag-item" href="/tags/tar/" title="tar">tar (1)</a>
-  
     <a class="tag-item" href="/tags/zip/" title="zip">zip (1)</a>
+  
+    <a class="tag-item" href="/tags/Linux/" title="Linux">Linux (5)</a>
   
     <a class="tag-item" href="/tags/bufio/" title="bufio">bufio (1)</a>
   
@@ -528,7 +533,7 @@ function check(div1,div2){
   
     <a class="tag-item" href="/tags/filepath/" title="filepath">filepath (1)</a>
   
-    <a class="tag-item" href="/tags/bytes/" title="bytes">bytes (1)</a>
+    <a class="tag-item" href="/tags/tar/" title="tar">tar (1)</a>
   
     <a class="tag-item" href="/tags/OrangePi/" title="OrangePi">OrangePi (2)</a>
   
@@ -538,9 +543,11 @@ function check(div1,div2){
   
     <a class="tag-item" href="/tags/IP/" title="IP">IP (2)</a>
   
-    <a class="tag-item" href="/tags/php/" title="php">php (7)</a>
+    <a class="tag-item" href="/tags/bytes/" title="bytes">bytes (1)</a>
   
     <a class="tag-item" href="/tags/算法/" title="算法">算法 (2)</a>
+  
+    <a class="tag-item" href="/tags/php/" title="php">php (7)</a>
   
     <a class="tag-item" href="/tags/时间复杂度/" title="时间复杂度">时间复杂度 (1)</a>
   
@@ -615,9 +622,22 @@ function check(div1,div2){
 
     <!-- 博客底部 -->
     <footer class="footer">
+<div style="margin-bottom:1em;">
+
+        <!-- 不蒜子统计 -->
+        <span id="busuanzi_container_site_pv">
+                本站总访问量<span id="busuanzi_value_site_pv"></span>次
+        </span>
+        <span class="post-meta-divider">|</span>
+        <span id="busuanzi_container_site_uv" style='display:none'>
+                本站访客数<span id="busuanzi_value_site_uv"></span>人
+        </span>
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  
+</div>
     &copy;
     
-        2016-2020
+        2014-2020
     
 
     <a href="/">Best Wishes</a>
@@ -626,6 +646,6 @@ function check(div1,div2){
 
     <!--博客js脚本 -->
     <!-- 这里放网站js脚本 -->
-<script src="/js/main.js?v=1590718997012"></script>
+<script src="/js/main.js?v=1590721893105"></script>
 </body>
 </html>
