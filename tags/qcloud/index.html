@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=11,IE=10,IE=9,IE=8">
     <meta name="baidu-site-verification" content="dIcXMeY8Ya">
     
-    <title>`qcloud`标签下的文章 | 小牛试一刀</title>
+    <title>`Qcloud`标签下的文章 | 小牛试一刀</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
     <meta name="keywords" content="Anthony, 刘经济, 技术博客">
     <meta name="description" content="待人以儒墨，不热爱前端技术的后端开发不是一个好的吃货。">
@@ -56,15 +56,15 @@ var _hmt = _hmt || [];
         <div class="dropnav icon-paragraph-justify" id="JELON__btnDropNav"></div>
         <ul class="menu hidden" id="JELON__menu">
             
-            <li rel="/tags/qcloud/index.html" class="item ">
+            <li rel="/tags/Qcloud/index.html" class="item ">
                 <a href="/" title="首页" class="icon-home">&nbsp;首页</a>
             </li>
             
-            <li rel="/tags/qcloud/index.html" class="item ">
+            <li rel="/tags/Qcloud/index.html" class="item ">
                 <a href="/about/" title="关于" class="icon-about">&nbsp;关于</a>
             </li>
             
-            <li rel="/tags/qcloud/index.html" class="item ">
+            <li rel="/tags/Qcloud/index.html" class="item ">
                 <a href="/comment/" title="留言" class="icon-comment">&nbsp;留言</a>
             </li>
             
@@ -116,7 +116,7 @@ var _hmt = _hmt || [];
     <h3 class="widget-hd">
         <strong>
             
-                `qcloud`标签下的文章
+                `Qcloud`标签下的文章
             
         </strong>
     </h3>
@@ -147,7 +147,7 @@ var _hmt = _hmt || [];
             标签：
             
     
-        <a href="/tags/qcloud/" title="qcloud">qcloud</a>
+        <a href="/tags/Qcloud/" title="Qcloud">Qcloud</a>
     
 
         </span>
@@ -167,21 +167,6 @@ var _hmt = _hmt || [];
 </ol>
 <h2 id="注册流程"><a href="#注册流程" class="headerlink" title="注册流程"></a>注册流程</h2><h4 id="第一步：生成验签参数"><a href="#第一步：生成验签参数" class="headerlink" title="第一步：生成验签参数"></a>第一步：生成验签参数</h4><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">deviceName:</span> <span class="comment">#设备名称</span></span><br><span class="line"><span class="attr">nonce:</span> <span class="comment">#随机整数</span></span><br><span class="line"><span class="attr">productId:</span> <span class="comment">#产品ID</span></span><br><span class="line"><span class="attr">timestamp:</span> <span class="comment">#时间戳</span></span><br></pre></td></tr></table></figure>
 <p>拼接字符串“deviceName=%s&amp;nonce=%d&amp;productId=%s&amp;timestamp=%d”，使用HMAC_SHA1算法，ProductSecret作为Key对字符串进行摘要，然后使用Base64编码该摘要获得验签参数(Signature)的值</p>
-<h4 id="第二步：封装请求参数并发送鉴权请求"><a href="#第二步：封装请求参数并发送鉴权请求" class="headerlink" title="第二步：封装请求参数并发送鉴权请求"></a>第二步：封装请求参数并发送鉴权请求</h4><p>拼接JSON格式的字符串为Body：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 请求地址：http(s)://gateway.tencentdevices.com/register/dev</span></span><br><span class="line"><span class="comment"># Body内容：</span></span><br><span class="line">&#123;\<span class="string">"deviceName\":\"%s\",\"nonce\":%d,\"productId\":\"%s\",\"timestamp\":%d,\"signature\":\"%s\"&#125;</span></span><br><span class="line"><span class="string"># 请求Header</span></span><br><span class="line"><span class="string">Accept: text/xml,application/json;*/*</span></span><br><span class="line"><span class="string">Content-type: application/x-www-form-urlencoded</span></span><br><span class="line"><span class="string">Content-Length: 实际的Body长度</span></span><br><span class="line"><span class="string"># 如果使用https方式，需要设置不校验证书，或者信任tencent自签发的证书</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"># CA证书内容如下：</span><br><span class="line">-----BEGIN CERTIFICATE-----</span><br><span class="line">MIIDxTCCAq2gAwIBAgIJALM1winYO2xzMA0GCSqGSIb3DQEBCwUAMHkxCzAJBgNV</span><br><span class="line">BAYTAkNOMRIwEAYDVQQIDAlHdWFuZ0RvbmcxETAPBgNVBAcMCFNoZW5aaGVuMRAw</span><br><span class="line">DgYDVQQKDAdUZW5jZW50MRcwFQYDVQQLDA5UZW5jZW50IElvdGh1YjEYMBYGA1UE</span><br><span class="line">AwwPd3d3LnRlbmNlbnQuY29tMB4XDTE3MTEyNzA0MjA1OVoXDTMyMTEyMzA0MjA1</span><br><span class="line">OVoweTELMAkGA1UEBhMCQ04xEjAQBgNVBAgMCUd1YW5nRG9uZzERMA8GA1UEBwwI</span><br><span class="line">U2hlblpoZW4xEDAOBgNVBAoMB1RlbmNlbnQxFzAVBgNVBAsMDlRlbmNlbnQgSW90</span><br><span class="line">aHViMRgwFgYDVQQDDA93d3cudGVuY2VudC5jb20wggEiMA0GCSqGSIb3DQEBAQUA</span><br><span class="line">A4IBDwAwggEKAoIBAQDVxwDZRVkU5WexneBEkdaKs4ehgQbzpbufrWo5Lb5gJ3i0</span><br><span class="line">eukbOB81yAaavb23oiNta4gmMTq2F6/hAFsRv4J2bdTs5SxwEYbiYU1teGHuUQHO</span><br><span class="line">iQsZCdNTJgcikga9JYKWcBjFEnAxKycNsmqsq4AJ0CEyZbo//IYX3czEQtYWHjp7</span><br><span class="line">FJOlPPd1idKtFMVNG6LGXEwS/TPElE+grYOxwB7Anx3iC5ZpE5lo5tTioFTHzqbT</span><br><span class="line">qTN7rbFZRytAPk/JXMTLgO55fldm4JZTP3GQsPzwIh4wNNKhi4yWG1o2u3hAnZDv</span><br><span class="line">UVFV7al2zFdOfuu0KMzuLzrWrK16SPadRDd9eT17AgMBAAGjUDBOMB0GA1UdDgQW</span><br><span class="line">BBQrr48jv4FxdKs3r0BkmJO7zH4ALzAfBgNVHSMEGDAWgBQrr48jv4FxdKs3r0Bk</span><br><span class="line">mJO7zH4ALzAMBgNVHRMEBTADAQH/MA0GCSqGSIb3DQEBCwUAA4IBAQDRSjXnBc3T</span><br><span class="line">d9VmtTCuALXrQELY8KtM+cXYYNgtodHsxmrRMpJofsPGiqPfb82klvswpXxPK8Xx</span><br><span class="line">SuUUo74Fo+AEyJxMrRKlbJvlEtnpSilKmG6rO9+bFq3nbeOAfat4lPl0DIscWUx3</span><br><span class="line">ajXtvMCcSwTlF8rPgXbOaSXZidRYNqSyUjC2Q4m93Cv+KlyB+FgOke8x4aKAkf5p</span><br><span class="line">XR8i1BN1OiMTIRYhGSfeZbVRq5kTdvtahiWFZu9DGO+hxDZObYGIxGHWPftrhBKz</span><br><span class="line">RT16Amn780rQLWojr70q7o7QP5tO0wDPfCdFSc6CQFq/ngOzYag0kJ2F+O5U6+kS</span><br><span class="line">QVrcRBDxzx/G</span><br><span class="line">-----END CERTIFICATE-----</span><br></pre></td></tr></table></figure>
-<h4 id="第三步：根据响应结果进一步处理和解密payload"><a href="#第三步：根据响应结果进一步处理和解密payload" class="headerlink" title="第三步：根据响应结果进一步处理和解密payload"></a>第三步：根据响应结果进一步处理和解密payload</h4><p>响应结果格式：</p>
-<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;<span class="attr">"code"</span>:<span class="number">0</span>,<span class="attr">"message"</span>:<span class="string">""</span>,<span class="attr">"len"</span>:<span class="number">53</span>,<span class="attr">"payload"</span>:<span class="string">"+b93hoyyPKdArkNo+FIwCJXYQi+zVppqBGM+1kWuMxgHbfknWh2udKorHnb4t9RywJM8g23ryT/sTL1rmGGTyA=="</span>&#125;</span><br></pre></td></tr></table></figure>
-<p>其中，code为0表示鉴权成功，message为错误时的提示信息，payload为返回的注册结果密文，len为payload的明文长度。</p>
-<p>解密步骤：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 将payload使用base64解码获得原始密文,记为$raw</span></span><br><span class="line"><span class="comment"># 将$raw使用AES_128_CBC算法进行解密，Key为ProductSecret的前16字节，IV向量为16个字节的'0'（即rune(48)），填充方式为ZERO_PADDING</span></span><br></pre></td></tr></table></figure>
-<p>解密后的字符串长度应该为16的整数倍，需要将字符串尾部多余的<code>0</code>字节去除（或者直接截取字符串的前len个字节）得到一个最终json串，格式为：</p>
-<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;<span class="attr">"encryptionType"</span>:<span class="number">2</span>,<span class="attr">"psk"</span>:<span class="string">"MpKyD0rDNaAwq+zsDvGY9w=="</span>&#125;</span><br></pre></td></tr></table></figure>
-<p>其中，<code>encryptionType</code>表示认证类型（1证书，2秘钥），<code>psk</code>表示秘钥。</p>
-<h4 id="第四步：将秘钥烧录到设备"><a href="#第四步：将秘钥烧录到设备" class="headerlink" title="第四步：将秘钥烧录到设备"></a>第四步：将秘钥烧录到设备</h4><p>将psk烧录到设备中存储，对应的内容应该是一个3元组或4元组：</p>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">productId:</span> <span class="comment">#产品ID</span></span><br><span class="line"><span class="attr">productSecret:</span> <span class="comment">#产品秘钥</span></span><br><span class="line"><span class="attr">deviceName:</span>	<span class="comment">#设备名称</span></span><br><span class="line"><span class="attr">deviceSecret:</span> <span class="comment">#设备认证秘钥</span></span><br></pre></td></tr></table></figure>
-<h4 id="第五步：设备认证-上线"><a href="#第五步：设备认证-上线" class="headerlink" title="第五步：设备认证+上线"></a>第五步：设备认证+上线</h4><p>此处参照文档：<a href="https://cloud.tencent.com/document/product/634/32546" target="_blank" rel="noopener">腾讯云物联网通信文档中心-设备接入-设备基于MQTT接入</a></p>
-
             
             <p class="more">
                 <a href="http://www.imsry.cn/posts/4ede204f.html">阅读剩下更多</a>
@@ -243,13 +228,18 @@ var _hmt = _hmt || [];
 <ul class="widget-bd">
     
     <li>
-        <a href="/categories/编程语言/">编程语言</a>
-        <span class="badge">(5)</span>
+        <a href="/categories/杂谈/">杂谈</a>
+        <span class="badge">(4)</span>
     </li>
     
     <li>
         <a href="/categories/学习笔记/">学习笔记</a>
-        <span class="badge">(46)</span>
+        <span class="badge">(47)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/编程语言/">编程语言</a>
+        <span class="badge">(6)</span>
     </li>
     
     <li>
@@ -258,13 +248,8 @@ var _hmt = _hmt || [];
     </li>
     
     <li>
-        <a href="/categories/Linux/">Linux</a>
-        <span class="badge">(16)</span>
-    </li>
-    
-    <li>
-        <a href="/categories/PHP/">PHP</a>
-        <span class="badge">(9)</span>
+        <a href="/categories/算法/">算法</a>
+        <span class="badge">(6)</span>
     </li>
     
     <li>
@@ -273,13 +258,13 @@ var _hmt = _hmt || [];
     </li>
     
     <li>
-        <a href="/categories/算法/">算法</a>
-        <span class="badge">(5)</span>
+        <a href="/categories/Linux/">Linux</a>
+        <span class="badge">(15)</span>
     </li>
     
     <li>
-        <a href="/categories/面试/">面试</a>
-        <span class="badge">(1)</span>
+        <a href="/categories/PHP/">PHP</a>
+        <span class="badge">(9)</span>
     </li>
     
     <li>
@@ -299,16 +284,11 @@ var _hmt = _hmt || [];
     
     <li>
         <a href="/categories/Web/">Web</a>
-        <span class="badge">(3)</span>
+        <span class="badge">(2)</span>
     </li>
     
     <li>
         <a href="/categories/我的分享/">我的分享</a>
-        <span class="badge">(1)</span>
-    </li>
-    
-    <li>
-        <a href="/categories/考试/">考试</a>
         <span class="badge">(1)</span>
     </li>
     
@@ -318,12 +298,17 @@ var _hmt = _hmt || [];
     </li>
     
     <li>
+        <a href="/categories/考试/">考试</a>
+        <span class="badge">(1)</span>
+    </li>
+    
+    <li>
         <a href="/categories/游戏/">游戏</a>
         <span class="badge">(2)</span>
     </li>
     
     <li>
-        <a href="/categories/杂谈/">杂谈</a>
+        <a href="/categories/学习笔记/Linux/">Linux</a>
         <span class="badge">(1)</span>
     </li>
     
@@ -336,83 +321,83 @@ var _hmt = _hmt || [];
         <!-- 文章标签 -->
 <div class="widget-bd tag-wrap">
   
-    <a class="tag-item" href="/tags/Golang/" title="Golang">Golang (1)</a>
-  
-    <a class="tag-item" href="/tags/PHP/" title="PHP">PHP (8)</a>
-  
     <a class="tag-item" href="/tags/Docker/" title="Docker">Docker (1)</a>
   
-    <a class="tag-item" href="/tags/essay/" title="essay">essay (3)</a>
+    <a class="tag-item" href="/tags/Golang/" title="Golang">Golang (1)</a>
   
-    <a class="tag-item" href="/tags/archive/" title="archive">archive (2)</a>
+    <a class="tag-item" href="/tags/LNMP/" title="LNMP">LNMP (2)</a>
   
-    <a class="tag-item" href="/tags/zip/" title="zip">zip (1)</a>
-  
-    <a class="tag-item" href="/tags/Linux/" title="Linux">Linux (5)</a>
-  
-    <a class="tag-item" href="/tags/bufio/" title="bufio">bufio (1)</a>
-  
-    <a class="tag-item" href="/tags/path/" title="path">path (2)</a>
-  
-    <a class="tag-item" href="/tags/filepath/" title="filepath">filepath (1)</a>
-  
-    <a class="tag-item" href="/tags/tar/" title="tar">tar (1)</a>
-  
-    <a class="tag-item" href="/tags/OrangePi/" title="OrangePi">OrangePi (2)</a>
-  
-    <a class="tag-item" href="/tags/Network/" title="Network">Network (2)</a>
-  
-    <a class="tag-item" href="/tags/网卡/" title="网卡">网卡 (1)</a>
-  
-    <a class="tag-item" href="/tags/IP/" title="IP">IP (2)</a>
-  
-    <a class="tag-item" href="/tags/bytes/" title="bytes">bytes (1)</a>
-  
-    <a class="tag-item" href="/tags/算法/" title="算法">算法 (2)</a>
-  
-    <a class="tag-item" href="/tags/php/" title="php">php (7)</a>
+    <a class="tag-item" href="/tags/算法/" title="算法">算法 (1)</a>
   
     <a class="tag-item" href="/tags/时间复杂度/" title="时间复杂度">时间复杂度 (1)</a>
   
     <a class="tag-item" href="/tags/定理/" title="定理">定理 (1)</a>
   
-    <a class="tag-item" href="/tags/Go/" title="Go">Go (4)</a>
+    <a class="tag-item" href="/tags/OrangePi/" title="OrangePi">OrangePi (1)</a>
+  
+    <a class="tag-item" href="/tags/Network/" title="Network">Network (2)</a>
+  
+    <a class="tag-item" href="/tags/网卡/" title="网卡">网卡 (1)</a>
+  
+    <a class="tag-item" href="/tags/PHP/" title="PHP">PHP (11)</a>
+  
+    <a class="tag-item" href="/tags/Apache/" title="Apache">Apache (4)</a>
+  
+    <a class="tag-item" href="/tags/Go/" title="Go">Go (1)</a>
   
     <a class="tag-item" href="/tags/gRPC/" title="gRPC">gRPC (1)</a>
   
     <a class="tag-item" href="/tags/RPC/" title="RPC">RPC (1)</a>
   
-    <a class="tag-item" href="/tags/Apache/" title="Apache">Apache (3)</a>
+    <a class="tag-item" href="/tags/Linux/" title="Linux">Linux (3)</a>
   
     <a class="tag-item" href="/tags/Proxy/" title="Proxy">Proxy (1)</a>
   
-    <a class="tag-item" href="/tags/Tomcat/" title="Tomcat">Tomcat (1)</a>
-  
-    <a class="tag-item" href="/tags/反向代理/" title="反向代理">反向代理 (1)</a>
-  
     <a class="tag-item" href="/tags/面试/" title="面试">面试 (1)</a>
   
-    <a class="tag-item" href="/tags/https/" title="https">https (2)</a>
+    <a class="tag-item" href="/tags/firewall/" title="firewall">firewall (1)</a>
+  
+    <a class="tag-item" href="/tags/CentOS/" title="CentOS">CentOS (3)</a>
+  
+    <a class="tag-item" href="/tags/https/" title="https">https (1)</a>
+  
+    <a class="tag-item" href="/tags/Chrome/" title="Chrome">Chrome (1)</a>
   
     <a class="tag-item" href="/tags/性能/" title="性能">性能 (3)</a>
   
     <a class="tag-item" href="/tags/VPN/" title="VPN">VPN (1)</a>
   
-    <a class="tag-item" href="/tags/数据库/" title="数据库">数据库 (2)</a>
+    <a class="tag-item" href="/tags/DS-Store/" title=".DS_Store">.DS_Store (1)</a>
   
-    <a class="tag-item" href="/tags/C/" title="C">C (1)</a>
+    <a class="tag-item" href="/tags/Discuz/" title="Discuz">Discuz (1)</a>
   
-    <a class="tag-item" href="/tags/Java/" title="Java">Java (1)</a>
+    <a class="tag-item" href="/tags/MySQL/" title="MySQL">MySQL (9)</a>
+  
+    <a class="tag-item" href="/tags/C语言/" title="C语言">C语言 (1)</a>
+  
+    <a class="tag-item" href="/tags/Java/" title="Java">Java (2)</a>
   
     <a class="tag-item" href="/tags/Glassfish/" title="Glassfish">Glassfish (1)</a>
   
-    <a class="tag-item" href="/tags/Java-Web/" title="Java Web">Java Web (1)</a>
-  
-    <a class="tag-item" href="/tags/mysql/" title="mysql">mysql (5)</a>
-  
-    <a class="tag-item" href="/tags/连接池/" title="连接池">连接池 (1)</a>
-  
     <a class="tag-item" href="/tags/html/" title="html">html (1)</a>
+  
+    <a class="tag-item" href="/tags/Javascript/" title="Javascript">Javascript (1)</a>
+  
+    <a class="tag-item" href="/tags/js/" title="js">js (1)</a>
+  
+    <a class="tag-item" href="/tags/MarkDown/" title="MarkDown">MarkDown (1)</a>
+  
+    <a class="tag-item" href="/tags/Laravel/" title="Laravel">Laravel (1)</a>
+  
+    <a class="tag-item" href="/tags/数据结构/" title="数据结构">数据结构 (1)</a>
+  
+    <a class="tag-item" href="/tags/LAMP/" title="LAMP">LAMP (1)</a>
+  
+    <a class="tag-item" href="/tags/Vim/" title="Vim">Vim (1)</a>
+  
+    <a class="tag-item" href="/tags/MacOS/" title="MacOS">MacOS (4)</a>
+  
+    <a class="tag-item" href="/tags/php/" title="php">php (2)</a>
   
 </div>
     </section>
@@ -469,6 +454,6 @@ var _hmt = _hmt || [];
 
     <!--博客js脚本 -->
     <!-- 这里放网站js脚本 -->
-<script src="/js/main.js?v=1590721894911"></script>
+<script src="/js/main.js?v=1590744016928"></script>
 </body>
 </html>

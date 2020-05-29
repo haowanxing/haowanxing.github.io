@@ -148,15 +148,7 @@ var _hmt = _hmt || [];
             标签：
             
     
-        <a href="/tags/Linux/" title="Linux">Linux</a> / 
-    
-        <a href="/tags/OrangePi/" title="OrangePi">OrangePi</a> / 
-    
-        <a href="/tags/Network/" title="Network">Network</a> / 
-    
-        <a href="/tags/网卡/" title="网卡">网卡</a> / 
-    
-        <a href="/tags/IP/" title="IP">IP</a>
+        <a href="/tags/网卡/" title="网卡">网卡</a>
     
 
         </span>
@@ -170,12 +162,6 @@ var _hmt = _hmt || [];
 </blockquote>
 <h2 id="首先"><a href="#首先" class="headerlink" title="首先"></a>首先</h2><p>还是得通过ssh等方式登录Server，然后查看网卡的名称。执行<code>ifconfig</code>命令，找到eth开头的网卡，我这里是<code>eth0</code>。</p>
 <h2 id="再者"><a href="#再者" class="headerlink" title="再者"></a>再者</h2><p>使用<code>vim</code>编辑文件<code>/etc/network/interfaces</code>，增加新行如下：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">auto eht0</span><br><span class="line"><span class="comment">#iface eth0 inet dhcp #此处为DHCP自动获取IP，注释掉了哟</span></span><br><span class="line">iface eth0 inet static <span class="comment">#声明接口为静态的</span></span><br><span class="line">address 172.16.105.134 <span class="comment">#IP地址</span></span><br><span class="line">network 172.16.105.0	<span class="comment">#网段</span></span><br><span class="line">netmask 255.255.255.0	<span class="comment">#子网掩码</span></span><br><span class="line">broadcast 172.16.105.255	<span class="comment">#广播地址</span></span><br><span class="line">gateway 172.16.105.254	<span class="comment">#网关IP</span></span><br></pre></td></tr></table></figure>
-<p>保存！</p>
-<p>然后重启网卡，这里我使用<code>ifconfig eth0 down</code>和<code>ifconfig eth0 up</code>达到关闭和重新打开的效果。</p>
-<h2 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h2><p>执行<code>ifconfig eth0</code>查看IP是否正确配置，并且可以在局域网内<code>ping</code>通该地址和<code>ssh</code>到Server。</p>
-<p>本篇仅为给自己的小记录，供大家参考！</p>
-
             
             <p class="more">
                 <a href="http://www.imsry.cn/posts/15ab52a4.html">阅读剩下更多</a>
@@ -234,15 +220,6 @@ var _hmt = _hmt || [];
 </blockquote>
 <h2 id="首先"><a href="#首先" class="headerlink" title="首先"></a>首先</h2><p>通过ssh等方式登录server，然后查看无线网卡的名称。这里使用<code>iwconfig</code>命令，如果无线网卡正常安装且驱动正常的话，你能够看到一个以<code>wlan</code>开头+数字的的网卡，记住这个名字（我这里是<code>wlan5</code>)。</p>
 <h2 id="再者"><a href="#再者" class="headerlink" title="再者"></a>再者</h2><p>使用<code>vim</code>编辑文件<code>/etc/network/interfaces</code>，内容如下：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># interfaces(5) file used by ifup(8) and ifdown(8)</span></span><br><span class="line"><span class="comment"># Include files from /etc/network/interfaces.d:</span></span><br><span class="line"><span class="built_in">source</span>-directory /etc/network/interfaces.d</span><br><span class="line"></span><br><span class="line">auto wlan5</span><br><span class="line">allow-hotplug wlan5</span><br><span class="line">iface wlan5 inet dhcp</span><br><span class="line">wpa-conf /etc/wpa_supplicant/wpa_supplicant.conf</span><br></pre></td></tr></table></figure>
-<p>保存然后创建上面配置的wpa-conf文件<code>/etc/wpa_supplicant/wpa_supplicant.conf</code>，内容如下：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">ctrl_interface=/var/run/wpa_supplicant</span><br><span class="line">update_config=1</span><br><span class="line">network=&#123;</span><br><span class="line">ssid=<span class="string">"需要连接的SSID名称"</span></span><br><span class="line">psk=<span class="string">"WIFI密码"</span></span><br><span class="line">proto=RSN</span><br><span class="line">key_mgmt=WPA-PSK</span><br><span class="line">pairwise=CCMP</span><br><span class="line">auth_alg=OPEN</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>保存！</p>
-<p>然后执行<code>ifdown wlan5</code>关闭并执行<code>ifup wlan5</code>重启网卡，正常的话应该能看到网卡连接WIFI并寻找DHCP服务器来请求IP地址。</p>
-<p>如果<code>ifdown</code>或<code>ifup</code>报错，试一下<code>sudo killall wpa_supplicant</code>，然后继续尝试。</p>
-<h2 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h2><p>如果失败了怎么办？<code>reboot</code>重启一下机器，它会自动连接WIFI的。</p>
-<p>本篇仅为给自己的一个小记录，仅供参考</p>
-
             
             <p class="more">
                 <a href="http://www.imsry.cn/posts/ba6472f.html">阅读剩下更多</a>
@@ -285,8 +262,6 @@ var _hmt = _hmt || [];
             标签：
             
     
-        <a href="/tags/PHP/" title="PHP">PHP</a> / 
-    
         <a href="/tags/Docker/" title="Docker">Docker</a>
     
 
@@ -299,27 +274,6 @@ var _hmt = _hmt || [];
                 <h2 id="关于Docker以及Dockerfile"><a href="#关于Docker以及Dockerfile" class="headerlink" title="关于Docker以及Dockerfile"></a>关于Docker以及Dockerfile</h2><p>Docker容器就不详细介绍了，把它理解成类似“虚拟机”的一种介质吧。至于如何创建一个镜像，主要有两种方法：1. 从现有的镜像基础上，创建容器并自定义后Commit成镜像；2. 利用Dockerfile，根据自己的需要，如同写shell脚本一般，将自己需要搭建的容器环境所需的指令一条一条的汇集成指令集，然后让Docker根据Dockerfile来自动创建你想要的镜像</p>
 <h2 id="创建自己的PHP7-3镜像"><a href="#创建自己的PHP7-3镜像" class="headerlink" title="创建自己的PHP7.3镜像"></a>创建自己的PHP7.3镜像</h2><p>下载PHP源码：<a href="https://www.php.net/downloads.php" target="_blank" rel="noopener">https://www.php.net/downloads.php</a></p>
 <p>我这里下载了php-7.3.6.tar.bz2</p>
-<h3 id="Dockerfile内容"><a href="#Dockerfile内容" class="headerlink" title="Dockerfile内容"></a>Dockerfile内容</h3><figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 指定基于ubuntu:16.04创建</span></span><br><span class="line"><span class="keyword">FROM</span> ubuntu:<span class="number">16.04</span></span><br><span class="line"><span class="comment"># 声明作者</span></span><br><span class="line"><span class="keyword">MAINTAINER</span> haowanxing &lt;haowanxing@gmail.com&gt;</span><br><span class="line"><span class="comment"># 定义环境变量，设置时区时使用</span></span><br><span class="line"><span class="keyword">ENV</span> TIME_ZONE Asia/Shanghai</span><br><span class="line"></span><br><span class="line"><span class="comment"># 修改root账号密码</span></span><br><span class="line"><span class="keyword">RUN</span> /bin/echo 'root:0x4f5da2.cn' | chpasswd</span><br><span class="line"># 新增一个prod账号，并设置密码</span><br><span class="line">RUN useradd prod</span><br><span class="line">RUN /bin/echo 'prod:123456' | chpasswd</span><br><span class="line"></span><br><span class="line"># 安装编译依赖</span><br><span class="line">RUN apt-get update</span><br><span class="line">RUN apt-get install -y gcc make openssl libssl-dev curl libbz2-dev libxml2-dev libjpeg-dev libpng-dev libfreetype6-dev libzip-dev</span><br><span class="line">RUN apt-get install -y libcurl4-gnutls-dev</span><br><span class="line">RUN ln -s /usr/lib/x86_64-linux-gnu/libssl.so /usr/lib</span><br><span class="line"></span><br><span class="line"># 拷贝源码到环境中</span><br><span class="line">ADD php-7.3.6.tar.bz2 /tmp/</span><br><span class="line"># 编译和安装</span><br><span class="line">RUN cd /tmp/php-7.3.6 &amp;&amp; \</span><br><span class="line">	./configure --prefix=/usr/local/php --with-config-file-path=/usr/local/php/etc --enable-fpm --with-fpm-user=prod --with-fpm-group=prod --with-mysqli --with-pdo-mysql --with-iconv-dir --with-freetype-dir --with-jpeg-dir --with-png-dir --with-zlib --with-libxml-dir=/usr --enable-xml --disable-rpath --enable-bcmath --enable-shmop --enable-sysvsem --enable-inline-optimization --with-curl --enable-mbregex --enable-mbstring --enable-ftp --with-gd --with-openssl --with-mhash --enable-pcntl --enable-sockets --with-xmlrpc --enable-zip --enable-soap --without-pear --with-gettext --disable-fileinfo --enable-maintainer-zts &amp;&amp; \</span><br><span class="line">	make &amp;&amp; \</span><br><span class="line">	make install</span><br><span class="line"></span><br><span class="line"># 后续配置</span><br><span class="line">RUN cp /usr/local/php/etc/php-fpm.conf.default /usr/local/php/etc/php-fpm.conf &amp;&amp; \</span><br><span class="line">	sed -i 's/127.0.0.1/0.0.0.0/g' /usr/local/php/etc/php-fpm.conf &amp;&amp; \</span><br><span class="line">	sed -i "21a daemonize=no" /usr/local/php/etc/php-fpm.conf &amp;&amp; \</span><br><span class="line">	echo "$&#123;TIME_ZONE&#125;" &gt; /etc/timezone &amp;&amp; \</span><br><span class="line">	ln -sf /usr/share/zoneinfo/$&#123;TIME_ZONE&#125; /etc/localtime</span><br><span class="line"></span><br><span class="line"># 清理无用缓存</span><br><span class="line">RUN rm -rf /tmp/php-* &amp;&amp; apt-get clean</span><br><span class="line"></span><br><span class="line"># 拷贝已定义好的配置文件到环境中</span><br><span class="line">COPY php.ini /usr/local/php/etc/</span><br><span class="line"></span><br><span class="line"># 设置默认工作目录</span><br><span class="line">WORKDIR /usr/local/php/</span><br><span class="line"></span><br><span class="line"># 声明端口</span><br><span class="line">EXPOSE 22</span><br><span class="line">EXPOSE 9000</span><br><span class="line"></span><br><span class="line"># 容器启动时的执行指令</span><br><span class="line">CMD ["./sbin/php-fpm","-c","/usr/local/php/etc/php.ini","-y","/usr/local/php/etc/php-fpm.conf"]</span><br></pre></td></tr></table></figure>
-<p>一切都准备好了以后，打开shell终端，cd到Dockerfile目录，目录结构如下:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">~/DockerSpace/phpserver/php » tree ./                                                                                                                                           anthony@Anthony-Macbook-Air</span><br><span class="line">./</span><br><span class="line">├── Dockerfile</span><br><span class="line">├── php-7.3.6.tar.bz2</span><br><span class="line">└── php.ini</span><br></pre></td></tr></table></figure>
-<p>将源码和Dockerfile放在同一目录，此目录中还有一个php.ini，放置此文件是方便在创建镜像的时候直接将PHP的配置文件替换进去，这样就省去后期手动修改配置的麻烦了。</p>
-<p>使用build指令进行构建镜像：<code>docker build -t haowanxing/php:7.3.6 .</code></p>
-<p>解释：</p>
-<ol>
-<li>-t #定义构建的镜像名称</li>
-<li>后面跟了一个<code>.</code>表示Dockerfile文件在当前目录</li>
-</ol>
-<p>build指令执行完成之后，你会看到类似这样的输出：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line"> ---&gt; c4838c0eca4a</span><br><span class="line">Step 18/19 : EXPOSE 9000</span><br><span class="line"> ---&gt; Running in 447e0dfb161a</span><br><span class="line">Removing intermediate container 447e0dfb161a</span><br><span class="line"> ---&gt; 25c6980f2084</span><br><span class="line">Step 19/19 : CMD [&quot;./sbin/php-fpm&quot;,&quot;-c&quot;,&quot;/usr/local/php/etc/php-fpm.conf&quot;]</span><br><span class="line"> ---&gt; Running in d00d6a4b2a2a</span><br><span class="line">Removing intermediate container d00d6a4b2a2a</span><br><span class="line"> ---&gt; e146bd75c478</span><br><span class="line">Successfully built e146bd75c478</span><br><span class="line">Successfully tagged haowanxing/php:7.3.6</span><br></pre></td></tr></table></figure>
-<p>说明构建成功，你可以使用<code>docker run</code>来创建并启动容器了。</p>
-<p>否则会输出具体的错误信息和发生错误的具体指令。</p>
-<h3 id="创建容器并检查容器环境是否正常"><a href="#创建容器并检查容器环境是否正常" class="headerlink" title="创建容器并检查容器环境是否正常"></a>创建容器并检查容器环境是否正常</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">~/DockerSpace/phpserver/php » docker run -itd --name myphp haowanxing/php:7.3.6                                                                                                 anthony@Anthony-Macbook-Air</span><br><span class="line">a612173bd9e715a838b29ef0d7e94ddbcac3f42232668b1e43e1e090c8633e9f</span><br><span class="line">------------------------------------------------------------</span><br><span class="line">~/DockerSpace/phpserver/php » docker exec -it myphp /bin/bash                                                                                                                   anthony@Anthony-Macbook-Air</span><br><span class="line">root@a612173bd9e7:/usr/local/php# ps aux</span><br><span class="line">USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND</span><br><span class="line">root         1  1.3  0.8 170396 18408 pts/0    Ss+  05:09   0:00 php-fpm: master process (/usr/local/php/etc/php-fpm.conf)</span><br><span class="line">prod         7  0.0  0.3 170396  6784 pts/0    S+   05:09   0:00 php-fpm: pool www</span><br><span class="line">prod         8  0.0  0.3 170396  6784 pts/0    S+   05:09   0:00 php-fpm: pool www</span><br><span class="line">root         9  1.6  0.1  18236  3192 pts/1    Ss   05:09   0:00 /bin/bash</span><br><span class="line">root        19  0.0  0.1  34420  2812 pts/1    R+   05:09   0:00 ps aux</span><br></pre></td></tr></table></figure>
-<h3 id="这里备注一下我遇到的错误以及我是如何解决的"><a href="#这里备注一下我遇到的错误以及我是如何解决的" class="headerlink" title="这里备注一下我遇到的错误以及我是如何解决的"></a>这里备注一下我遇到的错误以及我是如何解决的</h3><h4 id="OpenSSL’s-libraries错误"><a href="#OpenSSL’s-libraries错误" class="headerlink" title="OpenSSL’s libraries错误"></a>OpenSSL’s libraries错误</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">configure: error: Cannot find OpenSSL’s libraries</span><br></pre></td></tr></table></figure>
-<p>命名安装了openssl和libssl-dev，但还是报错，于是如下重新链接libssl.so到lib下，RUN <code>ln -s /usr/lib/x86_64-linux-gnu/libssl.so /usr/lib</code>。</p>
-<p>至于这个libssl.so在哪儿？ 我是通过<code>find /usr/lib -name libssl.so</code>找到的。</p>
-<h4 id="libcurl错误"><a href="#libcurl错误" class="headerlink" title="libcurl错误"></a>libcurl错误</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">configure: error: Please reinstall the libcurl distribution -</span><br><span class="line">      easy.h should be in &lt;curl-dir&gt;/include/curl/</span><br></pre></td></tr></table></figure>
-<p>检查并多次尝试之后，通过<code>apt-get install -y libcurl4-gnutls-dev</code>来解决；</p>
-
             
             <p class="more">
                 <a href="http://www.imsry.cn/posts/a05a90fb.html">阅读剩下更多</a>
@@ -377,15 +331,6 @@ var _hmt = _hmt || [];
 <p>贴一段示例代码：</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">$students = [</span><br><span class="line">    [<span class="string">'name'</span>=&gt;<span class="string">'Jackson'</span>,<span class="string">'age'</span>=&gt;<span class="number">15</span>],</span><br><span class="line">    [<span class="string">'name'</span>=&gt;<span class="string">'Jerry'</span>,<span class="string">'age'</span>=&gt;<span class="number">14</span>],</span><br><span class="line">    [<span class="string">'name'</span>=&gt;<span class="string">'Amy'</span>,<span class="string">'age'</span>=&gt;<span class="number">14</span>]</span><br><span class="line">];</span><br><span class="line">$classes = [</span><br><span class="line">    <span class="string">'CL001'</span>=&gt;[<span class="string">'name'</span>=&gt;<span class="string">'Language'</span>,<span class="string">'classTime'</span>=&gt;<span class="number">30</span>],</span><br><span class="line">    <span class="string">'CL002'</span>=&gt;[<span class="string">'name'</span>=&gt;<span class="string">'PE'</span>,<span class="string">'classTime'</span>=&gt;<span class="number">13</span>]</span><br><span class="line">];</span><br><span class="line"></span><br><span class="line"><span class="comment">/* </span></span><br><span class="line"><span class="comment"> * 循环$students,为其添加一个属性'name-age'</span></span><br><span class="line"><span class="comment"> * 这里使用了&amp;$v以获得数组内部元素的引用，使的可以在循环体内修改元素内容</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">foreach</span> ($students <span class="keyword">as</span> $k=&gt;&amp;$v)&#123;</span><br><span class="line">    $v[<span class="string">'name-age'</span>] = $v[<span class="string">'name'</span>] . <span class="string">'-'</span> .$v[<span class="string">'age'</span>];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">$classString = <span class="string">''</span>;	<span class="comment">//定义一个空串</span></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * 循环$classes,将所有课程ID和名称联结成串</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">foreach</span> ($classes <span class="keyword">as</span> $k=&gt;$v)&#123;</span><br><span class="line">    $classString .= <span class="string">'ClassID:'</span>.$k.<span class="string">'-'</span>.$v[<span class="string">'name'</span>].PHP_EOL;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">echo</span> $classString;</span><br><span class="line">var_dump($students);	<span class="comment">//Think here!</span></span><br></pre></td></tr></table></figure>
 <p>你也许会回答这样一个输出结果：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">ClassID:CL001-Language</span><br><span class="line">ClassID:CL002-PE</span><br><span class="line">array(3) &#123;</span><br><span class="line">  [0]=&gt;</span><br><span class="line">  array(3) &#123;</span><br><span class="line">    [&quot;name&quot;]=&gt;</span><br><span class="line">    string(7) &quot;Jackson&quot;</span><br><span class="line">    [&quot;age&quot;]=&gt;</span><br><span class="line">    int(15)</span><br><span class="line">    [&quot;name-age&quot;]=&gt;</span><br><span class="line">    string(10) &quot;Jackson-15&quot;</span><br><span class="line">  &#125;</span><br><span class="line">  [1]=&gt;</span><br><span class="line">  array(3) &#123;</span><br><span class="line">    [&quot;name&quot;]=&gt;</span><br><span class="line">    string(5) &quot;Jerry&quot;</span><br><span class="line">    [&quot;age&quot;]=&gt;</span><br><span class="line">    int(14)</span><br><span class="line">    [&quot;name-age&quot;]=&gt;</span><br><span class="line">    string(8) &quot;Jerry-14&quot;</span><br><span class="line">  &#125;</span><br><span class="line">  [2]=&gt;</span><br><span class="line">  array(3) &#123;</span><br><span class="line">    [&quot;name&quot;]=&gt;</span><br><span class="line">    string(3) &quot;Amy&quot;</span><br><span class="line">    [&quot;age&quot;]=&gt;</span><br><span class="line">    int(14)</span><br><span class="line">    [&quot;name-age&quot;]=&gt;</span><br><span class="line">    string(6) &quot;Amy-14&quot;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>也许会有不少人会使用foreach+引用符号’&amp;’来遍历更新数组内容，这样也的确可行。但是！这里就惊现了这样一个巨坑，为何在循环<code>$classes</code>之后，<code>$students</code>变得面目全非？来看看实际输出结果：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">ClassID:CL001-Language</span><br><span class="line">ClassID:CL002-PE</span><br><span class="line">array(3) &#123;</span><br><span class="line">  [0]=&gt;</span><br><span class="line">  array(3) &#123;</span><br><span class="line">    [&quot;name&quot;]=&gt;</span><br><span class="line">    string(7) &quot;Jackson&quot;</span><br><span class="line">    [&quot;age&quot;]=&gt;</span><br><span class="line">    int(15)</span><br><span class="line">    [&quot;name-age&quot;]=&gt;</span><br><span class="line">    string(10) &quot;Jackson-15&quot;</span><br><span class="line">  &#125;</span><br><span class="line">  [1]=&gt;</span><br><span class="line">  array(3) &#123;</span><br><span class="line">    [&quot;name&quot;]=&gt;</span><br><span class="line">    string(5) &quot;Jerry&quot;</span><br><span class="line">    [&quot;age&quot;]=&gt;</span><br><span class="line">    int(14)</span><br><span class="line">    [&quot;name-age&quot;]=&gt;</span><br><span class="line">    string(8) &quot;Jerry-14&quot;</span><br><span class="line">  &#125;</span><br><span class="line">  [2]=&gt;</span><br><span class="line">  &amp;array(2) &#123;</span><br><span class="line">    [&quot;name&quot;]=&gt;</span><br><span class="line">    string(2) &quot;PE&quot;</span><br><span class="line">    [&quot;classTime&quot;]=&gt;</span><br><span class="line">    int(13)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>发现了吧，最后一项为什么是<code>$classes</code>的元素？而且是其最后一项？聪明的你现在应该在开始思考’&amp;’符号了！</p>
-<p>两次foreach循环我们都用了<code>$k</code>和<code>$v</code>来代替键和值，但在<code>&amp;</code>符号作用在<code>$v</code>上的时候，这个<code>$v</code>实际是每次循环的元素地址。而在第二个foreach中使用的<code>$v</code>实际上已经是一个存在的引用（指向上一个数组的最后一次访问的元素），在对他进行赋值修改时，就会导致与其实际指向的数据发生修改，因为他们就是逻辑上的“相同内存”。</p>
-<p>我所举例的代码比较容易发现问题，其实我实际遇到的问题却糟糕的多，因为第二次循环是为了给第一次循环的内容进行填补，所以元素结构是一模一样的，这样出现的现象就是同一个元素在数组中出现了两次，其中原数组的最后一个元素指向第二次循环的数组的最后一个。</p>
-<p>这里举例的是当<code>&amp;</code>符号用在<code>=&gt;</code>后面的值变量，如果用在<code>=&gt;</code>前面的键变量呢？？？</p>
-<p>实在可怕！ 还好我喜欢用array_walk来代替此类做法。</p>
-
             
             <p class="more">
                 <a href="http://www.imsry.cn/posts/5f047c20.html">阅读剩下更多</a>
@@ -447,28 +392,6 @@ var _hmt = _hmt || [];
 <p>大O符号的含义如下图所示：<br><img src="../uploads/qiniu/2019052215584876484907.png" alt="大O符号的含义"></p>
 <p>2、Ω（大Ω符号）：下界<br>定义：若存在两个正的常数 c和 n0 ,对于任意 n≥ n0 , 都有 T( n)≥cg( n) ,则称T( n) = Ω( g( n) )(或称算法在 Ω( g( n) )中)。</p>
 <p>大 Ω符号用来描述增长率的下限, 也就是说, 当输入规模为 n 时,算法消耗时间的最小值。与大 O 符号对称, 这个下限的阶越高,结果就越有价值。</p>
-<p>大Ω号的含义如下图所示：<br><img src="../uploads/qiniu/2019052215584876868380.png" alt="大Ω号的含义"></p>
-<p>大 Ω符号常用来分析某个问题或某类算法的时间下界。例如, 矩阵乘法问题的时间下界为 Ω( n^2) , 是指任何两个 n×n 矩阵相乘的算法的时间复杂性不会小于 n^2<br>, 基于比较的排序算法的时间下界为 Ω( nlog 2 n) ,是指无法设计出基于比较的排序算法, 其时间复杂性小于 nlog 2 n。</p>
-<p>大 Ω符号常常与大 O 符号配合以证明某问题的一个特定算法是该问题的最优算法,或是该问题中的某算法类中的最优算法。</p>
-<p>3、Θ(theta) ：紧确界<br>定义：若存在 3 个正的常数 c1 、 c2 和 n0 ,对于任意 n≥ n0 , 都有 c1f(n)≥ T(n)≥ c2f(n) , 则称 T( n) = Θ( f(n))。<br>Θ符号意味着 T( n)与 f( n)同阶, 用来表示算法的精确阶。</p>
-<p>Θ符号的含义如下图所示。<br><img src="../uploads/qiniu/20190522155848770263496.png" alt="Θ符号的含义"></p>
-<h3 id="二、主定理"><a href="#二、主定理" class="headerlink" title="二、主定理"></a>二、主定理</h3><p>主定理主要用于对一些递归算法进行复杂性分析，这类算法的特征是：其复杂性表达式是以递推关系式表达的。主定理并不适用于所有类型的递推关系式。</p>
-<p>假设有递推关系式：<br><img src="../uploads/qiniu/20190522155848772454074.png" alt="递推关系式"></p>
-<p>其中 n为问题规模， a为递推的子问题数量， n/b 为每个子问题的规模（假设每个子问题的规模基本一样）， f(n)为递推以外进行的计算工作。<br>a≥1，b&gt;1为常数，f(n) 为函数，T(n) 为非负整数。则有以下结果：</p>
-<p>(1)若：<img src="../uploads/qiniu/20190522155848774110336.png" alt="等式一">那么：<img src="../uploads/qiniu/20190522155848775620104.png" alt="渐进式一"></p>
-<p>(2)若：<img src="../uploads/qiniu/20190522155848776866787.png" alt="等式二">，那么：<img src="../uploads/qiniu/20190522155848779761775.png" alt="渐进式二"></p>
-<p>(3)若：<img src="../uploads/qiniu/20190522155848780987257.png" alt="等式三">，且对于某个常数c&lt;1, 和所有充分大的 n有:<img src="../uploads/qiniu/20190522155848781870147.png" alt="不等式三">，那么<img src="../uploads/qiniu/20190522155848782726579.png" alt="渐进式为Fn的紧确界"></p>
-<p>下面举几个例子来说明主定理的应用过程：</p>
-<p>1、设某个算法的复杂性的递推关系式为：T(n)=4T(n/2)+n<br>对比主定理中递推关系式的标准形式：a=4,b=2,f(n)=n<br>所以n^(logba)=n^2,取 0&lt;ε&lt;1即可满足第一种情况，所以T(n)=Θ(n^2)</p>
-<p>2、归并排序是一种很适合用递归实现的排序方法，其复杂性递推关系式为：T(n)=2T(n/2)+Θ(n)<br>满足主定理的第二种情况，所以其时间复杂度为：T(n)=nlogn</p>
-<p>3、设某个算法的复杂性的递推关系式为：T(n)=4T(n/2)+n^3<br>很显然，满足主定理第三种情况，只需要取1/2≤c&lt;1即可。T(n)=n^3</p>
-<hr>
-<ul>
-<li>作者：古月慕南 </li>
-<li>来源：CSDN </li>
-<li>原文：<a href="https://blog.csdn.net/u013468917/article/details/70229365" target="_blank" rel="noopener">https://blog.csdn.net/u013468917/article/details/70229365</a> </li>
-</ul>
-
             
             <p class="more">
                 <a href="http://www.imsry.cn/posts/722b27c3.html">阅读剩下更多</a>
@@ -589,11 +512,13 @@ var _hmt = _hmt || [];
             标签：
             
     
-        <a href="/tags/https/" title="https">https</a> / 
+        <a href="/tags/SSL/" title="SSL">SSL</a> / 
     
-        <a href="/tags/ssl/" title="ssl">ssl</a> / 
+        <a href="/tags/HTTPS/" title="HTTPS">HTTPS</a> / 
     
-        <a href="/tags/free-ssl-cert/" title="free ssl cert">free ssl cert</a>
+        <a href="/tags/Cert/" title="Cert">Cert</a> / 
+    
+        <a href="/tags/TLS/" title="TLS">TLS</a>
     
 
         </span>
@@ -610,28 +535,7 @@ var _hmt = _hmt || [];
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install certbot</span><br></pre></td></tr></table></figure>
 <p>Ubuntu版本：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install software-properties-common</span><br><span class="line">sudo add-apt-repository universe</span><br><span class="line">sudo add-apt-repository ppa:certbot/certbot</span><br><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install certbot python-certbot-nginx</span><br></pre></td></tr></table></figure>
-<h3 id="第二步，运行certbot"><a href="#第二步，运行certbot" class="headerlink" title="第二步，运行certbot"></a>第二步，运行certbot</h3><h4 id="type-1-仅仅制作证书"><a href="#type-1-仅仅制作证书" class="headerlink" title="type-1.仅仅制作证书"></a>type-1.仅仅制作证书</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo certbot --nginx certonly</span><br></pre></td></tr></table></figure>
-<h4 id="type-2-和nginx并用，一键部署"><a href="#type-2-和nginx并用，一键部署" class="headerlink" title="type-2.和nginx并用，一键部署"></a>type-2.和nginx并用，一键部署</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo certbot --nginx</span><br></pre></td></tr></table></figure>
-<p>根据提示，一步一步进行：（如果是Apache，则将<code>nginx</code>替换成<code>apache</code>即可）</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo certbot --nginx certonly</span><br></pre></td></tr></table></figure>
-<p>输入邮箱地址</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Enter email address (used <span class="keyword">for</span> urgent renewal and security notices) (Enter <span class="string">'c'</span> to</span><br><span class="line">cancel): smoothest@yeah.net</span><br></pre></td></tr></table></figure>
-<p>同意服务条款</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line">(A)gree/(C)ancel: A</span><br></pre></td></tr></table></figure>
-<p>接受Email通知推送</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line">(Y)es/(N)o: Y</span><br></pre></td></tr></table></figure>
-<p>输入域名或者Nginx已存在的Server配置编号（我这里nignx没配置过，所以不显示有编号的列表）</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">No names were found <span class="keyword">in</span> your configuration files. Please enter <span class="keyword">in</span> your domain</span><br><span class="line">name(s) (comma and/or space separated)  (Enter <span class="string">'c'</span> to cancel): vpc.0x4f5da2.cn</span><br></pre></td></tr></table></figure>
-<p>证书制作完毕！</p>
-<p>证书位置：<code>/etc/letsencrypt/live/vpc.0x4f5da2.cn/fullchain.pem</code></p>
-<p>私钥位置：<code>/etc/letsencrypt/live/vpc.0x4f5da2.cn/privkey.pem</code></p>
-<p><code>我的执行Log:</code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line">ubuntu@VM-0-14-ubuntu:~$ sudo certbot --nginx certonly</span><br><span class="line">Saving debug log to /var/log/letsencrypt/letsencrypt.log</span><br><span class="line">Plugins selected: Authenticator nginx, Installer nginx</span><br><span class="line">Enter email address (used for urgent renewal and security notices) (Enter &apos;c&apos; to</span><br><span class="line">cancel): smoothest@yeah.net</span><br><span class="line">Starting new HTTPS connection (1): acme-v02.api.letsencrypt.org</span><br><span class="line"></span><br><span class="line">- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -</span><br><span class="line">Please read the Terms of Service at</span><br><span class="line">https://letsencrypt.org/documents/LE-SA-v1.2-November-15-2017.pdf. You must</span><br><span class="line">agree in order to register with the ACME server at</span><br><span class="line">https://acme-v02.api.letsencrypt.org/directory</span><br><span class="line">- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -</span><br><span class="line">(A)gree/(C)ancel: A</span><br><span class="line"></span><br><span class="line">- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -</span><br><span class="line">Would you be willing to share your email address with the Electronic Frontier</span><br><span class="line">Foundation, a founding partner of the Let&apos;s Encrypt project and the non-profit</span><br><span class="line">organization that develops Certbot? We&apos;d like to send you email about our work</span><br><span class="line">encrypting the web, EFF news, campaigns, and ways to support digital freedom.</span><br><span class="line">- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -</span><br><span class="line">(Y)es/(N)o: N</span><br><span class="line">No names were found in your configuration files. Please enter in your domain</span><br><span class="line">name(s) (comma and/or space separated)  (Enter &apos;c&apos; to cancel): vpc.0x4f5da2.cn</span><br><span class="line">Obtaining a new certificate</span><br><span class="line">Performing the following challenges:</span><br><span class="line">http-01 challenge for vpc.0x4f5da2.cn</span><br><span class="line">Waiting for verification...</span><br><span class="line">Cleaning up challenges</span><br><span class="line">Resetting dropped connection: acme-v02.api.letsencrypt.org</span><br><span class="line"></span><br><span class="line">IMPORTANT NOTES:</span><br><span class="line"> - Congratulations! Your certificate and chain have been saved at:</span><br><span class="line">   /etc/letsencrypt/live/vpc.0x4f5da2.cn/fullchain.pem</span><br><span class="line">   Your key file has been saved at:</span><br><span class="line">   /etc/letsencrypt/live/vpc.0x4f5da2.cn/privkey.pem</span><br><span class="line">   Your cert will expire on 2019-07-21. To obtain a new or tweaked</span><br><span class="line">   version of this certificate in the future, simply run certbot</span><br><span class="line">   again. To non-interactively renew *all* of your certificates, run</span><br><span class="line">   &quot;certbot renew&quot;</span><br><span class="line"> - Your account credentials have been saved in your Certbot</span><br><span class="line">   configuration directory at /etc/letsencrypt. You should make a</span><br><span class="line">   secure backup of this folder now. This configuration directory will</span><br><span class="line">   also contain certificates and private keys obtained by Certbot so</span><br><span class="line">   making regular backups of this folder is ideal.</span><br><span class="line"> - If you like Certbot, please consider supporting our work by:</span><br><span class="line"></span><br><span class="line">   Donating to ISRG / Let&apos;s Encrypt:   https://letsencrypt.org/donate</span><br><span class="line">   Donating to EFF:                    https://eff.org/donate-le</span><br></pre></td></tr></table></figure>
-<h3 id="第三步，续期（证书过期前需执行）"><a href="#第三步，续期（证书过期前需执行）" class="headerlink" title="第三步，续期（证书过期前需执行）"></a>第三步，续期（证书过期前需执行）</h3><p>Let’s Encrypt提供的证书默认只有90天有效期，所以咱们必须在过期之前重新对证书进行续期。</p>
-<p>对证书续期也十分的便利，直接再执行一下之前的命令，它会检测到并提示你进行相关操作。</p>
-<p>以下是我的测试Log：（因为刚生成证书，我选择了第一项：重新安装证书。第二项是续期！）</p>
-<p><img src="../uploads/qiniu/20190423155600085843353.png" alt="20190423155600085843353.png"></p>
-
+<h3 id="第二步，运行certbot"><a href="#第二步，运行certbot" class="headerlink" title="第二步，运行certbot"></a>第二步，运行certbot</h3><h4 id="type-1-仅仅制作证书"><a href="#type-1-仅仅制作证书" class="headerlink" title="type-1.仅仅制作证书"></a>type-1.仅仅制作证书</h4>
             
             <p class="more">
                 <a href="http://www.imsry.cn/posts/7e214f75.html">阅读剩下更多</a>
@@ -676,7 +580,7 @@ var _hmt = _hmt || [];
     
         <a href="/tags/PHP/" title="PHP">PHP</a> / 
     
-        <a href="/tags/openssl/" title="openssl">openssl</a> / 
+        <a href="/tags/OpenSSL/" title="OpenSSL">OpenSSL</a> / 
     
         <a href="/tags/mcrypt/" title="mcrypt">mcrypt</a> / 
     
@@ -763,13 +667,18 @@ var _hmt = _hmt || [];
 <ul class="widget-bd">
     
     <li>
-        <a href="/categories/编程语言/">编程语言</a>
-        <span class="badge">(5)</span>
+        <a href="/categories/杂谈/">杂谈</a>
+        <span class="badge">(4)</span>
     </li>
     
     <li>
         <a href="/categories/学习笔记/">学习笔记</a>
-        <span class="badge">(46)</span>
+        <span class="badge">(47)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/编程语言/">编程语言</a>
+        <span class="badge">(6)</span>
     </li>
     
     <li>
@@ -778,13 +687,8 @@ var _hmt = _hmt || [];
     </li>
     
     <li>
-        <a href="/categories/Linux/">Linux</a>
-        <span class="badge">(16)</span>
-    </li>
-    
-    <li>
-        <a href="/categories/PHP/">PHP</a>
-        <span class="badge">(9)</span>
+        <a href="/categories/算法/">算法</a>
+        <span class="badge">(6)</span>
     </li>
     
     <li>
@@ -793,13 +697,13 @@ var _hmt = _hmt || [];
     </li>
     
     <li>
-        <a href="/categories/算法/">算法</a>
-        <span class="badge">(5)</span>
+        <a href="/categories/Linux/">Linux</a>
+        <span class="badge">(15)</span>
     </li>
     
     <li>
-        <a href="/categories/面试/">面试</a>
-        <span class="badge">(1)</span>
+        <a href="/categories/PHP/">PHP</a>
+        <span class="badge">(9)</span>
     </li>
     
     <li>
@@ -819,16 +723,11 @@ var _hmt = _hmt || [];
     
     <li>
         <a href="/categories/Web/">Web</a>
-        <span class="badge">(3)</span>
+        <span class="badge">(2)</span>
     </li>
     
     <li>
         <a href="/categories/我的分享/">我的分享</a>
-        <span class="badge">(1)</span>
-    </li>
-    
-    <li>
-        <a href="/categories/考试/">考试</a>
         <span class="badge">(1)</span>
     </li>
     
@@ -838,12 +737,17 @@ var _hmt = _hmt || [];
     </li>
     
     <li>
+        <a href="/categories/考试/">考试</a>
+        <span class="badge">(1)</span>
+    </li>
+    
+    <li>
         <a href="/categories/游戏/">游戏</a>
         <span class="badge">(2)</span>
     </li>
     
     <li>
-        <a href="/categories/杂谈/">杂谈</a>
+        <a href="/categories/学习笔记/Linux/">Linux</a>
         <span class="badge">(1)</span>
     </li>
     
@@ -856,83 +760,83 @@ var _hmt = _hmt || [];
         <!-- 文章标签 -->
 <div class="widget-bd tag-wrap">
   
-    <a class="tag-item" href="/tags/Golang/" title="Golang">Golang (1)</a>
-  
-    <a class="tag-item" href="/tags/PHP/" title="PHP">PHP (8)</a>
-  
     <a class="tag-item" href="/tags/Docker/" title="Docker">Docker (1)</a>
   
-    <a class="tag-item" href="/tags/essay/" title="essay">essay (3)</a>
+    <a class="tag-item" href="/tags/Golang/" title="Golang">Golang (1)</a>
   
-    <a class="tag-item" href="/tags/archive/" title="archive">archive (2)</a>
+    <a class="tag-item" href="/tags/LNMP/" title="LNMP">LNMP (2)</a>
   
-    <a class="tag-item" href="/tags/zip/" title="zip">zip (1)</a>
-  
-    <a class="tag-item" href="/tags/Linux/" title="Linux">Linux (5)</a>
-  
-    <a class="tag-item" href="/tags/bufio/" title="bufio">bufio (1)</a>
-  
-    <a class="tag-item" href="/tags/path/" title="path">path (2)</a>
-  
-    <a class="tag-item" href="/tags/filepath/" title="filepath">filepath (1)</a>
-  
-    <a class="tag-item" href="/tags/tar/" title="tar">tar (1)</a>
-  
-    <a class="tag-item" href="/tags/OrangePi/" title="OrangePi">OrangePi (2)</a>
-  
-    <a class="tag-item" href="/tags/Network/" title="Network">Network (2)</a>
-  
-    <a class="tag-item" href="/tags/网卡/" title="网卡">网卡 (1)</a>
-  
-    <a class="tag-item" href="/tags/IP/" title="IP">IP (2)</a>
-  
-    <a class="tag-item" href="/tags/bytes/" title="bytes">bytes (1)</a>
-  
-    <a class="tag-item" href="/tags/算法/" title="算法">算法 (2)</a>
-  
-    <a class="tag-item" href="/tags/php/" title="php">php (7)</a>
+    <a class="tag-item" href="/tags/算法/" title="算法">算法 (1)</a>
   
     <a class="tag-item" href="/tags/时间复杂度/" title="时间复杂度">时间复杂度 (1)</a>
   
     <a class="tag-item" href="/tags/定理/" title="定理">定理 (1)</a>
   
-    <a class="tag-item" href="/tags/Go/" title="Go">Go (4)</a>
+    <a class="tag-item" href="/tags/OrangePi/" title="OrangePi">OrangePi (1)</a>
+  
+    <a class="tag-item" href="/tags/Network/" title="Network">Network (2)</a>
+  
+    <a class="tag-item" href="/tags/网卡/" title="网卡">网卡 (1)</a>
+  
+    <a class="tag-item" href="/tags/PHP/" title="PHP">PHP (11)</a>
+  
+    <a class="tag-item" href="/tags/Apache/" title="Apache">Apache (4)</a>
+  
+    <a class="tag-item" href="/tags/Go/" title="Go">Go (1)</a>
   
     <a class="tag-item" href="/tags/gRPC/" title="gRPC">gRPC (1)</a>
   
     <a class="tag-item" href="/tags/RPC/" title="RPC">RPC (1)</a>
   
-    <a class="tag-item" href="/tags/Apache/" title="Apache">Apache (3)</a>
+    <a class="tag-item" href="/tags/Linux/" title="Linux">Linux (3)</a>
   
     <a class="tag-item" href="/tags/Proxy/" title="Proxy">Proxy (1)</a>
   
-    <a class="tag-item" href="/tags/Tomcat/" title="Tomcat">Tomcat (1)</a>
-  
-    <a class="tag-item" href="/tags/反向代理/" title="反向代理">反向代理 (1)</a>
-  
     <a class="tag-item" href="/tags/面试/" title="面试">面试 (1)</a>
   
-    <a class="tag-item" href="/tags/https/" title="https">https (2)</a>
+    <a class="tag-item" href="/tags/firewall/" title="firewall">firewall (1)</a>
+  
+    <a class="tag-item" href="/tags/CentOS/" title="CentOS">CentOS (3)</a>
+  
+    <a class="tag-item" href="/tags/https/" title="https">https (1)</a>
+  
+    <a class="tag-item" href="/tags/Chrome/" title="Chrome">Chrome (1)</a>
   
     <a class="tag-item" href="/tags/性能/" title="性能">性能 (3)</a>
   
     <a class="tag-item" href="/tags/VPN/" title="VPN">VPN (1)</a>
   
-    <a class="tag-item" href="/tags/数据库/" title="数据库">数据库 (2)</a>
+    <a class="tag-item" href="/tags/DS-Store/" title=".DS_Store">.DS_Store (1)</a>
   
-    <a class="tag-item" href="/tags/C/" title="C">C (1)</a>
+    <a class="tag-item" href="/tags/Discuz/" title="Discuz">Discuz (1)</a>
   
-    <a class="tag-item" href="/tags/Java/" title="Java">Java (1)</a>
+    <a class="tag-item" href="/tags/MySQL/" title="MySQL">MySQL (9)</a>
+  
+    <a class="tag-item" href="/tags/C语言/" title="C语言">C语言 (1)</a>
+  
+    <a class="tag-item" href="/tags/Java/" title="Java">Java (2)</a>
   
     <a class="tag-item" href="/tags/Glassfish/" title="Glassfish">Glassfish (1)</a>
   
-    <a class="tag-item" href="/tags/Java-Web/" title="Java Web">Java Web (1)</a>
-  
-    <a class="tag-item" href="/tags/mysql/" title="mysql">mysql (5)</a>
-  
-    <a class="tag-item" href="/tags/连接池/" title="连接池">连接池 (1)</a>
-  
     <a class="tag-item" href="/tags/html/" title="html">html (1)</a>
+  
+    <a class="tag-item" href="/tags/Javascript/" title="Javascript">Javascript (1)</a>
+  
+    <a class="tag-item" href="/tags/js/" title="js">js (1)</a>
+  
+    <a class="tag-item" href="/tags/MarkDown/" title="MarkDown">MarkDown (1)</a>
+  
+    <a class="tag-item" href="/tags/Laravel/" title="Laravel">Laravel (1)</a>
+  
+    <a class="tag-item" href="/tags/数据结构/" title="数据结构">数据结构 (1)</a>
+  
+    <a class="tag-item" href="/tags/LAMP/" title="LAMP">LAMP (1)</a>
+  
+    <a class="tag-item" href="/tags/Vim/" title="Vim">Vim (1)</a>
+  
+    <a class="tag-item" href="/tags/MacOS/" title="MacOS">MacOS (4)</a>
+  
+    <a class="tag-item" href="/tags/php/" title="php">php (2)</a>
   
 </div>
     </section>
@@ -989,6 +893,6 @@ var _hmt = _hmt || [];
 
     <!--博客js脚本 -->
     <!-- 这里放网站js脚本 -->
-<script src="/js/main.js?v=1590721893943"></script>
+<script src="/js/main.js?v=1590744016173"></script>
 </body>
 </html>

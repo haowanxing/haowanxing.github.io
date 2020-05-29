@@ -148,7 +148,7 @@ var _hmt = _hmt || [];
             标签：
             
     
-        <a href="/tags/qcloud/" title="qcloud">qcloud</a>
+        <a href="/tags/Qcloud/" title="Qcloud">Qcloud</a>
     
 
         </span>
@@ -168,21 +168,6 @@ var _hmt = _hmt || [];
 </ol>
 <h2 id="注册流程"><a href="#注册流程" class="headerlink" title="注册流程"></a>注册流程</h2><h4 id="第一步：生成验签参数"><a href="#第一步：生成验签参数" class="headerlink" title="第一步：生成验签参数"></a>第一步：生成验签参数</h4><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">deviceName:</span> <span class="comment">#设备名称</span></span><br><span class="line"><span class="attr">nonce:</span> <span class="comment">#随机整数</span></span><br><span class="line"><span class="attr">productId:</span> <span class="comment">#产品ID</span></span><br><span class="line"><span class="attr">timestamp:</span> <span class="comment">#时间戳</span></span><br></pre></td></tr></table></figure>
 <p>拼接字符串“deviceName=%s&amp;nonce=%d&amp;productId=%s&amp;timestamp=%d”，使用HMAC_SHA1算法，ProductSecret作为Key对字符串进行摘要，然后使用Base64编码该摘要获得验签参数(Signature)的值</p>
-<h4 id="第二步：封装请求参数并发送鉴权请求"><a href="#第二步：封装请求参数并发送鉴权请求" class="headerlink" title="第二步：封装请求参数并发送鉴权请求"></a>第二步：封装请求参数并发送鉴权请求</h4><p>拼接JSON格式的字符串为Body：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 请求地址：http(s)://gateway.tencentdevices.com/register/dev</span></span><br><span class="line"><span class="comment"># Body内容：</span></span><br><span class="line">&#123;\<span class="string">"deviceName\":\"%s\",\"nonce\":%d,\"productId\":\"%s\",\"timestamp\":%d,\"signature\":\"%s\"&#125;</span></span><br><span class="line"><span class="string"># 请求Header</span></span><br><span class="line"><span class="string">Accept: text/xml,application/json;*/*</span></span><br><span class="line"><span class="string">Content-type: application/x-www-form-urlencoded</span></span><br><span class="line"><span class="string">Content-Length: 实际的Body长度</span></span><br><span class="line"><span class="string"># 如果使用https方式，需要设置不校验证书，或者信任tencent自签发的证书</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"># CA证书内容如下：</span><br><span class="line">-----BEGIN CERTIFICATE-----</span><br><span class="line">MIIDxTCCAq2gAwIBAgIJALM1winYO2xzMA0GCSqGSIb3DQEBCwUAMHkxCzAJBgNV</span><br><span class="line">BAYTAkNOMRIwEAYDVQQIDAlHdWFuZ0RvbmcxETAPBgNVBAcMCFNoZW5aaGVuMRAw</span><br><span class="line">DgYDVQQKDAdUZW5jZW50MRcwFQYDVQQLDA5UZW5jZW50IElvdGh1YjEYMBYGA1UE</span><br><span class="line">AwwPd3d3LnRlbmNlbnQuY29tMB4XDTE3MTEyNzA0MjA1OVoXDTMyMTEyMzA0MjA1</span><br><span class="line">OVoweTELMAkGA1UEBhMCQ04xEjAQBgNVBAgMCUd1YW5nRG9uZzERMA8GA1UEBwwI</span><br><span class="line">U2hlblpoZW4xEDAOBgNVBAoMB1RlbmNlbnQxFzAVBgNVBAsMDlRlbmNlbnQgSW90</span><br><span class="line">aHViMRgwFgYDVQQDDA93d3cudGVuY2VudC5jb20wggEiMA0GCSqGSIb3DQEBAQUA</span><br><span class="line">A4IBDwAwggEKAoIBAQDVxwDZRVkU5WexneBEkdaKs4ehgQbzpbufrWo5Lb5gJ3i0</span><br><span class="line">eukbOB81yAaavb23oiNta4gmMTq2F6/hAFsRv4J2bdTs5SxwEYbiYU1teGHuUQHO</span><br><span class="line">iQsZCdNTJgcikga9JYKWcBjFEnAxKycNsmqsq4AJ0CEyZbo//IYX3czEQtYWHjp7</span><br><span class="line">FJOlPPd1idKtFMVNG6LGXEwS/TPElE+grYOxwB7Anx3iC5ZpE5lo5tTioFTHzqbT</span><br><span class="line">qTN7rbFZRytAPk/JXMTLgO55fldm4JZTP3GQsPzwIh4wNNKhi4yWG1o2u3hAnZDv</span><br><span class="line">UVFV7al2zFdOfuu0KMzuLzrWrK16SPadRDd9eT17AgMBAAGjUDBOMB0GA1UdDgQW</span><br><span class="line">BBQrr48jv4FxdKs3r0BkmJO7zH4ALzAfBgNVHSMEGDAWgBQrr48jv4FxdKs3r0Bk</span><br><span class="line">mJO7zH4ALzAMBgNVHRMEBTADAQH/MA0GCSqGSIb3DQEBCwUAA4IBAQDRSjXnBc3T</span><br><span class="line">d9VmtTCuALXrQELY8KtM+cXYYNgtodHsxmrRMpJofsPGiqPfb82klvswpXxPK8Xx</span><br><span class="line">SuUUo74Fo+AEyJxMrRKlbJvlEtnpSilKmG6rO9+bFq3nbeOAfat4lPl0DIscWUx3</span><br><span class="line">ajXtvMCcSwTlF8rPgXbOaSXZidRYNqSyUjC2Q4m93Cv+KlyB+FgOke8x4aKAkf5p</span><br><span class="line">XR8i1BN1OiMTIRYhGSfeZbVRq5kTdvtahiWFZu9DGO+hxDZObYGIxGHWPftrhBKz</span><br><span class="line">RT16Amn780rQLWojr70q7o7QP5tO0wDPfCdFSc6CQFq/ngOzYag0kJ2F+O5U6+kS</span><br><span class="line">QVrcRBDxzx/G</span><br><span class="line">-----END CERTIFICATE-----</span><br></pre></td></tr></table></figure>
-<h4 id="第三步：根据响应结果进一步处理和解密payload"><a href="#第三步：根据响应结果进一步处理和解密payload" class="headerlink" title="第三步：根据响应结果进一步处理和解密payload"></a>第三步：根据响应结果进一步处理和解密payload</h4><p>响应结果格式：</p>
-<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;<span class="attr">"code"</span>:<span class="number">0</span>,<span class="attr">"message"</span>:<span class="string">""</span>,<span class="attr">"len"</span>:<span class="number">53</span>,<span class="attr">"payload"</span>:<span class="string">"+b93hoyyPKdArkNo+FIwCJXYQi+zVppqBGM+1kWuMxgHbfknWh2udKorHnb4t9RywJM8g23ryT/sTL1rmGGTyA=="</span>&#125;</span><br></pre></td></tr></table></figure>
-<p>其中，code为0表示鉴权成功，message为错误时的提示信息，payload为返回的注册结果密文，len为payload的明文长度。</p>
-<p>解密步骤：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 将payload使用base64解码获得原始密文,记为$raw</span></span><br><span class="line"><span class="comment"># 将$raw使用AES_128_CBC算法进行解密，Key为ProductSecret的前16字节，IV向量为16个字节的'0'（即rune(48)），填充方式为ZERO_PADDING</span></span><br></pre></td></tr></table></figure>
-<p>解密后的字符串长度应该为16的整数倍，需要将字符串尾部多余的<code>0</code>字节去除（或者直接截取字符串的前len个字节）得到一个最终json串，格式为：</p>
-<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;<span class="attr">"encryptionType"</span>:<span class="number">2</span>,<span class="attr">"psk"</span>:<span class="string">"MpKyD0rDNaAwq+zsDvGY9w=="</span>&#125;</span><br></pre></td></tr></table></figure>
-<p>其中，<code>encryptionType</code>表示认证类型（1证书，2秘钥），<code>psk</code>表示秘钥。</p>
-<h4 id="第四步：将秘钥烧录到设备"><a href="#第四步：将秘钥烧录到设备" class="headerlink" title="第四步：将秘钥烧录到设备"></a>第四步：将秘钥烧录到设备</h4><p>将psk烧录到设备中存储，对应的内容应该是一个3元组或4元组：</p>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">productId:</span> <span class="comment">#产品ID</span></span><br><span class="line"><span class="attr">productSecret:</span> <span class="comment">#产品秘钥</span></span><br><span class="line"><span class="attr">deviceName:</span>	<span class="comment">#设备名称</span></span><br><span class="line"><span class="attr">deviceSecret:</span> <span class="comment">#设备认证秘钥</span></span><br></pre></td></tr></table></figure>
-<h4 id="第五步：设备认证-上线"><a href="#第五步：设备认证-上线" class="headerlink" title="第五步：设备认证+上线"></a>第五步：设备认证+上线</h4><p>此处参照文档：<a href="https://cloud.tencent.com/document/product/634/32546" target="_blank" rel="noopener">腾讯云物联网通信文档中心-设备接入-设备基于MQTT接入</a></p>
-
             
             <p class="more">
                 <a href="http://www.imsry.cn/posts/4ede204f.html">阅读剩下更多</a>
@@ -204,7 +189,7 @@ var _hmt = _hmt || [];
     <header>
         <!-- 标签这有且只能显示一个 -->
         
-            <a href="javascript: void(0);" class="cat">未分类</a>
+        <a class="cat-link" href="/categories/算法/">算法</a>
         
         <!-- 文章标题 -->
         
@@ -224,10 +209,6 @@ var _hmt = _hmt || [];
         <span class="post-tags">
             标签：
             
-    
-        <a href="/tags/算法/" title="算法">算法</a>
-    
-
         </span>
     </p>
 
@@ -248,217 +229,6 @@ var _hmt = _hmt || [];
 </ol>
 <p>转化公式的分析：</p>
 <p>先将问题简化，分析一个4x4的矩阵：</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">0</th>
-<th style="text-align:center">1</th>
-<th style="text-align:center">2</th>
-<th style="text-align:center">3</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">4</td>
-<td style="text-align:center">5</td>
-<td style="text-align:center">6</td>
-<td style="text-align:center">7</td>
-</tr>
-<tr>
-<td style="text-align:center">8</td>
-<td style="text-align:center">9</td>
-<td style="text-align:center">10</td>
-<td style="text-align:center">11</td>
-</tr>
-<tr>
-<td style="text-align:center">12</td>
-<td style="text-align:center">13</td>
-<td style="text-align:center">14</td>
-<td style="text-align:center">15</td>
-</tr>
-</tbody>
-</table>
-<p>横向插值后的数据位置变化：</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">0</th>
-<th style="text-align:left">x</th>
-<th style="text-align:left">1</th>
-<th style="text-align:left">x</th>
-<th style="text-align:left">2</th>
-<th style="text-align:left">x</th>
-<th style="text-align:left">3</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">4</td>
-<td style="text-align:left">x</td>
-<td style="text-align:left">5</td>
-<td style="text-align:left">x</td>
-<td style="text-align:left">6</td>
-<td style="text-align:left">x</td>
-<td style="text-align:left">7</td>
-</tr>
-<tr>
-<td style="text-align:left">8</td>
-<td style="text-align:left">x</td>
-<td style="text-align:left">9</td>
-<td style="text-align:left">x</td>
-<td style="text-align:left">10</td>
-<td style="text-align:left">x</td>
-<td style="text-align:left">11</td>
-</tr>
-<tr>
-<td style="text-align:left">12</td>
-<td style="text-align:left">x</td>
-<td style="text-align:left">13</td>
-<td style="text-align:left">x</td>
-<td style="text-align:left">14</td>
-<td style="text-align:left">x</td>
-<td style="text-align:left">15</td>
-</tr>
-</tbody>
-</table>
-<h3 id="分析一："><a href="#分析一：" class="headerlink" title="分析一："></a>分析一：</h3><p>位置：0=&gt;0，1=&gt;2，2=&gt;4，3=&gt;6，4=&gt;7，5=&gt;9，6=&gt;11，7=&gt;13，8=&gt;14……</p>
-<p>由此推断原始数据的新位置，设原每行长度为w，原位置为i，则新每行长度为2w-1，新位置为n=i*2-i/w。</p>
-<p>那么当i满足条件：i不为第一列数据（即i%w不为0）时，可计算前一个插值数据。</p>
-<p>设插值为x，上述表格数据存放a数组，则x的数据位为k-1，根据插值算法，则值x=a[k-1]=(a[k-2]+a[k])/2。</p>
-<p>现在问题变为分析一个7*4的矩阵：</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">0</th>
-<th style="text-align:center">1</th>
-<th style="text-align:center">2</th>
-<th style="text-align:center">3</th>
-<th style="text-align:center">4</th>
-<th style="text-align:center">5</th>
-<th style="text-align:center">6</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">7</td>
-<td style="text-align:center">8</td>
-<td style="text-align:center">9</td>
-<td style="text-align:center">10</td>
-<td style="text-align:center">11</td>
-<td style="text-align:center">12</td>
-<td style="text-align:center">13</td>
-</tr>
-<tr>
-<td style="text-align:center">14</td>
-<td style="text-align:center">15</td>
-<td style="text-align:center">16</td>
-<td style="text-align:center">17</td>
-<td style="text-align:center">18</td>
-<td style="text-align:center">19</td>
-<td style="text-align:center">20</td>
-</tr>
-<tr>
-<td style="text-align:center">21</td>
-<td style="text-align:center">22</td>
-<td style="text-align:center">23</td>
-<td style="text-align:center">24</td>
-<td style="text-align:center">25</td>
-<td style="text-align:center">26</td>
-<td style="text-align:center">27</td>
-</tr>
-</tbody>
-</table>
-<p>纵向插值后的数据位置变化：</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">0</th>
-<th style="text-align:left">1</th>
-<th>2</th>
-<th>3</th>
-<th>4</th>
-<th>5</th>
-<th>6</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">x</td>
-<td style="text-align:left">x</td>
-<td>x</td>
-<td>x</td>
-<td>x</td>
-<td>x</td>
-<td>x</td>
-</tr>
-<tr>
-<td style="text-align:left">7</td>
-<td style="text-align:left">8</td>
-<td>9</td>
-<td>10</td>
-<td>11</td>
-<td>12</td>
-<td>13</td>
-</tr>
-<tr>
-<td style="text-align:left">x</td>
-<td style="text-align:left">x</td>
-<td>x</td>
-<td>x</td>
-<td>x</td>
-<td>x</td>
-<td>x</td>
-</tr>
-<tr>
-<td style="text-align:left">14</td>
-<td style="text-align:left">15</td>
-<td>16</td>
-<td>17</td>
-<td>18</td>
-<td>19</td>
-<td>20</td>
-</tr>
-<tr>
-<td style="text-align:left">x</td>
-<td style="text-align:left">x</td>
-<td>x</td>
-<td>x</td>
-<td>x</td>
-<td>x</td>
-<td>x</td>
-</tr>
-<tr>
-<td style="text-align:left">21</td>
-<td style="text-align:left">22</td>
-<td>23</td>
-<td>24</td>
-<td>25</td>
-<td>26</td>
-<td>27</td>
-</tr>
-</tbody>
-</table>
-<h3 id="分析二："><a href="#分析二：" class="headerlink" title="分析二："></a>分析二：</h3><p>第一行位置0-6不变，从第二行的7开始：7=&gt;14，8=&gt;15……，从第三行的14开始：14=&gt;21，15=&gt;22…… 以此类推</p>
-<p>由此推断原始数据的新位置：设原位置为i，则新位置为：i*2-i%w。</p>
-<p>那么当满足条件：从原始数据的第二行开始（即i&gt;=w）时，可计算当前位置上一行的插值数据。</p>
-<p>设插值为x，上述表格存放在a数组中，则x的数据位为k-w，根据插值算法，则值x=a[k-w]=(a[k-2w]+a[k])/2。</p>
-<p>由此经过两步的演算，得出了一个7x7的长度为49的数组。</p>
-<h2 id="代码示例："><a href="#代码示例：" class="headerlink" title="代码示例："></a>代码示例：</h2><p>JavaScript版本</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Linear</span>(<span class="params">old, width</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">let</span> data = [];</span><br><span class="line">  <span class="comment">//横向插值</span></span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">let</span> i <span class="keyword">in</span> old)&#123;</span><br><span class="line">    i = <span class="built_in">parseInt</span>(i);</span><br><span class="line">    <span class="keyword">let</span> v = old[i];</span><br><span class="line">    <span class="keyword">let</span> k = i*<span class="number">2</span>-<span class="built_in">parseInt</span>(i/width);</span><br><span class="line">    data[k] = v;</span><br><span class="line">    <span class="keyword">if</span>(i%width != <span class="number">0</span>)&#123;</span><br><span class="line">      data[k<span class="number">-1</span>] = (<span class="built_in">parseInt</span>(data[k<span class="number">-2</span>])+<span class="built_in">parseInt</span>(data[k]))/<span class="number">2</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">let</span> data2 = data;</span><br><span class="line">  data = [];</span><br><span class="line">  width = width*<span class="number">2</span><span class="number">-1</span>;</span><br><span class="line">  <span class="comment">//纵向插值</span></span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">let</span> i <span class="keyword">in</span> data2)&#123;</span><br><span class="line">    i = <span class="built_in">parseInt</span>(i);</span><br><span class="line">    <span class="keyword">let</span> v = data2[i];</span><br><span class="line">    <span class="keyword">let</span> k = i*<span class="number">2</span>-i%width;</span><br><span class="line">    data[k] = v;</span><br><span class="line">    <span class="keyword">if</span>(k&gt;=width)&#123;</span><br><span class="line">      data[k-width] = (<span class="built_in">parseInt</span>(data[k])+<span class="built_in">parseInt</span>(data[k-width*<span class="number">2</span>]))/<span class="number">2</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> data;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>用HTML渲染数据并上色结果：</p>
-<ul>
-<li><p>原始数据</p>
-<p><img src="../uploads/2020/01/WX20200108-181859@2x.png" alt="原始数据结果图片" style="zoom:50%;"></p>
-</li>
-<li><p>一次插值数据</p>
-<p><img src="../uploads/2020/01/WX20200108-181928@2x.png" alt="一次插值数据图片" style="zoom:33%;"></p>
-</li>
-<li><p>二次差值数据</p>
-<p><img src="../uploads/2020/01/WX20200108-182016@2x.png" alt="二次插值数据图片" style="zoom:25%;"></p>
-</li>
-</ul>
-<h3 id="Demo代码"><a href="#Demo代码" class="headerlink" title="Demo代码"></a>Demo代码</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">title</span>&gt;</span>Demo<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">"text/css"</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined">		span &#123;margin: 0px; display:inline-block; text-align:center;color: #ccc&#125;</span></span><br><span class="line"><span class="undefined">		.canvascfg .num &#123;width: 20px;&#125;</span></span><br><span class="line"><span class="undefined">	</span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"data"</span> <span class="attr">style</span>=<span class="string">"width: 100%;height: 100%;line-height: 20px"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript">		<span class="keyword">let</span> originalData = [<span class="number">2275</span>,<span class="number">2250</span>,<span class="number">2350</span>,<span class="number">2350</span>,<span class="number">2325</span>,<span class="number">2350</span>,<span class="number">2325</span>,<span class="number">2400</span>,<span class="number">2325</span>,<span class="number">2275</span>,<span class="number">2350</span>,<span class="number">2350</span>,<span class="number">2350</span>,<span class="number">2350</span>,<span class="number">2325</span>,<span class="number">2350</span>,<span class="number">2275</span>,<span class="number">2300</span>,<span class="number">2325</span>,<span class="number">2350</span>,<span class="number">2325</span>,<span class="number">2300</span>,<span class="number">2350</span>,<span class="number">2325</span>,<span class="number">2200</span>,<span class="number">2275</span>,<span class="number">2250</span>,<span class="number">2275</span>,<span class="number">2325</span>,<span class="number">2275</span>,<span class="number">2300</span>,<span class="number">2275</span>,<span class="number">2250</span>,<span class="number">2250</span>,<span class="number">2225</span>,<span class="number">2250</span>,<span class="number">2275</span>,<span class="number">2325</span>,<span class="number">2325</span>,<span class="number">2350</span>,<span class="number">2200</span>,<span class="number">2250</span>,<span class="number">2275</span>,<span class="number">2250</span>,<span class="number">2300</span>,<span class="number">2275</span>,<span class="number">2300</span>,<span class="number">2325</span>,<span class="number">2200</span>,<span class="number">2250</span>,<span class="number">2200</span>,<span class="number">2250</span>,<span class="number">2375</span>,<span class="number">2325</span>,<span class="number">2250</span>,<span class="number">2250</span>,<span class="number">2100</span>,<span class="number">2125</span>,<span class="number">2225</span>,<span class="number">2300</span>,<span class="number">2450</span>,<span class="number">2325</span>,<span class="number">2200</span>,<span class="number">2225</span>];</span></span><br><span class="line"><span class="javascript">		<span class="keyword">let</span> Color = &#123;</span></span><br><span class="line"><span class="undefined">			Blue:[0,0,255],</span></span><br><span class="line"><span class="undefined">			Yellow:[255,255,0],</span></span><br><span class="line"><span class="undefined">			Red:[255,0,0]</span></span><br><span class="line"><span class="undefined">		&#125;;</span></span><br><span class="line"><span class="javascript">		<span class="keyword">let</span> Config = &#123;</span></span><br><span class="line"><span class="undefined">			canvasWidth:8,</span></span><br><span class="line"><span class="undefined">			canvasHeight:8,</span></span><br><span class="line"><span class="javascript">			xValue:<span class="number">2</span>,	<span class="comment">//线性插值次数为xVlaue-1</span></span></span><br><span class="line"><span class="undefined">		&#125;;</span></span><br><span class="line"><span class="undefined">		Draw(originalData);</span></span><br><span class="line"><span class="javascript">		<span class="function"><span class="keyword">function</span> <span class="title">Linear</span>(<span class="params">old, width</span>)</span>&#123;</span></span><br><span class="line"><span class="javascript">        	<span class="keyword">let</span> data = [];</span></span><br><span class="line"><span class="javascript">        	<span class="comment">//横向插值</span></span></span><br><span class="line"><span class="javascript">        	<span class="keyword">for</span>(<span class="keyword">let</span> i <span class="keyword">in</span> old)&#123;</span></span><br><span class="line"><span class="javascript">        		i = <span class="built_in">parseInt</span>(i);</span></span><br><span class="line"><span class="javascript">        		<span class="keyword">let</span> v = old[i];</span></span><br><span class="line"><span class="javascript">        		<span class="keyword">let</span> k = i*<span class="number">2</span>-<span class="built_in">parseInt</span>(i/width);</span></span><br><span class="line"><span class="undefined">        		data[k] = v;</span></span><br><span class="line"><span class="javascript">        		<span class="keyword">if</span>(i%width != <span class="number">0</span>)&#123;</span></span><br><span class="line"><span class="javascript">        			data[k<span class="number">-1</span>] = (<span class="built_in">parseInt</span>(data[k<span class="number">-2</span>])+<span class="built_in">parseInt</span>(data[k]))/<span class="number">2</span>;</span></span><br><span class="line"><span class="undefined">        		&#125;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined">        	&#125;</span></span><br><span class="line"><span class="javascript">        	<span class="keyword">let</span> data2 = data;</span></span><br><span class="line"><span class="undefined">        	data = [];</span></span><br><span class="line"><span class="undefined">        	width = width*2-1;</span></span><br><span class="line"><span class="javascript">        	<span class="comment">//纵向插值</span></span></span><br><span class="line"><span class="javascript">        	<span class="keyword">for</span>(<span class="keyword">let</span> i <span class="keyword">in</span> data2)&#123;</span></span><br><span class="line"><span class="javascript">        		i = <span class="built_in">parseInt</span>(i);</span></span><br><span class="line"><span class="javascript">        		<span class="keyword">let</span> v = data2[i];</span></span><br><span class="line"><span class="javascript">        		<span class="keyword">let</span> k = i*<span class="number">2</span>-i%width;</span></span><br><span class="line"><span class="undefined">    			data[k] = v;</span></span><br><span class="line"><span class="javascript">    			<span class="keyword">if</span>(k&gt;=width)&#123;</span></span><br><span class="line"><span class="javascript">    				data[k-width] = (<span class="built_in">parseInt</span>(data[k])+<span class="built_in">parseInt</span>(data[k-width*<span class="number">2</span>]))/<span class="number">2</span>;</span></span><br><span class="line"><span class="undefined">    			&#125;</span></span><br><span class="line"><span class="undefined">        	&#125;</span></span><br><span class="line"><span class="javascript">        	<span class="keyword">return</span> data;</span></span><br><span class="line"><span class="undefined">		&#125;</span></span><br><span class="line"><span class="javascript">		<span class="function"><span class="keyword">function</span> <span class="title">ComputeColor</span>(<span class="params">from,to,ratio</span>)</span>&#123;</span></span><br><span class="line"><span class="javascript">        	<span class="keyword">var</span> r = <span class="built_in">Math</span>.round(<span class="keyword">from</span>[<span class="number">0</span>]*(<span class="number">1</span>-ratio)+to[<span class="number">0</span>]*ratio);</span></span><br><span class="line"><span class="javascript">        	<span class="keyword">var</span> g = <span class="built_in">Math</span>.round(<span class="keyword">from</span>[<span class="number">1</span>]*(<span class="number">1</span>-ratio)+to[<span class="number">1</span>]*ratio);</span></span><br><span class="line"><span class="javascript">        	<span class="keyword">var</span> b = <span class="built_in">Math</span>.round(<span class="keyword">from</span>[<span class="number">2</span>]*(<span class="number">1</span>-ratio)+to[<span class="number">2</span>]*ratio);</span></span><br><span class="line"><span class="javascript">        	<span class="keyword">return</span> [r,g,b];</span></span><br><span class="line"><span class="undefined">        &#125;</span></span><br><span class="line"><span class="javascript">		<span class="function"><span class="keyword">function</span> <span class="title">GetColor</span>(<span class="params">num, max, min</span>)</span>&#123;</span></span><br><span class="line"><span class="javascript">        	<span class="keyword">var</span> ratio = (num - min) / (max - min);</span></span><br><span class="line"><span class="javascript">        	<span class="keyword">var</span> color = ComputeColor(Color.Blue, Color.Red, ratio);</span></span><br><span class="line"><span class="javascript">        	<span class="keyword">return</span> color;</span></span><br><span class="line"><span class="undefined">        &#125;</span></span><br><span class="line"><span class="javascript">        <span class="function"><span class="keyword">function</span> <span class="title">Draw</span>(<span class="params">tmp</span>)</span>&#123;</span></span><br><span class="line"><span class="javascript">        	<span class="keyword">let</span> canvasHeight = Config.canvasHeight;</span></span><br><span class="line"><span class="javascript">    		<span class="keyword">let</span> canvasWidth = Config.canvasWidth;</span></span><br><span class="line"><span class="javascript">    		<span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">1</span>;i&lt;Config.xValue;i++)&#123;</span></span><br><span class="line"><span class="javascript">    			tmp = Linear(tmp, (canvasWidth<span class="number">-1</span>)*<span class="built_in">Math</span>.pow(<span class="number">2</span>,i<span class="number">-1</span>)+<span class="number">1</span>);</span></span><br><span class="line"><span class="undefined">    		&#125;</span></span><br><span class="line"><span class="javascript">        	<span class="keyword">if</span>(Config.xValue &gt; <span class="number">1</span>)&#123;</span></span><br><span class="line"><span class="javascript">        		canvasHeight = (Config.canvasHeight<span class="number">-1</span>)*<span class="built_in">Math</span>.pow(<span class="number">2</span>,Config.xValue<span class="number">-1</span>)+<span class="number">1</span>;</span></span><br><span class="line"><span class="javascript">        		canvasWidth = (Config.canvasWidth<span class="number">-1</span>)*<span class="built_in">Math</span>.pow(<span class="number">2</span>,Config.xValue<span class="number">-1</span>)+<span class="number">1</span>;</span></span><br><span class="line"><span class="undefined">        	&#125;</span></span><br><span class="line"><span class="undefined">        	low = high = tmp[0];</span></span><br><span class="line"><span class="javascript">        	<span class="keyword">for</span> (<span class="keyword">var</span> i = tmp.length - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--) &#123;</span></span><br><span class="line"><span class="javascript">        		<span class="keyword">if</span>( tmp[i] &gt; high ) high = tmp[i];</span></span><br><span class="line"><span class="javascript">        		<span class="keyword">if</span>( tmp[i] &lt; low ) low = tmp[i];</span></span><br><span class="line"><span class="undefined">        	&#125;</span></span><br><span class="line"><span class="javascript">        	<span class="keyword">let</span> index = <span class="number">2</span>;</span></span><br><span class="line"><span class="javascript">        	<span class="keyword">let</span> span = <span class="string">''</span>;</span></span><br><span class="line"><span class="javascript">        	<span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">1</span>; i &lt;=canvasHeight; i++,index++)&#123;</span></span><br><span class="line"><span class="javascript">        		<span class="keyword">for</span>(<span class="keyword">var</span> j = <span class="number">1</span>; j &lt;= canvasWidth; j++)&#123;</span></span><br><span class="line"><span class="javascript">        			<span class="comment">// var idx = (i)*canvasWidth-j;</span></span></span><br><span class="line"><span class="javascript">        			<span class="comment">// var idx = (i-1)*canvasWidth+j-1;</span></span></span><br><span class="line"><span class="javascript">        			<span class="keyword">var</span> idx = canvasWidth*(canvasHeight-i+<span class="number">1</span>)-j;</span></span><br><span class="line"><span class="javascript">        			<span class="keyword">var</span> color = GetColor(tmp[idx], high, low);</span></span><br><span class="line"><span class="undefined">        			span += GetSpan(color,tmp[idx]);</span></span><br><span class="line"><span class="undefined">        		&#125;</span></span><br><span class="line"><span class="javascript">        		span += <span class="string">'&lt;br&gt;'</span>;</span></span><br><span class="line"><span class="undefined">        	&#125;</span></span><br><span class="line"><span class="javascript">        	$(<span class="string">"#data"</span>).html(span);</span></span><br><span class="line"><span class="undefined">        &#125;</span></span><br><span class="line"><span class="javascript">        <span class="function"><span class="keyword">function</span> <span class="title">GetSpan</span>(<span class="params">color,num</span>)</span>&#123;</span></span><br><span class="line"><span class="javascript">        	<span class="keyword">var</span> span = <span class="string">'&lt;span style="width:50px;height:50px;background-color:rgb('</span>+color[<span class="number">0</span>]+<span class="string">','</span>+color[<span class="number">1</span>]+<span class="string">','</span>+color[<span class="number">2</span>]+<span class="string">')"&gt;'</span>+(num/<span class="number">100</span>)+<span class="string">'&lt;/span&gt;'</span>;</span></span><br><span class="line"><span class="javascript">        	<span class="keyword">return</span> span;</span></span><br><span class="line"><span class="javascript">        	$(<span class="string">"#wind"</span>).append(span);</span></span><br><span class="line"><span class="undefined">        &#125;</span></span><br><span class="line"><span class="undefined">	</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
             
             <p class="more">
                 <a href="http://www.imsry.cn/posts/babba23d.html">阅读剩下更多</a>
@@ -520,13 +290,18 @@ var _hmt = _hmt || [];
 <ul class="widget-bd">
     
     <li>
-        <a href="/categories/编程语言/">编程语言</a>
-        <span class="badge">(5)</span>
+        <a href="/categories/杂谈/">杂谈</a>
+        <span class="badge">(4)</span>
     </li>
     
     <li>
         <a href="/categories/学习笔记/">学习笔记</a>
-        <span class="badge">(46)</span>
+        <span class="badge">(47)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/编程语言/">编程语言</a>
+        <span class="badge">(6)</span>
     </li>
     
     <li>
@@ -535,13 +310,8 @@ var _hmt = _hmt || [];
     </li>
     
     <li>
-        <a href="/categories/Linux/">Linux</a>
-        <span class="badge">(16)</span>
-    </li>
-    
-    <li>
-        <a href="/categories/PHP/">PHP</a>
-        <span class="badge">(9)</span>
+        <a href="/categories/算法/">算法</a>
+        <span class="badge">(6)</span>
     </li>
     
     <li>
@@ -550,13 +320,13 @@ var _hmt = _hmt || [];
     </li>
     
     <li>
-        <a href="/categories/算法/">算法</a>
-        <span class="badge">(5)</span>
+        <a href="/categories/Linux/">Linux</a>
+        <span class="badge">(15)</span>
     </li>
     
     <li>
-        <a href="/categories/面试/">面试</a>
-        <span class="badge">(1)</span>
+        <a href="/categories/PHP/">PHP</a>
+        <span class="badge">(9)</span>
     </li>
     
     <li>
@@ -576,16 +346,11 @@ var _hmt = _hmt || [];
     
     <li>
         <a href="/categories/Web/">Web</a>
-        <span class="badge">(3)</span>
+        <span class="badge">(2)</span>
     </li>
     
     <li>
         <a href="/categories/我的分享/">我的分享</a>
-        <span class="badge">(1)</span>
-    </li>
-    
-    <li>
-        <a href="/categories/考试/">考试</a>
         <span class="badge">(1)</span>
     </li>
     
@@ -595,12 +360,17 @@ var _hmt = _hmt || [];
     </li>
     
     <li>
+        <a href="/categories/考试/">考试</a>
+        <span class="badge">(1)</span>
+    </li>
+    
+    <li>
         <a href="/categories/游戏/">游戏</a>
         <span class="badge">(2)</span>
     </li>
     
     <li>
-        <a href="/categories/杂谈/">杂谈</a>
+        <a href="/categories/学习笔记/Linux/">Linux</a>
         <span class="badge">(1)</span>
     </li>
     
@@ -613,83 +383,83 @@ var _hmt = _hmt || [];
         <!-- 文章标签 -->
 <div class="widget-bd tag-wrap">
   
-    <a class="tag-item" href="/tags/Golang/" title="Golang">Golang (1)</a>
-  
-    <a class="tag-item" href="/tags/PHP/" title="PHP">PHP (8)</a>
-  
     <a class="tag-item" href="/tags/Docker/" title="Docker">Docker (1)</a>
   
-    <a class="tag-item" href="/tags/essay/" title="essay">essay (3)</a>
+    <a class="tag-item" href="/tags/Golang/" title="Golang">Golang (1)</a>
   
-    <a class="tag-item" href="/tags/archive/" title="archive">archive (2)</a>
+    <a class="tag-item" href="/tags/LNMP/" title="LNMP">LNMP (2)</a>
   
-    <a class="tag-item" href="/tags/zip/" title="zip">zip (1)</a>
-  
-    <a class="tag-item" href="/tags/Linux/" title="Linux">Linux (5)</a>
-  
-    <a class="tag-item" href="/tags/bufio/" title="bufio">bufio (1)</a>
-  
-    <a class="tag-item" href="/tags/path/" title="path">path (2)</a>
-  
-    <a class="tag-item" href="/tags/filepath/" title="filepath">filepath (1)</a>
-  
-    <a class="tag-item" href="/tags/tar/" title="tar">tar (1)</a>
-  
-    <a class="tag-item" href="/tags/OrangePi/" title="OrangePi">OrangePi (2)</a>
-  
-    <a class="tag-item" href="/tags/Network/" title="Network">Network (2)</a>
-  
-    <a class="tag-item" href="/tags/网卡/" title="网卡">网卡 (1)</a>
-  
-    <a class="tag-item" href="/tags/IP/" title="IP">IP (2)</a>
-  
-    <a class="tag-item" href="/tags/bytes/" title="bytes">bytes (1)</a>
-  
-    <a class="tag-item" href="/tags/算法/" title="算法">算法 (2)</a>
-  
-    <a class="tag-item" href="/tags/php/" title="php">php (7)</a>
+    <a class="tag-item" href="/tags/算法/" title="算法">算法 (1)</a>
   
     <a class="tag-item" href="/tags/时间复杂度/" title="时间复杂度">时间复杂度 (1)</a>
   
     <a class="tag-item" href="/tags/定理/" title="定理">定理 (1)</a>
   
-    <a class="tag-item" href="/tags/Go/" title="Go">Go (4)</a>
+    <a class="tag-item" href="/tags/OrangePi/" title="OrangePi">OrangePi (1)</a>
+  
+    <a class="tag-item" href="/tags/Network/" title="Network">Network (2)</a>
+  
+    <a class="tag-item" href="/tags/网卡/" title="网卡">网卡 (1)</a>
+  
+    <a class="tag-item" href="/tags/PHP/" title="PHP">PHP (11)</a>
+  
+    <a class="tag-item" href="/tags/Apache/" title="Apache">Apache (4)</a>
+  
+    <a class="tag-item" href="/tags/Go/" title="Go">Go (1)</a>
   
     <a class="tag-item" href="/tags/gRPC/" title="gRPC">gRPC (1)</a>
   
     <a class="tag-item" href="/tags/RPC/" title="RPC">RPC (1)</a>
   
-    <a class="tag-item" href="/tags/Apache/" title="Apache">Apache (3)</a>
+    <a class="tag-item" href="/tags/Linux/" title="Linux">Linux (3)</a>
   
     <a class="tag-item" href="/tags/Proxy/" title="Proxy">Proxy (1)</a>
   
-    <a class="tag-item" href="/tags/Tomcat/" title="Tomcat">Tomcat (1)</a>
-  
-    <a class="tag-item" href="/tags/反向代理/" title="反向代理">反向代理 (1)</a>
-  
     <a class="tag-item" href="/tags/面试/" title="面试">面试 (1)</a>
   
-    <a class="tag-item" href="/tags/https/" title="https">https (2)</a>
+    <a class="tag-item" href="/tags/firewall/" title="firewall">firewall (1)</a>
+  
+    <a class="tag-item" href="/tags/CentOS/" title="CentOS">CentOS (3)</a>
+  
+    <a class="tag-item" href="/tags/https/" title="https">https (1)</a>
+  
+    <a class="tag-item" href="/tags/Chrome/" title="Chrome">Chrome (1)</a>
   
     <a class="tag-item" href="/tags/性能/" title="性能">性能 (3)</a>
   
     <a class="tag-item" href="/tags/VPN/" title="VPN">VPN (1)</a>
   
-    <a class="tag-item" href="/tags/数据库/" title="数据库">数据库 (2)</a>
+    <a class="tag-item" href="/tags/DS-Store/" title=".DS_Store">.DS_Store (1)</a>
   
-    <a class="tag-item" href="/tags/C/" title="C">C (1)</a>
+    <a class="tag-item" href="/tags/Discuz/" title="Discuz">Discuz (1)</a>
   
-    <a class="tag-item" href="/tags/Java/" title="Java">Java (1)</a>
+    <a class="tag-item" href="/tags/MySQL/" title="MySQL">MySQL (9)</a>
+  
+    <a class="tag-item" href="/tags/C语言/" title="C语言">C语言 (1)</a>
+  
+    <a class="tag-item" href="/tags/Java/" title="Java">Java (2)</a>
   
     <a class="tag-item" href="/tags/Glassfish/" title="Glassfish">Glassfish (1)</a>
   
-    <a class="tag-item" href="/tags/Java-Web/" title="Java Web">Java Web (1)</a>
-  
-    <a class="tag-item" href="/tags/mysql/" title="mysql">mysql (5)</a>
-  
-    <a class="tag-item" href="/tags/连接池/" title="连接池">连接池 (1)</a>
-  
     <a class="tag-item" href="/tags/html/" title="html">html (1)</a>
+  
+    <a class="tag-item" href="/tags/Javascript/" title="Javascript">Javascript (1)</a>
+  
+    <a class="tag-item" href="/tags/js/" title="js">js (1)</a>
+  
+    <a class="tag-item" href="/tags/MarkDown/" title="MarkDown">MarkDown (1)</a>
+  
+    <a class="tag-item" href="/tags/Laravel/" title="Laravel">Laravel (1)</a>
+  
+    <a class="tag-item" href="/tags/数据结构/" title="数据结构">数据结构 (1)</a>
+  
+    <a class="tag-item" href="/tags/LAMP/" title="LAMP">LAMP (1)</a>
+  
+    <a class="tag-item" href="/tags/Vim/" title="Vim">Vim (1)</a>
+  
+    <a class="tag-item" href="/tags/MacOS/" title="MacOS">MacOS (4)</a>
+  
+    <a class="tag-item" href="/tags/php/" title="php">php (2)</a>
   
 </div>
     </section>
@@ -746,6 +516,6 @@ var _hmt = _hmt || [];
 
     <!--博客js脚本 -->
     <!-- 这里放网站js脚本 -->
-<script src="/js/main.js?v=1590721894001"></script>
+<script src="/js/main.js?v=1590744016230"></script>
 </body>
 </html>
