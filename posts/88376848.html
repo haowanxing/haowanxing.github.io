@@ -135,7 +135,7 @@ var _hmt = _hmt || [];
 <p><img src="../uploads/qiniu/2017020614863606689156.png" alt="2017020614863606689156.png"></p>
 <h2 id="5、在配置界面的JNDI-Name中配置JNDI的名字为jdbc-test-这个名字可以自己取-至此，连接池和数据源都以配置完成。"><a href="#5、在配置界面的JNDI-Name中配置JNDI的名字为jdbc-test-这个名字可以自己取-至此，连接池和数据源都以配置完成。" class="headerlink" title="5、在配置界面的JNDI Name中配置JNDI的名字为jdbc/test(这个名字可以自己取).至此，连接池和数据源都以配置完成。"></a>5、在配置界面的JNDI Name中配置JNDI的名字为jdbc/test(这个名字可以自己取).至此，连接池和数据源都以配置完成。</h2><p>相关配置到这里就完成了，我们还需要做一个事情，那就是，测试。</p>
 <h2 id="6、测试连接数据库是否成功："><a href="#6、测试连接数据库是否成功：" class="headerlink" title="6、测试连接数据库是否成功："></a>6、测试连接数据库是否成功：</h2><p>我们在Jave Web 项目中新建一个jsp页面来测试，代码如下：</p>
-<p><pre lang="java"><br>&lt;%–<br>    Document   : jdbc_test<br>    Created on : 2015-11-8, 13:24:37<br>    Author     : 刘经济 <a href="&#109;&#97;&#105;&#x6c;&#x74;&#111;&#x3a;&#x79;&#111;&#114;&#x6b;&#x5f;&#109;&#97;&#x69;&#108;&#x40;&#x71;&#113;&#x2e;&#99;&#111;&#109;">&#x79;&#111;&#114;&#x6b;&#x5f;&#109;&#97;&#x69;&#108;&#x40;&#x71;&#113;&#x2e;&#99;&#111;&#109;</a><br>–%&gt;<br>&lt;%@page contentType=”text/html” pageEncoding=”UTF-8”%&gt;<br>&lt;%@ page import=”javax.naming.<em>“ %&gt;<br>&lt;%@ page import=”javax.sql.</em>“ %&gt;<br>&lt;%@ page import=”java.sql.*” %&gt;</pre></p>
+<p><pre lang="java"><br>&lt;%–<br>    Document   : jdbc_test<br>    Created on : 2015-11-8, 13:24:37<br>    Author     : 刘经济 <a href="&#109;&#97;&#x69;&#108;&#116;&#111;&#x3a;&#121;&#111;&#x72;&#107;&#x5f;&#x6d;&#x61;&#x69;&#x6c;&#64;&#x71;&#x71;&#x2e;&#99;&#111;&#x6d;">&#121;&#111;&#x72;&#107;&#x5f;&#x6d;&#x61;&#x69;&#x6c;&#64;&#x71;&#x71;&#x2e;&#99;&#111;&#x6d;</a><br>–%&gt;<br>&lt;%@page contentType=”text/html” pageEncoding=”UTF-8”%&gt;<br>&lt;%@ page import=”javax.naming.<em>“ %&gt;<br>&lt;%@ page import=”javax.sql.</em>“ %&gt;<br>&lt;%@ page import=”java.sql.*” %&gt;</pre></p>
 <p><html><br>    <head><meta name="generator" content="Hexo 3.9.0"><br>        <title>测试GlassFish配置的Mysql数据库连接池</title><br>    </head><br>    <body></body></html></p>
 <h1 id="下面是测试结果："><a href="#下面是测试结果：" class="headerlink" title="下面是测试结果："></a>下面是测试结果：</h1><pre><code>&lt;%
     Connection conn = null;
@@ -181,10 +181,11 @@ var _hmt = _hmt || [];
       <a href="javascript: window.open('http://service.weibo.com/share/share.php?url=' + encodeURIComponent(location.href) + '&title=' + document.title + '&language=zh_cn');" class="share-icon weibo"></a>
       <a href="javascript: alert('请复制链接到微信并发送');" class="share-icon wechat"></a>
       <a href="javascript: window.open('http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=' + encodeURIComponent(location.href) + '&title=' + document.title);" class="share-icon qqzone"></a>
-      <a href="javascript: window.open('http://connect.qq.com/widget/shareqq/index.html?url=' + encodeURIComponent(location.href) + '&desc=Jelon个人博客&title=' + document.title + '&callback=' + encodeURIComponent(location.href));" class="share-icon qq"></a>
+      <a href="javascript: window.open('http://connect.qq.com/widget/shareqq/index.html?url=' + encodeURIComponent(location.href) + '&desc=imsry.cn个人博客&title=' + document.title + '&callback=' + encodeURIComponent(location.href));" class="share-icon qq"></a>
       <a href="javascript: window.open('http://shuo.douban.com/!service/share?href=' + encodeURIComponent(location.href) + '&name=' + document.title + '&text=' + document.title);" class="share-icon douban"></a>
     </div>
   </div>
+
 
 
 <!-- 上一篇/下一篇 -->
@@ -330,13 +331,13 @@ var _hmt = _hmt || [];
 <ul class="widget-bd">
     
     <li>
-        <a href="/categories/编程语言/">编程语言</a>
-        <span class="badge">(5)</span>
+        <a href="/categories/学习笔记/">学习笔记</a>
+        <span class="badge">(46)</span>
     </li>
     
     <li>
-        <a href="/categories/学习笔记/">学习笔记</a>
-        <span class="badge">(46)</span>
+        <a href="/categories/编程语言/">编程语言</a>
+        <span class="badge">(5)</span>
     </li>
     
     <li>
@@ -345,13 +346,13 @@ var _hmt = _hmt || [];
     </li>
     
     <li>
-        <a href="/categories/Linux/">Linux</a>
-        <span class="badge">(16)</span>
+        <a href="/categories/开发板/">开发板</a>
+        <span class="badge">(1)</span>
     </li>
     
     <li>
-        <a href="/categories/开发板/">开发板</a>
-        <span class="badge">(1)</span>
+        <a href="/categories/Linux/">Linux</a>
+        <span class="badge">(16)</span>
     </li>
     
     <li>
@@ -400,13 +401,13 @@ var _hmt = _hmt || [];
     </li>
     
     <li>
-        <a href="/categories/游戏/">游戏</a>
-        <span class="badge">(2)</span>
+        <a href="/categories/开放平台/">开放平台</a>
+        <span class="badge">(1)</span>
     </li>
     
     <li>
-        <a href="/categories/开放平台/">开放平台</a>
-        <span class="badge">(1)</span>
+        <a href="/categories/游戏/">游戏</a>
+        <span class="badge">(2)</span>
     </li>
     
     <li>
@@ -423,27 +424,27 @@ var _hmt = _hmt || [];
         <!-- 文章标签 -->
 <div class="widget-bd tag-wrap">
   
-    <a class="tag-item" href="/tags/Golang/" title="Golang">Golang (1)</a>
-  
     <a class="tag-item" href="/tags/PHP/" title="PHP">PHP (8)</a>
   
     <a class="tag-item" href="/tags/Docker/" title="Docker">Docker (1)</a>
   
     <a class="tag-item" href="/tags/essay/" title="essay">essay (3)</a>
   
+    <a class="tag-item" href="/tags/Golang/" title="Golang">Golang (1)</a>
+  
+    <a class="tag-item" href="/tags/Linux/" title="Linux">Linux (5)</a>
+  
     <a class="tag-item" href="/tags/archive/" title="archive">archive (2)</a>
+  
+    <a class="tag-item" href="/tags/tar/" title="tar">tar (1)</a>
   
     <a class="tag-item" href="/tags/zip/" title="zip">zip (1)</a>
   
-    <a class="tag-item" href="/tags/Linux/" title="Linux">Linux (5)</a>
+    <a class="tag-item" href="/tags/bufio/" title="bufio">bufio (1)</a>
   
     <a class="tag-item" href="/tags/path/" title="path">path (2)</a>
   
     <a class="tag-item" href="/tags/filepath/" title="filepath">filepath (1)</a>
-  
-    <a class="tag-item" href="/tags/bufio/" title="bufio">bufio (1)</a>
-  
-    <a class="tag-item" href="/tags/tar/" title="tar">tar (1)</a>
   
     <a class="tag-item" href="/tags/bytes/" title="bytes">bytes (1)</a>
   
@@ -455,21 +456,21 @@ var _hmt = _hmt || [];
   
     <a class="tag-item" href="/tags/IP/" title="IP">IP (2)</a>
   
-    <a class="tag-item" href="/tags/算法/" title="算法">算法 (2)</a>
-  
     <a class="tag-item" href="/tags/php/" title="php">php (7)</a>
+  
+    <a class="tag-item" href="/tags/算法/" title="算法">算法 (2)</a>
   
     <a class="tag-item" href="/tags/时间复杂度/" title="时间复杂度">时间复杂度 (1)</a>
   
     <a class="tag-item" href="/tags/定理/" title="定理">定理 (1)</a>
-  
-    <a class="tag-item" href="/tags/Apache/" title="Apache">Apache (3)</a>
   
     <a class="tag-item" href="/tags/Go/" title="Go">Go (4)</a>
   
     <a class="tag-item" href="/tags/gRPC/" title="gRPC">gRPC (1)</a>
   
     <a class="tag-item" href="/tags/RPC/" title="RPC">RPC (1)</a>
+  
+    <a class="tag-item" href="/tags/Apache/" title="Apache">Apache (3)</a>
   
     <a class="tag-item" href="/tags/Proxy/" title="Proxy">Proxy (1)</a>
   
@@ -491,15 +492,15 @@ var _hmt = _hmt || [];
   
     <a class="tag-item" href="/tags/Java/" title="Java">Java (1)</a>
   
-    <a class="tag-item" href="/tags/测试/" title="测试">测试 (1)</a>
-  
-    <a class="tag-item" href="/tags/笔试/" title="笔试">笔试 (1)</a>
-  
-    <a class="tag-item" href="/tags/编程/" title="编程">编程 (1)</a>
-  
     <a class="tag-item" href="/tags/Glassfish/" title="Glassfish">Glassfish (1)</a>
   
     <a class="tag-item" href="/tags/Java-Web/" title="Java Web">Java Web (1)</a>
+  
+    <a class="tag-item" href="/tags/mysql/" title="mysql">mysql (5)</a>
+  
+    <a class="tag-item" href="/tags/连接池/" title="连接池">连接池 (1)</a>
+  
+    <a class="tag-item" href="/tags/html/" title="html">html (1)</a>
   
 </div>
     </section>
@@ -537,12 +538,12 @@ var _hmt = _hmt || [];
         2016-2020
     
 
-    <a href="/">Jelon Loves You</a>
+    <a href="/">Best Wishes</a>
 </footer>
 <div class="back-to-top" id="JELON__backToTop" title="返回顶部">返回顶部</div>
 
     <!--博客js脚本 -->
     <!-- 这里放网站js脚本 -->
-<script src="/js/main.js?v=1590662256790"></script>
+<script src="/js/main.js?v=1590718997065"></script>
 </body>
 </html>
