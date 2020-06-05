@@ -6,7 +6,6 @@ abbrlink: 39d9f6df
 date: 2018-09-05 16:22:19
 categories: 
   - 学习笔记
-  - Linux
 ---
 
 ## 使用场景
