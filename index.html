@@ -127,6 +127,70 @@ var _hmt = _hmt || [];
     <header>
         <!-- 标签这有且只能显示一个 -->
         
+        <a class="cat-link" href="/categories/学习笔记/">学习笔记</a>
+        
+        <!-- 文章标题 -->
+        
+    <h3 class="post-title">
+    	<a href="http://www.imsry.cn/posts/bf40eeb6.html">
+    		ESP-Touch智能配网是如何实现的
+    	</a>
+    </h3>
+
+    </header>
+    <p class="post-meta">
+        刘经济 发表于
+        <time datetime="2020-06-03T10:40:58.000Z">2020-06-03 18:40:58</time>
+
+
+        &nbsp;&nbsp;
+        <span class="post-tags">
+            标签：
+            
+    
+        <a href="/tags/Network/" title="Network">Network</a>
+    
+
+        </span>
+    </p>
+
+    <div class="post-content">
+        <div class="post-excerpt">
+            
+                <h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><p>近年来物联网发展迅速，目前依旧是比较热门的领域，现今世界处处都是物联网，可谓无处不物联（哈哈，扯远了！）。我接触物联网这块比较晚，去年才开始入门，最早的实战项目就是将传感器上云，借助腾讯的<a href="https://cloud.tencent.com/document/product/634" target="_blank" rel="noopener">物联网通信平台</a>，我可以对传感器进行远程控制以及读取传感器采集到的数据。当然，这些都离不开网络（Internet）。设备上云的首要前提就是接入互联网，而接入互联网的方式有很多种（如：有线网络、无线WiFi、NB-IoT、移动蜂窝2G/3G/4G等），不同场景下自然有各自合适的网络接入方式。</p>
+<p>我们现在生活中的很多智能家电都是通过WiFi接入的，不用我说大家也能举很多例子（像小米智能家居有小爱同学、空气净化器、电视、冰箱、洗衣机等blablabla~），这些设备刚到手的时候你一般都需要按照指导说明去下载个APP，然后绑定设备给设备配网，给设备配网可不像给手机连上WiFi那么容易，毕竟你买的小爱同学不能接鼠标键盘，也没有操作系统给你用。那么配网是如何完成的呢？</p>
+<p><strong>快速配网的两种途径：</strong></p>
+<ol>
+<li>SoftAP配网</li>
+<li>SmartConfig配网</li>
+</ol>
+<p>第一种很好理解，就类似给自己家里的路由器配置网络，你首先通过WiFi或者网线连接你家路由器，然后进入<a href="#">http://192.168.xxx.xxx</a>进行Web可视化配置，也有一些小型单片机，自己搭载了一个WiFi模组以AP模式运行，你通过指定的APP就可以与其建立通信并发送配置信息过去。但是这种配网方式比较繁琐，用户体验较差。</p>
+<p>第二种就比较高级了，你只需要打开设备的配网开关，并在你的手机上连接即将给设备配置的WiFi网络，然后在App或者小程序上输入对应的密码并点击开始，设备能够在很短的时间内（大约7~30s）就可以完成网络的配置。</p>
+<p><strong>这篇文章我将以我自己的学习成果来讲述SmartConfig配网的整个过程</strong></p>
+            
+            <p class="more">
+                <a href="http://www.imsry.cn/posts/bf40eeb6.html">阅读剩下更多</a>
+            </p>
+        </div>
+        <div class="post-thumbnail" data-img="">
+            <a href="http://www.imsry.cn/posts/bf40eeb6.html" title="ESP-Touch智能配网是如何实现的">
+                
+                    <!--
+                    <img src="/../uploads/2020/06/image-20200603184756638.png" class="thumbnail">
+                    -->
+                    <img class="thumbnail" src="/img/default.png" data-echo="../uploads/2020/06/image-20200603184756638.png" alt="ESP-Touch智能配网是如何实现的" >
+                
+            </a>
+        </div>
+    </div>
+</article>
+
+    
+        <!-- 文章列表 item -->
+<article class="post">
+    <header>
+        <!-- 标签这有且只能显示一个 -->
+        
         <a class="cat-link" href="/categories/开放平台/">开放平台</a>
         
         <!-- 文章标题 -->
@@ -675,76 +739,6 @@ var _hmt = _hmt || [];
 </article>
 
     
-        <!-- 文章列表 item -->
-<article class="post">
-    <header>
-        <!-- 标签这有且只能显示一个 -->
-        
-        <a class="cat-link" href="/categories/PHP/">PHP</a>
-        
-        <!-- 文章标题 -->
-        
-    <h3 class="post-title">
-    	<a href="http://www.imsry.cn/posts/5c3bf0b6.html">
-    		PHP加解密算法使用openssl替换mcrypt扩展
-    	</a>
-    </h3>
-
-    </header>
-    <p class="post-meta">
-        Anthony 发表于
-        <time datetime="2019-02-20T10:02:20.000Z">2019-02-20 18:02:20</time>
-
-
-        &nbsp;&nbsp;
-        <span class="post-tags">
-            标签：
-            
-    
-        <a href="/tags/PHP/" title="PHP">PHP</a> / 
-    
-        <a href="/tags/OpenSSL/" title="OpenSSL">OpenSSL</a> / 
-    
-        <a href="/tags/mcrypt/" title="mcrypt">mcrypt</a> / 
-    
-        <a href="/tags/xtea/" title="xtea">xtea</a>
-    
-
-        </span>
-    </p>
-
-    <div class="post-content">
-        <div class="post-excerpt">
-            
-                <p>PHP版本从7.2开始不再支持mcrypt扩展，所以我们需要使用OpenSSl对其进行替换。本文仅列出部分算法的替换示例，所以不在本文出现的算法或模式需要自行尝试，顺水推舟。</p>
-<p>本文替换案例：</p>
-<ol>
-<li>MCRYPT_RIJNDAEL_128 | MCRYPT_MODE_ECB =&gt; AES-128-ECB</li>
-<li>MCRYPT_DES | MCRYPT_MODE_CBC =&gt; DES-CBC</li>
-<li>MCRYPT_RIJNDAEL_128 | MCRYPT_MODE_CBC =&gt; AES-128-CBC</li>
-<li>MCRYPT_XTEA | MCRYPT_MODE_CBC</li>
-</ol>
-<blockquote>
-<p>在使用 MCRYPT_RIJNDAEL_128 的地方，如果秘钥长度分别为16、24、32，则加密算法用 AES-128-ECB、AES-192-ECB、AES-256-ECB，BlockSize为16、24、32。</p>
-</blockquote>
-<p>首先列出需要用到的数据填充方法：</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">ZeroPadding</span><span class="params">($str, $block = <span class="number">16</span>)</span> </span>&#123;</span><br><span class="line">    $pad = $block - (strlen($str) % $block);</span><br><span class="line">    <span class="keyword">if</span>($pad == $block) <span class="keyword">return</span> $str;</span><br><span class="line">    <span class="keyword">return</span> $str.str_repeat(chr(<span class="number">0</span>),$pad);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">ZeroUnPadding</span><span class="params">($str)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> rtrim($str, <span class="string">"\0"</span>);</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">PKCS7Padding</span><span class="params">($str, $block_size)</span> </span>&#123;</span><br><span class="line">    $padding_char = $block_size - (strlen($str) % $block_size);</span><br><span class="line">    $padding_str = str_repeat(chr($padding_char),$padding_char);</span><br><span class="line">    <span class="keyword">return</span> $str.$padding_str;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">PKCS7UnPadding</span><span class="params">($str)</span> </span>&#123;</span><br><span class="line">    $char=substr($str,<span class="number">-1</span>,<span class="number">1</span>);</span><br><span class="line">    $num=ord($char);</span><br><span class="line">    <span class="keyword">if</span>($num&gt;<span class="number">0</span> &amp;&amp; $num &lt;= strlen($str)) &#123;</span><br><span class="line">        $str = substr($str, <span class="number">0</span>, <span class="number">-1</span> * $num);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> $str;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-            
-            <p class="more">
-                <a href="http://www.imsry.cn/posts/5c3bf0b6.html">阅读剩下更多</a>
-            </p>
-        </div>
-        <div class="post-thumbnail" data-img="">
-            <a href="http://www.imsry.cn/posts/5c3bf0b6.html" title="PHP加解密算法使用openssl替换mcrypt扩展">
-                
-                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/0.jpg" alt="默认配图" >
-                
-            </a>
-        </div>
-    </div>
-</article>
-
-    
 
     
     <nav class="page-navigator">
@@ -792,13 +786,13 @@ var _hmt = _hmt || [];
 <ul class="widget-bd">
     
     <li>
-        <a href="/categories/杂谈/">杂谈</a>
-        <span class="badge">(4)</span>
+        <a href="/categories/学习笔记/">学习笔记</a>
+        <span class="badge">(48)</span>
     </li>
     
     <li>
-        <a href="/categories/学习笔记/">学习笔记</a>
-        <span class="badge">(47)</span>
+        <a href="/categories/杂谈/">杂谈</a>
+        <span class="badge">(4)</span>
     </li>
     
     <li>
@@ -812,23 +806,23 @@ var _hmt = _hmt || [];
     </li>
     
     <li>
-        <a href="/categories/算法/">算法</a>
-        <span class="badge">(6)</span>
-    </li>
-    
-    <li>
-        <a href="/categories/开发板/">开发板</a>
-        <span class="badge">(1)</span>
-    </li>
-    
-    <li>
         <a href="/categories/Linux/">Linux</a>
         <span class="badge">(15)</span>
     </li>
     
     <li>
+        <a href="/categories/算法/">算法</a>
+        <span class="badge">(6)</span>
+    </li>
+    
+    <li>
         <a href="/categories/PHP/">PHP</a>
         <span class="badge">(9)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/开发板/">开发板</a>
+        <span class="badge">(1)</span>
     </li>
     
     <li>
@@ -857,12 +851,12 @@ var _hmt = _hmt || [];
     </li>
     
     <li>
-        <a href="/categories/开放平台/">开放平台</a>
+        <a href="/categories/考试/">考试</a>
         <span class="badge">(1)</span>
     </li>
     
     <li>
-        <a href="/categories/考试/">考试</a>
+        <a href="/categories/开放平台/">开放平台</a>
         <span class="badge">(1)</span>
     </li>
     
@@ -887,9 +881,13 @@ var _hmt = _hmt || [];
   
     <a class="tag-item" href="/tags/Docker/" title="Docker">Docker (1)</a>
   
+    <a class="tag-item" href="/tags/LNMP/" title="LNMP">LNMP (2)</a>
+  
     <a class="tag-item" href="/tags/Golang/" title="Golang">Golang (1)</a>
   
-    <a class="tag-item" href="/tags/LNMP/" title="LNMP">LNMP (2)</a>
+    <a class="tag-item" href="/tags/网卡/" title="网卡">网卡 (1)</a>
+  
+    <a class="tag-item" href="/tags/PHP/" title="PHP">PHP (11)</a>
   
     <a class="tag-item" href="/tags/算法/" title="算法">算法 (1)</a>
   
@@ -899,13 +897,13 @@ var _hmt = _hmt || [];
   
     <a class="tag-item" href="/tags/OrangePi/" title="OrangePi">OrangePi (1)</a>
   
-    <a class="tag-item" href="/tags/Network/" title="Network">Network (2)</a>
-  
-    <a class="tag-item" href="/tags/网卡/" title="网卡">网卡 (1)</a>
-  
-    <a class="tag-item" href="/tags/PHP/" title="PHP">PHP (11)</a>
+    <a class="tag-item" href="/tags/Network/" title="Network">Network (3)</a>
   
     <a class="tag-item" href="/tags/Apache/" title="Apache">Apache (4)</a>
+  
+    <a class="tag-item" href="/tags/Linux/" title="Linux">Linux (3)</a>
+  
+    <a class="tag-item" href="/tags/Proxy/" title="Proxy">Proxy (1)</a>
   
     <a class="tag-item" href="/tags/Go/" title="Go">Go (1)</a>
   
@@ -913,19 +911,15 @@ var _hmt = _hmt || [];
   
     <a class="tag-item" href="/tags/RPC/" title="RPC">RPC (1)</a>
   
-    <a class="tag-item" href="/tags/Linux/" title="Linux">Linux (3)</a>
-  
-    <a class="tag-item" href="/tags/Proxy/" title="Proxy">Proxy (1)</a>
-  
     <a class="tag-item" href="/tags/面试/" title="面试">面试 (1)</a>
-  
-    <a class="tag-item" href="/tags/firewall/" title="firewall">firewall (1)</a>
-  
-    <a class="tag-item" href="/tags/CentOS/" title="CentOS">CentOS (3)</a>
   
     <a class="tag-item" href="/tags/https/" title="https">https (1)</a>
   
     <a class="tag-item" href="/tags/Chrome/" title="Chrome">Chrome (1)</a>
+  
+    <a class="tag-item" href="/tags/CentOS/" title="CentOS">CentOS (3)</a>
+  
+    <a class="tag-item" href="/tags/firewall/" title="firewall">firewall (1)</a>
   
     <a class="tag-item" href="/tags/性能/" title="性能">性能 (3)</a>
   
@@ -937,27 +931,27 @@ var _hmt = _hmt || [];
   
     <a class="tag-item" href="/tags/MySQL/" title="MySQL">MySQL (9)</a>
   
-    <a class="tag-item" href="/tags/C语言/" title="C语言">C语言 (1)</a>
+    <a class="tag-item" href="/tags/Glassfish/" title="Glassfish">Glassfish (1)</a>
   
     <a class="tag-item" href="/tags/Java/" title="Java">Java (2)</a>
   
-    <a class="tag-item" href="/tags/Glassfish/" title="Glassfish">Glassfish (1)</a>
-  
     <a class="tag-item" href="/tags/html/" title="html">html (1)</a>
   
-    <a class="tag-item" href="/tags/Javascript/" title="Javascript">Javascript (1)</a>
+    <a class="tag-item" href="/tags/Javascript/" title="Javascript">Javascript (2)</a>
   
-    <a class="tag-item" href="/tags/js/" title="js">js (1)</a>
-  
-    <a class="tag-item" href="/tags/MarkDown/" title="MarkDown">MarkDown (1)</a>
+    <a class="tag-item" href="/tags/C语言/" title="C语言">C语言 (1)</a>
   
     <a class="tag-item" href="/tags/Laravel/" title="Laravel">Laravel (1)</a>
+  
+    <a class="tag-item" href="/tags/MarkDown/" title="MarkDown">MarkDown (1)</a>
   
     <a class="tag-item" href="/tags/数据结构/" title="数据结构">数据结构 (1)</a>
   
     <a class="tag-item" href="/tags/LAMP/" title="LAMP">LAMP (1)</a>
   
     <a class="tag-item" href="/tags/Vim/" title="Vim">Vim (1)</a>
+  
+    <a class="tag-item" href="/tags/Git/" title="Git">Git (1)</a>
   
     <a class="tag-item" href="/tags/MacOS/" title="MacOS">MacOS (4)</a>
   
@@ -1018,6 +1012,6 @@ var _hmt = _hmt || [];
 
     <!--博客js脚本 -->
     <!-- 这里放网站js脚本 -->
-<script src="/js/main.js?v=1590744016426"></script>
+<script src="/js/main.js?v=1591351423147"></script>
 </body>
 </html>
