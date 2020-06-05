@@ -1,0 +1,1952 @@
+<!doctype html>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=11,IE=10,IE=9,IE=8">
+    <meta name="baidu-site-verification" content="dIcXMeY8Ya">
+    
+    <title>文章归档: 2015 | 小牛试一刀</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+    <meta name="keywords" content="Anthony, 刘经济, 技术博客">
+    <meta name="description" content="待人以儒墨，不热爱前端技术的后端开发不是一个好的吃货。">
+
+    
+    <link rel="alternative" href="/atom.xml" title="小牛试一刀" type="application/atom+xml">
+    
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    
+    <link rel="stylesheet" href="/css/style.css">
+    <!--[if lt IE 9]>
+    <script src="/js/html5.js"></script>
+    <![endif]-->
+    
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?d5ebf515ab530cfbdda5f5c85093fb41";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+</head>
+</html>
+<body class="home">
+    <!--[if lt IE 9]>
+    <div class="browsehappy">
+        当前网页 <strong>不支持</strong>
+        你正在使用的浏览器. 为了正常的访问, 请 <a href="http://browsehappy.com/">升级你的浏览器</a>.
+    </div>
+    <![endif]-->
+
+    <!-- 博客头部 -->
+    <header class="header">
+    <section class="container header-main">
+        <div class="logo">
+            <a href="/">
+                <div class="cover">
+                    <span class="name">小牛试一刀</span>
+                    <span class="description">斯人笔记本</span>
+                </div>
+            </a>
+        </div>
+        <div class="dropnav icon-paragraph-justify" id="JELON__btnDropNav"></div>
+        <ul class="menu hidden" id="JELON__menu">
+            
+            <li rel="/archives/2015/index.html" class="item ">
+                <a href="/" title="首页" class="icon-home">&nbsp;首页</a>
+            </li>
+            
+            <li rel="/archives/2015/index.html" class="item ">
+                <a href="/about/" title="关于" class="icon-about">&nbsp;关于</a>
+            </li>
+            
+            <li rel="/archives/2015/index.html" class="item ">
+                <a href="/comment/" title="留言" class="icon-comment">&nbsp;留言</a>
+            </li>
+            
+        </ul>
+        <div class="profile clearfix">
+            <div class="feeds fl">
+                
+                
+                <p class="links">
+                    
+                        <a href="https://github.com/haowanxing" target="_blank">Github</a>
+                        |
+                    
+                        <a href="https://pages.coding.me" target="_blank">Hosted by Coding Pages</a>
+                        
+                    
+                </p>
+                <p class="sns">
+                    
+                        <a href="http://weibo.com/u/2214092525" class="sinaweibo" target="_blank"><b>■</b> 新浪微博</a>
+                    
+                        <a href="https://www.facebook.com/york.mail/" class="qqweibo" target="_blank"><b>■</b> Facebook</a>
+                    
+                    <a href="javascript: void(0);" class="wechat">
+                        <b>■</b>
+                        公众号
+                        <span class="popover">
+                            <img src="/img/wechat_mp.jpg" width="120" height="120" alt="我的微信订阅号">
+                            <i class="arrow"></i>
+                        </span>
+                    </a>
+                </p>
+                
+            </div>
+            <div class="avatar fr">
+                <img src="/uploads/qiniu/20181010153914990649885.png" alt="avatar" title="Jelon" >
+            </div>
+        </div>
+    </section>
+</header>
+
+
+    <!-- 博客正文 -->
+    <div class="container body clearfix">
+        <section class="content">
+            <div class="content-main widget">
+                <!-- 文章归档 -->
+
+    <h3 class="widget-hd">
+        <strong>
+            
+                文章归档
+                <!-- 文章归档，可以根据日期分类 -->
+            
+        </strong>
+    </h3>
+    
+        <!-- 文章列表 item -->
+<article class="post">
+    <header>
+        <!-- 标签这有且只能显示一个 -->
+        
+        <a class="cat-link" href="/categories/Linux/">Linux</a>
+        
+        <!-- 文章标题 -->
+        
+    <h3 class="post-title">
+    	<a href="http://www.imsry.cn/posts/a363805e.html">
+    		Debian中搭建VPN(PPTP协议)实战，实现VPN上网
+    	</a>
+    </h3>
+
+    </header>
+    <p class="post-meta">
+        Anthony 发表于
+        <time datetime="2015-11-30T05:46:34.000Z">2015-11-30 13:46:34</time>
+
+
+        &nbsp;&nbsp;
+        <span class="post-tags">
+            标签：
+            
+    
+        <a href="/tags/VPN/" title="VPN">VPN</a>
+    
+
+        </span>
+    </p>
+
+    <div class="post-content">
+        <div class="post-excerpt">
+            
+                <p>首先讲一讲为什么会突然想到弄一下VPN呢？这是因为在我的学校，校园网的认证采用的是VPN(L2TP协议)，既然这样，我是不是可以通过学校的虚机来自建一个认证系统来实现上网呢？抱着这种疑问，开始做一些事情吧。</p>
+<p>另外提一下，PPTP, L2TP/IPSec 和 OpenVPN这三种协议里，PPTP比较容易配置，所以我采用了这种方法。</p>
+<h2 id="1、所需工具和资源"><a href="#1、所需工具和资源" class="headerlink" title="1、所需工具和资源"></a>1、所需工具和资源</h2><p>说到底，还是离不开一台校内的机器，而且能够上网并拥有独立IP（看上去很难有这个），多亏有师生这层美妙的关系，对！一台虚机就这样有了。软件方面的东西直接在虚机上下载就行了。</p>
+<p>本次实战的机器是Debian系统，软件源包使用apt-get，本地电脑Macbook（自带ssh连接端）</p>
+<h2 id="2、具体步骤"><a href="#2、具体步骤" class="headerlink" title="2、具体步骤"></a>2、具体步骤</h2><p>首先连接上远程计算机，通过命令行进行安装：<br>
+            
+            <p class="more">
+                <a href="http://www.imsry.cn/posts/a363805e.html">阅读剩下更多</a>
+            </p>
+        </div>
+        <div class="post-thumbnail" data-img="">
+            <a href="http://www.imsry.cn/posts/a363805e.html" title="Debian中搭建VPN(PPTP协议)实战，实现VPN上网">
+                
+                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/0.jpg" alt="默认配图" >
+                
+            </a>
+        </div>
+    </div>
+</article>
+
+    
+        <!-- 文章列表 item -->
+<article class="post">
+    <header>
+        <!-- 标签这有且只能显示一个 -->
+        
+        <a class="cat-link" href="/categories/Linux/">Linux</a>
+        
+        <!-- 文章标题 -->
+        
+    <h3 class="post-title">
+    	<a href="http://www.imsry.cn/posts/2e6f46f8.html">
+    		 CENTOS 6.0 iptables 开放端口80 3306 22端口
+    	</a>
+    </h3>
+
+    </header>
+    <p class="post-meta">
+        Anthony 发表于
+        <time datetime="2015-11-11T13:13:01.000Z">2015-11-11 21:13:01</time>
+
+
+        &nbsp;&nbsp;
+        <span class="post-tags">
+            标签：
+            
+    
+        <a href="/tags/firewall/" title="firewall">firewall</a> / 
+    
+        <a href="/tags/CentOS/" title="CentOS">CentOS</a>
+    
+
+        </span>
+    </p>
+
+    <div class="post-content">
+        <div class="post-excerpt">
+            
+                <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">/sbin/iptables -I INPUT -p tcp --dport 80 -j ACCEPT</span><br><span class="line">/sbin/iptables -I INPUT -p tcp --dport 22 -j ACCEPT</span><br><span class="line">/sbin/iptables -I INPUT -p tcp --dport 3306 -j ACCEPT</span><br></pre></td></tr></table></figure>
+<p>然后保存：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/etc/rc.d/init.d/iptables save</span><br></pre></td></tr></table></figure></p>
+<p>查看打开的端口：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/etc/init.d/iptables status</span><br></pre></td></tr></table></figure></p>
+<p>补充说明：<br>
+            
+            <p class="more">
+                <a href="http://www.imsry.cn/posts/2e6f46f8.html">阅读剩下更多</a>
+            </p>
+        </div>
+        <div class="post-thumbnail" data-img="">
+            <a href="http://www.imsry.cn/posts/2e6f46f8.html" title=" CENTOS 6.0 iptables 开放端口80 3306 22端口">
+                
+                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/1.jpg" alt="默认配图" >
+                
+            </a>
+        </div>
+    </div>
+</article>
+
+    
+        <!-- 文章列表 item -->
+<article class="post">
+    <header>
+        <!-- 标签这有且只能显示一个 -->
+        
+        <a class="cat-link" href="/categories/Web/">Web</a>
+        
+        <!-- 文章标题 -->
+        
+    <h3 class="post-title">
+    	<a href="http://www.imsry.cn/posts/88376848.html">
+    		GlassFish配置数据库连接池
+    	</a>
+    </h3>
+
+    </header>
+    <p class="post-meta">
+        Anthony 发表于
+        <time datetime="2015-11-08T06:31:38.000Z">2015-11-08 14:31:38</time>
+
+
+        &nbsp;&nbsp;
+        <span class="post-tags">
+            标签：
+            
+    
+        <a href="/tags/MySQL/" title="MySQL">MySQL</a> / 
+    
+        <a href="/tags/Glassfish/" title="Glassfish">Glassfish</a> / 
+    
+        <a href="/tags/Java/" title="Java">Java</a>
+    
+
+        </span>
+    </p>
+
+    <div class="post-content">
+        <div class="post-excerpt">
+            
+                <h2 id="1、首先启动glassfish服务器，在地址栏中输入http-localhost-4848-进入服务器的配置界面-如下"><a href="#1、首先启动glassfish服务器，在地址栏中输入http-localhost-4848-进入服务器的配置界面-如下" class="headerlink" title="1、首先启动glassfish服务器，在地址栏中输入http://localhost:4848/,进入服务器的配置界面,如下:"></a>1、首先启动glassfish服务器，在地址栏中输入<a href="http://localhost:4848/" target="_blank" rel="noopener">http://localhost:4848/</a>,进入服务器的配置界面,如下:</h2><p><img src="../uploads/qiniu/20170206148636045921422.png" alt="20170206148636045921422.png"></p>
+<h2 id="2、在Common-Tasks下选择Resources的JDBC，可以看到JDBC资源-JDBC-Resources-和Connection-Pools-连接池-，在Connection-Pools-连接池-中点击New按钮，建立一个连接池jdbc-new，如下："><a href="#2、在Common-Tasks下选择Resources的JDBC，可以看到JDBC资源-JDBC-Resources-和Connection-Pools-连接池-，在Connection-Pools-连接池-中点击New按钮，建立一个连接池jdbc-new，如下：" class="headerlink" title="2、在Common Tasks下选择Resources的JDBC，可以看到JDBC资源(JDBC Resources)和Connection Pools(连接池)，在Connection Pools(连接池)中点击New按钮，建立一个连接池jdbc_new，如下："></a>2、在Common Tasks下选择Resources的JDBC，可以看到JDBC资源(JDBC Resources)和Connection Pools(连接池)，在Connection Pools(连接池)中点击New按钮，建立一个连接池jdbc_new，如下：</h2>
+            
+            <p class="more">
+                <a href="http://www.imsry.cn/posts/88376848.html">阅读剩下更多</a>
+            </p>
+        </div>
+        <div class="post-thumbnail" data-img="">
+            <a href="http://www.imsry.cn/posts/88376848.html" title="GlassFish配置数据库连接池">
+                
+                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/8.jpg" alt="默认配图" >
+                
+            </a>
+        </div>
+    </div>
+</article>
+
+    
+        <!-- 文章列表 item -->
+<article class="post">
+    <header>
+        <!-- 标签这有且只能显示一个 -->
+        
+        <a class="cat-link" href="/categories/PHP/">PHP</a>
+        
+        <!-- 文章标题 -->
+        
+    <h3 class="post-title">
+    	<a href="http://www.imsry.cn/posts/14dc73fd.html">
+    		分享一个PHP修改ini配置文件的类
+    	</a>
+    </h3>
+
+    </header>
+    <p class="post-meta">
+        Anthony 发表于
+        <time datetime="2015-10-26T13:30:57.000Z">2015-10-26 21:30:57</time>
+
+
+        &nbsp;&nbsp;
+        <span class="post-tags">
+            标签：
+            
+    
+        <a href="/tags/PHP/" title="PHP">PHP</a> / 
+    
+        <a href="/tags/INI/" title="INI">INI</a>
+    
+
+        </span>
+    </p>
+
+    <div class="post-content">
+        <div class="post-excerpt">
+            
+                <p>.ini配置文件 有简单类型 和 复杂类型：<br>简单的不带节点，如：<br>username=myname<br>userage=21<br>userinfo=i’m a boy</p>
+<p>另一种带有节点，如mysql的配置文件my.ini(windows下)：<br>[mysqld]<br>port        = 3306<br>socket        = /tmp/mysql.sock<br>skip-external-locking<br>key_buffer_size = 16M<br>max_allowed_packet = 1M<br>table_open_cache = 64</p>
+            
+            <p class="more">
+                <a href="http://www.imsry.cn/posts/14dc73fd.html">阅读剩下更多</a>
+            </p>
+        </div>
+        <div class="post-thumbnail" data-img="">
+            <a href="http://www.imsry.cn/posts/14dc73fd.html" title="分享一个PHP修改ini配置文件的类">
+                
+                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/6.jpg" alt="默认配图" >
+                
+            </a>
+        </div>
+    </div>
+</article>
+
+    
+        <!-- 文章列表 item -->
+<article class="post">
+    <header>
+        <!-- 标签这有且只能显示一个 -->
+        
+        <a class="cat-link" href="/categories/学习笔记/">学习笔记</a>
+        
+        <!-- 文章标题 -->
+        
+    <h3 class="post-title">
+    	<a href="http://www.imsry.cn/posts/ce23f4b0.html">
+    		有关MacBook从10.9.5升级到10.11(EI capitan)后的问题及解决方法
+    	</a>
+    </h3>
+
+    </header>
+    <p class="post-meta">
+        Anthony 发表于
+        <time datetime="2015-10-26T12:16:55.000Z">2015-10-26 20:16:55</time>
+
+
+        &nbsp;&nbsp;
+        <span class="post-tags">
+            标签：
+            
+    
+        <a href="/tags/Apache/" title="Apache">Apache</a> / 
+    
+        <a href="/tags/Linux/" title="Linux">Linux</a> / 
+    
+        <a href="/tags/MySQL/" title="MySQL">MySQL</a> / 
+    
+        <a href="/tags/MacOS/" title="MacOS">MacOS</a>
+    
+
+        </span>
+    </p>
+
+    <div class="post-content">
+        <div class="post-excerpt">
+            
+                <p>看到别人的MAC在用最新的EI Capitan系统之后，我终于打破了自己坚持使用旧系统的原则，本着更好的体验和更高的性能，我将自己的本子也更新到最新，既然是更新升级上来的，不免有些小问题会出现，下面就逐个来说说我遇到的问题吧。</p>
+<h2 id="问题一：Apache无法正常启动？"><a href="#问题一：Apache无法正常启动？" class="headerlink" title="问题一：Apache无法正常启动？"></a>问题一：Apache无法正常启动？</h2><p>首先遇到这个问题时，当然是去找日志了，因为在终端输入启动命令：sudo apachectl start之后，没有任何报错和提示，只是本地浏览器访问localhost or 127.0.0.1失败。但是，这个错误日志真的不好找，最后我干脆去配置文件etc/apache2/httpd.conf中寻找。</p>
+<p>嗯！找到了！ ErrorLog “/private/var/log/apache2/error_log” 好的，我去看看到底是什么原因。可是，“/private/var/log/apache2/” 目录根本没有任何文件！想着自己给它创建这个错误日志文件吧，创建好了之后使用命令启动apache，结果文件里面没有任何内容！</p>
+<p>这也不行，看来通过错误日志是行不通了，于是乎，在网上查找各种资料，终于看到有个人在网页上写到：现在尝试启动一下Apache: sudo apachectl -k start。看到这个，带着好奇我也输入了一遍，好奇心真的不会害死猫！终于出现了报错了！第一次这么开心地看见报错信息，于是乎根据提示找到错误点并屏蔽掉了这个错误的配置。<br>
+            
+            <p class="more">
+                <a href="http://www.imsry.cn/posts/ce23f4b0.html">阅读剩下更多</a>
+            </p>
+        </div>
+        <div class="post-thumbnail" data-img="">
+            <a href="http://www.imsry.cn/posts/ce23f4b0.html" title="有关MacBook从10.9.5升级到10.11(EI capitan)后的问题及解决方法">
+                
+                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/6.jpg" alt="默认配图" >
+                
+            </a>
+        </div>
+    </div>
+</article>
+
+    
+        <!-- 文章列表 item -->
+<article class="post">
+    <header>
+        <!-- 标签这有且只能显示一个 -->
+        
+        <a class="cat-link" href="/categories/Linux/">Linux</a>
+        
+        <!-- 文章标题 -->
+        
+    <h3 class="post-title">
+    	<a href="http://www.imsry.cn/posts/c178ca6.html">
+    		Apache 反向代理 Tomcat实战
+    	</a>
+    </h3>
+
+    </header>
+    <p class="post-meta">
+        Anthony 发表于
+        <time datetime="2015-10-22T13:27:58.000Z">2015-10-22 21:27:58</time>
+
+
+        &nbsp;&nbsp;
+        <span class="post-tags">
+            标签：
+            
+    
+        <a href="/tags/Apache/" title="Apache">Apache</a> / 
+    
+        <a href="/tags/Linux/" title="Linux">Linux</a> / 
+    
+        <a href="/tags/Proxy/" title="Proxy">Proxy</a>
+    
+
+        </span>
+    </p>
+
+    <div class="post-content">
+        <div class="post-excerpt">
+            
+                <p><a href="http://www.dshui.wang/wp-content/uploads/2015/10/QQ截图20151022212703.png" target="_blank" rel="noopener"><img src="http://www.dshui.wang/wp-content/uploads/2015/10/QQ截图20151022212703-300x157.png" alt="apache"></a></p>
+<p>近期突然有个想法，既然有多出来的服务器，空着也是空着，不如拿出来用作演示项目。带着这样的心情，我开始在自己的服务器上动起了手脚。</p>
+<h2 id="一、现有情况："><a href="#一、现有情况：" class="headerlink" title="一、现有情况："></a>一、现有情况：</h2><ol>
+<li>我的博客地址：<a href="http://www.dshui.wang/" target="_blank" rel="noopener">http://www.dshui.wang/</a></li>
+<li>演示用的服务器地址(Tomcat)：<a href="http://xxx.xx.xx.xx:8080/" target="_blank" rel="noopener">http://xxx.xx.xx.xx:8080/</a> （由于暴露IP和端口带来了攻击，现在取消了）</li>
+<li>演示所用域名：demo.dshui.wang 解析至博客所在服务器（非演示用服务器）</li>
+</ol>
+<h2 id="二、预期效果："><a href="#二、预期效果：" class="headerlink" title="二、预期效果："></a>二、预期效果：</h2><ol>
+<li>访问<a href="http://demo.dshui.wang/tomcat/时，展示的页面为http://xxx.xx.xx.xx:8080/所显示的页面" target="_blank" rel="noopener">http://demo.dshui.wang/tomcat/时，展示的页面为http://xxx.xx.xx.xx:8080/所显示的页面</a></li>
+<li>更近一层，<a href="http://demo.dshui.wang/tomcat/*" target="_blank" rel="noopener">http://demo.dshui.wang/tomcat/*</a> 译为<a href="http://xxx.xx.xx.xx:8080/*" target="_blank" rel="noopener">http://xxx.xx.xx.xx:8080/*</a>  （*代表通配符
+            
+            <p class="more">
+                <a href="http://www.imsry.cn/posts/c178ca6.html">阅读剩下更多</a>
+            </p>
+        </div>
+        <div class="post-thumbnail" data-img="">
+            <a href="http://www.imsry.cn/posts/c178ca6.html" title="Apache 反向代理 Tomcat实战">
+                
+                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/2.jpg" alt="默认配图" >
+                
+            </a>
+        </div>
+    </div>
+</article>
+
+    
+        <!-- 文章列表 item -->
+<article class="post">
+    <header>
+        <!-- 标签这有且只能显示一个 -->
+        
+        <a class="cat-link" href="/categories/学习笔记/">学习笔记</a>
+        
+        <!-- 文章标题 -->
+        
+    <h3 class="post-title">
+    	<a href="http://www.imsry.cn/posts/dd8a79ee.html">
+    		[作业练习]带数据库的简易购物车
+    	</a>
+    </h3>
+
+    </header>
+    <p class="post-meta">
+        Anthony 发表于
+        <time datetime="2015-10-17T10:24:36.000Z">2015-10-17 18:24:36</time>
+
+
+        &nbsp;&nbsp;
+        <span class="post-tags">
+            标签：
+            
+    
+        <a href="/tags/Web/" title="Web">Web</a>
+    
+
+        </span>
+    </p>
+
+    <div class="post-content">
+        <div class="post-excerpt">
+            
+                <p>在前一次作业的基础上（<a href="http://www.dshui.wang/2015-10-15/work-javabean-jsp-shopcart-1.html" target="_blank" rel="noopener">[作业]JavaBean+Jsp简易购物车实现</a>）,加上数据库来管理商品和购买记录。<br>最后结果展示：<del><a href="http://demo.dshui.wang/tomcat/ShopCartDemo/" target="_blank" rel="noopener">http://demo.dshui.wang/tomcat/ShopCartDemo/</a></del><br>首先，建立数据表：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">#用户表</span><br><span class="line">CREATE TABLE `cart_users` (</span><br><span class="line">  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,</span><br><span class="line">  `username` varchar(80) NOT NULL DEFAULT &apos;&apos;,</span><br><span class="line">  `password` varchar(220) NOT NULL DEFAULT &apos;&apos;,</span><br><span class="line">  PRIMARY KEY (`id`),</span><br><span class="line">  UNIQUE KEY `username` (`username`)</span><br><span class="line">) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;</span><br><span class="line">&lt;!--more--&gt;</span><br><span class="line"></span><br><span class="line">#商品表</span><br><span class="line">CREATE TABLE `cart_goods` (</span><br><span class="line">  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,</span><br><span class="line">  `gname` varchar(50) NOT NULL DEFAULT &apos;&apos;,</span><br><span class="line">  `gprice` double NOT NULL,</span><br><span class="line">  `gdname` varchar(20) NOT NULL DEFAULT &apos;&apos;,</span><br><span class="line">  PRIMARY KEY (`id`)</span><br><span class="line">) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;</span><br><span class="line"></span><br><span class="line">#购买记录</span><br><span class="line">CREATE TABLE `cart_lists` (</span><br><span class="line">  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,</span><br><span class="line">  `username` varchar(80) NOT NULL DEFAULT &apos;&apos;,</span><br><span class="line">  `gid` int(11) unsigned DEFAULT NULL,</span><br><span class="line">  `gnumber` double DEFAULT NULL,</span><br><span class="line">  `gtprice` double DEFAULT NULL,</span><br><span class="line">  PRIMARY KEY (`id`),</span><br><span class="line">  KEY `users` (`username`),</span><br><span class="line">  KEY `goodid` (`gid`),</span><br><span class="line">  CONSTRAINT `goodid` FOREIGN KEY (`gid`) REFERENCES `cart_goods` (`id`),</span><br><span class="line">  CONSTRAINT `users` FOREIGN KEY (`username`) REFERENCES `cart_users` (`username`)</span><br><span class="line">) ENGINE=InnoDB AUTO_INCREMENT=60 DEFAULT CHARSET=utf8;</span><br></pre></td></tr></table></figure>
+<p>写入测试数据：</p>
+            
+            <p class="more">
+                <a href="http://www.imsry.cn/posts/dd8a79ee.html">阅读剩下更多</a>
+            </p>
+        </div>
+        <div class="post-thumbnail" data-img="">
+            <a href="http://www.imsry.cn/posts/dd8a79ee.html" title="[作业练习]带数据库的简易购物车">
+                
+                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/7.jpg" alt="默认配图" >
+                
+            </a>
+        </div>
+    </div>
+</article>
+
+    
+        <!-- 文章列表 item -->
+<article class="post">
+    <header>
+        <!-- 标签这有且只能显示一个 -->
+        
+        <a class="cat-link" href="/categories/学习笔记/">学习笔记</a>
+        
+        <!-- 文章标题 -->
+        
+    <h3 class="post-title">
+    	<a href="http://www.imsry.cn/posts/6efe4b6c.html">
+    		[作业]JavaBean+Jsp简易购物车实现
+    	</a>
+    </h3>
+
+    </header>
+    <p class="post-meta">
+        Anthony 发表于
+        <time datetime="2015-10-15T11:36:37.000Z">2015-10-15 19:36:37</time>
+
+
+        &nbsp;&nbsp;
+        <span class="post-tags">
+            标签：
+            
+    
+        <a href="/tags/Web/" title="Web">Web</a>
+    
+
+        </span>
+    </p>
+
+    <div class="post-content">
+        <div class="post-excerpt">
+            
+                <p>本次作业要求使用到JavaBean+纯Jsp，带有登陆功能的购物车系统。<br>登陆功能这里就不多讲了，前面的聊天室已经做过，这边直接拷贝就能使用了。<br>另外，本次作业中我加入了BootStrap来做一个小小风格美化。<br>不多说，直接上代码！<br>index.jsp 首页，也是登陆界面</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line">&lt;%@page contentType=&quot;text/html&quot; pageEncoding=&quot;UTF-8&quot;%&gt;</span><br><span class="line">&lt;%</span><br><span class="line">    Cookie[] cookies = request.getCookies();</span><br><span class="line">    String uname = &quot;&quot;;</span><br><span class="line">    String upwd = &quot;&quot;;</span><br><span class="line">    if(cookies!=null)&#123;</span><br><span class="line">        for(int i=0;i&lt;cookies.length;i++)</span><br><span class="line">        &#123;</span><br><span class="line">            Cookie cookie=cookies[i];</span><br><span class="line">            if(cookie.getName().equals(&quot;remname&quot;))</span><br><span class="line">            &#123;</span><br><span class="line">                uname = cookie.getValue();</span><br><span class="line">            &#125;</span><br><span class="line">            else if(cookie.getName().equals(&quot;rempwd&quot;))</span><br><span class="line">            &#123;</span><br><span class="line">                upwd = cookie.getValue();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">%&gt;</span><br><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;zh-CN&quot;&gt;</span><br><span class="line">    &lt;head&gt;</span><br><span class="line">        &lt;meta charset=&quot;utf-8&quot;&gt;</span><br><span class="line">        &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot;&gt;</span><br><span class="line">        &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,initial-scale=1&quot;&gt;</span><br><span class="line">        &lt;title&gt;请登录ShopCartDemo&lt;/title&gt;</span><br><span class="line">        &lt;link href=&quot;bootstrap.min.css&quot; rel=&quot;stylesheet&quot;&gt;</span><br><span class="line">    &lt;/head&gt;</span><br><span class="line">    &lt;body&gt;</span><br><span class="line">        &lt;div class=&quot;container&quot;&gt;</span><br><span class="line">            &lt;form class=&quot;form-horizontal&quot; action=&quot;dologin.jsp&quot; method=&quot;post&quot; name=&quot;loginform&quot;&gt;</span><br><span class="line">                &lt;div class=&quot;form-group&quot;&gt;</span><br><span class="line">                    &lt;label for=&quot;inputusername&quot; class=&quot;col-sm-5 control-label&quot;&gt;用户名&lt;/label&gt;</span><br><span class="line">                    &lt;div class=&quot;col-sm-2&quot;&gt;</span><br><span class="line">                        &lt;input class=&quot;form-control&quot; id=&quot;inputusername&quot; type=&quot;text&quot; name=&quot;username&quot; value=&quot;&lt;%=uname%&gt;&quot; placeholder=&quot;username&quot; /&gt;</span><br><span class="line">                    &lt;/div&gt;</span><br><span class="line">                &lt;/div&gt;</span><br><span class="line">                &lt;div class=&quot;form-group&quot;&gt;</span><br><span class="line">                    &lt;label for=&quot;inputpassword&quot; class=&quot;col-sm-5 control-label&quot;&gt;密码&lt;/label&gt;</span><br><span class="line">                    &lt;div class=&quot;col-sm-2&quot;&gt;</span><br><span class="line">                        &lt;input class=&quot;form-control&quot; id=&quot;inputpassword&quot; type=&quot;password&quot; name=&quot;password&quot; value=&quot;&lt;%=upwd%&gt;&quot; placeholder=&quot;password&quot; /&gt;</span><br><span class="line">                    &lt;/div&gt;</span><br><span class="line">                &lt;/div&gt;</span><br><span class="line">                &lt;div class=&quot;form-group&quot;&gt;</span><br><span class="line">                &lt;div class=&quot;col-sm-offset-5 col-sm-2&quot;&gt;</span><br><span class="line">                  &lt;div class=&quot;checkbox&quot;&gt;</span><br><span class="line">                    &lt;label&gt;</span><br><span class="line">                        &lt;input type=&quot;checkbox&quot; name=&quot;remember&quot; value=&quot;true&quot;&gt; 记住我</span><br><span class="line">                    &lt;/label&gt;</span><br><span class="line">                  &lt;/div&gt;</span><br><span class="line">                &lt;/div&gt;</span><br><span class="line">              &lt;/div&gt;</span><br><span class="line"></span><br><span class="line">                &lt;div class=&quot;form-group&quot;&gt;</span><br><span class="line">                  &lt;div class=&quot;col-sm-offset-5 col-sm-2&quot;&gt;</span><br><span class="line">                    &lt;button type=&quot;submit&quot; class=&quot;btn btn-default&quot;&gt;登陆&lt;/button&gt;</span><br><span class="line">                    &lt;button type=&quot;reset&quot; class=&quot;btn btn-default&quot;&gt;重置&lt;/button&gt;</span><br><span class="line">                  &lt;/div&gt;</span><br><span class="line">                &lt;/div&gt;</span><br><span class="line"></span><br><span class="line">            &lt;/form&gt;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">    &lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+<p>dologin.jsp 登陆信息处理页面</p>
+            
+            <p class="more">
+                <a href="http://www.imsry.cn/posts/6efe4b6c.html">阅读剩下更多</a>
+            </p>
+        </div>
+        <div class="post-thumbnail" data-img="">
+            <a href="http://www.imsry.cn/posts/6efe4b6c.html" title="[作业]JavaBean+Jsp简易购物车实现">
+                
+                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/5.jpg" alt="默认配图" >
+                
+            </a>
+        </div>
+    </div>
+</article>
+
+    
+        <!-- 文章列表 item -->
+<article class="post">
+    <header>
+        <!-- 标签这有且只能显示一个 -->
+        
+        <a class="cat-link" href="/categories/Linux/">Linux</a>
+        
+        <!-- 文章标题 -->
+        
+    <h3 class="post-title">
+    	<a href="http://www.imsry.cn/posts/d4ca8601.html">
+    		linux下mysql的root密码忘记解决方法
+    	</a>
+    </h3>
+
+    </header>
+    <p class="post-meta">
+        Anthony 发表于
+        <time datetime="2015-10-13T00:54:10.000Z">2015-10-13 08:54:10</time>
+
+
+        &nbsp;&nbsp;
+        <span class="post-tags">
+            标签：
+            
+    
+        <a href="/tags/MySQL/" title="MySQL">MySQL</a>
+    
+
+        </span>
+    </p>
+
+    <div class="post-content">
+        <div class="post-excerpt">
+            
+                <p>1．首先确认服务器出于安全的状态，也就是没有人能够任意地连接MySQL数据库。<br>因为在重新设置MySQL的root密码的期间，MySQL数据库完全出于没有密码保护的<br>状态下，其他的用户也可以任意地登录和修改MySQL的信息。可以采用将MySQL对<br>外的端口封闭，并且停止Apache以及所有的用户进程的方法实现服务器的准安全<br>状态。最安全的状态是到服务器的Console上面操作，并且拔掉网线。<br>2．修改MySQL的登录设置：</p>
+<h1 id="vi-etc-my-cnf"><a href="#vi-etc-my-cnf" class="headerlink" title="vi /etc/my.cnf"></a>vi /etc/my.cnf</h1><p>在[mysqld]的段中加上一句：skip-grant-tables<br>例如：<br>[mysqld]<br>datadir=/var/lib/mysql<br>socket=/var/lib/mysql/mysql.sock<br>skip-grant-tables<br>保存并且退出vi。<br>3．重新启动mysqld</p>
+<h1 id="etc-init-d-mysqld-restart"><a href="#etc-init-d-mysqld-restart" class="headerlink" title="/etc/init.d/mysqld restart"></a>/etc/init.d/mysqld restart</h1><p>Stopping MySQL: [ OK ]<br>Starting MySQL: [ OK ]<br>4．登录并修改MySQL的root密码</p>
+<h1 id="usr-bin-mysql"><a href="#usr-bin-mysql" class="headerlink" title="/usr/bin/mysql"></a>/usr/bin/mysql</h1><p>Welcome to the MySQL monitor. Commands end with ; or \g.<br>Your MySQL connection id is 3 to server version: 3.23.56<br>Type ‘help;’ or ‘\h’ for help. Type ‘\c’ to clear the buffer.<br>mysql&gt; USE mysql ;<br>Reading table information for completion of table and column names<br>You can turn off this feature to get a quicker startup with -A<br>Database changed<br>mysql&gt; UPDATE user SET Password = password ( ‘new-password’ ) WHERE User = ‘root’ ;<br>Query OK, 0 rows affected (0.00 sec)<br>Rows matched: 2 Changed: 0 Warnings: 0<br>mysql&gt; flush privileges ;<br>Query OK, 0 rows affected (0.01 sec)<br>mysql&gt; quit<br>Bye<br>5．将MySQL的登录设置修改回来</p>
+<h1 id="vi-etc-my-cnf-1"><a href="#vi-etc-my-cnf-1" class="headerlink" title="vi /etc/my.cnf"></a>vi /etc/my.cnf</h1><p>将刚才在[mysqld]的段中加上的skip-grant-tables删除<br>保存并且退出vi。<br>6．重新启动mysqld</p>
+<h1 id="etc-init-d-mysqld-restart-1"><a href="#etc-init-d-mysqld-restart-1" class="headerlink" title="/etc/init.d/mysqld restart"></a>/etc/init.d/mysqld restart</h1><p>Stopping MySQL: [ OK ]<br>Starting MySQL: [ OK ]<br>文章转自：<a href="http://www.cnblogs.com/allenblogs/archive/2010/08/12/1798247.html" target="_blank" rel="noopener">http://www.cnblogs.com/allenblogs/archive/2010/08/12/1798247.html</a></p>
+
+            
+            <p class="more">
+                <a href="http://www.imsry.cn/posts/d4ca8601.html">阅读剩下更多</a>
+            </p>
+        </div>
+        <div class="post-thumbnail" data-img="">
+            <a href="http://www.imsry.cn/posts/d4ca8601.html" title="linux下mysql的root密码忘记解决方法">
+                
+                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/3.jpg" alt="默认配图" >
+                
+            </a>
+        </div>
+    </div>
+</article>
+
+    
+        <!-- 文章列表 item -->
+<article class="post">
+    <header>
+        <!-- 标签这有且只能显示一个 -->
+        
+        <a class="cat-link" href="/categories/算法/">算法</a>
+        
+        <!-- 文章标题 -->
+        
+    <h3 class="post-title">
+    	<a href="http://www.imsry.cn/posts/f996716f.html">
+    		各种排序算法介绍
+    	</a>
+    </h3>
+
+    </header>
+    <p class="post-meta">
+        Anthony 发表于
+        <time datetime="2015-10-08T10:26:59.000Z">2015-10-08 18:26:59</time>
+
+
+        &nbsp;&nbsp;
+        <span class="post-tags">
+            标签：
+            
+        </span>
+    </p>
+
+    <div class="post-content">
+        <div class="post-excerpt">
+            
+                <p><strong>1.直接插入排序算法(Straight Insertion Sort)：</strong><br>基本思想:<br>将一个记录插入到已排序好的有序表中，从而得到一个新，记录数增1的有序表。即：先将序列的第1个记录看成是一个有序的子序列，然后从第2个记录逐个进行插入，直至整个序列有序为止。<br><span style="color: #33cccc;">算法的实现：</span></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">//</span><br><span class="line">//  main.cpp</span><br><span class="line">//  Straight Insertion Sort</span><br><span class="line">//</span><br><span class="line">//  Created by anthony on 15-10-8.</span><br><span class="line">//  Copyright (c) 2015年 anthony. All rights reserved.</span><br><span class="line">//</span><br><span class="line"></span><br><span class="line">#include &lt;iostream&gt;</span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">void print(int a[], int n ,int i)&#123;</span><br><span class="line">    cout&lt;&lt;i &lt;&lt;&quot;:&quot;;</span><br><span class="line">    for(int j= 0; j&lt;n; j++)&#123;</span><br><span class="line">        cout&lt;&lt;a[j] &lt;&lt;&quot; &quot;;</span><br><span class="line">    &#125;</span><br><span class="line">    cout&lt;&lt;endl;</span><br><span class="line">&#125;</span><br><span class="line">void InsertSort(int a[], int n)</span><br><span class="line">&#123;</span><br><span class="line">    for(int i= 1; i&lt;n; i++)&#123;</span><br><span class="line">        if(a[i] &lt; a[i-1])&#123;          //若第i个元素大于i-1元素，直接插入。小于的话，移动有序表后插入</span><br><span class="line">            int j= i-1;</span><br><span class="line">            int x = a[i];           //复制为哨兵，即存储待排序元素</span><br><span class="line">            a[i] = a[i-1];          //先后移一个元素</span><br><span class="line">            while(x &lt; a[j])&#123;        //查找在有序表的插入位置</span><br><span class="line">                a[j+1] = a[j];</span><br><span class="line">                j--;                //元素后移</span><br><span class="line">            &#125;</span><br><span class="line">            a[j+1] = x;             //插入到正确位置</span><br><span class="line">        &#125;</span><br><span class="line">        print(a,n,i);               //打印每趟排序的结果</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main(int argc, const char * argv[]) &#123;</span><br><span class="line">    int a[8] = &#123;5,6,1,3,2,8,9,7&#125;;</span><br><span class="line">    InsertSort(a,8);</span><br><span class="line">    print(a,8,8);</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>   运行结果：</p>
+<p>1:5 6 1 3 2 8 9 7 </p>
+<p>2:1 5 6 3 2 8 9 7 </p>
+<p>3:1 3 5 6 2 8 9 7 </p>
+<p>4:1 2 3 5 6 8 9 7 </p>
+<p>5:1 2 3 5 6 8 9 7</p>
+<p>6:1 2 3 5 6 8 9 7 </p>
+<p>7:1 2 3 5 6 7 8 9 </p>
+<p>8:1 2 3 5 6 7 8 9 </p>
+<p>Program ended with exit code: 0</p>
+<p>时间复杂度：O（n^2）.</p>
+<p><strong>2.选择排序—简单选择排序（Simple Selection Sort）:</strong></p>
+<p>基本思想：<br>&gt;<br>在要排序的一组数中，选出最小（或者最大）的一个数与第1个位置的数交换；然后在剩下的数当中再找最小（或者最大）的与第2个位置的数交换，依次类推，直到第n-1个元素（倒数第二个数）和第n个元素（最后一个数）比较为止。</p>
+<p>操作方法：<br>
+            
+            <p class="more">
+                <a href="http://www.imsry.cn/posts/f996716f.html">阅读剩下更多</a>
+            </p>
+        </div>
+        <div class="post-thumbnail" data-img="">
+            <a href="http://www.imsry.cn/posts/f996716f.html" title="各种排序算法介绍">
+                
+                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/8.jpg" alt="默认配图" >
+                
+            </a>
+        </div>
+    </div>
+</article>
+
+    
+        <!-- 文章列表 item -->
+<article class="post">
+    <header>
+        <!-- 标签这有且只能显示一个 -->
+        
+        <a class="cat-link" href="/categories/学习笔记/">学习笔记</a>
+        
+        <!-- 文章标题 -->
+        
+    <h3 class="post-title">
+    	<a href="http://www.imsry.cn/posts/9c7a95bd.html">
+    		[作业]Servlet简易聊天室
+    	</a>
+    </h3>
+
+    </header>
+    <p class="post-meta">
+        Anthony 发表于
+        <time datetime="2015-09-28T09:08:55.000Z">2015-09-28 17:08:55</time>
+
+
+        &nbsp;&nbsp;
+        <span class="post-tags">
+            标签：
+            
+    
+        <a href="/tags/Web/" title="Web">Web</a>
+    
+
+        </span>
+    </p>
+
+    <div class="post-content">
+        <div class="post-excerpt">
+            
+                <p>简单例子-Servlet聊天室，所用工具：NetBeans IDE(配备GlassFish)<br>本次例子重在思路，页面未做任何美化。<br>最后结果展示：<del><a href="http://demo.dshui.wang/tomcat/First_chat_room/" target="_blank" rel="noopener">http://demo.dshui.wang/tomcat/First_chat_room/</a></del><br>首先,需要一个登陆页面。<br>Login.jsp<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line">&lt;%@page contentType=&quot;text/html&quot; pageEncoding=&quot;UTF-8&quot;%&gt;</span><br><span class="line">&lt;%</span><br><span class="line">    Cookie[] cookies = request.getCookies();</span><br><span class="line">    String uname = &quot;&quot;;</span><br><span class="line">    String upwd = &quot;&quot;;</span><br><span class="line">    if(cookies!=null)&#123;</span><br><span class="line">        for(int i=0;i&lt;cookies.length;i++)</span><br><span class="line">        &#123;</span><br><span class="line">            Cookie cookie=cookies[i];</span><br><span class="line">            if(cookie.getName().equals(&quot;remname&quot;))</span><br><span class="line">            &#123;</span><br><span class="line">                uname = cookie.getValue();</span><br><span class="line">            &#125;</span><br><span class="line">            else if(cookie.getName().equals(&quot;rempwd&quot;))</span><br><span class="line">            &#123;</span><br><span class="line">                upwd = cookie.getValue();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">//上面代码用来判断用户是否曾保存过登陆信息</span><br><span class="line">%&gt;</span><br><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">    &lt;head&gt;</span><br><span class="line">        &lt;title&gt;牛逼的登陆界面&lt;/title&gt;</span><br><span class="line">        &lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=UTF-8&quot;&gt;</span><br><span class="line">    &lt;/head&gt;</span><br><span class="line">    &lt;body&gt;</span><br><span class="line">        &lt;div&gt;</span><br><span class="line">            &lt;form action=&quot;Main&quot; method=&quot;post&quot; name=&quot;loginform&quot;&gt;</span><br><span class="line">                &lt;table&gt;</span><br><span class="line">                    &lt;tr&gt;</span><br><span class="line">                        &lt;td&gt;用户名：&lt;/td&gt;</span><br><span class="line">                        &lt;td&gt;</span><br><span class="line">                            &lt;input type=&quot;text&quot; name=&quot;username&quot; value=&quot;&lt;%=uname%&gt;&quot; /&gt;</span><br><span class="line">                        &lt;/td&gt;</span><br><span class="line">                    &lt;/tr&gt;</span><br><span class="line">                    &lt;tr&gt;</span><br><span class="line">                        &lt;td&gt;密码：&lt;/td&gt;</span><br><span class="line">                        &lt;td&gt;</span><br><span class="line">                            &lt;input type=&quot;password&quot; name=&quot;password&quot; value=&quot;&lt;%=upwd%&gt;&quot; /&gt;</span><br><span class="line">                        &lt;/td&gt;</span><br><span class="line">                    &lt;/tr&gt;</span><br><span class="line">                    &lt;tr&gt;</span><br><span class="line">                        &lt;td colspan=&quot;2&quot; style=&quot;text-align: right;&quot;&gt;</span><br><span class="line">                            记住信息&lt;input name=&quot;remember&quot; type=&quot;checkbox&quot; value=&quot;true&quot; /&gt;</span><br><span class="line">                            &lt;input type=&quot;submit&quot; name=&quot;submit&quot; value=&quot;登录&quot;/&gt;</span><br><span class="line">                            &lt;input type=&quot;reset&quot; name=&quot;&quot; value=&quot;重置&quot;/&gt;</span><br><span class="line">                        &lt;/td&gt;</span><br><span class="line">                    &lt;/tr&gt;</span><br><span class="line">                &lt;/table&gt;</span><br><span class="line"></span><br><span class="line">            &lt;/form&gt;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">    &lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure></p>
+<p>新建一个用来处理登录信息的Servlet: Main.java 所有的处理都在DoPost()完成</p>
+            
+            <p class="more">
+                <a href="http://www.imsry.cn/posts/9c7a95bd.html">阅读剩下更多</a>
+            </p>
+        </div>
+        <div class="post-thumbnail" data-img="">
+            <a href="http://www.imsry.cn/posts/9c7a95bd.html" title="[作业]Servlet简易聊天室">
+                
+                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/8.jpg" alt="默认配图" >
+                
+            </a>
+        </div>
+    </div>
+</article>
+
+    
+        <!-- 文章列表 item -->
+<article class="post">
+    <header>
+        <!-- 标签这有且只能显示一个 -->
+        
+        <a class="cat-link" href="/categories/学习笔记/">学习笔记</a>
+        
+        <!-- 文章标题 -->
+        
+    <h3 class="post-title">
+    	<a href="http://www.imsry.cn/posts/7a0a41b.html">
+    		Discuz的数据库的迁移
+    	</a>
+    </h3>
+
+    </header>
+    <p class="post-meta">
+        Anthony 发表于
+        <time datetime="2015-09-26T15:06:48.000Z">2015-09-26 23:06:48</time>
+
+
+        &nbsp;&nbsp;
+        <span class="post-tags">
+            标签：
+            
+    
+        <a href="/tags/Discuz/" title="Discuz">Discuz</a>
+    
+
+        </span>
+    </p>
+
+    <div class="post-content">
+        <div class="post-excerpt">
+            
+                <p>如果WEB服务器迁移，除了将论坛所有的文件转移到新的服务器上之外，还需要将数据库一同迁移。文件转移完毕之后，并不能算完成了，因为这里还有数据库的配置没有修改。<br>Discuz论坛，如果需要迁移数据库，那么我们在转移的数据库的所有数据之后，还需要重新配置一下Discuz的配置文件：<br>论坛连接Ucenter的配置：config/config_ucenter.php<br>论坛的配置：config/config_global.php<br>Ucenter的配置：uc_server/data/config.inc.php<br>在这三个文件里面，修改对应的数据库地址、数据库名称、用户名、密码。<br>全部配置完毕之后，保存就可以了。</p>
+
+            
+            <p class="more">
+                <a href="http://www.imsry.cn/posts/7a0a41b.html">阅读剩下更多</a>
+            </p>
+        </div>
+        <div class="post-thumbnail" data-img="">
+            <a href="http://www.imsry.cn/posts/7a0a41b.html" title="Discuz的数据库的迁移">
+                
+                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/6.jpg" alt="默认配图" >
+                
+            </a>
+        </div>
+    </div>
+</article>
+
+    
+        <!-- 文章列表 item -->
+<article class="post">
+    <header>
+        <!-- 标签这有且只能显示一个 -->
+        
+        <a class="cat-link" href="/categories/Linux/">Linux</a>
+        
+        <!-- 文章标题 -->
+        
+    <h3 class="post-title">
+    	<a href="http://www.imsry.cn/posts/3be490a0.html">
+    		Linux之CentOS 6.7 下无网络? 原来是网卡没启动！
+    	</a>
+    </h3>
+
+    </header>
+    <p class="post-meta">
+        Anthony 发表于
+        <time datetime="2015-08-26T08:37:12.000Z">2015-08-26 16:37:12</time>
+
+
+        &nbsp;&nbsp;
+        <span class="post-tags">
+            标签：
+            
+    
+        <a href="/tags/CentOS/" title="CentOS">CentOS</a>
+    
+
+        </span>
+    </p>
+
+    <div class="post-content">
+        <div class="post-excerpt">
+            
+                <p><img src="../uploads/2015/08/CentOS-Network-eth0.jpg" alt="CentOS-Network-eth0"><br>今天用Vbox安装了CentOS 6.7 准备测试游戏服务器,需要下载一个服务端，使用wget时发现无wget命令，聪明的我马上想到使用yum install wget 来安装一个，谁知道出现了无法连接镜像列表的报错，通过查看ifconfig发现，原来是网卡没有启动，于是查看了资料：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/sysconfig/network-scripts/ifcfg-eth0</span><br></pre></td></tr></table></figure>
+<p>修改开启自启:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">DEVICE=eth0</span><br><span class="line">HWADDR=00:0C:29:2E:37:F0</span><br><span class="line">TYPE=Ethernet</span><br><span class="line">UUID=69cd9740-184f-49b7-857f-e397e57f265b</span><br><span class="line">ONBOOT=yes          //修改此处</span><br><span class="line">NM_CONTROLLED=yes   //修改此处</span><br><span class="line">BOOTPROTO=dhcp</span><br></pre></td></tr></table></figure></p>
+<p>然后重启网络：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">//重启网络</span><br><span class="line">/etc/init.d/network restart</span><br><span class="line">//查看IP</span><br></pre></td></tr></table></figure></p>
+
+            
+            <p class="more">
+                <a href="http://www.imsry.cn/posts/3be490a0.html">阅读剩下更多</a>
+            </p>
+        </div>
+        <div class="post-thumbnail" data-img="">
+            <a href="http://www.imsry.cn/posts/3be490a0.html" title="Linux之CentOS 6.7 下无网络? 原来是网卡没启动！">
+                
+                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/6.jpg" alt="默认配图" >
+                
+            </a>
+        </div>
+    </div>
+</article>
+
+    
+        <!-- 文章列表 item -->
+<article class="post">
+    <header>
+        <!-- 标签这有且只能显示一个 -->
+        
+        <a class="cat-link" href="/categories/游戏/">游戏</a>
+        
+        <!-- 文章标题 -->
+        
+    <h3 class="post-title">
+    	<a href="http://www.imsry.cn/posts/d2295d65.html">
+    		SAMP-LS中心医院围栏+自动门
+    	</a>
+    </h3>
+
+    </header>
+    <p class="post-meta">
+        Anthony 发表于
+        <time datetime="2015-08-17T02:36:04.000Z">2015-08-17 10:36:04</time>
+
+
+        &nbsp;&nbsp;
+        <span class="post-tags">
+            标签：
+            
+    
+        <a href="/tags/SAMP/" title="SAMP">SAMP</a>
+    
+
+        </span>
+    </p>
+
+    <div class="post-content">
+        <div class="post-excerpt">
+            
+                <p><img src="../uploads/qiniu/20170206148636277144832.png" alt="20170206148636277144832.png"><br>下面是围栏的创建，写入main()或者OnGameModeInit()函数即可；<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">CreateObject(966, 1209.32813, -1384.90000, 12.24180,   0.00000, 0.00000, 0.00000);//障碍底座</span><br><span class="line">CreateObject(967, 1210.39294, -1384.90000, 12.24560,   0.00000, 0.00000, -90.00000);//看守台</span><br><span class="line">CreateObject(970, 1187.95776, -1384.87561, 12.78820,   0.00000, 0.00000, 0.00000);//前面大门围栏</span><br><span class="line">CreateObject(970, 1200.26697, -1384.90002, 12.78820,   0.00000, 0.00000, 0.00000);//前面大门围栏</span><br><span class="line">CreateObject(970, 1192.11816, -1384.90002, 12.78820,   0.00000, 0.00000, 0.00000);//前面大门围栏</span><br><span class="line">CreateObject(970, 1196.20007, -1384.90002, 12.78820,   0.00000, 0.00000, 0.00000);//前面大门围栏</span><br><span class="line">CreateObject(1411, 1210.96069, -1383.11963, 13.86000,   0.00000, 0.00000, 90.00000);//侧面围栏</span><br><span class="line">CreateObject(1411, 1210.96069, -1377.84949, 13.86000,   0.00000, 0.00000, 90.00000);//侧面围栏</span><br><span class="line">CreateObject(1411, 1210.96069, -1372.57935, 13.86000,   0.00000, 0.00000, 90.00000);//侧面围栏</span><br><span class="line">CreateObject(1411, 1210.96069, -1367.30921, 13.86000,   0.00000, 0.00000, 90.00000);//侧面围栏</span><br><span class="line">CreateObject(1411, 1210.96069, -1362.03907, 13.86000,   0.00000, 0.00000, 90.00000);//侧面围栏</span><br><span class="line">CreateObject(1411, 1210.96069, -1356.76893, 13.86000,   0.00000, 0.00000, 90.00000);//侧面围栏</span><br><span class="line">CreateObject(1411, 1210.96069, -1351.49879, 13.86000,   0.00000, 0.00000, 90.00000);//侧面围栏</span><br><span class="line">CreateObject(1411, 1210.96069, -1346.22865, 13.86000,   0.00000, 0.00000, 90.00000);//侧面围栏</span><br><span class="line">CreateObject(1411, 1210.96069, -1340.95851, 13.86000,   0.00000, 0.00000, 90.00000);//侧面围栏</span><br><span class="line">CreateObject(1411, 1210.96069, -1335.68837, 13.86000,   0.00000, 0.00000, 90.00000);//侧面围栏</span><br><span class="line">CreateObject(1411, 1210.96069, -1330.41823, 13.86000,   0.00000, 0.00000, 90.00000);//侧面围栏</span><br><span class="line">CreateObject(1411, 1210.96069, -1325.14809, 13.86000,   0.00000, 0.00000, 90.00000);//侧面围栏</span><br><span class="line">CreateObject(1411, 1210.96069, -1319.87795, 13.86000,   0.00000, 0.00000, 90.00000);//侧面围栏</span><br><span class="line">CreateObject(1411, 1210.96069, -1314.60781, 13.86000,   0.00000, 0.00000, 90.00000);//侧面围栏</span><br><span class="line">CreateObject(1411, 1210.96069, -1309.33767, 13.86000,   0.00000, 0.00000, 90.00000);//侧面围栏</span><br><span class="line">CreateObject(1411, 1210.96069, -1304.06753, 13.86000,   0.00000, 0.00000, 90.00000);//侧面围栏</span><br><span class="line">CreateObject(1411, 1210.96069, -1298.79739, 13.86000,   0.00000, 0.00000, 90.00000);//侧面围栏</span><br><span class="line">CreateObject(1411, 1210.96069, -1293.52725, 13.86000,   0.00000, 0.00000, 90.00000);//侧面围栏</span><br><span class="line">CreateObject(978, 1206.48462, -1290.66870, 13.21470,   0.00000, 0.00000, 0.00000);//后面障碍</span><br><span class="line">CreateObject(978, 1197.15100, -1290.66504, 13.21470,   0.00000, 0.00000, 0.00000);//后面障碍</span><br><span class="line">CreateObject(978, 1187.76526, -1290.66870, 13.21470,   0.00000, 0.00000, 0.00000);//后面障碍</span><br></pre></td></tr></table></figure></p>
+<p>新建障碍门变量：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">new hospitalgate1;//门关</span><br><span class="line">new hospitalgate2;//门开</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">//写入OnGameModeInit()函数</span><br><span class="line">hospitalgate1 = CreateObject(968, 1209.4478, -1384.9000, 13.0276, 0.00000, -90.00000, 0.00000);</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">public GateCloseHspt()</span><br><span class="line">&#123;</span><br><span class="line">      DestroyObject( hospitalgate2 );</span><br><span class="line">      hospitalgate1 = CreateObject(968, 1209.4478, -1384.9000, 13.0276, 0.00000, -90.00000, 0.00000);</span><br><span class="line">      lshospital = 0;</span><br><span class="line">      return 1;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">//此段代码在输入指令/go（开门的指令）相关代码里面加入</span><br><span class="line">else if(PlayerInfo[playerid][pMember] == 4 || PlayerInfo[playerid][pLeader] == 4)//医院</span><br><span class="line">		&#123;</span><br><span class="line">			if (IsPlayerInRangeOfPoint(playerid, 15,1209.4478,-1384.9000,12.9476))</span><br><span class="line">			&#123;</span><br><span class="line">				if(lshospital == 1) &#123; SendClientMessage(playerid, COLOR_GREY, &quot;** 医院大门已经打开了&quot;); return 1; &#125;</span><br><span class="line">				DestroyObject( hospitalgate1 );</span><br><span class="line">				hospitalgate2 = CreateObject(968, 1209.4478, -1384.9000, 13.0276, 0.00000, 0.00000, 0.00000);</span><br><span class="line">		      	//MoveObject(hospitalgate1,1209.44775,-1385.21558,12.94760,2,0.00000,0.00000,0.0000);</span><br><span class="line">		      	SetTimer(&quot;GateCloseHspt&quot;, 6000, 0);</span><br><span class="line">		      	SendClientMessage(playerid, COLOR_BLUE,&quot;医院门打开了并将在6秒后关闭.&quot;);</span><br><span class="line"></span><br><span class="line">		      	format(string, sizeof(string), &quot;* %s 打开了 医院大门.&quot;, sendername);</span><br><span class="line">		      	ProxDetector(30.0, playerid, string, COLOR_CHAT1,COLOR_CHAT2,COLOR_CHAT3,COLOR_CHAT4,COLOR_CHAT5);</span><br><span class="line">		      	lshospital = 1;</span><br><span class="line">			&#125;</span><br><span class="line">			else</span><br><span class="line">			&#123;</span><br><span class="line">				SendClientMessage(playerid, COLOR_GREY,&quot;* 你附近没有可以打开的门！.&quot;);</span><br><span class="line">				return 1;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br></pre></td></tr></table></figure>
+            
+            <p class="more">
+                <a href="http://www.imsry.cn/posts/d2295d65.html">阅读剩下更多</a>
+            </p>
+        </div>
+        <div class="post-thumbnail" data-img="">
+            <a href="http://www.imsry.cn/posts/d2295d65.html" title="SAMP-LS中心医院围栏+自动门">
+                
+                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/7.jpg" alt="默认配图" >
+                
+            </a>
+        </div>
+    </div>
+</article>
+
+    
+        <!-- 文章列表 item -->
+<article class="post">
+    <header>
+        <!-- 标签这有且只能显示一个 -->
+        
+        <a class="cat-link" href="/categories/游戏/">游戏</a>
+        
+        <!-- 文章标题 -->
+        
+    <h3 class="post-title">
+    	<a href="http://www.imsry.cn/posts/c8c99f10.html">
+    		SAMP-地图-新鞋停车场围栏Obj
+    	</a>
+    </h3>
+
+    </header>
+    <p class="post-meta">
+        Anthony 发表于
+        <time datetime="2015-07-28T06:59:27.000Z">2015-07-28 14:59:27</time>
+
+
+        &nbsp;&nbsp;
+        <span class="post-tags">
+            标签：
+            
+    
+        <a href="/tags/SAMP/" title="SAMP">SAMP</a>
+    
+
+        </span>
+    </p>
+
+    <div class="post-content">
+        <div class="post-excerpt">
+            
+                <p><center><img src="../uploads/qiniu/2017020614863629785667.png" alt="2017020614863629785667.png"></center><br>下面是围栏的创建，写入OnGameModeInit()函数即可；<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">	CreateObject(985, 1407.17517, -2267.35474, 12.53770,   0.00000, 0.00000, 180.00000);</span><br><span class="line">CreateObject(985, 1415.00610, -2267.35474, 12.53770,   0.00000, 0.00000, 180.00000);</span><br><span class="line">CreateObject(985, 1399.33862, -2267.35474, 12.53770,   0.00000, 0.00000, 180.00000);</span><br><span class="line">CreateObject(985, 1399.33862, -2267.35474, 12.53770,   0.00000, 0.00000, 180.00000);</span><br><span class="line">CreateObject(985, 1391.50842, -2267.35474, 12.53770,   0.00000, 0.00000, 180.00000);</span><br><span class="line">CreateObject(985, 1383.69531, -2267.35474, 12.53770,   0.00000, 0.00000, 180.00000);</span><br><span class="line">CreateObject(985, 1371.91162, -2263.42041, 12.53770,   0.00000, 0.00000, 90.00000);</span><br><span class="line">CreateObject(985, 1371.91162, -2255.59082, 12.53770,   0.00000, 0.00000, 90.00000);</span><br><span class="line">CreateObject(985, 1371.91162, -2247.79932, 12.53770,   0.00000, 0.00000, 90.00000);</span><br><span class="line">CreateObject(985, 1371.91162, -2240.01318, 12.53770,   0.00000, 0.00000, 90.00000);</span><br><span class="line">CreateObject(985, 1371.91162, -2232.20728, 12.53770,   0.00000, 0.00000, 90.00000);</span><br><span class="line">CreateObject(985, 1371.91162, -2224.41846, 12.53770,   0.00000, 0.00000, 90.00000);</span><br><span class="line">CreateObject(985, 1371.91162, -2216.63135, 12.53770,   0.00000, 0.00000, 90.00000);</span><br><span class="line">CreateObject(985, 1371.91162, -2208.81470, 12.53770,   0.00000, 0.00000, 90.00000);</span><br><span class="line">CreateObject(985, 1383.63245, -2204.85791, 12.53770,   0.00000, 0.00000, 0.00000);</span><br><span class="line">CreateObject(985, 1391.45520, -2204.85791, 12.53770,   0.00000, 0.00000, 0.00000);</span><br><span class="line">CreateObject(985, 1399.27893, -2204.85791, 12.53770,   0.00000, 0.00000, 0.00000);</span><br><span class="line">CreateObject(985, 1407.10815, -2204.85791, 12.53770,   0.00000, 0.00000, 0.00000);</span><br><span class="line">CreateObject(985, 1418.95215, -2263.45361, 12.53770,   0.00000, 0.00000, -90.00000);</span><br><span class="line">CreateObject(985, 1418.95215, -2255.62061, 12.53770,   0.00000, 0.00000, -90.00000);</span><br><span class="line">CreateObject(985, 1418.95215, -2247.78955, 12.53770,   0.00000, 0.00000, -90.00000);</span><br><span class="line">CreateObject(985, 1418.95215, -2239.96265, 12.53770,   0.00000, 0.00000, -90.00000);</span><br><span class="line">CreateObject(985, 1418.95215, -2224.43652, 12.53770,   0.00000, 0.00000, -90.00000);</span><br><span class="line">CreateObject(985, 1418.95215, -2208.79883, 12.53770,   0.00000, 0.00000, -90.00000);</span><br><span class="line">CreateObject(985, 1418.95215, -2216.62427, 12.53770,   0.00000, 0.00000, -90.00000);</span><br><span class="line">CreateObject(985, 1375.85364, -2267.35474, 12.53770,   0.00000, 0.00000, 180.00000);</span><br><span class="line">CreateObject(985, 1375.78442, -2204.85791, 12.53770,   0.00000, 0.00000, 180.00000);</span><br></pre></td></tr></table></figure></p>
+<p>接下来是遥控门的代码：（左右打开的门）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line">/* 首先声明两个门的变量： */</span><br><span class="line">new xxgate1;</span><br><span class="line">new xxgate2;</span><br><span class="line"></span><br><span class="line">/* 一个函数： */</span><br><span class="line">forward GateCloseXx();</span><br><span class="line"></span><br><span class="line">/* 初始化动态对象 写在public OnGameModeInit()函数体里面 */</span><br><span class="line">	xxgate1 = CreateObject(988,1419.0482,-2235.0635,13.5822,0.00000,0.00000,90.00000);</span><br><span class="line">	xxgate2 = CreateObject(988,1419.0477,-2229.5605,13.5822,0.00000,0.00000,90.00000);</span><br><span class="line"></span><br><span class="line">/* 函数代码实例： */</span><br><span class="line">public GateCloseXx()</span><br><span class="line">&#123;</span><br><span class="line">      //DestroyDynamicObject( xxgate2 );</span><br><span class="line">      MoveObject(xxgate1,1419.0482,-2235.0635,13.5822,2,0.00000,0.00000,90.0000);</span><br><span class="line">      MoveObject(xxgate2,1419.0477,-2229.5605,13.5822,2,0.00000,0.00000,90.0000);</span><br><span class="line">      lsxinxie = 0;</span><br><span class="line">      return 1;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/* 开门指令： */</span><br><span class="line">		/* 找到下面的代码 */</span><br><span class="line">	if(!strcmp(cmdtext, &quot;/go&quot;, true)) // By CuervO_NegrO</span><br><span class="line">	&#123;</span><br><span class="line">	    if(IsAPDMember(playerid) || IsAFreecop(playerid))</span><br><span class="line">		&#123;</span><br><span class="line">			.......</span><br><span class="line">		&#125;</span><br><span class="line">		...</span><br><span class="line">		...</span><br><span class="line">		...</span><br><span class="line">		/* 下面是新增的 */</span><br><span class="line">		else if(PlayerInfo[playerid][pMember] == 11 || PlayerInfo[playerid][pLeader] == 11)</span><br><span class="line">		&#123;</span><br><span class="line">			if (IsPlayerInRangeOfPoint(playerid, 15,1419.3103,-2232.0325,12.8972))</span><br><span class="line">			&#123;</span><br><span class="line">				if(lsxinxie == 1) &#123; SendClientMessage(playerid, COLOR_GREY, &quot;** 新鞋停车场门已经打开了&quot;); return 1; &#125;</span><br><span class="line">		      	MoveObject(xxgate1,1419.0482,-2238.0635,13.5822,2,0.00000,0.00000,90.0000);</span><br><span class="line">		      	MoveObject(xxgate2,1419.0477,-2225.5605,13.5822,2,0.00000,0.00000,90.0000);</span><br><span class="line">		      	SetTimer(&quot;GateCloseXx&quot;, 6000, 0);</span><br><span class="line">		      	SendClientMessage(playerid, COLOR_BLUE,&quot;新鞋停场大门打开了并将在6秒后关闭.&quot;);</span><br><span class="line"></span><br><span class="line">		      	format(string, sizeof(string), &quot;* %s 打开了 新鞋停车场大门.&quot;, sendername);</span><br><span class="line">		      	ProxDetector(30.0, playerid, string, COLOR_CHAT1,COLOR_CHAT2,COLOR_CHAT3,COLOR_CHAT4,COLOR_CHAT5);</span><br><span class="line">		      	lsxinxie = 1;</span><br><span class="line">			&#125;</span><br><span class="line">			else</span><br><span class="line">			&#123;</span><br><span class="line">				SendClientMessage(playerid, COLOR_GREY,&quot;* 你附近没有可以打开的门 新鞋！.&quot;);</span><br><span class="line">				return 1;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		/* 上面是新增的 */</span><br><span class="line">		/* 下面是已经有的 */</span><br><span class="line">		else</span><br><span class="line">		&#123;</span><br><span class="line">			SendClientMessage(playerid, COLOR_GREY,&quot;* 你没有开门的遥控器.&quot;);</span><br><span class="line">		&#125;</span><br><span class="line">		return 1;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure></p>
+
+            
+            <p class="more">
+                <a href="http://www.imsry.cn/posts/c8c99f10.html">阅读剩下更多</a>
+            </p>
+        </div>
+        <div class="post-thumbnail" data-img="">
+            <a href="http://www.imsry.cn/posts/c8c99f10.html" title="SAMP-地图-新鞋停车场围栏Obj">
+                
+                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/8.jpg" alt="默认配图" >
+                
+            </a>
+        </div>
+    </div>
+</article>
+
+    
+        <!-- 文章列表 item -->
+<article class="post">
+    <header>
+        <!-- 标签这有且只能显示一个 -->
+        
+        <a class="cat-link" href="/categories/数据库/">数据库</a>
+        
+        <!-- 文章标题 -->
+        
+    <h3 class="post-title">
+    	<a href="http://www.imsry.cn/posts/d6f39244.html">
+    		数据库系统的基本概念
+    	</a>
+    </h3>
+
+    </header>
+    <p class="post-meta">
+        Anthony 发表于
+        <time datetime="2015-07-04T05:08:36.000Z">2015-07-04 13:08:36</time>
+
+
+        &nbsp;&nbsp;
+        <span class="post-tags">
+            标签：
+            
+        </span>
+    </p>
+
+    <div class="post-content">
+        <div class="post-excerpt">
+            
+                <ol>
+<li>数据（Data）：数据是数据库中存储的基本对象，它有多种表现形式。数据是描述事物的符号记录，这些符号可以是文字、图形、声音和图像等。</li>
+<li>数据库（DataBase,DB）：数据库是一个长期存储在计算机内的，有组织的、可共享的、统一管理的数据集合。</li>
+<li><p>数据库管理系统（DataBase Management,DBMS）：数据库管理系统是为数据库的建立、使用和维护而配置的系统软件。</p>
+<ul>
+<li>数据定义功能</li>
+<li>数据操作功能</li>
+<li>数据库的运行管理功能</li>
+<li>数据库的建立和维护功能</li>
+</ul>
+</li>
+<li><p>数据库管理员（DataBase Administrator,DBA）：数据库管理员是负责管理和维护数据库服务器的人员</p>
+<ol>
+<li>DBA应参与数据库和应用系统的设计</li>
+<li>DBA应参与决定数据库的存储结构和存取策略的工作</li>
+<li>DBA要负责定义数据的安全性要求和完整性要求</li>
+<li>DBA负责监视和控制数据库系统的运行以及系统的维护和数据恢复工作</li>
+<li>DBA负责数据库的改进和重组</li>
+</ol>
+</li>
+<li>数据库系统（Database System,DBS）:数据库系统是指在计算机系统中引入数据库后的系统，一般由数据库、数据库管理系统、应用系统、数据库管理员和用户构成。</li>
+</ol>
+
+            
+            <p class="more">
+                <a href="http://www.imsry.cn/posts/d6f39244.html">阅读剩下更多</a>
+            </p>
+        </div>
+        <div class="post-thumbnail" data-img="">
+            <a href="http://www.imsry.cn/posts/d6f39244.html" title="数据库系统的基本概念">
+                
+                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/4.jpg" alt="默认配图" >
+                
+            </a>
+        </div>
+    </div>
+</article>
+
+    
+        <!-- 文章列表 item -->
+<article class="post">
+    <header>
+        <!-- 标签这有且只能显示一个 -->
+        
+        <a class="cat-link" href="/categories/学习笔记/">学习笔记</a>
+        
+        <!-- 文章标题 -->
+        
+    <h3 class="post-title">
+    	<a href="http://www.imsry.cn/posts/576af78f.html">
+    		利用PHP实现QQ的登陆和发送消息
+    	</a>
+    </h3>
+
+    </header>
+    <p class="post-meta">
+        Anthony 发表于
+        <time datetime="2015-06-17T14:32:46.000Z">2015-06-17 22:32:46</time>
+
+
+        &nbsp;&nbsp;
+        <span class="post-tags">
+            标签：
+            
+        </span>
+    </p>
+
+    <div class="post-content">
+        <div class="post-excerpt">
+            
+                <p>利用CURL抓取3GQQ的网页实现的。<br>这里只是简单实现了功能，可以修改代码实现更多可能。<br>如：定时发送消息、机器人客服等高级功能。<br>展示代码，分两个步骤完成。</p>
+<p>第一步：登录获取sid，有sid是发送消息的前提。</p>
+<pre lang="php" line="1" escaped="true">
+//发送方QQ账号和密码
+$qq  = '';
+$pwd = '';
+//准备要POST数据
+$data = array(
+    'qq'            => $qq,
+    'pwd'           => $pwd,
+    'bid_code'      => '3GQQ',
+    'toQQchat'      => true,
+    'login_url'     => 'http://pt.3g.qq.com/s?aid=nLoginnew&q_from=3GQQ',
+    'q_from'        => '',
+    'modifySKey'    => 0,
+    'loginType:'    => 1,
+    'aid'           => 'nLoginHandle',
+    'i_p_w'         => 'qq|pwd|',
+);
+//开始CURL模拟登录
+$ch = curl_init();
+curl_setopt($ch,CURLOPT_URL,'http://pt.3g.qq.com/psw3gqqLogin');
+curl_setopt($ch,CURLOPT_RETURNTRANSFER,1);
+curl_setopt($ch,CURLOPT_POST,true);
+curl_setopt($ch,CURLOPT_POSTFIELDS,http_build_query($data));
+$file = curl_exec($ch);
+curl_close($ch);
+//分析登录是否成功
+preg_match('%sid=(.*?)&%si',$file,$sid);
+$sid = $sid[1];
+if($sid){
+    echo '登陆成功！'.$sid;
+}else{
+    echo '登陆失败！请检查用户名和密码是否正确！';
+    exit();
+}
+</pre>
+
+<p>获取到sid后就可以发送消息了。<br>第二步：发送消息，利用上一步获取到的sid。</p>
+<pre lang="php" line="1" escaped="true">
+$sid='';
+$qq   = "909047801";
+$text = "你好，豆豆！";
+//准备要POST的数据
+$data = array(
+    'u'         => $qq,
+    'saveUrl'   => 0,
+    'do'        => 'send',
+    'on'        => 1,
+    'aid'       => '发送',
+    'msg'       => $text,
+);
+//开始CURL模拟发送
+$ch = curl_init();
+curl_setopt($ch,CURLOPT_URL,'http://q16.3g.qq.com/g/s?sid=' . $sid);
+curl_setopt($ch,CURLOPT_RETURNTRANSFER,1);
+curl_setopt($ch,CURLOPT_POST,true);
+curl_setopt($ch,CURLOPT_POSTFIELDS,http_build_query($data));
+$file = curl_exec($ch);
+curl_close($ch);
+//分析发送是否成功
+preg_match('%<p align="left">(.*?)
+%si',$file,$callback);
+$callback = $callback[1];
+echo $callback;
+</p></pre>
+            
+            <p class="more">
+                <a href="http://www.imsry.cn/posts/576af78f.html">阅读剩下更多</a>
+            </p>
+        </div>
+        <div class="post-thumbnail" data-img="">
+            <a href="http://www.imsry.cn/posts/576af78f.html" title="利用PHP实现QQ的登陆和发送消息">
+                
+                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/7.jpg" alt="默认配图" >
+                
+            </a>
+        </div>
+    </div>
+</article>
+
+    
+        <!-- 文章列表 item -->
+<article class="post">
+    <header>
+        <!-- 标签这有且只能显示一个 -->
+        
+        <a class="cat-link" href="/categories/学习笔记/">学习笔记</a>
+        
+        <!-- 文章标题 -->
+        
+    <h3 class="post-title">
+    	<a href="http://www.imsry.cn/posts/24c6b55d.html">
+    		Mac OS(苹果电脑) 如何清空DNS缓存？
+    	</a>
+    </h3>
+
+    </header>
+    <p class="post-meta">
+        Anthony 发表于
+        <time datetime="2015-06-14T01:59:54.000Z">2015-06-14 09:59:54</time>
+
+
+        &nbsp;&nbsp;
+        <span class="post-tags">
+            标签：
+            
+        </span>
+    </p>
+
+    <div class="post-content">
+        <div class="post-excerpt">
+            
+                <p>很多时候,因为域名的解析长时间未生效,我们无法通过域名访问刚刚解析的主机,最快的方法就是清空本地DNS缓存。<br>我们都知道,在Windows下面,想要清空本地dns缓存只需要执行一条CMD命令：</p>
+<blockquote>
+<p>ipconfig/flushdns<br>但是在使用苹果这样高大上的Mac系统的时候,就得用它独特的命令了。不过，不同的MAC系统版本命令也不一样！<br>Tiger或更低版本 Mac OS：</p>
+<p><pre lang="php" line="1" escaped="true">sudo lookupd -flushcache<br></pre><br>Leopard和Snow Leopard：</p>
+<p><pre lang="linux" line="1" escaped="true">sudo dscacheutil -flushcache<br></pre><br>而到了Lion、Mountain Lion和Mavericks：</p>
+<p><pre lang="linux" line="1" escaped="true">sudo killall -HUP mDNSResponder<br></pre><br>然后是Yosemite:</p>
+<p><pre lang="c" line="1" escaped="true">sudo discoveryutil mdnsflushcache</pre></p>
+</blockquote>
+<p>最后就到了EI Caption：</p>
+<p>sudo dscacheutil -flushcache<br>另外，提一下，Linux下通用命令:</p>
+<pre lang="linux" line="1" escaped="true">sudo /etc/init.d/dns-clean start
+</pre>
+            
+            <p class="more">
+                <a href="http://www.imsry.cn/posts/24c6b55d.html">阅读剩下更多</a>
+            </p>
+        </div>
+        <div class="post-thumbnail" data-img="">
+            <a href="http://www.imsry.cn/posts/24c6b55d.html" title="Mac OS(苹果电脑) 如何清空DNS缓存？">
+                
+                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/4.jpg" alt="默认配图" >
+                
+            </a>
+        </div>
+    </div>
+</article>
+
+    
+        <!-- 文章列表 item -->
+<article class="post">
+    <header>
+        <!-- 标签这有且只能显示一个 -->
+        
+        <a class="cat-link" href="/categories/Linux/">Linux</a>
+        
+        <!-- 文章标题 -->
+        
+    <h3 class="post-title">
+    	<a href="http://www.imsry.cn/posts/57c492d1.html">
+    		安装CentOS7之后win7引导没了,Grub解决
+    	</a>
+    </h3>
+
+    </header>
+    <p class="post-meta">
+        Anthony 发表于
+        <time datetime="2015-06-09T02:37:03.000Z">2015-06-09 10:37:03</time>
+
+
+        &nbsp;&nbsp;
+        <span class="post-tags">
+            标签：
+            
+        </span>
+    </p>
+
+    <div class="post-content">
+        <div class="post-excerpt">
+            
+                <pre><code>因为学习linux需要，虚拟机安装又显得太简单，所以在实验室win7电脑上装个windows和linux的双系统，自然采用最新的centos7来试着玩一玩咯！但是没想到装完cnetos7之后，windows进不去了（没有windows的引导），上网查了各种资料，最终确定了修改Grub的配置文件来增加对windows的引导。
+首先我们要登陆Centos,打开Grub的配置文件：
+</code></pre><p>执行命令：<br><code>vi /boot/grub2/grub.cfg</code><br>找到 <code>### BEGIN /etc/grub.d/30_os-prober ###</code> 在下面添加：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">menuentry &quot;Windows 7 Loader On Dev/sda1&quot; &#123;</span><br><span class="line">     insmod ntfs</span><br><span class="line">     set root=(hd0,1)</span><br><span class="line">     chainloader +1</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>关键代码：set root=(hd0,1) 其中 hd0 表示硬盘，1 表示C盘 ，因为我这里win7是安装在C盘的，所以是1，如果你不是C盘（第一个分区），那么就要需改成你对应的分区号了。</p>
+
+            
+            <p class="more">
+                <a href="http://www.imsry.cn/posts/57c492d1.html">阅读剩下更多</a>
+            </p>
+        </div>
+        <div class="post-thumbnail" data-img="">
+            <a href="http://www.imsry.cn/posts/57c492d1.html" title="安装CentOS7之后win7引导没了,Grub解决">
+                
+                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/9.jpg" alt="默认配图" >
+                
+            </a>
+        </div>
+    </div>
+</article>
+
+    
+        <!-- 文章列表 item -->
+<article class="post">
+    <header>
+        <!-- 标签这有且只能显示一个 -->
+        
+        <a class="cat-link" href="/categories/学习笔记/">学习笔记</a>
+        
+        <!-- 文章标题 -->
+        
+    <h3 class="post-title">
+    	<a href="http://www.imsry.cn/posts/db7b2e7c.html">
+    		作业4-2（带用户的留言板）单页面实现！
+    	</a>
+    </h3>
+
+    </header>
+    <p class="post-meta">
+        Anthony 发表于
+        <time datetime="2015-05-09T07:14:28.000Z">2015-05-09 15:14:28</time>
+
+
+        &nbsp;&nbsp;
+        <span class="post-tags">
+            标签：
+            
+        </span>
+    </p>
+
+    <div class="post-content">
+        <div class="post-excerpt">
+            
+                <p><img src="../uploads/qiniu/20170206148636263061226.png" alt="作业4-2要求"><br><a href="/html/board2.php">演示页面：http://www.dshui.wang/html/board2.php</a><br>本次作业基于作业4-1完成，部分文件在4-1中给出：<a href="/?p=161" title="http://www.dshui.wang/?p=161"></a><br>所需要的数据表：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE `msg` (</span><br><span class="line">  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,</span><br><span class="line">  `content` varchar(254) NOT NULL DEFAULT &apos;&apos;,</span><br><span class="line">  `username` char(10) DEFAULT &apos;&apos;,</span><br><span class="line">  `stime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,</span><br><span class="line">  PRIMARY KEY (`id`)</span><br><span class="line">) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE `user` (</span><br><span class="line">  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,</span><br><span class="line">  `username` char(20) NOT NULL DEFAULT &apos;&apos;,</span><br><span class="line">  `pwd` varchar(20) NOT NULL DEFAULT &apos;&apos;,</span><br><span class="line">  `registtime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,</span><br><span class="line">  PRIMARY KEY (`id`)</span><br><span class="line">) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;</span><br></pre></td></tr></table></figure>
+<p>文件board2.php</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">include &apos;./mysqlconfig.php&apos;;</span><br><span class="line">session_start();</span><br><span class="line">if($_POST[&apos;do&apos;]==&quot;login&quot;)&#123;</span><br><span class="line">	$username = $_POST[&apos;username&apos;];</span><br><span class="line">	$pwd = $_POST[&apos;passwd&apos;];</span><br><span class="line">	$sql = &quot;select * from user where username=&apos;$username&apos; and pwd=&apos;$pwd&apos;;&quot;;</span><br><span class="line">	$res = mysql_query($sql);</span><br><span class="line">	$row = mysql_fetch_assoc($res);</span><br><span class="line">	if ($row[&apos;id&apos;] &lt;&gt; &apos;&apos;)&#123;</span><br><span class="line">		$_SESSION[&apos;username&apos;] = $row[&apos;username&apos;];</span><br><span class="line">		echo &quot;&lt;script&gt;alert(&apos;登陆成功！&apos;)&lt;/script&gt;&quot;;</span><br><span class="line">	&#125;else&#123;</span><br><span class="line">		echo &quot;&lt;script&gt;alert(&apos;登录失败！用户名或密码错误！&apos;)&lt;/script&gt;&quot;;</span><br><span class="line">	&#125;</span><br><span class="line">	header ( &quot;refresh:0;url=&quot; );</span><br><span class="line">&#125;elseif($_POST[&apos;do&apos;]==&quot;registe&quot;)&#123;</span><br><span class="line">	$rname = $_POST[&apos;rname&apos;];</span><br><span class="line">	$rpwd = $_POST[&apos;rpasswd&apos;];</span><br><span class="line">	$sql = &quot;insert into user(username,pwd) values (&apos;$rname&apos;,&apos;$rpwd&apos;);&quot;;</span><br><span class="line">	if(mysql_query($sql))&#123;</span><br><span class="line">		$_SESSION[&apos;username&apos;] = $rname;</span><br><span class="line">		echo &quot;&lt;script&gt;alert(&apos;注册成功！已经为您自动登录！&apos;)&lt;/script&gt;&quot;;</span><br><span class="line">	&#125;else&#123;</span><br><span class="line">		echo &quot;&lt;script&gt;alert(&apos;注册失败！&apos;)&lt;/script&gt;&quot;;</span><br><span class="line">	&#125;</span><br><span class="line">	header ( &quot;refresh:0;url=&quot; );</span><br><span class="line">&#125;elseif($_POST[&apos;do&apos;]==&quot;submit&quot;)&#123;</span><br><span class="line">	$content = $_POST[&apos;content&apos;];</span><br><span class="line">	echo $content;</span><br><span class="line">	$sql = &quot;insert into msg(content,username) values (\&quot;&#123;$content&#125;\&quot;,&apos;&quot;.$_SESSION[&apos;username&apos;].&quot;&apos;);&quot;;</span><br><span class="line">	if(mysql_query($sql))&#123;</span><br><span class="line">		echo &quot;&lt;script&gt;alert(&apos;留言成功！&apos;)&lt;/script&gt;&quot;;</span><br><span class="line">		header ( &quot;refresh:0;url=&quot; );</span><br><span class="line">	&#125;else&#123;</span><br><span class="line">		echo &quot;&lt;script&gt;alert(&apos;不知道怎么的，留言失败了。&apos;)&lt;/script&gt;&quot;;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;elseif($_POST[&apos;do&apos;]==&quot;logout&quot;)&#123;</span><br><span class="line">	session_unset();</span><br><span class="line">	session_destroy();</span><br><span class="line">	echo &quot;&lt;script&gt;alert(&apos;成功退出登陆！&apos;)&lt;/script&gt;&quot;;</span><br><span class="line">	header ( &quot;refresh:0;url=&quot; );</span><br><span class="line">&#125;</span><br><span class="line">$sql = &quot;select * from msg order by id desc;&quot;;</span><br><span class="line">$result = mysql_query($sql);</span><br><span class="line">?&gt;</span><br><span class="line">&lt;!doctype html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">&lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">&lt;title&gt;简易留言板(带用户验证)&lt;/title&gt;</span><br><span class="line">&lt;style type=&quot;text/css&quot;&gt;</span><br><span class="line">#tab &#123;</span><br><span class="line">BORDER-BOTTOM: #c2130e 3px solid; HEIGHT: 60px</span><br><span class="line">&#125;</span><br><span class="line">#tab p&#123;</span><br><span class="line">FLOAT: left; LINE-HEIGHT: 21px; text-align:center</span><br><span class="line">&#125;</span><br><span class="line">#tab p.hit &#123;</span><br><span class="line">BACKGROUND: #dcdcdc; BORDER-LEFT: #f2f2f2 1px solid; WIDTH: 40px; CURSOR: pointer</span><br><span class="line">&#125;</span><br><span class="line">#tab p.nhit &#123;</span><br><span class="line">BACKGROUND: #c2130e; BORDER-LEFT: #f2f2f2 1px solid; WIDTH: 40px; COLOR: #fff</span><br><span class="line">&#125;</span><br><span class="line">&lt;/style&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line"></span><br><span class="line">&lt;body bgcolor=&quot;#56FF00&quot;&gt;</span><br><span class="line">	&lt;div style=&quot;margin:0 auto;width:400px;&quot;&gt;</span><br><span class="line">	&lt;?php if(!isset($_SESSION[&apos;username&apos;]) || $_SESSION[&apos;username&apos;]==&apos;&apos;)&#123;?&gt;</span><br><span class="line">		&lt;div id=&quot;usertip&quot; class=&quot;login&quot;&gt;</span><br><span class="line"></span><br><span class="line">注意：只有登陆之后才能进行留言哦！</span><br><span class="line"></span><br><span class="line">			&lt;div id=&quot;tab&quot;&gt;</span><br><span class="line"></span><br><span class="line">登陆</span><br><span class="line"></span><br><span class="line">注册</span><br><span class="line"></span><br><span class="line">			&lt;/div&gt;</span><br><span class="line">			&lt;div id=&quot;login&quot;&gt;</span><br><span class="line">				&lt;form name=&quot;login&quot; method=&quot;post&quot;&gt;</span><br><span class="line">					&lt;input type=&quot;hidden&quot; name=&quot;do&quot; value=&quot;login&quot;&gt;</span><br><span class="line">					&lt;table&gt;</span><br><span class="line">						&lt;tr&gt;</span><br><span class="line">							&lt;td&gt;用户名：&lt;/td&gt;</span><br><span class="line">							&lt;td&gt;&lt;input type=&quot;text&quot; name=&quot;username&quot; &gt;&lt;/td&gt;</span><br><span class="line">						&lt;/tr&gt;</span><br><span class="line">						&lt;tr&gt;</span><br><span class="line">							&lt;td&gt;密&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;码：&lt;/td&gt;</span><br><span class="line">							&lt;td&gt;&lt;input type=&quot;password&quot; name=&quot;passwd&quot; &gt;&lt;/td&gt;</span><br><span class="line">						&lt;/tr&gt;</span><br><span class="line">						&lt;tr&gt;</span><br><span class="line">							&lt;td&gt;&lt;/td&gt;</span><br><span class="line">							&lt;td align=&quot;right&quot;&gt;&lt;input type=&quot;submit&quot; value=&quot;登陆&quot; /&gt;&lt;/td&gt;</span><br><span class="line">						&lt;/tr&gt;</span><br><span class="line">					&lt;/table&gt;</span><br><span class="line">				&lt;/form&gt;</span><br><span class="line">			&lt;/div&gt;</span><br><span class="line">			&lt;div id=&quot;reg&quot; style=&quot;display: none;&quot;&gt;</span><br><span class="line">				&lt;form name=&quot;registe&quot; method=&quot;post&quot;&gt;</span><br><span class="line">					&lt;input type=&quot;hidden&quot; name=&quot;do&quot; value=&quot;registe&quot;&gt;</span><br><span class="line">					&lt;table&gt;</span><br><span class="line">						&lt;tr&gt;</span><br><span class="line">							&lt;td&gt;用户名：&lt;/td&gt;</span><br><span class="line">							&lt;td&gt;&lt;input type=&quot;text&quot; name=&quot;rname&quot; &gt;&lt;/td&gt;</span><br><span class="line">						&lt;/tr&gt;</span><br><span class="line">						&lt;tr&gt;</span><br><span class="line">							&lt;td&gt;密&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;码：&lt;/td&gt;</span><br><span class="line">							&lt;td&gt;&lt;input type=&quot;password&quot; name=&quot;rpasswd&quot; &gt;&lt;/td&gt;</span><br><span class="line">						&lt;/tr&gt;</span><br><span class="line">						&lt;tr&gt;</span><br><span class="line">							&lt;td&gt;&lt;/td&gt;</span><br><span class="line">							&lt;td align=&quot;right&quot;&gt;&lt;input type=&quot;submit&quot; value=&quot;注册&quot; /&gt;&lt;/td&gt;</span><br><span class="line">						&lt;/tr&gt;</span><br><span class="line">					&lt;/table&gt;</span><br><span class="line">				&lt;/form&gt;</span><br><span class="line">			&lt;/div&gt;</span><br><span class="line">		&lt;/div&gt;</span><br><span class="line">	&lt;?php &#125;else&#123;?&gt;</span><br><span class="line">        &lt;div class=&quot;form&quot;&gt;</span><br><span class="line"></span><br><span class="line">        		当前用户：&lt;?php echo $_SESSION[&apos;username&apos;];?&gt;</span><br><span class="line">        		&lt;form method=&quot;post&quot;&gt;</span><br><span class="line">        		&lt;input type=&quot;hidden&quot; name=&quot;do&quot; value=&quot;logout&quot;&gt;</span><br><span class="line">        		&lt;input type=&quot;submit&quot;value=&quot;退出登录&quot;&gt;</span><br><span class="line">        		&lt;/form&gt;</span><br><span class="line"></span><br><span class="line">            &lt;form method=&quot;post&quot;&gt;</span><br><span class="line">            &lt;textarea name=&quot;content&quot; cols=&quot;45&quot; rows=&quot;5&quot; style=&quot;width: 400px; height: 88px;&quot;&gt;&lt;/textarea&gt;</span><br><span class="line"></span><br><span class="line">			&lt;input type=&quot;hidden&quot; name=&quot;do&quot; value=&quot;submit&quot;&gt;</span><br><span class="line">            &lt;div align=&quot;right&quot;&gt;&lt;input type=&quot;submit&quot; value=&quot;留言&quot; /&gt;&amp;nbsp;&lt;/div&gt;</span><br><span class="line">            &lt;/form&gt;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">    &lt;?php &#125;?&gt;</span><br><span class="line">        &lt;div class=&quot;msg&quot;&gt;</span><br><span class="line">        	&lt;table border=&quot;1&quot; bordercolor=&quot;#FFFFFF&quot;&gt;</span><br><span class="line">        	&lt;?php while ($rows = mysql_fetch_assoc($result))&#123;?&gt;</span><br><span class="line">            	&lt;tr&gt;</span><br><span class="line">                	&lt;td&gt;&lt;span&gt;&lt;?php echo $rows[&apos;username&apos;];?&gt; &lt;/span&gt;&lt;span class=&quot;datetime&quot;&gt;（&lt;?php echo $rows[&apos;stime&apos;];?&gt;）&lt;/span&gt;</span><br><span class="line">&lt;span class=&quot;content&quot;&gt;&lt;?php echo $rows[&apos;content&apos;];?&gt;&lt;/span&gt;&lt;/td&gt;</span><br><span class="line">                &lt;/tr&gt;</span><br><span class="line">            &lt;?php &#125;?&gt;</span><br><span class="line">            &lt;/table&gt;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">	&lt;/div&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">var Tags=document.getElementById(&apos;tab&apos;).getElementsByTagName(&apos;p&apos;); </span><br><span class="line">var usertip=document.getElementById(&apos;usertip&apos;).getElementsByTagName(&apos;div&apos;);</span><br><span class="line">var len=Tags.length; </span><br><span class="line">var flag=0;//修改默认值</span><br><span class="line">for(i=0;i&lt;len;i++)&#123;</span><br><span class="line">Tags[i].value = i;</span><br><span class="line">Tags[i].onmouseover=function()&#123;changeNav(this.value)&#125;; </span><br><span class="line">&#125;</span><br><span class="line">Tags[flag].className=&apos;nhit&apos;;</span><br><span class="line">function changeNav(v)&#123; </span><br><span class="line">	Tags[flag].className=&apos;hit&apos;;</span><br><span class="line">	usertip[flag+1].style.display=&quot;none&quot;;</span><br><span class="line">	flag=v; </span><br><span class="line">	Tags[v].className=&apos;nhit&apos;;</span><br><span class="line">	usertip[v+1].style.display=&quot;&quot;;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+            
+            <p class="more">
+                <a href="http://www.imsry.cn/posts/db7b2e7c.html">阅读剩下更多</a>
+            </p>
+        </div>
+        <div class="post-thumbnail" data-img="">
+            <a href="http://www.imsry.cn/posts/db7b2e7c.html" title="作业4-2（带用户的留言板）单页面实现！">
+                
+                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/9.jpg" alt="默认配图" >
+                
+            </a>
+        </div>
+    </div>
+</article>
+
+    
+        <!-- 文章列表 item -->
+<article class="post">
+    <header>
+        <!-- 标签这有且只能显示一个 -->
+        
+        <a class="cat-link" href="/categories/学习笔记/">学习笔记</a>
+        
+        <!-- 文章标题 -->
+        
+    <h3 class="post-title">
+    	<a href="http://www.imsry.cn/posts/aee0563f.html">
+    		作业4-1（简易留言板）
+    	</a>
+    </h3>
+
+    </header>
+    <p class="post-meta">
+        Anthony 发表于
+        <time datetime="2015-05-09T04:58:47.000Z">2015-05-09 12:58:47</time>
+
+
+        &nbsp;&nbsp;
+        <span class="post-tags">
+            标签：
+            
+        </span>
+    </p>
+
+    <div class="post-content">
+        <div class="post-excerpt">
+            
+                <p><a href="/uploads/2015/05/QQ20150509-2@2x.png"><img src="/uploads/2015/05/QQ20150509-2@2x-273x300.png" alt="作业4-1（简易留言板）"></a><br><a href="/html/board1.php">演示页面：http://www.dshui.wang/html/board1.php</a><br>首先我们得建立一个数据表用来存放留言信息：（由于之前作业有建立数据库’XSGL’，我们就直接用这个数据库啦）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE `msg` (</span><br><span class="line">  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,</span><br><span class="line">  `content` varchar(254) NOT NULL DEFAULT &apos;&apos;,</span><br><span class="line">  `username` char(10) DEFAULT &apos;&apos;,</span><br><span class="line">  `stime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,</span><br><span class="line">  PRIMARY KEY (`id`)</span><br><span class="line">) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;</span><br></pre></td></tr></table></figure>
+<p>建立一个mysql的连接文件： mysqlconfig.php</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">error_reporting(0);</span><br><span class="line">header ( &quot;Content-type:text/html;charset=utf-8&quot; );</span><br><span class="line">$dbhost = &apos;localhost&apos;;</span><br><span class="line">$dbname = &apos;XSGL&apos;;</span><br><span class="line">$user = &apos;root&apos;;</span><br><span class="line">$pwd = &apos;1234&apos;;</span><br><span class="line">$conn = mysql_connect($dbhost,$user,$pwd) or die ( &quot;could not connect mysql&quot; );</span><br><span class="line">mysql_select_db ( $dbname, $conn ) or die ( &quot;could not open database&quot; );</span><br><span class="line">mysql_query ( &quot;set names utf8;&quot; );</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+<p>新建一个留言本程序：board1.php</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">include &apos;./mysqlconfig.php&apos;;</span><br><span class="line">if($_POST[&apos;issubmit&apos;]!=null)&#123;</span><br><span class="line">	$content = $_POST[&apos;content&apos;];</span><br><span class="line">	$sql = &quot;insert into msg(content) values (&apos;&quot;.$content.&quot;&apos;);&quot;;</span><br><span class="line">	$res = mysql_query($sql);</span><br><span class="line">	header ( &quot;refresh:0;url=&quot; );</span><br><span class="line">&#125;</span><br><span class="line">$sql = &quot;select * from msg order by id desc;&quot;;</span><br><span class="line">$result = mysql_query($sql);</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">&lt;!doctype html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">&lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">&lt;title&gt;简易留言板&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line"></span><br><span class="line">&lt;body bgcolor=&quot;#56FF00&quot;&gt;</span><br><span class="line">	&lt;div style=&quot;margin:0 auto;width:400px;&quot;&gt;</span><br><span class="line">        &lt;div class=&quot;form&quot;&gt;</span><br><span class="line">            &lt;form method=&quot;post&quot;&gt;</span><br><span class="line">            &lt;textarea name=&quot;content&quot; cols=&quot;45&quot; rows=&quot;5&quot; style=&quot;width: 400px; height: 88px;&quot;&gt;&lt;/textarea&gt;</span><br><span class="line"></span><br><span class="line">            &lt;div align=&quot;right&quot;&gt;&lt;input type=&quot;submit&quot; name=&quot;issubmit&quot; value=&quot;留言&quot; /&gt;&amp;nbsp;&lt;/div&gt;</span><br><span class="line">            &lt;/form&gt;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">        &lt;div class=&quot;msg&quot;&gt;</span><br><span class="line">        	&lt;table border=&quot;1&quot; bordercolor=&quot;#FFFFFF&quot;&gt;</span><br><span class="line">        	&lt;?php while ($rows = mysql_fetch_assoc($result))&#123;?&gt;</span><br><span class="line">            	&lt;tr&gt;</span><br><span class="line">                	&lt;td&gt;&lt;span class=&quot;datetime&quot;&gt;（&lt;?php echo $rows[&apos;stime&apos;];?&gt;）&lt;/span&gt;</span><br><span class="line">&lt;span class=&quot;content&quot;&gt;&lt;?php echo $rows[&apos;content&apos;];?&gt;&lt;/span&gt;&lt;/td&gt;</span><br><span class="line">                &lt;/tr&gt;</span><br><span class="line">            &lt;?php &#125;?&gt;</span><br><span class="line">            &lt;/table&gt;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">	&lt;/div&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+            
+            <p class="more">
+                <a href="http://www.imsry.cn/posts/aee0563f.html">阅读剩下更多</a>
+            </p>
+        </div>
+        <div class="post-thumbnail" data-img="">
+            <a href="http://www.imsry.cn/posts/aee0563f.html" title="作业4-1（简易留言板）">
+                
+                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/9.jpg" alt="默认配图" >
+                
+            </a>
+        </div>
+    </div>
+</article>
+
+    
+        <!-- 文章列表 item -->
+<article class="post">
+    <header>
+        <!-- 标签这有且只能显示一个 -->
+        
+        <a class="cat-link" href="/categories/学习笔记/">学习笔记</a>
+        
+        <!-- 文章标题 -->
+        
+    <h3 class="post-title">
+    	<a href="http://www.imsry.cn/posts/61718228.html">
+    		作业3-1（完成MYSQL操作）
+    	</a>
+    </h3>
+
+    </header>
+    <p class="post-meta">
+        Anthony 发表于
+        <time datetime="2015-05-09T02:40:51.000Z">2015-05-09 10:40:51</time>
+
+
+        &nbsp;&nbsp;
+        <span class="post-tags">
+            标签：
+            
+        </span>
+    </p>
+
+    <div class="post-content">
+        <div class="post-excerpt">
+            
+                <p><a href="/uploads/2015/05/QQ20150509-1@2x.png"><img src="/uploads/2015/05/QQ20150509-1@2x-285x300.png" alt="作业3-1要求"></a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">第一步，创建数据库&apos;XSGL&apos;: </span><br><span class="line">create database XSGL;</span><br><span class="line"></span><br><span class="line">第二步，创建学生表&apos;student&apos;: </span><br><span class="line">create table student(</span><br><span class="line">Sno char(7) NOT NULL,</span><br><span class="line">Sname char(10) NOT NULL,</span><br><span class="line">Ssex enum(&apos;男&apos;,&apos;女&apos;) NULL,</span><br><span class="line">Sage tinyint(4) NULL,</span><br><span class="line">Sdept char(20) NULL default &apos;计算机系&apos;,</span><br><span class="line">PRIMARY KEY(Sno)</span><br><span class="line">)engine=innodb default charset=utf8;</span><br><span class="line"></span><br><span class="line">第三步，插入数据：</span><br><span class="line">insert into student(Sno,Sname,Ssex,Sage,Sdept) values (&apos;9512101&apos;,&apos;李勇&apos;,&apos;男&apos;,&apos;19&apos;,&apos;计算机系&apos;),(&apos;9512102&apos;,&apos;刘晨&apos;,&apos;男&apos;,&apos;20&apos;,&apos;计算机系&apos;),(&apos;9512103&apos;,&apos;王敏&apos;,&apos;女&apos;,&apos;20&apos;,&apos;计算机系&apos;),(&apos;9521101&apos;,&apos;张立&apos;,&apos;男&apos;,&apos;22&apos;,&apos;信息系&apos;),(&apos;9521102&apos;,&apos;吴兵&apos;,&apos;女&apos;,&apos;21&apos;,&apos;信息系&apos;),(&apos;9521103&apos;,&apos;张海&apos;,&apos;男&apos;,&apos;20&apos;,&apos;信息系&apos;),(&apos;9531101&apos;,&apos;钱小平&apos;,&apos;女&apos;,&apos;18&apos;,&apos;数学系&apos;),(&apos;9531102&apos;,&apos;王大力&apos;,&apos;男&apos;,&apos;19&apos;,&apos;数学系&apos;);</span><br><span class="line"></span><br><span class="line">第四步，删除学号为&apos;9531102&apos;的记录：</span><br><span class="line">delete from student where Sno=&apos;9531102&apos;;</span><br><span class="line"></span><br><span class="line">第五步，将计算机系的学生年龄统一加&apos;1&apos;：</span><br><span class="line">update student set Sage=Sage+1 where Sdept=&apos;计算机系&apos;;</span><br><span class="line"></span><br><span class="line">第六步，显示学生的学号和姓名两列,这两列分别起别名为“ID”和“NAME”, 要求只列出查询结果的前 5 条记录：</span><br><span class="line">select Sno as ID,Sname as NAME from student limit 5;</span><br><span class="line"></span><br><span class="line">第七步，查询信息系所有男同学的所有信息：</span><br><span class="line">select * from student where Sdept=&apos;信息系&apos; and Ssex=&apos;男&apos;;</span><br><span class="line"></span><br><span class="line">第八步，查询 student 表所有的数据,按照年龄排序,年龄相同则按照学号降序排序：</span><br><span class="line">select * from student order by Sage ASC,Sno DESC;</span><br><span class="line"></span><br><span class="line">第九步，查询所有姓“王”的同学的基本信息：</span><br><span class="line">select * from student where Sname LIKE &apos;王%&apos;;</span><br><span class="line"></span><br><span class="line">第十步，查询每个院系学生的人数,要求列出院系名称和相应人数：</span><br><span class="line">select COUNT(*) as &apos;人数&apos;,Sdept from student GROUP BY Sdept;</span><br><span class="line">//如果一张表里面学号有重复的，必须去重！使用下面语句：</span><br><span class="line">select COUNT(DISTINCT Sno) as &apos;人数&apos;,Sdept from student GROUP BY Sdept;</span><br></pre></td></tr></table></figure>
+<p>到此，作业3-1就做完了！</p>
+
+            
+            <p class="more">
+                <a href="http://www.imsry.cn/posts/61718228.html">阅读剩下更多</a>
+            </p>
+        </div>
+        <div class="post-thumbnail" data-img="">
+            <a href="http://www.imsry.cn/posts/61718228.html" title="作业3-1（完成MYSQL操作）">
+                
+                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/9.jpg" alt="默认配图" >
+                
+            </a>
+        </div>
+    </div>
+</article>
+
+    
+        <!-- 文章列表 item -->
+<article class="post">
+    <header>
+        <!-- 标签这有且只能显示一个 -->
+        
+        <a class="cat-link" href="/categories/学习笔记/">学习笔记</a>
+        
+        <!-- 文章标题 -->
+        
+    <h3 class="post-title">
+    	<a href="http://www.imsry.cn/posts/25b754f7.html">
+    		作业2-2（PHP表单数据提交与接收)
+    	</a>
+    </h3>
+
+    </header>
+    <p class="post-meta">
+        Anthony 发表于
+        <time datetime="2015-05-07T14:44:02.000Z">2015-05-07 22:44:02</time>
+
+
+        &nbsp;&nbsp;
+        <span class="post-tags">
+            标签：
+            
+        </span>
+    </p>
+
+    <div class="post-content">
+        <div class="post-excerpt">
+            
+                <p><a href="/wp-content/uploads/2015/05/QQ20150507-5@2x.png"><img src="/wp-content/uploads/2015/05/QQ20150507-5@2x-300x197.png" alt="作业2-2"></a><br><a href="/html/work2.php">展示页面：http://www.dshui.wang/html/work2.php</a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">#Designed By Anthony_Box</span><br><span class="line">#Date: 2015-05-07</span><br><span class="line">#201321092028 OF SCUEC</span><br><span class="line">?&gt;</span><br><span class="line">&lt;!doctype html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">&lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">&lt;title&gt;Second Class Work&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;!---</span><br><span class="line">#Designed By Anthony_Box</span><br><span class="line">#Date: 2015-05-07</span><br><span class="line">#201321092028 OF SCUEC</span><br><span class="line">---&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;?php if ($_POST[&apos;submit&apos;])&#123;?&gt;</span><br><span class="line">姓名：&lt;?php echo $_POST[&apos;name&apos;];?&gt;</span><br><span class="line"></span><br><span class="line">兴趣：&lt;?php echo $_POST[&apos;intrest&apos;];?&gt;</span><br><span class="line"></span><br><span class="line">性别：&lt;?php echo $_POST[&apos;sex&apos;];?&gt;</span><br><span class="line"></span><br><span class="line">血型：&lt;?php echo $_POST[&apos;blood&apos;];?&gt;</span><br><span class="line"></span><br><span class="line">擅长语言：&lt;?php echo implode(&apos;,&apos;,$_POST[&apos;lang&apos;]);?&gt;</span><br><span class="line"></span><br><span class="line">最擅长的操作系统：&lt;?php echo $_POST[&apos;system&apos;];?&gt;</span><br><span class="line"></span><br><span class="line">留言：&lt;?php echo $_POST[&apos;note&apos;];?&gt;</span><br><span class="line"></span><br><span class="line">&lt;input type=&quot;submit&quot; value=&quot;确认&quot;&gt;</span><br><span class="line">&lt;?php &#125;else&#123;?&gt;</span><br><span class="line">&lt;form method=&quot;post&quot;&gt;</span><br><span class="line">&lt;label&gt;姓名：&lt;input type=&quot;text&quot; name=&quot;name&quot; /&gt;&lt;/label&gt;</span><br><span class="line"></span><br><span class="line">&lt;label&gt;兴趣：&lt;input type=&quot;text&quot; name=&quot;intrest&quot; /&gt;&lt;/label&gt;</span><br><span class="line"></span><br><span class="line">&lt;label&gt;性别：&lt;input type=&quot;radio&quot; name=&quot;sex&quot; value=&quot;男&quot; /&gt;男 &lt;/label&gt;&lt;label&gt;&lt;input type=&quot;radio&quot; name=&quot;sex&quot; value=&quot;女&quot;/&gt;女&lt;/label&gt;</span><br><span class="line"></span><br><span class="line">&lt;label&gt;血型：&lt;input type=&quot;radio&quot; name=&quot;blood&quot; value=&quot;A&quot;/&gt;A &lt;/label&gt;&lt;label&gt;&lt;input type=&quot;radio&quot; name=&quot;blood&quot; value=&quot;B&quot;/&gt;B &lt;/label&gt;&lt;label&gt;&lt;input type=&quot;radio&quot; name=&quot;blood&quot; value=&quot;AB&quot;/&gt;AB &lt;/label&gt;&lt;label&gt;&lt;input type=&quot;radio&quot; name=&quot;blood&quot; value=&quot;O&quot;/&gt;O&lt;/label&gt;</span><br><span class="line"></span><br><span class="line">请选择您擅长的一种或几种编程设计语言:</span><br><span class="line"></span><br><span class="line">&lt;label&gt;&lt;input type=&quot;checkbox&quot; name=&quot;lang[]&quot; value=&quot;C++&quot;/&gt;C++ &lt;/label&gt;&lt;label&gt;&lt;input type=&quot;checkbox&quot; name=&quot;lang[]&quot; value=&quot;PHP&quot;/&gt;PHP &lt;/label&gt;&lt;label&gt;&lt;input type=&quot;checkbox&quot; name=&quot;lang[]&quot; value=&quot;Shell&quot;/&gt;Shell &lt;/label&gt;&lt;label&gt;&lt;input type=&quot;checkbox&quot; name=&quot;lang[]&quot; value=&quot;VBscript&quot;/&gt;VBscript&lt;/label&gt;</span><br><span class="line"></span><br><span class="line">请选择您最擅长的操作系统:&lt;select name=&quot;system&quot;&gt;&lt;option&gt;Linux&lt;/option&gt;&lt;option&gt;Windows&lt;/option&gt;&lt;option&gt;Unix&lt;/option&gt;&lt;/select&gt;</span><br><span class="line"></span><br><span class="line">如果您有什么建议，敬请留言:</span><br><span class="line"></span><br><span class="line">&lt;textarea name=&quot;note&quot;&gt;&lt;/textarea&gt;</span><br><span class="line"></span><br><span class="line">&lt;input type=&quot;submit&quot; name=&quot;submit&quot; value=&quot;提交&quot;/&gt; &amp;nbsp;&amp;nbsp;&lt;input type=&quot;reset&quot; value=&quot;重置&quot;/&gt;</span><br><span class="line">&lt;/form&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br><span class="line">&lt;?php &#125;?&gt;</span><br></pre></td></tr></table></figure></p>
+
+            
+            <p class="more">
+                <a href="http://www.imsry.cn/posts/25b754f7.html">阅读剩下更多</a>
+            </p>
+        </div>
+        <div class="post-thumbnail" data-img="">
+            <a href="http://www.imsry.cn/posts/25b754f7.html" title="作业2-2（PHP表单数据提交与接收)">
+                
+                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/7.jpg" alt="默认配图" >
+                
+            </a>
+        </div>
+    </div>
+</article>
+
+    
+        <!-- 文章列表 item -->
+<article class="post">
+    <header>
+        <!-- 标签这有且只能显示一个 -->
+        
+        <a class="cat-link" href="/categories/学习笔记/">学习笔记</a>
+        
+        <!-- 文章标题 -->
+        
+    <h3 class="post-title">
+    	<a href="http://www.imsry.cn/posts/c36b92d2.html">
+    		作业2-1（PHP程序画n*n正方形矩阵)
+    	</a>
+    </h3>
+
+    </header>
+    <p class="post-meta">
+        Anthony 发表于
+        <time datetime="2015-05-07T14:36:51.000Z">2015-05-07 22:36:51</time>
+
+
+        &nbsp;&nbsp;
+        <span class="post-tags">
+            标签：
+            
+        </span>
+    </p>
+
+    <div class="post-content">
+        <div class="post-excerpt">
+            
+                <p><a href="/wp-content/uploads/2015/05/QQ20150507-4@2x.png"><img src="/wp-content/uploads/2015/05/QQ20150507-4@2x-300x210.png" alt="作业2-1要求"></a><br><a href="/html/work1.php">展示页面：http://www.dshui.wang/html/work1.php</a><br>可以在地址后面加参数哟！<br>如：<a href="http://www.dshui.wang/html/work1.php?colnum=7" target="_blank" rel="noopener">http://www.dshui.wang/html/work1.php?colnum=7</a> 试试看吧！最大31<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">#Designed By Anthony_Box</span><br><span class="line">#Date: 2015-05-07</span><br><span class="line">#201321092028 OF SCUEC</span><br><span class="line">$colnum = $_GET[&apos;colnum&apos;]?$_GET[&apos;colnum&apos;]:5;</span><br><span class="line">if($colnum&gt;31)&#123;</span><br><span class="line">	$colnum = 5;</span><br><span class="line">&#125;</span><br><span class="line">echo &quot;&lt;table border=&apos;1px&apos; bordercolor=&apos;yellow&apos;&gt;\n\t&lt;tr&gt;\n&quot;;</span><br><span class="line">for($i=0;$i&lt;$colnum*$colnum;$i++)&#123;</span><br><span class="line">	if(!($i%$colnum))&#123;</span><br><span class="line">		echo &quot;\n\t&lt;/tr&gt;\n\t&lt;tr&gt;\n&quot;;</span><br><span class="line">	&#125;</span><br><span class="line">	if($i%2)&#123;</span><br><span class="line">		echo &quot;\t\t&lt;td style=&apos;text-align: center;&apos;&gt;&quot;;</span><br><span class="line">	&#125;else&#123;</span><br><span class="line">		echo &quot;\t\t&lt;td style=&apos;background-color: red;text-align: center;&apos;&gt;&quot;;</span><br><span class="line">	&#125;</span><br><span class="line">	echo $i+1;</span><br><span class="line">	echo &quot;&lt;/td&gt;&quot;;</span><br><span class="line">&#125;</span><br><span class="line">echo &quot;\n\t&lt;/tr&gt;&lt;/table&gt;&quot;;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure></p>
+
+            
+            <p class="more">
+                <a href="http://www.imsry.cn/posts/c36b92d2.html">阅读剩下更多</a>
+            </p>
+        </div>
+        <div class="post-thumbnail" data-img="">
+            <a href="http://www.imsry.cn/posts/c36b92d2.html" title="作业2-1（PHP程序画n*n正方形矩阵)">
+                
+                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/7.jpg" alt="默认配图" >
+                
+            </a>
+        </div>
+    </div>
+</article>
+
+    
+        <!-- 文章列表 item -->
+<article class="post">
+    <header>
+        <!-- 标签这有且只能显示一个 -->
+        
+        <a class="cat-link" href="/categories/学习笔记/">学习笔记</a>
+        
+        <!-- 文章标题 -->
+        
+    <h3 class="post-title">
+    	<a href="http://www.imsry.cn/posts/a3199365.html">
+    		作业1-2(编写一个HTML静态网页,完整网页包括DIV定位)
+    	</a>
+    </h3>
+
+    </header>
+    <p class="post-meta">
+        Anthony 发表于
+        <time datetime="2015-05-07T14:32:39.000Z">2015-05-07 22:32:39</time>
+
+
+        &nbsp;&nbsp;
+        <span class="post-tags">
+            标签：
+            
+        </span>
+    </p>
+
+    <div class="post-content">
+        <div class="post-excerpt">
+            
+                <p><a href="/wp-content/uploads/2015/05/QQ20150507-3@2x.png"><img src="/wp-content/uploads/2015/05/QQ20150507-3@2x-300x205.png" alt="作业1-2要求"></a><br><a href="/html/firstwork2.html">展示页面：http://www.dshui.wang/html/firstwork2.html</a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br></pre></td><td class="code"><pre><span class="line">&lt;!doctype html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">&lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">&lt;title&gt;学院概括&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;!---</span><br><span class="line">#Designed By Anthony_Box</span><br><span class="line">#Date: 2015-05-07</span><br><span class="line">#201321092028 OF SCUEC</span><br><span class="line">---&gt;</span><br><span class="line">&lt;body name=&apos;top&apos; link=&quot;#1F94F0&quot; vlink=&quot;#85B2BE&quot; leftmargin=&quot;10px&quot; topmargin=&quot;20px&quot; style=&quot;width:800px;margin:0 auto;&quot;&gt;</span><br><span class="line">[学院简介](#jianjie-content)</span><br><span class="line"></span><br><span class="line">[现任领导](#leader-content)</span><br><span class="line"></span><br><span class="line">[组织机构](#dpt-content)</span><br><span class="line"></span><br><span class="line">&lt;div id=&quot;jianjie-content&quot;&gt;![](images/fish.png) _**&lt;font color=&quot;#00AEFF&quot;&gt;学院简介&lt;/font&gt;**_</span><br><span class="line"></span><br><span class="line">* * *</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">&lt;div&gt;&amp;nbsp;&amp;nbsp;电子信息工程学院的前身是1981年学校重建后恢复的物理系，是学校历史最悠久 教学单位之一；1988年，物理系更名为电子信息工程系并开始招收电子技术专业本科生；由于那什么的什么的那啥，老师这里给了省略。。。。。。。。。。。</span><br><span class="line">&amp;nbsp;&amp;nbsp;计算机科学学院的明天一定会更加美好@哈哈！&lt;/div&gt;</span><br><span class="line">&lt;div align=&quot;right&quot;&gt;</span><br><span class="line"></span><br><span class="line">[返回TOP](#top)</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">&lt;div id=&quot;leader-content&quot;&gt;![](images/fish.png) _**&lt;font color=&quot;#00AEFF&quot;&gt;现任领导&lt;/font&gt;**_</span><br><span class="line"></span><br><span class="line">* * *</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">&lt;div&gt;&amp;nbsp;&amp;nbsp;院党委:</span><br><span class="line"></span><br><span class="line">&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;党委书记:&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;巴某某（027-67841987）</span><br><span class="line"></span><br><span class="line">&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;党委副书记:&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;张&amp;nbsp;&amp;nbsp;&amp;nbsp;某（027-678428317）</span><br><span class="line"></span><br><span class="line">&amp;nbsp;&amp;nbsp;院行政:</span><br><span class="line"></span><br><span class="line">&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;院&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;长:&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;娃某某（负责全面工作,027-67841987）</span><br><span class="line"></span><br><span class="line">&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;副院长:&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;黑&amp;nbsp;&amp;nbsp;&amp;nbsp;某（027-678428317）</span><br><span class="line"></span><br><span class="line">&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;副院长:&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;白&amp;nbsp;&amp;nbsp;&amp;nbsp;某（027-678428317）&lt;/div&gt;</span><br><span class="line">&lt;div align=&quot;right&quot;&gt;</span><br><span class="line"></span><br><span class="line">[返回TOP](#top)</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">&lt;div id=&quot;dpt-content&quot;&gt;![](images/fish.png) _**&lt;font color=&quot;#00AEFF&quot;&gt;组织机构&lt;/font&gt;**_</span><br><span class="line"></span><br><span class="line">* * *</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">&lt;div&gt;</span><br><span class="line">&amp;nbsp;&amp;nbsp;教研室:</span><br><span class="line"></span><br><span class="line">&lt;table border=&quot;1px&quot; bgcolor=&quot;#02B928&quot; width=&quot;500px&quot; style=&quot;text-align:center&quot;&gt;</span><br><span class="line">	&lt;tr style=&quot;height:50px&quot;&gt;</span><br><span class="line">    	&lt;td width=&quot;50px&quot;&gt;序号&lt;/td&gt;&lt;td width=&quot;100px&quot;&gt;教研室名称&lt;/td&gt;&lt;td width=&quot;90px&quot;&gt;教研室主任&lt;/td&gt;</span><br><span class="line">    &lt;/tr&gt;</span><br><span class="line">	&lt;tr&gt;</span><br><span class="line">    	&lt;td&gt;1&lt;/td&gt;&lt;td&gt;应用电子技术&lt;/td&gt;&lt;td&gt;陈琨&lt;/td&gt;</span><br><span class="line">    &lt;/tr&gt;</span><br><span class="line">	&lt;tr&gt;</span><br><span class="line">    	&lt;td&gt;2&lt;/td&gt;&lt;td&gt;信号处理&lt;/td&gt;&lt;td&gt;周某&lt;/td&gt;</span><br><span class="line">    &lt;/tr&gt;</span><br><span class="line">	&lt;tr&gt;</span><br><span class="line">    	&lt;td&gt;3&lt;/td&gt;&lt;td&gt;通信工程&lt;/td&gt;&lt;td&gt;朱某&lt;/td&gt;</span><br><span class="line">    &lt;/tr&gt;</span><br><span class="line">	&lt;tr&gt;</span><br><span class="line">    	&lt;td&gt;4&lt;/td&gt;&lt;td&gt;计算机&lt;/td&gt;&lt;td&gt;田某某&lt;/td&gt;</span><br><span class="line">    &lt;/tr&gt;</span><br><span class="line">	&lt;tr&gt;</span><br><span class="line">    	&lt;td&gt;5&lt;/td&gt;&lt;td&gt;光信息科学与技术&lt;/td&gt;&lt;td&gt;钟某某&lt;/td&gt;</span><br><span class="line">    &lt;/tr&gt;</span><br><span class="line">	&lt;tr&gt;</span><br><span class="line">    	&lt;td&gt;6&lt;/td&gt;&lt;td&gt;电路与系统&lt;/td&gt;&lt;td&gt;朱某某&lt;/td&gt;</span><br><span class="line">    &lt;/tr&gt;</span><br><span class="line">	&lt;tr&gt;</span><br><span class="line">    	&lt;td&gt;7&lt;/td&gt;&lt;td&gt;大学物理&lt;/td&gt;&lt;td&gt;姚某某&lt;/td&gt;</span><br><span class="line">    &lt;/tr&gt;</span><br><span class="line">	&lt;tr&gt;</span><br><span class="line">    	&lt;td&gt;8&lt;/td&gt;&lt;td&gt;综合实验室&lt;/td&gt;&lt;td&gt;彭某某（正）伊某某（副）&lt;/td&gt;</span><br><span class="line">    &lt;/tr&gt;</span><br><span class="line">&lt;/table&gt;</span><br><span class="line">&lt;div align=&quot;right&quot;&gt;</span><br><span class="line"></span><br><span class="line">[返回TOP](#top)</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">&lt;div style=&quot;height:800px;background-color:#DFDADA&quot;&gt;</span><br><span class="line"></span><br><span class="line">此处只是为了拉长页面</span><br><span class="line"></span><br><span class="line">&lt;/div&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure></p>
+
+            
+            <p class="more">
+                <a href="http://www.imsry.cn/posts/a3199365.html">阅读剩下更多</a>
+            </p>
+        </div>
+        <div class="post-thumbnail" data-img="">
+            <a href="http://www.imsry.cn/posts/a3199365.html" title="作业1-2(编写一个HTML静态网页,完整网页包括DIV定位)">
+                
+                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/7.jpg" alt="默认配图" >
+                
+            </a>
+        </div>
+    </div>
+</article>
+
+    
+        <!-- 文章列表 item -->
+<article class="post">
+    <header>
+        <!-- 标签这有且只能显示一个 -->
+        
+        <a class="cat-link" href="/categories/学习笔记/">学习笔记</a>
+        
+        <!-- 文章标题 -->
+        
+    <h3 class="post-title">
+    	<a href="http://www.imsry.cn/posts/651efec2.html">
+    		作业1-1(编写一个HTML静态网页，表单)
+    	</a>
+    </h3>
+
+    </header>
+    <p class="post-meta">
+        Anthony 发表于
+        <time datetime="2015-05-07T14:19:20.000Z">2015-05-07 22:19:20</time>
+
+
+        &nbsp;&nbsp;
+        <span class="post-tags">
+            标签：
+            
+        </span>
+    </p>
+
+    <div class="post-content">
+        <div class="post-excerpt">
+            
+                <p><a href="/?attachment_id=136"><img src="http:///wp-content/uploads/2015/05/QQ20150507-2@2x-300x300.png" alt="作业1-1要求"></a><br><a href="/html/firstwork1.html">展示页面：/html/firstwork1.html</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">&lt;!doctype html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">&lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">&lt;title&gt;First Class Work&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;!---</span><br><span class="line">#Designed By Anthony_Box</span><br><span class="line">#Date: 2015-05-07</span><br><span class="line">#201321092028 OF SCUEC</span><br><span class="line">---&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;form method=&quot;post&quot;&gt;</span><br><span class="line">&lt;label&gt;姓名：&lt;input type=&quot;text&quot; name=&quot;name&quot; /&gt;&lt;/label&gt;</span><br><span class="line"></span><br><span class="line">&lt;label&gt;兴趣：&lt;input type=&quot;text&quot; name=&quot;intrest&quot; /&gt;&lt;/label&gt;</span><br><span class="line"></span><br><span class="line">&lt;label&gt;性别：&lt;input type=&quot;radio&quot; name=&quot;sex&quot; value=&quot;男&quot; /&gt;男 &lt;/label&gt;&lt;label&gt;&lt;input type=&quot;radio&quot; name=&quot;sex&quot; value=&quot;女&quot;/&gt;女&lt;/label&gt;</span><br><span class="line"></span><br><span class="line">&lt;label&gt;血型：&lt;input type=&quot;radio&quot; name=&quot;blood&quot; value=&quot;A&quot;/&gt;A &lt;/label&gt;&lt;label&gt;&lt;input type=&quot;radio&quot; name=&quot;blood&quot; value=&quot;B&quot;/&gt;B &lt;/label&gt;&lt;label&gt;&lt;input type=&quot;radio&quot; name=&quot;blood&quot; value=&quot;AB&quot;/&gt;AB &lt;/label&gt;&lt;label&gt;&lt;input type=&quot;radio&quot; name=&quot;blood&quot; value=&quot;O&quot;/&gt;O&lt;/label&gt;</span><br><span class="line"></span><br><span class="line">请选择您擅长的一种或几种编程设计语言:</span><br><span class="line"></span><br><span class="line">&lt;label&gt;&lt;input type=&quot;checkbox&quot; name=&quot;lang[]&quot; value=&quot;C++&quot;/&gt;C++ &lt;/label&gt;&lt;label&gt;&lt;input type=&quot;checkbox&quot; name=&quot;lang[]&quot; value=&quot;PHP&quot;/&gt;PHP &lt;/label&gt;&lt;label&gt;&lt;input type=&quot;checkbox&quot; name=&quot;lang[]&quot; value=&quot;Shell&quot;/&gt;Shell &lt;/label&gt;&lt;label&gt;&lt;input type=&quot;checkbox&quot; name=&quot;lang[]&quot; value=&quot;VBscript&quot;/&gt;VBscript&lt;/label&gt;</span><br><span class="line"></span><br><span class="line">请选择您最擅长的操作系统:&lt;select name=&quot;system&quot;&gt;&lt;option&gt;Linux&lt;/option&gt;&lt;option&gt;Windows&lt;/option&gt;&lt;option&gt;Unix&lt;/option&gt;&lt;/select&gt;</span><br><span class="line"></span><br><span class="line">如果您有什么建议，敬请留言:</span><br><span class="line"></span><br><span class="line">&lt;textarea name=&quot;note&quot;&gt;&lt;/textarea&gt;</span><br><span class="line"></span><br><span class="line">&lt;input type=&quot;submit&quot; name=&quot;submit&quot; value=&quot;提交&quot;/&gt; &amp;nbsp;&amp;nbsp;&lt;input type=&quot;reset&quot; value=&quot;重置&quot;/&gt;</span><br><span class="line">&lt;/form&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+            
+            <p class="more">
+                <a href="http://www.imsry.cn/posts/651efec2.html">阅读剩下更多</a>
+            </p>
+        </div>
+        <div class="post-thumbnail" data-img="">
+            <a href="http://www.imsry.cn/posts/651efec2.html" title="作业1-1(编写一个HTML静态网页，表单)">
+                
+                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/7.jpg" alt="默认配图" >
+                
+            </a>
+        </div>
+    </div>
+</article>
+
+    
+        <!-- 文章列表 item -->
+<article class="post">
+    <header>
+        <!-- 标签这有且只能显示一个 -->
+        
+        <a class="cat-link" href="/categories/学习笔记/">学习笔记</a>
+        
+        <!-- 文章标题 -->
+        
+    <h3 class="post-title">
+    	<a href="http://www.imsry.cn/posts/7dc4f555.html">
+    		DEDECMS自定义表单联动类型不可用的解决方法 - 
+    	</a>
+    </h3>
+
+    </header>
+    <p class="post-meta">
+        Anthony 发表于
+        <time datetime="2015-01-05T13:04:42.000Z">2015-01-05 21:04:42</time>
+
+
+        &nbsp;&nbsp;
+        <span class="post-tags">
+            标签：
+            
+        </span>
+    </p>
+
+    <div class="post-content">
+        <div class="post-excerpt">
+            
+                <p>原因是官方模板文件中注释掉了相关选项，修改方式如下：</p>
+<p>需要修改两个文件，</p>
+<p>第一个：dede/templets/diy_field_edit.htm 124行 官方把 “&lt;option value=&quot;stepselect&quot;&gt;联动类型&lt;/option–&gt;”这句给注释掉了，取消注释。</p>
+<p>第 二个：dede/templets/diy_field_add.htm 145 行 官方把“&lt;div&gt;&lt;input type=’radio’ value=&quot;stepselect&quot;&gt;联动类型&lt;/div&gt; ”这句给注释了，取消注释。</p>
+<p>改好后，保存就ok了！</p>
+<p>当然，你在添加自定义表单中的字段时，数据类型一定要选择“联动类型”！</p>
+
+            
+            <p class="more">
+                <a href="http://www.imsry.cn/posts/7dc4f555.html">阅读剩下更多</a>
+            </p>
+        </div>
+        <div class="post-thumbnail" data-img="">
+            <a href="http://www.imsry.cn/posts/7dc4f555.html" title="DEDECMS自定义表单联动类型不可用的解决方法 - ">
+                
+                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/5.jpg" alt="默认配图" >
+                
+            </a>
+        </div>
+    </div>
+</article>
+
+    
+
+    
+    <nav class="page-navigator">
+        <span class="page-number current">1</span>
+    </nav>
+    
+
+
+            </div>
+
+        </section>
+        <!-- 侧栏部分 -->
+<aside class="sidebar">
+    
+    <section class="widget">
+        <h3 class="widget-hd"><strong>文章搜索</strong></h3>
+        <div class="search-form">
+  <form
+    id="searchForm"
+    method="GET"
+    action="https://www.baidu.com/s"
+    ectype="application/x-www-form-urlencoded"
+    target="_blank"
+    autocomplete="false"
+    onsubmit="javascript: return false;">
+    <input
+      id="searchKeyword"
+      type="text"
+      class="form-control"
+      placeholder="输入关键字搜索"
+      autocomplete="false"
+    />
+    <input id="searchKeywordHidden" type="hidden" name="wd" />
+    <input id="searchButton" class="btn" type="submit" value="搜索" />
+  </form>
+</div>
+    </section>
+    
+
+    <section class="widget">
+        <h3 class="widget-hd"><strong>文章分类</strong></h3>
+        <!-- 文章分类 -->
+<ul class="widget-bd">
+    
+    <li>
+        <a href="/categories/学习笔记/">学习笔记</a>
+        <span class="badge">(48)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/编程语言/">编程语言</a>
+        <span class="badge">(6)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/杂谈/">杂谈</a>
+        <span class="badge">(4)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/Learn-GO/">Learn-GO</a>
+        <span class="badge">(6)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/算法/">算法</a>
+        <span class="badge">(6)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/开发板/">开发板</a>
+        <span class="badge">(1)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/Linux/">Linux</a>
+        <span class="badge">(15)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/PHP/">PHP</a>
+        <span class="badge">(9)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/网络安全/">网络安全</a>
+        <span class="badge">(2)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/数据库/">数据库</a>
+        <span class="badge">(2)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/MacOS/">MacOS</a>
+        <span class="badge">(1)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/Web/">Web</a>
+        <span class="badge">(2)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/我的分享/">我的分享</a>
+        <span class="badge">(1)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/开放平台/">开放平台</a>
+        <span class="badge">(1)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/考试/">考试</a>
+        <span class="badge">(1)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/游戏/">游戏</a>
+        <span class="badge">(2)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/学习笔记/Linux/">Linux</a>
+        <span class="badge">(1)</span>
+    </li>
+    
+</ul>
+    </section>
+
+    
+    <section class="widget">
+        <h3 class="widget-hd"><strong>热门标签</strong></h3>
+        <!-- 文章标签 -->
+<div class="widget-bd tag-wrap">
+  
+    <a class="tag-item" href="/tags/Docker/" title="Docker">Docker (1)</a>
+  
+    <a class="tag-item" href="/tags/Golang/" title="Golang">Golang (1)</a>
+  
+    <a class="tag-item" href="/tags/LNMP/" title="LNMP">LNMP (2)</a>
+  
+    <a class="tag-item" href="/tags/OrangePi/" title="OrangePi">OrangePi (1)</a>
+  
+    <a class="tag-item" href="/tags/Network/" title="Network">Network (3)</a>
+  
+    <a class="tag-item" href="/tags/网卡/" title="网卡">网卡 (1)</a>
+  
+    <a class="tag-item" href="/tags/PHP/" title="PHP">PHP (11)</a>
+  
+    <a class="tag-item" href="/tags/算法/" title="算法">算法 (1)</a>
+  
+    <a class="tag-item" href="/tags/时间复杂度/" title="时间复杂度">时间复杂度 (1)</a>
+  
+    <a class="tag-item" href="/tags/定理/" title="定理">定理 (1)</a>
+  
+    <a class="tag-item" href="/tags/Go/" title="Go">Go (1)</a>
+  
+    <a class="tag-item" href="/tags/gRPC/" title="gRPC">gRPC (1)</a>
+  
+    <a class="tag-item" href="/tags/RPC/" title="RPC">RPC (1)</a>
+  
+    <a class="tag-item" href="/tags/Apache/" title="Apache">Apache (4)</a>
+  
+    <a class="tag-item" href="/tags/Linux/" title="Linux">Linux (3)</a>
+  
+    <a class="tag-item" href="/tags/Proxy/" title="Proxy">Proxy (1)</a>
+  
+    <a class="tag-item" href="/tags/面试/" title="面试">面试 (1)</a>
+  
+    <a class="tag-item" href="/tags/firewall/" title="firewall">firewall (1)</a>
+  
+    <a class="tag-item" href="/tags/CentOS/" title="CentOS">CentOS (3)</a>
+  
+    <a class="tag-item" href="/tags/https/" title="https">https (1)</a>
+  
+    <a class="tag-item" href="/tags/Chrome/" title="Chrome">Chrome (1)</a>
+  
+    <a class="tag-item" href="/tags/性能/" title="性能">性能 (3)</a>
+  
+    <a class="tag-item" href="/tags/VPN/" title="VPN">VPN (1)</a>
+  
+    <a class="tag-item" href="/tags/DS-Store/" title=".DS_Store">.DS_Store (1)</a>
+  
+    <a class="tag-item" href="/tags/Discuz/" title="Discuz">Discuz (1)</a>
+  
+    <a class="tag-item" href="/tags/MySQL/" title="MySQL">MySQL (9)</a>
+  
+    <a class="tag-item" href="/tags/Glassfish/" title="Glassfish">Glassfish (1)</a>
+  
+    <a class="tag-item" href="/tags/Java/" title="Java">Java (2)</a>
+  
+    <a class="tag-item" href="/tags/C语言/" title="C语言">C语言 (1)</a>
+  
+    <a class="tag-item" href="/tags/html/" title="html">html (1)</a>
+  
+    <a class="tag-item" href="/tags/Javascript/" title="Javascript">Javascript (2)</a>
+  
+    <a class="tag-item" href="/tags/Laravel/" title="Laravel">Laravel (1)</a>
+  
+    <a class="tag-item" href="/tags/MarkDown/" title="MarkDown">MarkDown (1)</a>
+  
+    <a class="tag-item" href="/tags/数据结构/" title="数据结构">数据结构 (1)</a>
+  
+    <a class="tag-item" href="/tags/Vim/" title="Vim">Vim (1)</a>
+  
+    <a class="tag-item" href="/tags/LAMP/" title="LAMP">LAMP (1)</a>
+  
+    <a class="tag-item" href="/tags/MacOS/" title="MacOS">MacOS (4)</a>
+  
+    <a class="tag-item" href="/tags/php/" title="php">php (2)</a>
+  
+    <a class="tag-item" href="/tags/Git/" title="Git">Git (1)</a>
+  
+</div>
+    </section>
+    
+
+    
+
+    
+    <!-- 友情链接 -->
+    <section class="widget">
+        <h3 class="widget-hd"><strong>友情链接</strong></h3>
+        <!-- 文章分类 -->
+<ul class="widget-bd">
+    
+        <li>
+            <a href="https://imququ.com/" target="_blank" title="Jerry Qu">Jerry Qu</a>
+        </li>
+    
+        <li>
+            <a href="https://jelon.info/" target="_blank" title="Zhang Delong">Jelon</a>
+        </li>
+    
+</ul>
+
+    </section>
+    
+</aside>
+<!-- / 侧栏部分 -->
+    </div>
+
+    <!-- 博客底部 -->
+    <footer class="footer">
+<div style="margin-bottom:1em;">
+
+        <!-- 不蒜子统计 -->
+        <span id="busuanzi_container_site_pv">
+                本站总访问量<span id="busuanzi_value_site_pv"></span>次
+        </span>
+        <span class="post-meta-divider">|</span>
+        <span id="busuanzi_container_site_uv" style='display:none'>
+                本站访客数<span id="busuanzi_value_site_uv"></span>人
+        </span>
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  
+</div>
+    &copy;
+    
+        2014-2020
+    
+
+    <a href="/">Best Wishes</a>
+</footer>
+<div class="back-to-top" id="JELON__backToTop" title="返回顶部">返回顶部</div>
+
+    <!--博客js脚本 -->
+    <!-- 这里放网站js脚本 -->
+<script src="/js/main.js?v=1591351450481"></script>
+</body>
+</html>

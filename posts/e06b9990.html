@@ -1,0 +1,603 @@
+<!doctype html>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=11,IE=10,IE=9,IE=8">
+    <meta name="baidu-site-verification" content="dIcXMeY8Ya">
+    
+    <title>Go语言包-bufio | 小牛试一刀</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+    <meta name="keywords" content="Anthony, 刘经济, 技术博客">
+    <meta name="description" content="待人以儒墨，不热爱前端技术的后端开发不是一个好的吃货。">
+
+    
+    <link rel="alternative" href="/atom.xml" title="小牛试一刀" type="application/atom+xml">
+    
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    
+    <link rel="stylesheet" href="/css/style.css">
+    <!--[if lt IE 9]>
+    <script src="/js/html5.js"></script>
+    <![endif]-->
+    
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?d5ebf515ab530cfbdda5f5c85093fb41";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+</head>
+</html>
+<body class="home">
+    <!--[if lt IE 9]>
+    <div class="browsehappy">
+        当前网页 <strong>不支持</strong>
+        你正在使用的浏览器. 为了正常的访问, 请 <a href="http://browsehappy.com/">升级你的浏览器</a>.
+    </div>
+    <![endif]-->
+
+    <!-- 博客头部 -->
+    <header class="header">
+    <section class="container header-main">
+        <div class="logo">
+            <a href="/">
+                <div class="cover">
+                    <span class="name">小牛试一刀</span>
+                    <span class="description">斯人笔记本</span>
+                </div>
+            </a>
+        </div>
+        <div class="dropnav icon-paragraph-justify" id="JELON__btnDropNav"></div>
+        <ul class="menu hidden" id="JELON__menu">
+            
+            <li rel="/posts/e06b9990.html" class="item ">
+                <a href="/" title="首页" class="icon-home">&nbsp;首页</a>
+            </li>
+            
+            <li rel="/posts/e06b9990.html" class="item ">
+                <a href="/about/" title="关于" class="icon-about">&nbsp;关于</a>
+            </li>
+            
+            <li rel="/posts/e06b9990.html" class="item ">
+                <a href="/comment/" title="留言" class="icon-comment">&nbsp;留言</a>
+            </li>
+            
+        </ul>
+        <div class="profile clearfix">
+            <div class="feeds fl">
+                
+                
+                <p class="links">
+                    
+                        <a href="https://github.com/haowanxing" target="_blank">Github</a>
+                        |
+                    
+                        <a href="https://pages.coding.me" target="_blank">Hosted by Coding Pages</a>
+                        
+                    
+                </p>
+                <p class="sns">
+                    
+                        <a href="http://weibo.com/u/2214092525" class="sinaweibo" target="_blank"><b>■</b> 新浪微博</a>
+                    
+                        <a href="https://www.facebook.com/york.mail/" class="qqweibo" target="_blank"><b>■</b> Facebook</a>
+                    
+                    <a href="javascript: void(0);" class="wechat">
+                        <b>■</b>
+                        公众号
+                        <span class="popover">
+                            <img src="/img/wechat_mp.jpg" width="120" height="120" alt="我的微信订阅号">
+                            <i class="arrow"></i>
+                        </span>
+                    </a>
+                </p>
+                
+            </div>
+            <div class="avatar fr">
+                <img src="/uploads/qiniu/20181010153914990649885.png" alt="avatar" title="Jelon" >
+            </div>
+        </div>
+    </section>
+</header>
+
+
+    <!-- 博客正文 -->
+    <div class="container body clearfix">
+        <section class="content">
+            <div class="content-main widget">
+                <!-- 文章页 -->
+<!-- 文章 -->
+<article class="post article">
+    <header class="text-center">
+        <h3 class="post-title"><span>Go语言包-bufio</span></h3>
+    </header>
+    <p class="post-meta text-center">
+         发表于
+        <time datetime="2018-11-26T06:41:54.000Z">2018-11-26 14:41:54</time>
+
+        <!-- 不蒜子统计 -->
+        <span id="busuanzi_container_page_pv" style='display:none'">
+              <i class="icon-smile icon"></i> 阅读数：<span id="busuanzi_value_page_pv"></span>次
+        </span>
+
+
+    </p>
+    <div class="post-content">
+        <blockquote>
+<p>一天一个Golang包，慢慢学习之“bufio”</p>
+</blockquote>
+<p>今天学习带缓存的I/O操作，基础包“bufio”中有bufio.go和scan.go两个文件</p>
+<h4 id="阅读文档："><a href="#阅读文档：" class="headerlink" title="阅读文档："></a>阅读文档：</h4><p>官方pkg地址：<a href="https://golang.org/pkg/bufio/" target="_blank" rel="noopener">https://golang.org/pkg/bufio/</a></p>
+<blockquote>
+<p>包方法</p>
+</blockquote>
+<p><code>func NewReadWriter(r *Reader, w *Writer) *ReadWriter</code><br>// 将r和w封装为一个bufio.Readwriter对象</p>
+<p><code>func NewReader(rd io.Reader) *Reader</code><br>// 将rd封装为一个bufio.Reader对象(缓存大小默认4096)</p>
+<p><code>func NewReaderSize(rd io.Reader, size int) *Reader</code><br>// 将rd封装成一个拥有size大小缓存的bufio.Reader对象</p>
+<p><code>func NewScanner(r io.Reader) *Scanner</code><br>// 创建一个Scanner来扫描r</p>
+<p><code>func NewWriter(w io.Writer) *Writer</code><br>// 将w封装成一个bufio.Writer对象(缓存大小默认4096)</p>
+<p><code>func NewWriterSize(w io.Writer, size int) *Writer</code><br>//将w封装成一个拥有size大小缓存的bufio.Writer对象</p>
+<a id="more"></a>
+<blockquote>
+<p>Reader结构体</p>
+</blockquote>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Reader 实现了对io.Reader对象的缓冲功能</span></span><br><span class="line"><span class="keyword">type</span> Reader <span class="keyword">struct</span> &#123;</span><br><span class="line">	buf          []<span class="keyword">byte</span></span><br><span class="line">	rd           io.Reader <span class="comment">// reader provided by the client</span></span><br><span class="line">	r, w         <span class="keyword">int</span>       <span class="comment">// buf read and write positions</span></span><br><span class="line">	err          error</span><br><span class="line">	lastByte     <span class="keyword">int</span></span><br><span class="line">	lastRuneSize <span class="keyword">int</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>func (b *Reader) Buffered() int</code><br>// 返回缓存中的数据长度</p>
+<p><code>func (b *Reader) Discard(n int) (discarded int, err error)</code><br>// 丢弃接下来的n个字节，返回丢弃的字节长度</p>
+<p><code>func (b *Reader) Peek(n int) ([]byte, error)</code><br>// 返回前n字节的缓存切片</p>
+<p><code>func (b *Reader) Read(p []byte) (n int, err error)</code><br>// 读取len(p)个字节到p中。<br>// 如果len(p)&gt;缓存大小，且缓存不为空，则读取全部缓存。<br>// 若缓存为空，则从底层io.Reader直接读取</p>
+<p><code>func (b *Reader) ReadByte() (byte, error)</code><br>// 读出一个字节并返回</p>
+<p><code>func (b *Reader) ReadBytes(delim byte) ([]byte, error)</code><br>// 查找delim并读取delim及其之前的所有数据（byte切片）<br>// 如果在找到delim之前发生错误，则返回发生错误之前的数据和error。<br>// 当找不到delim的时候，err!=nil</p>
+<p><code>func (b *Reader) ReadLine() (line []byte, isPrefix bool, err error)</code><br>// 返回一个单行数据(切片)，不包括行尾标记。<br>// 如果在缓存中找不到行尾标记，isPrefix为true，表示查找未完成，否则isPrefix为false</p>
+<p><code>func (b *Reader) ReadRune() (r rune, size int, err error)</code><br>// 读取一个UTF8字符和字符的编码长度。<br>// 如果UTF8序列无法解码出一个正确的Unicode字符，则只读出一个字节，并返回U+FFFD字符，size返回1。</p>
+<p><code>func (b *Reader) ReadSlice(delim byte) (line []byte, err error)</code><br>// 查找delim并读取delim及其之前的所有数据（byte切片-引用）</p>
+<p><code>func (b *Reader) ReadString(delim byte) (string, error)</code><br>// 查找delim并读取delim及其之前的所有数据（字符串）</p>
+<p><code>func (b *Reader) Reset(r io.Reader)</code><br>// 丢弃任何缓存数据，重置所有状态并切换io.Reader到r</p>
+<p><code>func (r *Reader) Size() int</code><br>// 返回（底层）缓存的字节长度</p>
+<p><code>func (b *Reader) UnreadByte() error</code><br>// 撤销最后一次读出的一个字节</p>
+<p><code>func (b *Reader) UnreadRune() error</code><br>// 撤销最后一次读出的Unicode字符<br>// 如果最后一次执行的不是ReadRune()，则返回一个错误</p>
+<p><code>func (b *Reader) WriteTo(w io.Writer) (n int64, err error)</code><br>// 实现了io.WriteTo接口。<br>// 可以（可能）对底层Reader的Read方法进行多次调用。<br>// 如果底层Reader支持WriteTo方法，则直接调用底层方法，无需缓存。</p>
+<p>Reader的示例：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> bufio</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">"bufio"</span></span><br><span class="line">	<span class="string">"bytes"</span></span><br><span class="line">	<span class="string">"fmt"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Reader</span><span class="params">()</span></span>&#123;</span><br><span class="line">	testB := bytes.NewReader([]<span class="keyword">byte</span>(<span class="string">"abcdefg\nABCDEFG\nh i j k\nH I J K\n\nline."</span>))</span><br><span class="line">	bufRd := bufio.NewReader(testB)</span><br><span class="line">	fmt.Println(bufRd.Buffered(), bufRd.Size())</span><br><span class="line">	<span class="comment">// 0 4096</span></span><br><span class="line"></span><br><span class="line">	b, _ := bufRd.ReadByte()</span><br><span class="line">	fmt.Println(bufRd.Buffered(), b, <span class="keyword">string</span>(b))</span><br><span class="line">	<span class="comment">// 37 97 a</span></span><br><span class="line"></span><br><span class="line">	bs, _ := bufRd.ReadBytes(<span class="string">'d'</span>)</span><br><span class="line">	fmt.Println(bufRd.Buffered(), bs, <span class="keyword">string</span>(bs))</span><br><span class="line">	<span class="comment">// 34 [98 99 100] bcd</span></span><br><span class="line"></span><br><span class="line">	discard, _ := bufRd.Discard(<span class="number">1</span>)</span><br><span class="line">	fmt.Println(<span class="string">"discard:"</span>, discard, <span class="string">"bufferd:"</span>, bufRd.Buffered())</span><br><span class="line">	<span class="comment">// discard: 1 bufferd: 33</span></span><br><span class="line"></span><br><span class="line">	b, _ = bufRd.ReadByte()</span><br><span class="line">	fmt.Println(bufRd.Buffered(), b, <span class="keyword">string</span>(b))</span><br><span class="line">	<span class="comment">// 32 102 f</span></span><br><span class="line"></span><br><span class="line">	bs, _  = bufRd.Peek(<span class="number">7</span>)</span><br><span class="line">	fmt.Println(bufRd.Buffered(), bs, <span class="keyword">string</span>(bs))</span><br><span class="line">	<span class="comment">// 32 [103 10 65 66 67 68 69] g</span></span><br><span class="line">	<span class="comment">// ABCDE</span></span><br><span class="line"></span><br><span class="line">	line, isPrefix, _ := bufRd.ReadLine()</span><br><span class="line">	fmt.Println(bufRd.Buffered(), line, <span class="keyword">string</span>(line), isPrefix)</span><br><span class="line">	<span class="comment">// 30 [103] g false</span></span><br><span class="line"></span><br><span class="line">	r, size, _ := bufRd.ReadRune()</span><br><span class="line">	fmt.Println(bufRd.Buffered(), r, <span class="keyword">string</span>(r), size)</span><br><span class="line">	<span class="comment">// 29 65 A 1</span></span><br><span class="line"></span><br><span class="line">	slice, _ := bufRd.ReadSlice(<span class="string">'D'</span>)</span><br><span class="line">	fmt.Println(bufRd.Buffered(), slice, <span class="keyword">string</span>(slice))</span><br><span class="line">	<span class="comment">// 26 [66 67 68] BCD</span></span><br><span class="line"></span><br><span class="line">	str, _ := bufRd.ReadString(<span class="string">'G'</span>)</span><br><span class="line">	fmt.Println(bufRd.Buffered(), str)</span><br><span class="line">	<span class="comment">// 23 EFG</span></span><br><span class="line"></span><br><span class="line">	bufRd.Reset(bytes.NewReader([]<span class="keyword">byte</span>(<span class="string">"Hello World.\nMy World."</span>)))</span><br><span class="line"></span><br><span class="line">	str, _ = bufRd.ReadString(<span class="string">'r'</span>)</span><br><span class="line">	fmt.Println(bufRd.Buffered(), str)</span><br><span class="line">	<span class="comment">// 13 Hello Wor</span></span><br><span class="line"></span><br><span class="line">	bufRd.UnreadByte()</span><br><span class="line">	fmt.Println(bufRd.Buffered())</span><br><span class="line">	<span class="comment">// 14</span></span><br><span class="line"></span><br><span class="line">	str, _ = bufRd.ReadString(<span class="string">'\n'</span>)</span><br><span class="line">	fmt.Println(bufRd.Buffered(), str)</span><br><span class="line">	<span class="comment">// 9 rld.</span></span><br><span class="line">	<span class="comment">// </span></span><br><span class="line"></span><br><span class="line">	r, size, _ = bufRd.ReadRune()</span><br><span class="line">	fmt.Println(bufRd.Buffered(), r, <span class="keyword">string</span>(r), size)</span><br><span class="line">	<span class="comment">// 8 77 M 1</span></span><br><span class="line"></span><br><span class="line">	bufRd.UnreadRune()</span><br><span class="line">	fmt.Println(bufRd.Buffered())</span><br><span class="line">	<span class="comment">// 9</span></span><br><span class="line"></span><br><span class="line">	str, _ = bufRd.ReadString(<span class="string">'\n'</span>)</span><br><span class="line">	fmt.Println(bufRd.Buffered(), str)</span><br><span class="line">	<span class="comment">// 0 My World.</span></span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<blockquote>
+<p>Writer结构体</p>
+</blockquote>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Writer 实现了对io.Writer对象的缓冲功能</span></span><br><span class="line"><span class="comment">// 如果在写入Writer时发生错误，则会停止继续写入和后续操作并返回这个错误。</span></span><br><span class="line"><span class="comment">// 在所有数据被写入后，应当调用Flush方法来保证所有数据都被写入底层Writer。</span></span><br><span class="line"><span class="keyword">type</span> Writer <span class="keyword">struct</span> &#123;</span><br><span class="line">	err error</span><br><span class="line">	buf []<span class="keyword">byte</span></span><br><span class="line">	n   <span class="keyword">int</span></span><br><span class="line">	wr  io.Writer</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>func NewWriter(w io.Writer) *Writer</code><br>// 将w封装成一个bufio.Writer对象，缓存大小为4096.</p>
+<p><code>func NewWriterSize(w io.Writer, size int) *Writer</code><br>// 将w封装成一个拥有size大小缓存的bufio.Writer对象</p>
+<p><code>func (b *Writer) Available() int</code><br>// 返回缓存中的可用空间</p>
+<p><code>func (b *Writer) Buffered() int</code><br>// 返回缓存中未提交的数据长度</p>
+<p><code>func (b *Writer) Flush() error</code><br>// 将缓存中的数据提交到底层io.Writer中</p>
+<p><code>func (b *Writer) ReadFrom(r io.Reader) (n int64, err error)</code><br>// 实现了io.ReaderFrom接口。<br>// 如果底层writer支持ReadFrom方法且b的缓存数据为空，则直接调用底层的ReadFrom方法，不使用缓存。</p>
+<p><code>func (b *Writer) Reset(w io.Writer)</code><br>// 丢弃所有未被提交的缓存数据，重置所有状态并切换io.Writer到w</p>
+<p><code>func (b *Writer) Size() int</code><br>// 以字节为单位返回(底层)缓冲区大小</p>
+<p><code>func (b *Writer) Write(p []byte) (nn int, err error)</code><br>// 将p中的数据写入b中，返回写入的字节数<br>// 如果写入的字节数小于p的长度，则返回错误</p>
+<p><code>func (b *Writer) WriteByte(c byte) error</code><br>// 写入一个字节</p>
+<p><code>func (b *Writer) WriteRune(r rune) (size int, err error)</code><br>// 写入一个UTF8编码字符</p>
+<p><code>func (b *Writer) WriteString(s string) (int, error)</code><br>// 写入一个字符串，返回写入的字节数</p>
+<p>Writer的示列：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> bufio</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">"bufio"</span></span><br><span class="line">	<span class="string">"bytes"</span></span><br><span class="line">	<span class="string">"fmt"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Writer</span><span class="params">()</span></span>&#123;</span><br><span class="line">	bt := <span class="built_in">make</span>([]<span class="keyword">byte</span>, <span class="number">0</span>)</span><br><span class="line">	Bt := bytes.NewBuffer(bt)</span><br><span class="line">	bufWt := bufio.NewWriter(Bt)</span><br><span class="line"></span><br><span class="line">	fmt.Println(bufWt.Available(), bufWt.Buffered())	<span class="comment">// 4096 0</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">// Write</span></span><br><span class="line">	nn, _ := bufWt.Write([]<span class="keyword">byte</span>&#123;<span class="number">65</span>, <span class="number">66</span>&#125;)</span><br><span class="line">	fmt.Println(bufWt.Available(), bufWt.Buffered())	<span class="comment">// 4094 2</span></span><br><span class="line">	fmt.Println(nn, Bt)	<span class="comment">// 2 "空"</span></span><br><span class="line">	bufWt.Flush()</span><br><span class="line">	fmt.Println(bufWt.Available(), bufWt.Buffered())	<span class="comment">// 4096 0</span></span><br><span class="line">	fmt.Println(nn, Bt)	<span class="comment">// 2 AB</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">// WriteByte</span></span><br><span class="line">	bufWt.WriteByte(<span class="string">'C'</span>)</span><br><span class="line">	fmt.Println(bufWt.Available(), bufWt.Buffered())	<span class="comment">// 4095 1</span></span><br><span class="line">	fmt.Println(Bt)	<span class="comment">// AB</span></span><br><span class="line">	bufWt.Flush()</span><br><span class="line">	fmt.Println(bufWt.Available(), bufWt.Buffered())	<span class="comment">// 4096 0</span></span><br><span class="line">	fmt.Println(Bt)	<span class="comment">// ABC</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">// WriteRune</span></span><br><span class="line">	size, _ := bufWt.WriteRune(<span class="string">'D'</span>)</span><br><span class="line">	fmt.Println(bufWt.Available(), bufWt.Buffered())	<span class="comment">// 4095 1</span></span><br><span class="line">	fmt.Println(size, Bt)	<span class="comment">// 1 ABC</span></span><br><span class="line">	bufWt.Flush()</span><br><span class="line">	fmt.Println(bufWt.Available(), bufWt.Buffered())	<span class="comment">// 4096 0</span></span><br><span class="line">	fmt.Println(Bt)	<span class="comment">// ABCD</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">// WriteString</span></span><br><span class="line">	n, _ := bufWt.WriteString(<span class="string">"EFG"</span>)</span><br><span class="line">	fmt.Println(bufWt.Available(), bufWt.Buffered())	<span class="comment">// 4093 3</span></span><br><span class="line">	fmt.Println(n, Bt)	<span class="comment">// 3 ABCD</span></span><br><span class="line">	bufWt.Flush()</span><br><span class="line">	fmt.Println(bufWt.Available(), bufWt.Buffered())	<span class="comment">// 4096 0</span></span><br><span class="line">	fmt.Println(Bt)	<span class="comment">// ABCDEFG</span></span><br><span class="line"></span><br><span class="line">	fmt.Println(bufWt.Size())	<span class="comment">// 4096</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">// ReadFrom without buffered</span></span><br><span class="line">	some := bytes.NewReader([]<span class="keyword">byte</span>(<span class="string">"HIJKLMN"</span>))</span><br><span class="line">	nChar, _ := bufWt.ReadFrom(some)</span><br><span class="line">	fmt.Println(bufWt.Available(), bufWt.Buffered())	<span class="comment">//4096 0</span></span><br><span class="line">	fmt.Println(nChar, Bt)	<span class="comment">//7 ABCDEFGHIJKLMN</span></span><br><span class="line">	<span class="comment">// 这里不用调用flush，因为在ReadForm之前缓存中没有数据，直接调用底层的ReadFrom写入了数据</span></span><br><span class="line">	<span class="comment">// 下面看下有缓存的情况，先写入一个换行</span></span><br><span class="line">	bufWt.WriteByte(<span class="string">'\n'</span>)</span><br><span class="line">	fmt.Println(bufWt.Available(), bufWt.Buffered())	<span class="comment">// 4095 1</span></span><br><span class="line">	fmt.Println(Bt)	<span class="comment">// ABCDEFGHIJKLMN</span></span><br><span class="line">	<span class="comment">// 紧接着不Flash而是直接ReadForm</span></span><br><span class="line">	some2 := bytes.NewReader([]<span class="keyword">byte</span>(<span class="string">"OPQRST"</span>))</span><br><span class="line">	nChar, _ = bufWt.ReadFrom(some2)</span><br><span class="line">	fmt.Println(bufWt.Available(), bufWt.Buffered())	<span class="comment">//4089 7</span></span><br><span class="line">	fmt.Println(nChar, Bt)	<span class="comment">//6 ABCDEFGHIJKLMN</span></span><br><span class="line">	<span class="comment">// 现在Flush然后看各个变量</span></span><br><span class="line">	bufWt.Flush()</span><br><span class="line">	fmt.Println(bufWt.Available(), bufWt.Buffered())	<span class="comment">// 4096 0</span></span><br><span class="line">	fmt.Println(Bt)	<span class="comment">// ABCDEFGHIJKLMN"换行"OPQRST</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<blockquote>
+<p>Scanner结构体</p>
+</blockquote>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Scanner为读取数据提供了便捷的接口，这些数据包括但不限于有换行分界符的文本文件。</span></span><br><span class="line"><span class="comment">// 连续调用Scan方法将会遍历文件的'Token'(指定部分)且跳过指定部分之间的字节。</span></span><br><span class="line"><span class="comment">// 指定部分的格式由SplitFunc类型的函数定义，默认的切分函数根据行尾将输入拆分成行但不包括行尾</span></span><br><span class="line"><span class="comment">// 本包下定义并提供的切分函数用于将文件扫描成line,bytes,UTF-8Encoded runes和空格拆分的单词。用户也可以使用自己的切分函数来替换它。</span></span><br><span class="line"><span class="comment">// 当扫描遇到EOF、第一次I/O错误或'指定部分'太大无法存入缓冲区时停止。</span></span><br><span class="line"><span class="comment">// 当一次扫描停止时，读取器有可能早已超出'指定部分'很远。如果程序想要对数据进行更多的控制，如错误处理或扫描更大的'指定部分'或顺序扫描，则应当使用bufio.reader来代替。</span></span><br><span class="line"><span class="keyword">type</span> Scanner <span class="keyword">struct</span> &#123;</span><br><span class="line">	r            io.Reader <span class="comment">// 用户提供的reader.</span></span><br><span class="line">	split        SplitFunc <span class="comment">// 拆分token的方法.</span></span><br><span class="line">	maxTokenSize <span class="keyword">int</span>       <span class="comment">// token的上限</span></span><br><span class="line">	token        []<span class="keyword">byte</span>    <span class="comment">// split返回的最后token.</span></span><br><span class="line">	buf          []<span class="keyword">byte</span>    <span class="comment">// 作为参数给split的缓冲区.</span></span><br><span class="line">	start        <span class="keyword">int</span>       <span class="comment">// 缓冲区起始位.</span></span><br><span class="line">	end          <span class="keyword">int</span>       <span class="comment">// 缓冲区终止位.</span></span><br><span class="line">	err          error     <span class="comment">// Sticky error.</span></span><br><span class="line">	empties      <span class="keyword">int</span>       <span class="comment">// 连续出现空token的次数.</span></span><br><span class="line">	scanCalled   <span class="keyword">bool</span>      <span class="comment">// 扫描是否开始.</span></span><br><span class="line">	done         <span class="keyword">bool</span>      <span class="comment">// 扫描完毕.</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>func (s *Scanner) Buffer(buf []byte, max int)</code><br>// 用于设置自定义缓存以及可扩展范围，如果max小于len(buf)，则buf的尺寸将固定不可调。<br>// Buffer必须在第一次Scan之前设置，否则引发Panic。<br>// 默认情况下，Scanner将会使用一个4096-bufio.MaxScanTokenSize大小的内部缓存。</p>
+<p><code>func (s *Scanner) Bytes() []byte</code><br>// 将最后一次扫描出的‘指定部分’作为切片（引用）返回<br>// 下一次的扫描会覆盖本结果</p>
+<p><code>func (s *Scanner) Err() error</code><br>// 返回扫描过程中遇到的非EOF错误</p>
+<p><code>func (s *Scanner) Scan() bool</code><br>// 扫描数据中的‘指定部分’</p>
+<p><code>func (s *Scanner) Split(split SplitFunc)</code><br>// 设置Scanner的分切函数，必须在Scan方法之前调用</p>
+<p><code>func (s *Scanner) Text() string</code><br>// 最后一次扫描出的‘指定部分’作为String返回</p>
+<p>Scanner的示例：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> bufio</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">"bufio"</span></span><br><span class="line">	<span class="string">"bytes"</span></span><br><span class="line">	<span class="string">"fmt"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Scan</span><span class="params">()</span></span>&#123;</span><br><span class="line">	b1 := bytes.NewReader([]<span class="keyword">byte</span>(<span class="string">"ABC\nDEF\r\nGHI\nJKL"</span>))</span><br><span class="line">	bs := bufio.NewScanner(b1)</span><br><span class="line">	<span class="keyword">for</span> bs.Scan() &#123;</span><br><span class="line">		fmt.Printf(<span class="string">"%s %v\n"</span>, bs.Bytes(), bs.Text())</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">// ABC ABC</span></span><br><span class="line">	<span class="comment">// DEF DEF</span></span><br><span class="line">	<span class="comment">// GHI GHI</span></span><br><span class="line">	<span class="comment">// JKL JKL</span></span><br><span class="line">	b2 := bytes.NewReader([]<span class="keyword">byte</span>(<span class="string">"ABC\nDEF GHI JKL"</span>))</span><br><span class="line">	bs = bufio.NewScanner(b2)</span><br><span class="line">	bs.Split(bufio.ScanWords)</span><br><span class="line">	<span class="keyword">for</span> bs.Scan() &#123;</span><br><span class="line">		fmt.Println(bs.Text())</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">// ABC</span></span><br><span class="line">	<span class="comment">// DEF</span></span><br><span class="line">	<span class="comment">// GHI</span></span><br><span class="line">	<span class="comment">// JKL</span></span><br><span class="line">	b3 := bytes.NewReader([]<span class="keyword">byte</span>(<span class="string">"Hello 世界！"</span>))</span><br><span class="line">	bs = bufio.NewScanner(b3)</span><br><span class="line">	bs.Split(bufio.ScanRunes)</span><br><span class="line">	<span class="keyword">for</span> bs.Scan() &#123;</span><br><span class="line">		fmt.Printf(<span class="string">"%v "</span>, bs.Text())</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">// H e l l o   世 界 ！</span></span><br><span class="line">	fmt.Println()</span><br><span class="line">	b4 := bytes.NewReader([]<span class="keyword">byte</span>(<span class="string">"我的天哪!"</span>))</span><br><span class="line">	bs = bufio.NewScanner(b4)</span><br><span class="line">	bs.Split(bufio.ScanBytes)</span><br><span class="line">	<span class="keyword">for</span> bs.Scan() &#123;</span><br><span class="line">		fmt.Printf(<span class="string">"%v "</span>, bs.Bytes())</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">// [230] [136] [145] [231] [154] [132] [229] [164] [169] [229] [147] [170] [33]</span></span><br><span class="line">	fmt.Println()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>另外的参考：</p>
+<ul>
+<li><a href="https://studygolang.com/articles/4367" target="_blank" rel="noopener">https://studygolang.com/articles/4367</a></li>
+<li><a href="https://www.cnblogs.com/golove/p/3282667.html" target="_blank" rel="noopener">https://www.cnblogs.com/golove/p/3282667.html</a></li>
+</ul>
+
+    </div>
+    <p class="post-meta">
+        <span class="post-cat">分类：
+            <a class="cat-link" href="/categories/Learn-GO/">Learn-GO</a>
+        </span>
+        <span class="post-tags">
+            标签：
+            
+        </span>
+    </p>
+</article>
+<!-- 分享按钮 -->
+
+  <div class="article-share clearfix text-center">
+    <div class="share-area">
+      <span class="share-txt">分享到：</span>
+      <a href="javascript: window.open('http://service.weibo.com/share/share.php?url=' + encodeURIComponent(location.href) + '&title=' + document.title + '&language=zh_cn');" class="share-icon weibo"></a>
+      <a href="javascript: alert('请复制链接到微信并发送');" class="share-icon wechat"></a>
+      <a href="javascript: window.open('http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=' + encodeURIComponent(location.href) + '&title=' + document.title);" class="share-icon qqzone"></a>
+      <a href="javascript: window.open('http://connect.qq.com/widget/shareqq/index.html?url=' + encodeURIComponent(location.href) + '&desc=imsry.cn个人博客&title=' + document.title + '&callback=' + encodeURIComponent(location.href));" class="share-icon qq"></a>
+      <a href="javascript: window.open('http://shuo.douban.com/!service/share?href=' + encodeURIComponent(location.href) + '&name=' + document.title + '&text=' + document.title);" class="share-icon douban"></a>
+    </div>
+  </div>
+
+
+
+<!-- 上一篇/下一篇 -->
+
+<div class="article-nav clearfix">
+    
+    <span class="prev fl">
+        上一篇<br >
+        <a href="/posts/dab4275.html">
+            
+                Go语言包-bytes
+            
+        </a>
+    </span>
+    
+
+    
+    <span class="next fr">
+        下一篇<br >
+        <a href="/posts/6200ba6d.html">
+            
+                Go语言包-archive/zip
+            
+        </a>
+    </span>
+    
+</div>
+
+<!-- 文章评论 -->
+
+  <script src="/js/comment.js"></script>
+  <div id="comments" class="comment">
+    <!--
+    <div class="sign-bar">
+      GitHub 已登录!
+      <span class="sign-link">登出</span>
+    </div>
+    <section class="box">
+      <div class="com-avatar"><img src="/img/jelon.jpg" alt="avatar"></div>
+      <div class="com-text">
+        <div class="main">
+          <textarea class="text-area-edited show" placeholder="欢迎评论！"></textarea>
+          <div class="text-area-preview"></div>
+        </div>
+        <div class="switch">
+          <div class="switch-item on">编辑</div>
+          <div class="switch-item">预览</div>
+        </div>
+        <div class="button">提交</div>
+      </div>
+    </section>
+    <section class="tips">注：评论支持 markdown 语法！</section>
+    <section class="list-wrap">
+      <ul class="list">
+        <li>
+          <div class="user-avatar">
+            <a href="/">
+              <img src="/img/jelon.jpg" alt="user-avatar">
+            </a>
+          </div>
+          <div class="user-comment">
+            <div class="user-comment-header">
+              <span class="post-name">张德龙</span>
+              <span class="post-time">2017年12月12日</span>
+              <span class="like liked">已赞</span>
+              <span class="like-num">2</span>
+            </div>
+            <div class="user-comment-body">333333</div>
+          </div>
+        </li>
+        <li>
+          <div class="user-avatar">
+            <a href="/">
+              <img src="/img/jelon.jpg" alt="user-avatar">
+            </a>
+          </div>
+          <div class="user-comment">
+            <div class="user-comment-header">
+              <span class="post-name">刘德华</span>
+              <span class="post-time">2017年12月12日</span>
+              <span class="like">点赞</span>
+              <span class="like-num">2</span>
+            </div>
+            <div class="user-comment-body">vvvvv</div>
+          </div>
+        </li>
+      </ul>
+      <div class="page-nav">
+        <a href="javascript: void(0);" class="item">1</a>
+        <a href="javascript: void(0);" class="item">2</a>
+        <a href="javascript: void(0);" class="item current">3</a>
+      </div>
+    </section>
+    -->
+  </div>
+  <script>
+  JELON.Comment({
+    container: 'comments',
+    label: 'Learn-Go-bufio' || 'posts/e06b9990.html',
+    owner: 'haowanxing',
+    repo: 'haowanxing.github.io',
+    clientId: '7e6b078394a99b7940d2',
+    clientSecret: 'ff64a6b066e97af64358c44a96e0c7dd398aba1e'
+  });
+  </script>
+
+
+
+            </div>
+
+        </section>
+        <!-- 侧栏部分 -->
+<aside class="sidebar">
+    
+    <section class="widget">
+        <h3 class="widget-hd"><strong>文章搜索</strong></h3>
+        <div class="search-form">
+  <form
+    id="searchForm"
+    method="GET"
+    action="https://www.baidu.com/s"
+    ectype="application/x-www-form-urlencoded"
+    target="_blank"
+    autocomplete="false"
+    onsubmit="javascript: return false;">
+    <input
+      id="searchKeyword"
+      type="text"
+      class="form-control"
+      placeholder="输入关键字搜索"
+      autocomplete="false"
+    />
+    <input id="searchKeywordHidden" type="hidden" name="wd" />
+    <input id="searchButton" class="btn" type="submit" value="搜索" />
+  </form>
+</div>
+    </section>
+    
+
+    <section class="widget">
+        <h3 class="widget-hd"><strong>文章分类</strong></h3>
+        <!-- 文章分类 -->
+<ul class="widget-bd">
+    
+    <li>
+        <a href="/categories/学习笔记/">学习笔记</a>
+        <span class="badge">(48)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/编程语言/">编程语言</a>
+        <span class="badge">(6)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/杂谈/">杂谈</a>
+        <span class="badge">(4)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/Learn-GO/">Learn-GO</a>
+        <span class="badge">(6)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/算法/">算法</a>
+        <span class="badge">(6)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/开发板/">开发板</a>
+        <span class="badge">(1)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/Linux/">Linux</a>
+        <span class="badge">(15)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/PHP/">PHP</a>
+        <span class="badge">(9)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/网络安全/">网络安全</a>
+        <span class="badge">(2)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/数据库/">数据库</a>
+        <span class="badge">(2)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/MacOS/">MacOS</a>
+        <span class="badge">(1)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/Web/">Web</a>
+        <span class="badge">(2)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/我的分享/">我的分享</a>
+        <span class="badge">(1)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/开放平台/">开放平台</a>
+        <span class="badge">(1)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/考试/">考试</a>
+        <span class="badge">(1)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/游戏/">游戏</a>
+        <span class="badge">(2)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/学习笔记/Linux/">Linux</a>
+        <span class="badge">(1)</span>
+    </li>
+    
+</ul>
+    </section>
+
+    
+    <section class="widget">
+        <h3 class="widget-hd"><strong>热门标签</strong></h3>
+        <!-- 文章标签 -->
+<div class="widget-bd tag-wrap">
+  
+    <a class="tag-item" href="/tags/Docker/" title="Docker">Docker (1)</a>
+  
+    <a class="tag-item" href="/tags/Golang/" title="Golang">Golang (1)</a>
+  
+    <a class="tag-item" href="/tags/LNMP/" title="LNMP">LNMP (2)</a>
+  
+    <a class="tag-item" href="/tags/OrangePi/" title="OrangePi">OrangePi (1)</a>
+  
+    <a class="tag-item" href="/tags/Network/" title="Network">Network (3)</a>
+  
+    <a class="tag-item" href="/tags/网卡/" title="网卡">网卡 (1)</a>
+  
+    <a class="tag-item" href="/tags/PHP/" title="PHP">PHP (11)</a>
+  
+    <a class="tag-item" href="/tags/算法/" title="算法">算法 (1)</a>
+  
+    <a class="tag-item" href="/tags/时间复杂度/" title="时间复杂度">时间复杂度 (1)</a>
+  
+    <a class="tag-item" href="/tags/定理/" title="定理">定理 (1)</a>
+  
+    <a class="tag-item" href="/tags/Go/" title="Go">Go (1)</a>
+  
+    <a class="tag-item" href="/tags/gRPC/" title="gRPC">gRPC (1)</a>
+  
+    <a class="tag-item" href="/tags/RPC/" title="RPC">RPC (1)</a>
+  
+    <a class="tag-item" href="/tags/Apache/" title="Apache">Apache (4)</a>
+  
+    <a class="tag-item" href="/tags/Linux/" title="Linux">Linux (3)</a>
+  
+    <a class="tag-item" href="/tags/Proxy/" title="Proxy">Proxy (1)</a>
+  
+    <a class="tag-item" href="/tags/面试/" title="面试">面试 (1)</a>
+  
+    <a class="tag-item" href="/tags/firewall/" title="firewall">firewall (1)</a>
+  
+    <a class="tag-item" href="/tags/CentOS/" title="CentOS">CentOS (3)</a>
+  
+    <a class="tag-item" href="/tags/https/" title="https">https (1)</a>
+  
+    <a class="tag-item" href="/tags/Chrome/" title="Chrome">Chrome (1)</a>
+  
+    <a class="tag-item" href="/tags/性能/" title="性能">性能 (3)</a>
+  
+    <a class="tag-item" href="/tags/VPN/" title="VPN">VPN (1)</a>
+  
+    <a class="tag-item" href="/tags/DS-Store/" title=".DS_Store">.DS_Store (1)</a>
+  
+    <a class="tag-item" href="/tags/Discuz/" title="Discuz">Discuz (1)</a>
+  
+    <a class="tag-item" href="/tags/MySQL/" title="MySQL">MySQL (9)</a>
+  
+    <a class="tag-item" href="/tags/Glassfish/" title="Glassfish">Glassfish (1)</a>
+  
+    <a class="tag-item" href="/tags/Java/" title="Java">Java (2)</a>
+  
+    <a class="tag-item" href="/tags/C语言/" title="C语言">C语言 (1)</a>
+  
+    <a class="tag-item" href="/tags/html/" title="html">html (1)</a>
+  
+    <a class="tag-item" href="/tags/Javascript/" title="Javascript">Javascript (2)</a>
+  
+    <a class="tag-item" href="/tags/Laravel/" title="Laravel">Laravel (1)</a>
+  
+    <a class="tag-item" href="/tags/MarkDown/" title="MarkDown">MarkDown (1)</a>
+  
+    <a class="tag-item" href="/tags/数据结构/" title="数据结构">数据结构 (1)</a>
+  
+    <a class="tag-item" href="/tags/Vim/" title="Vim">Vim (1)</a>
+  
+    <a class="tag-item" href="/tags/LAMP/" title="LAMP">LAMP (1)</a>
+  
+    <a class="tag-item" href="/tags/MacOS/" title="MacOS">MacOS (4)</a>
+  
+    <a class="tag-item" href="/tags/php/" title="php">php (2)</a>
+  
+    <a class="tag-item" href="/tags/Git/" title="Git">Git (1)</a>
+  
+</div>
+    </section>
+    
+
+    
+
+    
+    <!-- 友情链接 -->
+    <section class="widget">
+        <h3 class="widget-hd"><strong>友情链接</strong></h3>
+        <!-- 文章分类 -->
+<ul class="widget-bd">
+    
+        <li>
+            <a href="https://imququ.com/" target="_blank" title="Jerry Qu">Jerry Qu</a>
+        </li>
+    
+        <li>
+            <a href="https://jelon.info/" target="_blank" title="Zhang Delong">Jelon</a>
+        </li>
+    
+</ul>
+
+    </section>
+    
+</aside>
+<!-- / 侧栏部分 -->
+    </div>
+
+    <!-- 博客底部 -->
+    <footer class="footer">
+<div style="margin-bottom:1em;">
+
+        <!-- 不蒜子统计 -->
+        <span id="busuanzi_container_site_pv">
+                本站总访问量<span id="busuanzi_value_site_pv"></span>次
+        </span>
+        <span class="post-meta-divider">|</span>
+        <span id="busuanzi_container_site_uv" style='display:none'>
+                本站访客数<span id="busuanzi_value_site_uv"></span>人
+        </span>
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  
+</div>
+    &copy;
+    
+        2014-2020
+    
+
+    <a href="/">Best Wishes</a>
+</footer>
+<div class="back-to-top" id="JELON__backToTop" title="返回顶部">返回顶部</div>
+
+    <!--博客js脚本 -->
+    <!-- 这里放网站js脚本 -->
+<script src="/js/main.js?v=1591351449551"></script>
+</body>
+</html>

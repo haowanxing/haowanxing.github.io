@@ -1,0 +1,546 @@
+<!doctype html>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=11,IE=10,IE=9,IE=8">
+    <meta name="baidu-site-verification" content="dIcXMeY8Ya">
+    
+    <title>[作业]JavaBean+Jsp简易购物车实现 | 小牛试一刀</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+    <meta name="keywords" content="Anthony, 刘经济, 技术博客">
+    <meta name="description" content="待人以儒墨，不热爱前端技术的后端开发不是一个好的吃货。">
+
+    
+    <link rel="alternative" href="/atom.xml" title="小牛试一刀" type="application/atom+xml">
+    
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    
+    <link rel="stylesheet" href="/css/style.css">
+    <!--[if lt IE 9]>
+    <script src="/js/html5.js"></script>
+    <![endif]-->
+    
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?d5ebf515ab530cfbdda5f5c85093fb41";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+</head>
+</html>
+<body class="home">
+    <!--[if lt IE 9]>
+    <div class="browsehappy">
+        当前网页 <strong>不支持</strong>
+        你正在使用的浏览器. 为了正常的访问, 请 <a href="http://browsehappy.com/">升级你的浏览器</a>.
+    </div>
+    <![endif]-->
+
+    <!-- 博客头部 -->
+    <header class="header">
+    <section class="container header-main">
+        <div class="logo">
+            <a href="/">
+                <div class="cover">
+                    <span class="name">小牛试一刀</span>
+                    <span class="description">斯人笔记本</span>
+                </div>
+            </a>
+        </div>
+        <div class="dropnav icon-paragraph-justify" id="JELON__btnDropNav"></div>
+        <ul class="menu hidden" id="JELON__menu">
+            
+            <li rel="/posts/6efe4b6c.html" class="item ">
+                <a href="/" title="首页" class="icon-home">&nbsp;首页</a>
+            </li>
+            
+            <li rel="/posts/6efe4b6c.html" class="item ">
+                <a href="/about/" title="关于" class="icon-about">&nbsp;关于</a>
+            </li>
+            
+            <li rel="/posts/6efe4b6c.html" class="item ">
+                <a href="/comment/" title="留言" class="icon-comment">&nbsp;留言</a>
+            </li>
+            
+        </ul>
+        <div class="profile clearfix">
+            <div class="feeds fl">
+                
+                
+                <p class="links">
+                    
+                        <a href="https://github.com/haowanxing" target="_blank">Github</a>
+                        |
+                    
+                        <a href="https://pages.coding.me" target="_blank">Hosted by Coding Pages</a>
+                        
+                    
+                </p>
+                <p class="sns">
+                    
+                        <a href="http://weibo.com/u/2214092525" class="sinaweibo" target="_blank"><b>■</b> 新浪微博</a>
+                    
+                        <a href="https://www.facebook.com/york.mail/" class="qqweibo" target="_blank"><b>■</b> Facebook</a>
+                    
+                    <a href="javascript: void(0);" class="wechat">
+                        <b>■</b>
+                        公众号
+                        <span class="popover">
+                            <img src="/img/wechat_mp.jpg" width="120" height="120" alt="我的微信订阅号">
+                            <i class="arrow"></i>
+                        </span>
+                    </a>
+                </p>
+                
+            </div>
+            <div class="avatar fr">
+                <img src="/uploads/qiniu/20181010153914990649885.png" alt="avatar" title="Jelon" >
+            </div>
+        </div>
+    </section>
+</header>
+
+
+    <!-- 博客正文 -->
+    <div class="container body clearfix">
+        <section class="content">
+            <div class="content-main widget">
+                <!-- 文章页 -->
+<!-- 文章 -->
+<article class="post article">
+    <header class="text-center">
+        <h3 class="post-title"><span>[作业]JavaBean+Jsp简易购物车实现</span></h3>
+    </header>
+    <p class="post-meta text-center">
+         发表于
+        <time datetime="2015-10-15T11:36:37.000Z">2015-10-15 19:36:37</time>
+
+        <!-- 不蒜子统计 -->
+        <span id="busuanzi_container_page_pv" style='display:none'">
+              <i class="icon-smile icon"></i> 阅读数：<span id="busuanzi_value_page_pv"></span>次
+        </span>
+
+
+    </p>
+    <div class="post-content">
+        <p>本次作业要求使用到JavaBean+纯Jsp，带有登陆功能的购物车系统。<br>登陆功能这里就不多讲了，前面的聊天室已经做过，这边直接拷贝就能使用了。<br>另外，本次作业中我加入了BootStrap来做一个小小风格美化。<br>不多说，直接上代码！<br>index.jsp 首页，也是登陆界面</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line">&lt;%@page contentType=&quot;text/html&quot; pageEncoding=&quot;UTF-8&quot;%&gt;</span><br><span class="line">&lt;%</span><br><span class="line">    Cookie[] cookies = request.getCookies();</span><br><span class="line">    String uname = &quot;&quot;;</span><br><span class="line">    String upwd = &quot;&quot;;</span><br><span class="line">    if(cookies!=null)&#123;</span><br><span class="line">        for(int i=0;i&lt;cookies.length;i++)</span><br><span class="line">        &#123;</span><br><span class="line">            Cookie cookie=cookies[i];</span><br><span class="line">            if(cookie.getName().equals(&quot;remname&quot;))</span><br><span class="line">            &#123;</span><br><span class="line">                uname = cookie.getValue();</span><br><span class="line">            &#125;</span><br><span class="line">            else if(cookie.getName().equals(&quot;rempwd&quot;))</span><br><span class="line">            &#123;</span><br><span class="line">                upwd = cookie.getValue();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">%&gt;</span><br><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;zh-CN&quot;&gt;</span><br><span class="line">    &lt;head&gt;</span><br><span class="line">        &lt;meta charset=&quot;utf-8&quot;&gt;</span><br><span class="line">        &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot;&gt;</span><br><span class="line">        &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,initial-scale=1&quot;&gt;</span><br><span class="line">        &lt;title&gt;请登录ShopCartDemo&lt;/title&gt;</span><br><span class="line">        &lt;link href=&quot;bootstrap.min.css&quot; rel=&quot;stylesheet&quot;&gt;</span><br><span class="line">    &lt;/head&gt;</span><br><span class="line">    &lt;body&gt;</span><br><span class="line">        &lt;div class=&quot;container&quot;&gt;</span><br><span class="line">            &lt;form class=&quot;form-horizontal&quot; action=&quot;dologin.jsp&quot; method=&quot;post&quot; name=&quot;loginform&quot;&gt;</span><br><span class="line">                &lt;div class=&quot;form-group&quot;&gt;</span><br><span class="line">                    &lt;label for=&quot;inputusername&quot; class=&quot;col-sm-5 control-label&quot;&gt;用户名&lt;/label&gt;</span><br><span class="line">                    &lt;div class=&quot;col-sm-2&quot;&gt;</span><br><span class="line">                        &lt;input class=&quot;form-control&quot; id=&quot;inputusername&quot; type=&quot;text&quot; name=&quot;username&quot; value=&quot;&lt;%=uname%&gt;&quot; placeholder=&quot;username&quot; /&gt;</span><br><span class="line">                    &lt;/div&gt;</span><br><span class="line">                &lt;/div&gt;</span><br><span class="line">                &lt;div class=&quot;form-group&quot;&gt;</span><br><span class="line">                    &lt;label for=&quot;inputpassword&quot; class=&quot;col-sm-5 control-label&quot;&gt;密码&lt;/label&gt;</span><br><span class="line">                    &lt;div class=&quot;col-sm-2&quot;&gt;</span><br><span class="line">                        &lt;input class=&quot;form-control&quot; id=&quot;inputpassword&quot; type=&quot;password&quot; name=&quot;password&quot; value=&quot;&lt;%=upwd%&gt;&quot; placeholder=&quot;password&quot; /&gt;</span><br><span class="line">                    &lt;/div&gt;</span><br><span class="line">                &lt;/div&gt;</span><br><span class="line">                &lt;div class=&quot;form-group&quot;&gt;</span><br><span class="line">                &lt;div class=&quot;col-sm-offset-5 col-sm-2&quot;&gt;</span><br><span class="line">                  &lt;div class=&quot;checkbox&quot;&gt;</span><br><span class="line">                    &lt;label&gt;</span><br><span class="line">                        &lt;input type=&quot;checkbox&quot; name=&quot;remember&quot; value=&quot;true&quot;&gt; 记住我</span><br><span class="line">                    &lt;/label&gt;</span><br><span class="line">                  &lt;/div&gt;</span><br><span class="line">                &lt;/div&gt;</span><br><span class="line">              &lt;/div&gt;</span><br><span class="line"></span><br><span class="line">                &lt;div class=&quot;form-group&quot;&gt;</span><br><span class="line">                  &lt;div class=&quot;col-sm-offset-5 col-sm-2&quot;&gt;</span><br><span class="line">                    &lt;button type=&quot;submit&quot; class=&quot;btn btn-default&quot;&gt;登陆&lt;/button&gt;</span><br><span class="line">                    &lt;button type=&quot;reset&quot; class=&quot;btn btn-default&quot;&gt;重置&lt;/button&gt;</span><br><span class="line">                  &lt;/div&gt;</span><br><span class="line">                &lt;/div&gt;</span><br><span class="line"></span><br><span class="line">            &lt;/form&gt;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">    &lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+<p>dologin.jsp 登陆信息处理页面</p>
+<a id="more"></a>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">&lt;%-- </span><br><span class="line">    Document   : dologin</span><br><span class="line">    Created on : 2015-10-9, 11:28:29</span><br><span class="line">    Author     : Anthony</span><br><span class="line">--%&gt;</span><br><span class="line"></span><br><span class="line">&lt;%@page contentType=&quot;text/html&quot; pageEncoding=&quot;UTF-8&quot;%&gt;</span><br><span class="line">&lt;%@page import=&quot;java.util.*&quot;%&gt;</span><br><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">    &lt;head&gt;</span><br><span class="line">        &lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=UTF-8&quot;&gt;</span><br><span class="line">        &lt;title&gt;正在登录...&lt;/title&gt;</span><br><span class="line">    &lt;/head&gt;</span><br><span class="line">    &lt;body&gt;</span><br><span class="line">        &lt;%</span><br><span class="line">        String username = request.getParameter(&quot;username&quot;);</span><br><span class="line">        String password = request.getParameter(&quot;password&quot;);</span><br><span class="line">        String remember = (String) request.getParameter(&quot;remember&quot;);</span><br><span class="line">        if(username == null)</span><br><span class="line">            username=&quot;&quot;;</span><br><span class="line">        if(password == null)</span><br><span class="line">            password=&quot;&quot;;</span><br><span class="line">        if(remember == null)</span><br><span class="line">            remember = &quot;false&quot;;</span><br><span class="line">        if(username.equals(&quot;201321092028&quot;)&amp;&amp;password.equals(&quot;123456&quot;) || username.equals(&quot;201321092027&quot;)&amp;&amp;password.equals(&quot;123456&quot;))</span><br><span class="line">        &#123;</span><br><span class="line">            if(remember != null &amp;&amp; remember.equals(&quot;true&quot;))</span><br><span class="line">            &#123;</span><br><span class="line">                Cookie cookie1 = new Cookie(&quot;remname&quot;,username);</span><br><span class="line">                Cookie cookie2 = new Cookie(&quot;rempwd&quot;,password);</span><br><span class="line">                cookie1.setMaxAge(60*60*24*5);</span><br><span class="line">                cookie2.setMaxAge(60*60*24*5);</span><br><span class="line">                response.addCookie(cookie1);</span><br><span class="line">                response.addCookie(cookie2);</span><br><span class="line">            &#125;</span><br><span class="line">            session.setAttribute(&quot;UserName&quot;,username);</span><br><span class="line">            session.setAttribute(&quot;IsLogin&quot;,&quot;true&quot;);</span><br><span class="line">            response.sendRedirect(&quot;goods.jsp&quot;);</span><br><span class="line">        &#125;else&#123;</span><br><span class="line">            response.sendRedirect(&quot;index.jsp&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">        %&gt;</span><br><span class="line">    &lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+<p>goods.jsp 商品列表页面</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line">&lt;%-- </span><br><span class="line">    Document   : goods</span><br><span class="line">    Created on : 2015-10-15, 17:11:28</span><br><span class="line">    Author     : anthony</span><br><span class="line">--%&gt;</span><br><span class="line"></span><br><span class="line">&lt;%@page contentType=&quot;text/html&quot; pageEncoding=&quot;UTF-8&quot;%&gt;</span><br><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;zh-CN&quot;&gt;</span><br><span class="line">    &lt;head&gt;</span><br><span class="line">        &lt;meta charset=&quot;utf-8&quot;&gt;</span><br><span class="line">        &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot;&gt;</span><br><span class="line">        &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,initial-scale=1&quot;&gt;</span><br><span class="line">        &lt;title&gt;商品列表&lt;/title&gt;</span><br><span class="line">        &lt;link href=&quot;bootstrap.min.css&quot; rel=&quot;stylesheet&quot;&gt;</span><br><span class="line">    &lt;/head&gt;</span><br><span class="line">    &lt;body&gt;</span><br><span class="line">        &lt;div class=&quot;container&quot;&gt;</span><br><span class="line"></span><br><span class="line">温馨提示：请选购商品并填写所需购买的数量</span><br><span class="line"></span><br><span class="line">            &lt;form method=&quot;post&quot; action=&quot;order.jsp&quot;&gt;</span><br><span class="line">                &lt;table class=&quot;table table-hover&quot;&gt;</span><br><span class="line">                    &lt;thead&gt;</span><br><span class="line">                        &lt;tr&gt;</span><br><span class="line">                            &lt;th&gt;编号&lt;/th&gt;&lt;th&gt;商品名&lt;/th&gt;&lt;th&gt;单价(元/斤)&lt;/th&gt;&lt;th&gt;购买数量&lt;/th&gt;</span><br><span class="line">                        &lt;/tr&gt;</span><br><span class="line">                    &lt;/thead&gt;</span><br><span class="line">                    &lt;tbody&gt;</span><br><span class="line">                        &lt;tr&gt;</span><br><span class="line">                            &lt;td&gt;1&lt;/td&gt;&lt;td&gt;苹果&lt;/td&gt;&lt;td&gt;13&lt;/td&gt;&lt;td&gt;&lt;input class=&quot;form-control&quot; type=&quot;text&quot; name=&quot;apple&quot; placeholder=&quot;0&quot;/&gt;&lt;/td&gt;</span><br><span class="line">                        &lt;/tr&gt;</span><br><span class="line">                        &lt;tr&gt;</span><br><span class="line">                            &lt;td&gt;2&lt;/td&gt;&lt;td&gt;橘子&lt;/td&gt;&lt;td&gt;8&lt;/td&gt;&lt;td&gt;&lt;input class=&quot;form-control&quot; type=&quot;text&quot; name=&quot;orange&quot; placeholder=&quot;0&quot;/&gt;&lt;/td&gt;</span><br><span class="line">                        &lt;/tr&gt;</span><br><span class="line">                        &lt;tr&gt;</span><br><span class="line">                            &lt;td&gt;3&lt;/td&gt;&lt;td&gt;西瓜&lt;/td&gt;&lt;td&gt;2&lt;/td&gt;&lt;td&gt;&lt;input class=&quot;form-control&quot; type=&quot;text&quot; name=&quot;watermalon&quot; placeholder=&quot;0&quot;/&gt;&lt;/td&gt;</span><br><span class="line">                        &lt;/tr&gt;</span><br><span class="line">                        &lt;tr&gt;</span><br><span class="line">                            &lt;td&gt;4&lt;/td&gt;&lt;td&gt;火龙果&lt;/td&gt;&lt;td&gt;15&lt;/td&gt;&lt;td&gt;&lt;input class=&quot;form-control&quot; type=&quot;text&quot; name=&quot;fires&quot; placeholder=&quot;0&quot;/&gt;&lt;/td&gt;</span><br><span class="line">                        &lt;/tr&gt;</span><br><span class="line">                    &lt;/tbody&gt;</span><br><span class="line">                &lt;/table&gt;</span><br><span class="line">                &lt;button class=&quot;btn btn-success col-sm-offset-11&quot; type=&quot;submit&quot;&gt;确认订单&lt;/button&gt;</span><br><span class="line">            &lt;/form&gt;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">    &lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+<p>order.jsp 订单信息页面</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line">&lt;%-- </span><br><span class="line">    Document   : order</span><br><span class="line">    Created on : 2015-10-15, 18:28:05</span><br><span class="line">    Author     : anthony</span><br><span class="line">--%&gt;</span><br><span class="line"></span><br><span class="line">&lt;%@page contentType=&quot;text/html&quot; pageEncoding=&quot;UTF-8&quot;%&gt;</span><br><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;zh-CN&quot;&gt;</span><br><span class="line">    &lt;head&gt;</span><br><span class="line">        &lt;meta charset=&quot;utf-8&quot;&gt;</span><br><span class="line">        &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot;&gt;</span><br><span class="line">        &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,initial-scale=1&quot;&gt;</span><br><span class="line">        &lt;title&gt;订单信息&lt;/title&gt;</span><br><span class="line">        &lt;link href=&quot;bootstrap.min.css&quot; rel=&quot;stylesheet&quot;&gt;</span><br><span class="line">    &lt;/head&gt;</span><br><span class="line">    &lt;body&gt;</span><br><span class="line">        &lt;jsp:useBean id=&quot;cart&quot; scope=&quot;page&quot; class=&quot;Cart.CountPrice&quot;&gt;</span><br><span class="line">            &lt;jsp:setProperty name=&quot;cart&quot; property=&quot;n_apple&quot; param=&quot;apple&quot;/&gt;</span><br><span class="line">            &lt;jsp:setProperty name=&quot;cart&quot; property=&quot;n_orange&quot; param=&quot;orange&quot;/&gt;</span><br><span class="line">            &lt;jsp:setProperty name=&quot;cart&quot; property=&quot;n_watermalon&quot; param=&quot;watermalon&quot;/&gt;</span><br><span class="line">            &lt;jsp:setProperty name=&quot;cart&quot; property=&quot;n_fires&quot; param=&quot;fires&quot;/&gt;</span><br><span class="line">        &lt;div class=&quot;container&quot;&gt;</span><br><span class="line"></span><br><span class="line">您的订单信息：</span><br><span class="line"></span><br><span class="line">            &lt;table class=&quot;table table-bordered&quot;&gt;</span><br><span class="line">                &lt;thead&gt;</span><br><span class="line">                    &lt;tr class=&quot;warning&quot;&gt;</span><br><span class="line">                        &lt;th&gt;编号&lt;/th&gt;&lt;th&gt;商品名&lt;/th&gt;&lt;th&gt;单价(元/斤)&lt;/th&gt;&lt;th&gt;数量&lt;/th&gt;&lt;th&gt;价格&lt;/th&gt;</span><br><span class="line">                    &lt;/tr&gt;</span><br><span class="line">                &lt;/thead&gt;</span><br><span class="line">                &lt;tbody&gt;</span><br><span class="line">                    &lt;tr&gt;</span><br><span class="line">                        &lt;td&gt;1&lt;/td&gt;&lt;td&gt;苹果&lt;/td&gt;&lt;td&gt;13&lt;/td&gt;&lt;td&gt;&lt;jsp:getProperty name=&quot;cart&quot; property=&quot;n_apple&quot;/&gt;&lt;/td&gt;&lt;td&gt;&lt;jsp:getProperty name=&quot;cart&quot; property=&quot;p_apple&quot;/&gt;&lt;/td&gt;</span><br><span class="line">                    &lt;/tr&gt;</span><br><span class="line">                    &lt;tr&gt;</span><br><span class="line">                        &lt;td&gt;2&lt;/td&gt;&lt;td&gt;橘子&lt;/td&gt;&lt;td&gt;8&lt;/td&gt;&lt;td&gt;&lt;jsp:getProperty name=&quot;cart&quot; property=&quot;n_orange&quot;/&gt;&lt;/td&gt;&lt;td&gt;&lt;jsp:getProperty name=&quot;cart&quot; property=&quot;p_orange&quot;/&gt;&lt;/td&gt;</span><br><span class="line">                    &lt;/tr&gt;</span><br><span class="line">                    &lt;tr&gt;</span><br><span class="line">                        &lt;td&gt;3&lt;/td&gt;&lt;td&gt;西瓜&lt;/td&gt;&lt;td&gt;2&lt;/td&gt;&lt;td&gt;&lt;jsp:getProperty name=&quot;cart&quot; property=&quot;n_watermalon&quot;/&gt;&lt;/td&gt;&lt;td&gt;&lt;jsp:getProperty name=&quot;cart&quot; property=&quot;p_watermalon&quot;/&gt;&lt;/td&gt;</span><br><span class="line">                    &lt;/tr&gt;</span><br><span class="line">                    &lt;tr&gt;</span><br><span class="line">                        &lt;td&gt;4&lt;/td&gt;&lt;td&gt;火龙果&lt;/td&gt;&lt;td&gt;15&lt;/td&gt;&lt;td&gt;&lt;jsp:getProperty name=&quot;cart&quot; property=&quot;n_fires&quot;/&gt;&lt;/td&gt;&lt;td&gt;&lt;jsp:getProperty name=&quot;cart&quot; property=&quot;p_fires&quot;/&gt;&lt;/td&gt;</span><br><span class="line">                    &lt;/tr&gt;</span><br><span class="line">                &lt;/tbody&gt;</span><br><span class="line">            &lt;/table&gt;</span><br><span class="line">            &lt;div class=&quot;form-group&quot;&gt;</span><br><span class="line">                &lt;label for=&quot;confirmination&quot; class=&quot;col-sm-1 col-sm-offset-9 control-label text-right&quot;&gt;总价：</span><br><span class="line">&lt;jsp:getProperty name=&quot;cart&quot; property=&quot;totalprice&quot;/&gt;元&lt;/label&gt;</span><br><span class="line">                &lt;div class=&quot;col-sm-2&quot;&gt;</span><br><span class="line">                    &lt;button type=&quot;button&quot; id=&quot;confirmination&quot; class=&quot;btn btn-success&quot;&gt;付款&lt;/button&gt;</span><br><span class="line">                    [&lt;button type=&quot;button&quot; class=&quot;btn btn-danger&quot;&gt;取消&lt;/button&gt;](goods.jsp)</span><br><span class="line">                &lt;/div&gt;</span><br><span class="line">            &lt;/div&gt;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">        &lt;/jsp:useBean&gt;</span><br><span class="line">    &lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+<p>另外，还需要一个JavaBean CountPrice.java</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br></pre></td><td class="code"><pre><span class="line">package Cart;</span><br><span class="line"></span><br><span class="line">/*</span><br><span class="line"> * To change this license header, choose License Headers in Project Properties.</span><br><span class="line"> * To change this template file, choose Tools | Templates</span><br><span class="line"> * and open the template in the editor.</span><br><span class="line"> */</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> *</span><br><span class="line"> * @author anthony</span><br><span class="line"> */</span><br><span class="line">public class CountPrice &#123;</span><br><span class="line">    private double n_apple;</span><br><span class="line">    private double n_orange;</span><br><span class="line">    private double n_watermalon;</span><br><span class="line">    private double n_fires;</span><br><span class="line">    private double p_apple;</span><br><span class="line">    private double p_orange;</span><br><span class="line">    private double p_watermalon;</span><br><span class="line">    private double p_fires;</span><br><span class="line">    private double totalprice;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * @return the n_apple</span><br><span class="line">     */</span><br><span class="line">    public double getN_apple() &#123;</span><br><span class="line">        return n_apple;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * @param n_apple the n_apple to set</span><br><span class="line">     */</span><br><span class="line">    public void setN_apple(double n_apple) &#123;</span><br><span class="line">        this.n_apple = n_apple;</span><br><span class="line">        this.setP_apple(n_apple*13);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * @return the n_orange</span><br><span class="line">     */</span><br><span class="line">    public double getN_orange() &#123;</span><br><span class="line">        return n_orange;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * @param n_orange the n_orange to set</span><br><span class="line">     */</span><br><span class="line">    public void setN_orange(double n_orange) &#123;</span><br><span class="line">        this.n_orange = n_orange;</span><br><span class="line">        this.setP_orange(n_orange*8);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * @return the n_watermalon</span><br><span class="line">     */</span><br><span class="line">    public double getN_watermalon() &#123;</span><br><span class="line">        return n_watermalon;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * @param n_watermalon the n_watermalon to set</span><br><span class="line">     */</span><br><span class="line">    public void setN_watermalon(double n_watermalon) &#123;</span><br><span class="line">        this.n_watermalon = n_watermalon;</span><br><span class="line">        this.setP_watermalon(n_watermalon*2);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * @return the n_fires</span><br><span class="line">     */</span><br><span class="line">    public double getN_fires() &#123;</span><br><span class="line">        return n_fires;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * @param n_fires the n_fires to set</span><br><span class="line">     */</span><br><span class="line">    public void setN_fires(double n_fires) &#123;</span><br><span class="line">        this.n_fires = n_fires;</span><br><span class="line">        this.setP_fires(n_fires*15);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * @return the totalprice</span><br><span class="line">     */</span><br><span class="line">    public double getTotalprice() &#123;</span><br><span class="line">        this.totalprice = this.getP_apple()+this.getP_fires()+this.getP_orange()+this.getP_watermalon();</span><br><span class="line">        return totalprice;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * @return the p_apple</span><br><span class="line">     */</span><br><span class="line">    public double getP_apple() &#123;</span><br><span class="line">        return p_apple;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * @return the p_orange</span><br><span class="line">     */</span><br><span class="line">    public double getP_orange() &#123;</span><br><span class="line">        return p_orange;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * @return the p_watermalon</span><br><span class="line">     */</span><br><span class="line">    public double getP_watermalon() &#123;</span><br><span class="line">        return p_watermalon;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * @return the p_fires</span><br><span class="line">     */</span><br><span class="line">    public double getP_fires() &#123;</span><br><span class="line">        return p_fires;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * @param p_apple the p_apple to set</span><br><span class="line">     */</span><br><span class="line">    public void setP_apple(double p_apple) &#123;</span><br><span class="line">        this.p_apple = p_apple;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * @param p_orange the p_orange to set</span><br><span class="line">     */</span><br><span class="line">    public void setP_orange(double p_orange) &#123;</span><br><span class="line">        this.p_orange = p_orange;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * @param p_watermalon the p_watermalon to set</span><br><span class="line">     */</span><br><span class="line">    public void setP_watermalon(double p_watermalon) &#123;</span><br><span class="line">        this.p_watermalon = p_watermalon;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * @param p_fires the p_fires to set</span><br><span class="line">     */</span><br><span class="line">    public void setP_fires(double p_fires) &#123;</span><br><span class="line">        this.p_fires = p_fires;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>附上NetBean项目工程：<br>链接: <a href="http://pan.baidu.com/s/1o66DrjO" target="_blank" rel="noopener">http://pan.baidu.com/s/1o66DrjO</a> <del>密码: yksy</del></p>
+
+    </div>
+    <p class="post-meta">
+        <span class="post-cat">分类：
+            <a class="cat-link" href="/categories/学习笔记/">学习笔记</a>
+        </span>
+        <span class="post-tags">
+            标签：
+            
+    
+        <a href="/tags/Web/" title="Web">Web</a>
+    
+
+        </span>
+    </p>
+</article>
+<!-- 分享按钮 -->
+
+  <div class="article-share clearfix text-center">
+    <div class="share-area">
+      <span class="share-txt">分享到：</span>
+      <a href="javascript: window.open('http://service.weibo.com/share/share.php?url=' + encodeURIComponent(location.href) + '&title=' + document.title + '&language=zh_cn');" class="share-icon weibo"></a>
+      <a href="javascript: alert('请复制链接到微信并发送');" class="share-icon wechat"></a>
+      <a href="javascript: window.open('http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=' + encodeURIComponent(location.href) + '&title=' + document.title);" class="share-icon qqzone"></a>
+      <a href="javascript: window.open('http://connect.qq.com/widget/shareqq/index.html?url=' + encodeURIComponent(location.href) + '&desc=imsry.cn个人博客&title=' + document.title + '&callback=' + encodeURIComponent(location.href));" class="share-icon qq"></a>
+      <a href="javascript: window.open('http://shuo.douban.com/!service/share?href=' + encodeURIComponent(location.href) + '&name=' + document.title + '&text=' + document.title);" class="share-icon douban"></a>
+    </div>
+  </div>
+
+
+
+<!-- 上一篇/下一篇 -->
+
+<div class="article-nav clearfix">
+    
+    <span class="prev fl">
+        上一篇<br >
+        <a href="/posts/dd8a79ee.html">
+            
+                [作业练习]带数据库的简易购物车
+            
+        </a>
+    </span>
+    
+
+    
+    <span class="next fr">
+        下一篇<br >
+        <a href="/posts/d4ca8601.html">
+            
+                linux下mysql的root密码忘记解决方法
+            
+        </a>
+    </span>
+    
+</div>
+
+<!-- 文章评论 -->
+
+  <script src="/js/comment.js"></script>
+  <div id="comments" class="comment">
+    <!--
+    <div class="sign-bar">
+      GitHub 已登录!
+      <span class="sign-link">登出</span>
+    </div>
+    <section class="box">
+      <div class="com-avatar"><img src="/img/jelon.jpg" alt="avatar"></div>
+      <div class="com-text">
+        <div class="main">
+          <textarea class="text-area-edited show" placeholder="欢迎评论！"></textarea>
+          <div class="text-area-preview"></div>
+        </div>
+        <div class="switch">
+          <div class="switch-item on">编辑</div>
+          <div class="switch-item">预览</div>
+        </div>
+        <div class="button">提交</div>
+      </div>
+    </section>
+    <section class="tips">注：评论支持 markdown 语法！</section>
+    <section class="list-wrap">
+      <ul class="list">
+        <li>
+          <div class="user-avatar">
+            <a href="/">
+              <img src="/img/jelon.jpg" alt="user-avatar">
+            </a>
+          </div>
+          <div class="user-comment">
+            <div class="user-comment-header">
+              <span class="post-name">张德龙</span>
+              <span class="post-time">2017年12月12日</span>
+              <span class="like liked">已赞</span>
+              <span class="like-num">2</span>
+            </div>
+            <div class="user-comment-body">333333</div>
+          </div>
+        </li>
+        <li>
+          <div class="user-avatar">
+            <a href="/">
+              <img src="/img/jelon.jpg" alt="user-avatar">
+            </a>
+          </div>
+          <div class="user-comment">
+            <div class="user-comment-header">
+              <span class="post-name">刘德华</span>
+              <span class="post-time">2017年12月12日</span>
+              <span class="like">点赞</span>
+              <span class="like-num">2</span>
+            </div>
+            <div class="user-comment-body">vvvvv</div>
+          </div>
+        </li>
+      </ul>
+      <div class="page-nav">
+        <a href="javascript: void(0);" class="item">1</a>
+        <a href="javascript: void(0);" class="item">2</a>
+        <a href="javascript: void(0);" class="item current">3</a>
+      </div>
+    </section>
+    -->
+  </div>
+  <script>
+  JELON.Comment({
+    container: 'comments',
+    label: 'work-javabean-jsp-shopcart-1' || 'posts/6efe4b6c.html',
+    owner: 'haowanxing',
+    repo: 'haowanxing.github.io',
+    clientId: '7e6b078394a99b7940d2',
+    clientSecret: 'ff64a6b066e97af64358c44a96e0c7dd398aba1e'
+  });
+  </script>
+
+
+
+            </div>
+
+        </section>
+        <!-- 侧栏部分 -->
+<aside class="sidebar">
+    
+    <section class="widget">
+        <h3 class="widget-hd"><strong>文章搜索</strong></h3>
+        <div class="search-form">
+  <form
+    id="searchForm"
+    method="GET"
+    action="https://www.baidu.com/s"
+    ectype="application/x-www-form-urlencoded"
+    target="_blank"
+    autocomplete="false"
+    onsubmit="javascript: return false;">
+    <input
+      id="searchKeyword"
+      type="text"
+      class="form-control"
+      placeholder="输入关键字搜索"
+      autocomplete="false"
+    />
+    <input id="searchKeywordHidden" type="hidden" name="wd" />
+    <input id="searchButton" class="btn" type="submit" value="搜索" />
+  </form>
+</div>
+    </section>
+    
+
+    <section class="widget">
+        <h3 class="widget-hd"><strong>文章分类</strong></h3>
+        <!-- 文章分类 -->
+<ul class="widget-bd">
+    
+    <li>
+        <a href="/categories/学习笔记/">学习笔记</a>
+        <span class="badge">(48)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/编程语言/">编程语言</a>
+        <span class="badge">(6)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/杂谈/">杂谈</a>
+        <span class="badge">(4)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/Learn-GO/">Learn-GO</a>
+        <span class="badge">(6)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/算法/">算法</a>
+        <span class="badge">(6)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/开发板/">开发板</a>
+        <span class="badge">(1)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/Linux/">Linux</a>
+        <span class="badge">(15)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/PHP/">PHP</a>
+        <span class="badge">(9)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/网络安全/">网络安全</a>
+        <span class="badge">(2)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/数据库/">数据库</a>
+        <span class="badge">(2)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/MacOS/">MacOS</a>
+        <span class="badge">(1)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/Web/">Web</a>
+        <span class="badge">(2)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/我的分享/">我的分享</a>
+        <span class="badge">(1)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/开放平台/">开放平台</a>
+        <span class="badge">(1)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/考试/">考试</a>
+        <span class="badge">(1)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/游戏/">游戏</a>
+        <span class="badge">(2)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/学习笔记/Linux/">Linux</a>
+        <span class="badge">(1)</span>
+    </li>
+    
+</ul>
+    </section>
+
+    
+    <section class="widget">
+        <h3 class="widget-hd"><strong>热门标签</strong></h3>
+        <!-- 文章标签 -->
+<div class="widget-bd tag-wrap">
+  
+    <a class="tag-item" href="/tags/Docker/" title="Docker">Docker (1)</a>
+  
+    <a class="tag-item" href="/tags/Golang/" title="Golang">Golang (1)</a>
+  
+    <a class="tag-item" href="/tags/LNMP/" title="LNMP">LNMP (2)</a>
+  
+    <a class="tag-item" href="/tags/OrangePi/" title="OrangePi">OrangePi (1)</a>
+  
+    <a class="tag-item" href="/tags/Network/" title="Network">Network (3)</a>
+  
+    <a class="tag-item" href="/tags/网卡/" title="网卡">网卡 (1)</a>
+  
+    <a class="tag-item" href="/tags/PHP/" title="PHP">PHP (11)</a>
+  
+    <a class="tag-item" href="/tags/算法/" title="算法">算法 (1)</a>
+  
+    <a class="tag-item" href="/tags/时间复杂度/" title="时间复杂度">时间复杂度 (1)</a>
+  
+    <a class="tag-item" href="/tags/定理/" title="定理">定理 (1)</a>
+  
+    <a class="tag-item" href="/tags/Go/" title="Go">Go (1)</a>
+  
+    <a class="tag-item" href="/tags/gRPC/" title="gRPC">gRPC (1)</a>
+  
+    <a class="tag-item" href="/tags/RPC/" title="RPC">RPC (1)</a>
+  
+    <a class="tag-item" href="/tags/Apache/" title="Apache">Apache (4)</a>
+  
+    <a class="tag-item" href="/tags/Linux/" title="Linux">Linux (3)</a>
+  
+    <a class="tag-item" href="/tags/Proxy/" title="Proxy">Proxy (1)</a>
+  
+    <a class="tag-item" href="/tags/面试/" title="面试">面试 (1)</a>
+  
+    <a class="tag-item" href="/tags/firewall/" title="firewall">firewall (1)</a>
+  
+    <a class="tag-item" href="/tags/CentOS/" title="CentOS">CentOS (3)</a>
+  
+    <a class="tag-item" href="/tags/https/" title="https">https (1)</a>
+  
+    <a class="tag-item" href="/tags/Chrome/" title="Chrome">Chrome (1)</a>
+  
+    <a class="tag-item" href="/tags/性能/" title="性能">性能 (3)</a>
+  
+    <a class="tag-item" href="/tags/VPN/" title="VPN">VPN (1)</a>
+  
+    <a class="tag-item" href="/tags/DS-Store/" title=".DS_Store">.DS_Store (1)</a>
+  
+    <a class="tag-item" href="/tags/Discuz/" title="Discuz">Discuz (1)</a>
+  
+    <a class="tag-item" href="/tags/MySQL/" title="MySQL">MySQL (9)</a>
+  
+    <a class="tag-item" href="/tags/Glassfish/" title="Glassfish">Glassfish (1)</a>
+  
+    <a class="tag-item" href="/tags/Java/" title="Java">Java (2)</a>
+  
+    <a class="tag-item" href="/tags/C语言/" title="C语言">C语言 (1)</a>
+  
+    <a class="tag-item" href="/tags/html/" title="html">html (1)</a>
+  
+    <a class="tag-item" href="/tags/Javascript/" title="Javascript">Javascript (2)</a>
+  
+    <a class="tag-item" href="/tags/Laravel/" title="Laravel">Laravel (1)</a>
+  
+    <a class="tag-item" href="/tags/MarkDown/" title="MarkDown">MarkDown (1)</a>
+  
+    <a class="tag-item" href="/tags/数据结构/" title="数据结构">数据结构 (1)</a>
+  
+    <a class="tag-item" href="/tags/Vim/" title="Vim">Vim (1)</a>
+  
+    <a class="tag-item" href="/tags/LAMP/" title="LAMP">LAMP (1)</a>
+  
+    <a class="tag-item" href="/tags/MacOS/" title="MacOS">MacOS (4)</a>
+  
+    <a class="tag-item" href="/tags/php/" title="php">php (2)</a>
+  
+    <a class="tag-item" href="/tags/Git/" title="Git">Git (1)</a>
+  
+</div>
+    </section>
+    
+
+    
+
+    
+    <!-- 友情链接 -->
+    <section class="widget">
+        <h3 class="widget-hd"><strong>友情链接</strong></h3>
+        <!-- 文章分类 -->
+<ul class="widget-bd">
+    
+        <li>
+            <a href="https://imququ.com/" target="_blank" title="Jerry Qu">Jerry Qu</a>
+        </li>
+    
+        <li>
+            <a href="https://jelon.info/" target="_blank" title="Zhang Delong">Jelon</a>
+        </li>
+    
+</ul>
+
+    </section>
+    
+</aside>
+<!-- / 侧栏部分 -->
+    </div>
+
+    <!-- 博客底部 -->
+    <footer class="footer">
+<div style="margin-bottom:1em;">
+
+        <!-- 不蒜子统计 -->
+        <span id="busuanzi_container_site_pv">
+                本站总访问量<span id="busuanzi_value_site_pv"></span>次
+        </span>
+        <span class="post-meta-divider">|</span>
+        <span id="busuanzi_container_site_uv" style='display:none'>
+                本站访客数<span id="busuanzi_value_site_uv"></span>人
+        </span>
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  
+</div>
+    &copy;
+    
+        2014-2020
+    
+
+    <a href="/">Best Wishes</a>
+</footer>
+<div class="back-to-top" id="JELON__backToTop" title="返回顶部">返回顶部</div>
+
+    <!--博客js脚本 -->
+    <!-- 这里放网站js脚本 -->
+<script src="/js/main.js?v=1591351450002"></script>
+</body>
+</html>

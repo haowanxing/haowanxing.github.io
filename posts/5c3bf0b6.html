@@ -1,0 +1,1494 @@
+<!doctype html>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=11,IE=10,IE=9,IE=8">
+    <meta name="baidu-site-verification" content="dIcXMeY8Ya">
+    
+    <title>PHP加解密算法使用openssl替换mcrypt扩展 | 小牛试一刀</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+    <meta name="keywords" content="Anthony, 刘经济, 技术博客">
+    <meta name="description" content="待人以儒墨，不热爱前端技术的后端开发不是一个好的吃货。">
+
+    
+    <link rel="alternative" href="/atom.xml" title="小牛试一刀" type="application/atom+xml">
+    
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    
+    <link rel="stylesheet" href="/css/style.css">
+    <!--[if lt IE 9]>
+    <script src="/js/html5.js"></script>
+    <![endif]-->
+    
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?d5ebf515ab530cfbdda5f5c85093fb41";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+</head>
+</html>
+<body class="home">
+    <!--[if lt IE 9]>
+    <div class="browsehappy">
+        当前网页 <strong>不支持</strong>
+        你正在使用的浏览器. 为了正常的访问, 请 <a href="http://browsehappy.com/">升级你的浏览器</a>.
+    </div>
+    <![endif]-->
+
+    <!-- 博客头部 -->
+    <header class="header">
+    <section class="container header-main">
+        <div class="logo">
+            <a href="/">
+                <div class="cover">
+                    <span class="name">小牛试一刀</span>
+                    <span class="description">斯人笔记本</span>
+                </div>
+            </a>
+        </div>
+        <div class="dropnav icon-paragraph-justify" id="JELON__btnDropNav"></div>
+        <ul class="menu hidden" id="JELON__menu">
+            
+            <li rel="/posts/5c3bf0b6.html" class="item ">
+                <a href="/" title="首页" class="icon-home">&nbsp;首页</a>
+            </li>
+            
+            <li rel="/posts/5c3bf0b6.html" class="item ">
+                <a href="/about/" title="关于" class="icon-about">&nbsp;关于</a>
+            </li>
+            
+            <li rel="/posts/5c3bf0b6.html" class="item ">
+                <a href="/comment/" title="留言" class="icon-comment">&nbsp;留言</a>
+            </li>
+            
+        </ul>
+        <div class="profile clearfix">
+            <div class="feeds fl">
+                
+                
+                <p class="links">
+                    
+                        <a href="https://github.com/haowanxing" target="_blank">Github</a>
+                        |
+                    
+                        <a href="https://pages.coding.me" target="_blank">Hosted by Coding Pages</a>
+                        
+                    
+                </p>
+                <p class="sns">
+                    
+                        <a href="http://weibo.com/u/2214092525" class="sinaweibo" target="_blank"><b>■</b> 新浪微博</a>
+                    
+                        <a href="https://www.facebook.com/york.mail/" class="qqweibo" target="_blank"><b>■</b> Facebook</a>
+                    
+                    <a href="javascript: void(0);" class="wechat">
+                        <b>■</b>
+                        公众号
+                        <span class="popover">
+                            <img src="/img/wechat_mp.jpg" width="120" height="120" alt="我的微信订阅号">
+                            <i class="arrow"></i>
+                        </span>
+                    </a>
+                </p>
+                
+            </div>
+            <div class="avatar fr">
+                <img src="/uploads/qiniu/20181010153914990649885.png" alt="avatar" title="Jelon" >
+            </div>
+        </div>
+    </section>
+</header>
+
+
+    <!-- 博客正文 -->
+    <div class="container body clearfix">
+        <section class="content">
+            <div class="content-main widget">
+                <!-- 文章页 -->
+<!-- 文章 -->
+<article class="post article">
+    <header class="text-center">
+        <h3 class="post-title"><span>PHP加解密算法使用openssl替换mcrypt扩展</span></h3>
+    </header>
+    <p class="post-meta text-center">
+         发表于
+        <time datetime="2019-02-20T10:02:20.000Z">2019-02-20 18:02:20</time>
+
+        <!-- 不蒜子统计 -->
+        <span id="busuanzi_container_page_pv" style='display:none'">
+              <i class="icon-smile icon"></i> 阅读数：<span id="busuanzi_value_page_pv"></span>次
+        </span>
+
+
+    </p>
+    <div class="post-content">
+        <p>PHP版本从7.2开始不再支持mcrypt扩展，所以我们需要使用OpenSSl对其进行替换。本文仅列出部分算法的替换示例，所以不在本文出现的算法或模式需要自行尝试，顺水推舟。</p>
+<p>本文替换案例：</p>
+<ol>
+<li>MCRYPT_RIJNDAEL_128 | MCRYPT_MODE_ECB =&gt; AES-128-ECB</li>
+<li>MCRYPT_DES | MCRYPT_MODE_CBC =&gt; DES-CBC</li>
+<li>MCRYPT_RIJNDAEL_128 | MCRYPT_MODE_CBC =&gt; AES-128-CBC</li>
+<li>MCRYPT_XTEA | MCRYPT_MODE_CBC</li>
+</ol>
+<blockquote>
+<p>在使用 MCRYPT_RIJNDAEL_128 的地方，如果秘钥长度分别为16、24、32，则加密算法用 AES-128-ECB、AES-192-ECB、AES-256-ECB，BlockSize为16、24、32。</p>
+</blockquote>
+<p>首先列出需要用到的数据填充方法：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">ZeroPadding</span><span class="params">($str, $block = <span class="number">16</span>)</span> </span>&#123;</span><br><span class="line">    $pad = $block - (strlen($str) % $block);</span><br><span class="line">    <span class="keyword">if</span>($pad == $block) <span class="keyword">return</span> $str;</span><br><span class="line">    <span class="keyword">return</span> $str.str_repeat(chr(<span class="number">0</span>),$pad);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">ZeroUnPadding</span><span class="params">($str)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> rtrim($str, <span class="string">"\0"</span>);</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">PKCS7Padding</span><span class="params">($str, $block_size)</span> </span>&#123;</span><br><span class="line">    $padding_char = $block_size - (strlen($str) % $block_size);</span><br><span class="line">    $padding_str = str_repeat(chr($padding_char),$padding_char);</span><br><span class="line">    <span class="keyword">return</span> $str.$padding_str;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">PKCS7UnPadding</span><span class="params">($str)</span> </span>&#123;</span><br><span class="line">    $char=substr($str,<span class="number">-1</span>,<span class="number">1</span>);</span><br><span class="line">    $num=ord($char);</span><br><span class="line">    <span class="keyword">if</span>($num&gt;<span class="number">0</span> &amp;&amp; $num &lt;= strlen($str)) &#123;</span><br><span class="line">        $str = substr($str, <span class="number">0</span>, <span class="number">-1</span> * $num);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> $str;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<h2 id="算法MCRYPT-RIJNDAEL-128-MCRYPT-MODE-ECB-对应-AES-128-ECB"><a href="#算法MCRYPT-RIJNDAEL-128-MCRYPT-MODE-ECB-对应-AES-128-ECB" class="headerlink" title="算法MCRYPT_RIJNDAEL_128 | MCRYPT_MODE_ECB 对应 AES-128-ECB"></a>算法MCRYPT_RIJNDAEL_128 | MCRYPT_MODE_ECB 对应 AES-128-ECB</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//使用mcrypt加密</span></span><br><span class="line">$data = <span class="string">'1234567890123456'</span>;</span><br><span class="line">$key = md5(<span class="string">'1230456789'</span>, <span class="keyword">true</span>);</span><br><span class="line">$encrypted = mcrypt_encrypt(MCRYPT_RIJNDAEL_128, $key, $data, MCRYPT_MODE_ECB);</span><br><span class="line">$edata = base64_encode($encrypted);</span><br><span class="line"><span class="keyword">return</span> $edata;</span><br><span class="line"></span><br><span class="line"><span class="comment">//使用OpenSSL加密</span></span><br><span class="line">$data = <span class="string">'1234567890123456'</span>;</span><br><span class="line">$key = md5(<span class="string">'1230456789'</span>, <span class="keyword">true</span>);</span><br><span class="line"> </span><br><span class="line">$encrypted = openssl_encrypt(ZeroPadding($data, <span class="number">16</span>), <span class="string">'AES-128-ECB'</span>, $key, OPENSSL_RAW_DATA | OPENSSL_ZERO_PADDING);</span><br><span class="line">$edata = base64_encode($encrypted);</span><br><span class="line"><span class="keyword">return</span> $edata;</span><br><span class="line"></span><br><span class="line"><span class="comment">//使用OpenSSL解密</span></span><br><span class="line">$key = md5(<span class="string">'1230456789'</span>, <span class="keyword">true</span>);</span><br><span class="line"></span><br><span class="line">$data = openssl_decrypt(base64_decode($edata), <span class="string">'AES-128-ECB'</span>, $key, OPENSSL_RAW_DATA | OPENSSL_ZERO_PADDING);</span><br><span class="line">$data = ZeroUnPadding($data);</span><br><span class="line"><span class="keyword">return</span> $data;</span><br></pre></td></tr></table></figure>
+<h2 id="算法MCRYPT-DES-MCRYPT-MODE-CBC-对应-DES-CBC"><a href="#算法MCRYPT-DES-MCRYPT-MODE-CBC-对应-DES-CBC" class="headerlink" title="算法MCRYPT_DES | MCRYPT_MODE_CBC 对应 DES-CBC"></a>算法MCRYPT_DES | MCRYPT_MODE_CBC 对应 DES-CBC</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//使用mcrypt加密</span></span><br><span class="line">$data = <span class="string">'1234567890123456'</span>;</span><br><span class="line">$key = md5(<span class="string">'1230456789'</span>, <span class="keyword">true</span>);</span><br><span class="line">$encrypted = mcrypt_encrypt(MCRYPT_DES, $key, $data, MCRYPT_MODE_CBC, $iv);</span><br><span class="line">$edata = base64_encode($encrypted);</span><br><span class="line"><span class="keyword">return</span> $edata;</span><br><span class="line"></span><br><span class="line"><span class="comment">//使用OpenSSL加密：</span></span><br><span class="line">$data = <span class="string">'1234567890123456'</span>;</span><br><span class="line">$key = <span class="string">'abcd1234'</span>;</span><br><span class="line">$iv = <span class="string">'mds2345&amp;'</span>;</span><br><span class="line"> </span><br><span class="line">$encrypted = openssl_encrypt(ZeroPadding($data, <span class="number">8</span>), <span class="string">'DES-CBC'</span>, $key, OPENSSL_RAW_DATA | OPENSSL_ZERO_PADDING, $iv);</span><br><span class="line">$edata = base64_encode($encrypted);</span><br><span class="line"><span class="keyword">return</span> $edata;</span><br><span class="line"></span><br><span class="line"><span class="comment">//使用OpenSSL解密：</span></span><br><span class="line">$key = <span class="string">'abcd1234'</span>;</span><br><span class="line">$iv = <span class="string">'mds2345&amp;'</span>;</span><br><span class="line"> </span><br><span class="line">$data = openssl_decrypt(base64_decode($edata), <span class="string">'DES-CBC'</span>, $key, OPENSSL_RAW_DATA | OPENSSL_ZERO_PADDING, $iv);</span><br><span class="line">$data = ZeroUnPadding($data);</span><br><span class="line"><span class="keyword">return</span> $data;</span><br></pre></td></tr></table></figure>
+<h2 id="算法MCRYPT-RIJNDAEL-128-MCRYPT-MODE-CBC-对应-AES-128-CBC"><a href="#算法MCRYPT-RIJNDAEL-128-MCRYPT-MODE-CBC-对应-AES-128-CBC" class="headerlink" title="算法MCRYPT_RIJNDAEL_128 | MCRYPT_MODE_CBC 对应 AES-128-CBC"></a>算法MCRYPT_RIJNDAEL_128 | MCRYPT_MODE_CBC 对应 AES-128-CBC</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//使用mcrypt加密：</span></span><br><span class="line">$data = <span class="string">'1234567890123456'</span>;</span><br><span class="line">$key = md5(<span class="string">'1230456789'</span>, <span class="keyword">true</span>);</span><br><span class="line">$size = mcrypt_get_iv_size(MCRYPT_RIJNDAEL_128, MCRYPT_MODE_CBC);</span><br><span class="line">$iv = mcrypt_create_iv($size, MCRYPT_DEV_RANDOM);   <span class="comment">//生成随机向量</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//对内容进行PKCS7填充</span></span><br><span class="line">$block_size = mcrypt_get_block_size(MCRYPT_RIJNDAEL_128, MCRYPT_MODE_CBC);</span><br><span class="line">$padding_char = $block_size - (count($str) % $block_size);</span><br><span class="line">$padding_str = <span class="string">''</span>;</span><br><span class="line"><span class="keyword">if</span>($padding_char&lt;=$block_size) &#123;</span><br><span class="line">    $padding_str = str_repeat(chr($padding_char),$padding_char);</span><br><span class="line">&#125;</span><br><span class="line">$str = $str.$padding_str;</span><br><span class="line"> </span><br><span class="line">$encrypted = mcrypt_encrypt(MCRYPT_RIJNDAEL_128, $key, $str, MCRYPT_MODE_CBC, $iv);</span><br><span class="line">$edata = base64_encode($encrypted);</span><br><span class="line"><span class="keyword">return</span> $edata;</span><br><span class="line"></span><br><span class="line"><span class="comment">//使用OpenSSL加密：</span></span><br><span class="line">$data = <span class="string">'1234567890123456'</span>;</span><br><span class="line">$key = md5(<span class="string">'1230456789'</span>, <span class="keyword">true</span>);</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line">$ivlen = openssl_cipher_iv_length(<span class="string">'AES-128-CBC'</span>);</span><br><span class="line">$iv = openssl_random_pseudo_bytes($ivlen);</span><br><span class="line">$str = PKCS7Padding($data, <span class="number">16</span>);</span><br><span class="line"> </span><br><span class="line">$encrypted = openssl_encrypt($str, <span class="string">'AES-128-CBC'</span>, $key, OPENSSL_RAW_DATA | OPENSSL_ZERO_PADDING, $iv);</span><br><span class="line">$edata = base64_encode($encrypted);</span><br><span class="line"><span class="keyword">return</span> $edata;</span><br><span class="line"></span><br><span class="line"><span class="comment">//使用OpenSSL解密：</span></span><br><span class="line">$key = md5(<span class="string">'1230456789'</span>, <span class="keyword">true</span>);</span><br><span class="line"><span class="comment">//$iv用加密时生成的同一个iv</span></span><br><span class="line">$data = openssl_decrypt(base64_decode($edata), <span class="string">'AES-128-CBC'</span>, $key, OPENSSL_RAW_DATA | OPENSSL_ZERO_PADDING, $iv);</span><br><span class="line">$data = PKCS7UnPadding($data);</span><br><span class="line"><span class="keyword">return</span> $data;</span><br></pre></td></tr></table></figure>
+<h2 id="算法MCRYPT-XTEA-MCRYPT-MODE-CBC-需要使用第三方类的修改版本"><a href="#算法MCRYPT-XTEA-MCRYPT-MODE-CBC-需要使用第三方类的修改版本" class="headerlink" title="算法MCRYPT_XTEA | MCRYPT_MODE_CBC 需要使用第三方类的修改版本"></a>算法MCRYPT_XTEA | MCRYPT_MODE_CBC 需要使用第三方类的修改版本</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br><span class="line">257</span><br><span class="line">258</span><br><span class="line">259</span><br><span class="line">260</span><br><span class="line">261</span><br><span class="line">262</span><br><span class="line">263</span><br><span class="line">264</span><br><span class="line">265</span><br><span class="line">266</span><br><span class="line">267</span><br><span class="line">268</span><br><span class="line">269</span><br><span class="line">270</span><br><span class="line">271</span><br><span class="line">272</span><br><span class="line">273</span><br><span class="line">274</span><br><span class="line">275</span><br><span class="line">276</span><br><span class="line">277</span><br><span class="line">278</span><br><span class="line">279</span><br><span class="line">280</span><br><span class="line">281</span><br><span class="line">282</span><br><span class="line">283</span><br><span class="line">284</span><br><span class="line">285</span><br><span class="line">286</span><br><span class="line">287</span><br><span class="line">288</span><br><span class="line">289</span><br><span class="line">290</span><br><span class="line">291</span><br><span class="line">292</span><br><span class="line">293</span><br><span class="line">294</span><br><span class="line">295</span><br><span class="line">296</span><br><span class="line">297</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="comment">// Origin: https://github.com/jungepiraten/nntpboard/blob/master/libs/xtea.class.php</span></span><br><span class="line"><span class="comment">// Modified By imsry.cn</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Xtea</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//Private</span></span><br><span class="line">    <span class="keyword">var</span> $key;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// CBC or ECB Mode</span></span><br><span class="line">    <span class="comment">// normaly, CBC Mode would be the right choice</span></span><br><span class="line">    <span class="keyword">var</span> $cbc = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">var</span> $iv = <span class="keyword">null</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//    function Xtea($key)</span></span><br><span class="line"><span class="comment">//    &#123;</span></span><br><span class="line"><span class="comment">//        $this-&gt;key_setup($key);</span></span><br><span class="line"><span class="comment">//    &#125;</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">iv_setup</span><span class="params">($iv)</span></span>&#123;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;iv = <span class="keyword">$this</span>-&gt;_str2long($iv);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//Verschluesseln</span></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">encrypt</span><span class="params">($text)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        $n = strlen($text);</span><br><span class="line">        <span class="keyword">if</span> ($n % <span class="number">8</span> != <span class="number">0</span>) $lng = ($n + (<span class="number">8</span> - ($n % <span class="number">8</span>)));</span><br><span class="line">        <span class="keyword">else</span> $lng = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">        $text = str_pad($text, $lng, <span class="string">"\0"</span>);</span><br><span class="line">        $text = <span class="keyword">$this</span>-&gt;_str2long($text);</span><br><span class="line">        $cipher = <span class="keyword">array</span>();</span><br><span class="line"></span><br><span class="line">        <span class="comment">//Initialization vector: IV</span></span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">$this</span>-&gt;cbc == <span class="number">1</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span>(<span class="keyword">$this</span>-&gt;iv === <span class="keyword">null</span>)&#123;</span><br><span class="line">                $cipher[<span class="number">0</span>][<span class="number">0</span>] = time();</span><br><span class="line">                $cipher[<span class="number">0</span>][<span class="number">1</span>] = (double)microtime() * <span class="number">1000000</span>;</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                $cipher[<span class="number">0</span>][<span class="number">0</span>] = <span class="keyword">$this</span>-&gt;iv[<span class="number">0</span>];</span><br><span class="line">                $cipher[<span class="number">0</span>][<span class="number">1</span>] = <span class="keyword">$this</span>-&gt;iv[<span class="number">1</span>];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        $a = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span> ($i = <span class="number">0</span>; $i &lt; count($text); $i += <span class="number">2</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span> (<span class="keyword">$this</span>-&gt;cbc == <span class="number">1</span>) &#123;</span><br><span class="line">                <span class="comment">//$text mit letztem Geheimtext XOR Verknuepfen</span></span><br><span class="line">                <span class="comment">//$text is XORed with the previous ciphertext</span></span><br><span class="line">                $text[$i] ^= $cipher[$a - <span class="number">1</span>][<span class="number">0</span>];</span><br><span class="line">                $text[$i + <span class="number">1</span>] ^= $cipher[$a - <span class="number">1</span>][<span class="number">1</span>];</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            $cipher[] = <span class="keyword">$this</span>-&gt;block_encrypt($text[$i], $text[$i + <span class="number">1</span>]);</span><br><span class="line">            $a++;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        $output = <span class="string">""</span>;</span><br><span class="line">        <span class="keyword">for</span> ($i = (<span class="keyword">$this</span>-&gt;iv === <span class="keyword">null</span>?<span class="number">0</span>:<span class="number">1</span>); $i &lt; count($cipher); $i++) &#123;</span><br><span class="line">            $output .= <span class="keyword">$this</span>-&gt;_long2str($cipher[$i][<span class="number">0</span>]);</span><br><span class="line">            $output .= <span class="keyword">$this</span>-&gt;_long2str($cipher[$i][<span class="number">1</span>]);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> base64_encode($output);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">//Entschluesseln</span></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">decrypt</span><span class="params">($text)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        $plain = <span class="keyword">array</span>();</span><br><span class="line">        $cipher = <span class="keyword">$this</span>-&gt;_str2long(base64_decode($text));</span><br><span class="line">        <span class="keyword">if</span>(<span class="keyword">$this</span>-&gt;iv !== <span class="keyword">null</span>) &#123;</span><br><span class="line">            $cipher = array_merge(<span class="keyword">$this</span>-&gt;iv,$cipher);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">$this</span>-&gt;cbc == <span class="number">1</span>)</span><br><span class="line">            $i = <span class="number">2</span>; <span class="comment">//Message start at second block</span></span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            $i = <span class="number">0</span>; <span class="comment">//Message start at first block</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> ($i; $i &lt; count($cipher); $i += <span class="number">2</span>) &#123;</span><br><span class="line">            $return = <span class="keyword">$this</span>-&gt;block_decrypt($cipher[$i], $cipher[$i + <span class="number">1</span>]);</span><br><span class="line"></span><br><span class="line">            <span class="comment">//Xor Verknuepfung von $return und Geheimtext aus von den letzten beiden Bloecken</span></span><br><span class="line">            <span class="comment">//XORed $return with the previous ciphertext</span></span><br><span class="line">            <span class="keyword">if</span> (<span class="keyword">$this</span>-&gt;cbc == <span class="number">1</span>)</span><br><span class="line">                $plain[] = <span class="keyword">array</span>($return[<span class="number">0</span>] ^ $cipher[$i - <span class="number">2</span>], $return[<span class="number">1</span>] ^ $cipher[$i - <span class="number">1</span>]);</span><br><span class="line">            <span class="keyword">else</span>          <span class="comment">//EBC Mode</span></span><br><span class="line">                $plain[] = $return;</span><br><span class="line">        &#125;</span><br><span class="line">        $output = <span class="string">""</span>;</span><br><span class="line">        <span class="keyword">for</span> ($i = <span class="number">0</span>; $i &lt; count($plain); $i++) &#123;</span><br><span class="line">            $output .= <span class="keyword">$this</span>-&gt;_long2str($plain[$i][<span class="number">0</span>]);</span><br><span class="line">            $output .= <span class="keyword">$this</span>-&gt;_long2str($plain[$i][<span class="number">1</span>]);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> $output;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//Bereitet den Key zum ver/entschluesseln vor</span></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">key_setup</span><span class="params">($key)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (is_array($key))</span><br><span class="line">            <span class="keyword">$this</span>-&gt;key = $key;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (<span class="keyword">isset</span>($key) &amp;&amp; !<span class="keyword">empty</span>($key))</span><br><span class="line">            <span class="keyword">$this</span>-&gt;key = <span class="keyword">$this</span>-&gt;_str2long(str_pad($key, <span class="number">16</span>, $key));</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            <span class="keyword">$this</span>-&gt;key = <span class="keyword">array</span>(<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">//Performs a benchmark</span></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">benchmark</span><span class="params">($length = <span class="number">1000</span>)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="comment">//1000 Byte String</span></span><br><span class="line">        $string = str_pad(<span class="string">""</span>, $length, <span class="string">"text"</span>);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        <span class="comment">//Key-Setup</span></span><br><span class="line">        $start1 = time() + (double)microtime();</span><br><span class="line">        $xtea = <span class="keyword">new</span> Xtea();</span><br><span class="line">        $xtea-&gt;key_setup(<span class="string">'key'</span>);</span><br><span class="line">        $end1 = time() + (double)microtime();</span><br><span class="line"></span><br><span class="line">        <span class="comment">//Encryption</span></span><br><span class="line">        $start2 = time() + (double)microtime();</span><br><span class="line">        $xtea-&gt;Encrypt($string);</span><br><span class="line">        $end2 = time() + (double)microtime();</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        <span class="keyword">echo</span> <span class="string">"Encrypting "</span> . $length . <span class="string">" bytes: "</span> . round($end2 - $start2, <span class="number">2</span>) . <span class="string">" seconds ("</span> . round($length / ($end2 - $start2), <span class="number">2</span>) . <span class="string">" bytes/second)&lt;br&gt;"</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//verify the correct implementation of the blowfish algorithm</span></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">check_implementation</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line"></span><br><span class="line">        $xtea = <span class="keyword">new</span> Xtea();</span><br><span class="line">        $xtea-&gt;key_setup(<span class="string">'key'</span>);</span><br><span class="line">        $vectors = <span class="keyword">array</span>(</span><br><span class="line">            <span class="keyword">array</span>(<span class="keyword">array</span>(<span class="number">0x00000000</span>, <span class="number">0x00000000</span>, <span class="number">0x00000000</span>, <span class="number">0x00000000</span>), <span class="keyword">array</span>(<span class="number">0x41414141</span>, <span class="number">0x41414141</span>), <span class="keyword">array</span>(<span class="number">0xed23375a</span>, <span class="number">0x821a8c2d</span>)),</span><br><span class="line">            <span class="keyword">array</span>(<span class="keyword">array</span>(<span class="number">0x00010203</span>, <span class="number">0x04050607</span>, <span class="number">0x08090a0b</span>, <span class="number">0x0c0d0e0f</span>), <span class="keyword">array</span>(<span class="number">0x41424344</span>, <span class="number">0x45464748</span>), <span class="keyword">array</span>(<span class="number">0x497df3d0</span>, <span class="number">0x72612cb5</span>)),</span><br><span class="line"></span><br><span class="line">        );</span><br><span class="line"></span><br><span class="line">        <span class="comment">//Correct implementation?</span></span><br><span class="line">        <span class="comment">//Test vectors, see http://www.schneier.com/code/vectors.txt</span></span><br><span class="line">        <span class="keyword">foreach</span> ($vectors <span class="keyword">AS</span> $vector) &#123;</span><br><span class="line">            $key = $vector[<span class="number">0</span>];</span><br><span class="line">            $plain = $vector[<span class="number">1</span>];</span><br><span class="line">            $cipher = $vector[<span class="number">2</span>];</span><br><span class="line"></span><br><span class="line">            $xtea-&gt;key_setup($key);</span><br><span class="line">            $return = $xtea-&gt;block_encrypt($vector[<span class="number">1</span>][<span class="number">0</span>], $vector[<span class="number">1</span>][<span class="number">1</span>]);</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> ((int)$return[<span class="number">0</span>] != (int)$cipher[<span class="number">0</span>] || (int)$return[<span class="number">1</span>] != (int)$cipher[<span class="number">1</span>])</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">/***********************************</span></span><br><span class="line"><span class="comment">     * Some internal functions</span></span><br><span class="line"><span class="comment">     ***********************************/</span></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">block_encrypt</span><span class="params">($y, $z)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        $sum = <span class="number">0</span>;</span><br><span class="line">        $delta = <span class="number">0x9e3779b9</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        <span class="comment">/* start cycle */</span></span><br><span class="line">        <span class="keyword">for</span> ($i = <span class="number">0</span>; $i &lt; <span class="number">32</span>; $i++) &#123;</span><br><span class="line">            $y = <span class="keyword">$this</span>-&gt;_add($y,</span><br><span class="line">                <span class="keyword">$this</span>-&gt;_add($z &lt;&lt; <span class="number">4</span> ^ <span class="keyword">$this</span>-&gt;_rshift($z, <span class="number">5</span>), $z) ^</span><br><span class="line">                <span class="keyword">$this</span>-&gt;_add($sum, <span class="keyword">$this</span>-&gt;key[$sum &amp; <span class="number">3</span>]));</span><br><span class="line"></span><br><span class="line">            $sum = <span class="keyword">$this</span>-&gt;_add($sum, $delta);</span><br><span class="line"></span><br><span class="line">            $z = <span class="keyword">$this</span>-&gt;_add($z,</span><br><span class="line">                <span class="keyword">$this</span>-&gt;_add($y &lt;&lt; <span class="number">4</span> ^ <span class="keyword">$this</span>-&gt;_rshift($y, <span class="number">5</span>), $y) ^</span><br><span class="line">                <span class="keyword">$this</span>-&gt;_add($sum, <span class="keyword">$this</span>-&gt;key[<span class="keyword">$this</span>-&gt;_rshift($sum, <span class="number">11</span>) &amp; <span class="number">3</span>]));</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">/* end cycle */</span></span><br><span class="line">        $v[<span class="number">0</span>] = $y;</span><br><span class="line">        $v[<span class="number">1</span>] = $z;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">array</span>($y, $z);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">block_decrypt</span><span class="params">($y, $z)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        $delta = <span class="number">0x9e3779b9</span>;</span><br><span class="line">        $sum = <span class="number">0xC6EF3720</span>;</span><br><span class="line">        $n = <span class="number">32</span>;</span><br><span class="line"></span><br><span class="line">        <span class="comment">/* start cycle */</span></span><br><span class="line">        <span class="keyword">for</span> ($i = <span class="number">0</span>; $i &lt; <span class="number">32</span>; $i++) &#123;</span><br><span class="line">            $z = <span class="keyword">$this</span>-&gt;_add($z,</span><br><span class="line">                -(<span class="keyword">$this</span>-&gt;_add($y &lt;&lt; <span class="number">4</span> ^ <span class="keyword">$this</span>-&gt;_rshift($y, <span class="number">5</span>), $y) ^</span><br><span class="line">                    <span class="keyword">$this</span>-&gt;_add($sum, <span class="keyword">$this</span>-&gt;key[<span class="keyword">$this</span>-&gt;_rshift($sum, <span class="number">11</span>) &amp; <span class="number">3</span>])));</span><br><span class="line">            $sum = <span class="keyword">$this</span>-&gt;_add($sum, -$delta);</span><br><span class="line">            $y = <span class="keyword">$this</span>-&gt;_add($y,</span><br><span class="line">                -(<span class="keyword">$this</span>-&gt;_add($z &lt;&lt; <span class="number">4</span> ^ <span class="keyword">$this</span>-&gt;_rshift($z, <span class="number">5</span>), $z) ^</span><br><span class="line">                    <span class="keyword">$this</span>-&gt;_add($sum, <span class="keyword">$this</span>-&gt;key[$sum &amp; <span class="number">3</span>])));</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">/* end cycle */</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">array</span>($y, $z);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">_rshift</span><span class="params">($integer, $n)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="comment">// convert to 32 bits</span></span><br><span class="line">        <span class="keyword">if</span> (<span class="number">0xffffffff</span> &lt; $integer || <span class="number">-0xffffffff</span> &gt; $integer) &#123;</span><br><span class="line">            $integer = fmod($integer, <span class="number">0xffffffff</span> + <span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// convert to unsigned integer</span></span><br><span class="line">        <span class="keyword">if</span> (<span class="number">0x7fffffff</span> &lt; $integer) &#123;</span><br><span class="line">            $integer -= <span class="number">0xffffffff</span> + <span class="number">1.0</span>;</span><br><span class="line">        &#125; <span class="keyword">elseif</span> (<span class="number">-0x80000000</span> &gt; $integer) &#123;</span><br><span class="line">            $integer += <span class="number">0xffffffff</span> + <span class="number">1.0</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// do right shift</span></span><br><span class="line">        <span class="keyword">if</span> (<span class="number">0</span> &gt; $integer) &#123;</span><br><span class="line">            $integer &amp;= <span class="number">0x7fffffff</span>;                     <span class="comment">// remove sign bit before shift</span></span><br><span class="line">            $integer &gt;&gt;= $n;                            <span class="comment">// right shift</span></span><br><span class="line">            $integer |= <span class="number">1</span> &lt;&lt; (<span class="number">31</span> - $n);                 <span class="comment">// set shifted sign bit</span></span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            $integer &gt;&gt;= $n;                            <span class="comment">// use normal right shift</span></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> $integer;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">_add</span><span class="params">($i1, $i2)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        $result = <span class="number">0.0</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">foreach</span> (func_get_args() <span class="keyword">as</span> $value) &#123;</span><br><span class="line">            <span class="comment">// remove sign if necessary</span></span><br><span class="line">            <span class="keyword">if</span> (<span class="number">0.0</span> &gt; $value) &#123;</span><br><span class="line">                $value -= <span class="number">1.0</span> + <span class="number">0xffffffff</span>;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            $result += $value;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// convert to 32 bits</span></span><br><span class="line">        <span class="keyword">if</span> (<span class="number">0xffffffff</span> &lt; $result || <span class="number">-0xffffffff</span> &gt; $result) &#123;</span><br><span class="line">            $result = fmod($result, <span class="number">0xffffffff</span> + <span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// convert to signed integer</span></span><br><span class="line">        <span class="keyword">if</span> (<span class="number">0x7fffffff</span> &lt; $result) &#123;</span><br><span class="line">            $result -= <span class="number">0xffffffff</span> + <span class="number">1.0</span>;</span><br><span class="line">        &#125; <span class="keyword">elseif</span> (<span class="number">-0x80000000</span> &gt; $result) &#123;</span><br><span class="line">            $result += <span class="number">0xffffffff</span> + <span class="number">1.0</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> $result;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">//Einen Text in Longzahlen umwandeln</span></span><br><span class="line">    <span class="comment">//Covert a string into longinteger</span></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">_str2long</span><span class="params">($data)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        $n = strlen($data);</span><br><span class="line">        $tmp = unpack(<span class="string">'N*'</span>, $data);</span><br><span class="line">        $data_long = <span class="keyword">array</span>();</span><br><span class="line">        $j = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">foreach</span> ($tmp <span class="keyword">as</span> $value) $data_long[$j++] = $value;</span><br><span class="line">        <span class="keyword">return</span> $data_long;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//Longzahlen in Text umwandeln</span></span><br><span class="line">    <span class="comment">//Convert a longinteger into a string</span></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">_long2str</span><span class="params">($l)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> pack(<span class="string">'N'</span>, $l);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//使用mcrypt加密：</span></span><br><span class="line">$data = <span class="string">'1234567890123456'</span>;</span><br><span class="line">$key = md5(<span class="string">'1230456789'</span>, <span class="keyword">true</span>);</span><br><span class="line">$iv = <span class="string">'\0\0\0\0'</span>;</span><br><span class="line"> </span><br><span class="line">$encrypted = mcrypt_encrypt(MCRYPT_XTEA, $key, $data, MCRYPT_MODE_CBC, $iv);</span><br><span class="line">$edata = base64_encode($encrypted);</span><br><span class="line"><span class="keyword">return</span> $edata;</span><br><span class="line"></span><br><span class="line"><span class="comment">//使用Xtea加密：</span></span><br><span class="line">$data = <span class="string">'1234567890123456'</span>;</span><br><span class="line">$key = md5(<span class="string">'1230456789'</span>, <span class="keyword">true</span>);</span><br><span class="line">$iv = <span class="string">'\0\0\0\0'</span>;</span><br><span class="line"> </span><br><span class="line">$x = <span class="keyword">new</span> Xtea();</span><br><span class="line">$x-&gt;key_setup($key);</span><br><span class="line">$x-&gt;iv_setup($iv);</span><br><span class="line">$edata = $x-&gt;encrypt($data);</span><br><span class="line"><span class="keyword">return</span> $edata;</span><br><span class="line"></span><br><span class="line"><span class="comment">//使用Xtea解密：</span></span><br><span class="line">$key = md5(<span class="string">'1230456789'</span>, <span class="keyword">true</span>);</span><br><span class="line">$iv = <span class="string">'\0\0\0\0'</span>;</span><br><span class="line"> </span><br><span class="line">$x = <span class="keyword">new</span> Xtea();</span><br><span class="line">$x-&gt;key_setup($key);</span><br><span class="line">$x-&gt;iv_setup($iv);</span><br><span class="line">$data = $x-&gt;decrypt($edata);</span><br><span class="line"><span class="keyword">return</span> $data;</span><br></pre></td></tr></table></figure>
+<h2 id="算法名称、IV、BlockSize、key参照表"><a href="#算法名称、IV、BlockSize、key参照表" class="headerlink" title="算法名称、IV、BlockSize、key参照表"></a>算法名称、IV、BlockSize、key参照表</h2><p>摘抄自：<a href="https://github.com/mfpierre/go-mcrypt" target="_blank" rel="noopener">https://github.com/mfpierre/go-mcrypt</a></p>
+<table>
+<thead>
+<tr>
+<th>Cipher Name</th>
+<th>Block Mode</th>
+<th>Block Size</th>
+<th>IV Size</th>
+<th>Default Key Size</th>
+<th>All Key Size(s)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CAST-128</td>
+<td>CBC</td>
+<td>8</td>
+<td>8</td>
+<td>16</td>
+<td>16</td>
+</tr>
+<tr>
+<td>CAST-128</td>
+<td>ECB</td>
+<td>8</td>
+<td>8</td>
+<td>16</td>
+<td>16</td>
+</tr>
+<tr>
+<td>CAST-128</td>
+<td>OFB</td>
+<td>8</td>
+<td>8</td>
+<td>16</td>
+<td>16</td>
+</tr>
+<tr>
+<td>CAST-128</td>
+<td>NOFB</td>
+<td>8</td>
+<td>8</td>
+<td>16</td>
+<td>16</td>
+</tr>
+<tr>
+<td>CAST-128</td>
+<td>CFB</td>
+<td>8</td>
+<td>8</td>
+<td>16</td>
+<td>16</td>
+</tr>
+<tr>
+<td>CAST-128</td>
+<td>NCFB</td>
+<td>8</td>
+<td>8</td>
+<td>16</td>
+<td>16</td>
+</tr>
+<tr>
+<td>CAST-128</td>
+<td>CTR</td>
+<td>8</td>
+<td>8</td>
+<td>16</td>
+<td>16</td>
+</tr>
+<tr>
+<td>GOST</td>
+<td>CBC</td>
+<td>8</td>
+<td>8</td>
+<td>32</td>
+<td>32</td>
+</tr>
+<tr>
+<td>GOST</td>
+<td>ECB</td>
+<td>8</td>
+<td>8</td>
+<td>32</td>
+<td>32</td>
+</tr>
+<tr>
+<td>GOST</td>
+<td>OFB</td>
+<td>8</td>
+<td>8</td>
+<td>32</td>
+<td>32</td>
+</tr>
+<tr>
+<td>GOST</td>
+<td>NOFB</td>
+<td>8</td>
+<td>8</td>
+<td>32</td>
+<td>32</td>
+</tr>
+<tr>
+<td>GOST</td>
+<td>CFB</td>
+<td>8</td>
+<td>8</td>
+<td>32</td>
+<td>32</td>
+</tr>
+<tr>
+<td>GOST</td>
+<td>NCFB</td>
+<td>8</td>
+<td>8</td>
+<td>32</td>
+<td>32</td>
+</tr>
+<tr>
+<td>GOST</td>
+<td>CTR</td>
+<td>8</td>
+<td>8</td>
+<td>32</td>
+<td>32</td>
+</tr>
+<tr>
+<td>Rijndael-128</td>
+<td>CBC</td>
+<td>16</td>
+<td>16</td>
+<td>32</td>
+<td>16 24 32</td>
+</tr>
+<tr>
+<td>Rijndael-128</td>
+<td>ECB</td>
+<td>16</td>
+<td>16</td>
+<td>32</td>
+<td>16 24 32</td>
+</tr>
+<tr>
+<td>Rijndael-128</td>
+<td>OFB</td>
+<td>16</td>
+<td>16</td>
+<td>32</td>
+<td>16 24 32</td>
+</tr>
+<tr>
+<td>Rijndael-128</td>
+<td>NOFB</td>
+<td>16</td>
+<td>16</td>
+<td>32</td>
+<td>16 24 32</td>
+</tr>
+<tr>
+<td>Rijndael-128</td>
+<td>CFB</td>
+<td>16</td>
+<td>16</td>
+<td>32</td>
+<td>16 24 32</td>
+</tr>
+<tr>
+<td>Rijndael-128</td>
+<td>NCFB</td>
+<td>16</td>
+<td>16</td>
+<td>32</td>
+<td>16 24 32</td>
+</tr>
+<tr>
+<td>Rijndael-128</td>
+<td>CTR</td>
+<td>16</td>
+<td>16</td>
+<td>32</td>
+<td>16 24 32</td>
+</tr>
+<tr>
+<td>Twofish</td>
+<td>CBC</td>
+<td>16</td>
+<td>16</td>
+<td>32</td>
+<td>16 24 32</td>
+</tr>
+<tr>
+<td>Twofish</td>
+<td>ECB</td>
+<td>16</td>
+<td>16</td>
+<td>32</td>
+<td>16 24 32</td>
+</tr>
+<tr>
+<td>Twofish</td>
+<td>OFB</td>
+<td>16</td>
+<td>16</td>
+<td>32</td>
+<td>16 24 32</td>
+</tr>
+<tr>
+<td>Twofish</td>
+<td>NOFB</td>
+<td>16</td>
+<td>16</td>
+<td>32</td>
+<td>16 24 32</td>
+</tr>
+<tr>
+<td>Twofish</td>
+<td>CFB</td>
+<td>16</td>
+<td>16</td>
+<td>32</td>
+<td>16 24 32</td>
+</tr>
+<tr>
+<td>Twofish</td>
+<td>NCFB</td>
+<td>16</td>
+<td>16</td>
+<td>32</td>
+<td>16 24 32</td>
+</tr>
+<tr>
+<td>Twofish</td>
+<td>CTR</td>
+<td>16</td>
+<td>16</td>
+<td>32</td>
+<td>16 24 32</td>
+</tr>
+<tr>
+<td>RC4</td>
+<td>STREAM</td>
+<td>1</td>
+<td>0</td>
+<td>256</td>
+<td></td>
+</tr>
+<tr>
+<td>CAST-256</td>
+<td>CBC</td>
+<td>16</td>
+<td>16</td>
+<td>32</td>
+<td>16 24 32</td>
+</tr>
+<tr>
+<td>CAST-256</td>
+<td>ECB</td>
+<td>16</td>
+<td>16</td>
+<td>32</td>
+<td>16 24 32</td>
+</tr>
+<tr>
+<td>CAST-256</td>
+<td>OFB</td>
+<td>16</td>
+<td>16</td>
+<td>32</td>
+<td>16 24 32</td>
+</tr>
+<tr>
+<td>CAST-256</td>
+<td>NOFB</td>
+<td>16</td>
+<td>16</td>
+<td>32</td>
+<td>16 24 32</td>
+</tr>
+<tr>
+<td>CAST-256</td>
+<td>CFB</td>
+<td>16</td>
+<td>16</td>
+<td>32</td>
+<td>16 24 32</td>
+</tr>
+<tr>
+<td>CAST-256</td>
+<td>NCFB</td>
+<td>16</td>
+<td>16</td>
+<td>32</td>
+<td>16 24 32</td>
+</tr>
+<tr>
+<td>CAST-256</td>
+<td>CTR</td>
+<td>16</td>
+<td>16</td>
+<td>32</td>
+<td>16 24 32</td>
+</tr>
+<tr>
+<td>LOKI97</td>
+<td>CBC</td>
+<td>16</td>
+<td>16</td>
+<td>32</td>
+<td>16 24 32</td>
+</tr>
+<tr>
+<td>LOKI97</td>
+<td>ECB</td>
+<td>16</td>
+<td>16</td>
+<td>32</td>
+<td>16 24 32</td>
+</tr>
+<tr>
+<td>LOKI97</td>
+<td>OFB</td>
+<td>16</td>
+<td>16</td>
+<td>32</td>
+<td>16 24 32</td>
+</tr>
+<tr>
+<td>LOKI97</td>
+<td>NOFB</td>
+<td>16</td>
+<td>16</td>
+<td>32</td>
+<td>16 24 32</td>
+</tr>
+<tr>
+<td>LOKI97</td>
+<td>CFB</td>
+<td>16</td>
+<td>16</td>
+<td>32</td>
+<td>16 24 32</td>
+</tr>
+<tr>
+<td>LOKI97</td>
+<td>NCFB</td>
+<td>16</td>
+<td>16</td>
+<td>32</td>
+<td>16 24 32</td>
+</tr>
+<tr>
+<td>LOKI97</td>
+<td>CTR</td>
+<td>16</td>
+<td>16</td>
+<td>32</td>
+<td>16 24 32</td>
+</tr>
+<tr>
+<td>Rijndael-192</td>
+<td>CBC</td>
+<td>24</td>
+<td>24</td>
+<td>32</td>
+<td>16 24 32</td>
+</tr>
+<tr>
+<td>Rijndael-192</td>
+<td>ECB</td>
+<td>24</td>
+<td>24</td>
+<td>32</td>
+<td>16 24 32</td>
+</tr>
+<tr>
+<td>Rijndael-192</td>
+<td>OFB</td>
+<td>24</td>
+<td>24</td>
+<td>32</td>
+<td>16 24 32</td>
+</tr>
+<tr>
+<td>Rijndael-192</td>
+<td>NOFB</td>
+<td>24</td>
+<td>24</td>
+<td>32</td>
+<td>16 24 32</td>
+</tr>
+<tr>
+<td>Rijndael-192</td>
+<td>CFB</td>
+<td>24</td>
+<td>24</td>
+<td>32</td>
+<td>16 24 32</td>
+</tr>
+<tr>
+<td>Rijndael-192</td>
+<td>NCFB</td>
+<td>24</td>
+<td>24</td>
+<td>32</td>
+<td>16 24 32</td>
+</tr>
+<tr>
+<td>Rijndael-192</td>
+<td>CTR</td>
+<td>24</td>
+<td>24</td>
+<td>32</td>
+<td>16 24 32</td>
+</tr>
+<tr>
+<td>Safer+</td>
+<td>CBC</td>
+<td>16</td>
+<td>16</td>
+<td>32</td>
+<td>16 24 32</td>
+</tr>
+<tr>
+<td>Safer+</td>
+<td>ECB</td>
+<td>16</td>
+<td>16</td>
+<td>32</td>
+<td>16 24 32</td>
+</tr>
+<tr>
+<td>Safer+</td>
+<td>OFB</td>
+<td>16</td>
+<td>16</td>
+<td>32</td>
+<td>16 24 32</td>
+</tr>
+<tr>
+<td>Safer+</td>
+<td>NOFB</td>
+<td>16</td>
+<td>16</td>
+<td>32</td>
+<td>16 24 32</td>
+</tr>
+<tr>
+<td>Safer+</td>
+<td>CFB</td>
+<td>16</td>
+<td>16</td>
+<td>32</td>
+<td>16 24 32</td>
+</tr>
+<tr>
+<td>Safer+</td>
+<td>NCFB</td>
+<td>16</td>
+<td>16</td>
+<td>32</td>
+<td>16 24 32</td>
+</tr>
+<tr>
+<td>Safer+</td>
+<td>CTR</td>
+<td>16</td>
+<td>16</td>
+<td>32</td>
+<td>16 24 32</td>
+</tr>
+<tr>
+<td>WAKE</td>
+<td>STREAM</td>
+<td>1</td>
+<td>0</td>
+<td>32</td>
+<td>32</td>
+</tr>
+<tr>
+<td>Blowfish</td>
+<td>CBC</td>
+<td>8</td>
+<td>8</td>
+<td>56</td>
+<td></td>
+</tr>
+<tr>
+<td>Blowfish</td>
+<td>ECB</td>
+<td>8</td>
+<td>8</td>
+<td>56</td>
+<td></td>
+</tr>
+<tr>
+<td>Blowfish</td>
+<td>OFB</td>
+<td>8</td>
+<td>8</td>
+<td>56</td>
+<td></td>
+</tr>
+<tr>
+<td>Blowfish</td>
+<td>NOFB</td>
+<td>8</td>
+<td>8</td>
+<td>56</td>
+<td></td>
+</tr>
+<tr>
+<td>Blowfish</td>
+<td>CFB</td>
+<td>8</td>
+<td>8</td>
+<td>56</td>
+<td></td>
+</tr>
+<tr>
+<td>Blowfish</td>
+<td>NCFB</td>
+<td>8</td>
+<td>8</td>
+<td>56</td>
+<td></td>
+</tr>
+<tr>
+<td>Blowfish</td>
+<td>CTR</td>
+<td>8</td>
+<td>8</td>
+<td>56</td>
+<td></td>
+</tr>
+<tr>
+<td>DES</td>
+<td>CBC</td>
+<td>8</td>
+<td>8</td>
+<td>8</td>
+<td>8</td>
+</tr>
+<tr>
+<td>DES</td>
+<td>ECB</td>
+<td>8</td>
+<td>8</td>
+<td>8</td>
+<td>8</td>
+</tr>
+<tr>
+<td>DES</td>
+<td>OFB</td>
+<td>8</td>
+<td>8</td>
+<td>8</td>
+<td>8</td>
+</tr>
+<tr>
+<td>DES</td>
+<td>NOFB</td>
+<td>8</td>
+<td>8</td>
+<td>8</td>
+<td>8</td>
+</tr>
+<tr>
+<td>DES</td>
+<td>CFB</td>
+<td>8</td>
+<td>8</td>
+<td>8</td>
+<td>8</td>
+</tr>
+<tr>
+<td>DES</td>
+<td>NCFB</td>
+<td>8</td>
+<td>8</td>
+<td>8</td>
+<td>8</td>
+</tr>
+<tr>
+<td>DES</td>
+<td>CTR</td>
+<td>8</td>
+<td>8</td>
+<td>8</td>
+<td>8</td>
+</tr>
+<tr>
+<td>Rijndael-256</td>
+<td>CBC</td>
+<td>32</td>
+<td>32</td>
+<td>32</td>
+<td>16 24 32</td>
+</tr>
+<tr>
+<td>Rijndael-256</td>
+<td>ECB</td>
+<td>32</td>
+<td>32</td>
+<td>32</td>
+<td>16 24 32</td>
+</tr>
+<tr>
+<td>Rijndael-256</td>
+<td>OFB</td>
+<td>32</td>
+<td>32</td>
+<td>32</td>
+<td>16 24 32</td>
+</tr>
+<tr>
+<td>Rijndael-256</td>
+<td>NOFB</td>
+<td>32</td>
+<td>32</td>
+<td>32</td>
+<td>16 24 32</td>
+</tr>
+<tr>
+<td>Rijndael-256</td>
+<td>CFB</td>
+<td>32</td>
+<td>32</td>
+<td>32</td>
+<td>16 24 32</td>
+</tr>
+<tr>
+<td>Rijndael-256</td>
+<td>NCFB</td>
+<td>32</td>
+<td>32</td>
+<td>32</td>
+<td>16 24 32</td>
+</tr>
+<tr>
+<td>Rijndael-256</td>
+<td>CTR</td>
+<td>32</td>
+<td>32</td>
+<td>32</td>
+<td>16 24 32</td>
+</tr>
+<tr>
+<td>Serpent</td>
+<td>CBC</td>
+<td>16</td>
+<td>16</td>
+<td>32</td>
+<td>16 24 32</td>
+</tr>
+<tr>
+<td>Serpent</td>
+<td>ECB</td>
+<td>16</td>
+<td>16</td>
+<td>32</td>
+<td>16 24 32</td>
+</tr>
+<tr>
+<td>Serpent</td>
+<td>OFB</td>
+<td>16</td>
+<td>16</td>
+<td>32</td>
+<td>16 24 32</td>
+</tr>
+<tr>
+<td>Serpent</td>
+<td>NOFB</td>
+<td>16</td>
+<td>16</td>
+<td>32</td>
+<td>16 24 32</td>
+</tr>
+<tr>
+<td>Serpent</td>
+<td>CFB</td>
+<td>16</td>
+<td>16</td>
+<td>32</td>
+<td>16 24 32</td>
+</tr>
+<tr>
+<td>Serpent</td>
+<td>NCFB</td>
+<td>16</td>
+<td>16</td>
+<td>32</td>
+<td>16 24 32</td>
+</tr>
+<tr>
+<td>Serpent</td>
+<td>CTR</td>
+<td>16</td>
+<td>16</td>
+<td>32</td>
+<td>16 24 32</td>
+</tr>
+<tr>
+<td>xTEA</td>
+<td>CBC</td>
+<td>8</td>
+<td>8</td>
+<td>16</td>
+<td>16</td>
+</tr>
+<tr>
+<td>xTEA</td>
+<td>ECB</td>
+<td>8</td>
+<td>8</td>
+<td>16</td>
+<td>16</td>
+</tr>
+<tr>
+<td>xTEA</td>
+<td>OFB</td>
+<td>8</td>
+<td>8</td>
+<td>16</td>
+<td>16</td>
+</tr>
+<tr>
+<td>xTEA</td>
+<td>NOFB</td>
+<td>8</td>
+<td>8</td>
+<td>16</td>
+<td>16</td>
+</tr>
+<tr>
+<td>xTEA</td>
+<td>CFB</td>
+<td>8</td>
+<td>8</td>
+<td>16</td>
+<td>16</td>
+</tr>
+<tr>
+<td>xTEA</td>
+<td>NCFB</td>
+<td>8</td>
+<td>8</td>
+<td>16</td>
+<td>16</td>
+</tr>
+<tr>
+<td>xTEA</td>
+<td>CTR</td>
+<td>8</td>
+<td>8</td>
+<td>16</td>
+<td>16</td>
+</tr>
+<tr>
+<td>Blowfish</td>
+<td>CBC</td>
+<td>8</td>
+<td>8</td>
+<td>56</td>
+<td></td>
+</tr>
+<tr>
+<td>Blowfish</td>
+<td>ECB</td>
+<td>8</td>
+<td>8</td>
+<td>56</td>
+<td></td>
+</tr>
+<tr>
+<td>Blowfish</td>
+<td>OFB</td>
+<td>8</td>
+<td>8</td>
+<td>56</td>
+<td></td>
+</tr>
+<tr>
+<td>Blowfish</td>
+<td>NOFB</td>
+<td>8</td>
+<td>8</td>
+<td>56</td>
+<td></td>
+</tr>
+<tr>
+<td>Blowfish</td>
+<td>CFB</td>
+<td>8</td>
+<td>8</td>
+<td>56</td>
+<td></td>
+</tr>
+<tr>
+<td>Blowfish</td>
+<td>NCFB</td>
+<td>8</td>
+<td>8</td>
+<td>56</td>
+<td></td>
+</tr>
+<tr>
+<td>Blowfish</td>
+<td>CTR</td>
+<td>8</td>
+<td>8</td>
+<td>56</td>
+<td></td>
+</tr>
+<tr>
+<td>enigma</td>
+<td>STREAM</td>
+<td>1</td>
+<td>0</td>
+<td>13</td>
+<td></td>
+</tr>
+<tr>
+<td>RC2</td>
+<td>CBC</td>
+<td>8</td>
+<td>8</td>
+<td>128</td>
+<td></td>
+</tr>
+<tr>
+<td>RC2</td>
+<td>ECB</td>
+<td>8</td>
+<td>8</td>
+<td>128</td>
+<td></td>
+</tr>
+<tr>
+<td>RC2</td>
+<td>OFB</td>
+<td>8</td>
+<td>8</td>
+<td>128</td>
+<td></td>
+</tr>
+<tr>
+<td>RC2</td>
+<td>NOFB</td>
+<td>8</td>
+<td>8</td>
+<td>128</td>
+<td></td>
+</tr>
+<tr>
+<td>RC2</td>
+<td>CFB</td>
+<td>8</td>
+<td>8</td>
+<td>128</td>
+<td></td>
+</tr>
+<tr>
+<td>RC2</td>
+<td>NCFB</td>
+<td>8</td>
+<td>8</td>
+<td>128</td>
+<td></td>
+</tr>
+<tr>
+<td>RC2</td>
+<td>CTR</td>
+<td>8</td>
+<td>8</td>
+<td>128</td>
+<td></td>
+</tr>
+<tr>
+<td>3DES</td>
+<td>CBC</td>
+<td>8</td>
+<td>8</td>
+<td>24</td>
+<td>24</td>
+</tr>
+<tr>
+<td>3DES</td>
+<td>ECB</td>
+<td>8</td>
+<td>8</td>
+<td>24</td>
+<td>24</td>
+</tr>
+<tr>
+<td>3DES</td>
+<td>OFB</td>
+<td>8</td>
+<td>8</td>
+<td>24</td>
+<td>24</td>
+</tr>
+<tr>
+<td>3DES</td>
+<td>NOFB</td>
+<td>8</td>
+<td>8</td>
+<td>24</td>
+<td>24</td>
+</tr>
+<tr>
+<td>3DES</td>
+<td>CFB</td>
+<td>8</td>
+<td>8</td>
+<td>24</td>
+<td>24</td>
+</tr>
+<tr>
+<td>3DES</td>
+<td>NCFB</td>
+<td>8</td>
+<td>8</td>
+<td>24</td>
+<td>24</td>
+</tr>
+<tr>
+<td>3DES</td>
+<td>CTR</td>
+<td>8</td>
+<td>8</td>
+<td>24</td>
+<td>24</td>
+</tr>
+</tbody>
+</table>
+
+    </div>
+    <p class="post-meta">
+        <span class="post-cat">分类：
+            <a class="cat-link" href="/categories/PHP/">PHP</a>
+        </span>
+        <span class="post-tags">
+            标签：
+            
+    
+        <a href="/tags/PHP/" title="PHP">PHP</a> / 
+    
+        <a href="/tags/OpenSSL/" title="OpenSSL">OpenSSL</a> / 
+    
+        <a href="/tags/mcrypt/" title="mcrypt">mcrypt</a> / 
+    
+        <a href="/tags/xtea/" title="xtea">xtea</a>
+    
+
+        </span>
+    </p>
+</article>
+<!-- 分享按钮 -->
+
+  <div class="article-share clearfix text-center">
+    <div class="share-area">
+      <span class="share-txt">分享到：</span>
+      <a href="javascript: window.open('http://service.weibo.com/share/share.php?url=' + encodeURIComponent(location.href) + '&title=' + document.title + '&language=zh_cn');" class="share-icon weibo"></a>
+      <a href="javascript: alert('请复制链接到微信并发送');" class="share-icon wechat"></a>
+      <a href="javascript: window.open('http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=' + encodeURIComponent(location.href) + '&title=' + document.title);" class="share-icon qqzone"></a>
+      <a href="javascript: window.open('http://connect.qq.com/widget/shareqq/index.html?url=' + encodeURIComponent(location.href) + '&desc=imsry.cn个人博客&title=' + document.title + '&callback=' + encodeURIComponent(location.href));" class="share-icon qq"></a>
+      <a href="javascript: window.open('http://shuo.douban.com/!service/share?href=' + encodeURIComponent(location.href) + '&name=' + document.title + '&text=' + document.title);" class="share-icon douban"></a>
+    </div>
+  </div>
+
+
+
+<!-- 上一篇/下一篇 -->
+
+<div class="article-nav clearfix">
+    
+    <span class="prev fl">
+        上一篇<br >
+        <a href="/posts/7e214f75.html">
+            
+                免费获得SSL证书-Let&#39;s Encrypt
+            
+        </a>
+    </span>
+    
+
+    
+    <span class="next fr">
+        下一篇<br >
+        <a href="/posts/b37f5033.html">
+            
+                Go-Server/Client以及PHP-Client之间的GRPC初次尝试
+            
+        </a>
+    </span>
+    
+</div>
+
+<!-- 文章评论 -->
+
+  <script src="/js/comment.js"></script>
+  <div id="comments" class="comment">
+    <!--
+    <div class="sign-bar">
+      GitHub 已登录!
+      <span class="sign-link">登出</span>
+    </div>
+    <section class="box">
+      <div class="com-avatar"><img src="/img/jelon.jpg" alt="avatar"></div>
+      <div class="com-text">
+        <div class="main">
+          <textarea class="text-area-edited show" placeholder="欢迎评论！"></textarea>
+          <div class="text-area-preview"></div>
+        </div>
+        <div class="switch">
+          <div class="switch-item on">编辑</div>
+          <div class="switch-item">预览</div>
+        </div>
+        <div class="button">提交</div>
+      </div>
+    </section>
+    <section class="tips">注：评论支持 markdown 语法！</section>
+    <section class="list-wrap">
+      <ul class="list">
+        <li>
+          <div class="user-avatar">
+            <a href="/">
+              <img src="/img/jelon.jpg" alt="user-avatar">
+            </a>
+          </div>
+          <div class="user-comment">
+            <div class="user-comment-header">
+              <span class="post-name">张德龙</span>
+              <span class="post-time">2017年12月12日</span>
+              <span class="like liked">已赞</span>
+              <span class="like-num">2</span>
+            </div>
+            <div class="user-comment-body">333333</div>
+          </div>
+        </li>
+        <li>
+          <div class="user-avatar">
+            <a href="/">
+              <img src="/img/jelon.jpg" alt="user-avatar">
+            </a>
+          </div>
+          <div class="user-comment">
+            <div class="user-comment-header">
+              <span class="post-name">刘德华</span>
+              <span class="post-time">2017年12月12日</span>
+              <span class="like">点赞</span>
+              <span class="like-num">2</span>
+            </div>
+            <div class="user-comment-body">vvvvv</div>
+          </div>
+        </li>
+      </ul>
+      <div class="page-nav">
+        <a href="javascript: void(0);" class="item">1</a>
+        <a href="javascript: void(0);" class="item">2</a>
+        <a href="javascript: void(0);" class="item current">3</a>
+      </div>
+    </section>
+    -->
+  </div>
+  <script>
+  JELON.Comment({
+    container: 'comments',
+    label: 'php-mcrypt-to-openssl' || 'posts/5c3bf0b6.html',
+    owner: 'haowanxing',
+    repo: 'haowanxing.github.io',
+    clientId: '7e6b078394a99b7940d2',
+    clientSecret: 'ff64a6b066e97af64358c44a96e0c7dd398aba1e'
+  });
+  </script>
+
+
+
+            </div>
+
+        </section>
+        <!-- 侧栏部分 -->
+<aside class="sidebar">
+    
+    <section class="widget">
+        <h3 class="widget-hd"><strong>文章搜索</strong></h3>
+        <div class="search-form">
+  <form
+    id="searchForm"
+    method="GET"
+    action="https://www.baidu.com/s"
+    ectype="application/x-www-form-urlencoded"
+    target="_blank"
+    autocomplete="false"
+    onsubmit="javascript: return false;">
+    <input
+      id="searchKeyword"
+      type="text"
+      class="form-control"
+      placeholder="输入关键字搜索"
+      autocomplete="false"
+    />
+    <input id="searchKeywordHidden" type="hidden" name="wd" />
+    <input id="searchButton" class="btn" type="submit" value="搜索" />
+  </form>
+</div>
+    </section>
+    
+
+    <section class="widget">
+        <h3 class="widget-hd"><strong>文章分类</strong></h3>
+        <!-- 文章分类 -->
+<ul class="widget-bd">
+    
+    <li>
+        <a href="/categories/学习笔记/">学习笔记</a>
+        <span class="badge">(48)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/编程语言/">编程语言</a>
+        <span class="badge">(6)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/杂谈/">杂谈</a>
+        <span class="badge">(4)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/Learn-GO/">Learn-GO</a>
+        <span class="badge">(6)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/算法/">算法</a>
+        <span class="badge">(6)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/开发板/">开发板</a>
+        <span class="badge">(1)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/Linux/">Linux</a>
+        <span class="badge">(15)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/PHP/">PHP</a>
+        <span class="badge">(9)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/网络安全/">网络安全</a>
+        <span class="badge">(2)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/数据库/">数据库</a>
+        <span class="badge">(2)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/MacOS/">MacOS</a>
+        <span class="badge">(1)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/Web/">Web</a>
+        <span class="badge">(2)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/我的分享/">我的分享</a>
+        <span class="badge">(1)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/开放平台/">开放平台</a>
+        <span class="badge">(1)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/考试/">考试</a>
+        <span class="badge">(1)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/游戏/">游戏</a>
+        <span class="badge">(2)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/学习笔记/Linux/">Linux</a>
+        <span class="badge">(1)</span>
+    </li>
+    
+</ul>
+    </section>
+
+    
+    <section class="widget">
+        <h3 class="widget-hd"><strong>热门标签</strong></h3>
+        <!-- 文章标签 -->
+<div class="widget-bd tag-wrap">
+  
+    <a class="tag-item" href="/tags/Docker/" title="Docker">Docker (1)</a>
+  
+    <a class="tag-item" href="/tags/Golang/" title="Golang">Golang (1)</a>
+  
+    <a class="tag-item" href="/tags/LNMP/" title="LNMP">LNMP (2)</a>
+  
+    <a class="tag-item" href="/tags/OrangePi/" title="OrangePi">OrangePi (1)</a>
+  
+    <a class="tag-item" href="/tags/Network/" title="Network">Network (3)</a>
+  
+    <a class="tag-item" href="/tags/网卡/" title="网卡">网卡 (1)</a>
+  
+    <a class="tag-item" href="/tags/PHP/" title="PHP">PHP (11)</a>
+  
+    <a class="tag-item" href="/tags/算法/" title="算法">算法 (1)</a>
+  
+    <a class="tag-item" href="/tags/时间复杂度/" title="时间复杂度">时间复杂度 (1)</a>
+  
+    <a class="tag-item" href="/tags/定理/" title="定理">定理 (1)</a>
+  
+    <a class="tag-item" href="/tags/Go/" title="Go">Go (1)</a>
+  
+    <a class="tag-item" href="/tags/gRPC/" title="gRPC">gRPC (1)</a>
+  
+    <a class="tag-item" href="/tags/RPC/" title="RPC">RPC (1)</a>
+  
+    <a class="tag-item" href="/tags/Apache/" title="Apache">Apache (4)</a>
+  
+    <a class="tag-item" href="/tags/Linux/" title="Linux">Linux (3)</a>
+  
+    <a class="tag-item" href="/tags/Proxy/" title="Proxy">Proxy (1)</a>
+  
+    <a class="tag-item" href="/tags/面试/" title="面试">面试 (1)</a>
+  
+    <a class="tag-item" href="/tags/firewall/" title="firewall">firewall (1)</a>
+  
+    <a class="tag-item" href="/tags/CentOS/" title="CentOS">CentOS (3)</a>
+  
+    <a class="tag-item" href="/tags/https/" title="https">https (1)</a>
+  
+    <a class="tag-item" href="/tags/Chrome/" title="Chrome">Chrome (1)</a>
+  
+    <a class="tag-item" href="/tags/性能/" title="性能">性能 (3)</a>
+  
+    <a class="tag-item" href="/tags/VPN/" title="VPN">VPN (1)</a>
+  
+    <a class="tag-item" href="/tags/DS-Store/" title=".DS_Store">.DS_Store (1)</a>
+  
+    <a class="tag-item" href="/tags/Discuz/" title="Discuz">Discuz (1)</a>
+  
+    <a class="tag-item" href="/tags/MySQL/" title="MySQL">MySQL (9)</a>
+  
+    <a class="tag-item" href="/tags/Glassfish/" title="Glassfish">Glassfish (1)</a>
+  
+    <a class="tag-item" href="/tags/Java/" title="Java">Java (2)</a>
+  
+    <a class="tag-item" href="/tags/C语言/" title="C语言">C语言 (1)</a>
+  
+    <a class="tag-item" href="/tags/html/" title="html">html (1)</a>
+  
+    <a class="tag-item" href="/tags/Javascript/" title="Javascript">Javascript (2)</a>
+  
+    <a class="tag-item" href="/tags/Laravel/" title="Laravel">Laravel (1)</a>
+  
+    <a class="tag-item" href="/tags/MarkDown/" title="MarkDown">MarkDown (1)</a>
+  
+    <a class="tag-item" href="/tags/数据结构/" title="数据结构">数据结构 (1)</a>
+  
+    <a class="tag-item" href="/tags/Vim/" title="Vim">Vim (1)</a>
+  
+    <a class="tag-item" href="/tags/LAMP/" title="LAMP">LAMP (1)</a>
+  
+    <a class="tag-item" href="/tags/MacOS/" title="MacOS">MacOS (4)</a>
+  
+    <a class="tag-item" href="/tags/php/" title="php">php (2)</a>
+  
+    <a class="tag-item" href="/tags/Git/" title="Git">Git (1)</a>
+  
+</div>
+    </section>
+    
+
+    
+
+    
+    <!-- 友情链接 -->
+    <section class="widget">
+        <h3 class="widget-hd"><strong>友情链接</strong></h3>
+        <!-- 文章分类 -->
+<ul class="widget-bd">
+    
+        <li>
+            <a href="https://imququ.com/" target="_blank" title="Jerry Qu">Jerry Qu</a>
+        </li>
+    
+        <li>
+            <a href="https://jelon.info/" target="_blank" title="Zhang Delong">Jelon</a>
+        </li>
+    
+</ul>
+
+    </section>
+    
+</aside>
+<!-- / 侧栏部分 -->
+    </div>
+
+    <!-- 博客底部 -->
+    <footer class="footer">
+<div style="margin-bottom:1em;">
+
+        <!-- 不蒜子统计 -->
+        <span id="busuanzi_container_site_pv">
+                本站总访问量<span id="busuanzi_value_site_pv"></span>次
+        </span>
+        <span class="post-meta-divider">|</span>
+        <span id="busuanzi_container_site_uv" style='display:none'>
+                本站访客数<span id="busuanzi_value_site_uv"></span>人
+        </span>
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  
+</div>
+    &copy;
+    
+        2014-2020
+    
+
+    <a href="/">Best Wishes</a>
+</footer>
+<div class="back-to-top" id="JELON__backToTop" title="返回顶部">返回顶部</div>
+
+    <!--博客js脚本 -->
+    <!-- 这里放网站js脚本 -->
+<script src="/js/main.js?v=1591351449500"></script>
+</body>
+</html>

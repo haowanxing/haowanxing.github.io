@@ -1,0 +1,796 @@
+<!doctype html>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=11,IE=10,IE=9,IE=8">
+    <meta name="baidu-site-verification" content="dIcXMeY8Ya">
+    
+    <title>`Linux`分类下的文章 | 小牛试一刀</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+    <meta name="keywords" content="Anthony, 刘经济, 技术博客">
+    <meta name="description" content="待人以儒墨，不热爱前端技术的后端开发不是一个好的吃货。">
+
+    
+    <link rel="alternative" href="/atom.xml" title="小牛试一刀" type="application/atom+xml">
+    
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    
+    <link rel="stylesheet" href="/css/style.css">
+    <!--[if lt IE 9]>
+    <script src="/js/html5.js"></script>
+    <![endif]-->
+    
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?d5ebf515ab530cfbdda5f5c85093fb41";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+</head>
+</html>
+<body class="home">
+    <!--[if lt IE 9]>
+    <div class="browsehappy">
+        当前网页 <strong>不支持</strong>
+        你正在使用的浏览器. 为了正常的访问, 请 <a href="http://browsehappy.com/">升级你的浏览器</a>.
+    </div>
+    <![endif]-->
+
+    <!-- 博客头部 -->
+    <header class="header">
+    <section class="container header-main">
+        <div class="logo">
+            <a href="/">
+                <div class="cover">
+                    <span class="name">小牛试一刀</span>
+                    <span class="description">斯人笔记本</span>
+                </div>
+            </a>
+        </div>
+        <div class="dropnav icon-paragraph-justify" id="JELON__btnDropNav"></div>
+        <ul class="menu hidden" id="JELON__menu">
+            
+            <li rel="/categories/Linux/page/2/index.html" class="item ">
+                <a href="/" title="首页" class="icon-home">&nbsp;首页</a>
+            </li>
+            
+            <li rel="/categories/Linux/page/2/index.html" class="item ">
+                <a href="/about/" title="关于" class="icon-about">&nbsp;关于</a>
+            </li>
+            
+            <li rel="/categories/Linux/page/2/index.html" class="item ">
+                <a href="/comment/" title="留言" class="icon-comment">&nbsp;留言</a>
+            </li>
+            
+        </ul>
+        <div class="profile clearfix">
+            <div class="feeds fl">
+                
+                
+                <p class="links">
+                    
+                        <a href="https://github.com/haowanxing" target="_blank">Github</a>
+                        |
+                    
+                        <a href="https://pages.coding.me" target="_blank">Hosted by Coding Pages</a>
+                        
+                    
+                </p>
+                <p class="sns">
+                    
+                        <a href="http://weibo.com/u/2214092525" class="sinaweibo" target="_blank"><b>■</b> 新浪微博</a>
+                    
+                        <a href="https://www.facebook.com/york.mail/" class="qqweibo" target="_blank"><b>■</b> Facebook</a>
+                    
+                    <a href="javascript: void(0);" class="wechat">
+                        <b>■</b>
+                        公众号
+                        <span class="popover">
+                            <img src="/img/wechat_mp.jpg" width="120" height="120" alt="我的微信订阅号">
+                            <i class="arrow"></i>
+                        </span>
+                    </a>
+                </p>
+                
+            </div>
+            <div class="avatar fr">
+                <img src="/uploads/qiniu/20181010153914990649885.png" alt="avatar" title="Jelon" >
+            </div>
+        </div>
+    </section>
+</header>
+
+
+    <!-- 博客正文 -->
+    <div class="container body clearfix">
+        <section class="content">
+            <div class="content-main widget">
+                <!-- 文章分类 -->
+
+    <h3 class="widget-hd">
+        <strong>
+            
+                `Linux`分类下的文章
+            
+        </strong>
+    </h3>
+    
+        <!-- 文章列表 item -->
+<article class="post">
+    <header>
+        <!-- 标签这有且只能显示一个 -->
+        
+        <a class="cat-link" href="/categories/Linux/">Linux</a>
+        
+        <!-- 文章标题 -->
+        
+    <h3 class="post-title">
+    	<a href="http://www.imsry.cn/posts/57c492d1.html">
+    		安装CentOS7之后win7引导没了,Grub解决
+    	</a>
+    </h3>
+
+    </header>
+    <p class="post-meta">
+        Anthony 发表于
+        <time datetime="2015-06-09T02:37:03.000Z">2015-06-09 10:37:03</time>
+
+
+        &nbsp;&nbsp;
+        <span class="post-tags">
+            标签：
+            
+        </span>
+    </p>
+
+    <div class="post-content">
+        <div class="post-excerpt">
+            
+                <pre><code>因为学习linux需要，虚拟机安装又显得太简单，所以在实验室win7电脑上装个windows和linux的双系统，自然采用最新的centos7来试着玩一玩咯！但是没想到装完cnetos7之后，windows进不去了（没有windows的引导），上网查了各种资料，最终确定了修改Grub的配置文件来增加对windows的引导。
+首先我们要登陆Centos,打开Grub的配置文件：
+</code></pre><p>执行命令：<br><code>vi /boot/grub2/grub.cfg</code><br>找到 <code>### BEGIN /etc/grub.d/30_os-prober ###</code> 在下面添加：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">menuentry &quot;Windows 7 Loader On Dev/sda1&quot; &#123;</span><br><span class="line">     insmod ntfs</span><br><span class="line">     set root=(hd0,1)</span><br><span class="line">     chainloader +1</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>关键代码：set root=(hd0,1) 其中 hd0 表示硬盘，1 表示C盘 ，因为我这里win7是安装在C盘的，所以是1，如果你不是C盘（第一个分区），那么就要需改成你对应的分区号了。</p>
+
+            
+            <p class="more">
+                <a href="http://www.imsry.cn/posts/57c492d1.html">阅读剩下更多</a>
+            </p>
+        </div>
+        <div class="post-thumbnail" data-img="">
+            <a href="http://www.imsry.cn/posts/57c492d1.html" title="安装CentOS7之后win7引导没了,Grub解决">
+                
+                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/9.jpg" alt="默认配图" >
+                
+            </a>
+        </div>
+    </div>
+</article>
+
+    
+        <!-- 文章列表 item -->
+<article class="post">
+    <header>
+        <!-- 标签这有且只能显示一个 -->
+        
+        <a class="cat-link" href="/categories/Linux/">Linux</a>
+        
+        <!-- 文章标题 -->
+        
+    <h3 class="post-title">
+    	<a href="http://www.imsry.cn/posts/cc99fffd.html">
+    		apache域名跳转法简单完成重定向
+    	</a>
+    </h3>
+
+    </header>
+    <p class="post-meta">
+        Anthony 发表于
+        <time datetime="2014-12-30T14:46:02.000Z">2014-12-30 22:46:02</time>
+
+
+        &nbsp;&nbsp;
+        <span class="post-tags">
+            标签：
+            
+    
+        <a href="/tags/Apache/" title="Apache">Apache</a>
+    
+
+        </span>
+    </p>
+
+    <div class="post-content">
+        <div class="post-excerpt">
+            
+                <p>用.htaccess做域名跳转<br>apache默认是开启.htaccess的。<br>但是为了成功率还是检查一下配置有没有真的支持<br>编码apache的配置文件httpd.conf，把相应的内容修改为：</p>
+<p><pre><br>Options FollowSymLinks<br>AllowOverride All<br>LoadModule rewrite_module modules/mod_rewrite.so 这一行的注释要去掉<br></pre><br>然后重启动apache服务器。</p>
+<p>编辑apahce中web根目录下.htaccess文件（如题没有此文件，则直接新建立一个既可）。</p>
+<p>RewriteEngine On<br>RewriteCond %{HTTP_HOST} ^fandouzi.com [NC]<br>RewriteRule ^(.*) <a href="http://www.fandouzi.com/" target="_blank" rel="noopener">http://www.fandouzi.com/</a> [R=301,L]</p>
+<p>访问fandouzi.com同样会转向到www.fandouzi.com。</p>
+
+            
+            <p class="more">
+                <a href="http://www.imsry.cn/posts/cc99fffd.html">阅读剩下更多</a>
+            </p>
+        </div>
+        <div class="post-thumbnail" data-img="">
+            <a href="http://www.imsry.cn/posts/cc99fffd.html" title="apache域名跳转法简单完成重定向">
+                
+                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/0.jpg" alt="默认配图" >
+                
+            </a>
+        </div>
+    </div>
+</article>
+
+    
+        <!-- 文章列表 item -->
+<article class="post">
+    <header>
+        <!-- 标签这有且只能显示一个 -->
+        
+        <a class="cat-link" href="/categories/Linux/">Linux</a>
+        
+        <!-- 文章标题 -->
+        
+    <h3 class="post-title">
+    	<a href="http://www.imsry.cn/posts/bc861775.html">
+    		linux下使用yum安装Apache+php+Mysql+phpMyAdmin [转载]
+    	</a>
+    </h3>
+
+    </header>
+    <p class="post-meta">
+        Anthony 发表于
+        <time datetime="2014-12-23T13:32:44.000Z">2014-12-23 21:32:44</time>
+
+
+        &nbsp;&nbsp;
+        <span class="post-tags">
+            标签：
+            
+    
+        <a href="/tags/LAMP/" title="LAMP">LAMP</a>
+    
+
+        </span>
+    </p>
+
+    <div class="post-content">
+        <div class="post-excerpt">
+            
+                <p>适用redhat于32位及64位，前提架设好本地源。在这里不再赘述。</p>
+<p>1 安装Apache+php+Mysql</p>
+<p>a、安装Apahce, PHP, Mysql, 以及php连接mysql库组件 yum -y install httpd php mysql mysql-server php-mysql</p>
+<p>b、安装mysql扩展    yum -y install mysql-connector-odbc mysql-devel libdbi-dbd-mysql</p>
+<p>或一次性粘贴安装:</p>
+<p>yum -y install httpd php mysql mysql-server php-mysql httpd-manual mod_ssl mod_perl mod_auth_mysql php-mcrypt php-gd php-xml php-mbstring php-ldap php-pear php-xmlrpc mysql-connector-odbc mysql-devel libdbi-dbd-mysql</p>
+<p>c、设置mysql数据库root帐号密码。<br>mysqladmin -u root password ‘newpassword’ [引号内填密码]</p>
+<p>d、 让mysql数据库更安全<br>mysql -u root -p [此时会要求你输入刚刚设置的密码，输入后回车即可</p>
+<p>mysql&gt; DROP DATABASE test; [删除test数据库]<br>mysql&gt; DELETE FROM mysql.user WHERE user = ”; [删除匿名帐户]<br>mysql&gt; FLUSH PRIVILEGES; [重载权限]</p>
+<p>e、 按照以上的安装方式, 配置出来的默认站点目录为/var/www/html/新建一个php脚本:<br>&lt;?php<br>phpinfo();<br>?&gt;</p>
+<p>2、安装phpMyAdmin<br>进入phpMyAdmin官方下载(不要最新版本，下phpMyAdmin 2.11.9.5就行了,3.1以上需php 5.2以上)，上传到你的网站目录下，然后进行配置。只需几步即可搞定。<br>I. config.sample.inc.php更名为config.inc.php;<br>II. 打开config.inc.php文件，进行以下修改;<br>// $cfg[‘Servers’][$i][‘controluser’] = ‘pma’;<br>// $cfg[‘Servers’][$i][‘controlpass’] = ‘pmapass’;<br>// $cfg[‘Servers’][$i][‘pmadb’] = ‘phpmyadmin’;<br>// $cfg[‘Servers’][$i][‘bookmarktable’] = ‘pma_bookmark’;<br>// $cfg[‘Servers’][$i][‘relation’] = ‘pma_relation’;<br>// $cfg[‘Servers’][$i][‘table_info’] = ‘pma_table_info’;<br>// $cfg[‘Servers’][$i][‘table_coords’] = ‘pma_table_coords’;<br>// $cfg[‘Servers’][$i][‘pdf_pages’] = ‘pma_pdf_pages’;<br>// $cfg[‘Servers’][$i][‘column_info’] = ‘pma_column_info’;<br>// $cfg[‘Servers’][$i][‘history’] = ‘pma_history’;<br>// $cfg[‘Servers’][$i][‘designer_coords’] = ‘pma_designer_coords’;</p>
+<p>去掉每行前面的//;<br>II.$cfg[‘blowfish_secret’] = ”; |修改为| $cfg[‘blowfish_secret’] = ‘http’;<br>IV.$cfg[‘Servers’][$i][‘controluser’] = ‘pma’; |把’pma’修改为你的帐号|$cfg[‘Servers’][$i][‘controlpass’] = ‘pmapass’; |把’pmapass设置为你的mysql登录密码|<br>V. $cfg[‘blowfish_secret’] = ”; | 添加短语密码例如：$cfg[‘blowfish_secret’] = ‘onohot’;</p>
+<p>3、//安装php的扩展<br>yum -y install php-gd php-xml php-mbstring php-ldap php-pear php-xmlrpc</p>
+<p>4、//安装apache扩展</p>
+<p>yum -y install httpd-manual mod_ssl mod_perl mod_auth_mysql</p>
+<p>5、 配置防火墙<br>添加允许访问HTTP、FTP端口</p>
+<p>iptables -I RH-Firewall-1-INPUT -m state –state NEW -m tcp -p tcp –dport 21 -j ACCEPTiptables -I RH-Firewall-1-INPUT -m state –state NEW -m tcp -p tcp –dport 80 -j ACCEPT<br>重启iptables: service iptables restart<br>转载于：<a href="http://heyh0520.iteye.com/blog/540851" target="_blank" rel="noopener">linux下使用yum安装Apache+php+Mysql+phpMyAdmin - - ITeye技术网站</a>.</p>
+
+            
+            <p class="more">
+                <a href="http://www.imsry.cn/posts/bc861775.html">阅读剩下更多</a>
+            </p>
+        </div>
+        <div class="post-thumbnail" data-img="">
+            <a href="http://www.imsry.cn/posts/bc861775.html" title="linux下使用yum安装Apache+php+Mysql+phpMyAdmin [转载]">
+                
+                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/3.jpg" alt="默认配图" >
+                
+            </a>
+        </div>
+    </div>
+</article>
+
+    
+        <!-- 文章列表 item -->
+<article class="post">
+    <header>
+        <!-- 标签这有且只能显示一个 -->
+        
+        <a class="cat-link" href="/categories/Linux/">Linux</a>
+        
+        <!-- 文章标题 -->
+        
+    <h3 class="post-title">
+    	<a href="http://www.imsry.cn/posts/1beb1f62.html">
+    		Linux上vi(vim)编辑器使用教程 - 转载
+    	</a>
+    </h3>
+
+    </header>
+    <p class="post-meta">
+        Anthony 发表于
+        <time datetime="2014-11-29T15:29:48.000Z">2014-11-29 23:29:48</time>
+
+
+        &nbsp;&nbsp;
+        <span class="post-tags">
+            标签：
+            
+    
+        <a href="/tags/Vim/" title="Vim">Vim</a>
+    
+
+        </span>
+    </p>
+
+    <div class="post-content">
+        <div class="post-excerpt">
+            
+                <p>vi(vim)是上Linux非常常用的编辑器，很多Linux发行版都默认安装了vi(vim)。vi(vim)命令繁多但是如果使用灵活之后将会大大提高效率。vi是“visual interface”的缩写，vim是vi IMproved(增强版的vi)。在一般的系统管理维护中vi就够用，如果想使用代码加亮的话可以使用vim。下面vps侦探整理一下vi的使用教程：包含vi的基本介绍、使用模式、文件的打开关闭保存、插入文本或新建行、移动光标、删除、恢复字符或行、搜索等等，算是一篇比较适合新手学习vi的教程。</p>
+<p>vi有3个模式：插入模式、命令模式、低行模式。</p>
+<pre><code>插入模式：在此模式下可以输入字符，按ESC将回到命令模式。
+命令模式：可以移动光标、删除字符等。
+低行模式：可以保存文件、退出vi、设置vi、查找等功能(低行模式也可以看作是命令模式里的)。
+</code></pre><p>一、打开文件、保存、关闭文件(vi命令模式下使用)</p>
+<pre lang="ruby" line="1" escaped="true">
+vi filename       //打开filename文件
+:w       //保存文件
+:w vpser.net //保存至vpser.net文件
+:q          //退出编辑器，如果文件已修改请使用下面的命令
+:q!        //退出编辑器，且不保存
+:wq         //退出编辑器，且保存文件
+</pre>
+
+<p>二、插入文本或行(vi命令模式下使用，执行下面命令后将进入插入模式，按ESC键可退出插入模式)</p>
+<pre lang="bash" line="1" escaped="true">
+
+a      //在当前光标位置的右边添加文本
+i       //在当前光标位置的左边添加文本
+A     //在当前行的末尾位置添加文本
+I      //在当前行的开始处添加文本(非空字符的行首)
+O     //在当前行的上面新建一行
+o     //在当前行的下面新建一行
+R    //替换(覆盖)当前光标位置及后面的若干文本
+J    //合并光标所在行及下一行为一行(依然在命令模式)
+</pre>
+
+<p>三、移动光标(vi命令模式下使用)</p>
+<p>1、使用上下左右方向键</p>
+<p>2、命令模式下：h   向左、j   向下 、k   向上、l  向右。<br>空格键 向右、Backspace  向左、Enter  移动到下一行首、-  移动到上一行首。<br>四、删除、恢复字符或行(vi命令模式下使用)</p>
+<pre lang="apache" line="1" escaped="true">
+
+x         //删除当前字符
+nx         //删除从光标开始的n个字符
+dd      //删除当前行
+ndd   //向下删除当前行在内的n行
+u       //撤销上一步操作
+U      //撤销对当前行的所有操作
+</pre>
+
+<p>五、搜索(vi命令模式下使用)</p>
+<pre lang="ruby" line="1" escaped="true">
+
+/vpser     //向光标下搜索vpser字符串
+?vpser     //向光标上搜索vpser字符串
+n           //向下搜索前一个搜素动作
+N         //向上搜索前一个搜索动作
+</pre>
+
+<p>六、跳至指定行(vi命令模式下使用)</p>
+<pre lang="ruby" line="1" escaped="true">
+
+n+        //向下跳n行
+n-         //向上跳n行
+nG        //跳到行号为n的行
+G           //跳至文件的底部
+</pre>
+
+<p>七、设置行号(vi命令模式下使用)</p>
+<pre lang="ruby" line="1" escaped="true">
+
+:set  nu     //显示行号
+:set nonu    //取消显示行号
+</pre>
+
+<p>八、复制、粘贴(vi命令模式下使用)</p>
+<pre lang="ruby" line="1" escaped="true">
+
+yy    //将当前行复制到缓存区，也可以用 "ayy 复制，"a 为缓冲区，a也可以替换为a到z的任意字母，可以完成多个复制任务。
+nyy   //将当前行向下n行复制到缓冲区，也可以用 "anyy 复制，"a 为缓冲区，a也可以替换为a到z的任意字母，可以完成多个复制任务。
+yw    //复制从光标开始到词尾的字符。
+nyw   //复制从光标开始的n个单词。
+y^      //复制从光标到行首的内容。  VPS侦探
+y$      //复制从光标到行尾的内容。
+p        //粘贴剪切板里的内容在光标后，如果使用了前面的自定义缓冲区，建议使用"ap 进行粘贴。
+P        //粘贴剪切板里的内容在光标前，如果使用了前面的自定义缓冲区，建议使用"aP 进行粘贴。
+</pre>
+
+<p>九、替换(vi命令模式下使用)</p>
+<pre lang="ruby" line="1" escaped="true">
+
+:s/old/new      //用new替换行中首次出现的old
+:s/old/new/g         //用new替换行中所有的old
+:n,m s/old/new/g     //用new替换从n到m行里所有的old
+:%s/old/new/g      //用new替换当前文件里所有的old
+</pre>
+
+<p>十、编辑其他文件</p>
+<pre lang="ruby" line="1" escaped="true">
+:e otherfilename    //编辑文件名为otherfilename的文件。
+</pre>
+
+<p>十一、修改文件格式</p>
+<pre lang="ruby" line="1" escaped="true">
+:set fileformat=unix   //将文件修改为unix格式，如win下面的文本文件在linux下会出现^M。
+</pre>
+
+<p>总结：vi(vim)教程虽然有比较多的命令，但是只要勤加练习，相信你会很快的熟练掌握，同时也会给你的工作或学习带来更高的效率。当如果不知道自己处在什么模式时可以按2次Esc键即可回到命令模式，会有最后提醒一点：注意大小写！！！<br>文章来源：<a href="http://www.vpser.net/manage/vi.html" target="_blank" rel="noopener">Linux上vi(vim)编辑器使用教程 - VPS侦探</a>.</p>
+
+            
+            <p class="more">
+                <a href="http://www.imsry.cn/posts/1beb1f62.html">阅读剩下更多</a>
+            </p>
+        </div>
+        <div class="post-thumbnail" data-img="">
+            <a href="http://www.imsry.cn/posts/1beb1f62.html" title="Linux上vi(vim)编辑器使用教程 - 转载">
+                
+                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/9.jpg" alt="默认配图" >
+                
+            </a>
+        </div>
+    </div>
+</article>
+
+    
+        <!-- 文章列表 item -->
+<article class="post">
+    <header>
+        <!-- 标签这有且只能显示一个 -->
+        
+        <a class="cat-link" href="/categories/Linux/">Linux</a>
+        
+        <!-- 文章标题 -->
+        
+    <h3 class="post-title">
+    	<a href="http://www.imsry.cn/posts/8db5876f.html">
+    		linux下允许外网对mysql的访问
+    	</a>
+    </h3>
+
+    </header>
+    <p class="post-meta">
+        Anthony 发表于
+        <time datetime="2014-11-18T03:48:17.000Z">2014-11-18 11:48:17</time>
+
+
+        &nbsp;&nbsp;
+        <span class="post-tags">
+            标签：
+            
+    
+        <a href="/tags/Linux/" title="Linux">Linux</a> / 
+    
+        <a href="/tags/MySQL/" title="MySQL">MySQL</a>
+    
+
+        </span>
+    </p>
+
+    <div class="post-content">
+        <div class="post-excerpt">
+            
+                <p>从阿里云镜像市场安装的ubuntu(Apache+Mysql+VsFtp)里面Mysql默认是外网无法访问的，而在实际开发过程中需要对数据库的可视化比对操作，这样我们可以通过本地计算机来事实查改服务器的数据库。</p>
+<pre lang="mysql">
+
+1、修改表,登录mysql数据库,切换到mysql数据库,使用sql语句查看
+"select host,user from user ;"
+\mysql -u root -p
+\mysql>use mysql; 
+\mysql>update user set host = '%' where user ='root'; 
+\mysql>select host, user from user; 
+\mysql>flush privileges;  （使修改生效，必须执行）
+
+2、授权用户,你想root使用密码从任何主机连接到mysql服务器
+\mysql>GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' IDENTIFIED BY 'admin1234' WITH GRANT OPTION;
+\mysql>flush privileges;  （使修改生效，必须执行）
+
+</pre>
+            
+            <p class="more">
+                <a href="http://www.imsry.cn/posts/8db5876f.html">阅读剩下更多</a>
+            </p>
+        </div>
+        <div class="post-thumbnail" data-img="">
+            <a href="http://www.imsry.cn/posts/8db5876f.html" title="linux下允许外网对mysql的访问">
+                
+                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/8.jpg" alt="默认配图" >
+                
+            </a>
+        </div>
+    </div>
+</article>
+
+    
+
+    
+    <nav class="page-navigator">
+        <a class="extend prev" rel="prev" href="/categories/Linux/">前一页</a><a class="page-number" href="/categories/Linux/">1</a><span class="page-number current">2</span>
+    </nav>
+    
+
+
+            </div>
+
+        </section>
+        <!-- 侧栏部分 -->
+<aside class="sidebar">
+    
+    <section class="widget">
+        <h3 class="widget-hd"><strong>文章搜索</strong></h3>
+        <div class="search-form">
+  <form
+    id="searchForm"
+    method="GET"
+    action="https://www.baidu.com/s"
+    ectype="application/x-www-form-urlencoded"
+    target="_blank"
+    autocomplete="false"
+    onsubmit="javascript: return false;">
+    <input
+      id="searchKeyword"
+      type="text"
+      class="form-control"
+      placeholder="输入关键字搜索"
+      autocomplete="false"
+    />
+    <input id="searchKeywordHidden" type="hidden" name="wd" />
+    <input id="searchButton" class="btn" type="submit" value="搜索" />
+  </form>
+</div>
+    </section>
+    
+
+    <section class="widget">
+        <h3 class="widget-hd"><strong>文章分类</strong></h3>
+        <!-- 文章分类 -->
+<ul class="widget-bd">
+    
+    <li>
+        <a href="/categories/学习笔记/">学习笔记</a>
+        <span class="badge">(48)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/编程语言/">编程语言</a>
+        <span class="badge">(6)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/杂谈/">杂谈</a>
+        <span class="badge">(4)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/Learn-GO/">Learn-GO</a>
+        <span class="badge">(6)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/算法/">算法</a>
+        <span class="badge">(6)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/开发板/">开发板</a>
+        <span class="badge">(1)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/Linux/">Linux</a>
+        <span class="badge">(15)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/PHP/">PHP</a>
+        <span class="badge">(9)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/网络安全/">网络安全</a>
+        <span class="badge">(2)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/数据库/">数据库</a>
+        <span class="badge">(2)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/MacOS/">MacOS</a>
+        <span class="badge">(1)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/Web/">Web</a>
+        <span class="badge">(2)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/我的分享/">我的分享</a>
+        <span class="badge">(1)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/开放平台/">开放平台</a>
+        <span class="badge">(1)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/考试/">考试</a>
+        <span class="badge">(1)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/游戏/">游戏</a>
+        <span class="badge">(2)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/学习笔记/Linux/">Linux</a>
+        <span class="badge">(1)</span>
+    </li>
+    
+</ul>
+    </section>
+
+    
+    <section class="widget">
+        <h3 class="widget-hd"><strong>热门标签</strong></h3>
+        <!-- 文章标签 -->
+<div class="widget-bd tag-wrap">
+  
+    <a class="tag-item" href="/tags/Docker/" title="Docker">Docker (1)</a>
+  
+    <a class="tag-item" href="/tags/Golang/" title="Golang">Golang (1)</a>
+  
+    <a class="tag-item" href="/tags/LNMP/" title="LNMP">LNMP (2)</a>
+  
+    <a class="tag-item" href="/tags/OrangePi/" title="OrangePi">OrangePi (1)</a>
+  
+    <a class="tag-item" href="/tags/Network/" title="Network">Network (3)</a>
+  
+    <a class="tag-item" href="/tags/网卡/" title="网卡">网卡 (1)</a>
+  
+    <a class="tag-item" href="/tags/PHP/" title="PHP">PHP (11)</a>
+  
+    <a class="tag-item" href="/tags/算法/" title="算法">算法 (1)</a>
+  
+    <a class="tag-item" href="/tags/时间复杂度/" title="时间复杂度">时间复杂度 (1)</a>
+  
+    <a class="tag-item" href="/tags/定理/" title="定理">定理 (1)</a>
+  
+    <a class="tag-item" href="/tags/Go/" title="Go">Go (1)</a>
+  
+    <a class="tag-item" href="/tags/gRPC/" title="gRPC">gRPC (1)</a>
+  
+    <a class="tag-item" href="/tags/RPC/" title="RPC">RPC (1)</a>
+  
+    <a class="tag-item" href="/tags/Apache/" title="Apache">Apache (4)</a>
+  
+    <a class="tag-item" href="/tags/Linux/" title="Linux">Linux (3)</a>
+  
+    <a class="tag-item" href="/tags/Proxy/" title="Proxy">Proxy (1)</a>
+  
+    <a class="tag-item" href="/tags/面试/" title="面试">面试 (1)</a>
+  
+    <a class="tag-item" href="/tags/firewall/" title="firewall">firewall (1)</a>
+  
+    <a class="tag-item" href="/tags/CentOS/" title="CentOS">CentOS (3)</a>
+  
+    <a class="tag-item" href="/tags/https/" title="https">https (1)</a>
+  
+    <a class="tag-item" href="/tags/Chrome/" title="Chrome">Chrome (1)</a>
+  
+    <a class="tag-item" href="/tags/性能/" title="性能">性能 (3)</a>
+  
+    <a class="tag-item" href="/tags/VPN/" title="VPN">VPN (1)</a>
+  
+    <a class="tag-item" href="/tags/DS-Store/" title=".DS_Store">.DS_Store (1)</a>
+  
+    <a class="tag-item" href="/tags/Discuz/" title="Discuz">Discuz (1)</a>
+  
+    <a class="tag-item" href="/tags/MySQL/" title="MySQL">MySQL (9)</a>
+  
+    <a class="tag-item" href="/tags/Glassfish/" title="Glassfish">Glassfish (1)</a>
+  
+    <a class="tag-item" href="/tags/Java/" title="Java">Java (2)</a>
+  
+    <a class="tag-item" href="/tags/C语言/" title="C语言">C语言 (1)</a>
+  
+    <a class="tag-item" href="/tags/html/" title="html">html (1)</a>
+  
+    <a class="tag-item" href="/tags/Javascript/" title="Javascript">Javascript (2)</a>
+  
+    <a class="tag-item" href="/tags/Laravel/" title="Laravel">Laravel (1)</a>
+  
+    <a class="tag-item" href="/tags/MarkDown/" title="MarkDown">MarkDown (1)</a>
+  
+    <a class="tag-item" href="/tags/数据结构/" title="数据结构">数据结构 (1)</a>
+  
+    <a class="tag-item" href="/tags/Vim/" title="Vim">Vim (1)</a>
+  
+    <a class="tag-item" href="/tags/LAMP/" title="LAMP">LAMP (1)</a>
+  
+    <a class="tag-item" href="/tags/MacOS/" title="MacOS">MacOS (4)</a>
+  
+    <a class="tag-item" href="/tags/php/" title="php">php (2)</a>
+  
+    <a class="tag-item" href="/tags/Git/" title="Git">Git (1)</a>
+  
+</div>
+    </section>
+    
+
+    
+
+    
+    <!-- 友情链接 -->
+    <section class="widget">
+        <h3 class="widget-hd"><strong>友情链接</strong></h3>
+        <!-- 文章分类 -->
+<ul class="widget-bd">
+    
+        <li>
+            <a href="https://imququ.com/" target="_blank" title="Jerry Qu">Jerry Qu</a>
+        </li>
+    
+        <li>
+            <a href="https://jelon.info/" target="_blank" title="Zhang Delong">Jelon</a>
+        </li>
+    
+</ul>
+
+    </section>
+    
+</aside>
+<!-- / 侧栏部分 -->
+    </div>
+
+    <!-- 博客底部 -->
+    <footer class="footer">
+<div style="margin-bottom:1em;">
+
+        <!-- 不蒜子统计 -->
+        <span id="busuanzi_container_site_pv">
+                本站总访问量<span id="busuanzi_value_site_pv"></span>次
+        </span>
+        <span class="post-meta-divider">|</span>
+        <span id="busuanzi_container_site_uv" style='display:none'>
+                本站访客数<span id="busuanzi_value_site_uv"></span>人
+        </span>
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  
+</div>
+    &copy;
+    
+        2014-2020
+    
+
+    <a href="/">Best Wishes</a>
+</footer>
+<div class="back-to-top" id="JELON__backToTop" title="返回顶部">返回顶部</div>
+
+    <!--博客js脚本 -->
+    <!-- 这里放网站js脚本 -->
+<script src="/js/main.js?v=1591351450954"></script>
+</body>
+</html>
