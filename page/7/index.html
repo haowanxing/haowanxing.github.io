@@ -127,6 +127,63 @@ var _hmt = _hmt || [];
     <header>
         <!-- 标签这有且只能显示一个 -->
         
+        <a class="cat-link" href="/categories/Linux/">Linux</a>
+        
+        <!-- 文章标题 -->
+        
+    <h3 class="post-title">
+    	<a href="http://www.imsry.cn/posts/2e6f46f8.html">
+    		 CENTOS 6.0 iptables 开放端口80 3306 22端口
+    	</a>
+    </h3>
+
+    </header>
+    <p class="post-meta">
+        Anthony 发表于
+        <time datetime="2015-11-11T13:13:01.000Z">2015-11-11 21:13:01</time>
+
+
+        &nbsp;&nbsp;
+        <span class="post-tags">
+            标签：
+            
+    
+        <a href="/tags/firewall/" title="firewall">firewall</a> / 
+    
+        <a href="/tags/CentOS/" title="CentOS">CentOS</a>
+    
+
+        </span>
+    </p>
+
+    <div class="post-content">
+        <div class="post-excerpt">
+            
+                <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">/sbin/iptables -I INPUT -p tcp --dport 80 -j ACCEPT</span><br><span class="line">/sbin/iptables -I INPUT -p tcp --dport 22 -j ACCEPT</span><br><span class="line">/sbin/iptables -I INPUT -p tcp --dport 3306 -j ACCEPT</span><br></pre></td></tr></table></figure>
+<p>然后保存：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/etc/rc.d/init.d/iptables save</span><br></pre></td></tr></table></figure></p>
+<p>查看打开的端口：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/etc/init.d/iptables status</span><br></pre></td></tr></table></figure></p>
+<p>补充说明：<br>
+            
+            <p class="more">
+                <a href="http://www.imsry.cn/posts/2e6f46f8.html">阅读剩下更多</a>
+            </p>
+        </div>
+        <div class="post-thumbnail" data-img="">
+            <a href="http://www.imsry.cn/posts/2e6f46f8.html" title=" CENTOS 6.0 iptables 开放端口80 3306 22端口">
+                
+                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/1.jpg" alt="默认配图" >
+                
+            </a>
+        </div>
+    </div>
+</article>
+
+    
+        <!-- 文章列表 item -->
+<article class="post">
+    <header>
+        <!-- 标签这有且只能显示一个 -->
+        
         <a class="cat-link" href="/categories/Web/">Web</a>
         
         <!-- 文章标题 -->
@@ -150,9 +207,9 @@ var _hmt = _hmt || [];
     
         <a href="/tags/MySQL/" title="MySQL">MySQL</a> / 
     
-        <a href="/tags/Glassfish/" title="Glassfish">Glassfish</a> / 
+        <a href="/tags/Java/" title="Java">Java</a> / 
     
-        <a href="/tags/Java/" title="Java">Java</a>
+        <a href="/tags/Glassfish/" title="Glassfish">Glassfish</a>
     
 
         </span>
@@ -642,59 +699,6 @@ var _hmt = _hmt || [];
 </article>
 
     
-        <!-- 文章列表 item -->
-<article class="post">
-    <header>
-        <!-- 标签这有且只能显示一个 -->
-        
-        <a class="cat-link" href="/categories/学习笔记/">学习笔记</a>
-        
-        <!-- 文章标题 -->
-        
-    <h3 class="post-title">
-    	<a href="http://www.imsry.cn/posts/7a0a41b.html">
-    		Discuz的数据库的迁移
-    	</a>
-    </h3>
-
-    </header>
-    <p class="post-meta">
-        Anthony 发表于
-        <time datetime="2015-09-26T15:06:48.000Z">2015-09-26 23:06:48</time>
-
-
-        &nbsp;&nbsp;
-        <span class="post-tags">
-            标签：
-            
-    
-        <a href="/tags/Discuz/" title="Discuz">Discuz</a>
-    
-
-        </span>
-    </p>
-
-    <div class="post-content">
-        <div class="post-excerpt">
-            
-                <p>如果WEB服务器迁移，除了将论坛所有的文件转移到新的服务器上之外，还需要将数据库一同迁移。文件转移完毕之后，并不能算完成了，因为这里还有数据库的配置没有修改。<br>Discuz论坛，如果需要迁移数据库，那么我们在转移的数据库的所有数据之后，还需要重新配置一下Discuz的配置文件：<br>论坛连接Ucenter的配置：config/config_ucenter.php<br>论坛的配置：config/config_global.php<br>Ucenter的配置：uc_server/data/config.inc.php<br>在这三个文件里面，修改对应的数据库地址、数据库名称、用户名、密码。<br>全部配置完毕之后，保存就可以了。</p>
-
-            
-            <p class="more">
-                <a href="http://www.imsry.cn/posts/7a0a41b.html">阅读剩下更多</a>
-            </p>
-        </div>
-        <div class="post-thumbnail" data-img="">
-            <a href="http://www.imsry.cn/posts/7a0a41b.html" title="Discuz的数据库的迁移">
-                
-                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/6.jpg" alt="默认配图" >
-                
-            </a>
-        </div>
-    </div>
-</article>
-
-    
 
     
     <nav class="page-navigator">
@@ -743,7 +747,7 @@ var _hmt = _hmt || [];
     
     <li>
         <a href="/categories/学习笔记/">学习笔记</a>
-        <span class="badge">(48)</span>
+        <span class="badge">(49)</span>
     </li>
     
     <li>
@@ -767,13 +771,13 @@ var _hmt = _hmt || [];
     </li>
     
     <li>
-        <a href="/categories/开发板/">开发板</a>
-        <span class="badge">(1)</span>
+        <a href="/categories/Linux/">Linux</a>
+        <span class="badge">(15)</span>
     </li>
     
     <li>
-        <a href="/categories/Linux/">Linux</a>
-        <span class="badge">(15)</span>
+        <a href="/categories/开发板/">开发板</a>
+        <span class="badge">(1)</span>
     </li>
     
     <li>
@@ -821,11 +825,6 @@ var _hmt = _hmt || [];
         <span class="badge">(2)</span>
     </li>
     
-    <li>
-        <a href="/categories/学习笔记/Linux/">Linux</a>
-        <span class="badge">(1)</span>
-    </li>
-    
 </ul>
     </section>
 
@@ -841,11 +840,11 @@ var _hmt = _hmt || [];
   
     <a class="tag-item" href="/tags/LNMP/" title="LNMP">LNMP (2)</a>
   
+    <a class="tag-item" href="/tags/网卡/" title="网卡">网卡 (1)</a>
+  
     <a class="tag-item" href="/tags/OrangePi/" title="OrangePi">OrangePi (1)</a>
   
     <a class="tag-item" href="/tags/Network/" title="Network">Network (3)</a>
-  
-    <a class="tag-item" href="/tags/网卡/" title="网卡">网卡 (1)</a>
   
     <a class="tag-item" href="/tags/PHP/" title="PHP">PHP (11)</a>
   
@@ -863,7 +862,7 @@ var _hmt = _hmt || [];
   
     <a class="tag-item" href="/tags/Apache/" title="Apache">Apache (4)</a>
   
-    <a class="tag-item" href="/tags/Linux/" title="Linux">Linux (3)</a>
+    <a class="tag-item" href="/tags/Linux/" title="Linux">Linux (4)</a>
   
     <a class="tag-item" href="/tags/Proxy/" title="Proxy">Proxy (1)</a>
   
@@ -873,7 +872,7 @@ var _hmt = _hmt || [];
   
     <a class="tag-item" href="/tags/CentOS/" title="CentOS">CentOS (3)</a>
   
-    <a class="tag-item" href="/tags/https/" title="https">https (1)</a>
+    <a class="tag-item" href="/tags/https/" title="https">https (2)</a>
   
     <a class="tag-item" href="/tags/Chrome/" title="Chrome">Chrome (1)</a>
   
@@ -887,11 +886,11 @@ var _hmt = _hmt || [];
   
     <a class="tag-item" href="/tags/MySQL/" title="MySQL">MySQL (9)</a>
   
-    <a class="tag-item" href="/tags/Glassfish/" title="Glassfish">Glassfish (1)</a>
+    <a class="tag-item" href="/tags/C语言/" title="C语言">C语言 (1)</a>
   
     <a class="tag-item" href="/tags/Java/" title="Java">Java (2)</a>
   
-    <a class="tag-item" href="/tags/C语言/" title="C语言">C语言 (1)</a>
+    <a class="tag-item" href="/tags/Glassfish/" title="Glassfish">Glassfish (1)</a>
   
     <a class="tag-item" href="/tags/html/" title="html">html (1)</a>
   
@@ -968,6 +967,6 @@ var _hmt = _hmt || [];
 
     <!--博客js脚本 -->
     <!-- 这里放网站js脚本 -->
-<script src="/js/main.js?v=1591351451102"></script>
+<script src="/js/main.js?v=1594981865204"></script>
 </body>
 </html>

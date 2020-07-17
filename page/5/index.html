@@ -127,6 +127,61 @@ var _hmt = _hmt || [];
     <header>
         <!-- 标签这有且只能显示一个 -->
         
+        <a class="cat-link" href="/categories/学习笔记/">学习笔记</a>
+        
+        <!-- 文章标题 -->
+        
+    <h3 class="post-title">
+    	<a href="http://www.imsry.cn/posts/bb4e3702.html">
+    		Learning-Markdown
+    	</a>
+    </h3>
+
+    </header>
+    <p class="post-meta">
+        Anthony 发表于
+        <time datetime="2017-01-19T08:57:03.000Z">2017-01-19 16:57:03</time>
+
+
+        &nbsp;&nbsp;
+        <span class="post-tags">
+            标签：
+            
+    
+        <a href="/tags/MarkDown/" title="MarkDown">MarkDown</a>
+    
+
+        </span>
+    </p>
+
+    <div class="post-content">
+        <div class="post-excerpt">
+            
+                <h1 id="MarkDown的学习"><a href="#MarkDown的学习" class="headerlink" title="MarkDown的学习"></a>MarkDown的学习</h1><blockquote>
+<p>这里面就是一些简单的MarkDown语法，提供给我自己看一下，刚开始还是需要不断练习来接受这种语法，必然能够在码字的过程中体验乐趣！</p>
+</blockquote>
+<p>下面开始啦：</p>
+            
+            <p class="more">
+                <a href="http://www.imsry.cn/posts/bb4e3702.html">阅读剩下更多</a>
+            </p>
+        </div>
+        <div class="post-thumbnail" data-img="">
+            <a href="http://www.imsry.cn/posts/bb4e3702.html" title="Learning-Markdown">
+                
+                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/9.jpg" alt="默认配图" >
+                
+            </a>
+        </div>
+    </div>
+</article>
+
+    
+        <!-- 文章列表 item -->
+<article class="post">
+    <header>
+        <!-- 标签这有且只能显示一个 -->
+        
         <a class="cat-link" href="/categories/杂谈/">杂谈</a>
         
         <!-- 文章标题 -->
@@ -671,70 +726,6 @@ echo implode(&apos; &apos;,BubbleSort($arr)).&quot;\n&quot;;
 </article>
 
     
-        <!-- 文章列表 item -->
-<article class="post">
-    <header>
-        <!-- 标签这有且只能显示一个 -->
-        
-        <a class="cat-link" href="/categories/算法/">算法</a>
-        
-        <!-- 文章标题 -->
-        
-    <h3 class="post-title">
-    	<a href="http://www.imsry.cn/posts/673af3cd.html">
-    		通用笔试-PHP测试编程题[2题]
-    	</a>
-    </h3>
-
-    </header>
-    <p class="post-meta">
-        Anthony 发表于
-        <time datetime="2016-09-02T01:53:21.000Z">2016-09-02 09:53:21</time>
-
-
-        &nbsp;&nbsp;
-        <span class="post-tags">
-            标签：
-            
-    
-        <a href="/tags/PHP/" title="PHP">PHP</a>
-    
-
-        </span>
-    </p>
-
-    <div class="post-content">
-        <div class="post-excerpt">
-            
-                <h3 id="水仙花数"><a href="#水仙花数" class="headerlink" title="水仙花数"></a>水仙花数</h3><p>题目描述：<br><code>春天是鲜花的季节，水仙花就是其中最迷人的代表，数学上有个水仙花数，他是这样定义的：
-“水仙花数”是指一个三位数，它的各位数字的立方和等于其本身，比如：153=1^3+5^3+3^3。
-现在要求输出所有在m和n范围内的水仙花数。</code></p>
-<p>输入<br><code>输入数据有多组，每组占一行，包括两个整数m和n（100&lt;=m&lt;=n&lt;=999）。</code></p>
-<p>输出<br><code>对于每个测试实例，要求输出所有在给定范围内的水仙花数，就是说，输出的水仙花数必须大于等于m,并且小于等于n，如果有多个，则要求从小到大排列在一行内输出，之间用一个空格隔开;
-如果给定的范围内不存在水仙花数，则输出no;
-每个测试实例的输出占一行。</code></p>
-<p>样例输入<br><code>100 120
-300 380</code></p>
-<p>样例输出<br><code>no
-370 371</code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">echo &quot;Please Input\n&quot;;</span><br><span class="line">$in = &apos;&apos;;</span><br><span class="line">while($in != &quot;\n&quot;)&#123;</span><br><span class="line">	$first = false;</span><br><span class="line">	// $stdin = fopen(&quot;php://stdin&quot;,&apos;r&apos;);</span><br><span class="line">    // $in = fgets($stdin);</span><br><span class="line">    $in = fgets(STDIN);//使用标准输入</span><br><span class="line">    $args[] = explode(&apos; &apos;,trim($in));</span><br><span class="line">&#125;</span><br><span class="line">// fclose($stdin);</span><br><span class="line">array_pop($args);</span><br><span class="line">foreach ($args as $item) &#123;</span><br><span class="line">	if($item[0] &lt;100 || $item[1]&gt;999 || $item[0]&gt;=$item[1]) &#123;</span><br><span class="line">	  	echo &quot;输入参数不合法！\n&quot;;</span><br><span class="line">	   	exit(0);</span><br><span class="line">	&#125;</span><br><span class="line">	$start = $item[0];</span><br><span class="line">	$end = $item[1];</span><br><span class="line">	$res = array();</span><br><span class="line">	while($start &lt;= $end)&#123;</span><br><span class="line">		$a = floor($start/100);</span><br><span class="line">		$b = floor(($start-$a*100)/10);</span><br><span class="line">		$c = $start%10;</span><br><span class="line">		if($start == ($a*$a*$a+$b*$b*$b+$c*$c*$c))&#123;</span><br><span class="line">		    $res[] = $start;</span><br><span class="line">		&#125;</span><br><span class="line">		$start += 1;</span><br><span class="line">	&#125;</span><br><span class="line">	echo empty($res)?&quot;No\n&quot;:implode(&apos; &apos;,$res).&quot;\n&quot;;</span><br><span class="line">&#125;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
-<p>第二题：<br>
-            
-            <p class="more">
-                <a href="http://www.imsry.cn/posts/673af3cd.html">阅读剩下更多</a>
-            </p>
-        </div>
-        <div class="post-thumbnail" data-img="">
-            <a href="http://www.imsry.cn/posts/673af3cd.html" title="通用笔试-PHP测试编程题[2题]">
-                
-                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/2.jpg" alt="默认配图" >
-                
-            </a>
-        </div>
-    </div>
-</article>
-
-    
 
     
     <nav class="page-navigator">
@@ -783,7 +774,7 @@ echo implode(&apos; &apos;,BubbleSort($arr)).&quot;\n&quot;;
     
     <li>
         <a href="/categories/学习笔记/">学习笔记</a>
-        <span class="badge">(48)</span>
+        <span class="badge">(49)</span>
     </li>
     
     <li>
@@ -807,13 +798,13 @@ echo implode(&apos; &apos;,BubbleSort($arr)).&quot;\n&quot;;
     </li>
     
     <li>
-        <a href="/categories/开发板/">开发板</a>
-        <span class="badge">(1)</span>
+        <a href="/categories/Linux/">Linux</a>
+        <span class="badge">(15)</span>
     </li>
     
     <li>
-        <a href="/categories/Linux/">Linux</a>
-        <span class="badge">(15)</span>
+        <a href="/categories/开发板/">开发板</a>
+        <span class="badge">(1)</span>
     </li>
     
     <li>
@@ -861,11 +852,6 @@ echo implode(&apos; &apos;,BubbleSort($arr)).&quot;\n&quot;;
         <span class="badge">(2)</span>
     </li>
     
-    <li>
-        <a href="/categories/学习笔记/Linux/">Linux</a>
-        <span class="badge">(1)</span>
-    </li>
-    
 </ul>
     </section>
 
@@ -881,11 +867,11 @@ echo implode(&apos; &apos;,BubbleSort($arr)).&quot;\n&quot;;
   
     <a class="tag-item" href="/tags/LNMP/" title="LNMP">LNMP (2)</a>
   
+    <a class="tag-item" href="/tags/网卡/" title="网卡">网卡 (1)</a>
+  
     <a class="tag-item" href="/tags/OrangePi/" title="OrangePi">OrangePi (1)</a>
   
     <a class="tag-item" href="/tags/Network/" title="Network">Network (3)</a>
-  
-    <a class="tag-item" href="/tags/网卡/" title="网卡">网卡 (1)</a>
   
     <a class="tag-item" href="/tags/PHP/" title="PHP">PHP (11)</a>
   
@@ -903,7 +889,7 @@ echo implode(&apos; &apos;,BubbleSort($arr)).&quot;\n&quot;;
   
     <a class="tag-item" href="/tags/Apache/" title="Apache">Apache (4)</a>
   
-    <a class="tag-item" href="/tags/Linux/" title="Linux">Linux (3)</a>
+    <a class="tag-item" href="/tags/Linux/" title="Linux">Linux (4)</a>
   
     <a class="tag-item" href="/tags/Proxy/" title="Proxy">Proxy (1)</a>
   
@@ -913,7 +899,7 @@ echo implode(&apos; &apos;,BubbleSort($arr)).&quot;\n&quot;;
   
     <a class="tag-item" href="/tags/CentOS/" title="CentOS">CentOS (3)</a>
   
-    <a class="tag-item" href="/tags/https/" title="https">https (1)</a>
+    <a class="tag-item" href="/tags/https/" title="https">https (2)</a>
   
     <a class="tag-item" href="/tags/Chrome/" title="Chrome">Chrome (1)</a>
   
@@ -927,11 +913,11 @@ echo implode(&apos; &apos;,BubbleSort($arr)).&quot;\n&quot;;
   
     <a class="tag-item" href="/tags/MySQL/" title="MySQL">MySQL (9)</a>
   
-    <a class="tag-item" href="/tags/Glassfish/" title="Glassfish">Glassfish (1)</a>
+    <a class="tag-item" href="/tags/C语言/" title="C语言">C语言 (1)</a>
   
     <a class="tag-item" href="/tags/Java/" title="Java">Java (2)</a>
   
-    <a class="tag-item" href="/tags/C语言/" title="C语言">C语言 (1)</a>
+    <a class="tag-item" href="/tags/Glassfish/" title="Glassfish">Glassfish (1)</a>
   
     <a class="tag-item" href="/tags/html/" title="html">html (1)</a>
   
@@ -1008,6 +994,6 @@ echo implode(&apos; &apos;,BubbleSort($arr)).&quot;\n&quot;;
 
     <!--博客js脚本 -->
     <!-- 这里放网站js脚本 -->
-<script src="/js/main.js?v=1591351451080"></script>
+<script src="/js/main.js?v=1594981865182"></script>
 </body>
 </html>

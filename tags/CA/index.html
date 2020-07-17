@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=11,IE=10,IE=9,IE=8">
     <meta name="baidu-site-verification" content="dIcXMeY8Ya">
     
-    <title>`Linux`分类下的文章 | 小牛试一刀</title>
+    <title>`CA`标签下的文章 | 小牛试一刀</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
     <meta name="keywords" content="Anthony, 刘经济, 技术博客">
     <meta name="description" content="待人以儒墨，不热爱前端技术的后端开发不是一个好的吃货。">
@@ -56,15 +56,15 @@ var _hmt = _hmt || [];
         <div class="dropnav icon-paragraph-justify" id="JELON__btnDropNav"></div>
         <ul class="menu hidden" id="JELON__menu">
             
-            <li rel="/categories/学习笔记/Linux/index.html" class="item ">
+            <li rel="/tags/CA/index.html" class="item ">
                 <a href="/" title="首页" class="icon-home">&nbsp;首页</a>
             </li>
             
-            <li rel="/categories/学习笔记/Linux/index.html" class="item ">
+            <li rel="/tags/CA/index.html" class="item ">
                 <a href="/about/" title="关于" class="icon-about">&nbsp;关于</a>
             </li>
             
-            <li rel="/categories/学习笔记/Linux/index.html" class="item ">
+            <li rel="/tags/CA/index.html" class="item ">
                 <a href="/comment/" title="留言" class="icon-comment">&nbsp;留言</a>
             </li>
             
@@ -111,12 +111,12 @@ var _hmt = _hmt || [];
     <div class="container body clearfix">
         <section class="content">
             <div class="content-main widget">
-                <!-- 文章分类 -->
+                <!-- 按标签分类 -->
 
     <h3 class="widget-hd">
         <strong>
             
-                `Linux`分类下的文章
+                `CA`标签下的文章
             
         </strong>
     </h3>
@@ -131,15 +131,15 @@ var _hmt = _hmt || [];
         <!-- 文章标题 -->
         
     <h3 class="post-title">
-    	<a href="http://www.imsry.cn/posts/39d9f6df.html">
-    		Linux下的安装Ngrok服务器的故事
+    	<a href="http://www.imsry.cn/posts/32476646.html">
+    		自建CA服务器学习笔记
     	</a>
     </h3>
 
     </header>
     <p class="post-meta">
         Anthony 发表于
-        <time datetime="2018-09-05T08:22:19.000Z">2018-09-05 16:22:19</time>
+        <time datetime="2020-07-17T10:29:05.000Z">2020-07-17 18:29:05</time>
 
 
         &nbsp;&nbsp;
@@ -147,7 +147,11 @@ var _hmt = _hmt || [];
             标签：
             
     
-        <a href="/tags/Ngrok/" title="Ngrok">Ngrok</a>
+        <a href="/tags/Linux/" title="Linux">Linux</a> / 
+    
+        <a href="/tags/https/" title="https">https</a> / 
+    
+        <a href="/tags/CA/" title="CA">CA</a>
     
 
         </span>
@@ -156,27 +160,17 @@ var _hmt = _hmt || [];
     <div class="post-content">
         <div class="post-excerpt">
             
-                <h2 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h2><blockquote>
-<p>公司A是一家服务提供商，公司B是一家知名企业。<br>现在公司B中的一个软件服务出现了故障，需要公司A的专业人员来排查。由于两家公司相隔甚远，他们采用了远程排查方案。但是公司B的这个软件部署在内网环境的机器C上，层层网关以及种种原因（和谐部分）导致无法将机器C映射到公司B的公网端口。为了解决这种需要打通从一个局域网到另外一个局域网的网络通路，我们叫它‘内网穿透’。</p>
-</blockquote>
-<p>总所周知，处在同一个局域网的所有机器是可以互通的，而不同局域网中的机器是无法跨域访问的。解决这种问题，我能想到的有：</p>
-<ol>
-<li>交换机和路由</li>
-<li>使用公网VPN服务器</li>
-<li>使用内网穿透服务器</li>
-</ol>
-<p>配置交换机和路由往往非常复杂，遇到复杂的组网环境，还是杀了我吧！</p>
-<p>公网VPN服务器我也试过了，使用简单，但是稳定性得不到保证。</p>
-<p>所以我最终尝试了内网穿透服务器：Ngrok。（当然还有别的比如：frp）</p>
+                <p>​        我人生中的第一次遇到证书问题并加以解决，还是在大约3年前，那时还专门写了一篇文章<a href="/posts/a508b207.html">《解决Chrome更新到63后.dev/.app后缀域名强制HTTPS的问题》</a>。当时是因为本地开发环境一直都是用的<code>.dev</code>后缀结尾的域名，一直都是以<code>http://www.test.dev</code>的方式进行本地web开发。那天浏览器突然提示访问不安全的网站，此处黑人问号？？ Chrome强制<code>.dev</code>后缀的域名都得走https，无奈之下，不想更换后缀的我走上了自签发https证书的道路，但当时直接使用了开源工具，并没有深入研究。</p>
+<p>​        日月如梭，今时今日的我已经不再是那个年少的小孩！日常工作中免不了与SSL/TLS这玩意儿打交道，除了访问web用https外，只要与建立加密连接有关的统统都少不了证书和秘钥。这次需要自建CA服务器并签发下级证书以达到加密访问的目的，那么这次的笔记将会成为以后温习的主要文献了。（哈哈哈）</p>
             
             <p class="more">
-                <a href="http://www.imsry.cn/posts/39d9f6df.html">阅读剩下更多</a>
+                <a href="http://www.imsry.cn/posts/32476646.html">阅读剩下更多</a>
             </p>
         </div>
         <div class="post-thumbnail" data-img="">
-            <a href="http://www.imsry.cn/posts/39d9f6df.html" title="Linux下的安装Ngrok服务器的故事">
+            <a href="http://www.imsry.cn/posts/32476646.html" title="自建CA服务器学习笔记">
                 
-                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/5.jpg" alt="默认配图" >
+                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/7.jpg" alt="默认配图" >
                 
             </a>
         </div>
@@ -230,7 +224,7 @@ var _hmt = _hmt || [];
     
     <li>
         <a href="/categories/学习笔记/">学习笔记</a>
-        <span class="badge">(48)</span>
+        <span class="badge">(49)</span>
     </li>
     
     <li>
@@ -254,13 +248,13 @@ var _hmt = _hmt || [];
     </li>
     
     <li>
-        <a href="/categories/开发板/">开发板</a>
-        <span class="badge">(1)</span>
+        <a href="/categories/Linux/">Linux</a>
+        <span class="badge">(15)</span>
     </li>
     
     <li>
-        <a href="/categories/Linux/">Linux</a>
-        <span class="badge">(15)</span>
+        <a href="/categories/开发板/">开发板</a>
+        <span class="badge">(1)</span>
     </li>
     
     <li>
@@ -308,11 +302,6 @@ var _hmt = _hmt || [];
         <span class="badge">(2)</span>
     </li>
     
-    <li>
-        <a href="/categories/学习笔记/Linux/">Linux</a>
-        <span class="badge">(1)</span>
-    </li>
-    
 </ul>
     </section>
 
@@ -328,11 +317,11 @@ var _hmt = _hmt || [];
   
     <a class="tag-item" href="/tags/LNMP/" title="LNMP">LNMP (2)</a>
   
+    <a class="tag-item" href="/tags/网卡/" title="网卡">网卡 (1)</a>
+  
     <a class="tag-item" href="/tags/OrangePi/" title="OrangePi">OrangePi (1)</a>
   
     <a class="tag-item" href="/tags/Network/" title="Network">Network (3)</a>
-  
-    <a class="tag-item" href="/tags/网卡/" title="网卡">网卡 (1)</a>
   
     <a class="tag-item" href="/tags/PHP/" title="PHP">PHP (11)</a>
   
@@ -350,7 +339,7 @@ var _hmt = _hmt || [];
   
     <a class="tag-item" href="/tags/Apache/" title="Apache">Apache (4)</a>
   
-    <a class="tag-item" href="/tags/Linux/" title="Linux">Linux (3)</a>
+    <a class="tag-item" href="/tags/Linux/" title="Linux">Linux (4)</a>
   
     <a class="tag-item" href="/tags/Proxy/" title="Proxy">Proxy (1)</a>
   
@@ -360,7 +349,7 @@ var _hmt = _hmt || [];
   
     <a class="tag-item" href="/tags/CentOS/" title="CentOS">CentOS (3)</a>
   
-    <a class="tag-item" href="/tags/https/" title="https">https (1)</a>
+    <a class="tag-item" href="/tags/https/" title="https">https (2)</a>
   
     <a class="tag-item" href="/tags/Chrome/" title="Chrome">Chrome (1)</a>
   
@@ -374,11 +363,11 @@ var _hmt = _hmt || [];
   
     <a class="tag-item" href="/tags/MySQL/" title="MySQL">MySQL (9)</a>
   
-    <a class="tag-item" href="/tags/Glassfish/" title="Glassfish">Glassfish (1)</a>
+    <a class="tag-item" href="/tags/C语言/" title="C语言">C语言 (1)</a>
   
     <a class="tag-item" href="/tags/Java/" title="Java">Java (2)</a>
   
-    <a class="tag-item" href="/tags/C语言/" title="C语言">C语言 (1)</a>
+    <a class="tag-item" href="/tags/Glassfish/" title="Glassfish">Glassfish (1)</a>
   
     <a class="tag-item" href="/tags/html/" title="html">html (1)</a>
   
@@ -455,6 +444,6 @@ var _hmt = _hmt || [];
 
     <!--博客js脚本 -->
     <!-- 这里放网站js脚本 -->
-<script src="/js/main.js?v=1591351451037"></script>
+<script src="/js/main.js?v=1594981865999"></script>
 </body>
 </html>
