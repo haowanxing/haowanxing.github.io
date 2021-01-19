@@ -1,0 +1,678 @@
+<!doctype html>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=11,IE=10,IE=9,IE=8">
+    <meta name="baidu-site-verification" content="dIcXMeY8Ya">
+    
+    <title>初探MongoDB安全之RBAC（基于角色的访问控制） | 小牛试一刀</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+    <meta name="keywords" content="Anthony, 刘经济, 技术博客">
+    <meta name="description" content="待人以儒墨，不热爱前端技术的后端开发不是一个好的吃货。">
+
+    
+    <link rel="alternative" href="/atom.xml" title="小牛试一刀" type="application/atom+xml">
+    
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    
+    <link rel="stylesheet" href="/css/style.css">
+    <!--[if lt IE 9]>
+    <script src="/js/html5.js"></script>
+    <![endif]-->
+    
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?d5ebf515ab530cfbdda5f5c85093fb41";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+</head>
+</html>
+<body class="home">
+    <!--[if lt IE 9]>
+    <div class="browsehappy">
+        当前网页 <strong>不支持</strong>
+        你正在使用的浏览器. 为了正常的访问, 请 <a href="http://browsehappy.com/">升级你的浏览器</a>.
+    </div>
+    <![endif]-->
+
+    <!-- 博客头部 -->
+    <header class="header">
+    <section class="container header-main">
+        <div class="logo">
+            <a href="/">
+                <div class="cover">
+                    <span class="name">小牛试一刀</span>
+                    <span class="description">斯人笔记本</span>
+                </div>
+            </a>
+        </div>
+        <div class="dropnav icon-paragraph-justify" id="JELON__btnDropNav"></div>
+        <ul class="menu hidden" id="JELON__menu">
+            
+            <li rel="/posts/432477cb.html" class="item ">
+                <a href="/" title="首页" class="icon-home">&nbsp;首页</a>
+            </li>
+            
+            <li rel="/posts/432477cb.html" class="item ">
+                <a href="/about/" title="关于" class="icon-about">&nbsp;关于</a>
+            </li>
+            
+            <li rel="/posts/432477cb.html" class="item ">
+                <a href="/comment/" title="留言" class="icon-comment">&nbsp;留言</a>
+            </li>
+            
+        </ul>
+        <div class="profile clearfix">
+            <div class="feeds fl">
+                
+                
+                <p class="links">
+                    
+                        <a href="https://github.com/haowanxing" target="_blank">Github</a>
+                        |
+                    
+                        <a href="https://pages.coding.me" target="_blank">Hosted by Coding Pages</a>
+                        
+                    
+                </p>
+                <p class="sns">
+                    
+                        <a href="http://weibo.com/u/2214092525" class="sinaweibo" target="_blank"><b>■</b> 新浪微博</a>
+                    
+                        <a href="https://www.facebook.com/york.mail/" class="qqweibo" target="_blank"><b>■</b> Facebook</a>
+                    
+                    <a href="javascript: void(0);" class="wechat">
+                        <b>■</b>
+                        公众号
+                        <span class="popover">
+                            <img src="/img/wechat_mp.jpg" width="120" height="120" alt="我的微信订阅号">
+                            <i class="arrow"></i>
+                        </span>
+                    </a>
+                </p>
+                
+            </div>
+            <div class="avatar fr">
+                <img src="/uploads/qiniu/20181010153914990649885.png" alt="avatar" title="Jelon" >
+            </div>
+        </div>
+    </section>
+</header>
+
+
+    <!-- 博客正文 -->
+    <div class="container body clearfix">
+        <section class="content">
+            <div class="content-main widget">
+                <!-- 文章页 -->
+<!-- 文章 -->
+<article class="post article">
+    <header class="text-center">
+        <h3 class="post-title"><span>初探MongoDB安全之RBAC（基于角色的访问控制）</span></h3>
+    </header>
+    <p class="post-meta text-center">
+         发表于
+        <time datetime="2016-11-04T11:37:07.000Z">2016-11-04 19:37:07</time>
+
+        <!-- 不蒜子统计 -->
+        <span id="busuanzi_container_page_pv" style='display:none'">
+              <i class="icon-smile icon"></i> 阅读数：<span id="busuanzi_value_page_pv"></span>次
+        </span>
+
+
+    </p>
+    <div class="post-content">
+        <blockquote>
+<p>写在开头的一段话：我是一名忠实的SQL玩家，虽说MySQL并没有达到精通的级别，但在日常使用中还是会经常出现“这个表要是NoSQL的话就好办多了”的想法。所以说，我认为无论是站在关系型数据库还是非关系性数据库的立场上，二者并不是相对立的，而且我觉得应该用“相辅相成”来形容二者的关系。</p>
+</blockquote>
+<p>通过在<a href="http://www.runoob.com/mongodb/mongodb-tutorial.html" target="_blank" rel="noopener">《MongoDB 教程|菜鸟教程》</a>轻量级的了解了一下MongoDB的基础知识，我在自己电脑上安装并使用了这款NoSQL软件。很明显地，读别人的教程只能是迅速的、简单的和容易理解的。也正是这样，我发现了其中有一块并没有提及！那就是并没有说要登录数据库啊。<br><a id="more"></a></p>
+<p>简单的使用：</p>
+<ol>
+<li><p>启动MongoDB服务：</p>
+<pre lang="bash">
+Anthony-MacBook-Air:~ anthony$ mongod --dbpath ~/mongodata/
+2016-11-04T16:48:15.170+0800 I CONTROL  [initandlisten] MongoDB starting : pid=1191 port=27017 dbpath=/Users/anthony/mongodata/ 64-bit host=Anthony-MacBook-Air.local
+2016-11-04T16:48:15.171+0800 I CONTROL  [initandlisten] db version v3.2.8
+...
+2016-11-04T16:48:15.825+0800 I NETWORK  [HostnameCanonicalizationWorker] Starting hostname canonicalization worker
+2016-11-04T16:48:15.826+0800 I NETWORK  [initandlisten] waiting for connections on port 27017
+</pre>
+</li>
+<li><p>连接数据库：</p>
+<pre lang="bash">
+Anthony-MacBook-Air:~ anthony$ mongo
+MongoDB shell version: 3.2.8
+connecting to: test
+Server has startup warnings: 
+2016-11-04T16:48:15.820+0800 I CONTROL  [initandlisten] 
+2016-11-04T16:48:15.820+0800 I CONTROL  [initandlisten] ** WARNING: soft rlimits too low. Number of files is 256, should be at least 1000
+> 
+</pre>
+
+</li>
+</ol>
+<p>这样就算连接上了，而且可以进行任何操作，没有限制。实际上在开发测试也没必要纠结安全登录问题，但是如果是正式环境，那也不能放松啊！</p>
+<h2 id="Authorization"><a href="#Authorization" class="headerlink" title="Authorization"></a>Authorization</h2><p>安全（Security）中的一种，用户授权机制</p>
+<h3 id="Role-Based-Access-Control（RBAC"><a href="#Role-Based-Access-Control（RBAC" class="headerlink" title="Role-Based Access Control（RBAC)"></a>Role-Based Access Control（RBAC)</h3><p>MongoDB使用基于角色的访问控制(RBAC)来对一个MongoDB进行管理，用户可以被授予一个或多个角色（也可以说是策略组）来确保用户对资源的访问权限。</p>
+<ol>
+<li><h4 id="启用授权策略："><a href="#启用授权策略：" class="headerlink" title="启用授权策略："></a>启用授权策略：</h4></li>
+</ol>
+<p>MongoDB默认是不开启授权机制的，所以我们在启动服务的时候，可以加上–auth参数来明确告诉它开启授权策略，也可以在配置文件中配置。不过一旦这样启动了，连接数据库就必须进行用户验证了，如果之前没有添加用户的话，可想而知。</p>
+<ol>
+<li><h4 id="角色（策略组）："><a href="#角色（策略组）：" class="headerlink" title="角色（策略组）："></a>角色（策略组）：</h4></li>
+</ol>
+<p>一个角色代表对某个资源上指定操作的权限. 每个权限可以是角色中明确指定的、从另外角色继承的，也可以二者都是。</p>
+<ol>
+<li><h4 id="用户和角色："><a href="#用户和角色：" class="headerlink" title="用户和角色："></a>用户和角色：</h4></li>
+</ol>
+<p>你可以在添加用户的时候对其进行角色（策略或权限）分配，也可以对已经存在的用户更新角色。</p>
+<p>用户将拥有被分配角色的所有权限，当然，用户可以被分配多个角色。尽管这个用户仅在一个数据库中被创建，但只要Role中分配了其他数据库的权限，该用户也可以夸库访问。</p>
+<ol>
+<li><h4 id="内置角色和自定义角色："><a href="#内置角色和自定义角色：" class="headerlink" title="内置角色和自定义角色："></a>内置角色和自定义角色：</h4></li>
+</ol>
+<p>MongoDB提供了一些内置的角色来实现一套系统的通用权限策略，当内置角色无法满足实际需要的时候，我们可以自定义独特的角色。</p>
+<h3 id="开启用户授权控制-Enable-Auth"><a href="#开启用户授权控制-Enable-Auth" class="headerlink" title="开启用户授权控制(Enable Auth)"></a>开启用户授权控制(Enable Auth)</h3><ol>
+<li><h4 id="概述："><a href="#概述：" class="headerlink" title="概述："></a>概述：</h4></li>
+</ol>
+<p>当开启用户授权控制的时候，表示用户需要进行认证自己的身份才能够根据自己所拥有的权限进行数据库访问。</p>
+<ol>
+<li><h4 id="用户管理员："><a href="#用户管理员：" class="headerlink" title="用户管理员："></a>用户管理员：</h4></li>
+</ol>
+<p>使用用户授权控制，你必须确保’admin’数据库中有’userAdmin’或’userAdminAnyDatabase’二者之一角色的用户，该用户可以管理用户和角色，如：创建用户，授予或撤销用户的角色，创建或修改通用角色。</p>
+<p>如果你在创建用户之前就开启了授权控制，那么系统会提供一个本地例外，允许你在’admin’数据库中创建一个用户管理员，一旦你创建了用户管理员，你必须使用该用户验证授权来创建你所需要的其他用户。</p>
+<ol>
+<li><h4 id="步骤："><a href="#步骤：" class="headerlink" title="步骤："></a>步骤：</h4></li>
+</ol>
+<p>接下来将介绍如何在授权控制和非授权控制模式下的MongoDB数据库中首次添加一个用户管理员。</p>
+<pre><code>1.  #### 非授权模式启动MongoDB服务端:
+</code></pre><pre lang="bash">
+mongod --port 27017 --dbpath ~/mongodata
+</pre>
+    2.  #### 连接MongoDB实例：
+
+<pre lang="bash">
+mongo --port 27017
+</pre>
+    3.  #### 创建用户管理员：
+
+    在'admin'数据库中创建角色为“userAdminAnyDatabase”的用户“anthony”：
+
+<pre lang="bash">
+use admin
+db.createUser(
+  {
+    user: "anthony",
+    pwd: "passwd",
+    roles: [ { role: "userAdminAnyDatabase", db: "admin" } ]
+  }
+)
+</pre>
+    4.  #### 以授权模式重启MongoDB服务端：
+
+    命令行启动直接带上--auth参数即可，如果是使用的配置文件的形式，设置'security.authorization'。
+
+<pre lang="bash">
+mongod --auth --port 27017 --dbpath ~/mongodata
+</pre>
+
+<pre><code>现在，连接到服务端的客户需要进行授权才能执行角色权限内的操作。
+
+    5.  #### 连接服务端并使用用户管理员(&apos;anthony&apos;)进行授权验证：
+
+两种方式，连接时指定或在连接后使用db.auth()方法验证
+
+直接带上验证参数：
+</code></pre><pre lang="bash">
+mongo --port 27017 -u anthony -p --authenticationDatabase 'admin'
+</pre>
+
+<pre><code>连接后再进行身份认证：
+</code></pre><pre lang="bash">
+Anthony-MacBook-Air:~ anthony$ mongo --port 27017
+MongoDB shell version: 3.2.8
+connecting to: test
+...
+> use admin
+switched to db admin
+> db.auth('anthony','passwd')
+1
+> 
+</pre>
+    6.  #### 添加你所需要的附加用户：
+
+    当你使用用户管理员身份验证之后，你可以使用db.createUser()方法创建用户并给其分配角色。
+
+    用户管理员（本文中的'anthony'）只能够进行用户的管理和角色分配，如果进行其他的操作的话就会报错。
+
+    下面的例子将创建一个用户，他拥有两个不同数据库的不同权限：
+
+<pre lang="bash">
+use test
+db.createUser(
+  {
+    user: "user01",
+    pwd: "01",
+    roles: [ { role: "readWrite", db: "test" },
+             { role: "read", db: "local" } ]
+  }
+)
+</pre>
+    7.  #### 连接服务端并使用'user01'进行授权验证：
+
+<pre lang="bash">
+mongo --port 27017 -u user01 -p --authenticationDatabase 'test'
+</pre>
+
+<pre><code>这样，使用user01连接数据库后，就可以对&apos;test&apos;库进行读和写操作，也可以切换到&apos;local&apos;库，但权限为‘只读’
+</code></pre><h2 id="用户与角色的管理-Manage-Users-and-Roles"><a href="#用户与角色的管理-Manage-Users-and-Roles" class="headerlink" title="用户与角色的管理(Manage Users and Roles)"></a>用户与角色的管理(Manage Users and Roles)</h2><p>这一块的内容，我们改日再聊。或者自己先阅读<a href="https://docs.mongodb.com/manual/tutorial/manage-users-and-roles/" target="_blank" rel="noopener">官方文档</a></p>
+
+    </div>
+    <p class="post-meta">
+        <span class="post-cat">分类：
+            <a class="cat-link" href="/categories/数据库/">数据库</a>
+        </span>
+        <span class="post-tags">
+            标签：
+            
+    
+        <a href="/tags/MongoDB/" title="MongoDB">MongoDB</a> / 
+    
+        <a href="/tags/数据库/" title="数据库">数据库</a>
+    
+
+        </span>
+    </p>
+</article>
+<!-- 分享按钮 -->
+
+  <div class="article-share clearfix text-center">
+    <div class="share-area">
+      <span class="share-txt">分享到：</span>
+      <a href="javascript: window.open('http://service.weibo.com/share/share.php?url=' + encodeURIComponent(location.href) + '&title=' + document.title + '&language=zh_cn');" class="share-icon weibo"></a>
+      <a href="javascript: alert('请复制链接到微信并发送');" class="share-icon wechat"></a>
+      <a href="javascript: window.open('http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=' + encodeURIComponent(location.href) + '&title=' + document.title);" class="share-icon qqzone"></a>
+      <a href="javascript: window.open('http://connect.qq.com/widget/shareqq/index.html?url=' + encodeURIComponent(location.href) + '&desc=imsry.cn个人博客&title=' + document.title + '&callback=' + encodeURIComponent(location.href));" class="share-icon qq"></a>
+      <a href="javascript: window.open('http://shuo.douban.com/!service/share?href=' + encodeURIComponent(location.href) + '&name=' + document.title + '&text=' + document.title);" class="share-icon douban"></a>
+    </div>
+  </div>
+
+
+
+<!-- 上一篇/下一篇 -->
+
+<div class="article-nav clearfix">
+    
+    <span class="prev fl">
+        上一篇<br >
+        <a href="/posts/d8424cb6.html">
+            
+                JetBrains家的IDEA真不便宜
+            
+        </a>
+    </span>
+    
+
+    
+    <span class="next fr">
+        下一篇<br >
+        <a href="/posts/28c3b503.html">
+            
+                实现寻找两个字符串的最大公子串的方法
+            
+        </a>
+    </span>
+    
+</div>
+
+<!-- 文章评论 -->
+
+  <script src="/js/comment.js"></script>
+  <div id="comments" class="comment">
+    <!--
+    <div class="sign-bar">
+      GitHub 已登录!
+      <span class="sign-link">登出</span>
+    </div>
+    <section class="box">
+      <div class="com-avatar"><img src="/img/jelon.jpg" alt="avatar"></div>
+      <div class="com-text">
+        <div class="main">
+          <textarea class="text-area-edited show" placeholder="欢迎评论！"></textarea>
+          <div class="text-area-preview"></div>
+        </div>
+        <div class="switch">
+          <div class="switch-item on">编辑</div>
+          <div class="switch-item">预览</div>
+        </div>
+        <div class="button">提交</div>
+      </div>
+    </section>
+    <section class="tips">注：评论支持 markdown 语法！</section>
+    <section class="list-wrap">
+      <ul class="list">
+        <li>
+          <div class="user-avatar">
+            <a href="/">
+              <img src="/img/jelon.jpg" alt="user-avatar">
+            </a>
+          </div>
+          <div class="user-comment">
+            <div class="user-comment-header">
+              <span class="post-name">张德龙</span>
+              <span class="post-time">2017年12月12日</span>
+              <span class="like liked">已赞</span>
+              <span class="like-num">2</span>
+            </div>
+            <div class="user-comment-body">333333</div>
+          </div>
+        </li>
+        <li>
+          <div class="user-avatar">
+            <a href="/">
+              <img src="/img/jelon.jpg" alt="user-avatar">
+            </a>
+          </div>
+          <div class="user-comment">
+            <div class="user-comment-header">
+              <span class="post-name">刘德华</span>
+              <span class="post-time">2017年12月12日</span>
+              <span class="like">点赞</span>
+              <span class="like-num">2</span>
+            </div>
+            <div class="user-comment-body">vvvvv</div>
+          </div>
+        </li>
+      </ul>
+      <div class="page-nav">
+        <a href="javascript: void(0);" class="item">1</a>
+        <a href="javascript: void(0);" class="item">2</a>
+        <a href="javascript: void(0);" class="item current">3</a>
+      </div>
+    </section>
+    -->
+  </div>
+  <script>
+  JELON.Comment({
+    container: 'comments',
+    label: 'study-mongodb-security-rbac' || 'posts/432477cb.html',
+    owner: 'haowanxing',
+    repo: 'haowanxing.github.io',
+    clientId: '7e6b078394a99b7940d2',
+    clientSecret: 'ff64a6b066e97af64358c44a96e0c7dd398aba1e'
+  });
+  </script>
+
+
+
+            </div>
+
+        </section>
+        <!-- 侧栏部分 -->
+<aside class="sidebar">
+    
+    <section class="widget">
+        <h3 class="widget-hd"><strong>文章搜索</strong></h3>
+        <div class="search-form">
+  <form
+    id="searchForm"
+    method="GET"
+    action="https://www.baidu.com/s"
+    ectype="application/x-www-form-urlencoded"
+    target="_blank"
+    autocomplete="false"
+    onsubmit="javascript: return false;">
+    <input
+      id="searchKeyword"
+      type="text"
+      class="form-control"
+      placeholder="输入关键字搜索"
+      autocomplete="false"
+    />
+    <input id="searchKeywordHidden" type="hidden" name="wd" />
+    <input id="searchButton" class="btn" type="submit" value="搜索" />
+  </form>
+</div>
+    </section>
+    
+
+    <section class="widget">
+        <h3 class="widget-hd"><strong>文章分类</strong></h3>
+        <!-- 文章分类 -->
+<ul class="widget-bd">
+    
+    <li>
+        <a href="/categories/杂谈/">杂谈</a>
+        <span class="badge">(4)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/学习笔记/">学习笔记</a>
+        <span class="badge">(49)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/编程语言/">编程语言</a>
+        <span class="badge">(6)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/Learn-GO/">Learn-GO</a>
+        <span class="badge">(6)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/算法/">算法</a>
+        <span class="badge">(6)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/PHP/">PHP</a>
+        <span class="badge">(9)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/开发板/">开发板</a>
+        <span class="badge">(1)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/Linux/">Linux</a>
+        <span class="badge">(15)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/网络安全/">网络安全</a>
+        <span class="badge">(2)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/数据库/">数据库</a>
+        <span class="badge">(2)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/MacOS/">MacOS</a>
+        <span class="badge">(1)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/Web/">Web</a>
+        <span class="badge">(2)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/我的分享/">我的分享</a>
+        <span class="badge">(1)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/开放平台/">开放平台</a>
+        <span class="badge">(1)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/考试/">考试</a>
+        <span class="badge">(1)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/游戏/">游戏</a>
+        <span class="badge">(2)</span>
+    </li>
+    
+</ul>
+    </section>
+
+    
+    <section class="widget">
+        <h3 class="widget-hd"><strong>热门标签</strong></h3>
+        <!-- 文章标签 -->
+<div class="widget-bd tag-wrap">
+  
+    <a class="tag-item" href="/tags/LNMP/" title="LNMP">LNMP (2)</a>
+  
+    <a class="tag-item" href="/tags/Golang/" title="Golang">Golang (1)</a>
+  
+    <a class="tag-item" href="/tags/Docker/" title="Docker">Docker (1)</a>
+  
+    <a class="tag-item" href="/tags/PHP/" title="PHP">PHP (11)</a>
+  
+    <a class="tag-item" href="/tags/OrangePi/" title="OrangePi">OrangePi (1)</a>
+  
+    <a class="tag-item" href="/tags/Network/" title="Network">Network (3)</a>
+  
+    <a class="tag-item" href="/tags/网卡/" title="网卡">网卡 (1)</a>
+  
+    <a class="tag-item" href="/tags/Go/" title="Go">Go (1)</a>
+  
+    <a class="tag-item" href="/tags/gRPC/" title="gRPC">gRPC (1)</a>
+  
+    <a class="tag-item" href="/tags/RPC/" title="RPC">RPC (1)</a>
+  
+    <a class="tag-item" href="/tags/算法/" title="算法">算法 (1)</a>
+  
+    <a class="tag-item" href="/tags/时间复杂度/" title="时间复杂度">时间复杂度 (1)</a>
+  
+    <a class="tag-item" href="/tags/定理/" title="定理">定理 (1)</a>
+  
+    <a class="tag-item" href="/tags/Apache/" title="Apache">Apache (4)</a>
+  
+    <a class="tag-item" href="/tags/Linux/" title="Linux">Linux (4)</a>
+  
+    <a class="tag-item" href="/tags/Proxy/" title="Proxy">Proxy (1)</a>
+  
+    <a class="tag-item" href="/tags/面试/" title="面试">面试 (1)</a>
+  
+    <a class="tag-item" href="/tags/CentOS/" title="CentOS">CentOS (3)</a>
+  
+    <a class="tag-item" href="/tags/firewall/" title="firewall">firewall (1)</a>
+  
+    <a class="tag-item" href="/tags/https/" title="https">https (2)</a>
+  
+    <a class="tag-item" href="/tags/Chrome/" title="Chrome">Chrome (1)</a>
+  
+    <a class="tag-item" href="/tags/性能/" title="性能">性能 (3)</a>
+  
+    <a class="tag-item" href="/tags/VPN/" title="VPN">VPN (1)</a>
+  
+    <a class="tag-item" href="/tags/Discuz/" title="Discuz">Discuz (1)</a>
+  
+    <a class="tag-item" href="/tags/DS-Store/" title=".DS_Store">.DS_Store (1)</a>
+  
+    <a class="tag-item" href="/tags/C语言/" title="C语言">C语言 (1)</a>
+  
+    <a class="tag-item" href="/tags/Java/" title="Java">Java (2)</a>
+  
+    <a class="tag-item" href="/tags/MySQL/" title="MySQL">MySQL (9)</a>
+  
+    <a class="tag-item" href="/tags/Glassfish/" title="Glassfish">Glassfish (1)</a>
+  
+    <a class="tag-item" href="/tags/html/" title="html">html (1)</a>
+  
+    <a class="tag-item" href="/tags/Javascript/" title="Javascript">Javascript (2)</a>
+  
+    <a class="tag-item" href="/tags/Laravel/" title="Laravel">Laravel (1)</a>
+  
+    <a class="tag-item" href="/tags/MarkDown/" title="MarkDown">MarkDown (1)</a>
+  
+    <a class="tag-item" href="/tags/数据结构/" title="数据结构">数据结构 (1)</a>
+  
+    <a class="tag-item" href="/tags/Vim/" title="Vim">Vim (1)</a>
+  
+    <a class="tag-item" href="/tags/LAMP/" title="LAMP">LAMP (1)</a>
+  
+    <a class="tag-item" href="/tags/MacOS/" title="MacOS">MacOS (4)</a>
+  
+    <a class="tag-item" href="/tags/php/" title="php">php (2)</a>
+  
+    <a class="tag-item" href="/tags/Git/" title="Git">Git (1)</a>
+  
+</div>
+    </section>
+    
+
+    
+
+    
+    <!-- 友情链接 -->
+    <section class="widget">
+        <h3 class="widget-hd"><strong>友情链接</strong></h3>
+        <!-- 文章分类 -->
+<ul class="widget-bd">
+    
+        <li>
+            <a href="https://imququ.com/" target="_blank" title="Jerry Qu">Jerry Qu</a>
+        </li>
+    
+        <li>
+            <a href="https://jelon.info/" target="_blank" title="Zhang Delong">Jelon</a>
+        </li>
+    
+        <li>
+            <a href="http://www.minghua.work/" target="_blank" title="智能硬件产品汪">Minghua Jia</a>
+        </li>
+    
+</ul>
+
+    </section>
+    
+</aside>
+<!-- / 侧栏部分 -->
+    </div>
+
+    <!-- 博客底部 -->
+    <footer class="footer">
+<div style="margin-bottom:1em;">
+
+        <!-- 不蒜子统计 -->
+        <span id="busuanzi_container_site_pv">
+                本站总访问量<span id="busuanzi_value_site_pv"></span>次
+        </span>
+        <span class="post-meta-divider">|</span>
+        <span id="busuanzi_container_site_uv" style='display:none'>
+                本站访客数<span id="busuanzi_value_site_uv"></span>人
+        </span>
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  
+</div>
+    &copy;
+    
+        2014-2021
+    
+
+    <a href="/">Best Wishes</a>
+</footer>
+<div class="back-to-top" id="JELON__backToTop" title="返回顶部">返回顶部</div>
+
+    <!--博客js脚本 -->
+    <!-- 这里放网站js脚本 -->
+<script src="/js/main.js?v=1611037683648"></script>
+</body>
+</html>

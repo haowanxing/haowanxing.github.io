@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="5-6.xsl"?>
+<!-- 
+Author:Anthony
+uid:201321092028
+-->
+<BOOKS>
+	<BOOK>
+		<NAME ISBN="B101">VB编程</NAME>
+		<PUBLISHER>机械工业出版社</PUBLISHER>
+		<PRICE>￥68</PRICE>
+		<DESCRIPTION>VB 控件</DESCRIPTION>
+		<STATUS>在库</STATUS>
+	</BOOK>
+	<BOOK>
+		<NAME ISBN="B102">XML开发指南</NAME>
+		<PUBLISHER>电子工业出版社</PUBLISHER>
+		<PRICE>￥34</PRICE>
+		<DESCRIPTION>DTDXML</DESCRIPTION>
+		<STATUS>已借阅</STATUS>
+	</BOOK>
+	<BOOK>
+		<NAME ISBN="B103">Java</NAME>
+		<PUBLISHER>电子工业出版社</PUBLISHER>
+		<PRICE>￥42</PRICE>
+		<DESCRIPTION>概念语法</DESCRIPTION>
+		<STATUS>在库</STATUS>
+	</BOOK>
+	<BOOK>
+		<NAME ISBN="B104">ASP.NET</NAME>
+		<PUBLISHER>人民邮电出版社</PUBLISHER>
+		<PRICE>￥72</PRICE>
+		<DESCRIPTION>语法控件</DESCRIPTION>
+		<STATUS>已借阅</STATUS>
+	</BOOK>
+</BOOKS>

@@ -1,0 +1,1430 @@
+<!doctype html>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=11,IE=10,IE=9,IE=8">
+    <meta name="baidu-site-verification" content="dIcXMeY8Ya">
+    
+    <title>ESP-Touch智能配网是如何实现的 | 小牛试一刀</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+    <meta name="keywords" content="Anthony, 刘经济, 技术博客">
+    <meta name="description" content="待人以儒墨，不热爱前端技术的后端开发不是一个好的吃货。">
+
+    
+    <link rel="alternative" href="/atom.xml" title="小牛试一刀" type="application/atom+xml">
+    
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    
+    <link rel="stylesheet" href="/css/style.css">
+    <!--[if lt IE 9]>
+    <script src="/js/html5.js"></script>
+    <![endif]-->
+    
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?d5ebf515ab530cfbdda5f5c85093fb41";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+</head>
+</html>
+<body class="home">
+    <!--[if lt IE 9]>
+    <div class="browsehappy">
+        当前网页 <strong>不支持</strong>
+        你正在使用的浏览器. 为了正常的访问, 请 <a href="http://browsehappy.com/">升级你的浏览器</a>.
+    </div>
+    <![endif]-->
+
+    <!-- 博客头部 -->
+    <header class="header">
+    <section class="container header-main">
+        <div class="logo">
+            <a href="/">
+                <div class="cover">
+                    <span class="name">小牛试一刀</span>
+                    <span class="description">斯人笔记本</span>
+                </div>
+            </a>
+        </div>
+        <div class="dropnav icon-paragraph-justify" id="JELON__btnDropNav"></div>
+        <ul class="menu hidden" id="JELON__menu">
+            
+            <li rel="/posts/bf40eeb6.html" class="item ">
+                <a href="/" title="首页" class="icon-home">&nbsp;首页</a>
+            </li>
+            
+            <li rel="/posts/bf40eeb6.html" class="item ">
+                <a href="/about/" title="关于" class="icon-about">&nbsp;关于</a>
+            </li>
+            
+            <li rel="/posts/bf40eeb6.html" class="item ">
+                <a href="/comment/" title="留言" class="icon-comment">&nbsp;留言</a>
+            </li>
+            
+        </ul>
+        <div class="profile clearfix">
+            <div class="feeds fl">
+                
+                
+                <p class="links">
+                    
+                        <a href="https://github.com/haowanxing" target="_blank">Github</a>
+                        |
+                    
+                        <a href="https://pages.coding.me" target="_blank">Hosted by Coding Pages</a>
+                        
+                    
+                </p>
+                <p class="sns">
+                    
+                        <a href="http://weibo.com/u/2214092525" class="sinaweibo" target="_blank"><b>■</b> 新浪微博</a>
+                    
+                        <a href="https://www.facebook.com/york.mail/" class="qqweibo" target="_blank"><b>■</b> Facebook</a>
+                    
+                    <a href="javascript: void(0);" class="wechat">
+                        <b>■</b>
+                        公众号
+                        <span class="popover">
+                            <img src="/img/wechat_mp.jpg" width="120" height="120" alt="我的微信订阅号">
+                            <i class="arrow"></i>
+                        </span>
+                    </a>
+                </p>
+                
+            </div>
+            <div class="avatar fr">
+                <img src="/uploads/qiniu/20181010153914990649885.png" alt="avatar" title="Jelon" >
+            </div>
+        </div>
+    </section>
+</header>
+
+
+    <!-- 博客正文 -->
+    <div class="container body clearfix">
+        <section class="content">
+            <div class="content-main widget">
+                <!-- 文章页 -->
+<!-- 文章 -->
+<article class="post article">
+    <header class="text-center">
+        <h3 class="post-title"><span>ESP-Touch智能配网是如何实现的</span></h3>
+    </header>
+    <p class="post-meta text-center">
+        刘经济 发表于
+        <time datetime="2020-06-05T10:03:58.000Z">2020-06-05 18:03:58</time>
+
+        <!-- 不蒜子统计 -->
+        <span id="busuanzi_container_page_pv" style='display:none'">
+              <i class="icon-smile icon"></i> 阅读数：<span id="busuanzi_value_page_pv"></span>次
+        </span>
+
+
+    </p>
+    <div class="post-content">
+        <h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><p>近年来物联网发展迅速，目前依旧是比较热门的领域，现今世界处处都是物联网，可谓无处不物联（哈哈，扯远了！）。我接触物联网这块比较晚，去年才开始入门，最早的实战项目就是将传感器上云，借助腾讯的<a href="https://cloud.tencent.com/document/product/634" target="_blank" rel="noopener">物联网通信平台</a>，我可以对传感器进行远程控制以及读取传感器采集到的数据。当然，这些都离不开网络（Internet）。设备上云的首要前提就是接入互联网，而接入互联网的方式有很多种（如：有线网络、无线WiFi、NB-IoT、移动蜂窝2G/3G/4G等），不同场景下自然有各自合适的网络接入方式。</p>
+<p>我们现在生活中的很多智能家电都是通过WiFi接入的，不用我说大家也能举很多例子（像小米智能家居有小爱同学、空气净化器、电视、冰箱、洗衣机等blablabla~），这些设备刚到手的时候你一般都需要按照指导说明去下载个APP，然后绑定设备给设备配网，给设备配网可不像给手机连上WiFi那么容易，毕竟你买的小爱同学不能接鼠标键盘，也没有操作系统给你用。那么配网是如何完成的呢？</p>
+<p><strong>快速配网的两种途径：</strong></p>
+<ol>
+<li>SoftAP配网</li>
+<li>SmartConfig配网</li>
+</ol>
+<p>第一种很好理解，就类似给自己家里的路由器配置网络，你首先通过WiFi或者网线连接你家路由器，然后进入<a href="#">http://192.168.xxx.xxx</a>进行Web可视化配置，也有一些小型单片机，自己搭载了一个WiFi模组以AP模式运行，你通过指定的APP就可以与其建立通信并发送配置信息过去。但是这种配网方式比较繁琐，用户体验较差。</p>
+<p>第二种就比较高级了，你只需要打开设备的配网开关，并在你的手机上连接即将给设备配置的WiFi网络，然后在App或者小程序上输入对应的密码并点击开始，设备能够在很短的时间内（大约7~30s）就可以完成网络的配置。</p>
+<p><strong>这篇文章我将以我自己的学习成果来讲述SmartConfig配网的整个过程</strong></p>
+<a id="more"></a>
+<h2 id="ESP-Touch介绍"><a href="#ESP-Touch介绍" class="headerlink" title="ESP-Touch介绍"></a>ESP-Touch介绍</h2><blockquote>
+<p>乐鑫⾃自主研发的 ESP-TOUCH 协议采⽤用的是 Smart Config(智能配置)技术，帮助⽤用户将 采⽤用 ESP8266EX 和 ESP32 的设备(以下简称“设备”)连接⾄至 Wi-Fi ⽹网络。⽤用户只需在⼿手 机上进⾏行行简单操作即可实现智能配置。整个过程如下图所示:</p>
+</blockquote>
+<p><img src="../uploads/2020/06/image-20200603184756638.png" alt="image-20200603193229562" style="zoom:50%;"></p>
+<blockquote>
+<p>由于设备在⼀一开始并未连接⾄至⽹网络，ESP-TOUCH App ⽆无法直接向设备发送信息。通过 ESP-TOUCH 通信协议，具备 Wi-Fi ⽹网络接⼊入能⼒力力的设备(例例如智能⼿手机)就可以向接 ⼊入点 (AP) 发送⼀一系列列 UDP 包，其中每⼀一包的⻓长度(即 Length 字段)都按照 ESP- TOUCH 通信协议进⾏行行编码，SSID 和密码就包含在 Length 字段中，随后设备便便可以获 得并解析出所需的信息。数据包结构如下图所示:</p>
+</blockquote>
+<p><img src="../uploads/2020/06/image-20200603193346042.png" alt="image-20200603193346042" style="zoom: 67%;"></p>
+<p><strong>目前乐鑫公司的这套配网工具是开源的，相关的App可以直接在GitHub下载到，设备端相关的SDK也同样在GitHub开源：<a href="https://github.com/espressifAPP" target="_blank" rel="noopener">https://github.com/espressifAPP</a></strong></p>
+<p>乐鑫官网关于ESP-Touch的简介和资源下载：<a href="https://www.espressif.com/zh-hans/products/software/esp-touch/overview" target="_blank" rel="noopener">https://www.espressif.com/zh-hans/products/software/esp-touch/overview</a></p>
+<p>其官方中文版指导手册PDF下载地址：<a href="https://www.espressif.com/sites/default/files/documentation/esp-touch_user_guide_cn.pdf" target="_blank" rel="noopener">https://www.espressif.com/sites/default/files/documentation/esp-touch_user_guide_cn.pdf</a></p>
+<h2 id="配网流程"><a href="#配网流程" class="headerlink" title="配网流程"></a>配网流程</h2><p>手机端处理流程如下图所示：</p>
+<p><img src="../uploads/2020/06/ESPTouch-colored.jpg" alt="ESPTouch数据发送流程图" style="zoom: 50%;"></p>
+<h3 id="获取AP的SSID、BSSID和密码等信息"><a href="#获取AP的SSID、BSSID和密码等信息" class="headerlink" title="获取AP的SSID、BSSID和密码等信息"></a>获取AP的SSID、BSSID和密码等信息</h3><p>一般来说，用户需要事先连接上需要给设备配置的WiFi信号（2.4 GHz），不过有的App可以通过终端OS的内部接口让用户在App页内选择WiFi信号并输入密码完成连接（如微信小程序）。这样App可以轻松获得AP的SSID、BSSID以及用户输入的与之对应的密码，继续完成后续步骤。</p>
+<h3 id="组装GuideCode和DatumCode数据包"><a href="#组装GuideCode和DatumCode数据包" class="headerlink" title="组装GuideCode和DatumCode数据包"></a>组装GuideCode和DatumCode数据包</h3><h4 id="GuideCode"><a href="#GuideCode" class="headerlink" title="GuideCode"></a>GuideCode</h4><p>GuideCode即前导码，它四个包为一组，这四个包分别是长度为515/514/513/512的UDP数据包。通过Wireshark抓包我们可以清楚的看到：</p>
+<p><img src="../uploads/2020/06/image-20200604150147952.png" alt="image-20200604150147952" style="zoom: 50%;"></p>
+<p>并且每个包的内容都是完全用<code>1</code>填充，其Asccii码<code>0x31</code>：</p>
+<p><img src="../uploads/2020/06/image-20200604152513579.png" alt="image-20200604152513579" style="zoom:33%;"></p>
+<h4 id="DatumCode"><a href="#DatumCode" class="headerlink" title="DatumCode"></a>DatumCode</h4><p>DatumCode的前5部分组成有：totalLen、apPwdLen、apSsidCrc、apBssidCrc和totalXOR。</p>
+<ol>
+<li><p>totalLen：总数据长度</p>
+<p>5（固定长度）+4（IP地址长度）+n1（密码长度）+n2（SSID长度）</p>
+</li>
+<li><p>apPwdLen：密码长度</p>
+</li>
+<li><p>apSsidCrc：SSID的CRC8结果</p>
+</li>
+<li><p>apBssidCrc：BSSID的CRC8结果</p>
+</li>
+<li><p>totalXOR：全部数据的异或结果</p>
+</li>
+</ol>
+<blockquote>
+<p>CRC的参数模型为：CRC-8/MAXIM，标准多项式为：x8+x5+x4+1</p>
+</blockquote>
+<p>后面紧接着的是Data数据，包括：IP地址（4字节）、password（n1字节）、SSID（n2字节）、BSSID（6字节）。</p>
+<blockquote>
+<p>!注意，Data的发送并不是有序的，每个有效数据会组装成连续的3个包，中间包会标识该组的序列号</p>
+</blockquote>
+<p>DatumCode数据包如下图所示：</p>
+<p><img src="../uploads/2020/06/image-20200605171524739.png" alt="image-20200605171524739" style="zoom:33%;"></p>
+<h3 id="创建UDPServer负责异步监听配网结果"><a href="#创建UDPServer负责异步监听配网结果" class="headerlink" title="创建UDPServer负责异步监听配网结果"></a>创建UDPServer负责异步监听配网结果</h3><blockquote>
+<p> 如何知道设备配网成功？首先，设备开启SmartConfig功能时，自身处于Station/混杂模式，它会在所处环境中快速切换各条信道来抓取每个信道中的数据包，当遇到正在发送GuideCode数据包的信道时，锁定该信道并继续接收广播数据，直到收到足够的数据来解码出其中的WiFi密码然后连接Wifi。当成功连接WiFi后设备会向该网络发送多条重复的UDP广播，广播数据包中含有设备的BSSID和它在当前网络中的IP地址。</p>
+</blockquote>
+<p>创建一个监听端口为18266的UDPServer，并异步监听广播地址的数据包。</p>
+<p>当有数据包（DataLen为11字节）过来的时候，可以尝试按照以下规则去读取其中的内容：</p>
+<ul>
+<li>数据包的序号从0开始</li>
+<li>第1~第6字节为BSSID</li>
+<li>第7~第10字节为IP地址</li>
+</ul>
+<p><img src="../uploads/2020/06/image-20200605093633160.png" alt="image-20200605093633160" style="zoom: 33%;"></p>
+<p>上图所示的数据包解析结果为：</p>
+<ul>
+<li>BSSID：2c:f4:32:81:2a:c3</li>
+<li>IP地址：c0.a8.7b.e0（192.168.123.224）</li>
+</ul>
+<p>拿到这样的数据后可以确定配网已经完成，可以中断客户端继续发送配网数据包，完成后续业务流程。</p>
+<h3 id="创建UDPClient负责发送配网数据包"><a href="#创建UDPClient负责发送配网数据包" class="headerlink" title="创建UDPClient负责发送配网数据包"></a>创建UDPClient负责发送配网数据包</h3><blockquote>
+<p>如何将配网数据包发送出去？创建UDPClient向广播地址255.255.255.255的7001端口循环发送！</p>
+</blockquote>
+<p><strong>GuideCode发送规则</strong></p>
+<p>4个包为一组循环发送，每包发送间隔8毫秒。</p>
+<p>2秒为一个周期，周期之后发送<code>DatumCode</code>。</p>
+<p><strong>DatumCode的发送规则</strong></p>
+<p>3个包（每个包9bit）为一组，每包发送间隔8毫秒，每组含一个有效数据，其组成格式如下表：</p>
+<table>
+<thead>
+<tr>
+<th>每组包序号</th>
+<th>控制位(1bit)</th>
+<th>高4位(4bit)</th>
+<th>低4位(4bit)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>pkg1</td>
+<td>0x00</td>
+<td>crc的高4bit</td>
+<td>data的高4bit</td>
+</tr>
+<tr>
+<td>pkg2</td>
+<td>0x01</td>
+<td>传输序号（8bit都是序号自身）</td>
+<td></td>
+</tr>
+<tr>
+<td>pkg3</td>
+<td>0x00</td>
+<td>crc的低4bit</td>
+<td>data的低4bit</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p> 其中传输序号从0开始，每组序号在前一组序号上+1。</p>
+<p>当数据发送时，必须要在每个包的基础上+40（协议规定要增加一个EXTRA_LEN）</p>
+</blockquote>
+<p>4秒为一个周期，周期之后重新开始发送<code>GuideCode</code>。</p>
+<h3 id="按照流程执行"><a href="#按照流程执行" class="headerlink" title="按照流程执行"></a>按照流程执行</h3><p>根据流程图执行，文字描述如下：</p>
+<ol>
+<li>发送GuideCode，Len=515</li>
+<li>发送GuideCode，Len=514</li>
+<li>发送GuideCode，Len=513</li>
+<li>发送GuideCode，Len=512</li>
+<li>循环步骤1-4，直到2秒超时</li>
+<li>发送DatumCode组</li>
+<li>循环步骤6，直到4秒超时</li>
+<li>从步骤1开始重新开始，直到整个过程45秒超时。</li>
+</ol>
+<h2 id="如何解码？"><a href="#如何解码？" class="headerlink" title="如何解码？"></a>如何解码？</h2><p>将数据包整理后如下表：</p>
+<table>
+<thead>
+<tr>
+<th>No.</th>
+<th>DC1</th>
+<th>DC2</th>
+<th>DC3</th>
+<th></th>
+<th>DC1-40</th>
+<th>DC2-40</th>
+<th>DC3-40</th>
+<th></th>
+<th>HEX1</th>
+<th>HEX2</th>
+<th>HEX3</th>
+<th></th>
+<th>CRC8</th>
+<th>Pack No.</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>186</td>
+<td>296</td>
+<td>107</td>
+<td></td>
+<td>146</td>
+<td>256</td>
+<td>67</td>
+<td></td>
+<td>0x92</td>
+<td>0x100</td>
+<td>0x43</td>
+<td></td>
+<td>0x94</td>
+<td>0</td>
+<td>0x23</td>
+</tr>
+<tr>
+<td>2</td>
+<td>56</td>
+<td>297</td>
+<td>100</td>
+<td></td>
+<td>16</td>
+<td>257</td>
+<td>60</td>
+<td></td>
+<td>0x10</td>
+<td>0x101</td>
+<td>0x3C</td>
+<td></td>
+<td>0x13</td>
+<td>1</td>
+<td>0xC</td>
+</tr>
+<tr>
+<td>3</td>
+<td>169</td>
+<td>298</td>
+<td>246</td>
+<td></td>
+<td>129</td>
+<td>258</td>
+<td>206</td>
+<td></td>
+<td>0x81</td>
+<td>0x102</td>
+<td>0xCE</td>
+<td></td>
+<td>0x8C</td>
+<td>2</td>
+<td>0x1E</td>
+</tr>
+<tr>
+<td>4</td>
+<td>156</td>
+<td>299</td>
+<td>184</td>
+<td></td>
+<td>116</td>
+<td>259</td>
+<td>144</td>
+<td></td>
+<td>0x74</td>
+<td>0x103</td>
+<td>0x90</td>
+<td></td>
+<td>0x79</td>
+<td>3</td>
+<td>0x40</td>
+</tr>
+<tr>
+<td>5</td>
+<td>100</td>
+<td>300</td>
+<td>82</td>
+<td></td>
+<td>60</td>
+<td>260</td>
+<td>42</td>
+<td></td>
+<td>0x3C</td>
+<td>0x104</td>
+<td>0x2A</td>
+<td></td>
+<td>0x32</td>
+<td>4</td>
+<td>0xCA</td>
+</tr>
+<tr>
+<td>6</td>
+<td>180</td>
+<td>301</td>
+<td>216</td>
+<td></td>
+<td>140</td>
+<td>261</td>
+<td>176</td>
+<td></td>
+<td>0x8C</td>
+<td>0x105</td>
+<td>0xB0</td>
+<td></td>
+<td>0x8B</td>
+<td>5</td>
+<td>0xC0</td>
+</tr>
+<tr>
+<td>7</td>
+<td>232</td>
+<td>331</td>
+<td>56</td>
+<td></td>
+<td>192</td>
+<td>291</td>
+<td>16</td>
+<td></td>
+<td>0xC0</td>
+<td>0x123</td>
+<td>0x10</td>
+<td></td>
+<td>0xC1</td>
+<td>35</td>
+<td>0x0</td>
+</tr>
+<tr>
+<td>8</td>
+<td>114</td>
+<td>302</td>
+<td>128</td>
+<td></td>
+<td>74</td>
+<td>262</td>
+<td>88</td>
+<td></td>
+<td>0x4A</td>
+<td>0x106</td>
+<td>0x58</td>
+<td></td>
+<td>0x45</td>
+<td>6</td>
+<td>0xA8</td>
+</tr>
+<tr>
+<td>9</td>
+<td>63</td>
+<td>303</td>
+<td>147</td>
+<td></td>
+<td>23</td>
+<td>263</td>
+<td>107</td>
+<td></td>
+<td>0x17</td>
+<td>0x107</td>
+<td>0x6B</td>
+<td></td>
+<td>0x16</td>
+<td>7</td>
+<td>0x7B</td>
+</tr>
+<tr>
+<td>10</td>
+<td>116</td>
+<td>304</td>
+<td>252</td>
+<td></td>
+<td>76</td>
+<td>264</td>
+<td>212</td>
+<td></td>
+<td>0x4C</td>
+<td>0x108</td>
+<td>0xD4</td>
+<td></td>
+<td>0x4D</td>
+<td>8</td>
+<td>0xC4</td>
+</tr>
+<tr>
+<td>11</td>
+<td>217</td>
+<td>332</td>
+<td>151</td>
+<td></td>
+<td>177</td>
+<td>292</td>
+<td>111</td>
+<td></td>
+<td>0xB1</td>
+<td>0x124</td>
+<td>0x6F</td>
+<td></td>
+<td>0xB6</td>
+<td>36</td>
+<td>0x1F</td>
+</tr>
+<tr>
+<td>12</td>
+<td>155</td>
+<td>305</td>
+<td>121</td>
+<td></td>
+<td>115</td>
+<td>265</td>
+<td>81</td>
+<td></td>
+<td>0x73</td>
+<td>0x109</td>
+<td>0x51</td>
+<td></td>
+<td>0x75</td>
+<td>9</td>
+<td>0x31</td>
+</tr>
+<tr>
+<td>13</td>
+<td>235</td>
+<td>306</td>
+<td>74</td>
+<td></td>
+<td>195</td>
+<td>266</td>
+<td>34</td>
+<td></td>
+<td>0xC3</td>
+<td>0x10A</td>
+<td>0x22</td>
+<td></td>
+<td>0xC2</td>
+<td>10</td>
+<td>0x32</td>
+</tr>
+<tr>
+<td>14</td>
+<td>123</td>
+<td>307</td>
+<td>171</td>
+<td></td>
+<td>83</td>
+<td>267</td>
+<td>131</td>
+<td></td>
+<td>0x53</td>
+<td>0x10B</td>
+<td>0x83</td>
+<td></td>
+<td>0x58</td>
+<td>11</td>
+<td>0x33</td>
+</tr>
+<tr>
+<td>15</td>
+<td>111</td>
+<td>333</td>
+<td>258</td>
+<td></td>
+<td>71</td>
+<td>293</td>
+<td>218</td>
+<td></td>
+<td>0x47</td>
+<td>0x125</td>
+<td>0xDA</td>
+<td></td>
+<td>0x4D</td>
+<td>37</td>
+<td>0x7A</td>
+</tr>
+<tr>
+<td>16</td>
+<td>255</td>
+<td>308</td>
+<td>57</td>
+<td></td>
+<td>215</td>
+<td>268</td>
+<td>17</td>
+<td></td>
+<td>0xD7</td>
+<td>0x10C</td>
+<td>0x11</td>
+<td></td>
+<td>0xD1</td>
+<td>12</td>
+<td>0x71</td>
+</tr>
+<tr>
+<td>17</td>
+<td>79</td>
+<td>309</td>
+<td>127</td>
+<td></td>
+<td>39</td>
+<td>269</td>
+<td>87</td>
+<td></td>
+<td>0x27</td>
+<td>0x10D</td>
+<td>0x57</td>
+<td></td>
+<td>0x25</td>
+<td>13</td>
+<td>0x77</td>
+</tr>
+<tr>
+<td>18</td>
+<td>222</td>
+<td>310</td>
+<td>205</td>
+<td></td>
+<td>182</td>
+<td>270</td>
+<td>165</td>
+<td></td>
+<td>0xB6</td>
+<td>0x10E</td>
+<td>0xA5</td>
+<td></td>
+<td>0xBA</td>
+<td>14</td>
+<td>0x65</td>
+</tr>
+<tr>
+<td>19</td>
+<td>175</td>
+<td>334</td>
+<td>233</td>
+<td></td>
+<td>135</td>
+<td>294</td>
+<td>193</td>
+<td></td>
+<td>0x87</td>
+<td>0x126</td>
+<td>0xC1</td>
+<td></td>
+<td>0x8C</td>
+<td>38</td>
+<td>0x71</td>
+</tr>
+<tr>
+<td>20</td>
+<td>254</td>
+<td>311</td>
+<td>281</td>
+<td></td>
+<td>214</td>
+<td>271</td>
+<td>241</td>
+<td></td>
+<td>0xD6</td>
+<td>0x10F</td>
+<td>0xF1</td>
+<td></td>
+<td>0xDF</td>
+<td>15</td>
+<td>0x61</td>
+</tr>
+<tr>
+<td>21</td>
+<td>159</td>
+<td>312</td>
+<td>267</td>
+<td></td>
+<td>119</td>
+<td>272</td>
+<td>227</td>
+<td></td>
+<td>0x77</td>
+<td>0x110</td>
+<td>0xE3</td>
+<td></td>
+<td>0x7E</td>
+<td>16</td>
+<td>0x73</td>
+</tr>
+<tr>
+<td>22</td>
+<td>206</td>
+<td>313</td>
+<td>76</td>
+<td></td>
+<td>166</td>
+<td>273</td>
+<td>36</td>
+<td></td>
+<td>0xA6</td>
+<td>0x111</td>
+<td>0x24</td>
+<td></td>
+<td>0xA2</td>
+<td>17</td>
+<td>0x64</td>
+</tr>
+<tr>
+<td>23</td>
+<td>97</td>
+<td>335</td>
+<td>139</td>
+<td></td>
+<td>57</td>
+<td>295</td>
+<td>99</td>
+<td></td>
+<td>0x39</td>
+<td>0x127</td>
+<td>0x63</td>
+<td></td>
+<td>0x36</td>
+<td>39</td>
+<td>0x93</td>
+</tr>
+<tr>
+<td>24</td>
+<td>159</td>
+<td>314</td>
+<td>50</td>
+<td></td>
+<td>119</td>
+<td>274</td>
+<td>10</td>
+<td></td>
+<td>0x77</td>
+<td>0x112</td>
+<td>0x0A</td>
+<td></td>
+<td>0x70</td>
+<td>18</td>
+<td>0x7A</td>
+</tr>
+<tr>
+<td>25</td>
+<td>223</td>
+<td>315</td>
+<td>288</td>
+<td></td>
+<td>183</td>
+<td>275</td>
+<td>248</td>
+<td></td>
+<td>0xB7</td>
+<td>0x113</td>
+<td>0xF8</td>
+<td></td>
+<td>0xBF</td>
+<td>19</td>
+<td>0x78</td>
+</tr>
+<tr>
+<td>26</td>
+<td>286</td>
+<td>316</td>
+<td>91</td>
+<td></td>
+<td>246</td>
+<td>276</td>
+<td>51</td>
+<td></td>
+<td>0xF6</td>
+<td>0x114</td>
+<td>0x33</td>
+<td></td>
+<td>0xF3</td>
+<td>20</td>
+<td>0x63</td>
+</tr>
+<tr>
+<td>27</td>
+<td>275</td>
+<td>336</td>
+<td>88</td>
+<td></td>
+<td>235</td>
+<td>296</td>
+<td>48</td>
+<td></td>
+<td>0xEB</td>
+<td>0x128</td>
+<td>0x30</td>
+<td></td>
+<td>0xE3</td>
+<td>40</td>
+<td>0xB0</td>
+</tr>
+<tr>
+<td>28</td>
+<td>284</td>
+<td>317</td>
+<td>249</td>
+<td></td>
+<td>244</td>
+<td>277</td>
+<td>209</td>
+<td></td>
+<td>0xF4</td>
+<td>0x115</td>
+<td>0xD1</td>
+<td></td>
+<td>0xFD</td>
+<td>21</td>
+<td>0x41</td>
+</tr>
+<tr>
+<td>29</td>
+<td>78</td>
+<td>318</td>
+<td>60</td>
+<td></td>
+<td>38</td>
+<td>278</td>
+<td>20</td>
+<td></td>
+<td>0x26</td>
+<td>0x116</td>
+<td>0x14</td>
+<td></td>
+<td>0x21</td>
+<td>22</td>
+<td>0x64</td>
+</tr>
+<tr>
+<td>30</td>
+<td>238</td>
+<td>319</td>
+<td>261</td>
+<td></td>
+<td>198</td>
+<td>279</td>
+<td>221</td>
+<td></td>
+<td>0xC6</td>
+<td>0x117</td>
+<td>0xDD</td>
+<td></td>
+<td>0xCD</td>
+<td>23</td>
+<td>0x6D</td>
+</tr>
+<tr>
+<td>31</td>
+<td>222</td>
+<td>320</td>
+<td>161</td>
+<td></td>
+<td>182</td>
+<td>280</td>
+<td>121</td>
+<td></td>
+<td>0xB6</td>
+<td>0x118</td>
+<td>0x79</td>
+<td></td>
+<td>0xB7</td>
+<td>24</td>
+<td>0x69</td>
+</tr>
+<tr>
+<td>32</td>
+<td>174</td>
+<td>321</td>
+<td>166</td>
+<td></td>
+<td>134</td>
+<td>281</td>
+<td>126</td>
+<td></td>
+<td>0x86</td>
+<td>0x119</td>
+<td>0x7E</td>
+<td></td>
+<td>0x87</td>
+<td>25</td>
+<td>0x6E</td>
+</tr>
+<tr>
+<td>33</td>
+<td>46</td>
+<td>322</td>
+<td>225</td>
+<td></td>
+<td>6</td>
+<td>282</td>
+<td>185</td>
+<td></td>
+<td>0x06</td>
+<td>0x11A</td>
+<td>0xB9</td>
+<td></td>
+<td>0xB</td>
+<td>26</td>
+<td>0x69</td>
+</tr>
+<tr>
+<td>34</td>
+<td>127</td>
+<td>323</td>
+<td>267</td>
+<td></td>
+<td>87</td>
+<td>283</td>
+<td>227</td>
+<td></td>
+<td>0x57</td>
+<td>0x11B</td>
+<td>0xE3</td>
+<td></td>
+<td>0x5E</td>
+<td>27</td>
+<td>0x73</td>
+</tr>
+<tr>
+<td>35</td>
+<td>223</td>
+<td>324</td>
+<td>92</td>
+<td></td>
+<td>183</td>
+<td>284</td>
+<td>52</td>
+<td></td>
+<td>0xB7</td>
+<td>0x11C</td>
+<td>0x34</td>
+<td></td>
+<td>0xB3</td>
+<td>28</td>
+<td>0x74</td>
+</tr>
+<tr>
+<td>36</td>
+<td>111</td>
+<td>325</td>
+<td>154</td>
+<td></td>
+<td>71</td>
+<td>285</td>
+<td>114</td>
+<td></td>
+<td>0x47</td>
+<td>0x11D</td>
+<td>0x72</td>
+<td></td>
+<td>0x47</td>
+<td>29</td>
+<td>0x72</td>
+</tr>
+<tr>
+<td>37</td>
+<td>62</td>
+<td>326</td>
+<td>233</td>
+<td></td>
+<td>22</td>
+<td>286</td>
+<td>193</td>
+<td></td>
+<td>0x16</td>
+<td>0x11E</td>
+<td>0xC1</td>
+<td></td>
+<td>0x1C</td>
+<td>30</td>
+<td>0x61</td>
+</tr>
+<tr>
+<td>38</td>
+<td>127</td>
+<td>327</td>
+<td>60</td>
+<td></td>
+<td>87</td>
+<td>287</td>
+<td>20</td>
+<td></td>
+<td>0x57</td>
+<td>0x11F</td>
+<td>0x14</td>
+<td></td>
+<td>0x51</td>
+<td>31</td>
+<td>0x74</td>
+</tr>
+<tr>
+<td>39</td>
+<td>142</td>
+<td>328</td>
+<td>71</td>
+<td></td>
+<td>102</td>
+<td>288</td>
+<td>31</td>
+<td></td>
+<td>0x66</td>
+<td>0x120</td>
+<td>0x1F</td>
+<td></td>
+<td>0x61</td>
+<td>32</td>
+<td>0x6F</td>
+</tr>
+<tr>
+<td>40</td>
+<td>127</td>
+<td>329</td>
+<td>202</td>
+<td></td>
+<td>87</td>
+<td>289</td>
+<td>162</td>
+<td></td>
+<td>0x57</td>
+<td>0x121</td>
+<td>0xA2</td>
+<td></td>
+<td>0x5A</td>
+<td>33</td>
+<td>0x72</td>
+</tr>
+<tr>
+<td>41</td>
+<td>159</td>
+<td>330</td>
+<td>235</td>
+<td></td>
+<td>119</td>
+<td>290</td>
+<td>195</td>
+<td></td>
+<td>0x77</td>
+<td>0x122</td>
+<td>0xC3</td>
+<td></td>
+<td>0x7C</td>
+<td>34</td>
+<td>0x73</td>
+</tr>
+</tbody>
+</table>
+<p>每一行有3个包，表示一个有效数据，DC1~DC3为一组数据包的LEN值，后面接着的3列为DC1~DC3减去40后的值，再后面是对应的16进制表示。</p>
+<p>最后3列则是解码后的值，CRC8由HEX1的高4bit和HEX3的高4bit组成，Pack No.为HEX2的低8bit，Value由HEX1的低4bit和HEX3的低4bit组成。</p>
+<p>这样还不能很直观的看出来结果，我们用Excel排序并利用相关函数（如：CODE等）将其直接输出可阅读的内容，如下图所示：</p>
+<p><img src="../uploads/2020/06/image-20200605174033297.png" alt="image-20200605174033297" style="zoom: 33%;"></p>
+<h2 id="写在最后"><a href="#写在最后" class="headerlink" title="写在最后"></a>写在最后</h2><p>终于认认真真（FuYanLiaoShi）的做完了这次的作业（XuQiu），本文讲述的内容可能不太严谨或者说是比较浅显，所以我在这里贡献出来我的源代码，以供深入探索。</p>
+<p><strong>相关链接</strong></p>
+<ul>
+<li>我的Golang作业：<a href="https://github.com/haowanxing/ESPTouch-Go-Demo" target="_blank" rel="noopener">https://github.com/haowanxing/ESPTouch-Go-Demo</a></li>
+<li>参考博文：<a href="https://blog.csdn.net/flyingcys/article/details/54670688" target="_blank" rel="noopener">https://blog.csdn.net/flyingcys/article/details/54670688</a></li>
+<li>官方开源代码：<a href="https://github.com/EspressifApp/EsptouchForAndroid" target="_blank" rel="noopener">https://github.com/EspressifApp/EsptouchForAndroid</a></li>
+</ul>
+
+    </div>
+    <p class="post-meta">
+        <span class="post-cat">分类：
+            <a class="cat-link" href="/categories/学习笔记/">学习笔记</a>
+        </span>
+        <span class="post-tags">
+            标签：
+            
+    
+        <a href="/tags/Network/" title="Network">Network</a>
+    
+
+        </span>
+    </p>
+</article>
+<!-- 分享按钮 -->
+
+  <div class="article-share clearfix text-center">
+    <div class="share-area">
+      <span class="share-txt">分享到：</span>
+      <a href="javascript: window.open('http://service.weibo.com/share/share.php?url=' + encodeURIComponent(location.href) + '&title=' + document.title + '&language=zh_cn');" class="share-icon weibo"></a>
+      <a href="javascript: alert('请复制链接到微信并发送');" class="share-icon wechat"></a>
+      <a href="javascript: window.open('http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=' + encodeURIComponent(location.href) + '&title=' + document.title);" class="share-icon qqzone"></a>
+      <a href="javascript: window.open('http://connect.qq.com/widget/shareqq/index.html?url=' + encodeURIComponent(location.href) + '&desc=imsry.cn个人博客&title=' + document.title + '&callback=' + encodeURIComponent(location.href));" class="share-icon qq"></a>
+      <a href="javascript: window.open('http://shuo.douban.com/!service/share?href=' + encodeURIComponent(location.href) + '&name=' + document.title + '&text=' + document.title);" class="share-icon douban"></a>
+    </div>
+  </div>
+
+
+
+<!-- 上一篇/下一篇 -->
+
+<div class="article-nav clearfix">
+    
+    <span class="prev fl">
+        上一篇<br >
+        <a href="/posts/32476646.html">
+            
+                自建CA服务器学习笔记
+            
+        </a>
+    </span>
+    
+
+    
+    <span class="next fr">
+        下一篇<br >
+        <a href="/posts/4ede204f.html">
+            
+                腾讯云物联网通信平台设备动态注册鉴权流程
+            
+        </a>
+    </span>
+    
+</div>
+
+<!-- 文章评论 -->
+
+  <script src="/js/comment.js"></script>
+  <div id="comments" class="comment">
+    <!--
+    <div class="sign-bar">
+      GitHub 已登录!
+      <span class="sign-link">登出</span>
+    </div>
+    <section class="box">
+      <div class="com-avatar"><img src="/img/jelon.jpg" alt="avatar"></div>
+      <div class="com-text">
+        <div class="main">
+          <textarea class="text-area-edited show" placeholder="欢迎评论！"></textarea>
+          <div class="text-area-preview"></div>
+        </div>
+        <div class="switch">
+          <div class="switch-item on">编辑</div>
+          <div class="switch-item">预览</div>
+        </div>
+        <div class="button">提交</div>
+      </div>
+    </section>
+    <section class="tips">注：评论支持 markdown 语法！</section>
+    <section class="list-wrap">
+      <ul class="list">
+        <li>
+          <div class="user-avatar">
+            <a href="/">
+              <img src="/img/jelon.jpg" alt="user-avatar">
+            </a>
+          </div>
+          <div class="user-comment">
+            <div class="user-comment-header">
+              <span class="post-name">张德龙</span>
+              <span class="post-time">2017年12月12日</span>
+              <span class="like liked">已赞</span>
+              <span class="like-num">2</span>
+            </div>
+            <div class="user-comment-body">333333</div>
+          </div>
+        </li>
+        <li>
+          <div class="user-avatar">
+            <a href="/">
+              <img src="/img/jelon.jpg" alt="user-avatar">
+            </a>
+          </div>
+          <div class="user-comment">
+            <div class="user-comment-header">
+              <span class="post-name">刘德华</span>
+              <span class="post-time">2017年12月12日</span>
+              <span class="like">点赞</span>
+              <span class="like-num">2</span>
+            </div>
+            <div class="user-comment-body">vvvvv</div>
+          </div>
+        </li>
+      </ul>
+      <div class="page-nav">
+        <a href="javascript: void(0);" class="item">1</a>
+        <a href="javascript: void(0);" class="item">2</a>
+        <a href="javascript: void(0);" class="item current">3</a>
+      </div>
+    </section>
+    -->
+  </div>
+  <script>
+  JELON.Comment({
+    container: 'comments',
+    label: 'esptouch-protocol-learn' || 'posts/bf40eeb6.html',
+    owner: 'haowanxing',
+    repo: 'haowanxing.github.io',
+    clientId: '7e6b078394a99b7940d2',
+    clientSecret: 'ff64a6b066e97af64358c44a96e0c7dd398aba1e'
+  });
+  </script>
+
+
+
+            </div>
+
+        </section>
+        <!-- 侧栏部分 -->
+<aside class="sidebar">
+    
+    <section class="widget">
+        <h3 class="widget-hd"><strong>文章搜索</strong></h3>
+        <div class="search-form">
+  <form
+    id="searchForm"
+    method="GET"
+    action="https://www.baidu.com/s"
+    ectype="application/x-www-form-urlencoded"
+    target="_blank"
+    autocomplete="false"
+    onsubmit="javascript: return false;">
+    <input
+      id="searchKeyword"
+      type="text"
+      class="form-control"
+      placeholder="输入关键字搜索"
+      autocomplete="false"
+    />
+    <input id="searchKeywordHidden" type="hidden" name="wd" />
+    <input id="searchButton" class="btn" type="submit" value="搜索" />
+  </form>
+</div>
+    </section>
+    
+
+    <section class="widget">
+        <h3 class="widget-hd"><strong>文章分类</strong></h3>
+        <!-- 文章分类 -->
+<ul class="widget-bd">
+    
+    <li>
+        <a href="/categories/杂谈/">杂谈</a>
+        <span class="badge">(4)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/学习笔记/">学习笔记</a>
+        <span class="badge">(49)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/编程语言/">编程语言</a>
+        <span class="badge">(6)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/Learn-GO/">Learn-GO</a>
+        <span class="badge">(6)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/算法/">算法</a>
+        <span class="badge">(6)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/PHP/">PHP</a>
+        <span class="badge">(9)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/开发板/">开发板</a>
+        <span class="badge">(1)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/Linux/">Linux</a>
+        <span class="badge">(15)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/网络安全/">网络安全</a>
+        <span class="badge">(2)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/数据库/">数据库</a>
+        <span class="badge">(2)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/MacOS/">MacOS</a>
+        <span class="badge">(1)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/Web/">Web</a>
+        <span class="badge">(2)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/我的分享/">我的分享</a>
+        <span class="badge">(1)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/开放平台/">开放平台</a>
+        <span class="badge">(1)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/考试/">考试</a>
+        <span class="badge">(1)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/游戏/">游戏</a>
+        <span class="badge">(2)</span>
+    </li>
+    
+</ul>
+    </section>
+
+    
+    <section class="widget">
+        <h3 class="widget-hd"><strong>热门标签</strong></h3>
+        <!-- 文章标签 -->
+<div class="widget-bd tag-wrap">
+  
+    <a class="tag-item" href="/tags/LNMP/" title="LNMP">LNMP (2)</a>
+  
+    <a class="tag-item" href="/tags/Golang/" title="Golang">Golang (1)</a>
+  
+    <a class="tag-item" href="/tags/Docker/" title="Docker">Docker (1)</a>
+  
+    <a class="tag-item" href="/tags/PHP/" title="PHP">PHP (11)</a>
+  
+    <a class="tag-item" href="/tags/OrangePi/" title="OrangePi">OrangePi (1)</a>
+  
+    <a class="tag-item" href="/tags/Network/" title="Network">Network (3)</a>
+  
+    <a class="tag-item" href="/tags/网卡/" title="网卡">网卡 (1)</a>
+  
+    <a class="tag-item" href="/tags/Go/" title="Go">Go (1)</a>
+  
+    <a class="tag-item" href="/tags/gRPC/" title="gRPC">gRPC (1)</a>
+  
+    <a class="tag-item" href="/tags/RPC/" title="RPC">RPC (1)</a>
+  
+    <a class="tag-item" href="/tags/算法/" title="算法">算法 (1)</a>
+  
+    <a class="tag-item" href="/tags/时间复杂度/" title="时间复杂度">时间复杂度 (1)</a>
+  
+    <a class="tag-item" href="/tags/定理/" title="定理">定理 (1)</a>
+  
+    <a class="tag-item" href="/tags/Apache/" title="Apache">Apache (4)</a>
+  
+    <a class="tag-item" href="/tags/Linux/" title="Linux">Linux (4)</a>
+  
+    <a class="tag-item" href="/tags/Proxy/" title="Proxy">Proxy (1)</a>
+  
+    <a class="tag-item" href="/tags/面试/" title="面试">面试 (1)</a>
+  
+    <a class="tag-item" href="/tags/CentOS/" title="CentOS">CentOS (3)</a>
+  
+    <a class="tag-item" href="/tags/firewall/" title="firewall">firewall (1)</a>
+  
+    <a class="tag-item" href="/tags/https/" title="https">https (2)</a>
+  
+    <a class="tag-item" href="/tags/Chrome/" title="Chrome">Chrome (1)</a>
+  
+    <a class="tag-item" href="/tags/性能/" title="性能">性能 (3)</a>
+  
+    <a class="tag-item" href="/tags/VPN/" title="VPN">VPN (1)</a>
+  
+    <a class="tag-item" href="/tags/Discuz/" title="Discuz">Discuz (1)</a>
+  
+    <a class="tag-item" href="/tags/DS-Store/" title=".DS_Store">.DS_Store (1)</a>
+  
+    <a class="tag-item" href="/tags/C语言/" title="C语言">C语言 (1)</a>
+  
+    <a class="tag-item" href="/tags/Java/" title="Java">Java (2)</a>
+  
+    <a class="tag-item" href="/tags/MySQL/" title="MySQL">MySQL (9)</a>
+  
+    <a class="tag-item" href="/tags/Glassfish/" title="Glassfish">Glassfish (1)</a>
+  
+    <a class="tag-item" href="/tags/html/" title="html">html (1)</a>
+  
+    <a class="tag-item" href="/tags/Javascript/" title="Javascript">Javascript (2)</a>
+  
+    <a class="tag-item" href="/tags/Laravel/" title="Laravel">Laravel (1)</a>
+  
+    <a class="tag-item" href="/tags/MarkDown/" title="MarkDown">MarkDown (1)</a>
+  
+    <a class="tag-item" href="/tags/数据结构/" title="数据结构">数据结构 (1)</a>
+  
+    <a class="tag-item" href="/tags/Vim/" title="Vim">Vim (1)</a>
+  
+    <a class="tag-item" href="/tags/LAMP/" title="LAMP">LAMP (1)</a>
+  
+    <a class="tag-item" href="/tags/MacOS/" title="MacOS">MacOS (4)</a>
+  
+    <a class="tag-item" href="/tags/php/" title="php">php (2)</a>
+  
+    <a class="tag-item" href="/tags/Git/" title="Git">Git (1)</a>
+  
+</div>
+    </section>
+    
+
+    
+
+    
+    <!-- 友情链接 -->
+    <section class="widget">
+        <h3 class="widget-hd"><strong>友情链接</strong></h3>
+        <!-- 文章分类 -->
+<ul class="widget-bd">
+    
+        <li>
+            <a href="https://imququ.com/" target="_blank" title="Jerry Qu">Jerry Qu</a>
+        </li>
+    
+        <li>
+            <a href="https://jelon.info/" target="_blank" title="Zhang Delong">Jelon</a>
+        </li>
+    
+        <li>
+            <a href="http://www.minghua.work/" target="_blank" title="智能硬件产品汪">Minghua Jia</a>
+        </li>
+    
+</ul>
+
+    </section>
+    
+</aside>
+<!-- / 侧栏部分 -->
+    </div>
+
+    <!-- 博客底部 -->
+    <footer class="footer">
+<div style="margin-bottom:1em;">
+
+        <!-- 不蒜子统计 -->
+        <span id="busuanzi_container_site_pv">
+                本站总访问量<span id="busuanzi_value_site_pv"></span>次
+        </span>
+        <span class="post-meta-divider">|</span>
+        <span id="busuanzi_container_site_uv" style='display:none'>
+                本站访客数<span id="busuanzi_value_site_uv"></span>人
+        </span>
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  
+</div>
+    &copy;
+    
+        2014-2021
+    
+
+    <a href="/">Best Wishes</a>
+</footer>
+<div class="back-to-top" id="JELON__backToTop" title="返回顶部">返回顶部</div>
+
+    <!--博客js脚本 -->
+    <!-- 这里放网站js脚本 -->
+<script src="/js/main.js?v=1611037683233"></script>
+</body>
+</html>

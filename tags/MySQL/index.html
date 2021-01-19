@@ -1,0 +1,995 @@
+<!doctype html>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=11,IE=10,IE=9,IE=8">
+    <meta name="baidu-site-verification" content="dIcXMeY8Ya">
+    
+    <title>`MySQL`标签下的文章 | 小牛试一刀</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+    <meta name="keywords" content="Anthony, 刘经济, 技术博客">
+    <meta name="description" content="待人以儒墨，不热爱前端技术的后端开发不是一个好的吃货。">
+
+    
+    <link rel="alternative" href="/atom.xml" title="小牛试一刀" type="application/atom+xml">
+    
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    
+    <link rel="stylesheet" href="/css/style.css">
+    <!--[if lt IE 9]>
+    <script src="/js/html5.js"></script>
+    <![endif]-->
+    
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?d5ebf515ab530cfbdda5f5c85093fb41";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+</head>
+</html>
+<body class="home">
+    <!--[if lt IE 9]>
+    <div class="browsehappy">
+        当前网页 <strong>不支持</strong>
+        你正在使用的浏览器. 为了正常的访问, 请 <a href="http://browsehappy.com/">升级你的浏览器</a>.
+    </div>
+    <![endif]-->
+
+    <!-- 博客头部 -->
+    <header class="header">
+    <section class="container header-main">
+        <div class="logo">
+            <a href="/">
+                <div class="cover">
+                    <span class="name">小牛试一刀</span>
+                    <span class="description">斯人笔记本</span>
+                </div>
+            </a>
+        </div>
+        <div class="dropnav icon-paragraph-justify" id="JELON__btnDropNav"></div>
+        <ul class="menu hidden" id="JELON__menu">
+            
+            <li rel="/tags/MySQL/index.html" class="item ">
+                <a href="/" title="首页" class="icon-home">&nbsp;首页</a>
+            </li>
+            
+            <li rel="/tags/MySQL/index.html" class="item ">
+                <a href="/about/" title="关于" class="icon-about">&nbsp;关于</a>
+            </li>
+            
+            <li rel="/tags/MySQL/index.html" class="item ">
+                <a href="/comment/" title="留言" class="icon-comment">&nbsp;留言</a>
+            </li>
+            
+        </ul>
+        <div class="profile clearfix">
+            <div class="feeds fl">
+                
+                
+                <p class="links">
+                    
+                        <a href="https://github.com/haowanxing" target="_blank">Github</a>
+                        |
+                    
+                        <a href="https://pages.coding.me" target="_blank">Hosted by Coding Pages</a>
+                        
+                    
+                </p>
+                <p class="sns">
+                    
+                        <a href="http://weibo.com/u/2214092525" class="sinaweibo" target="_blank"><b>■</b> 新浪微博</a>
+                    
+                        <a href="https://www.facebook.com/york.mail/" class="qqweibo" target="_blank"><b>■</b> Facebook</a>
+                    
+                    <a href="javascript: void(0);" class="wechat">
+                        <b>■</b>
+                        公众号
+                        <span class="popover">
+                            <img src="/img/wechat_mp.jpg" width="120" height="120" alt="我的微信订阅号">
+                            <i class="arrow"></i>
+                        </span>
+                    </a>
+                </p>
+                
+            </div>
+            <div class="avatar fr">
+                <img src="/uploads/qiniu/20181010153914990649885.png" alt="avatar" title="Jelon" >
+            </div>
+        </div>
+    </section>
+</header>
+
+
+    <!-- 博客正文 -->
+    <div class="container body clearfix">
+        <section class="content">
+            <div class="content-main widget">
+                <!-- 按标签分类 -->
+
+    <h3 class="widget-hd">
+        <strong>
+            
+                `MySQL`标签下的文章
+            
+        </strong>
+    </h3>
+    
+        <!-- 文章列表 item -->
+<article class="post">
+    <header>
+        <!-- 标签这有且只能显示一个 -->
+        
+        <a class="cat-link" href="/categories/学习笔记/">学习笔记</a>
+        
+        <!-- 文章标题 -->
+        
+    <h3 class="post-title">
+    	<a href="http://www.imsry.cn/posts/2e28f02f.html">
+    		mysql中几种Log和打开方法
+    	</a>
+    </h3>
+
+    </header>
+    <p class="post-meta">
+        Anthony 发表于
+        <time datetime="2018-05-17T10:45:18.000Z">2018-05-17 18:45:18</time>
+
+
+        &nbsp;&nbsp;
+        <span class="post-tags">
+            标签：
+            
+    
+        <a href="/tags/MySQL/" title="MySQL">MySQL</a>
+    
+
+        </span>
+    </p>
+
+    <div class="post-content">
+        <div class="post-excerpt">
+            
+                <blockquote>
+<p>Mysql中常见的log有：<code>错误日志log_error</code>、<code>慢查询日志slow_query_log</code>、<code>二进制日志bin_log</code>和<code>通用查询日志general_log</code></p>
+</blockquote>
+<h3 id="错误日志（error-log）"><a href="#错误日志（error-log）" class="headerlink" title="错误日志（error_log）"></a>错误日志（error_log）</h3><p>  这个日志记载mysql服务器的启动和关闭以及运行过程中发生的故障或异常情况，如果你发现mysql无法正常启动，那么你首先应该查看这个日志。</p>
+<p>  配置：</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">log_error = error.log</span><br></pre></td></tr></table></figure>
+<p>  服务器上查询log位置：<code>show variables like &#39;log_error&#39;</code></p>
+<h3 id="慢查询日志（slow-query-log）"><a href="#慢查询日志（slow-query-log）" class="headerlink" title="慢查询日志（slow_query_log）"></a>慢查询日志（slow_query_log）</h3><p>  为了改善数据库性能，需要减少慢查询SQL的使用次数，那么哪些SQL需要改善呢？通过这个日志可以更清楚如何去改善。</p>
+<p>  配置：</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">slow_query_log = 1</span><br><span class="line">lone_query_time = 10</span><br><span class="line">slow_query_log_file = slow_query.log</span><br></pre></td></tr></table></figure>
+<h3 id="二进制查询日志（bin-log）"><a href="#二进制查询日志（bin-log）" class="headerlink" title="二进制查询日志（bin_log）"></a>二进制查询日志（bin_log）</h3><p>  Mysql的binlog日志作用是用来记录mysql内部增删改查等对mysql数据库有更新的内容的记录（对数据库的改动），对数据库的查询select或show等不会被binlog日志记录;主要用于数据库的主从复制以及增量恢复。</p>
+<p>  配置：</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">log_bin = mysql_bin.log</span><br></pre></td></tr></table></figure>
+<h3 id="通用查询日志（general-log）"><a href="#通用查询日志（general-log）" class="headerlink" title="通用查询日志（general_log）"></a>通用查询日志（general_log）</h3><p>  会记录mysql运行期间的所有sql语句</p>
+<p>  配置：</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">log_output=[none|file|table|file,table]  <span class="comment">#通用查询日志输出格式</span></span><br><span class="line">general_log=[on|off]                     <span class="comment">#是否启用通用查询日志</span></span><br><span class="line">general_log_file[=filename]              <span class="comment">#通用查询日志位置及名字</span></span><br></pre></td></tr></table></figure>
+            
+            <p class="more">
+                <a href="http://www.imsry.cn/posts/2e28f02f.html">阅读剩下更多</a>
+            </p>
+        </div>
+        <div class="post-thumbnail" data-img="">
+            <a href="http://www.imsry.cn/posts/2e28f02f.html" title="mysql中几种Log和打开方法">
+                
+                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/7.jpg" alt="默认配图" >
+                
+            </a>
+        </div>
+    </div>
+</article>
+
+    
+        <!-- 文章列表 item -->
+<article class="post">
+    <header>
+        <!-- 标签这有且只能显示一个 -->
+        
+        <a class="cat-link" href="/categories/学习笔记/">学习笔记</a>
+        
+        <!-- 文章标题 -->
+        
+    <h3 class="post-title">
+    	<a href="http://www.imsry.cn/posts/65123244.html">
+    		skip-name-resolve可以解决远程连接mysql数据库时候的缓慢或超时
+    	</a>
+    </h3>
+
+    </header>
+    <p class="post-meta">
+        Anthony 发表于
+        <time datetime="2018-03-22T10:18:39.000Z">2018-03-22 18:18:39</time>
+
+
+        &nbsp;&nbsp;
+        <span class="post-tags">
+            标签：
+            
+    
+        <a href="/tags/MySQL/" title="MySQL">MySQL</a>
+    
+
+        </span>
+    </p>
+
+    <div class="post-content">
+        <div class="post-excerpt">
+            
+                <p>　　咳咳，迁了新的机器，全新的机器但是环境还是跟以前一样，基本没变过什么配置。但是远程连接mysql却很慢，甚至10s超时都还没连上！！！ 当然，仅仅只是建立连接的时候，连接成功后一切操作都行如流水。</p>
+<p>　　所以最快最简单的方法就是直接在数据库的配置文件my.cnf|my.ini中添加一行<code>skip-name-resolve</code>来解决。</p>
+<p>　　其实mysql在用户登录建立连接的时候，会对客户端进行DNS反查，如果遇到服务器的DNS解析出现问题，那么就可能导致客户端迟迟连接不上。此方法可禁止mysql进行DNS反查从而解决了这个问题。</p>
+
+            
+            <p class="more">
+                <a href="http://www.imsry.cn/posts/65123244.html">阅读剩下更多</a>
+            </p>
+        </div>
+        <div class="post-thumbnail" data-img="">
+            <a href="http://www.imsry.cn/posts/65123244.html" title="skip-name-resolve可以解决远程连接mysql数据库时候的缓慢或超时">
+                
+                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/2.jpg" alt="默认配图" >
+                
+            </a>
+        </div>
+    </div>
+</article>
+
+    
+        <!-- 文章列表 item -->
+<article class="post">
+    <header>
+        <!-- 标签这有且只能显示一个 -->
+        
+        <a class="cat-link" href="/categories/Web/">Web</a>
+        
+        <!-- 文章标题 -->
+        
+    <h3 class="post-title">
+    	<a href="http://www.imsry.cn/posts/88376848.html">
+    		GlassFish配置数据库连接池
+    	</a>
+    </h3>
+
+    </header>
+    <p class="post-meta">
+        Anthony 发表于
+        <time datetime="2015-11-08T06:31:38.000Z">2015-11-08 14:31:38</time>
+
+
+        &nbsp;&nbsp;
+        <span class="post-tags">
+            标签：
+            
+    
+        <a href="/tags/Java/" title="Java">Java</a> / 
+    
+        <a href="/tags/MySQL/" title="MySQL">MySQL</a> / 
+    
+        <a href="/tags/Glassfish/" title="Glassfish">Glassfish</a>
+    
+
+        </span>
+    </p>
+
+    <div class="post-content">
+        <div class="post-excerpt">
+            
+                <h2 id="1、首先启动glassfish服务器，在地址栏中输入http-localhost-4848-进入服务器的配置界面-如下"><a href="#1、首先启动glassfish服务器，在地址栏中输入http-localhost-4848-进入服务器的配置界面-如下" class="headerlink" title="1、首先启动glassfish服务器，在地址栏中输入http://localhost:4848/,进入服务器的配置界面,如下:"></a>1、首先启动glassfish服务器，在地址栏中输入<a href="http://localhost:4848/" target="_blank" rel="noopener">http://localhost:4848/</a>,进入服务器的配置界面,如下:</h2><p><img src="../uploads/qiniu/20170206148636045921422.png" alt="20170206148636045921422.png"></p>
+<h2 id="2、在Common-Tasks下选择Resources的JDBC，可以看到JDBC资源-JDBC-Resources-和Connection-Pools-连接池-，在Connection-Pools-连接池-中点击New按钮，建立一个连接池jdbc-new，如下："><a href="#2、在Common-Tasks下选择Resources的JDBC，可以看到JDBC资源-JDBC-Resources-和Connection-Pools-连接池-，在Connection-Pools-连接池-中点击New按钮，建立一个连接池jdbc-new，如下：" class="headerlink" title="2、在Common Tasks下选择Resources的JDBC，可以看到JDBC资源(JDBC Resources)和Connection Pools(连接池)，在Connection Pools(连接池)中点击New按钮，建立一个连接池jdbc_new，如下："></a>2、在Common Tasks下选择Resources的JDBC，可以看到JDBC资源(JDBC Resources)和Connection Pools(连接池)，在Connection Pools(连接池)中点击New按钮，建立一个连接池jdbc_new，如下：</h2>
+            
+            <p class="more">
+                <a href="http://www.imsry.cn/posts/88376848.html">阅读剩下更多</a>
+            </p>
+        </div>
+        <div class="post-thumbnail" data-img="">
+            <a href="http://www.imsry.cn/posts/88376848.html" title="GlassFish配置数据库连接池">
+                
+                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/8.jpg" alt="默认配图" >
+                
+            </a>
+        </div>
+    </div>
+</article>
+
+    
+        <!-- 文章列表 item -->
+<article class="post">
+    <header>
+        <!-- 标签这有且只能显示一个 -->
+        
+        <a class="cat-link" href="/categories/学习笔记/">学习笔记</a>
+        
+        <!-- 文章标题 -->
+        
+    <h3 class="post-title">
+    	<a href="http://www.imsry.cn/posts/ce23f4b0.html">
+    		有关MacBook从10.9.5升级到10.11(EI capitan)后的问题及解决方法
+    	</a>
+    </h3>
+
+    </header>
+    <p class="post-meta">
+        Anthony 发表于
+        <time datetime="2015-10-26T12:16:55.000Z">2015-10-26 20:16:55</time>
+
+
+        &nbsp;&nbsp;
+        <span class="post-tags">
+            标签：
+            
+    
+        <a href="/tags/Apache/" title="Apache">Apache</a> / 
+    
+        <a href="/tags/Linux/" title="Linux">Linux</a> / 
+    
+        <a href="/tags/MySQL/" title="MySQL">MySQL</a> / 
+    
+        <a href="/tags/MacOS/" title="MacOS">MacOS</a>
+    
+
+        </span>
+    </p>
+
+    <div class="post-content">
+        <div class="post-excerpt">
+            
+                <p>看到别人的MAC在用最新的EI Capitan系统之后，我终于打破了自己坚持使用旧系统的原则，本着更好的体验和更高的性能，我将自己的本子也更新到最新，既然是更新升级上来的，不免有些小问题会出现，下面就逐个来说说我遇到的问题吧。</p>
+<h2 id="问题一：Apache无法正常启动？"><a href="#问题一：Apache无法正常启动？" class="headerlink" title="问题一：Apache无法正常启动？"></a>问题一：Apache无法正常启动？</h2><p>首先遇到这个问题时，当然是去找日志了，因为在终端输入启动命令：sudo apachectl start之后，没有任何报错和提示，只是本地浏览器访问localhost or 127.0.0.1失败。但是，这个错误日志真的不好找，最后我干脆去配置文件etc/apache2/httpd.conf中寻找。</p>
+<p>嗯！找到了！ ErrorLog “/private/var/log/apache2/error_log” 好的，我去看看到底是什么原因。可是，“/private/var/log/apache2/” 目录根本没有任何文件！想着自己给它创建这个错误日志文件吧，创建好了之后使用命令启动apache，结果文件里面没有任何内容！</p>
+<p>这也不行，看来通过错误日志是行不通了，于是乎，在网上查找各种资料，终于看到有个人在网页上写到：现在尝试启动一下Apache: sudo apachectl -k start。看到这个，带着好奇我也输入了一遍，好奇心真的不会害死猫！终于出现了报错了！第一次这么开心地看见报错信息，于是乎根据提示找到错误点并屏蔽掉了这个错误的配置。<br>
+            
+            <p class="more">
+                <a href="http://www.imsry.cn/posts/ce23f4b0.html">阅读剩下更多</a>
+            </p>
+        </div>
+        <div class="post-thumbnail" data-img="">
+            <a href="http://www.imsry.cn/posts/ce23f4b0.html" title="有关MacBook从10.9.5升级到10.11(EI capitan)后的问题及解决方法">
+                
+                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/6.jpg" alt="默认配图" >
+                
+            </a>
+        </div>
+    </div>
+</article>
+
+    
+        <!-- 文章列表 item -->
+<article class="post">
+    <header>
+        <!-- 标签这有且只能显示一个 -->
+        
+        <a class="cat-link" href="/categories/Linux/">Linux</a>
+        
+        <!-- 文章标题 -->
+        
+    <h3 class="post-title">
+    	<a href="http://www.imsry.cn/posts/d4ca8601.html">
+    		linux下mysql的root密码忘记解决方法
+    	</a>
+    </h3>
+
+    </header>
+    <p class="post-meta">
+        Anthony 发表于
+        <time datetime="2015-10-13T00:54:10.000Z">2015-10-13 08:54:10</time>
+
+
+        &nbsp;&nbsp;
+        <span class="post-tags">
+            标签：
+            
+    
+        <a href="/tags/MySQL/" title="MySQL">MySQL</a>
+    
+
+        </span>
+    </p>
+
+    <div class="post-content">
+        <div class="post-excerpt">
+            
+                <p>1．首先确认服务器出于安全的状态，也就是没有人能够任意地连接MySQL数据库。<br>因为在重新设置MySQL的root密码的期间，MySQL数据库完全出于没有密码保护的<br>状态下，其他的用户也可以任意地登录和修改MySQL的信息。可以采用将MySQL对<br>外的端口封闭，并且停止Apache以及所有的用户进程的方法实现服务器的准安全<br>状态。最安全的状态是到服务器的Console上面操作，并且拔掉网线。<br>2．修改MySQL的登录设置：</p>
+<h1 id="vi-etc-my-cnf"><a href="#vi-etc-my-cnf" class="headerlink" title="vi /etc/my.cnf"></a>vi /etc/my.cnf</h1><p>在[mysqld]的段中加上一句：skip-grant-tables<br>例如：<br>[mysqld]<br>datadir=/var/lib/mysql<br>socket=/var/lib/mysql/mysql.sock<br>skip-grant-tables<br>保存并且退出vi。<br>3．重新启动mysqld</p>
+<h1 id="etc-init-d-mysqld-restart"><a href="#etc-init-d-mysqld-restart" class="headerlink" title="/etc/init.d/mysqld restart"></a>/etc/init.d/mysqld restart</h1><p>Stopping MySQL: [ OK ]<br>Starting MySQL: [ OK ]<br>4．登录并修改MySQL的root密码</p>
+<h1 id="usr-bin-mysql"><a href="#usr-bin-mysql" class="headerlink" title="/usr/bin/mysql"></a>/usr/bin/mysql</h1><p>Welcome to the MySQL monitor. Commands end with ; or \g.<br>Your MySQL connection id is 3 to server version: 3.23.56<br>Type ‘help;’ or ‘\h’ for help. Type ‘\c’ to clear the buffer.<br>mysql&gt; USE mysql ;<br>Reading table information for completion of table and column names<br>You can turn off this feature to get a quicker startup with -A<br>Database changed<br>mysql&gt; UPDATE user SET Password = password ( ‘new-password’ ) WHERE User = ‘root’ ;<br>Query OK, 0 rows affected (0.00 sec)<br>Rows matched: 2 Changed: 0 Warnings: 0<br>mysql&gt; flush privileges ;<br>Query OK, 0 rows affected (0.01 sec)<br>mysql&gt; quit<br>Bye<br>5．将MySQL的登录设置修改回来</p>
+<h1 id="vi-etc-my-cnf-1"><a href="#vi-etc-my-cnf-1" class="headerlink" title="vi /etc/my.cnf"></a>vi /etc/my.cnf</h1><p>将刚才在[mysqld]的段中加上的skip-grant-tables删除<br>保存并且退出vi。<br>6．重新启动mysqld</p>
+<h1 id="etc-init-d-mysqld-restart-1"><a href="#etc-init-d-mysqld-restart-1" class="headerlink" title="/etc/init.d/mysqld restart"></a>/etc/init.d/mysqld restart</h1><p>Stopping MySQL: [ OK ]<br>Starting MySQL: [ OK ]<br>文章转自：<a href="http://www.cnblogs.com/allenblogs/archive/2010/08/12/1798247.html" target="_blank" rel="noopener">http://www.cnblogs.com/allenblogs/archive/2010/08/12/1798247.html</a></p>
+
+            
+            <p class="more">
+                <a href="http://www.imsry.cn/posts/d4ca8601.html">阅读剩下更多</a>
+            </p>
+        </div>
+        <div class="post-thumbnail" data-img="">
+            <a href="http://www.imsry.cn/posts/d4ca8601.html" title="linux下mysql的root密码忘记解决方法">
+                
+                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/3.jpg" alt="默认配图" >
+                
+            </a>
+        </div>
+    </div>
+</article>
+
+    
+        <!-- 文章列表 item -->
+<article class="post">
+    <header>
+        <!-- 标签这有且只能显示一个 -->
+        
+        <a class="cat-link" href="/categories/学习笔记/">学习笔记</a>
+        
+        <!-- 文章标题 -->
+        
+    <h3 class="post-title">
+    	<a href="http://www.imsry.cn/posts/aa11c9db.html">
+    		MySQL新建用户,授权,删除用户,修改密码 - 转载
+    	</a>
+    </h3>
+
+    </header>
+    <p class="post-meta">
+        Anthony 发表于
+        <time datetime="2014-11-29T13:17:26.000Z">2014-11-29 21:17:26</time>
+
+
+        &nbsp;&nbsp;
+        <span class="post-tags">
+            标签：
+            
+    
+        <a href="/tags/MySQL/" title="MySQL">MySQL</a>
+    
+
+        </span>
+    </p>
+
+    <div class="post-content">
+        <div class="post-excerpt">
+            
+                <p>首先要声明一下：一般情况下，修改MySQL密码，授权，是需要有mysql里的root权限的。</p>
+<p>注：本操作是在WIN命令提示符下，phpMyAdmin同样适用。<br>    用户：phplamp  用户数据库：phplampDB</p>
+<p>1.新建用户。</p>
+<pre lang="mysql" line="1" escaped="true">
+//登录MYSQL
+@>mysql -u root -p
+@>密码
+//创建用户
+mysql> insert into mysql.user(Host,User,Password) values("localhost","phplamp",password("1234"));
+//刷新系统权限表
+mysql>flush privileges;
+</pre>
+
+<p>这样就创建了一个名为：phplamp  密码为：1234  的用户。</p>
+<p>然后登录一下。</p>
+<pre lang="sql" line="1" escaped="true">
+mysql>exit;
+@>mysql -u phplamp -p
+@>输入密码
+</pre>
+mysql>登录成功
+
+2.为用户授权。
+<pre lang="sql" line="1" escaped="true">
+
+//登录MYSQL（有ROOT权限）。我里我以ROOT身份登录.
+@>mysql -u root -p
+@>密码
+//首先为用户创建一个数据库(phplampDB)
+mysql>create database phplampDB;
+//授权phplamp用户拥有phplamp数据库的所有权限。
+>grant all privileges on phplampDB.* to phplamp@localhost identified by '1234';
+//刷新系统权限表
+mysql>flush privileges;
+mysql>其它操作
+
+/*
+如果想指定部分权限给一用户，可以这样来写:
+mysql>grant select,update on phplampDB.* to phplamp@localhost identified by '1234';
+//刷新系统权限表。
+mysql>flush privileges;
+*/
+</pre>
+
+<p>3.删除用户。</p>
+<pre lang="sql" line="1" escaped="true">
+@>mysql -u root -p
+@>密码
+mysql>DELETE FROM user WHERE User="phplamp" and Host="localhost";
+mysql>flush privileges;
+//删除用户的数据库
+mysql>drop database phplampDB;
+</pre>
+4.修改指定用户密码。
+<pre lang="sql" line="1" escaped="true">
+@>mysql -u root -p
+@>密码
+mysql>update mysql.user set password=password('新密码') where User="phplamp" and Host="localhost";
+mysql>flush privileges; 
+</pre>
+
+<p>转自：<a href="http://www.cnblogs.com/analyzer/articles/1045072.html" target="_blank" rel="noopener">MySQL新建用户,授权,删除用户,修改密码 - analyzer - 博客园</a>.</p>
+
+            
+            <p class="more">
+                <a href="http://www.imsry.cn/posts/aa11c9db.html">阅读剩下更多</a>
+            </p>
+        </div>
+        <div class="post-thumbnail" data-img="">
+            <a href="http://www.imsry.cn/posts/aa11c9db.html" title="MySQL新建用户,授权,删除用户,修改密码 - 转载">
+                
+                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/9.jpg" alt="默认配图" >
+                
+            </a>
+        </div>
+    </div>
+</article>
+
+    
+        <!-- 文章列表 item -->
+<article class="post">
+    <header>
+        <!-- 标签这有且只能显示一个 -->
+        
+        <a class="cat-link" href="/categories/Linux/">Linux</a>
+        
+        <!-- 文章标题 -->
+        
+    <h3 class="post-title">
+    	<a href="http://www.imsry.cn/posts/8db5876f.html">
+    		linux下允许外网对mysql的访问
+    	</a>
+    </h3>
+
+    </header>
+    <p class="post-meta">
+        Anthony 发表于
+        <time datetime="2014-11-18T03:48:17.000Z">2014-11-18 11:48:17</time>
+
+
+        &nbsp;&nbsp;
+        <span class="post-tags">
+            标签：
+            
+    
+        <a href="/tags/Linux/" title="Linux">Linux</a> / 
+    
+        <a href="/tags/MySQL/" title="MySQL">MySQL</a>
+    
+
+        </span>
+    </p>
+
+    <div class="post-content">
+        <div class="post-excerpt">
+            
+                <p>从阿里云镜像市场安装的ubuntu(Apache+Mysql+VsFtp)里面Mysql默认是外网无法访问的，而在实际开发过程中需要对数据库的可视化比对操作，这样我们可以通过本地计算机来事实查改服务器的数据库。</p>
+<pre lang="mysql">
+
+1、修改表,登录mysql数据库,切换到mysql数据库,使用sql语句查看
+"select host,user from user ;"
+\mysql -u root -p
+\mysql>use mysql; 
+\mysql>update user set host = '%' where user ='root'; 
+\mysql>select host, user from user; 
+\mysql>flush privileges;  （使修改生效，必须执行）
+
+2、授权用户,你想root使用密码从任何主机连接到mysql服务器
+\mysql>GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' IDENTIFIED BY 'admin1234' WITH GRANT OPTION;
+\mysql>flush privileges;  （使修改生效，必须执行）
+
+</pre>
+            
+            <p class="more">
+                <a href="http://www.imsry.cn/posts/8db5876f.html">阅读剩下更多</a>
+            </p>
+        </div>
+        <div class="post-thumbnail" data-img="">
+            <a href="http://www.imsry.cn/posts/8db5876f.html" title="linux下允许外网对mysql的访问">
+                
+                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/8.jpg" alt="默认配图" >
+                
+            </a>
+        </div>
+    </div>
+</article>
+
+    
+        <!-- 文章列表 item -->
+<article class="post">
+    <header>
+        <!-- 标签这有且只能显示一个 -->
+        
+        <a class="cat-link" href="/categories/学习笔记/">学习笔记</a>
+        
+        <!-- 文章标题 -->
+        
+    <h3 class="post-title">
+    	<a href="http://www.imsry.cn/posts/d9eb5165.html">
+    		mac(Linux)下批改mysql服务器的默认字符集为utf8
+    	</a>
+    </h3>
+
+    </header>
+    <p class="post-meta">
+        Anthony 发表于
+        <time datetime="2014-07-07T06:17:25.000Z">2014-07-07 14:17:25</time>
+
+
+        &nbsp;&nbsp;
+        <span class="post-tags">
+            标签：
+            
+    
+        <a href="/tags/MySQL/" title="MySQL">MySQL</a>
+    
+
+        </span>
+    </p>
+
+    <div class="post-content">
+        <div class="post-excerpt">
+            
+                <p>在终端操作数据库：<br>mysql&gt; show variables like ‘%char%’;<br>+————————–+——————————————————–+<br>| Variable_name | Value |<br>+————————–+——————————————————–+<br>| character_set_client | utf8 |<br>| character_set_connection | utf8 |<br>| character_set_database | latin1 |<br>| character_set_filesystem | binary |<br>| character_set_results | utf8 |<br>| character_set_server | latin1 |<br>| character_set_system | utf8 |<br>| character_sets_dir | /usr/local/mysql-5.6.19-osx10.7-x86_64/share/charsets/ |<br>+————————–+——————————————————–+<br>这里可以看见 character_set_database 和 character_set_server 都是默认的latin1，这就表明创建的数据库和表都是以latin1为字符集的，在这种情况下，无法正常使用中文！ 下面简单说一下怎么更改这个默认字符集：<br>1.将本地mysql目录中的支持文件my-xxxx.cnf copy到/etc/my.cnf 命令：（ sudo cp /usr/local/mysql/support-files/my-default.cnf /etc/my.cnf ）<br>2.编辑my.cnf 命令（sudo vi /etc/my.cnf )<br>3.在文件中添加两段代码：“括号中没有的自己补上”<br>在[client]部分加入：<br>default-character-set = utf8<br>在[mysqld]部分加入：<br>character-set-server = utf8<br>4.重启mysql;<br>(提示，如果重启失败，尝试将<span style="color: #ff0000;">[client]</span>下面的<span style="text-decoration: underline;">default-character-set=utf8</span>改成[mysqld]中的一样)</p>
+<p>然后就可以查看字符集是否修改成功了，登录mysql 命令查询：<br>mysql&gt; show variables like ‘%char%’;<br>+————————–+——————————————————–+<br>| Variable_name | Value |<br>+————————–+——————————————————–+<br>| character_set_client | utf8 |<br>| character_set_connection | utf8 |<br>| character_set_database | utf8 |<br>| character_set_filesystem | binary |<br>| character_set_results | utf8 |<br>| character_set_server | utf8 |<br>| character_set_system | utf8 |<br>| character_sets_dir | /usr/local/mysql-5.6.19-osx10.7-x86_64/share/charsets/ |<br>+————————–+——————————————————–+<br>8 rows in set (0.00 sec)<br>这样就成功了。</p>
+
+            
+            <p class="more">
+                <a href="http://www.imsry.cn/posts/d9eb5165.html">阅读剩下更多</a>
+            </p>
+        </div>
+        <div class="post-thumbnail" data-img="">
+            <a href="http://www.imsry.cn/posts/d9eb5165.html" title="mac(Linux)下批改mysql服务器的默认字符集为utf8">
+                
+                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/7.jpg" alt="默认配图" >
+                
+            </a>
+        </div>
+    </div>
+</article>
+
+    
+        <!-- 文章列表 item -->
+<article class="post">
+    <header>
+        <!-- 标签这有且只能显示一个 -->
+        
+        <a class="cat-link" href="/categories/学习笔记/">学习笔记</a>
+        
+        <!-- 文章标题 -->
+        
+    <h3 class="post-title">
+    	<a href="http://www.imsry.cn/posts/92cd9797.html">
+    		MySQL常用命令
+    	</a>
+    </h3>
+
+    </header>
+    <p class="post-meta">
+        Anthony 发表于
+        <time datetime="2014-07-03T08:36:30.000Z">2014-07-03 16:36:30</time>
+
+
+        &nbsp;&nbsp;
+        <span class="post-tags">
+            标签：
+            
+    
+        <a href="/tags/MySQL/" title="MySQL">MySQL</a>
+    
+
+        </span>
+    </p>
+
+    <div class="post-content">
+        <div class="post-excerpt">
+            
+                <p>连接MySQL数据库：</p>
+<p>mysql -h host -u user -p</p>
+<p>1.SHOW DATABASES;  查询已有的数据库</p>
+<p>2.USE DatabaseName; 使用某个数据库</p>
+<p>3.SHOW TABLES; 查询已有的表单；</p>
+<p>4.SELECT * FROM TableName; 检索表单所有数据（＊代表所有，可用字段名替代）</p>
+<p>5.CREATE TABLE TableName (Id INT, Name VARCHAR(20)); 创建一个表</p>
+<p>6.DESCRIBE TableName; 显示表的结构</p>
+<p>7.INSERT INTO TableName VALUES (2014,”Jack”);向表中添加记录<br>INSERT INTO TableName (Id,Name) VALUES (2014,”Jack”);</p>
+<p>8.DROP TABLE TableName; 删除表</p>
+<p>9.DELATE FROM TableName; 清空表</p>
+<p>10.UPDATE TableName set Name=”Tom” where Id=2014;更新表中数据</p>
+
+            
+            <p class="more">
+                <a href="http://www.imsry.cn/posts/92cd9797.html">阅读剩下更多</a>
+            </p>
+        </div>
+        <div class="post-thumbnail" data-img="">
+            <a href="http://www.imsry.cn/posts/92cd9797.html" title="MySQL常用命令">
+                
+                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/3.jpg" alt="默认配图" >
+                
+            </a>
+        </div>
+    </div>
+</article>
+
+    
+
+    
+    <nav class="page-navigator">
+        <span class="page-number current">1</span>
+    </nav>
+    
+
+
+            </div>
+
+        </section>
+        <!-- 侧栏部分 -->
+<aside class="sidebar">
+    
+    <section class="widget">
+        <h3 class="widget-hd"><strong>文章搜索</strong></h3>
+        <div class="search-form">
+  <form
+    id="searchForm"
+    method="GET"
+    action="https://www.baidu.com/s"
+    ectype="application/x-www-form-urlencoded"
+    target="_blank"
+    autocomplete="false"
+    onsubmit="javascript: return false;">
+    <input
+      id="searchKeyword"
+      type="text"
+      class="form-control"
+      placeholder="输入关键字搜索"
+      autocomplete="false"
+    />
+    <input id="searchKeywordHidden" type="hidden" name="wd" />
+    <input id="searchButton" class="btn" type="submit" value="搜索" />
+  </form>
+</div>
+    </section>
+    
+
+    <section class="widget">
+        <h3 class="widget-hd"><strong>文章分类</strong></h3>
+        <!-- 文章分类 -->
+<ul class="widget-bd">
+    
+    <li>
+        <a href="/categories/杂谈/">杂谈</a>
+        <span class="badge">(4)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/学习笔记/">学习笔记</a>
+        <span class="badge">(49)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/编程语言/">编程语言</a>
+        <span class="badge">(6)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/Learn-GO/">Learn-GO</a>
+        <span class="badge">(6)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/算法/">算法</a>
+        <span class="badge">(6)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/PHP/">PHP</a>
+        <span class="badge">(9)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/开发板/">开发板</a>
+        <span class="badge">(1)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/Linux/">Linux</a>
+        <span class="badge">(15)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/网络安全/">网络安全</a>
+        <span class="badge">(2)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/数据库/">数据库</a>
+        <span class="badge">(2)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/MacOS/">MacOS</a>
+        <span class="badge">(1)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/Web/">Web</a>
+        <span class="badge">(2)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/我的分享/">我的分享</a>
+        <span class="badge">(1)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/开放平台/">开放平台</a>
+        <span class="badge">(1)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/考试/">考试</a>
+        <span class="badge">(1)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/游戏/">游戏</a>
+        <span class="badge">(2)</span>
+    </li>
+    
+</ul>
+    </section>
+
+    
+    <section class="widget">
+        <h3 class="widget-hd"><strong>热门标签</strong></h3>
+        <!-- 文章标签 -->
+<div class="widget-bd tag-wrap">
+  
+    <a class="tag-item" href="/tags/LNMP/" title="LNMP">LNMP (2)</a>
+  
+    <a class="tag-item" href="/tags/Golang/" title="Golang">Golang (1)</a>
+  
+    <a class="tag-item" href="/tags/Docker/" title="Docker">Docker (1)</a>
+  
+    <a class="tag-item" href="/tags/PHP/" title="PHP">PHP (11)</a>
+  
+    <a class="tag-item" href="/tags/OrangePi/" title="OrangePi">OrangePi (1)</a>
+  
+    <a class="tag-item" href="/tags/Network/" title="Network">Network (3)</a>
+  
+    <a class="tag-item" href="/tags/网卡/" title="网卡">网卡 (1)</a>
+  
+    <a class="tag-item" href="/tags/Go/" title="Go">Go (1)</a>
+  
+    <a class="tag-item" href="/tags/gRPC/" title="gRPC">gRPC (1)</a>
+  
+    <a class="tag-item" href="/tags/RPC/" title="RPC">RPC (1)</a>
+  
+    <a class="tag-item" href="/tags/算法/" title="算法">算法 (1)</a>
+  
+    <a class="tag-item" href="/tags/时间复杂度/" title="时间复杂度">时间复杂度 (1)</a>
+  
+    <a class="tag-item" href="/tags/定理/" title="定理">定理 (1)</a>
+  
+    <a class="tag-item" href="/tags/Apache/" title="Apache">Apache (4)</a>
+  
+    <a class="tag-item" href="/tags/Linux/" title="Linux">Linux (4)</a>
+  
+    <a class="tag-item" href="/tags/Proxy/" title="Proxy">Proxy (1)</a>
+  
+    <a class="tag-item" href="/tags/面试/" title="面试">面试 (1)</a>
+  
+    <a class="tag-item" href="/tags/CentOS/" title="CentOS">CentOS (3)</a>
+  
+    <a class="tag-item" href="/tags/firewall/" title="firewall">firewall (1)</a>
+  
+    <a class="tag-item" href="/tags/https/" title="https">https (2)</a>
+  
+    <a class="tag-item" href="/tags/Chrome/" title="Chrome">Chrome (1)</a>
+  
+    <a class="tag-item" href="/tags/性能/" title="性能">性能 (3)</a>
+  
+    <a class="tag-item" href="/tags/VPN/" title="VPN">VPN (1)</a>
+  
+    <a class="tag-item" href="/tags/Discuz/" title="Discuz">Discuz (1)</a>
+  
+    <a class="tag-item" href="/tags/DS-Store/" title=".DS_Store">.DS_Store (1)</a>
+  
+    <a class="tag-item" href="/tags/C语言/" title="C语言">C语言 (1)</a>
+  
+    <a class="tag-item" href="/tags/Java/" title="Java">Java (2)</a>
+  
+    <a class="tag-item" href="/tags/MySQL/" title="MySQL">MySQL (9)</a>
+  
+    <a class="tag-item" href="/tags/Glassfish/" title="Glassfish">Glassfish (1)</a>
+  
+    <a class="tag-item" href="/tags/html/" title="html">html (1)</a>
+  
+    <a class="tag-item" href="/tags/Javascript/" title="Javascript">Javascript (2)</a>
+  
+    <a class="tag-item" href="/tags/Laravel/" title="Laravel">Laravel (1)</a>
+  
+    <a class="tag-item" href="/tags/MarkDown/" title="MarkDown">MarkDown (1)</a>
+  
+    <a class="tag-item" href="/tags/数据结构/" title="数据结构">数据结构 (1)</a>
+  
+    <a class="tag-item" href="/tags/Vim/" title="Vim">Vim (1)</a>
+  
+    <a class="tag-item" href="/tags/LAMP/" title="LAMP">LAMP (1)</a>
+  
+    <a class="tag-item" href="/tags/MacOS/" title="MacOS">MacOS (4)</a>
+  
+    <a class="tag-item" href="/tags/php/" title="php">php (2)</a>
+  
+    <a class="tag-item" href="/tags/Git/" title="Git">Git (1)</a>
+  
+</div>
+    </section>
+    
+
+    
+
+    
+    <!-- 友情链接 -->
+    <section class="widget">
+        <h3 class="widget-hd"><strong>友情链接</strong></h3>
+        <!-- 文章分类 -->
+<ul class="widget-bd">
+    
+        <li>
+            <a href="https://imququ.com/" target="_blank" title="Jerry Qu">Jerry Qu</a>
+        </li>
+    
+        <li>
+            <a href="https://jelon.info/" target="_blank" title="Zhang Delong">Jelon</a>
+        </li>
+    
+        <li>
+            <a href="http://www.minghua.work/" target="_blank" title="智能硬件产品汪">Minghua Jia</a>
+        </li>
+    
+</ul>
+
+    </section>
+    
+</aside>
+<!-- / 侧栏部分 -->
+    </div>
+
+    <!-- 博客底部 -->
+    <footer class="footer">
+<div style="margin-bottom:1em;">
+
+        <!-- 不蒜子统计 -->
+        <span id="busuanzi_container_site_pv">
+                本站总访问量<span id="busuanzi_value_site_pv"></span>次
+        </span>
+        <span class="post-meta-divider">|</span>
+        <span id="busuanzi_container_site_uv" style='display:none'>
+                本站访客数<span id="busuanzi_value_site_uv"></span>人
+        </span>
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  
+</div>
+    &copy;
+    
+        2014-2021
+    
+
+    <a href="/">Best Wishes</a>
+</footer>
+<div class="back-to-top" id="JELON__backToTop" title="返回顶部">返回顶部</div>
+
+    <!--博客js脚本 -->
+    <!-- 这里放网站js脚本 -->
+<script src="/js/main.js?v=1611037685399"></script>
+</body>
+</html>
