@@ -1407,9 +1407,9 @@
         <title>GlassFish配置数据库连接池</title>
         <pubTime>2015-11-08T06:31:38.000Z</pubTime>
         
-        <tag>Java</tag>
-         
         <tag>MySQL</tag>
+         
+        <tag>Java</tag>
          
         <tag>Glassfish</tag>
          
@@ -1613,9 +1613,9 @@
         <title> CENTOS 6.0 iptables 开放端口80 3306 22端口</title>
         <pubTime>2015-11-11T13:13:01.000Z</pubTime>
         
-        <tag>CentOS</tag>
-         
         <tag>firewall</tag>
+         
+        <tag>CentOS</tag>
          
          
            
