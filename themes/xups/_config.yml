@@ -91,6 +91,10 @@ friends:
       name: Jelon
       title: Zhang Delong
       link: https://jelon.info/
+    3:
+      name: Minghua Jia
+      title: 智能硬件产品汪
+      link: http://www.minghua.work/
 #----------------------------
 # 头部链接
 #----------------------------
@@ -110,12 +114,12 @@ head_links:
         link: http://weibo.com/u/2214092525
       qqweibo:
         name: Facebook
-        link: https://www.facebook.com/york.mail/
+        link: https://www.facebook.com/imsry.cn/
 #----------------------------
 # SEO
 #----------------------------
 SEO:
-  keywords: Anthony, 刘经济, 技术博客
+  keywords: Anthony, 刘经济, 技术博客, 个人博客, PHP, Golang, Linux, FullStack
   description: 待人以儒墨，不热爱前端技术的后端开发不是一个好的吃货。
 
 #----------------------------
