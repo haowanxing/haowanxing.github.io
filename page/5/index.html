@@ -127,6 +127,72 @@ var _hmt = _hmt || [];
     <header>
         <!-- 标签这有且只能显示一个 -->
         
+        <a class="cat-link" href="/categories/PHP/">PHP</a>
+        
+        <!-- 文章标题 -->
+        
+    <h3 class="post-title">
+    	<a href="http://www.imsry.cn/posts/f0dc176.html">
+    		php上传进度之uploadprogress
+    	</a>
+    </h3>
+
+    </header>
+    <p class="post-meta">
+        Anthony 发表于
+        <time datetime="2017-02-07T03:29:13.000Z">2017-02-07 11:29:13</time>
+
+
+        &nbsp;&nbsp;
+        <span class="post-tags">
+            标签：
+            
+    
+        <a href="/tags/上传进度/" title="上传进度">上传进度</a>
+    
+
+        </span>
+    </p>
+
+    <div class="post-content">
+        <div class="post-excerpt">
+            
+                <blockquote>
+<p>我的学习是项目驱动，这次遇到的需求是上传进度条。</p>
+</blockquote>
+<p><code>注意：此方法仅在Apache下运行PHP时有效，如果您采用FastCGI方式(如：Nginx+fpm)，这个不适用！</code></p>
+<p>通过查PHP手册，了解到PHP版本5.4+有一个新特性<code>uploadprogress</code>，也可以说是新扩展吧！</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">当 session.upload_progress.enabled INI 选项开启时，PHP 能够在每一个文件上传时监测上传进度。 这个信息对上传请求自身并没有什么帮助，但在文件上传时应用可以发送一个POST请求到终端（例如通过XHR）来检查这个状态</span><br><span class="line">当一个上传在处理中，同时POST一个与INI中设置的session.upload_progress.name同名变量时，上传进度可以在$_SESSION中获得。 当PHP检测到这种POST请求时，它会在$_SESSION中添加一组数据, 索引是 session.upload_progress.prefix 与 session.upload_progress.name连接在一起的值。</span><br></pre></td></tr></table></figure>
+<p>将这个扩展启用，需要开启PHP.INI支持：</p>
+<pre><code>session.upload_progress.enabled = On
+session.upload_progress.cleanup = On
+session.upload_progress.prefix = &quot;upload_progress_&quot;
+session.upload_progress.name = &quot;PHP_SESSION_UPLOAD_PROGRESS&quot;
+session.upload_progress.freq = &quot;1%&quot;
+session.upload_progress.min_freq = &quot;1&quot;
+</code></pre><p>　　当然，我按照官方的示例操作了N久，就是读不到此类session的值。一开始以为是公司框架的问题，后来自己在本地单独写文件来测试，结果还是一样！</p>
+<p>　　在网上查找各种此类问题的解决办法，虽说有相同提问的，但是解答问题的人根本就没找到根本的原因。其实很简单：<code>上传的文件Size太小</code></p>
+            
+            <p class="more">
+                <a href="http://www.imsry.cn/posts/f0dc176.html">阅读剩下更多</a>
+            </p>
+        </div>
+        <div class="post-thumbnail" data-img="">
+            <a href="http://www.imsry.cn/posts/f0dc176.html" title="php上传进度之uploadprogress">
+                
+                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/7.jpg" alt="默认配图" >
+                
+            </a>
+        </div>
+    </div>
+</article>
+
+    
+        <!-- 文章列表 item -->
+<article class="post">
+    <header>
+        <!-- 标签这有且只能显示一个 -->
+        
         <a class="cat-link" href="/categories/学习笔记/">学习笔记</a>
         
         <!-- 文章标题 -->
@@ -671,61 +737,6 @@ echo implode(&apos; &apos;,BubbleSort($arr)).&quot;\n&quot;;
 </article>
 
     
-        <!-- 文章列表 item -->
-<article class="post">
-    <header>
-        <!-- 标签这有且只能显示一个 -->
-        
-        <a class="cat-link" href="/categories/PHP/">PHP</a>
-        
-        <!-- 文章标题 -->
-        
-    <h3 class="post-title">
-    	<a href="http://www.imsry.cn/posts/101ef104.html">
-    		一种较好的实现PHP异步发送邮件的实现
-    	</a>
-    </h3>
-
-    </header>
-    <p class="post-meta">
-        Anthony 发表于
-        <time datetime="2016-09-11T13:02:45.000Z">2016-09-11 21:02:45</time>
-
-
-        &nbsp;&nbsp;
-        <span class="post-tags">
-            标签：
-            
-    
-        <a href="/tags/PHP/" title="PHP">PHP</a> / 
-    
-        <a href="/tags/Email/" title="Email">Email</a>
-    
-
-        </span>
-    </p>
-
-    <div class="post-content">
-        <div class="post-excerpt">
-            
-                <p>前些天在写我的TR-System（社团招新管理系统）的时候，用到了邮箱验证用户注册，也就是注册成功后，需要访问收到的邮件中的URL进行用户激活。这个事件发生在用户提交注册请求之后，系统需要立即发送一封邮件用于激活，但是系统在调用PHPMailer的时候需要进行SMTP连接邮箱系统（用的腾讯企业邮），往往在这个时候会出现等待的情况。如果让用户来承担这个等待时间，体验也太差了！，没见过哪个系统上注册个用户，还需要慢慢等待系统告诉我到底有没有注册成功。<br>一开始在写的时候，直接在POST请求中处理，写入数据库后就调用sendEmail方法，情况是这样的：<br><code>1.提交注册 --&gt; 2.写入数据库 --&gt; 3.发送Email --&gt; 4.注册成功。</code><br>这样在用户看来是有一个漫长的等待的。<br>实际上应该为：<br><code>1.提交注册 --&gt; 2.写入数据库 --&gt; 3.注册成功。
-||||||||||||||||||--&gt;发送Email</code><br>这样的才是一个拥有良好用户体验的系统 ^_^ 。<br>若是在Java等环境下，咱们可以很好利用多线程，分出来一个任务让另一个线程去完成。<br>但是！PHP这个单线程环境下，没有new Thread来搞这个事情啊。 不过，换一个角度，线程不行的，我就给个新进程呗。当然不是在当前进程创建新进程。<br>
-            
-            <p class="more">
-                <a href="http://www.imsry.cn/posts/101ef104.html">阅读剩下更多</a>
-            </p>
-        </div>
-        <div class="post-thumbnail" data-img="">
-            <a href="http://www.imsry.cn/posts/101ef104.html" title="一种较好的实现PHP异步发送邮件的实现">
-                
-                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/1.jpg" alt="默认配图" >
-                
-            </a>
-        </div>
-    </div>
-</article>
-
-    
 
     
     <nav class="page-navigator">
@@ -774,17 +785,17 @@ echo implode(&apos; &apos;,BubbleSort($arr)).&quot;\n&quot;;
     
     <li>
         <a href="/categories/学习笔记/">学习笔记</a>
-        <span class="badge">(49)</span>
-    </li>
-    
-    <li>
-        <a href="/categories/编程语言/">编程语言</a>
-        <span class="badge">(6)</span>
+        <span class="badge">(50)</span>
     </li>
     
     <li>
         <a href="/categories/杂谈/">杂谈</a>
         <span class="badge">(4)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/编程语言/">编程语言</a>
+        <span class="badge">(6)</span>
     </li>
     
     <li>
@@ -803,13 +814,13 @@ echo implode(&apos; &apos;,BubbleSort($arr)).&quot;\n&quot;;
     </li>
     
     <li>
-        <a href="/categories/开发板/">开发板</a>
-        <span class="badge">(1)</span>
+        <a href="/categories/PHP/">PHP</a>
+        <span class="badge">(9)</span>
     </li>
     
     <li>
-        <a href="/categories/PHP/">PHP</a>
-        <span class="badge">(9)</span>
+        <a href="/categories/开发板/">开发板</a>
+        <span class="badge">(1)</span>
     </li>
     
     <li>
@@ -838,11 +849,6 @@ echo implode(&apos; &apos;,BubbleSort($arr)).&quot;\n&quot;;
     </li>
     
     <li>
-        <a href="/categories/开放平台/">开放平台</a>
-        <span class="badge">(1)</span>
-    </li>
-    
-    <li>
         <a href="/categories/考试/">考试</a>
         <span class="badge">(1)</span>
     </li>
@@ -850,6 +856,11 @@ echo implode(&apos; &apos;,BubbleSort($arr)).&quot;\n&quot;;
     <li>
         <a href="/categories/游戏/">游戏</a>
         <span class="badge">(2)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/开放平台/">开放平台</a>
+        <span class="badge">(1)</span>
     </li>
     
 </ul>
@@ -863,17 +874,17 @@ echo implode(&apos; &apos;,BubbleSort($arr)).&quot;\n&quot;;
   
     <a class="tag-item" href="/tags/Docker/" title="Docker">Docker (1)</a>
   
-    <a class="tag-item" href="/tags/Golang/" title="Golang">Golang (1)</a>
-  
     <a class="tag-item" href="/tags/LNMP/" title="LNMP">LNMP (2)</a>
   
+    <a class="tag-item" href="/tags/Golang/" title="Golang">Golang (1)</a>
+  
     <a class="tag-item" href="/tags/网卡/" title="网卡">网卡 (1)</a>
+  
+    <a class="tag-item" href="/tags/PHP/" title="PHP">PHP (11)</a>
   
     <a class="tag-item" href="/tags/OrangePi/" title="OrangePi">OrangePi (1)</a>
   
     <a class="tag-item" href="/tags/Network/" title="Network">Network (3)</a>
-  
-    <a class="tag-item" href="/tags/PHP/" title="PHP">PHP (11)</a>
   
     <a class="tag-item" href="/tags/算法/" title="算法">算法 (1)</a>
   
@@ -911,13 +922,15 @@ echo implode(&apos; &apos;,BubbleSort($arr)).&quot;\n&quot;;
   
     <a class="tag-item" href="/tags/Discuz/" title="Discuz">Discuz (1)</a>
   
+    <a class="tag-item" href="/tags/FFmpeg/" title="FFmpeg">FFmpeg (1)</a>
+  
     <a class="tag-item" href="/tags/MySQL/" title="MySQL">MySQL (9)</a>
   
-    <a class="tag-item" href="/tags/C语言/" title="C语言">C语言 (1)</a>
+    <a class="tag-item" href="/tags/Glassfish/" title="Glassfish">Glassfish (1)</a>
   
     <a class="tag-item" href="/tags/Java/" title="Java">Java (2)</a>
   
-    <a class="tag-item" href="/tags/Glassfish/" title="Glassfish">Glassfish (1)</a>
+    <a class="tag-item" href="/tags/C语言/" title="C语言">C语言 (1)</a>
   
     <a class="tag-item" href="/tags/html/" title="html">html (1)</a>
   
@@ -936,8 +949,6 @@ echo implode(&apos; &apos;,BubbleSort($arr)).&quot;\n&quot;;
     <a class="tag-item" href="/tags/MacOS/" title="MacOS">MacOS (4)</a>
   
     <a class="tag-item" href="/tags/php/" title="php">php (2)</a>
-  
-    <a class="tag-item" href="/tags/Git/" title="Git">Git (1)</a>
   
 </div>
     </section>
@@ -998,6 +1009,6 @@ echo implode(&apos; &apos;,BubbleSort($arr)).&quot;\n&quot;;
 
     <!--博客js脚本 -->
     <!-- 这里放网站js脚本 -->
-<script src="/js/main.js?v=1612170118932"></script>
+<script src="/js/main.js?v=1615448453478"></script>
 </body>
 </html>

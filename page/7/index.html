@@ -132,6 +132,62 @@ var _hmt = _hmt || [];
         <!-- 文章标题 -->
         
     <h3 class="post-title">
+    	<a href="http://www.imsry.cn/posts/a363805e.html">
+    		Debian中搭建VPN(PPTP协议)实战，实现VPN上网
+    	</a>
+    </h3>
+
+    </header>
+    <p class="post-meta">
+        Anthony 发表于
+        <time datetime="2015-11-30T05:46:34.000Z">2015-11-30 13:46:34</time>
+
+
+        &nbsp;&nbsp;
+        <span class="post-tags">
+            标签：
+            
+    
+        <a href="/tags/VPN/" title="VPN">VPN</a>
+    
+
+        </span>
+    </p>
+
+    <div class="post-content">
+        <div class="post-excerpt">
+            
+                <p>首先讲一讲为什么会突然想到弄一下VPN呢？这是因为在我的学校，校园网的认证采用的是VPN(L2TP协议)，既然这样，我是不是可以通过学校的虚机来自建一个认证系统来实现上网呢？抱着这种疑问，开始做一些事情吧。</p>
+<p>另外提一下，PPTP, L2TP/IPSec 和 OpenVPN这三种协议里，PPTP比较容易配置，所以我采用了这种方法。</p>
+<h2 id="1、所需工具和资源"><a href="#1、所需工具和资源" class="headerlink" title="1、所需工具和资源"></a>1、所需工具和资源</h2><p>说到底，还是离不开一台校内的机器，而且能够上网并拥有独立IP（看上去很难有这个），多亏有师生这层美妙的关系，对！一台虚机就这样有了。软件方面的东西直接在虚机上下载就行了。</p>
+<p>本次实战的机器是Debian系统，软件源包使用apt-get，本地电脑Macbook（自带ssh连接端）</p>
+<h2 id="2、具体步骤"><a href="#2、具体步骤" class="headerlink" title="2、具体步骤"></a>2、具体步骤</h2><p>首先连接上远程计算机，通过命令行进行安装：<br>
+            
+            <p class="more">
+                <a href="http://www.imsry.cn/posts/a363805e.html">阅读剩下更多</a>
+            </p>
+        </div>
+        <div class="post-thumbnail" data-img="">
+            <a href="http://www.imsry.cn/posts/a363805e.html" title="Debian中搭建VPN(PPTP协议)实战，实现VPN上网">
+                
+                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/0.jpg" alt="默认配图" >
+                
+            </a>
+        </div>
+    </div>
+</article>
+
+    
+        <!-- 文章列表 item -->
+<article class="post">
+    <header>
+        <!-- 标签这有且只能显示一个 -->
+        
+        <a class="cat-link" href="/categories/Linux/">Linux</a>
+        
+        <!-- 文章标题 -->
+        
+    <h3 class="post-title">
     	<a href="http://www.imsry.cn/posts/2e6f46f8.html">
     		 CENTOS 6.0 iptables 开放端口80 3306 22端口
     	</a>
@@ -207,9 +263,9 @@ var _hmt = _hmt || [];
     
         <a href="/tags/MySQL/" title="MySQL">MySQL</a> / 
     
-        <a href="/tags/Java/" title="Java">Java</a> / 
+        <a href="/tags/Glassfish/" title="Glassfish">Glassfish</a> / 
     
-        <a href="/tags/Glassfish/" title="Glassfish">Glassfish</a>
+        <a href="/tags/Java/" title="Java">Java</a>
     
 
         </span>
@@ -646,59 +702,6 @@ var _hmt = _hmt || [];
 </article>
 
     
-        <!-- 文章列表 item -->
-<article class="post">
-    <header>
-        <!-- 标签这有且只能显示一个 -->
-        
-        <a class="cat-link" href="/categories/学习笔记/">学习笔记</a>
-        
-        <!-- 文章标题 -->
-        
-    <h3 class="post-title">
-    	<a href="http://www.imsry.cn/posts/9c7a95bd.html">
-    		[作业]Servlet简易聊天室
-    	</a>
-    </h3>
-
-    </header>
-    <p class="post-meta">
-        Anthony 发表于
-        <time datetime="2015-09-28T09:08:55.000Z">2015-09-28 17:08:55</time>
-
-
-        &nbsp;&nbsp;
-        <span class="post-tags">
-            标签：
-            
-    
-        <a href="/tags/Web/" title="Web">Web</a>
-    
-
-        </span>
-    </p>
-
-    <div class="post-content">
-        <div class="post-excerpt">
-            
-                <p>简单例子-Servlet聊天室，所用工具：NetBeans IDE(配备GlassFish)<br>本次例子重在思路，页面未做任何美化。<br>最后结果展示：<del><a href="http://demo.dshui.wang/tomcat/First_chat_room/" target="_blank" rel="noopener">http://demo.dshui.wang/tomcat/First_chat_room/</a></del><br>首先,需要一个登陆页面。<br>Login.jsp<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line">&lt;%@page contentType=&quot;text/html&quot; pageEncoding=&quot;UTF-8&quot;%&gt;</span><br><span class="line">&lt;%</span><br><span class="line">    Cookie[] cookies = request.getCookies();</span><br><span class="line">    String uname = &quot;&quot;;</span><br><span class="line">    String upwd = &quot;&quot;;</span><br><span class="line">    if(cookies!=null)&#123;</span><br><span class="line">        for(int i=0;i&lt;cookies.length;i++)</span><br><span class="line">        &#123;</span><br><span class="line">            Cookie cookie=cookies[i];</span><br><span class="line">            if(cookie.getName().equals(&quot;remname&quot;))</span><br><span class="line">            &#123;</span><br><span class="line">                uname = cookie.getValue();</span><br><span class="line">            &#125;</span><br><span class="line">            else if(cookie.getName().equals(&quot;rempwd&quot;))</span><br><span class="line">            &#123;</span><br><span class="line">                upwd = cookie.getValue();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">//上面代码用来判断用户是否曾保存过登陆信息</span><br><span class="line">%&gt;</span><br><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">    &lt;head&gt;</span><br><span class="line">        &lt;title&gt;牛逼的登陆界面&lt;/title&gt;</span><br><span class="line">        &lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=UTF-8&quot;&gt;</span><br><span class="line">    &lt;/head&gt;</span><br><span class="line">    &lt;body&gt;</span><br><span class="line">        &lt;div&gt;</span><br><span class="line">            &lt;form action=&quot;Main&quot; method=&quot;post&quot; name=&quot;loginform&quot;&gt;</span><br><span class="line">                &lt;table&gt;</span><br><span class="line">                    &lt;tr&gt;</span><br><span class="line">                        &lt;td&gt;用户名：&lt;/td&gt;</span><br><span class="line">                        &lt;td&gt;</span><br><span class="line">                            &lt;input type=&quot;text&quot; name=&quot;username&quot; value=&quot;&lt;%=uname%&gt;&quot; /&gt;</span><br><span class="line">                        &lt;/td&gt;</span><br><span class="line">                    &lt;/tr&gt;</span><br><span class="line">                    &lt;tr&gt;</span><br><span class="line">                        &lt;td&gt;密码：&lt;/td&gt;</span><br><span class="line">                        &lt;td&gt;</span><br><span class="line">                            &lt;input type=&quot;password&quot; name=&quot;password&quot; value=&quot;&lt;%=upwd%&gt;&quot; /&gt;</span><br><span class="line">                        &lt;/td&gt;</span><br><span class="line">                    &lt;/tr&gt;</span><br><span class="line">                    &lt;tr&gt;</span><br><span class="line">                        &lt;td colspan=&quot;2&quot; style=&quot;text-align: right;&quot;&gt;</span><br><span class="line">                            记住信息&lt;input name=&quot;remember&quot; type=&quot;checkbox&quot; value=&quot;true&quot; /&gt;</span><br><span class="line">                            &lt;input type=&quot;submit&quot; name=&quot;submit&quot; value=&quot;登录&quot;/&gt;</span><br><span class="line">                            &lt;input type=&quot;reset&quot; name=&quot;&quot; value=&quot;重置&quot;/&gt;</span><br><span class="line">                        &lt;/td&gt;</span><br><span class="line">                    &lt;/tr&gt;</span><br><span class="line">                &lt;/table&gt;</span><br><span class="line"></span><br><span class="line">            &lt;/form&gt;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">    &lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure></p>
-<p>新建一个用来处理登录信息的Servlet: Main.java 所有的处理都在DoPost()完成</p>
-            
-            <p class="more">
-                <a href="http://www.imsry.cn/posts/9c7a95bd.html">阅读剩下更多</a>
-            </p>
-        </div>
-        <div class="post-thumbnail" data-img="">
-            <a href="http://www.imsry.cn/posts/9c7a95bd.html" title="[作业]Servlet简易聊天室">
-                
-                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/8.jpg" alt="默认配图" >
-                
-            </a>
-        </div>
-    </div>
-</article>
-
-    
 
     
     <nav class="page-navigator">
@@ -747,17 +750,17 @@ var _hmt = _hmt || [];
     
     <li>
         <a href="/categories/学习笔记/">学习笔记</a>
-        <span class="badge">(49)</span>
-    </li>
-    
-    <li>
-        <a href="/categories/编程语言/">编程语言</a>
-        <span class="badge">(6)</span>
+        <span class="badge">(50)</span>
     </li>
     
     <li>
         <a href="/categories/杂谈/">杂谈</a>
         <span class="badge">(4)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/编程语言/">编程语言</a>
+        <span class="badge">(6)</span>
     </li>
     
     <li>
@@ -776,13 +779,13 @@ var _hmt = _hmt || [];
     </li>
     
     <li>
-        <a href="/categories/开发板/">开发板</a>
-        <span class="badge">(1)</span>
+        <a href="/categories/PHP/">PHP</a>
+        <span class="badge">(9)</span>
     </li>
     
     <li>
-        <a href="/categories/PHP/">PHP</a>
-        <span class="badge">(9)</span>
+        <a href="/categories/开发板/">开发板</a>
+        <span class="badge">(1)</span>
     </li>
     
     <li>
@@ -811,11 +814,6 @@ var _hmt = _hmt || [];
     </li>
     
     <li>
-        <a href="/categories/开放平台/">开放平台</a>
-        <span class="badge">(1)</span>
-    </li>
-    
-    <li>
         <a href="/categories/考试/">考试</a>
         <span class="badge">(1)</span>
     </li>
@@ -823,6 +821,11 @@ var _hmt = _hmt || [];
     <li>
         <a href="/categories/游戏/">游戏</a>
         <span class="badge">(2)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/开放平台/">开放平台</a>
+        <span class="badge">(1)</span>
     </li>
     
 </ul>
@@ -836,17 +839,17 @@ var _hmt = _hmt || [];
   
     <a class="tag-item" href="/tags/Docker/" title="Docker">Docker (1)</a>
   
-    <a class="tag-item" href="/tags/Golang/" title="Golang">Golang (1)</a>
-  
     <a class="tag-item" href="/tags/LNMP/" title="LNMP">LNMP (2)</a>
   
+    <a class="tag-item" href="/tags/Golang/" title="Golang">Golang (1)</a>
+  
     <a class="tag-item" href="/tags/网卡/" title="网卡">网卡 (1)</a>
+  
+    <a class="tag-item" href="/tags/PHP/" title="PHP">PHP (11)</a>
   
     <a class="tag-item" href="/tags/OrangePi/" title="OrangePi">OrangePi (1)</a>
   
     <a class="tag-item" href="/tags/Network/" title="Network">Network (3)</a>
-  
-    <a class="tag-item" href="/tags/PHP/" title="PHP">PHP (11)</a>
   
     <a class="tag-item" href="/tags/算法/" title="算法">算法 (1)</a>
   
@@ -884,13 +887,15 @@ var _hmt = _hmt || [];
   
     <a class="tag-item" href="/tags/Discuz/" title="Discuz">Discuz (1)</a>
   
+    <a class="tag-item" href="/tags/FFmpeg/" title="FFmpeg">FFmpeg (1)</a>
+  
     <a class="tag-item" href="/tags/MySQL/" title="MySQL">MySQL (9)</a>
   
-    <a class="tag-item" href="/tags/C语言/" title="C语言">C语言 (1)</a>
+    <a class="tag-item" href="/tags/Glassfish/" title="Glassfish">Glassfish (1)</a>
   
     <a class="tag-item" href="/tags/Java/" title="Java">Java (2)</a>
   
-    <a class="tag-item" href="/tags/Glassfish/" title="Glassfish">Glassfish (1)</a>
+    <a class="tag-item" href="/tags/C语言/" title="C语言">C语言 (1)</a>
   
     <a class="tag-item" href="/tags/html/" title="html">html (1)</a>
   
@@ -909,8 +914,6 @@ var _hmt = _hmt || [];
     <a class="tag-item" href="/tags/MacOS/" title="MacOS">MacOS (4)</a>
   
     <a class="tag-item" href="/tags/php/" title="php">php (2)</a>
-  
-    <a class="tag-item" href="/tags/Git/" title="Git">Git (1)</a>
   
 </div>
     </section>
@@ -971,6 +974,6 @@ var _hmt = _hmt || [];
 
     <!--博客js脚本 -->
     <!-- 这里放网站js脚本 -->
-<script src="/js/main.js?v=1612170118947"></script>
+<script src="/js/main.js?v=1615448453493"></script>
 </body>
 </html>

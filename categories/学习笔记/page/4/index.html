@@ -131,6 +131,55 @@ var _hmt = _hmt || [];
         <!-- 文章标题 -->
         
     <h3 class="post-title">
+    	<a href="http://www.imsry.cn/posts/25b754f7.html">
+    		作业2-2（PHP表单数据提交与接收)
+    	</a>
+    </h3>
+
+    </header>
+    <p class="post-meta">
+        Anthony 发表于
+        <time datetime="2015-05-07T14:44:02.000Z">2015-05-07 22:44:02</time>
+
+
+        &nbsp;&nbsp;
+        <span class="post-tags">
+            标签：
+            
+        </span>
+    </p>
+
+    <div class="post-content">
+        <div class="post-excerpt">
+            
+                <p><a href="/wp-content/uploads/2015/05/QQ20150507-5@2x.png"><img src="/wp-content/uploads/2015/05/QQ20150507-5@2x-300x197.png" alt="作业2-2"></a><br><a href="/html/work2.php">展示页面：http://www.dshui.wang/html/work2.php</a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">#Designed By Anthony_Box</span><br><span class="line">#Date: 2015-05-07</span><br><span class="line">#201321092028 OF SCUEC</span><br><span class="line">?&gt;</span><br><span class="line">&lt;!doctype html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">&lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">&lt;title&gt;Second Class Work&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;!---</span><br><span class="line">#Designed By Anthony_Box</span><br><span class="line">#Date: 2015-05-07</span><br><span class="line">#201321092028 OF SCUEC</span><br><span class="line">---&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;?php if ($_POST[&apos;submit&apos;])&#123;?&gt;</span><br><span class="line">姓名：&lt;?php echo $_POST[&apos;name&apos;];?&gt;</span><br><span class="line"></span><br><span class="line">兴趣：&lt;?php echo $_POST[&apos;intrest&apos;];?&gt;</span><br><span class="line"></span><br><span class="line">性别：&lt;?php echo $_POST[&apos;sex&apos;];?&gt;</span><br><span class="line"></span><br><span class="line">血型：&lt;?php echo $_POST[&apos;blood&apos;];?&gt;</span><br><span class="line"></span><br><span class="line">擅长语言：&lt;?php echo implode(&apos;,&apos;,$_POST[&apos;lang&apos;]);?&gt;</span><br><span class="line"></span><br><span class="line">最擅长的操作系统：&lt;?php echo $_POST[&apos;system&apos;];?&gt;</span><br><span class="line"></span><br><span class="line">留言：&lt;?php echo $_POST[&apos;note&apos;];?&gt;</span><br><span class="line"></span><br><span class="line">&lt;input type=&quot;submit&quot; value=&quot;确认&quot;&gt;</span><br><span class="line">&lt;?php &#125;else&#123;?&gt;</span><br><span class="line">&lt;form method=&quot;post&quot;&gt;</span><br><span class="line">&lt;label&gt;姓名：&lt;input type=&quot;text&quot; name=&quot;name&quot; /&gt;&lt;/label&gt;</span><br><span class="line"></span><br><span class="line">&lt;label&gt;兴趣：&lt;input type=&quot;text&quot; name=&quot;intrest&quot; /&gt;&lt;/label&gt;</span><br><span class="line"></span><br><span class="line">&lt;label&gt;性别：&lt;input type=&quot;radio&quot; name=&quot;sex&quot; value=&quot;男&quot; /&gt;男 &lt;/label&gt;&lt;label&gt;&lt;input type=&quot;radio&quot; name=&quot;sex&quot; value=&quot;女&quot;/&gt;女&lt;/label&gt;</span><br><span class="line"></span><br><span class="line">&lt;label&gt;血型：&lt;input type=&quot;radio&quot; name=&quot;blood&quot; value=&quot;A&quot;/&gt;A &lt;/label&gt;&lt;label&gt;&lt;input type=&quot;radio&quot; name=&quot;blood&quot; value=&quot;B&quot;/&gt;B &lt;/label&gt;&lt;label&gt;&lt;input type=&quot;radio&quot; name=&quot;blood&quot; value=&quot;AB&quot;/&gt;AB &lt;/label&gt;&lt;label&gt;&lt;input type=&quot;radio&quot; name=&quot;blood&quot; value=&quot;O&quot;/&gt;O&lt;/label&gt;</span><br><span class="line"></span><br><span class="line">请选择您擅长的一种或几种编程设计语言:</span><br><span class="line"></span><br><span class="line">&lt;label&gt;&lt;input type=&quot;checkbox&quot; name=&quot;lang[]&quot; value=&quot;C++&quot;/&gt;C++ &lt;/label&gt;&lt;label&gt;&lt;input type=&quot;checkbox&quot; name=&quot;lang[]&quot; value=&quot;PHP&quot;/&gt;PHP &lt;/label&gt;&lt;label&gt;&lt;input type=&quot;checkbox&quot; name=&quot;lang[]&quot; value=&quot;Shell&quot;/&gt;Shell &lt;/label&gt;&lt;label&gt;&lt;input type=&quot;checkbox&quot; name=&quot;lang[]&quot; value=&quot;VBscript&quot;/&gt;VBscript&lt;/label&gt;</span><br><span class="line"></span><br><span class="line">请选择您最擅长的操作系统:&lt;select name=&quot;system&quot;&gt;&lt;option&gt;Linux&lt;/option&gt;&lt;option&gt;Windows&lt;/option&gt;&lt;option&gt;Unix&lt;/option&gt;&lt;/select&gt;</span><br><span class="line"></span><br><span class="line">如果您有什么建议，敬请留言:</span><br><span class="line"></span><br><span class="line">&lt;textarea name=&quot;note&quot;&gt;&lt;/textarea&gt;</span><br><span class="line"></span><br><span class="line">&lt;input type=&quot;submit&quot; name=&quot;submit&quot; value=&quot;提交&quot;/&gt; &amp;nbsp;&amp;nbsp;&lt;input type=&quot;reset&quot; value=&quot;重置&quot;/&gt;</span><br><span class="line">&lt;/form&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br><span class="line">&lt;?php &#125;?&gt;</span><br></pre></td></tr></table></figure></p>
+
+            
+            <p class="more">
+                <a href="http://www.imsry.cn/posts/25b754f7.html">阅读剩下更多</a>
+            </p>
+        </div>
+        <div class="post-thumbnail" data-img="">
+            <a href="http://www.imsry.cn/posts/25b754f7.html" title="作业2-2（PHP表单数据提交与接收)">
+                
+                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/7.jpg" alt="默认配图" >
+                
+            </a>
+        </div>
+    </div>
+</article>
+
+    
+        <!-- 文章列表 item -->
+<article class="post">
+    <header>
+        <!-- 标签这有且只能显示一个 -->
+        
+        <a class="cat-link" href="/categories/学习笔记/">学习笔记</a>
+        
+        <!-- 文章标题 -->
+        
+    <h3 class="post-title">
     	<a href="http://www.imsry.cn/posts/c36b92d2.html">
     		作业2-1（PHP程序画n*n正方形矩阵)
     	</a>
@@ -644,62 +693,6 @@ mysql>flush privileges;
 </article>
 
     
-        <!-- 文章列表 item -->
-<article class="post">
-    <header>
-        <!-- 标签这有且只能显示一个 -->
-        
-        <a class="cat-link" href="/categories/学习笔记/">学习笔记</a>
-        
-        <!-- 文章标题 -->
-        
-    <h3 class="post-title">
-    	<a href="http://www.imsry.cn/posts/41de9b2c.html">
-    		mac系统如何显示和隐藏文件（转载）
-    	</a>
-    </h3>
-
-    </header>
-    <p class="post-meta">
-        Anthony 发表于
-        <time datetime="2014-08-15T09:40:46.000Z">2014-08-15 17:40:46</time>
-
-
-        &nbsp;&nbsp;
-        <span class="post-tags">
-            标签：
-            
-        </span>
-    </p>
-
-    <div class="post-content">
-        <div class="post-excerpt">
-            
-                <p>苹果Mac OS X操作系统下，隐藏文件是否显示有很多种设置方法，最简单的要算在Mac终端输入命令。显示/隐藏Mac隐藏文件命令如下(注意其中的空格并且区分大小写)：</p>
-<p>显示Mac隐藏文件的命令：defaults write com.apple.finder AppleShowAllFiles -bool true</p>
-<p>隐藏Mac隐藏文件的命令：defaults write com.apple.finder AppleShowAllFiles -bool false</p>
-<p>或者</p>
-<p>显示Mac隐藏文件的命令：defaults write com.apple.finder AppleShowAllFiles YES</p>
-<p>隐藏Mac隐藏文件的命令：defaults write com.apple.finder AppleShowAllFiles NO</p>
-<p>输完单击Enter键，退出终端，重新启动Finder就可以了</p>
-<p>重启Finder：鼠标单击窗口左上角的苹果标志–&gt;强制退出–&gt;Finder–&gt;重新启动</p>
-
-            
-            <p class="more">
-                <a href="http://www.imsry.cn/posts/41de9b2c.html">阅读剩下更多</a>
-            </p>
-        </div>
-        <div class="post-thumbnail" data-img="">
-            <a href="http://www.imsry.cn/posts/41de9b2c.html" title="mac系统如何显示和隐藏文件（转载）">
-                
-                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/5.jpg" alt="默认配图" >
-                
-            </a>
-        </div>
-    </div>
-</article>
-
-    
 
     
     <nav class="page-navigator">
@@ -746,17 +739,17 @@ mysql>flush privileges;
     
     <li>
         <a href="/categories/学习笔记/">学习笔记</a>
-        <span class="badge">(49)</span>
-    </li>
-    
-    <li>
-        <a href="/categories/编程语言/">编程语言</a>
-        <span class="badge">(6)</span>
+        <span class="badge">(50)</span>
     </li>
     
     <li>
         <a href="/categories/杂谈/">杂谈</a>
         <span class="badge">(4)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/编程语言/">编程语言</a>
+        <span class="badge">(6)</span>
     </li>
     
     <li>
@@ -775,13 +768,13 @@ mysql>flush privileges;
     </li>
     
     <li>
-        <a href="/categories/开发板/">开发板</a>
-        <span class="badge">(1)</span>
+        <a href="/categories/PHP/">PHP</a>
+        <span class="badge">(9)</span>
     </li>
     
     <li>
-        <a href="/categories/PHP/">PHP</a>
-        <span class="badge">(9)</span>
+        <a href="/categories/开发板/">开发板</a>
+        <span class="badge">(1)</span>
     </li>
     
     <li>
@@ -810,11 +803,6 @@ mysql>flush privileges;
     </li>
     
     <li>
-        <a href="/categories/开放平台/">开放平台</a>
-        <span class="badge">(1)</span>
-    </li>
-    
-    <li>
         <a href="/categories/考试/">考试</a>
         <span class="badge">(1)</span>
     </li>
@@ -822,6 +810,11 @@ mysql>flush privileges;
     <li>
         <a href="/categories/游戏/">游戏</a>
         <span class="badge">(2)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/开放平台/">开放平台</a>
+        <span class="badge">(1)</span>
     </li>
     
 </ul>
@@ -835,17 +828,17 @@ mysql>flush privileges;
   
     <a class="tag-item" href="/tags/Docker/" title="Docker">Docker (1)</a>
   
-    <a class="tag-item" href="/tags/Golang/" title="Golang">Golang (1)</a>
-  
     <a class="tag-item" href="/tags/LNMP/" title="LNMP">LNMP (2)</a>
   
+    <a class="tag-item" href="/tags/Golang/" title="Golang">Golang (1)</a>
+  
     <a class="tag-item" href="/tags/网卡/" title="网卡">网卡 (1)</a>
+  
+    <a class="tag-item" href="/tags/PHP/" title="PHP">PHP (11)</a>
   
     <a class="tag-item" href="/tags/OrangePi/" title="OrangePi">OrangePi (1)</a>
   
     <a class="tag-item" href="/tags/Network/" title="Network">Network (3)</a>
-  
-    <a class="tag-item" href="/tags/PHP/" title="PHP">PHP (11)</a>
   
     <a class="tag-item" href="/tags/算法/" title="算法">算法 (1)</a>
   
@@ -883,13 +876,15 @@ mysql>flush privileges;
   
     <a class="tag-item" href="/tags/Discuz/" title="Discuz">Discuz (1)</a>
   
+    <a class="tag-item" href="/tags/FFmpeg/" title="FFmpeg">FFmpeg (1)</a>
+  
     <a class="tag-item" href="/tags/MySQL/" title="MySQL">MySQL (9)</a>
   
-    <a class="tag-item" href="/tags/C语言/" title="C语言">C语言 (1)</a>
+    <a class="tag-item" href="/tags/Glassfish/" title="Glassfish">Glassfish (1)</a>
   
     <a class="tag-item" href="/tags/Java/" title="Java">Java (2)</a>
   
-    <a class="tag-item" href="/tags/Glassfish/" title="Glassfish">Glassfish (1)</a>
+    <a class="tag-item" href="/tags/C语言/" title="C语言">C语言 (1)</a>
   
     <a class="tag-item" href="/tags/html/" title="html">html (1)</a>
   
@@ -908,8 +903,6 @@ mysql>flush privileges;
     <a class="tag-item" href="/tags/MacOS/" title="MacOS">MacOS (4)</a>
   
     <a class="tag-item" href="/tags/php/" title="php">php (2)</a>
-  
-    <a class="tag-item" href="/tags/Git/" title="Git">Git (1)</a>
   
 </div>
     </section>
@@ -970,6 +963,6 @@ mysql>flush privileges;
 
     <!--博客js脚本 -->
     <!-- 这里放网站js脚本 -->
-<script src="/js/main.js?v=1612170118755"></script>
+<script src="/js/main.js?v=1615448452702"></script>
 </body>
 </html>

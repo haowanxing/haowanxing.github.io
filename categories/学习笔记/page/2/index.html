@@ -131,6 +131,85 @@ var _hmt = _hmt || [];
         <!-- 文章标题 -->
         
     <h3 class="post-title">
+    	<a href="http://www.imsry.cn/posts/ac505287.html">
+    		Laravel5.5 发送邮件遇到Connection could not be established with host xxxxx
+    	</a>
+    </h3>
+
+    </header>
+    <p class="post-meta">
+        Anthony 发表于
+        <time datetime="2018-02-11T07:08:38.000Z">2018-02-11 15:08:38</time>
+
+
+        &nbsp;&nbsp;
+        <span class="post-tags">
+            标签：
+            
+    
+        <a href="/tags/Laravel/" title="Laravel">Laravel</a>
+    
+
+        </span>
+    </p>
+
+    <div class="post-content">
+        <div class="post-excerpt">
+            
+                <p>Laravel输出的错误页面如下图：<br><img src="../uploads/qiniu/20180211151833306552899.png" alt="Laravel异常捕获-mail"></p>
+<p>服务器：阿里云香港节点（B区） CentOS6.8 64bit</p>
+<p>lamp环境：PHP7.2.1</p>
+<p>Laravel .env mail部分：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">MAIL_DRIVER=smtp</span><br><span class="line">MAIL_HOST=hwsmtp.exmail.qq.com</span><br><span class="line">MAIL_PORT=465</span><br><span class="line">MAIL_USERNAME=noreply@0x4f5da2.cn</span><br><span class="line">MAIL_PASSWORD=XXXXXXXX</span><br><span class="line">MAIL_FROM_ADDRESS=noreply@0x4f5da2.cn</span><br><span class="line">MAIL_FROM_NAME=noreply</span><br><span class="line">MAIL_ENCRYPTION=ssl</span><br></pre></td></tr></table></figure></p>
+<p>问题发生前景：本地测试完全正常，相同配置在服务器上就被抛出异常。</p>
+<p>因为之前遇到过由于端口没有放行而造成无法建立连接的问题，在此问题上我也做了一样的尝试，在安全组配置里面对465端口进行放行（无论是出口还是入口）。但是结果表示并不是这个问题，而我在没有配置放行的情况下，telnet host:port 是通的。</p>
+<p>经过大约两天的间接性排查和尝试，最终提交工单咨询阿里，他们给了我处理意见：尝试他们的Demo！</p>
+<p>尝试<a href="https://help.aliyun.com/knowledge_detail/60692.html" target="_blank" rel="noopener">阿里云提供的Demo</a>测试发件是没有问题的，这就令我很纳闷的，于是我去看该Demo是如何建立连接的。</p>
+<p>通过一步一步的探索，发现该Demo也是同样使用了<code>stream_socket_client</code>方法来建立连接，那为什么它可以，Laravel内的却不行？说明不是该环境的问题！</p>
+<p>问题逐渐定位到了<code>stream_socket_client</code>这个方法上，查询<a href="http://php.net/manual/zh/function.stream-socket-client.php" target="_blank" rel="noopener">PHP.NET</a>来认识一下它。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">resource stream_socket_client ( string $remote_socket [, int &amp;$errno [, string &amp;$errstr [, float $timeout = ini_get(<span class="string">"default_socket_timeout"</span>) [, int $flags = STREAM_CLIENT_CONNECT [, resource $context ]]]]] )</span><br></pre></td></tr></table></figure>
+<p>方法描述上，只有一个参数可能会不一样，就是最后那个$context，它是一个Resource，由<code>stream_conntext_create</code>方法创建并返回。</p>
+<p>我注意到Laravel中使用的Swift_Mailer所引用的StreamBuffer类中，在<code>stream_socket_client</code>方法前面加上了<code>@</code>符号来屏蔽error，而在下面自己判断来抛出异常。</p>
+<p>那么我果断将<code>@</code>符号去掉！ 真正的错误爆出来了！！！！</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">stream_socket_enable_crypto(): SSL operation failed with code 1. OpenSSL Error messages:</span><br><span class="line">error:14090086:SSL routines:ssl3_get_server_certificate:certificate verify failed</span><br></pre></td></tr></table></figure>
+<p>乍眼一看，证书校验失败？？？？</p>
+<h3 id="上面的废话只是简单描述我遇到这个问题是如何应对的"><a href="#上面的废话只是简单描述我遇到这个问题是如何应对的" class="headerlink" title="上面的废话只是简单描述我遇到这个问题是如何应对的"></a>上面的废话只是简单描述我遇到这个问题是如何应对的</h3><p>解决方案来了！ 既然是走SSL协议(465端口)，且程序抛出错误为证书校验失败，那么就去直接搜索有关Laravel/SwitEmailer的证书校验问题。</p>
+<p>在stackOverflow上找到两个相关的问题：</p>
+<ol>
+<li><a href="https://stackoverflow.com/questions/44423096/localhost-and-stream-socket-enable-crypto-ssl-operation-failed-with-code-1" target="_blank" rel="noopener">localhost and “stream_socket_enable_crypto(): SSL operation failed with code 1”
+</a></li>
+<li><a href="https://stackoverflow.com/questions/30556773/how-to-fix-stream-socket-enable-crypto-ssl-operation-failed-with-code-1" target="_blank" rel="noopener">how to fix stream_socket_enable_crypto(): SSL operation failed with code 1</a></li>
+</ol>
+<p>他们都提出了一个配置：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//	在/config/mail.php中增加</span></span><br><span class="line"></span><br><span class="line"><span class="string">'stream'</span> =&gt; [</span><br><span class="line">	<span class="string">'ssl'</span> =&gt; [</span><br><span class="line">	    <span class="string">'allow_self_signed'</span> =&gt; <span class="keyword">true</span>,</span><br><span class="line">	    <span class="string">'verify_peer'</span> =&gt; <span class="keyword">false</span>,</span><br><span class="line">	    <span class="string">'verify_peer_name'</span> =&gt; <span class="keyword">false</span>,</span><br><span class="line">	],</span><br><span class="line">],</span><br></pre></td></tr></table></figure>
+<p>然后测试，Bingo！！！</p>
+<p>当然，既然是SSL必然使用校验才是最安全的，但是我这里仅满足能够发件即可，至于如何进行证书校验，请移步：<a href="https://www.cnblogs.com/wpjamer/p/7421304.html" target="_blank" rel="noopener">使用PHPMailer 中的报错解决 “Connection failed. Error #2: stream_socket_client(): SSL operation failed with code 1. OpenSSL Error messages:”</a></p>
+
+            
+            <p class="more">
+                <a href="http://www.imsry.cn/posts/ac505287.html">阅读剩下更多</a>
+            </p>
+        </div>
+        <div class="post-thumbnail" data-img="">
+            <a href="http://www.imsry.cn/posts/ac505287.html" title="Laravel5.5 发送邮件遇到Connection could not be established with host xxxxx">
+                
+                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/1.jpg" alt="默认配图" >
+                
+            </a>
+        </div>
+    </div>
+</article>
+
+    
+        <!-- 文章列表 item -->
+<article class="post">
+    <header>
+        <!-- 标签这有且只能显示一个 -->
+        
+        <a class="cat-link" href="/categories/学习笔记/">学习笔记</a>
+        
+        <!-- 文章标题 -->
+        
+    <h3 class="post-title">
     	<a href="http://www.imsry.cn/posts/7db5313c.html">
     		完全源码编译LNMP环境
     	</a>
@@ -654,67 +733,6 @@ var _hmt = _hmt || [];
 </article>
 
     
-        <!-- 文章列表 item -->
-<article class="post">
-    <header>
-        <!-- 标签这有且只能显示一个 -->
-        
-        <a class="cat-link" href="/categories/学习笔记/">学习笔记</a>
-        
-        <!-- 文章标题 -->
-        
-    <h3 class="post-title">
-    	<a href="http://www.imsry.cn/posts/ce23f4b0.html">
-    		有关MacBook从10.9.5升级到10.11(EI capitan)后的问题及解决方法
-    	</a>
-    </h3>
-
-    </header>
-    <p class="post-meta">
-        Anthony 发表于
-        <time datetime="2015-10-26T12:16:55.000Z">2015-10-26 20:16:55</time>
-
-
-        &nbsp;&nbsp;
-        <span class="post-tags">
-            标签：
-            
-    
-        <a href="/tags/Apache/" title="Apache">Apache</a> / 
-    
-        <a href="/tags/Linux/" title="Linux">Linux</a> / 
-    
-        <a href="/tags/MySQL/" title="MySQL">MySQL</a> / 
-    
-        <a href="/tags/MacOS/" title="MacOS">MacOS</a>
-    
-
-        </span>
-    </p>
-
-    <div class="post-content">
-        <div class="post-excerpt">
-            
-                <p>看到别人的MAC在用最新的EI Capitan系统之后，我终于打破了自己坚持使用旧系统的原则，本着更好的体验和更高的性能，我将自己的本子也更新到最新，既然是更新升级上来的，不免有些小问题会出现，下面就逐个来说说我遇到的问题吧。</p>
-<h2 id="问题一：Apache无法正常启动？"><a href="#问题一：Apache无法正常启动？" class="headerlink" title="问题一：Apache无法正常启动？"></a>问题一：Apache无法正常启动？</h2><p>首先遇到这个问题时，当然是去找日志了，因为在终端输入启动命令：sudo apachectl start之后，没有任何报错和提示，只是本地浏览器访问localhost or 127.0.0.1失败。但是，这个错误日志真的不好找，最后我干脆去配置文件etc/apache2/httpd.conf中寻找。</p>
-<p>嗯！找到了！ ErrorLog “/private/var/log/apache2/error_log” 好的，我去看看到底是什么原因。可是，“/private/var/log/apache2/” 目录根本没有任何文件！想着自己给它创建这个错误日志文件吧，创建好了之后使用命令启动apache，结果文件里面没有任何内容！</p>
-<p>这也不行，看来通过错误日志是行不通了，于是乎，在网上查找各种资料，终于看到有个人在网页上写到：现在尝试启动一下Apache: sudo apachectl -k start。看到这个，带着好奇我也输入了一遍，好奇心真的不会害死猫！终于出现了报错了！第一次这么开心地看见报错信息，于是乎根据提示找到错误点并屏蔽掉了这个错误的配置。<br>
-            
-            <p class="more">
-                <a href="http://www.imsry.cn/posts/ce23f4b0.html">阅读剩下更多</a>
-            </p>
-        </div>
-        <div class="post-thumbnail" data-img="">
-            <a href="http://www.imsry.cn/posts/ce23f4b0.html" title="有关MacBook从10.9.5升级到10.11(EI capitan)后的问题及解决方法">
-                
-                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/6.jpg" alt="默认配图" >
-                
-            </a>
-        </div>
-    </div>
-</article>
-
-    
 
     
     <nav class="page-navigator">
@@ -761,17 +779,17 @@ var _hmt = _hmt || [];
     
     <li>
         <a href="/categories/学习笔记/">学习笔记</a>
-        <span class="badge">(49)</span>
-    </li>
-    
-    <li>
-        <a href="/categories/编程语言/">编程语言</a>
-        <span class="badge">(6)</span>
+        <span class="badge">(50)</span>
     </li>
     
     <li>
         <a href="/categories/杂谈/">杂谈</a>
         <span class="badge">(4)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/编程语言/">编程语言</a>
+        <span class="badge">(6)</span>
     </li>
     
     <li>
@@ -790,13 +808,13 @@ var _hmt = _hmt || [];
     </li>
     
     <li>
-        <a href="/categories/开发板/">开发板</a>
-        <span class="badge">(1)</span>
+        <a href="/categories/PHP/">PHP</a>
+        <span class="badge">(9)</span>
     </li>
     
     <li>
-        <a href="/categories/PHP/">PHP</a>
-        <span class="badge">(9)</span>
+        <a href="/categories/开发板/">开发板</a>
+        <span class="badge">(1)</span>
     </li>
     
     <li>
@@ -825,11 +843,6 @@ var _hmt = _hmt || [];
     </li>
     
     <li>
-        <a href="/categories/开放平台/">开放平台</a>
-        <span class="badge">(1)</span>
-    </li>
-    
-    <li>
         <a href="/categories/考试/">考试</a>
         <span class="badge">(1)</span>
     </li>
@@ -837,6 +850,11 @@ var _hmt = _hmt || [];
     <li>
         <a href="/categories/游戏/">游戏</a>
         <span class="badge">(2)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/开放平台/">开放平台</a>
+        <span class="badge">(1)</span>
     </li>
     
 </ul>
@@ -850,17 +868,17 @@ var _hmt = _hmt || [];
   
     <a class="tag-item" href="/tags/Docker/" title="Docker">Docker (1)</a>
   
-    <a class="tag-item" href="/tags/Golang/" title="Golang">Golang (1)</a>
-  
     <a class="tag-item" href="/tags/LNMP/" title="LNMP">LNMP (2)</a>
   
+    <a class="tag-item" href="/tags/Golang/" title="Golang">Golang (1)</a>
+  
     <a class="tag-item" href="/tags/网卡/" title="网卡">网卡 (1)</a>
+  
+    <a class="tag-item" href="/tags/PHP/" title="PHP">PHP (11)</a>
   
     <a class="tag-item" href="/tags/OrangePi/" title="OrangePi">OrangePi (1)</a>
   
     <a class="tag-item" href="/tags/Network/" title="Network">Network (3)</a>
-  
-    <a class="tag-item" href="/tags/PHP/" title="PHP">PHP (11)</a>
   
     <a class="tag-item" href="/tags/算法/" title="算法">算法 (1)</a>
   
@@ -898,13 +916,15 @@ var _hmt = _hmt || [];
   
     <a class="tag-item" href="/tags/Discuz/" title="Discuz">Discuz (1)</a>
   
+    <a class="tag-item" href="/tags/FFmpeg/" title="FFmpeg">FFmpeg (1)</a>
+  
     <a class="tag-item" href="/tags/MySQL/" title="MySQL">MySQL (9)</a>
   
-    <a class="tag-item" href="/tags/C语言/" title="C语言">C语言 (1)</a>
+    <a class="tag-item" href="/tags/Glassfish/" title="Glassfish">Glassfish (1)</a>
   
     <a class="tag-item" href="/tags/Java/" title="Java">Java (2)</a>
   
-    <a class="tag-item" href="/tags/Glassfish/" title="Glassfish">Glassfish (1)</a>
+    <a class="tag-item" href="/tags/C语言/" title="C语言">C语言 (1)</a>
   
     <a class="tag-item" href="/tags/html/" title="html">html (1)</a>
   
@@ -923,8 +943,6 @@ var _hmt = _hmt || [];
     <a class="tag-item" href="/tags/MacOS/" title="MacOS">MacOS (4)</a>
   
     <a class="tag-item" href="/tags/php/" title="php">php (2)</a>
-  
-    <a class="tag-item" href="/tags/Git/" title="Git">Git (1)</a>
   
 </div>
     </section>
@@ -985,6 +1003,6 @@ var _hmt = _hmt || [];
 
     <!--博客js脚本 -->
     <!-- 这里放网站js脚本 -->
-<script src="/js/main.js?v=1612170118738"></script>
+<script src="/js/main.js?v=1615448452686"></script>
 </body>
 </html>

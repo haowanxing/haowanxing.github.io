@@ -132,6 +132,69 @@ var _hmt = _hmt || [];
         <!-- 文章标题 -->
         
     <h3 class="post-title">
+    	<a href="http://www.imsry.cn/posts/ae0c030a.html">
+    		判断IP地址是否内网IP
+    	</a>
+    </h3>
+
+    </header>
+    <p class="post-meta">
+        Anthony 发表于
+        <time datetime="2018-11-05T06:45:52.000Z">2018-11-05 14:45:52</time>
+
+
+        &nbsp;&nbsp;
+        <span class="post-tags">
+            标签：
+            
+    
+        <a href="/tags/PHP/" title="PHP">PHP</a> / 
+    
+        <a href="/tags/Network/" title="Network">Network</a>
+    
+
+        </span>
+    </p>
+
+    <div class="post-content">
+        <div class="post-excerpt">
+            
+                <blockquote>
+<p>当你的服务同时开放于公网和内网，子服务却仅允许内网访问，那么则会涉及到IP白名单的功能。但是如果名单太多或者服务进行了迁移，那么维护起来会相当的麻烦，最简单的就是判断访问的来源IP是否内网IP地址，从而直接屏蔽掉公网IP。</p>
+</blockquote>
+<p>首先，我们认识了3类私有地址：</p>
+<p>A类：10.0.0.0-10.255.255.255</p>
+<p>B类：172.16.0.0-172.31.255.255</p>
+<p>C类：192.168.0.0-192.168.255.255</p>
+<p>还有一个本机地址：127.0.0.1</p>
+<p>他们就是我们平时所谓的内网IP地址。</p>
+<h3 id="方法一：-PHP自带函数"><a href="#方法一：-PHP自带函数" class="headerlink" title="方法一： PHP自带函数"></a>方法一： PHP自带函数</h3>
+            
+            <p class="more">
+                <a href="http://www.imsry.cn/posts/ae0c030a.html">阅读剩下更多</a>
+            </p>
+        </div>
+        <div class="post-thumbnail" data-img="">
+            <a href="http://www.imsry.cn/posts/ae0c030a.html" title="判断IP地址是否内网IP">
+                
+                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/5.jpg" alt="默认配图" >
+                
+            </a>
+        </div>
+    </div>
+</article>
+
+    
+        <!-- 文章列表 item -->
+<article class="post">
+    <header>
+        <!-- 标签这有且只能显示一个 -->
+        
+        <a class="cat-link" href="/categories/学习笔记/">学习笔记</a>
+        
+        <!-- 文章标题 -->
+        
+    <h3 class="post-title">
     	<a href="http://www.imsry.cn/posts/106d7501.html">
     		更新升级MacOSX到10.14 Mojave (MacBook Air 13-inch early 2014)
     	</a>
@@ -688,75 +751,6 @@ var _hmt = _hmt || [];
 </article>
 
     
-        <!-- 文章列表 item -->
-<article class="post">
-    <header>
-        <!-- 标签这有且只能显示一个 -->
-        
-        <a class="cat-link" href="/categories/Linux/">Linux</a>
-        
-        <!-- 文章标题 -->
-        
-    <h3 class="post-title">
-    	<a href="http://www.imsry.cn/posts/b54dd86c.html">
-    		Apache设置目录的访问权限（用户名和密码）
-    	</a>
-    </h3>
-
-    </header>
-    <p class="post-meta">
-        Anthony 发表于
-        <time datetime="2018-02-01T06:58:17.000Z">2018-02-01 14:58:17</time>
-
-
-        &nbsp;&nbsp;
-        <span class="post-tags">
-            标签：
-            
-    
-        <a href="/tags/Apache/" title="Apache">Apache</a>
-    
-
-        </span>
-    </p>
-
-    <div class="post-content">
-        <div class="post-excerpt">
-            
-                <p>　　最近重新搞了个阿里云香港ECS用来科学上网，另外使用<a href="https://lamp.sh" target="_blank" rel="noopener">LAMP一键安装包</a>搭环境，搭建完成后开放云盾端口即可通过IP访问到web默认页，这默认页有些实用的小工具，如：探针、MyAdmin啥的。如图：</p>
-<p>　　<img src="../uploads/qiniu/20180201151746870535154.png" alt></p>
-<p>　　然后我想让这默认页只有我自己能看到，其他人最好不要看到，毕竟其他人看到也没啥用，最多给服务器施压而已，然后就想弄个如下图的效果：</p>
-<p>　　<img src="../uploads/qiniu/20180201151746846888519.png" alt></p>
-<p>　　下面来讲讲如何实现此效果的步骤，假设需要设置权限的目录(DIR)为”/data/www/default”</p>
-<ul>
-<li><p>修改apache的配置文件（可以是httpd.conf，也可以是具体的vhost的单独配置文件）,内容如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;Directory &quot;/data/www/default&quot;&gt;</span><br><span class="line">    Options Indexes</span><br><span class="line">    AllowOverride AuthConfig</span><br><span class="line">    Order allow,deny</span><br><span class="line">    Allow from all</span><br><span class="line">&lt;/Directory&gt;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>在DIR下新增.htaccess文件，内容如下</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">AuthName &quot;sys&quot;</span><br><span class="line">AuthType Basic</span><br><span class="line">AuthUserFile /data/www/default/.htpasswd</span><br><span class="line">require user username</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>使用Apache的htpasswd创建.htpasswd文件</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">/usr/local/apache/bin/htpasswd -c /data/www/default/.htpasswd username</span><br><span class="line">##这里会提示你输入两次密码##</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>　　完成上述步骤后，重启Apache即可</p>
-
-            
-            <p class="more">
-                <a href="http://www.imsry.cn/posts/b54dd86c.html">阅读剩下更多</a>
-            </p>
-        </div>
-        <div class="post-thumbnail" data-img="">
-            <a href="http://www.imsry.cn/posts/b54dd86c.html" title="Apache设置目录的访问权限（用户名和密码）">
-                
-                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/1.jpg" alt="默认配图" >
-                
-            </a>
-        </div>
-    </div>
-</article>
-
-    
 
     
     <nav class="page-navigator">
@@ -805,17 +799,17 @@ var _hmt = _hmt || [];
     
     <li>
         <a href="/categories/学习笔记/">学习笔记</a>
-        <span class="badge">(49)</span>
-    </li>
-    
-    <li>
-        <a href="/categories/编程语言/">编程语言</a>
-        <span class="badge">(6)</span>
+        <span class="badge">(50)</span>
     </li>
     
     <li>
         <a href="/categories/杂谈/">杂谈</a>
         <span class="badge">(4)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/编程语言/">编程语言</a>
+        <span class="badge">(6)</span>
     </li>
     
     <li>
@@ -834,13 +828,13 @@ var _hmt = _hmt || [];
     </li>
     
     <li>
-        <a href="/categories/开发板/">开发板</a>
-        <span class="badge">(1)</span>
+        <a href="/categories/PHP/">PHP</a>
+        <span class="badge">(9)</span>
     </li>
     
     <li>
-        <a href="/categories/PHP/">PHP</a>
-        <span class="badge">(9)</span>
+        <a href="/categories/开发板/">开发板</a>
+        <span class="badge">(1)</span>
     </li>
     
     <li>
@@ -869,11 +863,6 @@ var _hmt = _hmt || [];
     </li>
     
     <li>
-        <a href="/categories/开放平台/">开放平台</a>
-        <span class="badge">(1)</span>
-    </li>
-    
-    <li>
         <a href="/categories/考试/">考试</a>
         <span class="badge">(1)</span>
     </li>
@@ -881,6 +870,11 @@ var _hmt = _hmt || [];
     <li>
         <a href="/categories/游戏/">游戏</a>
         <span class="badge">(2)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/开放平台/">开放平台</a>
+        <span class="badge">(1)</span>
     </li>
     
 </ul>
@@ -894,17 +888,17 @@ var _hmt = _hmt || [];
   
     <a class="tag-item" href="/tags/Docker/" title="Docker">Docker (1)</a>
   
-    <a class="tag-item" href="/tags/Golang/" title="Golang">Golang (1)</a>
-  
     <a class="tag-item" href="/tags/LNMP/" title="LNMP">LNMP (2)</a>
   
+    <a class="tag-item" href="/tags/Golang/" title="Golang">Golang (1)</a>
+  
     <a class="tag-item" href="/tags/网卡/" title="网卡">网卡 (1)</a>
+  
+    <a class="tag-item" href="/tags/PHP/" title="PHP">PHP (11)</a>
   
     <a class="tag-item" href="/tags/OrangePi/" title="OrangePi">OrangePi (1)</a>
   
     <a class="tag-item" href="/tags/Network/" title="Network">Network (3)</a>
-  
-    <a class="tag-item" href="/tags/PHP/" title="PHP">PHP (11)</a>
   
     <a class="tag-item" href="/tags/算法/" title="算法">算法 (1)</a>
   
@@ -942,13 +936,15 @@ var _hmt = _hmt || [];
   
     <a class="tag-item" href="/tags/Discuz/" title="Discuz">Discuz (1)</a>
   
+    <a class="tag-item" href="/tags/FFmpeg/" title="FFmpeg">FFmpeg (1)</a>
+  
     <a class="tag-item" href="/tags/MySQL/" title="MySQL">MySQL (9)</a>
   
-    <a class="tag-item" href="/tags/C语言/" title="C语言">C语言 (1)</a>
+    <a class="tag-item" href="/tags/Glassfish/" title="Glassfish">Glassfish (1)</a>
   
     <a class="tag-item" href="/tags/Java/" title="Java">Java (2)</a>
   
-    <a class="tag-item" href="/tags/Glassfish/" title="Glassfish">Glassfish (1)</a>
+    <a class="tag-item" href="/tags/C语言/" title="C语言">C语言 (1)</a>
   
     <a class="tag-item" href="/tags/html/" title="html">html (1)</a>
   
@@ -967,8 +963,6 @@ var _hmt = _hmt || [];
     <a class="tag-item" href="/tags/MacOS/" title="MacOS">MacOS (4)</a>
   
     <a class="tag-item" href="/tags/php/" title="php">php (2)</a>
-  
-    <a class="tag-item" href="/tags/Git/" title="Git">Git (1)</a>
   
 </div>
     </section>
@@ -1029,6 +1023,6 @@ var _hmt = _hmt || [];
 
     <!--博客js脚本 -->
     <!-- 这里放网站js脚本 -->
-<script src="/js/main.js?v=1612170118917"></script>
+<script src="/js/main.js?v=1615448453461"></script>
 </body>
 </html>

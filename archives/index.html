@@ -132,6 +132,86 @@ var _hmt = _hmt || [];
         <!-- 文章标题 -->
         
     <h3 class="post-title">
+    	<a href="http://www.imsry.cn/posts/32c4930.html">
+    		利用FFmpeg处理鱼眼视频分成4个方向的视野画面
+    	</a>
+    </h3>
+
+    </header>
+    <p class="post-meta">
+        刘经济 发表于
+        <time datetime="2021-03-11T06:02:54.000Z">2021-03-11 14:02:54</time>
+
+
+        &nbsp;&nbsp;
+        <span class="post-tags">
+            标签：
+            
+    
+        <a href="/tags/FFmpeg/" title="FFmpeg">FFmpeg</a>
+    
+
+        </span>
+    </p>
+
+    <div class="post-content">
+        <div class="post-excerpt">
+            
+                <h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>首先，FFmpeg是一套可以用来记录、转换数字音频、视频，并能将其转化为流的开源计算机程序。它的功能强大，这里就不多做阐述了。</p>
+<p>本次实验主要是为了学习FFmpeg的Filter功能，它提供了很多音视频的特效处理，比如：视频的缩放、翻转、叠加等等。常用的Filter有：</p>
+<ul>
+<li>Scale：画面的缩放</li>
+<li>Overlay：画面的叠加</li>
+<li>Crop：画面的裁剪</li>
+<li>More：<a href="http://ffmpeg.org/ffmpeg-filters.html" target="_blank" rel="noopener">查看更多</a></li>
+</ul>
+<p>我们可以通过命令查看全部Filter的简介：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -filters</span><br></pre></td></tr></table></figure>
+<h2 id="实验"><a href="#实验" class="headerlink" title="实验"></a>实验</h2><h3 id="原始材料"><a href="#原始材料" class="headerlink" title="原始材料"></a>原始材料</h3><p>我们手里现在有一段鱼眼镜头录制的视频源文件，命名：<code>original.mp4</code>。我们先来看看它长什么样子：</p>
+<p><img src="../uploads/2021/03/11/fisheyeframe.jpeg" alt="out"></p>
+<h3 id="尝试球形转方形"><a href="#尝试球形转方形" class="headerlink" title="尝试球形转方形"></a>尝试球形转方形</h3><p>这一步，我暂时还没找到一个很好的方法把其展平成一个广角镜头全景的画面，但是我使用v360这个filter通过不断修改参数，得到了一个比较满意的部分画面的方形画面。</p>
+<p>该Filter的基本参数格式如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">v360=input:output:format_1:arg_name=value</span><br></pre></td></tr></table></figure>
+<p>其中<code>input</code>和<code>output</code>分别是原始投影格式和目标投影格式，这里我们是从<code>鱼眼</code>视频转换为<code>常规</code>视频，所以要填入的参数为：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">v360=input=fisheye:output=flat <span class="comment"># 都有哪些投影格式，可以通过ffmpeg -h filter=v360获取查看</span></span><br></pre></td></tr></table></figure>
+<p><code>format_1</code>是指具体要设置的格式，这里我并没有用到。<code>arg_name</code>和<code>value</code>指具体的参数项和值。</p>
+<p>我的使用例子：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">v360=input=fisheye:output=flat:ih_fov=180:iv_fov=180:h_fov=90:v_fov=60:w=720:h=360:pitch=45</span><br></pre></td></tr></table></figure>
+<p>解释一下，其中<code>ih_fov</code>和<code>iv_fov</code>分别表示设置的输入横向视野范围和输入纵向视野范围，我这里都设置为180度；<code>h_fov</code>和<code>v_fov</code>分别表示设置的输出横向视野范围和输出纵向视野范围，我这里设置横向90度，纵向60度。然后还设置了输出画面的宽高为720x360，俯仰旋转角（pitch）为45度。</p>
+<p>我的个人理解（个人瞎猜），就如同人眼可接受光的范围，理论上横向和纵向都能够覆盖180度的范围，但是我们在眼球不转动的情况下，有效的水平视野大概是90度，纵向视野60度。因为这个是我具体调参的出来的个人觉得比较好的参数条件，所以不具有权威性！哈哈！</p>
+<p>那么现在能输出一个什么样的画面呢？</p>
+<p><img src="../uploads/2021/03/11/fisheyeframe-up.jpeg" alt="up"></p>
+<p>Nice！这就已经很像一个普通摄像头的画面了。那么如何得到其它几个方向的画面呢？前面我们有提到，FFmpeg可以使画面旋转！如果我先将原始画面旋转一下，让其它几个方向的画面都转到上面，然后转换画面不就行了吗？</p>
+<h3 id="画面旋转"><a href="#画面旋转" class="headerlink" title="画面旋转"></a>画面旋转</h3><p>FFmpeg有个Filter叫做<code>transpose</code>。它可以非常简单的完成画面的旋转或翻转：</p>
+            
+            <p class="more">
+                <a href="http://www.imsry.cn/posts/32c4930.html">阅读剩下更多</a>
+            </p>
+        </div>
+        <div class="post-thumbnail" data-img="">
+            <a href="http://www.imsry.cn/posts/32c4930.html" title="利用FFmpeg处理鱼眼视频分成4个方向的视野画面">
+                
+                    <!--
+                    <img src="/../uploads/2021/03/11/fisheyeframe.jpeg" class="thumbnail">
+                    -->
+                    <img class="thumbnail" src="/img/default.png" data-echo="../uploads/2021/03/11/fisheyeframe.jpeg" alt="利用FFmpeg处理鱼眼视频分成4个方向的视野画面" >
+                
+            </a>
+        </div>
+    </div>
+</article>
+
+    
+        <!-- 文章列表 item -->
+<article class="post">
+    <header>
+        <!-- 标签这有且只能显示一个 -->
+        
+        <a class="cat-link" href="/categories/学习笔记/">学习笔记</a>
+        
+        <!-- 文章标题 -->
+        
+    <h3 class="post-title">
     	<a href="http://www.imsry.cn/posts/32476646.html">
     		自建CA服务器学习笔记
     	</a>
@@ -1298,9 +1378,9 @@ var _hmt = _hmt || [];
             标签：
             
     
-        <a href="/tags/Network/" title="Network">Network</a> / 
+        <a href="/tags/PHP/" title="PHP">PHP</a> / 
     
-        <a href="/tags/PHP/" title="PHP">PHP</a>
+        <a href="/tags/Network/" title="Network">Network</a>
     
 
         </span>
@@ -3580,9 +3660,9 @@ Starting MySQL.The server quit without updating PID file (/usr/local/mysql/data/
     
         <a href="/tags/PHP/" title="PHP">PHP</a> / 
     
-        <a href="/tags/C语言/" title="C语言">C语言</a> / 
+        <a href="/tags/Java/" title="Java">Java</a> / 
     
-        <a href="/tags/Java/" title="Java">Java</a>
+        <a href="/tags/C语言/" title="C语言">C语言</a>
     
 
         </span>
@@ -3862,9 +3942,9 @@ Starting MySQL.The server quit without updating PID file (/usr/local/mysql/data/
     
         <a href="/tags/MySQL/" title="MySQL">MySQL</a> / 
     
-        <a href="/tags/Java/" title="Java">Java</a> / 
+        <a href="/tags/Glassfish/" title="Glassfish">Glassfish</a> / 
     
-        <a href="/tags/Glassfish/" title="Glassfish">Glassfish</a>
+        <a href="/tags/Java/" title="Java">Java</a>
     
 
         </span>
@@ -7126,17 +7206,17 @@ mysql>flush privileges;
     
     <li>
         <a href="/categories/学习笔记/">学习笔记</a>
-        <span class="badge">(49)</span>
-    </li>
-    
-    <li>
-        <a href="/categories/编程语言/">编程语言</a>
-        <span class="badge">(6)</span>
+        <span class="badge">(50)</span>
     </li>
     
     <li>
         <a href="/categories/杂谈/">杂谈</a>
         <span class="badge">(4)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/编程语言/">编程语言</a>
+        <span class="badge">(6)</span>
     </li>
     
     <li>
@@ -7155,13 +7235,13 @@ mysql>flush privileges;
     </li>
     
     <li>
-        <a href="/categories/开发板/">开发板</a>
-        <span class="badge">(1)</span>
+        <a href="/categories/PHP/">PHP</a>
+        <span class="badge">(9)</span>
     </li>
     
     <li>
-        <a href="/categories/PHP/">PHP</a>
-        <span class="badge">(9)</span>
+        <a href="/categories/开发板/">开发板</a>
+        <span class="badge">(1)</span>
     </li>
     
     <li>
@@ -7190,11 +7270,6 @@ mysql>flush privileges;
     </li>
     
     <li>
-        <a href="/categories/开放平台/">开放平台</a>
-        <span class="badge">(1)</span>
-    </li>
-    
-    <li>
         <a href="/categories/考试/">考试</a>
         <span class="badge">(1)</span>
     </li>
@@ -7202,6 +7277,11 @@ mysql>flush privileges;
     <li>
         <a href="/categories/游戏/">游戏</a>
         <span class="badge">(2)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/开放平台/">开放平台</a>
+        <span class="badge">(1)</span>
     </li>
     
 </ul>
@@ -7215,17 +7295,17 @@ mysql>flush privileges;
   
     <a class="tag-item" href="/tags/Docker/" title="Docker">Docker (1)</a>
   
-    <a class="tag-item" href="/tags/Golang/" title="Golang">Golang (1)</a>
-  
     <a class="tag-item" href="/tags/LNMP/" title="LNMP">LNMP (2)</a>
   
+    <a class="tag-item" href="/tags/Golang/" title="Golang">Golang (1)</a>
+  
     <a class="tag-item" href="/tags/网卡/" title="网卡">网卡 (1)</a>
+  
+    <a class="tag-item" href="/tags/PHP/" title="PHP">PHP (11)</a>
   
     <a class="tag-item" href="/tags/OrangePi/" title="OrangePi">OrangePi (1)</a>
   
     <a class="tag-item" href="/tags/Network/" title="Network">Network (3)</a>
-  
-    <a class="tag-item" href="/tags/PHP/" title="PHP">PHP (11)</a>
   
     <a class="tag-item" href="/tags/算法/" title="算法">算法 (1)</a>
   
@@ -7263,13 +7343,15 @@ mysql>flush privileges;
   
     <a class="tag-item" href="/tags/Discuz/" title="Discuz">Discuz (1)</a>
   
+    <a class="tag-item" href="/tags/FFmpeg/" title="FFmpeg">FFmpeg (1)</a>
+  
     <a class="tag-item" href="/tags/MySQL/" title="MySQL">MySQL (9)</a>
   
-    <a class="tag-item" href="/tags/C语言/" title="C语言">C语言 (1)</a>
+    <a class="tag-item" href="/tags/Glassfish/" title="Glassfish">Glassfish (1)</a>
   
     <a class="tag-item" href="/tags/Java/" title="Java">Java (2)</a>
   
-    <a class="tag-item" href="/tags/Glassfish/" title="Glassfish">Glassfish (1)</a>
+    <a class="tag-item" href="/tags/C语言/" title="C语言">C语言 (1)</a>
   
     <a class="tag-item" href="/tags/html/" title="html">html (1)</a>
   
@@ -7288,8 +7370,6 @@ mysql>flush privileges;
     <a class="tag-item" href="/tags/MacOS/" title="MacOS">MacOS (4)</a>
   
     <a class="tag-item" href="/tags/php/" title="php">php (2)</a>
-  
-    <a class="tag-item" href="/tags/Git/" title="Git">Git (1)</a>
   
 </div>
     </section>
@@ -7350,6 +7430,6 @@ mysql>flush privileges;
 
     <!--博客js脚本 -->
     <!-- 这里放网站js脚本 -->
-<script src="/js/main.js?v=1612170118264"></script>
+<script src="/js/main.js?v=1615448452181"></script>
 </body>
 </html>
