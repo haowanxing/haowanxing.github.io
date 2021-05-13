@@ -1427,11 +1427,11 @@
         <title>GlassFish配置数据库连接池</title>
         <pubTime>2015-11-08T06:31:38.000Z</pubTime>
         
-        <tag>Glassfish</tag>
+        <tag>MySQL</tag>
          
         <tag>Java</tag>
          
-        <tag>MySQL</tag>
+        <tag>Glassfish</tag>
          
          
            
@@ -1453,9 +1453,9 @@
         
         <tag>PHP</tag>
          
-        <tag>Java</tag>
-         
         <tag>C语言</tag>
+         
+        <tag>Java</tag>
          
          
            
