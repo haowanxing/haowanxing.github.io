@@ -133,7 +133,7 @@ var _hmt = _hmt || [];
 <h2 id="创建自己的PHP7-3镜像"><a href="#创建自己的PHP7-3镜像" class="headerlink" title="创建自己的PHP7.3镜像"></a>创建自己的PHP7.3镜像</h2><p>下载PHP源码：<a href="https://www.php.net/downloads.php" target="_blank" rel="noopener">https://www.php.net/downloads.php</a></p>
 <p>我这里下载了php-7.3.6.tar.bz2</p>
 <a id="more"></a>
-<h3 id="Dockerfile内容"><a href="#Dockerfile内容" class="headerlink" title="Dockerfile内容"></a>Dockerfile内容</h3><figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 指定基于ubuntu:16.04创建</span></span><br><span class="line"><span class="keyword">FROM</span> ubuntu:<span class="number">16.04</span></span><br><span class="line"><span class="comment"># 声明作者</span></span><br><span class="line"><span class="keyword">MAINTAINER</span> haowanxing &lt;haowanxing@gmail.com&gt;</span><br><span class="line"><span class="comment"># 定义环境变量，设置时区时使用</span></span><br><span class="line"><span class="keyword">ENV</span> TIME_ZONE Asia/Shanghai</span><br><span class="line"></span><br><span class="line"><span class="comment"># 修改root账号密码</span></span><br><span class="line"><span class="keyword">RUN</span> /bin/echo 'root:0x4f5da2.cn' | chpasswd</span><br><span class="line"># 新增一个prod账号，并设置密码</span><br><span class="line">RUN useradd prod</span><br><span class="line">RUN /bin/echo 'prod:123456' | chpasswd</span><br><span class="line"></span><br><span class="line"># 安装编译依赖</span><br><span class="line">RUN apt-get update</span><br><span class="line">RUN apt-get install -y gcc make openssl libssl-dev curl libbz2-dev libxml2-dev libjpeg-dev libpng-dev libfreetype6-dev libzip-dev</span><br><span class="line">RUN apt-get install -y libcurl4-gnutls-dev</span><br><span class="line">RUN ln -s /usr/lib/x86_64-linux-gnu/libssl.so /usr/lib</span><br><span class="line"></span><br><span class="line"># 拷贝源码到环境中</span><br><span class="line">ADD php-7.3.6.tar.bz2 /tmp/</span><br><span class="line"># 编译和安装</span><br><span class="line">RUN cd /tmp/php-7.3.6 &amp;&amp; \</span><br><span class="line">	./configure --prefix=/usr/local/php --with-config-file-path=/usr/local/php/etc --enable-fpm --with-fpm-user=prod --with-fpm-group=prod --with-mysqli --with-pdo-mysql --with-iconv-dir --with-freetype-dir --with-jpeg-dir --with-png-dir --with-zlib --with-libxml-dir=/usr --enable-xml --disable-rpath --enable-bcmath --enable-shmop --enable-sysvsem --enable-inline-optimization --with-curl --enable-mbregex --enable-mbstring --enable-ftp --with-gd --with-openssl --with-mhash --enable-pcntl --enable-sockets --with-xmlrpc --enable-zip --enable-soap --without-pear --with-gettext --disable-fileinfo --enable-maintainer-zts &amp;&amp; \</span><br><span class="line">	make &amp;&amp; \</span><br><span class="line">	make install</span><br><span class="line"></span><br><span class="line"># 后续配置</span><br><span class="line">RUN cp /usr/local/php/etc/php-fpm.conf.default /usr/local/php/etc/php-fpm.conf &amp;&amp; \</span><br><span class="line">	sed -i 's/127.0.0.1/0.0.0.0/g' /usr/local/php/etc/php-fpm.conf &amp;&amp; \</span><br><span class="line">	sed -i "21a daemonize=no" /usr/local/php/etc/php-fpm.conf &amp;&amp; \</span><br><span class="line">	echo "$&#123;TIME_ZONE&#125;" &gt; /etc/timezone &amp;&amp; \</span><br><span class="line">	ln -sf /usr/share/zoneinfo/$&#123;TIME_ZONE&#125; /etc/localtime</span><br><span class="line"></span><br><span class="line"># 清理无用缓存</span><br><span class="line">RUN rm -rf /tmp/php-* &amp;&amp; apt-get clean</span><br><span class="line"></span><br><span class="line"># 拷贝已定义好的配置文件到环境中</span><br><span class="line">COPY php.ini /usr/local/php/etc/</span><br><span class="line"></span><br><span class="line"># 设置默认工作目录</span><br><span class="line">WORKDIR /usr/local/php/</span><br><span class="line"></span><br><span class="line"># 声明端口</span><br><span class="line">EXPOSE 22</span><br><span class="line">EXPOSE 9000</span><br><span class="line"></span><br><span class="line"># 容器启动时的执行指令</span><br><span class="line">CMD ["./sbin/php-fpm","-c","/usr/local/php/etc/php.ini","-y","/usr/local/php/etc/php-fpm.conf"]</span><br></pre></td></tr></table></figure>
+<h3 id="Dockerfile内容"><a href="#Dockerfile内容" class="headerlink" title="Dockerfile内容"></a>Dockerfile内容</h3><figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 指定基于ubuntu:16.04创建</span></span><br><span class="line"><span class="keyword">FROM</span> ubuntu:<span class="number">16.04</span></span><br><span class="line"><span class="comment"># 声明作者</span></span><br><span class="line"><span class="keyword">MAINTAINER</span> haowanxing &lt;haowanxing@gmail.com&gt;</span><br><span class="line"><span class="comment"># 定义环境变量，设置时区时使用</span></span><br><span class="line"><span class="keyword">ENV</span> TIME_ZONE Asia/Shanghai</span><br><span class="line"></span><br><span class="line"><span class="comment"># 修改root账号密码</span></span><br><span class="line"><span class="keyword">RUN</span><span class="bash"> /bin/<span class="built_in">echo</span> <span class="string">'root:0x4f5da2.cn'</span> | chpasswd</span></span><br><span class="line"><span class="bash"><span class="comment"># 新增一个prod账号，并设置密码</span></span></span><br><span class="line"><span class="bash">RUN useradd prod</span></span><br><span class="line"><span class="bash">RUN /bin/<span class="built_in">echo</span> <span class="string">'prod:123456'</span> | chpasswd</span></span><br><span class="line"><span class="bash"></span></span><br><span class="line"><span class="bash"><span class="comment"># 安装编译依赖</span></span></span><br><span class="line"><span class="bash">RUN apt-get update</span></span><br><span class="line"><span class="bash">RUN apt-get install -y gcc make openssl libssl-dev curl libbz2-dev libxml2-dev libjpeg-dev libpng-dev libfreetype6-dev libzip-dev</span></span><br><span class="line"><span class="bash">RUN apt-get install -y libcurl4-gnutls-dev</span></span><br><span class="line"><span class="bash">RUN ln <span class="_">-s</span> /usr/lib/x86_64-linux-gnu/libssl.so /usr/lib</span></span><br><span class="line"><span class="bash"></span></span><br><span class="line"><span class="bash"><span class="comment"># 拷贝源码到环境中</span></span></span><br><span class="line"><span class="bash">ADD php-7.3.6.tar.bz2 /tmp/</span></span><br><span class="line"><span class="bash"><span class="comment"># 编译和安装</span></span></span><br><span class="line"><span class="bash">RUN <span class="built_in">cd</span> /tmp/php-7.3.6 &amp;&amp; \</span></span><br><span class="line"><span class="bash">	./configure --prefix=/usr/<span class="built_in">local</span>/php --with-config-file-path=/usr/<span class="built_in">local</span>/php/etc --enable-fpm --with-fpm-user=prod --with-fpm-group=prod --with-mysqli --with-pdo-mysql --with-iconv-dir --with-freetype-dir --with-jpeg-dir --with-png-dir --with-zlib --with-libxml-dir=/usr --enable-xml --disable-rpath --enable-bcmath --enable-shmop --enable-sysvsem --enable-inline-optimization --with-curl --enable-mbregex --enable-mbstring --enable-ftp --with-gd --with-openssl --with-mhash --enable-pcntl --enable-sockets --with-xmlrpc --enable-zip --enable-soap --without-pear --with-gettext --disable-fileinfo --enable-maintainer-zts &amp;&amp; \</span></span><br><span class="line"><span class="bash">	make &amp;&amp; \</span></span><br><span class="line"><span class="bash">	make install</span></span><br><span class="line"><span class="bash"></span></span><br><span class="line"><span class="bash"><span class="comment"># 后续配置</span></span></span><br><span class="line"><span class="bash">RUN cp /usr/<span class="built_in">local</span>/php/etc/php-fpm.conf.default /usr/<span class="built_in">local</span>/php/etc/php-fpm.conf &amp;&amp; \</span></span><br><span class="line"><span class="bash">	sed -i <span class="string">'s/127.0.0.1/0.0.0.0/g'</span> /usr/<span class="built_in">local</span>/php/etc/php-fpm.conf &amp;&amp; \</span></span><br><span class="line"><span class="bash">	sed -i <span class="string">"21a daemonize=no"</span> /usr/<span class="built_in">local</span>/php/etc/php-fpm.conf &amp;&amp; \</span></span><br><span class="line"><span class="bash">	<span class="built_in">echo</span> <span class="string">"<span class="variable">$&#123;TIME_ZONE&#125;</span>"</span> &gt; /etc/timezone &amp;&amp; \</span></span><br><span class="line"><span class="bash">	ln -sf /usr/share/zoneinfo/<span class="variable">$&#123;TIME_ZONE&#125;</span> /etc/localtime</span></span><br><span class="line"><span class="bash"></span></span><br><span class="line"><span class="bash"><span class="comment"># 清理无用缓存</span></span></span><br><span class="line"><span class="bash">RUN rm -rf /tmp/php-* &amp;&amp; apt-get clean</span></span><br><span class="line"><span class="bash"></span></span><br><span class="line"><span class="bash"><span class="comment"># 拷贝已定义好的配置文件到环境中</span></span></span><br><span class="line"><span class="bash">COPY php.ini /usr/<span class="built_in">local</span>/php/etc/</span></span><br><span class="line"><span class="bash"></span></span><br><span class="line"><span class="bash"><span class="comment"># 设置默认工作目录</span></span></span><br><span class="line"><span class="bash">WORKDIR /usr/<span class="built_in">local</span>/php/</span></span><br><span class="line"><span class="bash"></span></span><br><span class="line"><span class="bash"><span class="comment"># 声明端口</span></span></span><br><span class="line"><span class="bash">EXPOSE 22</span></span><br><span class="line"><span class="bash">EXPOSE 9000</span></span><br><span class="line"><span class="bash"></span></span><br><span class="line"><span class="bash"><span class="comment"># 容器启动时的执行指令</span></span></span><br><span class="line"><span class="bash">CMD [<span class="string">"./sbin/php-fpm"</span>,<span class="string">"-c"</span>,<span class="string">"/usr/local/php/etc/php.ini"</span>,<span class="string">"-y"</span>,<span class="string">"/usr/local/php/etc/php-fpm.conf"</span>]</span></span><br></pre></td></tr></table></figure>
 <p>一切都准备好了以后，打开shell终端，cd到Dockerfile目录，目录结构如下:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">~/DockerSpace/phpserver/php » tree ./                                                                                                                                           anthony@Anthony-Macbook-Air</span><br><span class="line">./</span><br><span class="line">├── Dockerfile</span><br><span class="line">├── php-7.3.6.tar.bz2</span><br><span class="line">└── php.ini</span><br></pre></td></tr></table></figure>
 <p>将源码和Dockerfile放在同一目录，此目录中还有一个php.ini，放置此文件是方便在创建镜像的时候直接将PHP的配置文件替换进去，这样就省去后期手动修改配置的麻烦了。</p>
@@ -327,13 +327,13 @@ var _hmt = _hmt || [];
 <ul class="widget-bd">
     
     <li>
-        <a href="/categories/学习笔记/">学习笔记</a>
-        <span class="badge">(50)</span>
+        <a href="/categories/杂谈/">杂谈</a>
+        <span class="badge">(4)</span>
     </li>
     
     <li>
-        <a href="/categories/杂谈/">杂谈</a>
-        <span class="badge">(4)</span>
+        <a href="/categories/学习笔记/">学习笔记</a>
+        <span class="badge">(50)</span>
     </li>
     
     <li>
@@ -357,13 +357,13 @@ var _hmt = _hmt || [];
     </li>
     
     <li>
-        <a href="/categories/PHP/">PHP</a>
-        <span class="badge">(9)</span>
+        <a href="/categories/开发板/">开发板</a>
+        <span class="badge">(1)</span>
     </li>
     
     <li>
-        <a href="/categories/开发板/">开发板</a>
-        <span class="badge">(1)</span>
+        <a href="/categories/PHP/">PHP</a>
+        <span class="badge">(9)</span>
     </li>
     
     <li>
@@ -415,15 +415,13 @@ var _hmt = _hmt || [];
         <!-- 文章标签 -->
 <div class="widget-bd tag-wrap">
   
-    <a class="tag-item" href="/tags/Docker/" title="Docker">Docker (1)</a>
-  
     <a class="tag-item" href="/tags/LNMP/" title="LNMP">LNMP (2)</a>
   
     <a class="tag-item" href="/tags/Golang/" title="Golang">Golang (1)</a>
   
-    <a class="tag-item" href="/tags/网卡/" title="网卡">网卡 (1)</a>
+    <a class="tag-item" href="/tags/Docker/" title="Docker">Docker (1)</a>
   
-    <a class="tag-item" href="/tags/PHP/" title="PHP">PHP (11)</a>
+    <a class="tag-item" href="/tags/网卡/" title="网卡">网卡 (1)</a>
   
     <a class="tag-item" href="/tags/OrangePi/" title="OrangePi">OrangePi (1)</a>
   
@@ -435,11 +433,7 @@ var _hmt = _hmt || [];
   
     <a class="tag-item" href="/tags/定理/" title="定理">定理 (1)</a>
   
-    <a class="tag-item" href="/tags/Go/" title="Go">Go (1)</a>
-  
-    <a class="tag-item" href="/tags/gRPC/" title="gRPC">gRPC (1)</a>
-  
-    <a class="tag-item" href="/tags/RPC/" title="RPC">RPC (1)</a>
+    <a class="tag-item" href="/tags/PHP/" title="PHP">PHP (11)</a>
   
     <a class="tag-item" href="/tags/Apache/" title="Apache">Apache (4)</a>
   
@@ -447,11 +441,17 @@ var _hmt = _hmt || [];
   
     <a class="tag-item" href="/tags/Proxy/" title="Proxy">Proxy (1)</a>
   
-    <a class="tag-item" href="/tags/面试/" title="面试">面试 (1)</a>
+    <a class="tag-item" href="/tags/Go/" title="Go">Go (1)</a>
+  
+    <a class="tag-item" href="/tags/gRPC/" title="gRPC">gRPC (1)</a>
+  
+    <a class="tag-item" href="/tags/RPC/" title="RPC">RPC (1)</a>
   
     <a class="tag-item" href="/tags/firewall/" title="firewall">firewall (1)</a>
   
     <a class="tag-item" href="/tags/CentOS/" title="CentOS">CentOS (3)</a>
+  
+    <a class="tag-item" href="/tags/面试/" title="面试">面试 (1)</a>
   
     <a class="tag-item" href="/tags/https/" title="https">https (2)</a>
   
@@ -465,17 +465,17 @@ var _hmt = _hmt || [];
   
     <a class="tag-item" href="/tags/Discuz/" title="Discuz">Discuz (1)</a>
   
-    <a class="tag-item" href="/tags/FFmpeg/" title="FFmpeg">FFmpeg (1)</a>
-  
-    <a class="tag-item" href="/tags/MySQL/" title="MySQL">MySQL (9)</a>
-  
     <a class="tag-item" href="/tags/Glassfish/" title="Glassfish">Glassfish (1)</a>
   
     <a class="tag-item" href="/tags/Java/" title="Java">Java (2)</a>
   
-    <a class="tag-item" href="/tags/C语言/" title="C语言">C语言 (1)</a>
+    <a class="tag-item" href="/tags/MySQL/" title="MySQL">MySQL (9)</a>
+  
+    <a class="tag-item" href="/tags/FFmpeg/" title="FFmpeg">FFmpeg (1)</a>
   
     <a class="tag-item" href="/tags/html/" title="html">html (1)</a>
+  
+    <a class="tag-item" href="/tags/C语言/" title="C语言">C语言 (1)</a>
   
     <a class="tag-item" href="/tags/Javascript/" title="Javascript">Javascript (2)</a>
   
@@ -552,6 +552,6 @@ var _hmt = _hmt || [];
 
     <!--博客js脚本 -->
     <!-- 这里放网站js脚本 -->
-<script src="/js/main.js?v=1615448451295"></script>
+<script src="/js/main.js?v=1620893056678"></script>
 </body>
 </html>
