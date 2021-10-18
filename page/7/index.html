@@ -129,6 +129,60 @@ var _hmt = _hmt || [];
         <!-- 文章标题 -->
         
     <h3 class="post-title">
+    	<a href="http://www.imsry.cn/posts/4490487e.html">
+    		CentOS 6下更新PHP版本到5.5后与Nginx发生的小事情
+    	</a>
+    </h3>
+
+    </header>
+    <p class="post-meta">
+        Anthony 发表于
+        <time datetime="2016-01-28T16:32:33.000Z">2016-01-29 00:32:33</time>
+
+
+        &nbsp;&nbsp;
+        <span class="post-tags">
+            标签：
+            
+    
+        <a href="/tags/CentOS/" title="CentOS">CentOS</a>
+    
+
+        </span>
+    </p>
+
+    <div class="post-content">
+        <div class="post-excerpt">
+            
+                <p>今天在写API的时候用到了php中新版本的json<em>encode()方法，在5.4以后支持了不对中文进行Unicode编码，而我在服务器上的php版本还停留在yum源包自带的5.3版本，只有升级来满足需要了。<br>首先，找了一些关于升级PHP的文章，各不相同，我还是坚持简单、易操作的方法，使用yum来更新。<br>当然，yum update php 是完全不能解决的，因为它告诉我5.3是最新的版本了。不能怪它，因为没人告诉它今年是哪一年了^</em>^!<br>这个不行，肯定要换一个源包了。。<br>不过首先是要卸载已经安装的php。在这之前，先看看当前安装的PHP有哪些依赖包吧：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum list installed | grep php</span><br></pre></td></tr></table></figure></p>
+<p>结果如下：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">[root@iZ28l1ca1vhZ scuec]<span class="comment"># yum list installed | grep php</span></span><br><span class="line">php.x86_64                           5.3.3-46.el6_6                     @updates</span><br><span class="line">php-bcmath.x86_64                    5.3.3-46.el6_6                     @updates</span><br><span class="line">php-cli.x86_64                       5.3.3-46.el6_6                     @updates</span><br><span class="line">php-common.x86_64                    5.3.3-46.el6_6                     @updates</span><br><span class="line">php-fpm.x86_64                       5.3.3-46.el6_6                     @updates</span><br><span class="line">php-gd.x86_64                        5.3.3-46.el6_6                     @updates</span><br><span class="line">php-imap.x86_64                      5.3.3-46.el6_6                     @updates</span><br><span class="line">php-ldap.x86_64                      5.3.3-46.el6_6                     @updates</span><br><span class="line">php-mbstring.x86_64                  5.3.3-46.el6_6                     @updates</span><br><span class="line">php-mcrypt.x86_64                    5.3.3-4.el6                        @epel   </span><br><span class="line">php-mysql.x86_64                     5.3.3-46.el6_6                     @updates</span><br><span class="line">php-odbc.x86_64                      5.3.3-46.el6_6                     @updates</span><br><span class="line">php-pdo.x86_64                       5.3.3-46.el6_6                     @updates</span><br><span class="line">php-pear.noarch                      1:1.9.4-4.el6                      @base   </span><br><span class="line">php-xml.x86_64                       5.3.3-46.el6_6                     @updates</span><br><span class="line">php-xmlrpc.x86_64                    5.3.3-46.el6_6                     @updates</span><br></pre></td></tr></table></figure></p>
+<p>上面这些本来有的，安装新版本后还是加上去比较好办，对！<br>接着卸载php吧</p>
+            
+            <p class="more">
+                <a href="http://www.imsry.cn/posts/4490487e.html">阅读剩下更多</a>
+            </p>
+        </div>
+        <div class="post-thumbnail" data-img="">
+            <a href="http://www.imsry.cn/posts/4490487e.html" title="CentOS 6下更新PHP版本到5.5后与Nginx发生的小事情">
+                
+                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/9.jpg" alt="默认配图" >
+                
+            </a>
+        </div>
+    </div>
+</article>
+
+    
+        <!-- 文章列表 item -->
+<article class="post">
+    <header>
+        <!-- 标签这有且只能显示一个 -->
+        
+        <a class="cat-link" href="/categories/Linux/">Linux</a>
+        
+        <!-- 文章标题 -->
+        
+    <h3 class="post-title">
     	<a href="http://www.imsry.cn/posts/a363805e.html">
     		Debian中搭建VPN(PPTP协议)实战，实现VPN上网
     	</a>
@@ -260,9 +314,9 @@ var _hmt = _hmt || [];
     
         <a href="/tags/MySQL/" title="MySQL">MySQL</a> / 
     
-        <a href="/tags/Java/" title="Java">Java</a> / 
+        <a href="/tags/Glassfish/" title="Glassfish">Glassfish</a> / 
     
-        <a href="/tags/Glassfish/" title="Glassfish">Glassfish</a>
+        <a href="/tags/Java/" title="Java">Java</a>
     
 
         </span>
@@ -636,69 +690,6 @@ var _hmt = _hmt || [];
 </article>
 
     
-        <!-- 文章列表 item -->
-<article class="post">
-    <header>
-        <!-- 标签这有且只能显示一个 -->
-        
-        <a class="cat-link" href="/categories/算法/">算法</a>
-        
-        <!-- 文章标题 -->
-        
-    <h3 class="post-title">
-    	<a href="http://www.imsry.cn/posts/f996716f.html">
-    		各种排序算法介绍
-    	</a>
-    </h3>
-
-    </header>
-    <p class="post-meta">
-        Anthony 发表于
-        <time datetime="2015-10-08T10:26:59.000Z">2015-10-08 18:26:59</time>
-
-
-        &nbsp;&nbsp;
-        <span class="post-tags">
-            标签：
-            
-        </span>
-    </p>
-
-    <div class="post-content">
-        <div class="post-excerpt">
-            
-                <p><strong>1.直接插入排序算法(Straight Insertion Sort)：</strong><br>基本思想:<br>将一个记录插入到已排序好的有序表中，从而得到一个新，记录数增1的有序表。即：先将序列的第1个记录看成是一个有序的子序列，然后从第2个记录逐个进行插入，直至整个序列有序为止。<br><span style="color: #33cccc;">算法的实现：</span></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">//</span><br><span class="line">//  main.cpp</span><br><span class="line">//  Straight Insertion Sort</span><br><span class="line">//</span><br><span class="line">//  Created by anthony on 15-10-8.</span><br><span class="line">//  Copyright (c) 2015年 anthony. All rights reserved.</span><br><span class="line">//</span><br><span class="line"></span><br><span class="line">#include &lt;iostream&gt;</span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">void print(int a[], int n ,int i)&#123;</span><br><span class="line">    cout&lt;&lt;i &lt;&lt;&quot;:&quot;;</span><br><span class="line">    for(int j= 0; j&lt;n; j++)&#123;</span><br><span class="line">        cout&lt;&lt;a[j] &lt;&lt;&quot; &quot;;</span><br><span class="line">    &#125;</span><br><span class="line">    cout&lt;&lt;endl;</span><br><span class="line">&#125;</span><br><span class="line">void InsertSort(int a[], int n)</span><br><span class="line">&#123;</span><br><span class="line">    for(int i= 1; i&lt;n; i++)&#123;</span><br><span class="line">        if(a[i] &lt; a[i-1])&#123;          //若第i个元素大于i-1元素，直接插入。小于的话，移动有序表后插入</span><br><span class="line">            int j= i-1;</span><br><span class="line">            int x = a[i];           //复制为哨兵，即存储待排序元素</span><br><span class="line">            a[i] = a[i-1];          //先后移一个元素</span><br><span class="line">            while(x &lt; a[j])&#123;        //查找在有序表的插入位置</span><br><span class="line">                a[j+1] = a[j];</span><br><span class="line">                j--;                //元素后移</span><br><span class="line">            &#125;</span><br><span class="line">            a[j+1] = x;             //插入到正确位置</span><br><span class="line">        &#125;</span><br><span class="line">        print(a,n,i);               //打印每趟排序的结果</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main(int argc, const char * argv[]) &#123;</span><br><span class="line">    int a[8] = &#123;5,6,1,3,2,8,9,7&#125;;</span><br><span class="line">    InsertSort(a,8);</span><br><span class="line">    print(a,8,8);</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>   运行结果：</p>
-<p>1:5 6 1 3 2 8 9 7 </p>
-<p>2:1 5 6 3 2 8 9 7 </p>
-<p>3:1 3 5 6 2 8 9 7 </p>
-<p>4:1 2 3 5 6 8 9 7 </p>
-<p>5:1 2 3 5 6 8 9 7</p>
-<p>6:1 2 3 5 6 8 9 7 </p>
-<p>7:1 2 3 5 6 7 8 9 </p>
-<p>8:1 2 3 5 6 7 8 9 </p>
-<p>Program ended with exit code: 0</p>
-<p>时间复杂度：O（n^2）.</p>
-<p><strong>2.选择排序—简单选择排序（Simple Selection Sort）:</strong></p>
-<p>基本思想：<br>&gt;<br>在要排序的一组数中，选出最小（或者最大）的一个数与第1个位置的数交换；然后在剩下的数当中再找最小（或者最大）的与第2个位置的数交换，依次类推，直到第n-1个元素（倒数第二个数）和第n个元素（最后一个数）比较为止。</p>
-<p>操作方法：<br>
-            
-            <p class="more">
-                <a href="http://www.imsry.cn/posts/f996716f.html">阅读剩下更多</a>
-            </p>
-        </div>
-        <div class="post-thumbnail" data-img="">
-            <a href="http://www.imsry.cn/posts/f996716f.html" title="各种排序算法介绍">
-                
-                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/8.jpg" alt="默认配图" >
-                
-            </a>
-        </div>
-    </div>
-</article>
-
-    
 
     
     <nav class="page-navigator">
@@ -746,8 +737,8 @@ var _hmt = _hmt || [];
 <ul class="widget-bd">
     
     <li>
-        <a href="/categories/学习笔记/">学习笔记</a>
-        <span class="badge">(50)</span>
+        <a href="/categories/杂谈/">杂谈</a>
+        <span class="badge">(4)</span>
     </li>
     
     <li>
@@ -756,8 +747,8 @@ var _hmt = _hmt || [];
     </li>
     
     <li>
-        <a href="/categories/杂谈/">杂谈</a>
-        <span class="badge">(4)</span>
+        <a href="/categories/学习笔记/">学习笔记</a>
+        <span class="badge">(51)</span>
     </li>
     
     <li>
@@ -771,13 +762,13 @@ var _hmt = _hmt || [];
     </li>
     
     <li>
-        <a href="/categories/Linux/">Linux</a>
-        <span class="badge">(15)</span>
+        <a href="/categories/开发板/">开发板</a>
+        <span class="badge">(1)</span>
     </li>
     
     <li>
-        <a href="/categories/开发板/">开发板</a>
-        <span class="badge">(1)</span>
+        <a href="/categories/Linux/">Linux</a>
+        <span class="badge">(15)</span>
     </li>
     
     <li>
@@ -811,12 +802,12 @@ var _hmt = _hmt || [];
     </li>
     
     <li>
-        <a href="/categories/开放平台/">开放平台</a>
+        <a href="/categories/考试/">考试</a>
         <span class="badge">(1)</span>
     </li>
     
     <li>
-        <a href="/categories/考试/">考试</a>
+        <a href="/categories/开放平台/">开放平台</a>
         <span class="badge">(1)</span>
     </li>
     
@@ -834,17 +825,17 @@ var _hmt = _hmt || [];
         <!-- 文章标签 -->
 <div class="widget-bd tag-wrap">
   
-    <a class="tag-item" href="/tags/Docker/" title="Docker">Docker (1)</a>
-  
     <a class="tag-item" href="/tags/Golang/" title="Golang">Golang (1)</a>
   
     <a class="tag-item" href="/tags/LNMP/" title="LNMP">LNMP (2)</a>
   
-    <a class="tag-item" href="/tags/网卡/" title="网卡">网卡 (1)</a>
+    <a class="tag-item" href="/tags/Docker/" title="Docker">Docker (1)</a>
   
     <a class="tag-item" href="/tags/OrangePi/" title="OrangePi">OrangePi (1)</a>
   
     <a class="tag-item" href="/tags/Network/" title="Network">Network (3)</a>
+  
+    <a class="tag-item" href="/tags/网卡/" title="网卡">网卡 (1)</a>
   
     <a class="tag-item" href="/tags/PHP/" title="PHP">PHP (11)</a>
   
@@ -866,11 +857,11 @@ var _hmt = _hmt || [];
   
     <a class="tag-item" href="/tags/Proxy/" title="Proxy">Proxy (1)</a>
   
-    <a class="tag-item" href="/tags/面试/" title="面试">面试 (1)</a>
-  
     <a class="tag-item" href="/tags/firewall/" title="firewall">firewall (1)</a>
   
     <a class="tag-item" href="/tags/CentOS/" title="CentOS">CentOS (3)</a>
+  
+    <a class="tag-item" href="/tags/面试/" title="面试">面试 (1)</a>
   
     <a class="tag-item" href="/tags/https/" title="https">https (2)</a>
   
@@ -878,39 +869,39 @@ var _hmt = _hmt || [];
   
     <a class="tag-item" href="/tags/性能/" title="性能">性能 (3)</a>
   
+    <a class="tag-item" href="/tags/Discuz/" title="Discuz">Discuz (1)</a>
+  
     <a class="tag-item" href="/tags/VPN/" title="VPN">VPN (1)</a>
   
     <a class="tag-item" href="/tags/DS-Store/" title=".DS_Store">.DS_Store (1)</a>
-  
-    <a class="tag-item" href="/tags/Discuz/" title="Discuz">Discuz (1)</a>
   
     <a class="tag-item" href="/tags/MySQL/" title="MySQL">MySQL (9)</a>
   
     <a class="tag-item" href="/tags/FFmpeg/" title="FFmpeg">FFmpeg (1)</a>
   
-    <a class="tag-item" href="/tags/C语言/" title="C语言">C语言 (1)</a>
+    <a class="tag-item" href="/tags/Glassfish/" title="Glassfish">Glassfish (1)</a>
   
     <a class="tag-item" href="/tags/Java/" title="Java">Java (2)</a>
   
-    <a class="tag-item" href="/tags/Glassfish/" title="Glassfish">Glassfish (1)</a>
+    <a class="tag-item" href="/tags/golang/" title="golang">golang (1)</a>
   
-    <a class="tag-item" href="/tags/html/" title="html">html (1)</a>
+    <a class="tag-item" href="/tags/C语言/" title="C语言">C语言 (1)</a>
   
     <a class="tag-item" href="/tags/Javascript/" title="Javascript">Javascript (2)</a>
   
-    <a class="tag-item" href="/tags/Laravel/" title="Laravel">Laravel (1)</a>
+    <a class="tag-item" href="/tags/html/" title="html">html (1)</a>
   
-    <a class="tag-item" href="/tags/MarkDown/" title="MarkDown">MarkDown (1)</a>
+    <a class="tag-item" href="/tags/Laravel/" title="Laravel">Laravel (1)</a>
   
     <a class="tag-item" href="/tags/数据结构/" title="数据结构">数据结构 (1)</a>
   
-    <a class="tag-item" href="/tags/Vim/" title="Vim">Vim (1)</a>
+    <a class="tag-item" href="/tags/MarkDown/" title="MarkDown">MarkDown (1)</a>
   
     <a class="tag-item" href="/tags/LAMP/" title="LAMP">LAMP (1)</a>
   
-    <a class="tag-item" href="/tags/MacOS/" title="MacOS">MacOS (4)</a>
+    <a class="tag-item" href="/tags/Vim/" title="Vim">Vim (1)</a>
   
-    <a class="tag-item" href="/tags/php/" title="php">php (2)</a>
+    <a class="tag-item" href="/tags/MacOS/" title="MacOS">MacOS (4)</a>
   
 </div>
     </section>
@@ -971,6 +962,6 @@ var _hmt = _hmt || [];
 
     <!--博客js脚本 -->
     <!-- 这里放网站js脚本 -->
-<script src="/js/main.js?v=1620893525750"></script>
+<script src="/js/main.js?v=1634538265367"></script>
 </body>
 </html>

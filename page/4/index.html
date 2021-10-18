@@ -124,6 +124,85 @@ var _hmt = _hmt || [];
     <header>
         <!-- 标签这有且只能显示一个 -->
         
+        <a class="cat-link" href="/categories/学习笔记/">学习笔记</a>
+        
+        <!-- 文章标题 -->
+        
+    <h3 class="post-title">
+    	<a href="http://www.imsry.cn/posts/ac505287.html">
+    		Laravel5.5 发送邮件遇到Connection could not be established with host xxxxx
+    	</a>
+    </h3>
+
+    </header>
+    <p class="post-meta">
+        Anthony 发表于
+        <time datetime="2018-02-11T07:08:38.000Z">2018-02-11 15:08:38</time>
+
+
+        &nbsp;&nbsp;
+        <span class="post-tags">
+            标签：
+            
+    
+        <a href="/tags/Laravel/" title="Laravel">Laravel</a>
+    
+
+        </span>
+    </p>
+
+    <div class="post-content">
+        <div class="post-excerpt">
+            
+                <p>Laravel输出的错误页面如下图：<br><img src="../uploads/qiniu/20180211151833306552899.png" alt="Laravel异常捕获-mail"></p>
+<p>服务器：阿里云香港节点（B区） CentOS6.8 64bit</p>
+<p>lamp环境：PHP7.2.1</p>
+<p>Laravel .env mail部分：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">MAIL_DRIVER=smtp</span><br><span class="line">MAIL_HOST=hwsmtp.exmail.qq.com</span><br><span class="line">MAIL_PORT=465</span><br><span class="line">MAIL_USERNAME=noreply@0x4f5da2.cn</span><br><span class="line">MAIL_PASSWORD=XXXXXXXX</span><br><span class="line">MAIL_FROM_ADDRESS=noreply@0x4f5da2.cn</span><br><span class="line">MAIL_FROM_NAME=noreply</span><br><span class="line">MAIL_ENCRYPTION=ssl</span><br></pre></td></tr></table></figure></p>
+<p>问题发生前景：本地测试完全正常，相同配置在服务器上就被抛出异常。</p>
+<p>因为之前遇到过由于端口没有放行而造成无法建立连接的问题，在此问题上我也做了一样的尝试，在安全组配置里面对465端口进行放行（无论是出口还是入口）。但是结果表示并不是这个问题，而我在没有配置放行的情况下，telnet host:port 是通的。</p>
+<p>经过大约两天的间接性排查和尝试，最终提交工单咨询阿里，他们给了我处理意见：尝试他们的Demo！</p>
+<p>尝试<a href="https://help.aliyun.com/knowledge_detail/60692.html" target="_blank" rel="noopener">阿里云提供的Demo</a>测试发件是没有问题的，这就令我很纳闷的，于是我去看该Demo是如何建立连接的。</p>
+<p>通过一步一步的探索，发现该Demo也是同样使用了<code>stream_socket_client</code>方法来建立连接，那为什么它可以，Laravel内的却不行？说明不是该环境的问题！</p>
+<p>问题逐渐定位到了<code>stream_socket_client</code>这个方法上，查询<a href="http://php.net/manual/zh/function.stream-socket-client.php" target="_blank" rel="noopener">PHP.NET</a>来认识一下它。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">resource stream_socket_client ( string $remote_socket [, int &amp;$errno [, string &amp;$errstr [, float $timeout = ini_get(<span class="string">"default_socket_timeout"</span>) [, int $flags = STREAM_CLIENT_CONNECT [, resource $context ]]]]] )</span><br></pre></td></tr></table></figure>
+<p>方法描述上，只有一个参数可能会不一样，就是最后那个$context，它是一个Resource，由<code>stream_conntext_create</code>方法创建并返回。</p>
+<p>我注意到Laravel中使用的Swift_Mailer所引用的StreamBuffer类中，在<code>stream_socket_client</code>方法前面加上了<code>@</code>符号来屏蔽error，而在下面自己判断来抛出异常。</p>
+<p>那么我果断将<code>@</code>符号去掉！ 真正的错误爆出来了！！！！</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">stream_socket_enable_crypto(): SSL operation failed with code 1. OpenSSL Error messages:</span><br><span class="line">error:14090086:SSL routines:ssl3_get_server_certificate:certificate verify failed</span><br></pre></td></tr></table></figure>
+<p>乍眼一看，证书校验失败？？？？</p>
+<h3 id="上面的废话只是简单描述我遇到这个问题是如何应对的"><a href="#上面的废话只是简单描述我遇到这个问题是如何应对的" class="headerlink" title="上面的废话只是简单描述我遇到这个问题是如何应对的"></a>上面的废话只是简单描述我遇到这个问题是如何应对的</h3><p>解决方案来了！ 既然是走SSL协议(465端口)，且程序抛出错误为证书校验失败，那么就去直接搜索有关Laravel/SwitEmailer的证书校验问题。</p>
+<p>在stackOverflow上找到两个相关的问题：</p>
+<ol>
+<li><a href="https://stackoverflow.com/questions/44423096/localhost-and-stream-socket-enable-crypto-ssl-operation-failed-with-code-1" target="_blank" rel="noopener">localhost and “stream_socket_enable_crypto(): SSL operation failed with code 1”
+</a></li>
+<li><a href="https://stackoverflow.com/questions/30556773/how-to-fix-stream-socket-enable-crypto-ssl-operation-failed-with-code-1" target="_blank" rel="noopener">how to fix stream_socket_enable_crypto(): SSL operation failed with code 1</a></li>
+</ol>
+<p>他们都提出了一个配置：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//	在/config/mail.php中增加</span></span><br><span class="line"></span><br><span class="line"><span class="string">'stream'</span> =&gt; [</span><br><span class="line">	<span class="string">'ssl'</span> =&gt; [</span><br><span class="line">	    <span class="string">'allow_self_signed'</span> =&gt; <span class="keyword">true</span>,</span><br><span class="line">	    <span class="string">'verify_peer'</span> =&gt; <span class="keyword">false</span>,</span><br><span class="line">	    <span class="string">'verify_peer_name'</span> =&gt; <span class="keyword">false</span>,</span><br><span class="line">	],</span><br><span class="line">],</span><br></pre></td></tr></table></figure>
+<p>然后测试，Bingo！！！</p>
+<p>当然，既然是SSL必然使用校验才是最安全的，但是我这里仅满足能够发件即可，至于如何进行证书校验，请移步：<a href="https://www.cnblogs.com/wpjamer/p/7421304.html" target="_blank" rel="noopener">使用PHPMailer 中的报错解决 “Connection failed. Error #2: stream_socket_client(): SSL operation failed with code 1. OpenSSL Error messages:”</a></p>
+
+            
+            <p class="more">
+                <a href="http://www.imsry.cn/posts/ac505287.html">阅读剩下更多</a>
+            </p>
+        </div>
+        <div class="post-thumbnail" data-img="">
+            <a href="http://www.imsry.cn/posts/ac505287.html" title="Laravel5.5 发送邮件遇到Connection could not be established with host xxxxx">
+                
+                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/1.jpg" alt="默认配图" >
+                
+            </a>
+        </div>
+    </div>
+</article>
+
+    
+        <!-- 文章列表 item -->
+<article class="post">
+    <header>
+        <!-- 标签这有且只能显示一个 -->
+        
         <a class="cat-link" href="/categories/Linux/">Linux</a>
         
         <!-- 文章标题 -->
@@ -686,74 +765,6 @@ var _hmt = _hmt || [];
 </article>
 
     
-        <!-- 文章列表 item -->
-<article class="post">
-    <header>
-        <!-- 标签这有且只能显示一个 -->
-        
-        <a class="cat-link" href="/categories/PHP/">PHP</a>
-        
-        <!-- 文章标题 -->
-        
-    <h3 class="post-title">
-    	<a href="http://www.imsry.cn/posts/b9f89962.html">
-    		PHP时区默认为Europe/zurich且修改php.ini无效的困惑
-    	</a>
-    </h3>
-
-    </header>
-    <p class="post-meta">
-        Anthony 发表于
-        <time datetime="2017-03-21T09:03:57.000Z">2017-03-21 17:03:57</time>
-
-
-        &nbsp;&nbsp;
-        <span class="post-tags">
-            标签：
-            
-    
-        <a href="/tags/php/" title="php">php</a>
-    
-
-        </span>
-    </p>
-
-    <div class="post-content">
-        <div class="post-excerpt">
-            
-                <blockquote>
-<p>为何我的date(“Y/m/d H:i:s”)相差了7个小时？</p>
-</blockquote>
-<p><code>环境：MacOS X EI Capitan / PHP5.6.25</code></p>
-<p>　　今天在校验Crontab的计划执行时，利用PHP输出执行时间却发现输出的时间和当地事件相差了7个小时，对！是7不是8，并不是默认的UTC，呵呵了～</p>
-<p>　　好吧，一贯思路，我去把php.ini中的<code>date.timezone</code>修改成<code>PRC</code>。嗯，肯定正常了吧。</p>
-<p>　　要能正常我也不会写本文了^_~!</p>
-<p>　　不论是修改成<code>PRC</code>还是<code>Asia/Shanghai</code>又或者<code>UTC</code>，全都未然。
-　　</p>
-<hr>
-<ol>
-<li>apache输出phpinfo()，查看date区域它的Default Timezone还是没变。<br><img src="https://ooo.0o0.ooo/2017/03/21/58d0f0703d97a.png" alt="Phpinfo的date区域"></li>
-<li>在控制台查看<code>php -i | grep zone</code>也还是同样没变<br><img src="https://ooo.0o0.ooo/2017/03/21/58d0f0feb930b.png" alt="控制台输出timezone"></li>
-<li>核对加载的php.ini文件是否正确并且配置信息格式是否正确<br><img src="https://ooo.0o0.ooo/2017/03/21/58d0f15632504.png" alt><br><img src="https://ooo.0o0.ooo/2017/03/21/58d0f17079823.png" alt></li>
-<li>控制台使用<code>php -a</code>交互模式，调用<code>ini_get(&#39;date.timezone&#39;)</code>，检查配置的INI是否生效<br><img src="https://ooo.0o0.ooo/2017/03/21/58d0f6227df7c.png" alt></li>
-</ol>
-<p>　　全都没有任何问题啊！！！为什么结果却出乎意料呢？？百度，谷歌我都问遍了，大家没人出现我这样的情况啊。正当我发愁的时候，小伙伴过来给我支招了。</p>
-            
-            <p class="more">
-                <a href="http://www.imsry.cn/posts/b9f89962.html">阅读剩下更多</a>
-            </p>
-        </div>
-        <div class="post-thumbnail" data-img="">
-            <a href="http://www.imsry.cn/posts/b9f89962.html" title="PHP时区默认为Europe/zurich且修改php.ini无效的困惑">
-                
-                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/1.jpg" alt="默认配图" >
-                
-            </a>
-        </div>
-    </div>
-</article>
-
-    
 
     
     <nav class="page-navigator">
@@ -801,8 +812,8 @@ var _hmt = _hmt || [];
 <ul class="widget-bd">
     
     <li>
-        <a href="/categories/学习笔记/">学习笔记</a>
-        <span class="badge">(50)</span>
+        <a href="/categories/杂谈/">杂谈</a>
+        <span class="badge">(4)</span>
     </li>
     
     <li>
@@ -811,8 +822,8 @@ var _hmt = _hmt || [];
     </li>
     
     <li>
-        <a href="/categories/杂谈/">杂谈</a>
-        <span class="badge">(4)</span>
+        <a href="/categories/学习笔记/">学习笔记</a>
+        <span class="badge">(51)</span>
     </li>
     
     <li>
@@ -826,13 +837,13 @@ var _hmt = _hmt || [];
     </li>
     
     <li>
-        <a href="/categories/Linux/">Linux</a>
-        <span class="badge">(15)</span>
+        <a href="/categories/开发板/">开发板</a>
+        <span class="badge">(1)</span>
     </li>
     
     <li>
-        <a href="/categories/开发板/">开发板</a>
-        <span class="badge">(1)</span>
+        <a href="/categories/Linux/">Linux</a>
+        <span class="badge">(15)</span>
     </li>
     
     <li>
@@ -866,12 +877,12 @@ var _hmt = _hmt || [];
     </li>
     
     <li>
-        <a href="/categories/开放平台/">开放平台</a>
+        <a href="/categories/考试/">考试</a>
         <span class="badge">(1)</span>
     </li>
     
     <li>
-        <a href="/categories/考试/">考试</a>
+        <a href="/categories/开放平台/">开放平台</a>
         <span class="badge">(1)</span>
     </li>
     
@@ -889,17 +900,17 @@ var _hmt = _hmt || [];
         <!-- 文章标签 -->
 <div class="widget-bd tag-wrap">
   
-    <a class="tag-item" href="/tags/Docker/" title="Docker">Docker (1)</a>
-  
     <a class="tag-item" href="/tags/Golang/" title="Golang">Golang (1)</a>
   
     <a class="tag-item" href="/tags/LNMP/" title="LNMP">LNMP (2)</a>
   
-    <a class="tag-item" href="/tags/网卡/" title="网卡">网卡 (1)</a>
+    <a class="tag-item" href="/tags/Docker/" title="Docker">Docker (1)</a>
   
     <a class="tag-item" href="/tags/OrangePi/" title="OrangePi">OrangePi (1)</a>
   
     <a class="tag-item" href="/tags/Network/" title="Network">Network (3)</a>
+  
+    <a class="tag-item" href="/tags/网卡/" title="网卡">网卡 (1)</a>
   
     <a class="tag-item" href="/tags/PHP/" title="PHP">PHP (11)</a>
   
@@ -921,11 +932,11 @@ var _hmt = _hmt || [];
   
     <a class="tag-item" href="/tags/Proxy/" title="Proxy">Proxy (1)</a>
   
-    <a class="tag-item" href="/tags/面试/" title="面试">面试 (1)</a>
-  
     <a class="tag-item" href="/tags/firewall/" title="firewall">firewall (1)</a>
   
     <a class="tag-item" href="/tags/CentOS/" title="CentOS">CentOS (3)</a>
+  
+    <a class="tag-item" href="/tags/面试/" title="面试">面试 (1)</a>
   
     <a class="tag-item" href="/tags/https/" title="https">https (2)</a>
   
@@ -933,39 +944,39 @@ var _hmt = _hmt || [];
   
     <a class="tag-item" href="/tags/性能/" title="性能">性能 (3)</a>
   
+    <a class="tag-item" href="/tags/Discuz/" title="Discuz">Discuz (1)</a>
+  
     <a class="tag-item" href="/tags/VPN/" title="VPN">VPN (1)</a>
   
     <a class="tag-item" href="/tags/DS-Store/" title=".DS_Store">.DS_Store (1)</a>
-  
-    <a class="tag-item" href="/tags/Discuz/" title="Discuz">Discuz (1)</a>
   
     <a class="tag-item" href="/tags/MySQL/" title="MySQL">MySQL (9)</a>
   
     <a class="tag-item" href="/tags/FFmpeg/" title="FFmpeg">FFmpeg (1)</a>
   
-    <a class="tag-item" href="/tags/C语言/" title="C语言">C语言 (1)</a>
+    <a class="tag-item" href="/tags/Glassfish/" title="Glassfish">Glassfish (1)</a>
   
     <a class="tag-item" href="/tags/Java/" title="Java">Java (2)</a>
   
-    <a class="tag-item" href="/tags/Glassfish/" title="Glassfish">Glassfish (1)</a>
+    <a class="tag-item" href="/tags/golang/" title="golang">golang (1)</a>
   
-    <a class="tag-item" href="/tags/html/" title="html">html (1)</a>
+    <a class="tag-item" href="/tags/C语言/" title="C语言">C语言 (1)</a>
   
     <a class="tag-item" href="/tags/Javascript/" title="Javascript">Javascript (2)</a>
   
-    <a class="tag-item" href="/tags/Laravel/" title="Laravel">Laravel (1)</a>
+    <a class="tag-item" href="/tags/html/" title="html">html (1)</a>
   
-    <a class="tag-item" href="/tags/MarkDown/" title="MarkDown">MarkDown (1)</a>
+    <a class="tag-item" href="/tags/Laravel/" title="Laravel">Laravel (1)</a>
   
     <a class="tag-item" href="/tags/数据结构/" title="数据结构">数据结构 (1)</a>
   
-    <a class="tag-item" href="/tags/Vim/" title="Vim">Vim (1)</a>
+    <a class="tag-item" href="/tags/MarkDown/" title="MarkDown">MarkDown (1)</a>
   
     <a class="tag-item" href="/tags/LAMP/" title="LAMP">LAMP (1)</a>
   
-    <a class="tag-item" href="/tags/MacOS/" title="MacOS">MacOS (4)</a>
+    <a class="tag-item" href="/tags/Vim/" title="Vim">Vim (1)</a>
   
-    <a class="tag-item" href="/tags/php/" title="php">php (2)</a>
+    <a class="tag-item" href="/tags/MacOS/" title="MacOS">MacOS (4)</a>
   
 </div>
     </section>
@@ -1026,6 +1037,6 @@ var _hmt = _hmt || [];
 
     <!--博客js脚本 -->
     <!-- 这里放网站js脚本 -->
-<script src="/js/main.js?v=1620893525724"></script>
+<script src="/js/main.js?v=1634538265344"></script>
 </body>
 </html>

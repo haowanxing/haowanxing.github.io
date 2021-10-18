@@ -4,6 +4,26 @@
 
     
   <url>
+    <loc>http://www.imsry.cn/posts/e6ef1b5e.html</loc>
+    <lastmod>2021-10-18T06:24:05.823Z</lastmod>
+    <data>
+        <display>
+        <title>记一次使用CGo的Golang项目交叉编译遇到的问题及解决步骤</title>
+        <pubTime>2021-10-18T02:08:41.000Z</pubTime>
+        
+        <tag>golang</tag>
+         
+         
+           
+             
+              <breadCrumb title="学习笔记" url="http://www.imsry.cn/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://www.imsry.cn/posts/32c4930.html</loc>
     <lastmod>2021-03-11T07:35:03.438Z</lastmod>
     <data>
@@ -1429,9 +1449,9 @@
         
         <tag>MySQL</tag>
          
-        <tag>Java</tag>
-         
         <tag>Glassfish</tag>
+         
+        <tag>Java</tag>
          
          
            
@@ -1453,9 +1473,9 @@
         
         <tag>PHP</tag>
          
-        <tag>C语言</tag>
-         
         <tag>Java</tag>
+         
+        <tag>C语言</tag>
          
          
            

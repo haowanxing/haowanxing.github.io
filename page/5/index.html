@@ -129,6 +129,74 @@ var _hmt = _hmt || [];
         <!-- 文章标题 -->
         
     <h3 class="post-title">
+    	<a href="http://www.imsry.cn/posts/b9f89962.html">
+    		PHP时区默认为Europe/zurich且修改php.ini无效的困惑
+    	</a>
+    </h3>
+
+    </header>
+    <p class="post-meta">
+        Anthony 发表于
+        <time datetime="2017-03-21T09:03:57.000Z">2017-03-21 17:03:57</time>
+
+
+        &nbsp;&nbsp;
+        <span class="post-tags">
+            标签：
+            
+    
+        <a href="/tags/php/" title="php">php</a>
+    
+
+        </span>
+    </p>
+
+    <div class="post-content">
+        <div class="post-excerpt">
+            
+                <blockquote>
+<p>为何我的date(“Y/m/d H:i:s”)相差了7个小时？</p>
+</blockquote>
+<p><code>环境：MacOS X EI Capitan / PHP5.6.25</code></p>
+<p>　　今天在校验Crontab的计划执行时，利用PHP输出执行时间却发现输出的时间和当地事件相差了7个小时，对！是7不是8，并不是默认的UTC，呵呵了～</p>
+<p>　　好吧，一贯思路，我去把php.ini中的<code>date.timezone</code>修改成<code>PRC</code>。嗯，肯定正常了吧。</p>
+<p>　　要能正常我也不会写本文了^_~!</p>
+<p>　　不论是修改成<code>PRC</code>还是<code>Asia/Shanghai</code>又或者<code>UTC</code>，全都未然。
+　　</p>
+<hr>
+<ol>
+<li>apache输出phpinfo()，查看date区域它的Default Timezone还是没变。<br><img src="https://ooo.0o0.ooo/2017/03/21/58d0f0703d97a.png" alt="Phpinfo的date区域"></li>
+<li>在控制台查看<code>php -i | grep zone</code>也还是同样没变<br><img src="https://ooo.0o0.ooo/2017/03/21/58d0f0feb930b.png" alt="控制台输出timezone"></li>
+<li>核对加载的php.ini文件是否正确并且配置信息格式是否正确<br><img src="https://ooo.0o0.ooo/2017/03/21/58d0f15632504.png" alt><br><img src="https://ooo.0o0.ooo/2017/03/21/58d0f17079823.png" alt></li>
+<li>控制台使用<code>php -a</code>交互模式，调用<code>ini_get(&#39;date.timezone&#39;)</code>，检查配置的INI是否生效<br><img src="https://ooo.0o0.ooo/2017/03/21/58d0f6227df7c.png" alt></li>
+</ol>
+<p>　　全都没有任何问题啊！！！为什么结果却出乎意料呢？？百度，谷歌我都问遍了，大家没人出现我这样的情况啊。正当我发愁的时候，小伙伴过来给我支招了。</p>
+            
+            <p class="more">
+                <a href="http://www.imsry.cn/posts/b9f89962.html">阅读剩下更多</a>
+            </p>
+        </div>
+        <div class="post-thumbnail" data-img="">
+            <a href="http://www.imsry.cn/posts/b9f89962.html" title="PHP时区默认为Europe/zurich且修改php.ini无效的困惑">
+                
+                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/1.jpg" alt="默认配图" >
+                
+            </a>
+        </div>
+    </div>
+</article>
+
+    
+        <!-- 文章列表 item -->
+<article class="post">
+    <header>
+        <!-- 标签这有且只能显示一个 -->
+        
+        <a class="cat-link" href="/categories/PHP/">PHP</a>
+        
+        <!-- 文章标题 -->
+        
+    <h3 class="post-title">
     	<a href="http://www.imsry.cn/posts/f0dc176.html">
     		php上传进度之uploadprogress
     	</a>
@@ -649,91 +717,6 @@ session.upload_progress.min_freq = &quot;1&quot;
 </article>
 
     
-        <!-- 文章列表 item -->
-<article class="post">
-    <header>
-        <!-- 标签这有且只能显示一个 -->
-        
-        <a class="cat-link" href="/categories/算法/">算法</a>
-        
-        <!-- 文章标题 -->
-        
-    <h3 class="post-title">
-    	<a href="http://www.imsry.cn/posts/eecfc875.html">
-    		PHP常用算法的方法实现(冒泡、选择、插入、快排、二分查找)
-    	</a>
-    </h3>
-
-    </header>
-    <p class="post-meta">
-        Anthony 发表于
-        <time datetime="2016-10-24T05:19:03.000Z">2016-10-24 13:19:03</time>
-
-
-        &nbsp;&nbsp;
-        <span class="post-tags">
-            标签：
-            
-    
-        <a href="/tags/PHP/" title="PHP">PHP</a> / 
-    
-        <a href="/tags/排序算法/" title="排序算法">排序算法</a>
-    
-
-        </span>
-    </p>
-
-    <div class="post-content">
-        <div class="post-excerpt">
-            
-                <p>以前说起写算法，基本上都是拿C语言来写，因为用C可以更清楚的理解各种排序算法和数据结构。今天遍换成使用PHP语言来写几个常用的算法。<br>这次要写的算法包括：</p>
-<ul>
-<li>冒泡排序</li>
-<li>插入排序</li>
-<li>选择排序（直接）</li>
-<li>快速排序</li>
-<li>二分查找</li>
-</ul>
-<h3 id="冒泡："><a href="#冒泡：" class="headerlink" title="冒泡："></a>冒泡：</h3><pre><code>&lt;?php
-$arr = array(4,3,5,6,8,0,10,15,11);
-echo implode(&apos; &apos;,$arr);
-//冒泡排序 最坏 平均O(N^2) 最好O(N)
-function BubbleSort($arr){
-    $length = count($arr);
-    if($length &lt;= 1){
-        return $arr;
-    }
-    for($i=0;$i&lt;$length;$i++){
-        for($j=0;$j&lt;$length-$i-1;$j++){
-            if($arr[$j] &gt; $arr[$j+1]){
-                $tmp = $arr[$j];
-                $arr[$j] = $arr[$j+1];
-                $arr[$j+1] = $tmp;
-            }
-        }
-    }
-    return $arr;
-}
-echo &quot;\nBubbleSort:\n&quot;;
-echo implode(&apos; &apos;,BubbleSort($arr)).&quot;\n&quot;;
-?&gt;
-</code></pre>
-            
-            <p class="more">
-                <a href="http://www.imsry.cn/posts/eecfc875.html">阅读剩下更多</a>
-            </p>
-        </div>
-        <div class="post-thumbnail" data-img="">
-            <a href="http://www.imsry.cn/posts/eecfc875.html" title="PHP常用算法的方法实现(冒泡、选择、插入、快排、二分查找)">
-                
-                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/4.jpg" alt="默认配图" >
-                
-            </a>
-        </div>
-    </div>
-</article>
-
-    
 
     
     <nav class="page-navigator">
@@ -781,8 +764,8 @@ echo implode(&apos; &apos;,BubbleSort($arr)).&quot;\n&quot;;
 <ul class="widget-bd">
     
     <li>
-        <a href="/categories/学习笔记/">学习笔记</a>
-        <span class="badge">(50)</span>
+        <a href="/categories/杂谈/">杂谈</a>
+        <span class="badge">(4)</span>
     </li>
     
     <li>
@@ -791,8 +774,8 @@ echo implode(&apos; &apos;,BubbleSort($arr)).&quot;\n&quot;;
     </li>
     
     <li>
-        <a href="/categories/杂谈/">杂谈</a>
-        <span class="badge">(4)</span>
+        <a href="/categories/学习笔记/">学习笔记</a>
+        <span class="badge">(51)</span>
     </li>
     
     <li>
@@ -806,13 +789,13 @@ echo implode(&apos; &apos;,BubbleSort($arr)).&quot;\n&quot;;
     </li>
     
     <li>
-        <a href="/categories/Linux/">Linux</a>
-        <span class="badge">(15)</span>
+        <a href="/categories/开发板/">开发板</a>
+        <span class="badge">(1)</span>
     </li>
     
     <li>
-        <a href="/categories/开发板/">开发板</a>
-        <span class="badge">(1)</span>
+        <a href="/categories/Linux/">Linux</a>
+        <span class="badge">(15)</span>
     </li>
     
     <li>
@@ -846,12 +829,12 @@ echo implode(&apos; &apos;,BubbleSort($arr)).&quot;\n&quot;;
     </li>
     
     <li>
-        <a href="/categories/开放平台/">开放平台</a>
+        <a href="/categories/考试/">考试</a>
         <span class="badge">(1)</span>
     </li>
     
     <li>
-        <a href="/categories/考试/">考试</a>
+        <a href="/categories/开放平台/">开放平台</a>
         <span class="badge">(1)</span>
     </li>
     
@@ -869,17 +852,17 @@ echo implode(&apos; &apos;,BubbleSort($arr)).&quot;\n&quot;;
         <!-- 文章标签 -->
 <div class="widget-bd tag-wrap">
   
-    <a class="tag-item" href="/tags/Docker/" title="Docker">Docker (1)</a>
-  
     <a class="tag-item" href="/tags/Golang/" title="Golang">Golang (1)</a>
   
     <a class="tag-item" href="/tags/LNMP/" title="LNMP">LNMP (2)</a>
   
-    <a class="tag-item" href="/tags/网卡/" title="网卡">网卡 (1)</a>
+    <a class="tag-item" href="/tags/Docker/" title="Docker">Docker (1)</a>
   
     <a class="tag-item" href="/tags/OrangePi/" title="OrangePi">OrangePi (1)</a>
   
     <a class="tag-item" href="/tags/Network/" title="Network">Network (3)</a>
+  
+    <a class="tag-item" href="/tags/网卡/" title="网卡">网卡 (1)</a>
   
     <a class="tag-item" href="/tags/PHP/" title="PHP">PHP (11)</a>
   
@@ -901,11 +884,11 @@ echo implode(&apos; &apos;,BubbleSort($arr)).&quot;\n&quot;;
   
     <a class="tag-item" href="/tags/Proxy/" title="Proxy">Proxy (1)</a>
   
-    <a class="tag-item" href="/tags/面试/" title="面试">面试 (1)</a>
-  
     <a class="tag-item" href="/tags/firewall/" title="firewall">firewall (1)</a>
   
     <a class="tag-item" href="/tags/CentOS/" title="CentOS">CentOS (3)</a>
+  
+    <a class="tag-item" href="/tags/面试/" title="面试">面试 (1)</a>
   
     <a class="tag-item" href="/tags/https/" title="https">https (2)</a>
   
@@ -913,39 +896,39 @@ echo implode(&apos; &apos;,BubbleSort($arr)).&quot;\n&quot;;
   
     <a class="tag-item" href="/tags/性能/" title="性能">性能 (3)</a>
   
+    <a class="tag-item" href="/tags/Discuz/" title="Discuz">Discuz (1)</a>
+  
     <a class="tag-item" href="/tags/VPN/" title="VPN">VPN (1)</a>
   
     <a class="tag-item" href="/tags/DS-Store/" title=".DS_Store">.DS_Store (1)</a>
-  
-    <a class="tag-item" href="/tags/Discuz/" title="Discuz">Discuz (1)</a>
   
     <a class="tag-item" href="/tags/MySQL/" title="MySQL">MySQL (9)</a>
   
     <a class="tag-item" href="/tags/FFmpeg/" title="FFmpeg">FFmpeg (1)</a>
   
-    <a class="tag-item" href="/tags/C语言/" title="C语言">C语言 (1)</a>
+    <a class="tag-item" href="/tags/Glassfish/" title="Glassfish">Glassfish (1)</a>
   
     <a class="tag-item" href="/tags/Java/" title="Java">Java (2)</a>
   
-    <a class="tag-item" href="/tags/Glassfish/" title="Glassfish">Glassfish (1)</a>
+    <a class="tag-item" href="/tags/golang/" title="golang">golang (1)</a>
   
-    <a class="tag-item" href="/tags/html/" title="html">html (1)</a>
+    <a class="tag-item" href="/tags/C语言/" title="C语言">C语言 (1)</a>
   
     <a class="tag-item" href="/tags/Javascript/" title="Javascript">Javascript (2)</a>
   
-    <a class="tag-item" href="/tags/Laravel/" title="Laravel">Laravel (1)</a>
+    <a class="tag-item" href="/tags/html/" title="html">html (1)</a>
   
-    <a class="tag-item" href="/tags/MarkDown/" title="MarkDown">MarkDown (1)</a>
+    <a class="tag-item" href="/tags/Laravel/" title="Laravel">Laravel (1)</a>
   
     <a class="tag-item" href="/tags/数据结构/" title="数据结构">数据结构 (1)</a>
   
-    <a class="tag-item" href="/tags/Vim/" title="Vim">Vim (1)</a>
+    <a class="tag-item" href="/tags/MarkDown/" title="MarkDown">MarkDown (1)</a>
   
     <a class="tag-item" href="/tags/LAMP/" title="LAMP">LAMP (1)</a>
   
-    <a class="tag-item" href="/tags/MacOS/" title="MacOS">MacOS (4)</a>
+    <a class="tag-item" href="/tags/Vim/" title="Vim">Vim (1)</a>
   
-    <a class="tag-item" href="/tags/php/" title="php">php (2)</a>
+    <a class="tag-item" href="/tags/MacOS/" title="MacOS">MacOS (4)</a>
   
 </div>
     </section>
@@ -1006,6 +989,6 @@ echo implode(&apos; &apos;,BubbleSort($arr)).&quot;\n&quot;;
 
     <!--博客js脚本 -->
     <!-- 这里放网站js脚本 -->
-<script src="/js/main.js?v=1620893525734"></script>
+<script src="/js/main.js?v=1634538265351"></script>
 </body>
 </html>
