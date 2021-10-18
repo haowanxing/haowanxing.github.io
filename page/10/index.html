@@ -124,157 +124,6 @@ var _hmt = _hmt || [];
     <header>
         <!-- 标签这有且只能显示一个 -->
         
-        <a class="cat-link" href="/categories/Linux/">Linux</a>
-        
-        <!-- 文章标题 -->
-        
-    <h3 class="post-title">
-    	<a href="http://www.imsry.cn/posts/1beb1f62.html">
-    		Linux上vi(vim)编辑器使用教程 - 转载
-    	</a>
-    </h3>
-
-    </header>
-    <p class="post-meta">
-        Anthony 发表于
-        <time datetime="2014-11-29T15:29:48.000Z">2014-11-29 23:29:48</time>
-
-
-        &nbsp;&nbsp;
-        <span class="post-tags">
-            标签：
-            
-    
-        <a href="/tags/Vim/" title="Vim">Vim</a>
-    
-
-        </span>
-    </p>
-
-    <div class="post-content">
-        <div class="post-excerpt">
-            
-                <p>vi(vim)是上Linux非常常用的编辑器，很多Linux发行版都默认安装了vi(vim)。vi(vim)命令繁多但是如果使用灵活之后将会大大提高效率。vi是“visual interface”的缩写，vim是vi IMproved(增强版的vi)。在一般的系统管理维护中vi就够用，如果想使用代码加亮的话可以使用vim。下面vps侦探整理一下vi的使用教程：包含vi的基本介绍、使用模式、文件的打开关闭保存、插入文本或新建行、移动光标、删除、恢复字符或行、搜索等等，算是一篇比较适合新手学习vi的教程。</p>
-<p>vi有3个模式：插入模式、命令模式、低行模式。</p>
-<pre><code>插入模式：在此模式下可以输入字符，按ESC将回到命令模式。
-命令模式：可以移动光标、删除字符等。
-低行模式：可以保存文件、退出vi、设置vi、查找等功能(低行模式也可以看作是命令模式里的)。
-</code></pre><p>一、打开文件、保存、关闭文件(vi命令模式下使用)</p>
-<pre lang="ruby" line="1" escaped="true">
-vi filename       //打开filename文件
-:w       //保存文件
-:w vpser.net //保存至vpser.net文件
-:q          //退出编辑器，如果文件已修改请使用下面的命令
-:q!        //退出编辑器，且不保存
-:wq         //退出编辑器，且保存文件
-</pre>
-
-<p>二、插入文本或行(vi命令模式下使用，执行下面命令后将进入插入模式，按ESC键可退出插入模式)</p>
-<pre lang="bash" line="1" escaped="true">
-
-a      //在当前光标位置的右边添加文本
-i       //在当前光标位置的左边添加文本
-A     //在当前行的末尾位置添加文本
-I      //在当前行的开始处添加文本(非空字符的行首)
-O     //在当前行的上面新建一行
-o     //在当前行的下面新建一行
-R    //替换(覆盖)当前光标位置及后面的若干文本
-J    //合并光标所在行及下一行为一行(依然在命令模式)
-</pre>
-
-<p>三、移动光标(vi命令模式下使用)</p>
-<p>1、使用上下左右方向键</p>
-<p>2、命令模式下：h   向左、j   向下 、k   向上、l  向右。<br>空格键 向右、Backspace  向左、Enter  移动到下一行首、-  移动到上一行首。<br>四、删除、恢复字符或行(vi命令模式下使用)</p>
-<pre lang="apache" line="1" escaped="true">
-
-x         //删除当前字符
-nx         //删除从光标开始的n个字符
-dd      //删除当前行
-ndd   //向下删除当前行在内的n行
-u       //撤销上一步操作
-U      //撤销对当前行的所有操作
-</pre>
-
-<p>五、搜索(vi命令模式下使用)</p>
-<pre lang="ruby" line="1" escaped="true">
-
-/vpser     //向光标下搜索vpser字符串
-?vpser     //向光标上搜索vpser字符串
-n           //向下搜索前一个搜素动作
-N         //向上搜索前一个搜索动作
-</pre>
-
-<p>六、跳至指定行(vi命令模式下使用)</p>
-<pre lang="ruby" line="1" escaped="true">
-
-n+        //向下跳n行
-n-         //向上跳n行
-nG        //跳到行号为n的行
-G           //跳至文件的底部
-</pre>
-
-<p>七、设置行号(vi命令模式下使用)</p>
-<pre lang="ruby" line="1" escaped="true">
-
-:set  nu     //显示行号
-:set nonu    //取消显示行号
-</pre>
-
-<p>八、复制、粘贴(vi命令模式下使用)</p>
-<pre lang="ruby" line="1" escaped="true">
-
-yy    //将当前行复制到缓存区，也可以用 "ayy 复制，"a 为缓冲区，a也可以替换为a到z的任意字母，可以完成多个复制任务。
-nyy   //将当前行向下n行复制到缓冲区，也可以用 "anyy 复制，"a 为缓冲区，a也可以替换为a到z的任意字母，可以完成多个复制任务。
-yw    //复制从光标开始到词尾的字符。
-nyw   //复制从光标开始的n个单词。
-y^      //复制从光标到行首的内容。  VPS侦探
-y$      //复制从光标到行尾的内容。
-p        //粘贴剪切板里的内容在光标后，如果使用了前面的自定义缓冲区，建议使用"ap 进行粘贴。
-P        //粘贴剪切板里的内容在光标前，如果使用了前面的自定义缓冲区，建议使用"aP 进行粘贴。
-</pre>
-
-<p>九、替换(vi命令模式下使用)</p>
-<pre lang="ruby" line="1" escaped="true">
-
-:s/old/new      //用new替换行中首次出现的old
-:s/old/new/g         //用new替换行中所有的old
-:n,m s/old/new/g     //用new替换从n到m行里所有的old
-:%s/old/new/g      //用new替换当前文件里所有的old
-</pre>
-
-<p>十、编辑其他文件</p>
-<pre lang="ruby" line="1" escaped="true">
-:e otherfilename    //编辑文件名为otherfilename的文件。
-</pre>
-
-<p>十一、修改文件格式</p>
-<pre lang="ruby" line="1" escaped="true">
-:set fileformat=unix   //将文件修改为unix格式，如win下面的文本文件在linux下会出现^M。
-</pre>
-
-<p>总结：vi(vim)教程虽然有比较多的命令，但是只要勤加练习，相信你会很快的熟练掌握，同时也会给你的工作或学习带来更高的效率。当如果不知道自己处在什么模式时可以按2次Esc键即可回到命令模式，会有最后提醒一点：注意大小写！！！<br>文章来源：<a href="http://www.vpser.net/manage/vi.html" target="_blank" rel="noopener">Linux上vi(vim)编辑器使用教程 - VPS侦探</a>.</p>
-
-            
-            <p class="more">
-                <a href="http://www.imsry.cn/posts/1beb1f62.html">阅读剩下更多</a>
-            </p>
-        </div>
-        <div class="post-thumbnail" data-img="">
-            <a href="http://www.imsry.cn/posts/1beb1f62.html" title="Linux上vi(vim)编辑器使用教程 - 转载">
-                
-                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/9.jpg" alt="默认配图" >
-                
-            </a>
-        </div>
-    </div>
-</article>
-
-    
-        <!-- 文章列表 item -->
-<article class="post">
-    <header>
-        <!-- 标签这有且只能显示一个 -->
-        
         <a class="cat-link" href="/categories/学习笔记/">学习笔记</a>
         
         <!-- 文章标题 -->
@@ -828,6 +677,54 @@ mysql>flush privileges;
 </article>
 
     
+        <!-- 文章列表 item -->
+<article class="post">
+    <header>
+        <!-- 标签这有且只能显示一个 -->
+        
+        <a class="cat-link" href="/categories/学习笔记/">学习笔记</a>
+        
+        <!-- 文章标题 -->
+        
+    <h3 class="post-title">
+    	<a href="http://www.imsry.cn/posts/a556ac97.html">
+    		Javascript:向表格添加或删除一行（转载）
+    	</a>
+    </h3>
+
+    </header>
+    <p class="post-meta">
+        Anthony 发表于
+        <time datetime="2014-08-14T03:54:00.000Z">2014-08-14 11:54:00</time>
+
+
+        &nbsp;&nbsp;
+        <span class="post-tags">
+            标签：
+            
+        </span>
+    </p>
+
+    <div class="post-content">
+        <div class="post-excerpt">
+            
+                <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">&lt;title&gt;title&lt;/title&gt;</span><br><span class="line">&lt;script type=&quot;text/javascript&quot;&gt;</span><br><span class="line">function delIndex(obj) &#123;</span><br><span class="line">var rowIndex = obj.parentNode.parentNode.rowIndex;//获得行下标</span><br><span class="line">alert(rowIndex);</span><br><span class="line">var tb = document.getElementById(&quot;tb&quot;);</span><br><span class="line">tb.deleteRow(rowIndex);//删除当前行</span><br><span class="line">add(rowIndex);//在当前行插入一行</span><br><span class="line">&#125;</span><br><span class="line">function add(rowIndex) &#123;</span><br><span class="line">var tb = document.getElementById(&quot;tb&quot;);</span><br><span class="line">if (rowIndex == &quot;-1&quot;) &#123;</span><br><span class="line">rowIndex = tb.rows.length;//默认在末尾插入一行</span><br><span class="line">&#125;</span><br><span class="line">var row = tb.insertRow(rowIndex);//在表格的指定插入一行</span><br><span class="line">var c1 = row.insertCell(0);</span><br><span class="line">c1.innerHTML = &quot;new&quot; + rowIndex;</span><br><span class="line">var c2 = row.insertCell(1);</span><br><span class="line">c2.innerHTML = &apos;&lt;a href=&quot;javascript:void(0)&quot; onclick=&quot;delIndex(this)&quot;&gt;删除&lt;/a&gt;&apos;;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;input type=&quot;button&quot; value=&quot;添加一行&quot; onclick=&quot;add(&apos;-1&apos;)&quot; &gt;&lt;input type=&quot;button&quot; value=&quot;删除选中项&quot; onclick=&quot;del()&quot; /&gt;</span><br><span class="line">&lt;table id=&quot;tb&quot;&gt;</span><br><span class="line">&lt;tr&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;&lt;a href=&quot;javascript:void(0)&quot; onclick=&quot;delIndex(this)&quot;&gt;删除&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;</span><br><span class="line">&lt;tr&gt;&lt;td&gt;2&lt;/td&gt;&lt;td&gt;&lt;a href=&quot;javascript:void(0)&quot; onclick=&quot;delIndex(this)&quot;&gt;删除&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;</span><br><span class="line">&lt;tr&gt;&lt;td&gt;3&lt;/td&gt;&lt;td&gt;&lt;a href=&quot;javascript:void(0)&quot; onclick=&quot;delIndex(this)&quot;&gt;删除&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;</span><br><span class="line">&lt;tr&gt;&lt;td&gt;4&lt;/td&gt;&lt;td&gt;&lt;a href=&quot;javascript:void(0)&quot; onclick=&quot;delIndex(this)&quot;&gt;删除&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;</span><br><span class="line">&lt;tr&gt;&lt;td&gt;5&lt;/td&gt;&lt;td&gt;&lt;a href=&quot;javascript:void(0)&quot; onclick=&quot;delIndex(this)&quot;&gt;删除&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;</span><br><span class="line">&lt;tr&gt;&lt;td&gt;6&lt;/td&gt;&lt;td&gt;&lt;a href=&quot;javascript:void(0)&quot; onclick=&quot;delIndex(this)&quot;&gt;删除&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;</span><br><span class="line">&lt;tr&gt;&lt;td&gt;7&lt;/td&gt;&lt;td&gt;&lt;a href=&quot;javascript:void(0)&quot; onclick=&quot;delIndex(this)&quot;&gt;删除&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;</span><br><span class="line">&lt;/table&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+            
+            <p class="more">
+                <a href="http://www.imsry.cn/posts/a556ac97.html">阅读剩下更多</a>
+            </p>
+        </div>
+        <div class="post-thumbnail" data-img="">
+            <a href="http://www.imsry.cn/posts/a556ac97.html" title="Javascript:向表格添加或删除一行（转载）">
+                
+                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/4.jpg" alt="默认配图" >
+                
+            </a>
+        </div>
+    </div>
+</article>
+
+    
 
     
     <nav class="page-navigator">
@@ -875,18 +772,28 @@ mysql>flush privileges;
 <ul class="widget-bd">
     
     <li>
+        <a href="/categories/Linux/">Linux</a>
+        <span class="badge">(15)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/学习笔记/">学习笔记</a>
+        <span class="badge">(50)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/Web/">Web</a>
+        <span class="badge">(2)</span>
+    </li>
+    
+    <li>
         <a href="/categories/编程语言/">编程语言</a>
         <span class="badge">(6)</span>
     </li>
     
     <li>
-        <a href="/categories/学习笔记/">学习笔记</a>
-        <span class="badge">(51)</span>
-    </li>
-    
-    <li>
-        <a href="/categories/Learn-GO/">Learn-GO</a>
-        <span class="badge">(6)</span>
+        <a href="/categories/网络安全/">网络安全</a>
+        <span class="badge">(2)</span>
     </li>
     
     <li>
@@ -895,13 +802,13 @@ mysql>flush privileges;
     </li>
     
     <li>
-        <a href="/categories/算法/">算法</a>
+        <a href="/categories/Learn-GO/">Learn-GO</a>
         <span class="badge">(6)</span>
     </li>
     
     <li>
-        <a href="/categories/Linux/">Linux</a>
-        <span class="badge">(15)</span>
+        <a href="/categories/算法/">算法</a>
+        <span class="badge">(6)</span>
     </li>
     
     <li>
@@ -915,7 +822,22 @@ mysql>flush privileges;
     </li>
     
     <li>
-        <a href="/categories/网络安全/">网络安全</a>
+        <a href="/categories/我的分享/">我的分享</a>
+        <span class="badge">(1)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/开放平台/">开放平台</a>
+        <span class="badge">(1)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/考试/">考试</a>
+        <span class="badge">(1)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/游戏/">游戏</a>
         <span class="badge">(2)</span>
     </li>
     
@@ -929,31 +851,6 @@ mysql>flush privileges;
         <span class="badge">(1)</span>
     </li>
     
-    <li>
-        <a href="/categories/Web/">Web</a>
-        <span class="badge">(2)</span>
-    </li>
-    
-    <li>
-        <a href="/categories/我的分享/">我的分享</a>
-        <span class="badge">(1)</span>
-    </li>
-    
-    <li>
-        <a href="/categories/开放平台/">开放平台</a>
-        <span class="badge">(1)</span>
-    </li>
-    
-    <li>
-        <a href="/categories/游戏/">游戏</a>
-        <span class="badge">(2)</span>
-    </li>
-    
-    <li>
-        <a href="/categories/考试/">考试</a>
-        <span class="badge">(1)</span>
-    </li>
-    
 </ul>
     </section>
 
@@ -963,17 +860,49 @@ mysql>flush privileges;
         <!-- 文章标签 -->
 <div class="widget-bd tag-wrap">
   
-    <a class="tag-item" href="/tags/Golang/" title="Golang">Golang (2)</a>
+    <a class="tag-item" href="/tags/firewall/" title="firewall">firewall (1)</a>
+  
+    <a class="tag-item" href="/tags/CentOS/" title="CentOS">CentOS (3)</a>
+  
+    <a class="tag-item" href="/tags/Apache/" title="Apache">Apache (4)</a>
+  
+    <a class="tag-item" href="/tags/Linux/" title="Linux">Linux (5)</a>
+  
+    <a class="tag-item" href="/tags/Proxy/" title="Proxy">Proxy (1)</a>
+  
+    <a class="tag-item" href="/tags/VPN/" title="VPN">VPN (1)</a>
   
     <a class="tag-item" href="/tags/Docker/" title="Docker">Docker (1)</a>
   
+    <a class="tag-item" href="/tags/Discuz/" title="Discuz">Discuz (1)</a>
+  
+    <a class="tag-item" href="/tags/FFmpeg/" title="FFmpeg">FFmpeg (1)</a>
+  
+    <a class="tag-item" href="/tags/Network/" title="Network">Network (3)</a>
+  
+    <a class="tag-item" href="/tags/Glassfish/" title="Glassfish">Glassfish (1)</a>
+  
+    <a class="tag-item" href="/tags/Java/" title="Java">Java (2)</a>
+  
+    <a class="tag-item" href="/tags/MySQL/" title="MySQL">MySQL (9)</a>
+  
+    <a class="tag-item" href="/tags/Golang/" title="Golang">Golang (3)</a>
+  
+    <a class="tag-item" href="/tags/https/" title="https">https (2)</a>
+  
+    <a class="tag-item" href="/tags/Chrome/" title="Chrome">Chrome (1)</a>
+  
+    <a class="tag-item" href="/tags/数据结构/" title="数据结构">数据结构 (1)</a>
+  
     <a class="tag-item" href="/tags/LNMP/" title="LNMP">LNMP (2)</a>
   
-    <a class="tag-item" href="/tags/网卡/" title="网卡">网卡 (1)</a>
+    <a class="tag-item" href="/tags/Vim/" title="Vim">Vim (1)</a>
+  
+    <a class="tag-item" href="/tags/LAMP/" title="LAMP">LAMP (1)</a>
   
     <a class="tag-item" href="/tags/OrangePi/" title="OrangePi">OrangePi (1)</a>
   
-    <a class="tag-item" href="/tags/Network/" title="Network">Network (3)</a>
+    <a class="tag-item" href="/tags/网卡/" title="网卡">网卡 (1)</a>
   
     <a class="tag-item" href="/tags/算法/" title="算法">算法 (1)</a>
   
@@ -983,63 +912,31 @@ mysql>flush privileges;
   
     <a class="tag-item" href="/tags/PHP/" title="PHP">PHP (11)</a>
   
-    <a class="tag-item" href="/tags/Go/" title="Go">Go (1)</a>
-  
-    <a class="tag-item" href="/tags/gRPC/" title="gRPC">gRPC (1)</a>
-  
     <a class="tag-item" href="/tags/RPC/" title="RPC">RPC (1)</a>
   
-    <a class="tag-item" href="/tags/Apache/" title="Apache">Apache (4)</a>
+    <a class="tag-item" href="/tags/HTML/" title="HTML">HTML (2)</a>
   
-    <a class="tag-item" href="/tags/Linux/" title="Linux">Linux (5)</a>
-  
-    <a class="tag-item" href="/tags/Proxy/" title="Proxy">Proxy (1)</a>
-  
-    <a class="tag-item" href="/tags/CentOS/" title="CentOS">CentOS (3)</a>
-  
-    <a class="tag-item" href="/tags/面试/" title="面试">面试 (1)</a>
-  
-    <a class="tag-item" href="/tags/firewall/" title="firewall">firewall (1)</a>
-  
-    <a class="tag-item" href="/tags/https/" title="https">https (2)</a>
-  
-    <a class="tag-item" href="/tags/Chrome/" title="Chrome">Chrome (1)</a>
-  
-    <a class="tag-item" href="/tags/性能/" title="性能">性能 (3)</a>
-  
-    <a class="tag-item" href="/tags/VPN/" title="VPN">VPN (1)</a>
-  
-    <a class="tag-item" href="/tags/DS-Store/" title=".DS_Store">.DS_Store (1)</a>
-  
-    <a class="tag-item" href="/tags/Discuz/" title="Discuz">Discuz (1)</a>
-  
-    <a class="tag-item" href="/tags/MySQL/" title="MySQL">MySQL (9)</a>
-  
-    <a class="tag-item" href="/tags/FFmpeg/" title="FFmpeg">FFmpeg (1)</a>
-  
-    <a class="tag-item" href="/tags/C语言/" title="C语言">C语言 (1)</a>
-  
-    <a class="tag-item" href="/tags/Java/" title="Java">Java (2)</a>
+    <a class="tag-item" href="/tags/Javascript/" title="Javascript">Javascript (2)</a>
   
     <a class="tag-item" href="/tags/MacOS/" title="MacOS">MacOS (5)</a>
   
-    <a class="tag-item" href="/tags/Arm64/" title="Arm64">Arm64 (1)</a>
-  
-    <a class="tag-item" href="/tags/Glassfish/" title="Glassfish">Glassfish (1)</a>
-  
-    <a class="tag-item" href="/tags/html/" title="html">html (1)</a>
-  
-    <a class="tag-item" href="/tags/Javascript/" title="Javascript">Javascript (2)</a>
+    <a class="tag-item" href="/tags/php/" title="php">php (2)</a>
   
     <a class="tag-item" href="/tags/Laravel/" title="Laravel">Laravel (1)</a>
   
     <a class="tag-item" href="/tags/MarkDown/" title="MarkDown">MarkDown (1)</a>
   
-    <a class="tag-item" href="/tags/数据结构/" title="数据结构">数据结构 (1)</a>
+    <a class="tag-item" href="/tags/Git/" title="Git">Git (1)</a>
   
-    <a class="tag-item" href="/tags/Vim/" title="Vim">Vim (1)</a>
+    <a class="tag-item" href="/tags/Ngrok/" title="Ngrok">Ngrok (1)</a>
   
-    <a class="tag-item" href="/tags/LAMP/" title="LAMP">LAMP (1)</a>
+    <a class="tag-item" href="/tags/排序算法/" title="排序算法">排序算法 (1)</a>
+  
+    <a class="tag-item" href="/tags/INI/" title="INI">INI (1)</a>
+  
+    <a class="tag-item" href="/tags/Excel/" title="Excel">Excel (1)</a>
+  
+    <a class="tag-item" href="/tags/OpenSSL/" title="OpenSSL">OpenSSL (1)</a>
   
 </div>
     </section>
@@ -1100,6 +997,6 @@ mysql>flush privileges;
 
     <!--博客js脚本 -->
     <!-- 这里放网站js脚本 -->
-<script src="/js/main.js?v=1634538686152"></script>
+<script src="/js/main.js?v=1634540542948"></script>
 </body>
 </html>
