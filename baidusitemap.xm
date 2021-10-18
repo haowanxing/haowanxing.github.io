@@ -5,13 +5,19 @@
     
   <url>
     <loc>http://www.imsry.cn/posts/e6ef1b5e.html</loc>
-    <lastmod>2021-10-18T06:24:05.823Z</lastmod>
+    <lastmod>2021-10-18T06:29:35.820Z</lastmod>
     <data>
         <display>
         <title>记一次使用CGo的Golang项目交叉编译遇到的问题及解决步骤</title>
         <pubTime>2021-10-18T02:08:41.000Z</pubTime>
         
-        <tag>golang</tag>
+        <tag>Golang</tag>
+         
+        <tag>Linux</tag>
+         
+        <tag>MacOS</tag>
+         
+        <tag>Arm64</tag>
          
          
            
@@ -1449,9 +1455,9 @@
         
         <tag>MySQL</tag>
          
-        <tag>Glassfish</tag>
-         
         <tag>Java</tag>
+         
+        <tag>Glassfish</tag>
          
          
            
@@ -1473,9 +1479,9 @@
         
         <tag>PHP</tag>
          
-        <tag>Java</tag>
-         
         <tag>C语言</tag>
+         
+        <tag>Java</tag>
          
          
            
@@ -1653,9 +1659,9 @@
         <title> CENTOS 6.0 iptables 开放端口80 3306 22端口</title>
         <pubTime>2015-11-11T13:13:01.000Z</pubTime>
         
-        <tag>firewall</tag>
-         
         <tag>CentOS</tag>
+         
+        <tag>firewall</tag>
          
          
            
