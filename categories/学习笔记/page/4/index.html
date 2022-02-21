@@ -128,6 +128,57 @@ var _hmt = _hmt || [];
         <!-- 文章标题 -->
         
     <h3 class="post-title">
+    	<a href="http://www.imsry.cn/posts/61718228.html">
+    		作业3-1（完成MYSQL操作）
+    	</a>
+    </h3>
+
+    </header>
+    <p class="post-meta">
+        Anthony 发表于
+        <time datetime="2015-05-09T02:40:51.000Z">2015-05-09 10:40:51</time>
+
+
+        &nbsp;&nbsp;
+        <span class="post-tags">
+            标签：
+            
+        </span>
+    </p>
+
+    <div class="post-content">
+        <div class="post-excerpt">
+            
+                <p><a href="/uploads/2015/05/QQ20150509-1@2x.png"><img src="/uploads/2015/05/QQ20150509-1@2x-285x300.png" alt="作业3-1要求"></a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">第一步，创建数据库&apos;XSGL&apos;: </span><br><span class="line">create database XSGL;</span><br><span class="line"></span><br><span class="line">第二步，创建学生表&apos;student&apos;: </span><br><span class="line">create table student(</span><br><span class="line">Sno char(7) NOT NULL,</span><br><span class="line">Sname char(10) NOT NULL,</span><br><span class="line">Ssex enum(&apos;男&apos;,&apos;女&apos;) NULL,</span><br><span class="line">Sage tinyint(4) NULL,</span><br><span class="line">Sdept char(20) NULL default &apos;计算机系&apos;,</span><br><span class="line">PRIMARY KEY(Sno)</span><br><span class="line">)engine=innodb default charset=utf8;</span><br><span class="line"></span><br><span class="line">第三步，插入数据：</span><br><span class="line">insert into student(Sno,Sname,Ssex,Sage,Sdept) values (&apos;9512101&apos;,&apos;李勇&apos;,&apos;男&apos;,&apos;19&apos;,&apos;计算机系&apos;),(&apos;9512102&apos;,&apos;刘晨&apos;,&apos;男&apos;,&apos;20&apos;,&apos;计算机系&apos;),(&apos;9512103&apos;,&apos;王敏&apos;,&apos;女&apos;,&apos;20&apos;,&apos;计算机系&apos;),(&apos;9521101&apos;,&apos;张立&apos;,&apos;男&apos;,&apos;22&apos;,&apos;信息系&apos;),(&apos;9521102&apos;,&apos;吴兵&apos;,&apos;女&apos;,&apos;21&apos;,&apos;信息系&apos;),(&apos;9521103&apos;,&apos;张海&apos;,&apos;男&apos;,&apos;20&apos;,&apos;信息系&apos;),(&apos;9531101&apos;,&apos;钱小平&apos;,&apos;女&apos;,&apos;18&apos;,&apos;数学系&apos;),(&apos;9531102&apos;,&apos;王大力&apos;,&apos;男&apos;,&apos;19&apos;,&apos;数学系&apos;);</span><br><span class="line"></span><br><span class="line">第四步，删除学号为&apos;9531102&apos;的记录：</span><br><span class="line">delete from student where Sno=&apos;9531102&apos;;</span><br><span class="line"></span><br><span class="line">第五步，将计算机系的学生年龄统一加&apos;1&apos;：</span><br><span class="line">update student set Sage=Sage+1 where Sdept=&apos;计算机系&apos;;</span><br><span class="line"></span><br><span class="line">第六步，显示学生的学号和姓名两列,这两列分别起别名为“ID”和“NAME”, 要求只列出查询结果的前 5 条记录：</span><br><span class="line">select Sno as ID,Sname as NAME from student limit 5;</span><br><span class="line"></span><br><span class="line">第七步，查询信息系所有男同学的所有信息：</span><br><span class="line">select * from student where Sdept=&apos;信息系&apos; and Ssex=&apos;男&apos;;</span><br><span class="line"></span><br><span class="line">第八步，查询 student 表所有的数据,按照年龄排序,年龄相同则按照学号降序排序：</span><br><span class="line">select * from student order by Sage ASC,Sno DESC;</span><br><span class="line"></span><br><span class="line">第九步，查询所有姓“王”的同学的基本信息：</span><br><span class="line">select * from student where Sname LIKE &apos;王%&apos;;</span><br><span class="line"></span><br><span class="line">第十步，查询每个院系学生的人数,要求列出院系名称和相应人数：</span><br><span class="line">select COUNT(*) as &apos;人数&apos;,Sdept from student GROUP BY Sdept;</span><br><span class="line">//如果一张表里面学号有重复的，必须去重！使用下面语句：</span><br><span class="line">select COUNT(DISTINCT Sno) as &apos;人数&apos;,Sdept from student GROUP BY Sdept;</span><br></pre></td></tr></table></figure>
+<p>到此，作业3-1就做完了！</p>
+
+            
+            <p class="more">
+                <a href="http://www.imsry.cn/posts/61718228.html">阅读剩下更多</a>
+            </p>
+        </div>
+        <div class="post-thumbnail" data-img="">
+            <a href="http://www.imsry.cn/posts/61718228.html" title="作业3-1（完成MYSQL操作）">
+                
+                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/9.jpg" alt="默认配图" >
+                
+            </a>
+        </div>
+    </div>
+</article>
+
+    
+        <!-- 文章列表 item -->
+<article class="post">
+    <header>
+        <!-- 标签这有且只能显示一个 -->
+        
+        <a class="cat-link" href="/categories/学习笔记/">学习笔记</a>
+        
+        <!-- 文章标题 -->
+        
+    <h3 class="post-title">
     	<a href="http://www.imsry.cn/posts/25b754f7.html">
     		作业2-2（PHP表单数据提交与接收)
     	</a>
@@ -639,61 +690,10 @@ mysql>flush privileges;
 </article>
 
     
-        <!-- 文章列表 item -->
-<article class="post">
-    <header>
-        <!-- 标签这有且只能显示一个 -->
-        
-        <a class="cat-link" href="/categories/学习笔记/">学习笔记</a>
-        
-        <!-- 文章标题 -->
-        
-    <h3 class="post-title">
-    	<a href="http://www.imsry.cn/posts/e38058a2.html">
-    		js 获得多个同name 的input输入框的值 （转载）
-    	</a>
-    </h3>
-
-    </header>
-    <p class="post-meta">
-        Anthony 发表于
-        <time datetime="2014-08-19T08:08:11.000Z">2014-08-19 16:08:11</time>
-
-
-        &nbsp;&nbsp;
-        <span class="post-tags">
-            标签：
-            
-        </span>
-    </p>
-
-    <div class="post-content">
-        <div class="post-excerpt">
-            
-                <p>js 获得多个同name 的input输入框的值</p>
-<p>起初是使用document.all.id.length获得输入框的个数，但时而正常，时而显示undefined，效果不是很好，网上信息说document.all不是兼容所有浏览器的,现在似乎是只支持IE。</p>
-<p>解决方法是如下：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var els =document.getElementsByName(<span class="string">"search"</span>);</span><br><span class="line"><span class="keyword">for</span> (var i = <span class="number">0</span>, j = els.length; i &amp;lt; j; i++)&#123;</span><br><span class="line">alert(els[i].value);</span><br></pre></td></tr></table></figure></p>
-
-            
-            <p class="more">
-                <a href="http://www.imsry.cn/posts/e38058a2.html">阅读剩下更多</a>
-            </p>
-        </div>
-        <div class="post-thumbnail" data-img="">
-            <a href="http://www.imsry.cn/posts/e38058a2.html" title="js 获得多个同name 的input输入框的值 （转载）">
-                
-                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/9.jpg" alt="默认配图" >
-                
-            </a>
-        </div>
-    </div>
-</article>
-
-    
 
     
     <nav class="page-navigator">
-        <a class="extend prev" rel="prev" href="/categories/学习笔记/page/3/">前一页</a><a class="page-number" href="/categories/学习笔记/">1</a><a class="page-number" href="/categories/学习笔记/page/2/">2</a><a class="page-number" href="/categories/学习笔记/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/categories/学习笔记/page/5/">5</a><a class="extend next" rel="next" href="/categories/学习笔记/page/5/">后一页</a>
+        <a class="extend prev" rel="prev" href="/categories/学习笔记/page/3/">前一页</a><a class="page-number" href="/categories/学习笔记/">1</a><a class="page-number" href="/categories/学习笔记/page/2/">2</a><a class="page-number" href="/categories/学习笔记/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/categories/学习笔记/page/5/">5</a><a class="page-number" href="/categories/学习笔记/page/6/">6</a><a class="extend next" rel="next" href="/categories/学习笔记/page/5/">后一页</a>
     </nav>
     
 
@@ -740,22 +740,17 @@ mysql>flush privileges;
     </li>
     
     <li>
-        <a href="/categories/学习笔记/">学习笔记</a>
-        <span class="badge">(50)</span>
-    </li>
-    
-    <li>
-        <a href="/categories/Web/">Web</a>
+        <a href="/categories/网络安全/">网络安全</a>
         <span class="badge">(2)</span>
     </li>
     
     <li>
-        <a href="/categories/编程语言/">编程语言</a>
-        <span class="badge">(6)</span>
+        <a href="/categories/学习笔记/">学习笔记</a>
+        <span class="badge">(51)</span>
     </li>
     
     <li>
-        <a href="/categories/网络安全/">网络安全</a>
+        <a href="/categories/Web/">Web</a>
         <span class="badge">(2)</span>
     </li>
     
@@ -771,6 +766,11 @@ mysql>flush privileges;
     
     <li>
         <a href="/categories/算法/">算法</a>
+        <span class="badge">(6)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/编程语言/">编程语言</a>
         <span class="badge">(6)</span>
     </li>
     
@@ -795,13 +795,13 @@ mysql>flush privileges;
     </li>
     
     <li>
-        <a href="/categories/考试/">考试</a>
-        <span class="badge">(1)</span>
+        <a href="/categories/游戏/">游戏</a>
+        <span class="badge">(2)</span>
     </li>
     
     <li>
-        <a href="/categories/游戏/">游戏</a>
-        <span class="badge">(2)</span>
+        <a href="/categories/考试/">考试</a>
+        <span class="badge">(1)</span>
     </li>
     
     <li>
@@ -823,33 +823,15 @@ mysql>flush privileges;
         <!-- 文章标签 -->
 <div class="widget-bd tag-wrap">
   
-    <a class="tag-item" href="/tags/firewall/" title="firewall">firewall (1)</a>
-  
-    <a class="tag-item" href="/tags/CentOS/" title="CentOS">CentOS (3)</a>
-  
     <a class="tag-item" href="/tags/Apache/" title="Apache">Apache (4)</a>
   
     <a class="tag-item" href="/tags/Linux/" title="Linux">Linux (5)</a>
   
     <a class="tag-item" href="/tags/Proxy/" title="Proxy">Proxy (1)</a>
   
-    <a class="tag-item" href="/tags/VPN/" title="VPN">VPN (1)</a>
+    <a class="tag-item" href="/tags/firewall/" title="firewall">firewall (1)</a>
   
-    <a class="tag-item" href="/tags/Docker/" title="Docker">Docker (1)</a>
-  
-    <a class="tag-item" href="/tags/Discuz/" title="Discuz">Discuz (1)</a>
-  
-    <a class="tag-item" href="/tags/FFmpeg/" title="FFmpeg">FFmpeg (1)</a>
-  
-    <a class="tag-item" href="/tags/Network/" title="Network">Network (3)</a>
-  
-    <a class="tag-item" href="/tags/Glassfish/" title="Glassfish">Glassfish (1)</a>
-  
-    <a class="tag-item" href="/tags/Java/" title="Java">Java (2)</a>
-  
-    <a class="tag-item" href="/tags/MySQL/" title="MySQL">MySQL (9)</a>
-  
-    <a class="tag-item" href="/tags/Golang/" title="Golang">Golang (3)</a>
+    <a class="tag-item" href="/tags/CentOS/" title="CentOS">CentOS (3)</a>
   
     <a class="tag-item" href="/tags/https/" title="https">https (2)</a>
   
@@ -857,15 +839,35 @@ mysql>flush privileges;
   
     <a class="tag-item" href="/tags/数据结构/" title="数据结构">数据结构 (1)</a>
   
+    <a class="tag-item" href="/tags/VPN/" title="VPN">VPN (1)</a>
+  
+    <a class="tag-item" href="/tags/Discuz/" title="Discuz">Discuz (1)</a>
+  
+    <a class="tag-item" href="/tags/Docker/" title="Docker">Docker (1)</a>
+  
+    <a class="tag-item" href="/tags/Glassfish/" title="Glassfish">Glassfish (1)</a>
+  
+    <a class="tag-item" href="/tags/Java/" title="Java">Java (2)</a>
+  
+    <a class="tag-item" href="/tags/MySQL/" title="MySQL">MySQL (9)</a>
+  
+    <a class="tag-item" href="/tags/Network/" title="Network">Network (3)</a>
+  
+    <a class="tag-item" href="/tags/FFmpeg/" title="FFmpeg">FFmpeg (1)</a>
+  
     <a class="tag-item" href="/tags/LNMP/" title="LNMP">LNMP (2)</a>
+  
+    <a class="tag-item" href="/tags/Golang/" title="Golang">Golang (3)</a>
   
     <a class="tag-item" href="/tags/Vim/" title="Vim">Vim (1)</a>
   
     <a class="tag-item" href="/tags/LAMP/" title="LAMP">LAMP (1)</a>
   
+    <a class="tag-item" href="/tags/网卡/" title="网卡">网卡 (1)</a>
+  
     <a class="tag-item" href="/tags/OrangePi/" title="OrangePi">OrangePi (1)</a>
   
-    <a class="tag-item" href="/tags/网卡/" title="网卡">网卡 (1)</a>
+    <a class="tag-item" href="/tags/PHP/" title="PHP">PHP (11)</a>
   
     <a class="tag-item" href="/tags/算法/" title="算法">算法 (1)</a>
   
@@ -873,27 +875,25 @@ mysql>flush privileges;
   
     <a class="tag-item" href="/tags/定理/" title="定理">定理 (1)</a>
   
-    <a class="tag-item" href="/tags/PHP/" title="PHP">PHP (11)</a>
-  
     <a class="tag-item" href="/tags/RPC/" title="RPC">RPC (1)</a>
   
     <a class="tag-item" href="/tags/HTML/" title="HTML">HTML (2)</a>
   
     <a class="tag-item" href="/tags/Javascript/" title="Javascript">Javascript (2)</a>
   
-    <a class="tag-item" href="/tags/MacOS/" title="MacOS">MacOS (5)</a>
-  
-    <a class="tag-item" href="/tags/php/" title="php">php (2)</a>
+    <a class="tag-item" href="/tags/k8s/" title="k8s">k8s (1)</a>
   
     <a class="tag-item" href="/tags/Laravel/" title="Laravel">Laravel (1)</a>
   
     <a class="tag-item" href="/tags/MarkDown/" title="MarkDown">MarkDown (1)</a>
   
+    <a class="tag-item" href="/tags/MacOS/" title="MacOS">MacOS (5)</a>
+  
+    <a class="tag-item" href="/tags/php/" title="php">php (2)</a>
+  
     <a class="tag-item" href="/tags/Git/" title="Git">Git (1)</a>
   
     <a class="tag-item" href="/tags/Ngrok/" title="Ngrok">Ngrok (1)</a>
-  
-    <a class="tag-item" href="/tags/排序算法/" title="排序算法">排序算法 (1)</a>
   
     <a class="tag-item" href="/tags/INI/" title="INI">INI (1)</a>
   
@@ -951,7 +951,7 @@ mysql>flush privileges;
 </div>
     &copy;
     
-        2014-2021
+        2014-2022
     
 
     <a href="/">Best Wishes</a>
@@ -960,6 +960,6 @@ mysql>flush privileges;
 
     <!--博客js脚本 -->
     <!-- 这里放网站js脚本 -->
-<script src="/js/main.js?v=1634540542177"></script>
+<script src="/js/main.js?v=1645428002323"></script>
 </body>
 </html>

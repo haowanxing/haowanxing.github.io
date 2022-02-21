@@ -4,6 +4,26 @@
 
     
   <url>
+    <loc>http://www.imsry.cn/posts/4fa20f2.html</loc>
+    <lastmod>2022-02-21T07:18:53.539Z</lastmod>
+    <data>
+        <display>
+        <title>kubernetes nginx ingress custom 401/500 page</title>
+        <pubTime>2022-02-21T06:30:41.000Z</pubTime>
+        
+        <tag>k8s</tag>
+         
+         
+           
+             
+              <breadCrumb title="学习笔记" url="http://www.imsry.cn/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://www.imsry.cn/posts/5f047c20.html</loc>
     <lastmod>2021-10-18T07:01:17.102Z</lastmod>
     <data>

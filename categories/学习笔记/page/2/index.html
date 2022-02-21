@@ -128,6 +128,73 @@ var _hmt = _hmt || [];
         <!-- 文章标题 -->
         
     <h3 class="post-title">
+    	<a href="http://www.imsry.cn/posts/2e28f02f.html">
+    		mysql中几种Log和打开方法
+    	</a>
+    </h3>
+
+    </header>
+    <p class="post-meta">
+        Anthony 发表于
+        <time datetime="2018-05-17T10:45:18.000Z">2018-05-17 18:45:18</time>
+
+
+        &nbsp;&nbsp;
+        <span class="post-tags">
+            标签：
+            
+    
+        <a href="/tags/MySQL/" title="MySQL">MySQL</a>
+    
+
+        </span>
+    </p>
+
+    <div class="post-content">
+        <div class="post-excerpt">
+            
+                <blockquote>
+<p>Mysql中常见的log有：<code>错误日志log_error</code>、<code>慢查询日志slow_query_log</code>、<code>二进制日志bin_log</code>和<code>通用查询日志general_log</code></p>
+</blockquote>
+<h3 id="错误日志（error-log）"><a href="#错误日志（error-log）" class="headerlink" title="错误日志（error_log）"></a>错误日志（error_log）</h3><p>  这个日志记载mysql服务器的启动和关闭以及运行过程中发生的故障或异常情况，如果你发现mysql无法正常启动，那么你首先应该查看这个日志。</p>
+<p>  配置：</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">log_error = error.log</span><br></pre></td></tr></table></figure>
+<p>  服务器上查询log位置：<code>show variables like &#39;log_error&#39;</code></p>
+<h3 id="慢查询日志（slow-query-log）"><a href="#慢查询日志（slow-query-log）" class="headerlink" title="慢查询日志（slow_query_log）"></a>慢查询日志（slow_query_log）</h3><p>  为了改善数据库性能，需要减少慢查询SQL的使用次数，那么哪些SQL需要改善呢？通过这个日志可以更清楚如何去改善。</p>
+<p>  配置：</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">slow_query_log = 1</span><br><span class="line">lone_query_time = 10</span><br><span class="line">slow_query_log_file = slow_query.log</span><br></pre></td></tr></table></figure>
+<h3 id="二进制查询日志（bin-log）"><a href="#二进制查询日志（bin-log）" class="headerlink" title="二进制查询日志（bin_log）"></a>二进制查询日志（bin_log）</h3><p>  Mysql的binlog日志作用是用来记录mysql内部增删改查等对mysql数据库有更新的内容的记录（对数据库的改动），对数据库的查询select或show等不会被binlog日志记录;主要用于数据库的主从复制以及增量恢复。</p>
+<p>  配置：</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">log_bin = mysql_bin.log</span><br></pre></td></tr></table></figure>
+<h3 id="通用查询日志（general-log）"><a href="#通用查询日志（general-log）" class="headerlink" title="通用查询日志（general_log）"></a>通用查询日志（general_log）</h3><p>  会记录mysql运行期间的所有sql语句</p>
+<p>  配置：</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">log_output=[none|file|table|file,table]  <span class="comment">#通用查询日志输出格式</span></span><br><span class="line">general_log=[on|off]                     <span class="comment">#是否启用通用查询日志</span></span><br><span class="line">general_log_file[=filename]              <span class="comment">#通用查询日志位置及名字</span></span><br></pre></td></tr></table></figure>
+            
+            <p class="more">
+                <a href="http://www.imsry.cn/posts/2e28f02f.html">阅读剩下更多</a>
+            </p>
+        </div>
+        <div class="post-thumbnail" data-img="">
+            <a href="http://www.imsry.cn/posts/2e28f02f.html" title="mysql中几种Log和打开方法">
+                
+                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/7.jpg" alt="默认配图" >
+                
+            </a>
+        </div>
+    </div>
+</article>
+
+    
+        <!-- 文章列表 item -->
+<article class="post">
+    <header>
+        <!-- 标签这有且只能显示一个 -->
+        
+        <a class="cat-link" href="/categories/学习笔记/">学习笔记</a>
+        
+        <!-- 文章标题 -->
+        
+    <h3 class="post-title">
     	<a href="http://www.imsry.cn/posts/65123244.html">
     		skip-name-resolve可以解决远程连接mysql数据库时候的缓慢或超时
     	</a>
@@ -677,62 +744,10 @@ var _hmt = _hmt || [];
 </article>
 
     
-        <!-- 文章列表 item -->
-<article class="post">
-    <header>
-        <!-- 标签这有且只能显示一个 -->
-        
-        <a class="cat-link" href="/categories/学习笔记/">学习笔记</a>
-        
-        <!-- 文章标题 -->
-        
-    <h3 class="post-title">
-    	<a href="http://www.imsry.cn/posts/2da191b.html">
-    		已知单链表，写一算法将其倒置
-    	</a>
-    </h3>
-
-    </header>
-    <p class="post-meta">
-        Anthony 发表于
-        <time datetime="2016-07-22T17:26:03.000Z">2016-07-23 01:26:03</time>
-
-
-        &nbsp;&nbsp;
-        <span class="post-tags">
-            标签：
-            
-    
-        <a href="/tags/数据结构/" title="数据结构">数据结构</a>
-    
-
-        </span>
-    </p>
-
-    <div class="post-content">
-        <div class="post-excerpt">
-            
-                <h2 id="题目：已知单链表H，写一算法将其倒置。"><a href="#题目：已知单链表H，写一算法将其倒置。" class="headerlink" title="题目：已知单链表H，写一算法将其倒置。"></a>题目：已知单链表H，写一算法将其倒置。</h2><p>即实现如图2.22的操作。(a)为倒置前，(b)为倒置后。<br><img src="http://www.dshui.wang/wp-content/uploads/2016/07/1-120222145J02V-1.jpg" alt="1-120222145J02V"><br>依次取原链表中的每个结点，将其作为第一个结点插入到新链表中去，指针p用来指向当前结点，p为空时结束。</p>
-            
-            <p class="more">
-                <a href="http://www.imsry.cn/posts/2da191b.html">阅读剩下更多</a>
-            </p>
-        </div>
-        <div class="post-thumbnail" data-img="">
-            <a href="http://www.imsry.cn/posts/2da191b.html" title="已知单链表，写一算法将其倒置">
-                
-                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/3.jpg" alt="默认配图" >
-                
-            </a>
-        </div>
-    </div>
-</article>
-
-    
 
     
     <nav class="page-navigator">
-        <a class="extend prev" rel="prev" href="/categories/学习笔记/">前一页</a><a class="page-number" href="/categories/学习笔记/">1</a><span class="page-number current">2</span><a class="page-number" href="/categories/学习笔记/page/3/">3</a><a class="page-number" href="/categories/学习笔记/page/4/">4</a><a class="page-number" href="/categories/学习笔记/page/5/">5</a><a class="extend next" rel="next" href="/categories/学习笔记/page/3/">后一页</a>
+        <a class="extend prev" rel="prev" href="/categories/学习笔记/">前一页</a><a class="page-number" href="/categories/学习笔记/">1</a><span class="page-number current">2</span><a class="page-number" href="/categories/学习笔记/page/3/">3</a><a class="page-number" href="/categories/学习笔记/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/categories/学习笔记/page/6/">6</a><a class="extend next" rel="next" href="/categories/学习笔记/page/3/">后一页</a>
     </nav>
     
 
@@ -779,22 +794,17 @@ var _hmt = _hmt || [];
     </li>
     
     <li>
-        <a href="/categories/学习笔记/">学习笔记</a>
-        <span class="badge">(50)</span>
-    </li>
-    
-    <li>
-        <a href="/categories/Web/">Web</a>
+        <a href="/categories/网络安全/">网络安全</a>
         <span class="badge">(2)</span>
     </li>
     
     <li>
-        <a href="/categories/编程语言/">编程语言</a>
-        <span class="badge">(6)</span>
+        <a href="/categories/学习笔记/">学习笔记</a>
+        <span class="badge">(51)</span>
     </li>
     
     <li>
-        <a href="/categories/网络安全/">网络安全</a>
+        <a href="/categories/Web/">Web</a>
         <span class="badge">(2)</span>
     </li>
     
@@ -810,6 +820,11 @@ var _hmt = _hmt || [];
     
     <li>
         <a href="/categories/算法/">算法</a>
+        <span class="badge">(6)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/编程语言/">编程语言</a>
         <span class="badge">(6)</span>
     </li>
     
@@ -834,13 +849,13 @@ var _hmt = _hmt || [];
     </li>
     
     <li>
-        <a href="/categories/考试/">考试</a>
-        <span class="badge">(1)</span>
+        <a href="/categories/游戏/">游戏</a>
+        <span class="badge">(2)</span>
     </li>
     
     <li>
-        <a href="/categories/游戏/">游戏</a>
-        <span class="badge">(2)</span>
+        <a href="/categories/考试/">考试</a>
+        <span class="badge">(1)</span>
     </li>
     
     <li>
@@ -862,33 +877,15 @@ var _hmt = _hmt || [];
         <!-- 文章标签 -->
 <div class="widget-bd tag-wrap">
   
-    <a class="tag-item" href="/tags/firewall/" title="firewall">firewall (1)</a>
-  
-    <a class="tag-item" href="/tags/CentOS/" title="CentOS">CentOS (3)</a>
-  
     <a class="tag-item" href="/tags/Apache/" title="Apache">Apache (4)</a>
   
     <a class="tag-item" href="/tags/Linux/" title="Linux">Linux (5)</a>
   
     <a class="tag-item" href="/tags/Proxy/" title="Proxy">Proxy (1)</a>
   
-    <a class="tag-item" href="/tags/VPN/" title="VPN">VPN (1)</a>
+    <a class="tag-item" href="/tags/firewall/" title="firewall">firewall (1)</a>
   
-    <a class="tag-item" href="/tags/Docker/" title="Docker">Docker (1)</a>
-  
-    <a class="tag-item" href="/tags/Discuz/" title="Discuz">Discuz (1)</a>
-  
-    <a class="tag-item" href="/tags/FFmpeg/" title="FFmpeg">FFmpeg (1)</a>
-  
-    <a class="tag-item" href="/tags/Network/" title="Network">Network (3)</a>
-  
-    <a class="tag-item" href="/tags/Glassfish/" title="Glassfish">Glassfish (1)</a>
-  
-    <a class="tag-item" href="/tags/Java/" title="Java">Java (2)</a>
-  
-    <a class="tag-item" href="/tags/MySQL/" title="MySQL">MySQL (9)</a>
-  
-    <a class="tag-item" href="/tags/Golang/" title="Golang">Golang (3)</a>
+    <a class="tag-item" href="/tags/CentOS/" title="CentOS">CentOS (3)</a>
   
     <a class="tag-item" href="/tags/https/" title="https">https (2)</a>
   
@@ -896,15 +893,35 @@ var _hmt = _hmt || [];
   
     <a class="tag-item" href="/tags/数据结构/" title="数据结构">数据结构 (1)</a>
   
+    <a class="tag-item" href="/tags/VPN/" title="VPN">VPN (1)</a>
+  
+    <a class="tag-item" href="/tags/Discuz/" title="Discuz">Discuz (1)</a>
+  
+    <a class="tag-item" href="/tags/Docker/" title="Docker">Docker (1)</a>
+  
+    <a class="tag-item" href="/tags/Glassfish/" title="Glassfish">Glassfish (1)</a>
+  
+    <a class="tag-item" href="/tags/Java/" title="Java">Java (2)</a>
+  
+    <a class="tag-item" href="/tags/MySQL/" title="MySQL">MySQL (9)</a>
+  
+    <a class="tag-item" href="/tags/Network/" title="Network">Network (3)</a>
+  
+    <a class="tag-item" href="/tags/FFmpeg/" title="FFmpeg">FFmpeg (1)</a>
+  
     <a class="tag-item" href="/tags/LNMP/" title="LNMP">LNMP (2)</a>
+  
+    <a class="tag-item" href="/tags/Golang/" title="Golang">Golang (3)</a>
   
     <a class="tag-item" href="/tags/Vim/" title="Vim">Vim (1)</a>
   
     <a class="tag-item" href="/tags/LAMP/" title="LAMP">LAMP (1)</a>
   
+    <a class="tag-item" href="/tags/网卡/" title="网卡">网卡 (1)</a>
+  
     <a class="tag-item" href="/tags/OrangePi/" title="OrangePi">OrangePi (1)</a>
   
-    <a class="tag-item" href="/tags/网卡/" title="网卡">网卡 (1)</a>
+    <a class="tag-item" href="/tags/PHP/" title="PHP">PHP (11)</a>
   
     <a class="tag-item" href="/tags/算法/" title="算法">算法 (1)</a>
   
@@ -912,27 +929,25 @@ var _hmt = _hmt || [];
   
     <a class="tag-item" href="/tags/定理/" title="定理">定理 (1)</a>
   
-    <a class="tag-item" href="/tags/PHP/" title="PHP">PHP (11)</a>
-  
     <a class="tag-item" href="/tags/RPC/" title="RPC">RPC (1)</a>
   
     <a class="tag-item" href="/tags/HTML/" title="HTML">HTML (2)</a>
   
     <a class="tag-item" href="/tags/Javascript/" title="Javascript">Javascript (2)</a>
   
-    <a class="tag-item" href="/tags/MacOS/" title="MacOS">MacOS (5)</a>
-  
-    <a class="tag-item" href="/tags/php/" title="php">php (2)</a>
+    <a class="tag-item" href="/tags/k8s/" title="k8s">k8s (1)</a>
   
     <a class="tag-item" href="/tags/Laravel/" title="Laravel">Laravel (1)</a>
   
     <a class="tag-item" href="/tags/MarkDown/" title="MarkDown">MarkDown (1)</a>
   
+    <a class="tag-item" href="/tags/MacOS/" title="MacOS">MacOS (5)</a>
+  
+    <a class="tag-item" href="/tags/php/" title="php">php (2)</a>
+  
     <a class="tag-item" href="/tags/Git/" title="Git">Git (1)</a>
   
     <a class="tag-item" href="/tags/Ngrok/" title="Ngrok">Ngrok (1)</a>
-  
-    <a class="tag-item" href="/tags/排序算法/" title="排序算法">排序算法 (1)</a>
   
     <a class="tag-item" href="/tags/INI/" title="INI">INI (1)</a>
   
@@ -990,7 +1005,7 @@ var _hmt = _hmt || [];
 </div>
     &copy;
     
-        2014-2021
+        2014-2022
     
 
     <a href="/">Best Wishes</a>
@@ -999,6 +1014,6 @@ var _hmt = _hmt || [];
 
     <!--博客js脚本 -->
     <!-- 这里放网站js脚本 -->
-<script src="/js/main.js?v=1634540542160"></script>
+<script src="/js/main.js?v=1645428002306"></script>
 </body>
 </html>

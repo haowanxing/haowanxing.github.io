@@ -129,6 +129,63 @@ var _hmt = _hmt || [];
         <!-- 文章标题 -->
         
     <h3 class="post-title">
+    	<a href="http://www.imsry.cn/posts/6200ba6d.html">
+    		Go语言包-archive/zip
+    	</a>
+    </h3>
+
+    </header>
+    <p class="post-meta">
+        Anthony 发表于
+        <time datetime="2018-11-23T09:08:10.000Z">2018-11-23 17:08:10</time>
+
+
+        &nbsp;&nbsp;
+        <span class="post-tags">
+            标签：
+            
+        </span>
+    </p>
+
+    <div class="post-content">
+        <div class="post-excerpt">
+            
+                <blockquote>
+<p>一天一个Golang包，慢慢学习之“archive/zip”</p>
+</blockquote>
+<p>昨天阅读了archive包的tar包，对Go语言操作压缩包有了一定的基础，今天就继续把另外一个包“zip”也来熟悉一下。</p>
+<h4 id="阅读文档："><a href="#阅读文档：" class="headerlink" title="阅读文档："></a>阅读文档：</h4><p>官方pkg地址：<a href="https://golang.org/pkg/archive/zip/" target="_blank" rel="noopener">https://golang.org/pkg/archive/zip/</a></p>
+<p>今天同样从官方的包文档中提取几个主要的内容出来分享一下：</p>
+<blockquote>
+<p>常量</p>
+</blockquote>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> (</span><br><span class="line">        Store   <span class="keyword">uint16</span> = <span class="number">0</span> <span class="comment">// no compression</span></span><br><span class="line">        Deflate <span class="keyword">uint16</span> = <span class="number">8</span> <span class="comment">// DEFLATE compressed</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+            
+            <p class="more">
+                <a href="http://www.imsry.cn/posts/6200ba6d.html">阅读剩下更多</a>
+            </p>
+        </div>
+        <div class="post-thumbnail" data-img="">
+            <a href="http://www.imsry.cn/posts/6200ba6d.html" title="Go语言包-archive/zip">
+                
+                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/3.jpg" alt="默认配图" >
+                
+            </a>
+        </div>
+    </div>
+</article>
+
+    
+        <!-- 文章列表 item -->
+<article class="post">
+    <header>
+        <!-- 标签这有且只能显示一个 -->
+        
+        <a class="cat-link" href="/categories/Learn-GO/">Learn-GO</a>
+        
+        <!-- 文章标题 -->
+        
+    <h3 class="post-title">
     	<a href="http://www.imsry.cn/posts/5df3d88.html">
     		Go语言包-archive/tar
     	</a>
@@ -667,61 +724,6 @@ var _hmt = _hmt || [];
 </article>
 
     
-        <!-- 文章列表 item -->
-<article class="post">
-    <header>
-        <!-- 标签这有且只能显示一个 -->
-        
-        <a class="cat-link" href="/categories/学习笔记/">学习笔记</a>
-        
-        <!-- 文章标题 -->
-        
-    <h3 class="post-title">
-    	<a href="http://www.imsry.cn/posts/65123244.html">
-    		skip-name-resolve可以解决远程连接mysql数据库时候的缓慢或超时
-    	</a>
-    </h3>
-
-    </header>
-    <p class="post-meta">
-        Anthony 发表于
-        <time datetime="2018-03-22T10:18:39.000Z">2018-03-22 18:18:39</time>
-
-
-        &nbsp;&nbsp;
-        <span class="post-tags">
-            标签：
-            
-    
-        <a href="/tags/MySQL/" title="MySQL">MySQL</a>
-    
-
-        </span>
-    </p>
-
-    <div class="post-content">
-        <div class="post-excerpt">
-            
-                <p>　　咳咳，迁了新的机器，全新的机器但是环境还是跟以前一样，基本没变过什么配置。但是远程连接mysql却很慢，甚至10s超时都还没连上！！！ 当然，仅仅只是建立连接的时候，连接成功后一切操作都行如流水。</p>
-<p>　　所以最快最简单的方法就是直接在数据库的配置文件my.cnf|my.ini中添加一行<code>skip-name-resolve</code>来解决。</p>
-<p>　　其实mysql在用户登录建立连接的时候，会对客户端进行DNS反查，如果遇到服务器的DNS解析出现问题，那么就可能导致客户端迟迟连接不上。此方法可禁止mysql进行DNS反查从而解决了这个问题。</p>
-
-            
-            <p class="more">
-                <a href="http://www.imsry.cn/posts/65123244.html">阅读剩下更多</a>
-            </p>
-        </div>
-        <div class="post-thumbnail" data-img="">
-            <a href="http://www.imsry.cn/posts/65123244.html" title="skip-name-resolve可以解决远程连接mysql数据库时候的缓慢或超时">
-                
-                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/2.jpg" alt="默认配图" >
-                
-            </a>
-        </div>
-    </div>
-</article>
-
-    
 
     
     <nav class="page-navigator">
@@ -774,22 +776,17 @@ var _hmt = _hmt || [];
     </li>
     
     <li>
-        <a href="/categories/学习笔记/">学习笔记</a>
-        <span class="badge">(50)</span>
-    </li>
-    
-    <li>
-        <a href="/categories/Web/">Web</a>
+        <a href="/categories/网络安全/">网络安全</a>
         <span class="badge">(2)</span>
     </li>
     
     <li>
-        <a href="/categories/编程语言/">编程语言</a>
-        <span class="badge">(6)</span>
+        <a href="/categories/学习笔记/">学习笔记</a>
+        <span class="badge">(51)</span>
     </li>
     
     <li>
-        <a href="/categories/网络安全/">网络安全</a>
+        <a href="/categories/Web/">Web</a>
         <span class="badge">(2)</span>
     </li>
     
@@ -805,6 +802,11 @@ var _hmt = _hmt || [];
     
     <li>
         <a href="/categories/算法/">算法</a>
+        <span class="badge">(6)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/编程语言/">编程语言</a>
         <span class="badge">(6)</span>
     </li>
     
@@ -829,13 +831,13 @@ var _hmt = _hmt || [];
     </li>
     
     <li>
-        <a href="/categories/考试/">考试</a>
-        <span class="badge">(1)</span>
+        <a href="/categories/游戏/">游戏</a>
+        <span class="badge">(2)</span>
     </li>
     
     <li>
-        <a href="/categories/游戏/">游戏</a>
-        <span class="badge">(2)</span>
+        <a href="/categories/考试/">考试</a>
+        <span class="badge">(1)</span>
     </li>
     
     <li>
@@ -857,33 +859,15 @@ var _hmt = _hmt || [];
         <!-- 文章标签 -->
 <div class="widget-bd tag-wrap">
   
-    <a class="tag-item" href="/tags/firewall/" title="firewall">firewall (1)</a>
-  
-    <a class="tag-item" href="/tags/CentOS/" title="CentOS">CentOS (3)</a>
-  
     <a class="tag-item" href="/tags/Apache/" title="Apache">Apache (4)</a>
   
     <a class="tag-item" href="/tags/Linux/" title="Linux">Linux (5)</a>
   
     <a class="tag-item" href="/tags/Proxy/" title="Proxy">Proxy (1)</a>
   
-    <a class="tag-item" href="/tags/VPN/" title="VPN">VPN (1)</a>
+    <a class="tag-item" href="/tags/firewall/" title="firewall">firewall (1)</a>
   
-    <a class="tag-item" href="/tags/Docker/" title="Docker">Docker (1)</a>
-  
-    <a class="tag-item" href="/tags/Discuz/" title="Discuz">Discuz (1)</a>
-  
-    <a class="tag-item" href="/tags/FFmpeg/" title="FFmpeg">FFmpeg (1)</a>
-  
-    <a class="tag-item" href="/tags/Network/" title="Network">Network (3)</a>
-  
-    <a class="tag-item" href="/tags/Glassfish/" title="Glassfish">Glassfish (1)</a>
-  
-    <a class="tag-item" href="/tags/Java/" title="Java">Java (2)</a>
-  
-    <a class="tag-item" href="/tags/MySQL/" title="MySQL">MySQL (9)</a>
-  
-    <a class="tag-item" href="/tags/Golang/" title="Golang">Golang (3)</a>
+    <a class="tag-item" href="/tags/CentOS/" title="CentOS">CentOS (3)</a>
   
     <a class="tag-item" href="/tags/https/" title="https">https (2)</a>
   
@@ -891,15 +875,35 @@ var _hmt = _hmt || [];
   
     <a class="tag-item" href="/tags/数据结构/" title="数据结构">数据结构 (1)</a>
   
+    <a class="tag-item" href="/tags/VPN/" title="VPN">VPN (1)</a>
+  
+    <a class="tag-item" href="/tags/Discuz/" title="Discuz">Discuz (1)</a>
+  
+    <a class="tag-item" href="/tags/Docker/" title="Docker">Docker (1)</a>
+  
+    <a class="tag-item" href="/tags/Glassfish/" title="Glassfish">Glassfish (1)</a>
+  
+    <a class="tag-item" href="/tags/Java/" title="Java">Java (2)</a>
+  
+    <a class="tag-item" href="/tags/MySQL/" title="MySQL">MySQL (9)</a>
+  
+    <a class="tag-item" href="/tags/Network/" title="Network">Network (3)</a>
+  
+    <a class="tag-item" href="/tags/FFmpeg/" title="FFmpeg">FFmpeg (1)</a>
+  
     <a class="tag-item" href="/tags/LNMP/" title="LNMP">LNMP (2)</a>
+  
+    <a class="tag-item" href="/tags/Golang/" title="Golang">Golang (3)</a>
   
     <a class="tag-item" href="/tags/Vim/" title="Vim">Vim (1)</a>
   
     <a class="tag-item" href="/tags/LAMP/" title="LAMP">LAMP (1)</a>
   
+    <a class="tag-item" href="/tags/网卡/" title="网卡">网卡 (1)</a>
+  
     <a class="tag-item" href="/tags/OrangePi/" title="OrangePi">OrangePi (1)</a>
   
-    <a class="tag-item" href="/tags/网卡/" title="网卡">网卡 (1)</a>
+    <a class="tag-item" href="/tags/PHP/" title="PHP">PHP (11)</a>
   
     <a class="tag-item" href="/tags/算法/" title="算法">算法 (1)</a>
   
@@ -907,27 +911,25 @@ var _hmt = _hmt || [];
   
     <a class="tag-item" href="/tags/定理/" title="定理">定理 (1)</a>
   
-    <a class="tag-item" href="/tags/PHP/" title="PHP">PHP (11)</a>
-  
     <a class="tag-item" href="/tags/RPC/" title="RPC">RPC (1)</a>
   
     <a class="tag-item" href="/tags/HTML/" title="HTML">HTML (2)</a>
   
     <a class="tag-item" href="/tags/Javascript/" title="Javascript">Javascript (2)</a>
   
-    <a class="tag-item" href="/tags/MacOS/" title="MacOS">MacOS (5)</a>
-  
-    <a class="tag-item" href="/tags/php/" title="php">php (2)</a>
+    <a class="tag-item" href="/tags/k8s/" title="k8s">k8s (1)</a>
   
     <a class="tag-item" href="/tags/Laravel/" title="Laravel">Laravel (1)</a>
   
     <a class="tag-item" href="/tags/MarkDown/" title="MarkDown">MarkDown (1)</a>
   
+    <a class="tag-item" href="/tags/MacOS/" title="MacOS">MacOS (5)</a>
+  
+    <a class="tag-item" href="/tags/php/" title="php">php (2)</a>
+  
     <a class="tag-item" href="/tags/Git/" title="Git">Git (1)</a>
   
     <a class="tag-item" href="/tags/Ngrok/" title="Ngrok">Ngrok (1)</a>
-  
-    <a class="tag-item" href="/tags/排序算法/" title="排序算法">排序算法 (1)</a>
   
     <a class="tag-item" href="/tags/INI/" title="INI">INI (1)</a>
   
@@ -985,7 +987,7 @@ var _hmt = _hmt || [];
 </div>
     &copy;
     
-        2014-2021
+        2014-2022
     
 
     <a href="/">Best Wishes</a>
@@ -994,6 +996,6 @@ var _hmt = _hmt || [];
 
     <!--博客js脚本 -->
     <!-- 这里放网站js脚本 -->
-<script src="/js/main.js?v=1634540542893"></script>
+<script src="/js/main.js?v=1645428001632"></script>
 </body>
 </html>

@@ -129,6 +129,61 @@ var _hmt = _hmt || [];
         <!-- 文章标题 -->
         
     <h3 class="post-title">
+    	<a href="http://www.imsry.cn/posts/65123244.html">
+    		skip-name-resolve可以解决远程连接mysql数据库时候的缓慢或超时
+    	</a>
+    </h3>
+
+    </header>
+    <p class="post-meta">
+        Anthony 发表于
+        <time datetime="2018-03-22T10:18:39.000Z">2018-03-22 18:18:39</time>
+
+
+        &nbsp;&nbsp;
+        <span class="post-tags">
+            标签：
+            
+    
+        <a href="/tags/MySQL/" title="MySQL">MySQL</a>
+    
+
+        </span>
+    </p>
+
+    <div class="post-content">
+        <div class="post-excerpt">
+            
+                <p>　　咳咳，迁了新的机器，全新的机器但是环境还是跟以前一样，基本没变过什么配置。但是远程连接mysql却很慢，甚至10s超时都还没连上！！！ 当然，仅仅只是建立连接的时候，连接成功后一切操作都行如流水。</p>
+<p>　　所以最快最简单的方法就是直接在数据库的配置文件my.cnf|my.ini中添加一行<code>skip-name-resolve</code>来解决。</p>
+<p>　　其实mysql在用户登录建立连接的时候，会对客户端进行DNS反查，如果遇到服务器的DNS解析出现问题，那么就可能导致客户端迟迟连接不上。此方法可禁止mysql进行DNS反查从而解决了这个问题。</p>
+
+            
+            <p class="more">
+                <a href="http://www.imsry.cn/posts/65123244.html">阅读剩下更多</a>
+            </p>
+        </div>
+        <div class="post-thumbnail" data-img="">
+            <a href="http://www.imsry.cn/posts/65123244.html" title="skip-name-resolve可以解决远程连接mysql数据库时候的缓慢或超时">
+                
+                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/2.jpg" alt="默认配图" >
+                
+            </a>
+        </div>
+    </div>
+</article>
+
+    
+        <!-- 文章列表 item -->
+<article class="post">
+    <header>
+        <!-- 标签这有且只能显示一个 -->
+        
+        <a class="cat-link" href="/categories/学习笔记/">学习笔记</a>
+        
+        <!-- 文章标题 -->
+        
+    <h3 class="post-title">
     	<a href="http://www.imsry.cn/posts/ac505287.html">
     		Laravel5.5 发送邮件遇到Connection could not be established with host xxxxx
     	</a>
@@ -706,65 +761,6 @@ var _hmt = _hmt || [];
 </article>
 
     
-        <!-- 文章列表 item -->
-<article class="post">
-    <header>
-        <!-- 标签这有且只能显示一个 -->
-        
-        <a class="cat-link" href="/categories/PHP/">PHP</a>
-        
-        <!-- 文章标题 -->
-        
-    <h3 class="post-title">
-    	<a href="http://www.imsry.cn/posts/82527d05.html">
-    		array_walk中的$this报错
-    	</a>
-    </h3>
-
-    </header>
-    <p class="post-meta">
-        Anthony 发表于
-        <time datetime="2017-04-14T08:46:59.000Z">2017-04-14 16:46:59</time>
-
-
-        &nbsp;&nbsp;
-        <span class="post-tags">
-            标签：
-            
-        </span>
-    </p>
-
-    <div class="post-content">
-        <div class="post-excerpt">
-            
-                <blockquote>
-<p>Fatal Error:Using $this when not in object context on line 54</p>
-</blockquote>
-<p>　　今天在完成一个小功能开发并提交SVN后，收到前端的求助，说是更新了我的代码后页面打不开了。很着急啊，我这里都是测试成功才提交版本的。现在只能麻溜的跑过查看了。</p>
-<p>　　首先，出现的情况是空白页面（对，没有任何输出）。报错肯定没打开，帮他打开E_ALL后就看到了今天的重点报错提示了。说是在54行有个<code>$this</code>不在对象环境中？</p>
-<p>　　然后我去看了，那个<code>$this</code>出现在array_walk方法的function中，从语句上来看是完全没有问题的，在类的方法里面用<code>$this</code>肯定没毛病啊，可是为什么他那里就报错呢？</p>
-<p>　　我突然想起来，如果要在array_walk里面使用外面的变量的时候需要使用<code>use</code>方法。所以改进一下:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$user_id = $this-&gt;user-&gt;id;</span><br><span class="line">array_walk($arr,function(&amp;$v) use($user_id) &#123;</span><br><span class="line">	$v[&apos;user_id&apos;]=$user_id;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<p>　　这样就没毛病了。看来这个<code>array_walk</code>还挺调皮啊，不得不说这个方法的使用还真有许多需要注意的地方呢。</p>
-<p>　　通过查资料，得知这个$this在PHP版本低于5.4的情况下是会出现问题的。高版本的不会出现。</p>
-<p>参考：<a href="http://stackoverflow.com/questions/19033184/using-this-when-not-in-object-context-error-within-array-walk" target="_blank" rel="noopener">Using $this when not in object context error within array_walk</a></p>
-
-            
-            <p class="more">
-                <a href="http://www.imsry.cn/posts/82527d05.html">阅读剩下更多</a>
-            </p>
-        </div>
-        <div class="post-thumbnail" data-img="">
-            <a href="http://www.imsry.cn/posts/82527d05.html" title="array_walk中的$this报错">
-                
-                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/4.jpg" alt="默认配图" >
-                
-            </a>
-        </div>
-    </div>
-</article>
-
-    
 
     
     <nav class="page-navigator">
@@ -817,22 +813,17 @@ var _hmt = _hmt || [];
     </li>
     
     <li>
-        <a href="/categories/学习笔记/">学习笔记</a>
-        <span class="badge">(50)</span>
-    </li>
-    
-    <li>
-        <a href="/categories/Web/">Web</a>
+        <a href="/categories/网络安全/">网络安全</a>
         <span class="badge">(2)</span>
     </li>
     
     <li>
-        <a href="/categories/编程语言/">编程语言</a>
-        <span class="badge">(6)</span>
+        <a href="/categories/学习笔记/">学习笔记</a>
+        <span class="badge">(51)</span>
     </li>
     
     <li>
-        <a href="/categories/网络安全/">网络安全</a>
+        <a href="/categories/Web/">Web</a>
         <span class="badge">(2)</span>
     </li>
     
@@ -848,6 +839,11 @@ var _hmt = _hmt || [];
     
     <li>
         <a href="/categories/算法/">算法</a>
+        <span class="badge">(6)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/编程语言/">编程语言</a>
         <span class="badge">(6)</span>
     </li>
     
@@ -872,13 +868,13 @@ var _hmt = _hmt || [];
     </li>
     
     <li>
-        <a href="/categories/考试/">考试</a>
-        <span class="badge">(1)</span>
+        <a href="/categories/游戏/">游戏</a>
+        <span class="badge">(2)</span>
     </li>
     
     <li>
-        <a href="/categories/游戏/">游戏</a>
-        <span class="badge">(2)</span>
+        <a href="/categories/考试/">考试</a>
+        <span class="badge">(1)</span>
     </li>
     
     <li>
@@ -900,33 +896,15 @@ var _hmt = _hmt || [];
         <!-- 文章标签 -->
 <div class="widget-bd tag-wrap">
   
-    <a class="tag-item" href="/tags/firewall/" title="firewall">firewall (1)</a>
-  
-    <a class="tag-item" href="/tags/CentOS/" title="CentOS">CentOS (3)</a>
-  
     <a class="tag-item" href="/tags/Apache/" title="Apache">Apache (4)</a>
   
     <a class="tag-item" href="/tags/Linux/" title="Linux">Linux (5)</a>
   
     <a class="tag-item" href="/tags/Proxy/" title="Proxy">Proxy (1)</a>
   
-    <a class="tag-item" href="/tags/VPN/" title="VPN">VPN (1)</a>
+    <a class="tag-item" href="/tags/firewall/" title="firewall">firewall (1)</a>
   
-    <a class="tag-item" href="/tags/Docker/" title="Docker">Docker (1)</a>
-  
-    <a class="tag-item" href="/tags/Discuz/" title="Discuz">Discuz (1)</a>
-  
-    <a class="tag-item" href="/tags/FFmpeg/" title="FFmpeg">FFmpeg (1)</a>
-  
-    <a class="tag-item" href="/tags/Network/" title="Network">Network (3)</a>
-  
-    <a class="tag-item" href="/tags/Glassfish/" title="Glassfish">Glassfish (1)</a>
-  
-    <a class="tag-item" href="/tags/Java/" title="Java">Java (2)</a>
-  
-    <a class="tag-item" href="/tags/MySQL/" title="MySQL">MySQL (9)</a>
-  
-    <a class="tag-item" href="/tags/Golang/" title="Golang">Golang (3)</a>
+    <a class="tag-item" href="/tags/CentOS/" title="CentOS">CentOS (3)</a>
   
     <a class="tag-item" href="/tags/https/" title="https">https (2)</a>
   
@@ -934,15 +912,35 @@ var _hmt = _hmt || [];
   
     <a class="tag-item" href="/tags/数据结构/" title="数据结构">数据结构 (1)</a>
   
+    <a class="tag-item" href="/tags/VPN/" title="VPN">VPN (1)</a>
+  
+    <a class="tag-item" href="/tags/Discuz/" title="Discuz">Discuz (1)</a>
+  
+    <a class="tag-item" href="/tags/Docker/" title="Docker">Docker (1)</a>
+  
+    <a class="tag-item" href="/tags/Glassfish/" title="Glassfish">Glassfish (1)</a>
+  
+    <a class="tag-item" href="/tags/Java/" title="Java">Java (2)</a>
+  
+    <a class="tag-item" href="/tags/MySQL/" title="MySQL">MySQL (9)</a>
+  
+    <a class="tag-item" href="/tags/Network/" title="Network">Network (3)</a>
+  
+    <a class="tag-item" href="/tags/FFmpeg/" title="FFmpeg">FFmpeg (1)</a>
+  
     <a class="tag-item" href="/tags/LNMP/" title="LNMP">LNMP (2)</a>
+  
+    <a class="tag-item" href="/tags/Golang/" title="Golang">Golang (3)</a>
   
     <a class="tag-item" href="/tags/Vim/" title="Vim">Vim (1)</a>
   
     <a class="tag-item" href="/tags/LAMP/" title="LAMP">LAMP (1)</a>
   
+    <a class="tag-item" href="/tags/网卡/" title="网卡">网卡 (1)</a>
+  
     <a class="tag-item" href="/tags/OrangePi/" title="OrangePi">OrangePi (1)</a>
   
-    <a class="tag-item" href="/tags/网卡/" title="网卡">网卡 (1)</a>
+    <a class="tag-item" href="/tags/PHP/" title="PHP">PHP (11)</a>
   
     <a class="tag-item" href="/tags/算法/" title="算法">算法 (1)</a>
   
@@ -950,27 +948,25 @@ var _hmt = _hmt || [];
   
     <a class="tag-item" href="/tags/定理/" title="定理">定理 (1)</a>
   
-    <a class="tag-item" href="/tags/PHP/" title="PHP">PHP (11)</a>
-  
     <a class="tag-item" href="/tags/RPC/" title="RPC">RPC (1)</a>
   
     <a class="tag-item" href="/tags/HTML/" title="HTML">HTML (2)</a>
   
     <a class="tag-item" href="/tags/Javascript/" title="Javascript">Javascript (2)</a>
   
-    <a class="tag-item" href="/tags/MacOS/" title="MacOS">MacOS (5)</a>
-  
-    <a class="tag-item" href="/tags/php/" title="php">php (2)</a>
+    <a class="tag-item" href="/tags/k8s/" title="k8s">k8s (1)</a>
   
     <a class="tag-item" href="/tags/Laravel/" title="Laravel">Laravel (1)</a>
   
     <a class="tag-item" href="/tags/MarkDown/" title="MarkDown">MarkDown (1)</a>
   
+    <a class="tag-item" href="/tags/MacOS/" title="MacOS">MacOS (5)</a>
+  
+    <a class="tag-item" href="/tags/php/" title="php">php (2)</a>
+  
     <a class="tag-item" href="/tags/Git/" title="Git">Git (1)</a>
   
     <a class="tag-item" href="/tags/Ngrok/" title="Ngrok">Ngrok (1)</a>
-  
-    <a class="tag-item" href="/tags/排序算法/" title="排序算法">排序算法 (1)</a>
   
     <a class="tag-item" href="/tags/INI/" title="INI">INI (1)</a>
   
@@ -1028,7 +1024,7 @@ var _hmt = _hmt || [];
 </div>
     &copy;
     
-        2014-2021
+        2014-2022
     
 
     <a href="/">Best Wishes</a>
@@ -1037,6 +1033,6 @@ var _hmt = _hmt || [];
 
     <!--博客js脚本 -->
     <!-- 这里放网站js脚本 -->
-<script src="/js/main.js?v=1634540542902"></script>
+<script src="/js/main.js?v=1645428001641"></script>
 </body>
 </html>

@@ -128,6 +128,77 @@ var _hmt = _hmt || [];
         <!-- 文章标题 -->
         
     <h3 class="post-title">
+    	<a href="http://www.imsry.cn/posts/4fa20f2.html">
+    		kubernetes nginx ingress custom 401/500 page
+    	</a>
+    </h3>
+
+    </header>
+    <p class="post-meta">
+        刘经济 发表于
+        <time datetime="2022-02-21T06:30:41.000Z">2022-02-21 14:30:41</time>
+
+
+        &nbsp;&nbsp;
+        <span class="post-tags">
+            标签：
+            
+    
+        <a href="/tags/k8s/" title="k8s">k8s</a>
+    
+
+        </span>
+    </p>
+
+    <div class="post-content">
+        <div class="post-excerpt">
+            
+                <p>在k8s中，通常会使用ingress的方式将内部服务进行暴露，与此同时会加上鉴权的功能，如：Basic Auth、Oauth2和JWT等等。</p>
+<h4 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h4><p>在Ingress资源的metadata的annotations中增加<code>nginx.ingress.kubernetes.io/auth-url</code>来指定鉴权的地址。如：nginx.ingress.kubernetes.io/auth-url: <a href="http://10.11.0.123:8081/api-auth" target="_blank" rel="noopener">http://10.11.0.123:8081/api-auth</a></p>
+<p>这样一来，我们在编写<code>/api-auth</code>这个接口的时候，可以根据请求头拿到客户端的认证信息，进而判断是否对其请求进行放行，返回状态码为200即为放行，nginx会将客户端的请求转发到对应的后端服务；返回状态码为401即表示没有授权，nginx直接对其拦截，并返回给客户端默认的响应。</p>
+<p>响应Header头：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">HTTP/2 401</span><br><span class="line">date: Mon,21 Feb 2022 06:42:41 GMT</span><br><span class="line">content-type: text/html</span><br><span class="line">content-length: 574</span><br></pre></td></tr></table></figure>
+<p>响应Body体：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;&lt;title&gt;401 Authorization Required&lt;/title&gt;&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;center&gt;&lt;h1&gt;401 Authorization Required&lt;/h1&gt;&lt;/center&gt;</span><br><span class="line">&lt;hr&gt;&lt;center&gt;nginx&lt;/center&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br><span class="line">&lt;!-- a padding to disable MSIE and Chrome friendly error page --&gt;</span><br><span class="line">&lt;!-- a padding to disable MSIE and Chrome friendly error page --&gt;</span><br><span class="line">&lt;!-- a padding to disable MSIE and Chrome friendly error page --&gt;</span><br><span class="line">&lt;!-- a padding to disable MSIE and Chrome friendly error page --&gt;</span><br><span class="line">&lt;!-- a padding to disable MSIE and Chrome friendly error page --&gt;</span><br><span class="line">&lt;!-- a padding to disable MSIE and Chrome friendly error page --&gt;</span><br></pre></td></tr></table></figure>
+<p>但是客户端仅知道请求是因为授权问题被拒绝了，但是不知道具体的原因，如果需要得知具体的拒绝原因，可以按照如下方法进行优化。</p>
+<h4 id="优化方法"><a href="#优化方法" class="headerlink" title="优化方法"></a>优化方法</h4><p>因为nginx中没有直接获取upsream返回结果的方法（可通过重新编译，用Lua实现），但是可获取到响应头，所以我们利用响应头来返回拒绝的原因。</p>
+<p>首先，在<code>/api-auth</code>中，增加一个响应头<code>my_auth_error</code>，内容可以直接填写您需要返回给客户端的原因，我这里会填入一个json串的Base64编码值。</p>
+<p>然后我们回到nginx-ingress的配置文件，增加两个声明：<code>nginx.ingress.kubernetes.io/configuration-snippet</code>和<code>nginx.ingress.kubernetes.io/server-snippet</code>。</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">metadata:</span></span><br><span class="line">  <span class="comment"># 此处省略N个字</span></span><br><span class="line"><span class="attr">  annotations:</span></span><br><span class="line">    nginx.ingress.kubernetes.io/auth-url: http://<span class="number">10.11</span><span class="number">.0</span><span class="number">.123</span>:<span class="number">8081</span>/api-auth</span><br><span class="line">    nginx.ingress.kubernetes.io/configuration-snippet: <span class="string">|</span></span><br><span class="line"><span class="string">      error_page 401 = @ingress_service_custom_error_401;</span></span><br><span class="line"><span class="string">      </span></span><br><span class="line"><span class="string">      auth_request_set $my_auth_error $upstream_http_wwd_auth_error;</span></span><br><span class="line"><span class="string">      auth_request_set $my_auth_error_content_type $upstream_http_content_type;</span></span><br><span class="line"><span class="string">      auth_request_set $my_auth_status $upstream_status;</span></span><br><span class="line"><span class="string">    nginx.ingress.kubernetes.io/server-snippet: |</span></span><br><span class="line"><span class="string">      location @ingress_service_custom_error_401 &#123;</span></span><br><span class="line"><span class="string">        internal;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">        # Decode auth response header</span></span><br><span class="line"><span class="string">        set_decode_base64 $my_auth_error_decoded $my_auth_error;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">        # Return the error from auth service if any</span></span><br><span class="line"><span class="string">        if ($my_auth_error_decoded != "")&#123;</span></span><br><span class="line"><span class="string">          add_header Content-Type $my_auth_error_content_type always;</span></span><br><span class="line"><span class="string">          return 401 $my_auth_error_decoded;</span></span><br><span class="line"><span class="string">        &#125;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">        # Fall back to default nginx response</span></span><br><span class="line"><span class="string">        return 401;</span></span><br><span class="line"><span class="string">      &#125;</span></span><br><span class="line"><span class="string">  # 此处省略N个字</span></span><br></pre></td></tr></table></figure>
+<h4 id="配置解释"><a href="#配置解释" class="headerlink" title="配置解释"></a>配置解释</h4><p><code>configuration-snippet</code>用来对location进行自定义配置，上面对401的错误页面定义了一个<code>@ingress_service_custom_error_401</code>，然后增加了3个变量<code>my_auth_error</code>、<code>my_auth_error_content_type</code>和<code>my_auth_status</code>分别取值自定义响应头、响应类型和响应状态码。</p>
+<p><code>server-snippet</code>用来对server块进行自定义配置，上面相当于在server块增加了一个location，该location即为401时的默认响应，其中会对<code>my_auth_error</code>进行base64解码，然后判断解码内容，若其内容为空，则直接返回最初的默认401页面，否则在响应头中增加<code>Content-Type</code>为具体的自定义类型，并返回401状态码和自定义响应Body。</p>
+<p>如此一来，就可以实现nginx-ingress根据auth接口响应的结果来执行不同的行为。最终实现不同的效果。</p>
+<p>响应头：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">HTTP/2 401</span><br><span class="line">date: Mon, 21 Feb 2022 07:14:36 GMT</span><br><span class="line">content-type: text/html</span><br><span class="line">content-length: 51</span><br><span class="line">content-type: application/json</span><br></pre></td></tr></table></figure>
+<p>响应Body体：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"message"</span>: <span class="string">"用户未登录"</span>,</span><br><span class="line">  <span class="attr">"code"</span>: <span class="number">14</span>,</span><br><span class="line">  <span class="attr">"data"</span>: <span class="literal">null</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+            
+            <p class="more">
+                <a href="http://www.imsry.cn/posts/4fa20f2.html">阅读剩下更多</a>
+            </p>
+        </div>
+        <div class="post-thumbnail" data-img="">
+            <a href="http://www.imsry.cn/posts/4fa20f2.html" title="kubernetes nginx ingress custom 401/500 page">
+                
+                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/1.jpg" alt="默认配图" >
+                
+            </a>
+        </div>
+    </div>
+</article>
+
+    
+        <!-- 文章列表 item -->
+<article class="post">
+    <header>
+        <!-- 标签这有且只能显示一个 -->
+        
+        <a class="cat-link" href="/categories/学习笔记/">学习笔记</a>
+        
+        <!-- 文章标题 -->
+        
+    <h3 class="post-title">
     	<a href="http://www.imsry.cn/posts/e6ef1b5e.html">
     		记一次使用CGo的Golang项目交叉编译遇到的问题及解决步骤
     	</a>
@@ -678,77 +749,10 @@ var _hmt = _hmt || [];
 </article>
 
     
-        <!-- 文章列表 item -->
-<article class="post">
-    <header>
-        <!-- 标签这有且只能显示一个 -->
-        
-        <a class="cat-link" href="/categories/学习笔记/">学习笔记</a>
-        
-        <!-- 文章标题 -->
-        
-    <h3 class="post-title">
-    	<a href="http://www.imsry.cn/posts/2e28f02f.html">
-    		mysql中几种Log和打开方法
-    	</a>
-    </h3>
-
-    </header>
-    <p class="post-meta">
-        Anthony 发表于
-        <time datetime="2018-05-17T10:45:18.000Z">2018-05-17 18:45:18</time>
-
-
-        &nbsp;&nbsp;
-        <span class="post-tags">
-            标签：
-            
-    
-        <a href="/tags/MySQL/" title="MySQL">MySQL</a>
-    
-
-        </span>
-    </p>
-
-    <div class="post-content">
-        <div class="post-excerpt">
-            
-                <blockquote>
-<p>Mysql中常见的log有：<code>错误日志log_error</code>、<code>慢查询日志slow_query_log</code>、<code>二进制日志bin_log</code>和<code>通用查询日志general_log</code></p>
-</blockquote>
-<h3 id="错误日志（error-log）"><a href="#错误日志（error-log）" class="headerlink" title="错误日志（error_log）"></a>错误日志（error_log）</h3><p>  这个日志记载mysql服务器的启动和关闭以及运行过程中发生的故障或异常情况，如果你发现mysql无法正常启动，那么你首先应该查看这个日志。</p>
-<p>  配置：</p>
-  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">log_error = error.log</span><br></pre></td></tr></table></figure>
-<p>  服务器上查询log位置：<code>show variables like &#39;log_error&#39;</code></p>
-<h3 id="慢查询日志（slow-query-log）"><a href="#慢查询日志（slow-query-log）" class="headerlink" title="慢查询日志（slow_query_log）"></a>慢查询日志（slow_query_log）</h3><p>  为了改善数据库性能，需要减少慢查询SQL的使用次数，那么哪些SQL需要改善呢？通过这个日志可以更清楚如何去改善。</p>
-<p>  配置：</p>
-  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">slow_query_log = 1</span><br><span class="line">lone_query_time = 10</span><br><span class="line">slow_query_log_file = slow_query.log</span><br></pre></td></tr></table></figure>
-<h3 id="二进制查询日志（bin-log）"><a href="#二进制查询日志（bin-log）" class="headerlink" title="二进制查询日志（bin_log）"></a>二进制查询日志（bin_log）</h3><p>  Mysql的binlog日志作用是用来记录mysql内部增删改查等对mysql数据库有更新的内容的记录（对数据库的改动），对数据库的查询select或show等不会被binlog日志记录;主要用于数据库的主从复制以及增量恢复。</p>
-<p>  配置：</p>
-  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">log_bin = mysql_bin.log</span><br></pre></td></tr></table></figure>
-<h3 id="通用查询日志（general-log）"><a href="#通用查询日志（general-log）" class="headerlink" title="通用查询日志（general_log）"></a>通用查询日志（general_log）</h3><p>  会记录mysql运行期间的所有sql语句</p>
-<p>  配置：</p>
-  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">log_output=[none|file|table|file,table]  <span class="comment">#通用查询日志输出格式</span></span><br><span class="line">general_log=[on|off]                     <span class="comment">#是否启用通用查询日志</span></span><br><span class="line">general_log_file[=filename]              <span class="comment">#通用查询日志位置及名字</span></span><br></pre></td></tr></table></figure>
-            
-            <p class="more">
-                <a href="http://www.imsry.cn/posts/2e28f02f.html">阅读剩下更多</a>
-            </p>
-        </div>
-        <div class="post-thumbnail" data-img="">
-            <a href="http://www.imsry.cn/posts/2e28f02f.html" title="mysql中几种Log和打开方法">
-                
-                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/7.jpg" alt="默认配图" >
-                
-            </a>
-        </div>
-    </div>
-</article>
-
-    
 
     
     <nav class="page-navigator">
-        <span class="page-number current">1</span><a class="page-number" href="/categories/学习笔记/page/2/">2</a><a class="page-number" href="/categories/学习笔记/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/categories/学习笔记/page/5/">5</a><a class="extend next" rel="next" href="/categories/学习笔记/page/2/">后一页</a>
+        <span class="page-number current">1</span><a class="page-number" href="/categories/学习笔记/page/2/">2</a><a class="page-number" href="/categories/学习笔记/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/categories/学习笔记/page/6/">6</a><a class="extend next" rel="next" href="/categories/学习笔记/page/2/">后一页</a>
     </nav>
     
 
@@ -795,22 +799,17 @@ var _hmt = _hmt || [];
     </li>
     
     <li>
-        <a href="/categories/学习笔记/">学习笔记</a>
-        <span class="badge">(50)</span>
-    </li>
-    
-    <li>
-        <a href="/categories/Web/">Web</a>
+        <a href="/categories/网络安全/">网络安全</a>
         <span class="badge">(2)</span>
     </li>
     
     <li>
-        <a href="/categories/编程语言/">编程语言</a>
-        <span class="badge">(6)</span>
+        <a href="/categories/学习笔记/">学习笔记</a>
+        <span class="badge">(51)</span>
     </li>
     
     <li>
-        <a href="/categories/网络安全/">网络安全</a>
+        <a href="/categories/Web/">Web</a>
         <span class="badge">(2)</span>
     </li>
     
@@ -826,6 +825,11 @@ var _hmt = _hmt || [];
     
     <li>
         <a href="/categories/算法/">算法</a>
+        <span class="badge">(6)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/编程语言/">编程语言</a>
         <span class="badge">(6)</span>
     </li>
     
@@ -850,13 +854,13 @@ var _hmt = _hmt || [];
     </li>
     
     <li>
-        <a href="/categories/考试/">考试</a>
-        <span class="badge">(1)</span>
+        <a href="/categories/游戏/">游戏</a>
+        <span class="badge">(2)</span>
     </li>
     
     <li>
-        <a href="/categories/游戏/">游戏</a>
-        <span class="badge">(2)</span>
+        <a href="/categories/考试/">考试</a>
+        <span class="badge">(1)</span>
     </li>
     
     <li>
@@ -878,33 +882,15 @@ var _hmt = _hmt || [];
         <!-- 文章标签 -->
 <div class="widget-bd tag-wrap">
   
-    <a class="tag-item" href="/tags/firewall/" title="firewall">firewall (1)</a>
-  
-    <a class="tag-item" href="/tags/CentOS/" title="CentOS">CentOS (3)</a>
-  
     <a class="tag-item" href="/tags/Apache/" title="Apache">Apache (4)</a>
   
     <a class="tag-item" href="/tags/Linux/" title="Linux">Linux (5)</a>
   
     <a class="tag-item" href="/tags/Proxy/" title="Proxy">Proxy (1)</a>
   
-    <a class="tag-item" href="/tags/VPN/" title="VPN">VPN (1)</a>
+    <a class="tag-item" href="/tags/firewall/" title="firewall">firewall (1)</a>
   
-    <a class="tag-item" href="/tags/Docker/" title="Docker">Docker (1)</a>
-  
-    <a class="tag-item" href="/tags/Discuz/" title="Discuz">Discuz (1)</a>
-  
-    <a class="tag-item" href="/tags/FFmpeg/" title="FFmpeg">FFmpeg (1)</a>
-  
-    <a class="tag-item" href="/tags/Network/" title="Network">Network (3)</a>
-  
-    <a class="tag-item" href="/tags/Glassfish/" title="Glassfish">Glassfish (1)</a>
-  
-    <a class="tag-item" href="/tags/Java/" title="Java">Java (2)</a>
-  
-    <a class="tag-item" href="/tags/MySQL/" title="MySQL">MySQL (9)</a>
-  
-    <a class="tag-item" href="/tags/Golang/" title="Golang">Golang (3)</a>
+    <a class="tag-item" href="/tags/CentOS/" title="CentOS">CentOS (3)</a>
   
     <a class="tag-item" href="/tags/https/" title="https">https (2)</a>
   
@@ -912,15 +898,35 @@ var _hmt = _hmt || [];
   
     <a class="tag-item" href="/tags/数据结构/" title="数据结构">数据结构 (1)</a>
   
+    <a class="tag-item" href="/tags/VPN/" title="VPN">VPN (1)</a>
+  
+    <a class="tag-item" href="/tags/Discuz/" title="Discuz">Discuz (1)</a>
+  
+    <a class="tag-item" href="/tags/Docker/" title="Docker">Docker (1)</a>
+  
+    <a class="tag-item" href="/tags/Glassfish/" title="Glassfish">Glassfish (1)</a>
+  
+    <a class="tag-item" href="/tags/Java/" title="Java">Java (2)</a>
+  
+    <a class="tag-item" href="/tags/MySQL/" title="MySQL">MySQL (9)</a>
+  
+    <a class="tag-item" href="/tags/Network/" title="Network">Network (3)</a>
+  
+    <a class="tag-item" href="/tags/FFmpeg/" title="FFmpeg">FFmpeg (1)</a>
+  
     <a class="tag-item" href="/tags/LNMP/" title="LNMP">LNMP (2)</a>
+  
+    <a class="tag-item" href="/tags/Golang/" title="Golang">Golang (3)</a>
   
     <a class="tag-item" href="/tags/Vim/" title="Vim">Vim (1)</a>
   
     <a class="tag-item" href="/tags/LAMP/" title="LAMP">LAMP (1)</a>
   
+    <a class="tag-item" href="/tags/网卡/" title="网卡">网卡 (1)</a>
+  
     <a class="tag-item" href="/tags/OrangePi/" title="OrangePi">OrangePi (1)</a>
   
-    <a class="tag-item" href="/tags/网卡/" title="网卡">网卡 (1)</a>
+    <a class="tag-item" href="/tags/PHP/" title="PHP">PHP (11)</a>
   
     <a class="tag-item" href="/tags/算法/" title="算法">算法 (1)</a>
   
@@ -928,27 +934,25 @@ var _hmt = _hmt || [];
   
     <a class="tag-item" href="/tags/定理/" title="定理">定理 (1)</a>
   
-    <a class="tag-item" href="/tags/PHP/" title="PHP">PHP (11)</a>
-  
     <a class="tag-item" href="/tags/RPC/" title="RPC">RPC (1)</a>
   
     <a class="tag-item" href="/tags/HTML/" title="HTML">HTML (2)</a>
   
     <a class="tag-item" href="/tags/Javascript/" title="Javascript">Javascript (2)</a>
   
-    <a class="tag-item" href="/tags/MacOS/" title="MacOS">MacOS (5)</a>
-  
-    <a class="tag-item" href="/tags/php/" title="php">php (2)</a>
+    <a class="tag-item" href="/tags/k8s/" title="k8s">k8s (1)</a>
   
     <a class="tag-item" href="/tags/Laravel/" title="Laravel">Laravel (1)</a>
   
     <a class="tag-item" href="/tags/MarkDown/" title="MarkDown">MarkDown (1)</a>
   
+    <a class="tag-item" href="/tags/MacOS/" title="MacOS">MacOS (5)</a>
+  
+    <a class="tag-item" href="/tags/php/" title="php">php (2)</a>
+  
     <a class="tag-item" href="/tags/Git/" title="Git">Git (1)</a>
   
     <a class="tag-item" href="/tags/Ngrok/" title="Ngrok">Ngrok (1)</a>
-  
-    <a class="tag-item" href="/tags/排序算法/" title="排序算法">排序算法 (1)</a>
   
     <a class="tag-item" href="/tags/INI/" title="INI">INI (1)</a>
   
@@ -1006,7 +1010,7 @@ var _hmt = _hmt || [];
 </div>
     &copy;
     
-        2014-2021
+        2014-2022
     
 
     <a href="/">Best Wishes</a>
@@ -1015,6 +1019,6 @@ var _hmt = _hmt || [];
 
     <!--博客js脚本 -->
     <!-- 这里放网站js脚本 -->
-<script src="/js/main.js?v=1634540542152"></script>
+<script src="/js/main.js?v=1645428002298"></script>
 </body>
 </html>

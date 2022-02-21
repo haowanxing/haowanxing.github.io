@@ -129,6 +129,58 @@ var _hmt = _hmt || [];
         <!-- 文章标题 -->
         
     <h3 class="post-title">
+    	<a href="http://www.imsry.cn/posts/db7b2e7c.html">
+    		作业4-2（带用户的留言板）单页面实现！
+    	</a>
+    </h3>
+
+    </header>
+    <p class="post-meta">
+        Anthony 发表于
+        <time datetime="2015-05-09T07:14:28.000Z">2015-05-09 15:14:28</time>
+
+
+        &nbsp;&nbsp;
+        <span class="post-tags">
+            标签：
+            
+        </span>
+    </p>
+
+    <div class="post-content">
+        <div class="post-excerpt">
+            
+                <p><img src="../uploads/qiniu/20170206148636263061226.png" alt="作业4-2要求"><br><a href="/html/board2.php">演示页面：http://www.dshui.wang/html/board2.php</a><br>本次作业基于作业4-1完成，部分文件在4-1中给出：<a href="/?p=161" title="http://www.dshui.wang/?p=161"></a><br>所需要的数据表：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE `msg` (</span><br><span class="line">  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,</span><br><span class="line">  `content` varchar(254) NOT NULL DEFAULT &apos;&apos;,</span><br><span class="line">  `username` char(10) DEFAULT &apos;&apos;,</span><br><span class="line">  `stime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,</span><br><span class="line">  PRIMARY KEY (`id`)</span><br><span class="line">) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE `user` (</span><br><span class="line">  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,</span><br><span class="line">  `username` char(20) NOT NULL DEFAULT &apos;&apos;,</span><br><span class="line">  `pwd` varchar(20) NOT NULL DEFAULT &apos;&apos;,</span><br><span class="line">  `registtime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,</span><br><span class="line">  PRIMARY KEY (`id`)</span><br><span class="line">) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;</span><br></pre></td></tr></table></figure>
+<p>文件board2.php</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">include &apos;./mysqlconfig.php&apos;;</span><br><span class="line">session_start();</span><br><span class="line">if($_POST[&apos;do&apos;]==&quot;login&quot;)&#123;</span><br><span class="line">	$username = $_POST[&apos;username&apos;];</span><br><span class="line">	$pwd = $_POST[&apos;passwd&apos;];</span><br><span class="line">	$sql = &quot;select * from user where username=&apos;$username&apos; and pwd=&apos;$pwd&apos;;&quot;;</span><br><span class="line">	$res = mysql_query($sql);</span><br><span class="line">	$row = mysql_fetch_assoc($res);</span><br><span class="line">	if ($row[&apos;id&apos;] &lt;&gt; &apos;&apos;)&#123;</span><br><span class="line">		$_SESSION[&apos;username&apos;] = $row[&apos;username&apos;];</span><br><span class="line">		echo &quot;&lt;script&gt;alert(&apos;登陆成功！&apos;)&lt;/script&gt;&quot;;</span><br><span class="line">	&#125;else&#123;</span><br><span class="line">		echo &quot;&lt;script&gt;alert(&apos;登录失败！用户名或密码错误！&apos;)&lt;/script&gt;&quot;;</span><br><span class="line">	&#125;</span><br><span class="line">	header ( &quot;refresh:0;url=&quot; );</span><br><span class="line">&#125;elseif($_POST[&apos;do&apos;]==&quot;registe&quot;)&#123;</span><br><span class="line">	$rname = $_POST[&apos;rname&apos;];</span><br><span class="line">	$rpwd = $_POST[&apos;rpasswd&apos;];</span><br><span class="line">	$sql = &quot;insert into user(username,pwd) values (&apos;$rname&apos;,&apos;$rpwd&apos;);&quot;;</span><br><span class="line">	if(mysql_query($sql))&#123;</span><br><span class="line">		$_SESSION[&apos;username&apos;] = $rname;</span><br><span class="line">		echo &quot;&lt;script&gt;alert(&apos;注册成功！已经为您自动登录！&apos;)&lt;/script&gt;&quot;;</span><br><span class="line">	&#125;else&#123;</span><br><span class="line">		echo &quot;&lt;script&gt;alert(&apos;注册失败！&apos;)&lt;/script&gt;&quot;;</span><br><span class="line">	&#125;</span><br><span class="line">	header ( &quot;refresh:0;url=&quot; );</span><br><span class="line">&#125;elseif($_POST[&apos;do&apos;]==&quot;submit&quot;)&#123;</span><br><span class="line">	$content = $_POST[&apos;content&apos;];</span><br><span class="line">	echo $content;</span><br><span class="line">	$sql = &quot;insert into msg(content,username) values (\&quot;&#123;$content&#125;\&quot;,&apos;&quot;.$_SESSION[&apos;username&apos;].&quot;&apos;);&quot;;</span><br><span class="line">	if(mysql_query($sql))&#123;</span><br><span class="line">		echo &quot;&lt;script&gt;alert(&apos;留言成功！&apos;)&lt;/script&gt;&quot;;</span><br><span class="line">		header ( &quot;refresh:0;url=&quot; );</span><br><span class="line">	&#125;else&#123;</span><br><span class="line">		echo &quot;&lt;script&gt;alert(&apos;不知道怎么的，留言失败了。&apos;)&lt;/script&gt;&quot;;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;elseif($_POST[&apos;do&apos;]==&quot;logout&quot;)&#123;</span><br><span class="line">	session_unset();</span><br><span class="line">	session_destroy();</span><br><span class="line">	echo &quot;&lt;script&gt;alert(&apos;成功退出登陆！&apos;)&lt;/script&gt;&quot;;</span><br><span class="line">	header ( &quot;refresh:0;url=&quot; );</span><br><span class="line">&#125;</span><br><span class="line">$sql = &quot;select * from msg order by id desc;&quot;;</span><br><span class="line">$result = mysql_query($sql);</span><br><span class="line">?&gt;</span><br><span class="line">&lt;!doctype html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">&lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">&lt;title&gt;简易留言板(带用户验证)&lt;/title&gt;</span><br><span class="line">&lt;style type=&quot;text/css&quot;&gt;</span><br><span class="line">#tab &#123;</span><br><span class="line">BORDER-BOTTOM: #c2130e 3px solid; HEIGHT: 60px</span><br><span class="line">&#125;</span><br><span class="line">#tab p&#123;</span><br><span class="line">FLOAT: left; LINE-HEIGHT: 21px; text-align:center</span><br><span class="line">&#125;</span><br><span class="line">#tab p.hit &#123;</span><br><span class="line">BACKGROUND: #dcdcdc; BORDER-LEFT: #f2f2f2 1px solid; WIDTH: 40px; CURSOR: pointer</span><br><span class="line">&#125;</span><br><span class="line">#tab p.nhit &#123;</span><br><span class="line">BACKGROUND: #c2130e; BORDER-LEFT: #f2f2f2 1px solid; WIDTH: 40px; COLOR: #fff</span><br><span class="line">&#125;</span><br><span class="line">&lt;/style&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line"></span><br><span class="line">&lt;body bgcolor=&quot;#56FF00&quot;&gt;</span><br><span class="line">	&lt;div style=&quot;margin:0 auto;width:400px;&quot;&gt;</span><br><span class="line">	&lt;?php if(!isset($_SESSION[&apos;username&apos;]) || $_SESSION[&apos;username&apos;]==&apos;&apos;)&#123;?&gt;</span><br><span class="line">		&lt;div id=&quot;usertip&quot; class=&quot;login&quot;&gt;</span><br><span class="line"></span><br><span class="line">注意：只有登陆之后才能进行留言哦！</span><br><span class="line"></span><br><span class="line">			&lt;div id=&quot;tab&quot;&gt;</span><br><span class="line"></span><br><span class="line">登陆</span><br><span class="line"></span><br><span class="line">注册</span><br><span class="line"></span><br><span class="line">			&lt;/div&gt;</span><br><span class="line">			&lt;div id=&quot;login&quot;&gt;</span><br><span class="line">				&lt;form name=&quot;login&quot; method=&quot;post&quot;&gt;</span><br><span class="line">					&lt;input type=&quot;hidden&quot; name=&quot;do&quot; value=&quot;login&quot;&gt;</span><br><span class="line">					&lt;table&gt;</span><br><span class="line">						&lt;tr&gt;</span><br><span class="line">							&lt;td&gt;用户名：&lt;/td&gt;</span><br><span class="line">							&lt;td&gt;&lt;input type=&quot;text&quot; name=&quot;username&quot; &gt;&lt;/td&gt;</span><br><span class="line">						&lt;/tr&gt;</span><br><span class="line">						&lt;tr&gt;</span><br><span class="line">							&lt;td&gt;密&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;码：&lt;/td&gt;</span><br><span class="line">							&lt;td&gt;&lt;input type=&quot;password&quot; name=&quot;passwd&quot; &gt;&lt;/td&gt;</span><br><span class="line">						&lt;/tr&gt;</span><br><span class="line">						&lt;tr&gt;</span><br><span class="line">							&lt;td&gt;&lt;/td&gt;</span><br><span class="line">							&lt;td align=&quot;right&quot;&gt;&lt;input type=&quot;submit&quot; value=&quot;登陆&quot; /&gt;&lt;/td&gt;</span><br><span class="line">						&lt;/tr&gt;</span><br><span class="line">					&lt;/table&gt;</span><br><span class="line">				&lt;/form&gt;</span><br><span class="line">			&lt;/div&gt;</span><br><span class="line">			&lt;div id=&quot;reg&quot; style=&quot;display: none;&quot;&gt;</span><br><span class="line">				&lt;form name=&quot;registe&quot; method=&quot;post&quot;&gt;</span><br><span class="line">					&lt;input type=&quot;hidden&quot; name=&quot;do&quot; value=&quot;registe&quot;&gt;</span><br><span class="line">					&lt;table&gt;</span><br><span class="line">						&lt;tr&gt;</span><br><span class="line">							&lt;td&gt;用户名：&lt;/td&gt;</span><br><span class="line">							&lt;td&gt;&lt;input type=&quot;text&quot; name=&quot;rname&quot; &gt;&lt;/td&gt;</span><br><span class="line">						&lt;/tr&gt;</span><br><span class="line">						&lt;tr&gt;</span><br><span class="line">							&lt;td&gt;密&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;码：&lt;/td&gt;</span><br><span class="line">							&lt;td&gt;&lt;input type=&quot;password&quot; name=&quot;rpasswd&quot; &gt;&lt;/td&gt;</span><br><span class="line">						&lt;/tr&gt;</span><br><span class="line">						&lt;tr&gt;</span><br><span class="line">							&lt;td&gt;&lt;/td&gt;</span><br><span class="line">							&lt;td align=&quot;right&quot;&gt;&lt;input type=&quot;submit&quot; value=&quot;注册&quot; /&gt;&lt;/td&gt;</span><br><span class="line">						&lt;/tr&gt;</span><br><span class="line">					&lt;/table&gt;</span><br><span class="line">				&lt;/form&gt;</span><br><span class="line">			&lt;/div&gt;</span><br><span class="line">		&lt;/div&gt;</span><br><span class="line">	&lt;?php &#125;else&#123;?&gt;</span><br><span class="line">        &lt;div class=&quot;form&quot;&gt;</span><br><span class="line"></span><br><span class="line">        		当前用户：&lt;?php echo $_SESSION[&apos;username&apos;];?&gt;</span><br><span class="line">        		&lt;form method=&quot;post&quot;&gt;</span><br><span class="line">        		&lt;input type=&quot;hidden&quot; name=&quot;do&quot; value=&quot;logout&quot;&gt;</span><br><span class="line">        		&lt;input type=&quot;submit&quot;value=&quot;退出登录&quot;&gt;</span><br><span class="line">        		&lt;/form&gt;</span><br><span class="line"></span><br><span class="line">            &lt;form method=&quot;post&quot;&gt;</span><br><span class="line">            &lt;textarea name=&quot;content&quot; cols=&quot;45&quot; rows=&quot;5&quot; style=&quot;width: 400px; height: 88px;&quot;&gt;&lt;/textarea&gt;</span><br><span class="line"></span><br><span class="line">			&lt;input type=&quot;hidden&quot; name=&quot;do&quot; value=&quot;submit&quot;&gt;</span><br><span class="line">            &lt;div align=&quot;right&quot;&gt;&lt;input type=&quot;submit&quot; value=&quot;留言&quot; /&gt;&amp;nbsp;&lt;/div&gt;</span><br><span class="line">            &lt;/form&gt;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">    &lt;?php &#125;?&gt;</span><br><span class="line">        &lt;div class=&quot;msg&quot;&gt;</span><br><span class="line">        	&lt;table border=&quot;1&quot; bordercolor=&quot;#FFFFFF&quot;&gt;</span><br><span class="line">        	&lt;?php while ($rows = mysql_fetch_assoc($result))&#123;?&gt;</span><br><span class="line">            	&lt;tr&gt;</span><br><span class="line">                	&lt;td&gt;&lt;span&gt;&lt;?php echo $rows[&apos;username&apos;];?&gt; &lt;/span&gt;&lt;span class=&quot;datetime&quot;&gt;（&lt;?php echo $rows[&apos;stime&apos;];?&gt;）&lt;/span&gt;</span><br><span class="line">&lt;span class=&quot;content&quot;&gt;&lt;?php echo $rows[&apos;content&apos;];?&gt;&lt;/span&gt;&lt;/td&gt;</span><br><span class="line">                &lt;/tr&gt;</span><br><span class="line">            &lt;?php &#125;?&gt;</span><br><span class="line">            &lt;/table&gt;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">	&lt;/div&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">var Tags=document.getElementById(&apos;tab&apos;).getElementsByTagName(&apos;p&apos;); </span><br><span class="line">var usertip=document.getElementById(&apos;usertip&apos;).getElementsByTagName(&apos;div&apos;);</span><br><span class="line">var len=Tags.length; </span><br><span class="line">var flag=0;//修改默认值</span><br><span class="line">for(i=0;i&lt;len;i++)&#123;</span><br><span class="line">Tags[i].value = i;</span><br><span class="line">Tags[i].onmouseover=function()&#123;changeNav(this.value)&#125;; </span><br><span class="line">&#125;</span><br><span class="line">Tags[flag].className=&apos;nhit&apos;;</span><br><span class="line">function changeNav(v)&#123; </span><br><span class="line">	Tags[flag].className=&apos;hit&apos;;</span><br><span class="line">	usertip[flag+1].style.display=&quot;none&quot;;</span><br><span class="line">	flag=v; </span><br><span class="line">	Tags[v].className=&apos;nhit&apos;;</span><br><span class="line">	usertip[v+1].style.display=&quot;&quot;;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+            
+            <p class="more">
+                <a href="http://www.imsry.cn/posts/db7b2e7c.html">阅读剩下更多</a>
+            </p>
+        </div>
+        <div class="post-thumbnail" data-img="">
+            <a href="http://www.imsry.cn/posts/db7b2e7c.html" title="作业4-2（带用户的留言板）单页面实现！">
+                
+                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/9.jpg" alt="默认配图" >
+                
+            </a>
+        </div>
+    </div>
+</article>
+
+    
+        <!-- 文章列表 item -->
+<article class="post">
+    <header>
+        <!-- 标签这有且只能显示一个 -->
+        
+        <a class="cat-link" href="/categories/学习笔记/">学习笔记</a>
+        
+        <!-- 文章标题 -->
+        
+    <h3 class="post-title">
     	<a href="http://www.imsry.cn/posts/aee0563f.html">
     		作业4-1（简易留言板）
     	</a>
@@ -600,157 +652,6 @@ var _hmt = _hmt || [];
 </article>
 
     
-        <!-- 文章列表 item -->
-<article class="post">
-    <header>
-        <!-- 标签这有且只能显示一个 -->
-        
-        <a class="cat-link" href="/categories/Linux/">Linux</a>
-        
-        <!-- 文章标题 -->
-        
-    <h3 class="post-title">
-    	<a href="http://www.imsry.cn/posts/1beb1f62.html">
-    		Linux上vi(vim)编辑器使用教程 - 转载
-    	</a>
-    </h3>
-
-    </header>
-    <p class="post-meta">
-        Anthony 发表于
-        <time datetime="2014-11-29T15:29:48.000Z">2014-11-29 23:29:48</time>
-
-
-        &nbsp;&nbsp;
-        <span class="post-tags">
-            标签：
-            
-    
-        <a href="/tags/Vim/" title="Vim">Vim</a>
-    
-
-        </span>
-    </p>
-
-    <div class="post-content">
-        <div class="post-excerpt">
-            
-                <p>vi(vim)是上Linux非常常用的编辑器，很多Linux发行版都默认安装了vi(vim)。vi(vim)命令繁多但是如果使用灵活之后将会大大提高效率。vi是“visual interface”的缩写，vim是vi IMproved(增强版的vi)。在一般的系统管理维护中vi就够用，如果想使用代码加亮的话可以使用vim。下面vps侦探整理一下vi的使用教程：包含vi的基本介绍、使用模式、文件的打开关闭保存、插入文本或新建行、移动光标、删除、恢复字符或行、搜索等等，算是一篇比较适合新手学习vi的教程。</p>
-<p>vi有3个模式：插入模式、命令模式、低行模式。</p>
-<pre><code>插入模式：在此模式下可以输入字符，按ESC将回到命令模式。
-命令模式：可以移动光标、删除字符等。
-低行模式：可以保存文件、退出vi、设置vi、查找等功能(低行模式也可以看作是命令模式里的)。
-</code></pre><p>一、打开文件、保存、关闭文件(vi命令模式下使用)</p>
-<pre lang="ruby" line="1" escaped="true">
-vi filename       //打开filename文件
-:w       //保存文件
-:w vpser.net //保存至vpser.net文件
-:q          //退出编辑器，如果文件已修改请使用下面的命令
-:q!        //退出编辑器，且不保存
-:wq         //退出编辑器，且保存文件
-</pre>
-
-<p>二、插入文本或行(vi命令模式下使用，执行下面命令后将进入插入模式，按ESC键可退出插入模式)</p>
-<pre lang="bash" line="1" escaped="true">
-
-a      //在当前光标位置的右边添加文本
-i       //在当前光标位置的左边添加文本
-A     //在当前行的末尾位置添加文本
-I      //在当前行的开始处添加文本(非空字符的行首)
-O     //在当前行的上面新建一行
-o     //在当前行的下面新建一行
-R    //替换(覆盖)当前光标位置及后面的若干文本
-J    //合并光标所在行及下一行为一行(依然在命令模式)
-</pre>
-
-<p>三、移动光标(vi命令模式下使用)</p>
-<p>1、使用上下左右方向键</p>
-<p>2、命令模式下：h   向左、j   向下 、k   向上、l  向右。<br>空格键 向右、Backspace  向左、Enter  移动到下一行首、-  移动到上一行首。<br>四、删除、恢复字符或行(vi命令模式下使用)</p>
-<pre lang="apache" line="1" escaped="true">
-
-x         //删除当前字符
-nx         //删除从光标开始的n个字符
-dd      //删除当前行
-ndd   //向下删除当前行在内的n行
-u       //撤销上一步操作
-U      //撤销对当前行的所有操作
-</pre>
-
-<p>五、搜索(vi命令模式下使用)</p>
-<pre lang="ruby" line="1" escaped="true">
-
-/vpser     //向光标下搜索vpser字符串
-?vpser     //向光标上搜索vpser字符串
-n           //向下搜索前一个搜素动作
-N         //向上搜索前一个搜索动作
-</pre>
-
-<p>六、跳至指定行(vi命令模式下使用)</p>
-<pre lang="ruby" line="1" escaped="true">
-
-n+        //向下跳n行
-n-         //向上跳n行
-nG        //跳到行号为n的行
-G           //跳至文件的底部
-</pre>
-
-<p>七、设置行号(vi命令模式下使用)</p>
-<pre lang="ruby" line="1" escaped="true">
-
-:set  nu     //显示行号
-:set nonu    //取消显示行号
-</pre>
-
-<p>八、复制、粘贴(vi命令模式下使用)</p>
-<pre lang="ruby" line="1" escaped="true">
-
-yy    //将当前行复制到缓存区，也可以用 "ayy 复制，"a 为缓冲区，a也可以替换为a到z的任意字母，可以完成多个复制任务。
-nyy   //将当前行向下n行复制到缓冲区，也可以用 "anyy 复制，"a 为缓冲区，a也可以替换为a到z的任意字母，可以完成多个复制任务。
-yw    //复制从光标开始到词尾的字符。
-nyw   //复制从光标开始的n个单词。
-y^      //复制从光标到行首的内容。  VPS侦探
-y$      //复制从光标到行尾的内容。
-p        //粘贴剪切板里的内容在光标后，如果使用了前面的自定义缓冲区，建议使用"ap 进行粘贴。
-P        //粘贴剪切板里的内容在光标前，如果使用了前面的自定义缓冲区，建议使用"aP 进行粘贴。
-</pre>
-
-<p>九、替换(vi命令模式下使用)</p>
-<pre lang="ruby" line="1" escaped="true">
-
-:s/old/new      //用new替换行中首次出现的old
-:s/old/new/g         //用new替换行中所有的old
-:n,m s/old/new/g     //用new替换从n到m行里所有的old
-:%s/old/new/g      //用new替换当前文件里所有的old
-</pre>
-
-<p>十、编辑其他文件</p>
-<pre lang="ruby" line="1" escaped="true">
-:e otherfilename    //编辑文件名为otherfilename的文件。
-</pre>
-
-<p>十一、修改文件格式</p>
-<pre lang="ruby" line="1" escaped="true">
-:set fileformat=unix   //将文件修改为unix格式，如win下面的文本文件在linux下会出现^M。
-</pre>
-
-<p>总结：vi(vim)教程虽然有比较多的命令，但是只要勤加练习，相信你会很快的熟练掌握，同时也会给你的工作或学习带来更高的效率。当如果不知道自己处在什么模式时可以按2次Esc键即可回到命令模式，会有最后提醒一点：注意大小写！！！<br>文章来源：<a href="http://www.vpser.net/manage/vi.html" target="_blank" rel="noopener">Linux上vi(vim)编辑器使用教程 - VPS侦探</a>.</p>
-
-            
-            <p class="more">
-                <a href="http://www.imsry.cn/posts/1beb1f62.html">阅读剩下更多</a>
-            </p>
-        </div>
-        <div class="post-thumbnail" data-img="">
-            <a href="http://www.imsry.cn/posts/1beb1f62.html" title="Linux上vi(vim)编辑器使用教程 - 转载">
-                
-                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/9.jpg" alt="默认配图" >
-                
-            </a>
-        </div>
-    </div>
-</article>
-
-    
 
     
     <nav class="page-navigator">
@@ -803,22 +704,17 @@ P        //粘贴剪切板里的内容在光标前，如果使用了前面的自
     </li>
     
     <li>
-        <a href="/categories/学习笔记/">学习笔记</a>
-        <span class="badge">(50)</span>
-    </li>
-    
-    <li>
-        <a href="/categories/Web/">Web</a>
+        <a href="/categories/网络安全/">网络安全</a>
         <span class="badge">(2)</span>
     </li>
     
     <li>
-        <a href="/categories/编程语言/">编程语言</a>
-        <span class="badge">(6)</span>
+        <a href="/categories/学习笔记/">学习笔记</a>
+        <span class="badge">(51)</span>
     </li>
     
     <li>
-        <a href="/categories/网络安全/">网络安全</a>
+        <a href="/categories/Web/">Web</a>
         <span class="badge">(2)</span>
     </li>
     
@@ -834,6 +730,11 @@ P        //粘贴剪切板里的内容在光标前，如果使用了前面的自
     
     <li>
         <a href="/categories/算法/">算法</a>
+        <span class="badge">(6)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/编程语言/">编程语言</a>
         <span class="badge">(6)</span>
     </li>
     
@@ -858,13 +759,13 @@ P        //粘贴剪切板里的内容在光标前，如果使用了前面的自
     </li>
     
     <li>
-        <a href="/categories/考试/">考试</a>
-        <span class="badge">(1)</span>
+        <a href="/categories/游戏/">游戏</a>
+        <span class="badge">(2)</span>
     </li>
     
     <li>
-        <a href="/categories/游戏/">游戏</a>
-        <span class="badge">(2)</span>
+        <a href="/categories/考试/">考试</a>
+        <span class="badge">(1)</span>
     </li>
     
     <li>
@@ -886,33 +787,15 @@ P        //粘贴剪切板里的内容在光标前，如果使用了前面的自
         <!-- 文章标签 -->
 <div class="widget-bd tag-wrap">
   
-    <a class="tag-item" href="/tags/firewall/" title="firewall">firewall (1)</a>
-  
-    <a class="tag-item" href="/tags/CentOS/" title="CentOS">CentOS (3)</a>
-  
     <a class="tag-item" href="/tags/Apache/" title="Apache">Apache (4)</a>
   
     <a class="tag-item" href="/tags/Linux/" title="Linux">Linux (5)</a>
   
     <a class="tag-item" href="/tags/Proxy/" title="Proxy">Proxy (1)</a>
   
-    <a class="tag-item" href="/tags/VPN/" title="VPN">VPN (1)</a>
+    <a class="tag-item" href="/tags/firewall/" title="firewall">firewall (1)</a>
   
-    <a class="tag-item" href="/tags/Docker/" title="Docker">Docker (1)</a>
-  
-    <a class="tag-item" href="/tags/Discuz/" title="Discuz">Discuz (1)</a>
-  
-    <a class="tag-item" href="/tags/FFmpeg/" title="FFmpeg">FFmpeg (1)</a>
-  
-    <a class="tag-item" href="/tags/Network/" title="Network">Network (3)</a>
-  
-    <a class="tag-item" href="/tags/Glassfish/" title="Glassfish">Glassfish (1)</a>
-  
-    <a class="tag-item" href="/tags/Java/" title="Java">Java (2)</a>
-  
-    <a class="tag-item" href="/tags/MySQL/" title="MySQL">MySQL (9)</a>
-  
-    <a class="tag-item" href="/tags/Golang/" title="Golang">Golang (3)</a>
+    <a class="tag-item" href="/tags/CentOS/" title="CentOS">CentOS (3)</a>
   
     <a class="tag-item" href="/tags/https/" title="https">https (2)</a>
   
@@ -920,15 +803,35 @@ P        //粘贴剪切板里的内容在光标前，如果使用了前面的自
   
     <a class="tag-item" href="/tags/数据结构/" title="数据结构">数据结构 (1)</a>
   
+    <a class="tag-item" href="/tags/VPN/" title="VPN">VPN (1)</a>
+  
+    <a class="tag-item" href="/tags/Discuz/" title="Discuz">Discuz (1)</a>
+  
+    <a class="tag-item" href="/tags/Docker/" title="Docker">Docker (1)</a>
+  
+    <a class="tag-item" href="/tags/Glassfish/" title="Glassfish">Glassfish (1)</a>
+  
+    <a class="tag-item" href="/tags/Java/" title="Java">Java (2)</a>
+  
+    <a class="tag-item" href="/tags/MySQL/" title="MySQL">MySQL (9)</a>
+  
+    <a class="tag-item" href="/tags/Network/" title="Network">Network (3)</a>
+  
+    <a class="tag-item" href="/tags/FFmpeg/" title="FFmpeg">FFmpeg (1)</a>
+  
     <a class="tag-item" href="/tags/LNMP/" title="LNMP">LNMP (2)</a>
+  
+    <a class="tag-item" href="/tags/Golang/" title="Golang">Golang (3)</a>
   
     <a class="tag-item" href="/tags/Vim/" title="Vim">Vim (1)</a>
   
     <a class="tag-item" href="/tags/LAMP/" title="LAMP">LAMP (1)</a>
   
+    <a class="tag-item" href="/tags/网卡/" title="网卡">网卡 (1)</a>
+  
     <a class="tag-item" href="/tags/OrangePi/" title="OrangePi">OrangePi (1)</a>
   
-    <a class="tag-item" href="/tags/网卡/" title="网卡">网卡 (1)</a>
+    <a class="tag-item" href="/tags/PHP/" title="PHP">PHP (11)</a>
   
     <a class="tag-item" href="/tags/算法/" title="算法">算法 (1)</a>
   
@@ -936,27 +839,25 @@ P        //粘贴剪切板里的内容在光标前，如果使用了前面的自
   
     <a class="tag-item" href="/tags/定理/" title="定理">定理 (1)</a>
   
-    <a class="tag-item" href="/tags/PHP/" title="PHP">PHP (11)</a>
-  
     <a class="tag-item" href="/tags/RPC/" title="RPC">RPC (1)</a>
   
     <a class="tag-item" href="/tags/HTML/" title="HTML">HTML (2)</a>
   
     <a class="tag-item" href="/tags/Javascript/" title="Javascript">Javascript (2)</a>
   
-    <a class="tag-item" href="/tags/MacOS/" title="MacOS">MacOS (5)</a>
-  
-    <a class="tag-item" href="/tags/php/" title="php">php (2)</a>
+    <a class="tag-item" href="/tags/k8s/" title="k8s">k8s (1)</a>
   
     <a class="tag-item" href="/tags/Laravel/" title="Laravel">Laravel (1)</a>
   
     <a class="tag-item" href="/tags/MarkDown/" title="MarkDown">MarkDown (1)</a>
   
+    <a class="tag-item" href="/tags/MacOS/" title="MacOS">MacOS (5)</a>
+  
+    <a class="tag-item" href="/tags/php/" title="php">php (2)</a>
+  
     <a class="tag-item" href="/tags/Git/" title="Git">Git (1)</a>
   
     <a class="tag-item" href="/tags/Ngrok/" title="Ngrok">Ngrok (1)</a>
-  
-    <a class="tag-item" href="/tags/排序算法/" title="排序算法">排序算法 (1)</a>
   
     <a class="tag-item" href="/tags/INI/" title="INI">INI (1)</a>
   
@@ -1014,7 +915,7 @@ P        //粘贴剪切板里的内容在光标前，如果使用了前面的自
 </div>
     &copy;
     
-        2014-2021
+        2014-2022
     
 
     <a href="/">Best Wishes</a>
@@ -1023,6 +924,6 @@ P        //粘贴剪切板里的内容在光标前，如果使用了前面的自
 
     <!--博客js脚本 -->
     <!-- 这里放网站js脚本 -->
-<script src="/js/main.js?v=1634540542941"></script>
+<script src="/js/main.js?v=1645428001681"></script>
 </body>
 </html>
