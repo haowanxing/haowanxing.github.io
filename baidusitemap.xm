@@ -5,7 +5,7 @@
     
   <url>
     <loc>http://www.imsry.cn/posts/4fa20f2.html</loc>
-    <lastmod>2022-02-21T07:18:53.539Z</lastmod>
+    <lastmod>2022-02-21T07:36:14.971Z</lastmod>
     <data>
         <display>
         <title>kubernetes nginx ingress custom 401/500 page</title>
