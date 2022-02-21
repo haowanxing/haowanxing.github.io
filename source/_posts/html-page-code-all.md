@@ -1,7 +1,7 @@
 ---
 title: 网页特殊符号HTML代码大全
 tags:
-  - html
+  - HTML
 id: 58
 categories: 学习笔记
 abbrlink: '67134e92'

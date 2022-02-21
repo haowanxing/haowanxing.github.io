@@ -1,9 +1,8 @@
 ---
 title: Go-Server/Client以及PHP-Client之间的GRPC初次尝试
 tags:
-  - Go
+  - Golang
   - PHP
-  - gRPC
   - RPC
 abbrlink: b37f5033
 date: 2018-12-02 13:47:24

@@ -88,7 +88,8 @@ deploy:
   type: git
   repo:
     github: git@github.com:haowanxing/haowanxing.github.io.git
-    coding: git@git.dev.tencent.com:anthony_box/anthony_box.coding.me.git
+    coding: git@e.coding.net:anthony_box/anthony_box.coding.me.git
+    #coding: git@git.dev.tencent.com:anthony_box/anthony_box.coding.me.git
   #repository: https://github.com/haowanxing/haowanxing.github.io.git
   branch: master
 
