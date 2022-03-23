@@ -489,9 +489,9 @@
         <title> CENTOS 6.0 iptables 开放端口80 3306 22端口</title>
         <pubTime>2015-11-11T13:13:01.000Z</pubTime>
         
-        <tag>CentOS</tag>
-         
         <tag>firewall</tag>
+         
+        <tag>CentOS</tag>
          
          
            

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>斯人笔记本 - IMSRY - 个人博客 原创文章 学习笔记 技术分享</title>
+  <title>斯人笔记本</title>
   <icon>https://www.gravatar.com/avatar/8faecf681b9bbd9ae3fc8a88c5268860</icon>
   <subtitle>IMSRY</subtitle>
   <link href="/atom.xml" rel="self"/>
