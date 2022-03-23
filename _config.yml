@@ -3,10 +3,10 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: 小牛试一刀
-subtitle: 斯人笔记本
+title: 斯人笔记本 - IMSRY - 个人博客 原创文章 学习笔记 技术分享
+subtitle: IMSRY
 description: 待人以儒墨，不热爱前端技术的后端开发不是一个好的吃货。
-keyword: 刘经济,Anthony,Sorry,PHP,Golang,最好的语言
+keyword: IMSRY,ESP,TOUCH,DevOPS,刘经济,Anthony,Sorry,PHP,Golang,最好的语言
 author: Anthony
 email: smoothest@yeah.net
 language: zh-CN
@@ -14,7 +14,7 @@ timezone:
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: http://www.imsry.cn
+url: https://www.imsry.cn
 root: /
 #permalink: :year/:month/:day/:title/
 permalink: posts/:abbrlink.html
