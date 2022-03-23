@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>小牛试一刀</title>
+  <title>斯人笔记本 - IMSRY - 个人博客 原创文章 学习笔记 技术分享</title>
   <icon>https://www.gravatar.com/avatar/8faecf681b9bbd9ae3fc8a88c5268860</icon>
-  <subtitle>斯人笔记本</subtitle>
+  <subtitle>IMSRY</subtitle>
   <link href="/atom.xml" rel="self"/>
   
-  <link href="http://www.imsry.cn/"/>
+  <link href="https://www.imsry.cn/"/>
   <updated>2022-02-21T07:36:14.971Z</updated>
-  <id>http://www.imsry.cn/</id>
+  <id>https://www.imsry.cn/</id>
   
   <author>
     <name>Anthony</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>kubernetes nginx ingress custom 401/500 page</title>
-    <link href="http://www.imsry.cn/posts/4fa20f2.html"/>
-    <id>http://www.imsry.cn/posts/4fa20f2.html</id>
+    <link href="https://www.imsry.cn/posts/4fa20f2.html"/>
+    <id>https://www.imsry.cn/posts/4fa20f2.html</id>
     <published>2022-02-21T06:30:41.000Z</published>
     <updated>2022-02-21T07:36:14.971Z</updated>
     
@@ -35,17 +35,17 @@
     
     </summary>
     
-      <category term="学习笔记" scheme="http://www.imsry.cn/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+      <category term="学习笔记" scheme="https://www.imsry.cn/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
     
     
-      <category term="k8s" scheme="http://www.imsry.cn/tags/k8s/"/>
+      <category term="k8s" scheme="https://www.imsry.cn/tags/k8s/"/>
     
   </entry>
   
   <entry>
     <title>记一次使用CGo的Golang项目交叉编译遇到的问题及解决步骤</title>
-    <link href="http://www.imsry.cn/posts/e6ef1b5e.html"/>
-    <id>http://www.imsry.cn/posts/e6ef1b5e.html</id>
+    <link href="https://www.imsry.cn/posts/e6ef1b5e.html"/>
+    <id>https://www.imsry.cn/posts/e6ef1b5e.html</id>
     <published>2021-10-18T02:08:41.000Z</published>
     <updated>2021-10-18T06:44:30.080Z</updated>
     
@@ -60,23 +60,23 @@
     
     </summary>
     
-      <category term="学习笔记" scheme="http://www.imsry.cn/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+      <category term="学习笔记" scheme="https://www.imsry.cn/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
     
     
-      <category term="Linux" scheme="http://www.imsry.cn/tags/Linux/"/>
+      <category term="Linux" scheme="https://www.imsry.cn/tags/Linux/"/>
     
-      <category term="Golang" scheme="http://www.imsry.cn/tags/Golang/"/>
+      <category term="Golang" scheme="https://www.imsry.cn/tags/Golang/"/>
     
-      <category term="MacOS" scheme="http://www.imsry.cn/tags/MacOS/"/>
+      <category term="MacOS" scheme="https://www.imsry.cn/tags/MacOS/"/>
     
-      <category term="Arm64" scheme="http://www.imsry.cn/tags/Arm64/"/>
+      <category term="Arm64" scheme="https://www.imsry.cn/tags/Arm64/"/>
     
   </entry>
   
   <entry>
     <title>利用FFmpeg处理鱼眼视频分成4个方向的视野画面</title>
-    <link href="http://www.imsry.cn/posts/32c4930.html"/>
-    <id>http://www.imsry.cn/posts/32c4930.html</id>
+    <link href="https://www.imsry.cn/posts/32c4930.html"/>
+    <id>https://www.imsry.cn/posts/32c4930.html</id>
     <published>2021-03-11T06:02:54.000Z</published>
     <updated>2021-10-18T06:58:37.445Z</updated>
     
@@ -113,17 +113,17 @@
     
     </summary>
     
-      <category term="学习笔记" scheme="http://www.imsry.cn/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+      <category term="学习笔记" scheme="https://www.imsry.cn/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
     
     
-      <category term="FFmpeg" scheme="http://www.imsry.cn/tags/FFmpeg/"/>
+      <category term="FFmpeg" scheme="https://www.imsry.cn/tags/FFmpeg/"/>
     
   </entry>
   
   <entry>
     <title>自建CA服务器学习笔记</title>
-    <link href="http://www.imsry.cn/posts/32476646.html"/>
-    <id>http://www.imsry.cn/posts/32476646.html</id>
+    <link href="https://www.imsry.cn/posts/32476646.html"/>
+    <id>https://www.imsry.cn/posts/32476646.html</id>
     <published>2020-07-17T10:29:05.000Z</published>
     <updated>2020-07-17T10:30:48.479Z</updated>
     
@@ -136,21 +136,21 @@
     
     </summary>
     
-      <category term="学习笔记" scheme="http://www.imsry.cn/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+      <category term="学习笔记" scheme="https://www.imsry.cn/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
     
     
-      <category term="Linux" scheme="http://www.imsry.cn/tags/Linux/"/>
+      <category term="Linux" scheme="https://www.imsry.cn/tags/Linux/"/>
     
-      <category term="https" scheme="http://www.imsry.cn/tags/https/"/>
+      <category term="https" scheme="https://www.imsry.cn/tags/https/"/>
     
-      <category term="CA" scheme="http://www.imsry.cn/tags/CA/"/>
+      <category term="CA" scheme="https://www.imsry.cn/tags/CA/"/>
     
   </entry>
   
   <entry>
     <title>ESP-Touch智能配网是如何实现的</title>
-    <link href="http://www.imsry.cn/posts/bf40eeb6.html"/>
-    <id>http://www.imsry.cn/posts/bf40eeb6.html</id>
+    <link href="https://www.imsry.cn/posts/bf40eeb6.html"/>
+    <id>https://www.imsry.cn/posts/bf40eeb6.html</id>
     <published>2020-06-05T10:03:58.000Z</published>
     <updated>2021-10-18T06:57:59.284Z</updated>
     
@@ -171,17 +171,17 @@
     
     </summary>
     
-      <category term="学习笔记" scheme="http://www.imsry.cn/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+      <category term="学习笔记" scheme="https://www.imsry.cn/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
     
     
-      <category term="Network" scheme="http://www.imsry.cn/tags/Network/"/>
+      <category term="Network" scheme="https://www.imsry.cn/tags/Network/"/>
     
   </entry>
   
   <entry>
     <title>腾讯云物联网通信平台设备动态注册鉴权流程</title>
-    <link href="http://www.imsry.cn/posts/4ede204f.html"/>
-    <id>http://www.imsry.cn/posts/4ede204f.html</id>
+    <link href="https://www.imsry.cn/posts/4ede204f.html"/>
+    <id>https://www.imsry.cn/posts/4ede204f.html</id>
     <published>2020-02-26T07:16:22.000Z</published>
     <updated>2020-05-29T09:13:38.902Z</updated>
     
@@ -203,17 +203,17 @@
     
     </summary>
     
-      <category term="开放平台" scheme="http://www.imsry.cn/categories/%E5%BC%80%E6%94%BE%E5%B9%B3%E5%8F%B0/"/>
+      <category term="开放平台" scheme="https://www.imsry.cn/categories/%E5%BC%80%E6%94%BE%E5%B9%B3%E5%8F%B0/"/>
     
     
-      <category term="Qcloud" scheme="http://www.imsry.cn/tags/Qcloud/"/>
+      <category term="Qcloud" scheme="https://www.imsry.cn/tags/Qcloud/"/>
     
   </entry>
   
   <entry>
     <title>线性插值算法之一维数组矩阵</title>
-    <link href="http://www.imsry.cn/posts/babba23d.html"/>
-    <id>http://www.imsry.cn/posts/babba23d.html</id>
+    <link href="https://www.imsry.cn/posts/babba23d.html"/>
+    <id>https://www.imsry.cn/posts/babba23d.html</id>
     <published>2020-01-08T08:56:19.000Z</published>
     <updated>2020-05-29T09:03:47.620Z</updated>
     
@@ -238,15 +238,15 @@
     
     </summary>
     
-      <category term="算法" scheme="http://www.imsry.cn/categories/%E7%AE%97%E6%B3%95/"/>
+      <category term="算法" scheme="https://www.imsry.cn/categories/%E7%AE%97%E6%B3%95/"/>
     
     
   </entry>
   
   <entry>
     <title>Linux配置网卡（静态）IP地址</title>
-    <link href="http://www.imsry.cn/posts/15ab52a4.html"/>
-    <id>http://www.imsry.cn/posts/15ab52a4.html</id>
+    <link href="https://www.imsry.cn/posts/15ab52a4.html"/>
+    <id>https://www.imsry.cn/posts/15ab52a4.html</id>
     <published>2019-09-23T07:00:08.000Z</published>
     <updated>2020-05-29T09:09:37.432Z</updated>
     
@@ -262,17 +262,17 @@
     
     </summary>
     
-      <category term="Linux" scheme="http://www.imsry.cn/categories/Linux/"/>
+      <category term="Linux" scheme="https://www.imsry.cn/categories/Linux/"/>
     
     
-      <category term="网卡" scheme="http://www.imsry.cn/tags/%E7%BD%91%E5%8D%A1/"/>
+      <category term="网卡" scheme="https://www.imsry.cn/tags/%E7%BD%91%E5%8D%A1/"/>
     
   </entry>
   
   <entry>
     <title>OrangePi Zero 简单连接WIFI的方法</title>
-    <link href="http://www.imsry.cn/posts/ba6472f.html"/>
-    <id>http://www.imsry.cn/posts/ba6472f.html</id>
+    <link href="https://www.imsry.cn/posts/ba6472f.html"/>
+    <id>https://www.imsry.cn/posts/ba6472f.html</id>
     <published>2019-09-12T06:02:31.000Z</published>
     <updated>2020-05-29T09:09:05.349Z</updated>
     
@@ -288,19 +288,19 @@
     
     </summary>
     
-      <category term="开发板" scheme="http://www.imsry.cn/categories/%E5%BC%80%E5%8F%91%E6%9D%BF/"/>
+      <category term="开发板" scheme="https://www.imsry.cn/categories/%E5%BC%80%E5%8F%91%E6%9D%BF/"/>
     
     
-      <category term="Network" scheme="http://www.imsry.cn/tags/Network/"/>
+      <category term="Network" scheme="https://www.imsry.cn/tags/Network/"/>
     
-      <category term="OrangePi" scheme="http://www.imsry.cn/tags/OrangePi/"/>
+      <category term="OrangePi" scheme="https://www.imsry.cn/tags/OrangePi/"/>
     
   </entry>
   
   <entry>
     <title>利用Dockerfile创建PHP7.3环境镜像</title>
-    <link href="http://www.imsry.cn/posts/a05a90fb.html"/>
-    <id>http://www.imsry.cn/posts/a05a90fb.html</id>
+    <link href="https://www.imsry.cn/posts/a05a90fb.html"/>
+    <id>https://www.imsry.cn/posts/a05a90fb.html</id>
     <published>2019-07-04T02:39:55.000Z</published>
     <updated>2020-05-29T09:08:34.590Z</updated>
     
@@ -314,17 +314,17 @@
     
     </summary>
     
-      <category term="学习笔记" scheme="http://www.imsry.cn/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+      <category term="学习笔记" scheme="https://www.imsry.cn/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
     
     
-      <category term="Docker" scheme="http://www.imsry.cn/tags/Docker/"/>
+      <category term="Docker" scheme="https://www.imsry.cn/tags/Docker/"/>
     
   </entry>
   
   <entry>
     <title>引用符号&#39;&amp;&#39;在foreach循环中的惊喜</title>
-    <link href="http://www.imsry.cn/posts/5f047c20.html"/>
-    <id>http://www.imsry.cn/posts/5f047c20.html</id>
+    <link href="https://www.imsry.cn/posts/5f047c20.html"/>
+    <id>https://www.imsry.cn/posts/5f047c20.html</id>
     <published>2019-06-21T06:51:27.000Z</published>
     <updated>2021-10-18T07:01:17.102Z</updated>
     
@@ -341,17 +341,17 @@
     
     </summary>
     
-      <category term="PHP" scheme="http://www.imsry.cn/categories/PHP/"/>
+      <category term="PHP" scheme="https://www.imsry.cn/categories/PHP/"/>
     
     
-      <category term="PHP" scheme="http://www.imsry.cn/tags/PHP/"/>
+      <category term="PHP" scheme="https://www.imsry.cn/tags/PHP/"/>
     
   </entry>
   
   <entry>
     <title>算法时间复杂度的表达-渐进符号与主定理（转载）</title>
-    <link href="http://www.imsry.cn/posts/722b27c3.html"/>
-    <id>http://www.imsry.cn/posts/722b27c3.html</id>
+    <link href="https://www.imsry.cn/posts/722b27c3.html"/>
+    <id>https://www.imsry.cn/posts/722b27c3.html</id>
     <published>2019-05-22T01:09:37.000Z</published>
     <updated>2020-05-29T09:06:22.150Z</updated>
     
@@ -368,21 +368,21 @@
     
     </summary>
     
-      <category term="算法" scheme="http://www.imsry.cn/categories/%E7%AE%97%E6%B3%95/"/>
+      <category term="算法" scheme="https://www.imsry.cn/categories/%E7%AE%97%E6%B3%95/"/>
     
     
-      <category term="算法" scheme="http://www.imsry.cn/tags/%E7%AE%97%E6%B3%95/"/>
+      <category term="算法" scheme="https://www.imsry.cn/tags/%E7%AE%97%E6%B3%95/"/>
     
-      <category term="时间复杂度" scheme="http://www.imsry.cn/tags/%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6/"/>
+      <category term="时间复杂度" scheme="https://www.imsry.cn/tags/%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6/"/>
     
-      <category term="定理" scheme="http://www.imsry.cn/tags/%E5%AE%9A%E7%90%86/"/>
+      <category term="定理" scheme="https://www.imsry.cn/tags/%E5%AE%9A%E7%90%86/"/>
     
   </entry>
   
   <entry>
     <title>软考选择题-索引文件地址项</title>
-    <link href="http://www.imsry.cn/posts/9b10448.html"/>
-    <id>http://www.imsry.cn/posts/9b10448.html</id>
+    <link href="https://www.imsry.cn/posts/9b10448.html"/>
+    <id>https://www.imsry.cn/posts/9b10448.html</id>
     <published>2019-05-15T07:05:47.000Z</published>
     <updated>2020-05-28T10:08:36.940Z</updated>
     
@@ -398,19 +398,19 @@
     
     </summary>
     
-      <category term="考试" scheme="http://www.imsry.cn/categories/%E8%80%83%E8%AF%95/"/>
+      <category term="考试" scheme="https://www.imsry.cn/categories/%E8%80%83%E8%AF%95/"/>
     
     
-      <category term="软考" scheme="http://www.imsry.cn/tags/%E8%BD%AF%E8%80%83/"/>
+      <category term="软考" scheme="https://www.imsry.cn/tags/%E8%BD%AF%E8%80%83/"/>
     
-      <category term="索引文件" scheme="http://www.imsry.cn/tags/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6/"/>
+      <category term="索引文件" scheme="https://www.imsry.cn/tags/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6/"/>
     
   </entry>
   
   <entry>
     <title>免费获得SSL证书-Let&#39;s Encrypt</title>
-    <link href="http://www.imsry.cn/posts/7e214f75.html"/>
-    <id>http://www.imsry.cn/posts/7e214f75.html</id>
+    <link href="https://www.imsry.cn/posts/7e214f75.html"/>
+    <id>https://www.imsry.cn/posts/7e214f75.html</id>
     <published>2019-04-22T10:18:33.000Z</published>
     <updated>2020-05-29T09:07:38.126Z</updated>
     
@@ -430,23 +430,23 @@
     
     </summary>
     
-      <category term="网络安全" scheme="http://www.imsry.cn/categories/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/"/>
+      <category term="网络安全" scheme="https://www.imsry.cn/categories/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/"/>
     
     
-      <category term="SSL" scheme="http://www.imsry.cn/tags/SSL/"/>
+      <category term="SSL" scheme="https://www.imsry.cn/tags/SSL/"/>
     
-      <category term="HTTPS" scheme="http://www.imsry.cn/tags/HTTPS/"/>
+      <category term="HTTPS" scheme="https://www.imsry.cn/tags/HTTPS/"/>
     
-      <category term="Cert" scheme="http://www.imsry.cn/tags/Cert/"/>
+      <category term="Cert" scheme="https://www.imsry.cn/tags/Cert/"/>
     
-      <category term="TLS" scheme="http://www.imsry.cn/tags/TLS/"/>
+      <category term="TLS" scheme="https://www.imsry.cn/tags/TLS/"/>
     
   </entry>
   
   <entry>
     <title>PHP加解密算法使用openssl替换mcrypt扩展</title>
-    <link href="http://www.imsry.cn/posts/5c3bf0b6.html"/>
-    <id>http://www.imsry.cn/posts/5c3bf0b6.html</id>
+    <link href="https://www.imsry.cn/posts/5c3bf0b6.html"/>
+    <id>https://www.imsry.cn/posts/5c3bf0b6.html</id>
     <published>2019-02-20T10:02:20.000Z</published>
     <updated>2020-05-29T08:32:40.990Z</updated>
     
@@ -470,23 +470,23 @@
     
     </summary>
     
-      <category term="PHP" scheme="http://www.imsry.cn/categories/PHP/"/>
+      <category term="PHP" scheme="https://www.imsry.cn/categories/PHP/"/>
     
     
-      <category term="PHP" scheme="http://www.imsry.cn/tags/PHP/"/>
+      <category term="PHP" scheme="https://www.imsry.cn/tags/PHP/"/>
     
-      <category term="OpenSSL" scheme="http://www.imsry.cn/tags/OpenSSL/"/>
+      <category term="OpenSSL" scheme="https://www.imsry.cn/tags/OpenSSL/"/>
     
-      <category term="mcrypt" scheme="http://www.imsry.cn/tags/mcrypt/"/>
+      <category term="mcrypt" scheme="https://www.imsry.cn/tags/mcrypt/"/>
     
-      <category term="xtea" scheme="http://www.imsry.cn/tags/xtea/"/>
+      <category term="xtea" scheme="https://www.imsry.cn/tags/xtea/"/>
     
   </entry>
   
   <entry>
     <title>Go-Server/Client以及PHP-Client之间的GRPC初次尝试</title>
-    <link href="http://www.imsry.cn/posts/b37f5033.html"/>
-    <id>http://www.imsry.cn/posts/b37f5033.html</id>
+    <link href="https://www.imsry.cn/posts/b37f5033.html"/>
+    <id>https://www.imsry.cn/posts/b37f5033.html</id>
     <published>2018-12-02T05:47:24.000Z</published>
     <updated>2021-10-18T06:44:58.453Z</updated>
     
@@ -505,21 +505,21 @@
     
     </summary>
     
-      <category term="学习笔记" scheme="http://www.imsry.cn/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+      <category term="学习笔记" scheme="https://www.imsry.cn/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
     
     
-      <category term="Golang" scheme="http://www.imsry.cn/tags/Golang/"/>
+      <category term="Golang" scheme="https://www.imsry.cn/tags/Golang/"/>
     
-      <category term="PHP" scheme="http://www.imsry.cn/tags/PHP/"/>
+      <category term="PHP" scheme="https://www.imsry.cn/tags/PHP/"/>
     
-      <category term="RPC" scheme="http://www.imsry.cn/tags/RPC/"/>
+      <category term="RPC" scheme="https://www.imsry.cn/tags/RPC/"/>
     
   </entry>
   
   <entry>
     <title>Go语言包-path/filepath</title>
-    <link href="http://www.imsry.cn/posts/6ac47315.html"/>
-    <id>http://www.imsry.cn/posts/6ac47315.html</id>
+    <link href="https://www.imsry.cn/posts/6ac47315.html"/>
+    <id>https://www.imsry.cn/posts/6ac47315.html</id>
     <published>2018-11-29T02:30:23.000Z</published>
     <updated>2020-05-29T04:02:41.608Z</updated>
     
@@ -539,15 +539,15 @@
     
     </summary>
     
-      <category term="Learn-GO" scheme="http://www.imsry.cn/categories/Learn-GO/"/>
+      <category term="Learn-GO" scheme="https://www.imsry.cn/categories/Learn-GO/"/>
     
     
   </entry>
   
   <entry>
     <title>Go语言包-path</title>
-    <link href="http://www.imsry.cn/posts/66c90df8.html"/>
-    <id>http://www.imsry.cn/posts/66c90df8.html</id>
+    <link href="https://www.imsry.cn/posts/66c90df8.html"/>
+    <id>https://www.imsry.cn/posts/66c90df8.html</id>
     <published>2018-11-28T09:08:15.000Z</published>
     <updated>2020-05-29T04:02:47.781Z</updated>
     
@@ -568,15 +568,15 @@
     
     </summary>
     
-      <category term="Learn-GO" scheme="http://www.imsry.cn/categories/Learn-GO/"/>
+      <category term="Learn-GO" scheme="https://www.imsry.cn/categories/Learn-GO/"/>
     
     
   </entry>
   
   <entry>
     <title>Go语言包-bytes</title>
-    <link href="http://www.imsry.cn/posts/dab4275.html"/>
-    <id>http://www.imsry.cn/posts/dab4275.html</id>
+    <link href="https://www.imsry.cn/posts/dab4275.html"/>
+    <id>https://www.imsry.cn/posts/dab4275.html</id>
     <published>2018-11-27T06:45:01.000Z</published>
     <updated>2020-05-29T04:02:37.992Z</updated>
     
@@ -597,15 +597,15 @@
     
     </summary>
     
-      <category term="Learn-GO" scheme="http://www.imsry.cn/categories/Learn-GO/"/>
+      <category term="Learn-GO" scheme="https://www.imsry.cn/categories/Learn-GO/"/>
     
     
   </entry>
   
   <entry>
     <title>Go语言包-bufio</title>
-    <link href="http://www.imsry.cn/posts/e06b9990.html"/>
-    <id>http://www.imsry.cn/posts/e06b9990.html</id>
+    <link href="https://www.imsry.cn/posts/e06b9990.html"/>
+    <id>https://www.imsry.cn/posts/e06b9990.html</id>
     <published>2018-11-26T06:41:54.000Z</published>
     <updated>2020-05-29T04:02:33.498Z</updated>
     
@@ -630,7 +630,7 @@
     
     </summary>
     
-      <category term="Learn-GO" scheme="http://www.imsry.cn/categories/Learn-GO/"/>
+      <category term="Learn-GO" scheme="https://www.imsry.cn/categories/Learn-GO/"/>
     
     
   </entry>
