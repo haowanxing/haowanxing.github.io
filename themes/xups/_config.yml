@@ -48,7 +48,9 @@ favicon: /favicon.ico
 # 头像url
 #----------------------------
 #avatar: /img/jelon.jpg
-avatar: /uploads/qiniu/20181010153914990649885.png
+# 黑色侧脸图
+#avatar: /uploads/qiniu/20181010153914990649885.png
+avatar: /uploads/qiniu/marioodyssey.jpg
 
 #----------------------------
 # 是否开启分享

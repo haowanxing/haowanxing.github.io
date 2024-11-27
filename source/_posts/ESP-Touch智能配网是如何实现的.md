@@ -226,6 +226,10 @@ DatumCode数据包如下图所示：
 
 终于认认真真（FuYanLiaoShi）的做完了这次的作业（XuQiu），本文讲述的内容可能不太严谨或者说是比较浅显，所以我在这里贡献出来我的源代码，以供深入探索。
 
+最后更新，做了一个小程序可以直接使用小程序来进行快速配网。
+
+<img src="../uploads/qiniu/smartconfig.jpeg" alt="miniprogram" style="width: 150px;height: 150px" />
+
 
 
 **相关链接**
