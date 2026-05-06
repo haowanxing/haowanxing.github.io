@@ -1,4 +1,4 @@
 #!/bin/sh
 echo Starting..
-hexo clean && hexo g && hexo d
+npx hexo clean && npx hexo g && npx hexo d
 echo End publish.
