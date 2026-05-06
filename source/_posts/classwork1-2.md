@@ -1,7 +1,8 @@
 ---
 title: '作业1-2(编写一个HTML静态网页,完整网页包括DIV定位)'
 id: 142
-categories: 学习笔记
+categories:
+  - 学习笔记
 abbrlink: a3199365
 date: 2015-05-07 22:32:39
 tags:

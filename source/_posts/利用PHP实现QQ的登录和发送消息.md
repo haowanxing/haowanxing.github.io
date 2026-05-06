@@ -1,7 +1,8 @@
 ---
 title: 利用PHP实现QQ的登陆和发送消息
 id: 181
-categories: 学习笔记
+categories:
+  - 学习笔记
 abbrlink: 576af78f
 date: 2015-06-17 22:32:46
 tags:

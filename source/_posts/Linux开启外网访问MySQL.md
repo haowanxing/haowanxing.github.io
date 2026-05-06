@@ -1,7 +1,8 @@
 ---
 title: linux下允许外网对mysql的访问
 id: 108
-categories: Linux
+categories:
+  - Linux
 abbrlink: 8db5876f
 date: 2014-11-18 11:48:17
 tags:

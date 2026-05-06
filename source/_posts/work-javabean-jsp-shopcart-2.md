@@ -3,7 +3,8 @@ title: '[作业练习]带数据库的简易购物车'
 tags:
   - Web
 id: 266
-categories: 学习笔记
+categories:
+  - 学习笔记
 abbrlink: dd8a79ee
 date: 2015-10-17 18:24:36
 ---

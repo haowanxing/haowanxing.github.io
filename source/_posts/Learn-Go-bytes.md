@@ -1,6 +1,7 @@
 ---
 title: Go语言包-bytes
-categories: Learn-GO
+categories:
+  - 编程语言
 tags:
 abbrlink: dab4275
 date: 2018-11-27 14:45:01

@@ -1,7 +1,8 @@
 ---
 title: 作业1-1(编写一个HTML静态网页，表单)
 id: 135
-categories: 学习笔记
+categories:
+  - 学习笔记
 abbrlink: 651efec2
 date: 2015-05-07 22:19:20
 tags:

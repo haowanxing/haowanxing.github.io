@@ -5,7 +5,8 @@ categories:
   - 学习笔记
 abbrlink: 92cd9797
 date: 2014-07-03 16:36:30
-tags: MySQL
+tags:
+  - MySQL
 ---
 
 连接MySQL数据库：

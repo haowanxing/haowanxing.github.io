@@ -4,9 +4,9 @@ tags:
   - MacOS
   - Email
   - Terminal
-  - 终端
 id: 475
-categories: 学习笔记
+categories:
+  - 学习笔记
 abbrlink: 413689f
 date: 2016-08-31 15:49:10
 ---

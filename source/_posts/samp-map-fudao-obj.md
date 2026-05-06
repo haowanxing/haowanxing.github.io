@@ -4,7 +4,7 @@ tags:
   - SAMP
 id: 208
 categories:
-  - 游戏
+  - 杂谈
 abbrlink: c8c99f10
 date: 2015-07-28 14:59:27
 ---

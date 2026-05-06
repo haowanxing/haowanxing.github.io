@@ -1,6 +1,7 @@
 ---
 title: Go语言包-bufio
-categories: Learn-GO
+categories:
+  - 编程语言
 tags:
 abbrlink: e06b9990
 date: 2018-11-26 14:41:54

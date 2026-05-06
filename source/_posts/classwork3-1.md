@@ -1,7 +1,8 @@
 ---
 title: 作业3-1（完成MYSQL操作）
 id: 157
-categories: 学习笔记
+categories:
+  - 学习笔记
 abbrlink: '61718228'
 date: 2015-05-09 10:40:51
 tags:

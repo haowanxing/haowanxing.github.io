@@ -1,11 +1,12 @@
 ---
 title: C(C++)、Java、PHP区别函数参数传递
 tags:
-  - C语言
+  - C
   - Java
   - PHP
 id: 369
-categories: 编程语言
+categories:
+  - 编程语言
 abbrlink: 1d328250
 date: 2016-04-16 14:15:15
 ---

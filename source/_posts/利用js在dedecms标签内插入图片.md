@@ -1,7 +1,8 @@
 ---
 title: 利用js在dedecms标签内插入图片
 id: 19
-categories: 学习笔记
+categories:
+  - 学习笔记
 abbrlink: 44c8ea86
 date: 2014-07-04 20:24:38
 tags:

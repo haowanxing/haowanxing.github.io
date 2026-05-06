@@ -3,7 +3,7 @@ title: 记一次使用CGo的Golang项目交叉编译遇到的问题及解决步�
 categories:
   - 学习笔记
 author: 刘经济
-tags: 
+tags:
   - Golang
   - MacOS
   - Linux

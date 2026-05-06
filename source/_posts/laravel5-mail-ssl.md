@@ -1,9 +1,11 @@
 ---
 title: Laravel5.5 发送邮件遇到Connection could not be established with host xxxxx
-tags: Laravel
+tags:
+  - Laravel
 abbrlink: ac505287
 date: 2018-02-11 15:08:38
-categories: 学习笔记
+categories:
+  - 学习笔记
 ---
 
 Laravel输出的错误页面如下图：

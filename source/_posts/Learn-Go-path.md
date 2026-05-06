@@ -1,7 +1,8 @@
 ---
 title: Go语言包-path
-categories: Learn-GO
-tags: 
+categories:
+  - 编程语言
+tags:
 abbrlink: 66c90df8
 date: 2018-11-28 17:08:15
 ---

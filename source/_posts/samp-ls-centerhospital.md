@@ -4,7 +4,7 @@ tags:
   - SAMP
 id: 221
 categories:
-  - 游戏
+  - 杂谈
 abbrlink: d2295d65
 date: 2015-08-17 10:36:04
 ---

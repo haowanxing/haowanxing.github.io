@@ -1,7 +1,8 @@
 ---
 title: 作业4-2（带用户的留言板）单页面实现！
 id: 164
-categories: 学习笔记
+categories:
+  - 学习笔记
 abbrlink: db7b2e7c
 date: 2015-05-09 15:14:28
 tags:

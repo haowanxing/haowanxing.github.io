@@ -6,7 +6,7 @@ categories:
 abbrlink: '383e8964'
 date: 2014-07-07 10:08:15
 tags:
-  - Javascript
+  - JavaScript
 ---
 
 在网页的学习中，需要利用js向页面写入文字，此时需要用到document.write();

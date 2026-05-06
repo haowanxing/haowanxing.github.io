@@ -1,9 +1,10 @@
 ---
 title: 毕业了
-tags: 
+tags:
 abbrlink: aa3d43ae
 date: 2017-07-13 14:41:43
-categories: 杂谈
+categories:
+  - 杂谈
 ---
 
 ### 转眼间，青春不再年华

@@ -1,9 +1,11 @@
 ---
 title: mysql中几种Log和打开方法
-tags: MySQL
+tags:
+  - MySQL
 abbrlink: 2e28f02f
 date: 2018-05-17 18:45:18
-categories: 学习笔记
+categories:
+  - 学习笔记
 ---
 
 > Mysql中常见的log有：`错误日志log_error`、`慢查询日志slow_query_log`、`二进制日志bin_log`和`通用查询日志general_log`

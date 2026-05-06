@@ -1,9 +1,11 @@
 ---
 title: 引用符号'&'在foreach循环中的惊喜
-tags: PHP
+tags:
+  - PHP
 abbrlink: 5f047c20
 date: 2019-06-21 14:51:27
-categories: PHP
+categories:
+  - PHP
 ---
 
 > 工作中总会遇到一些奇奇怪怪的由前人所写下的不可置疑的代码，如果你仅仅跟着眼前所见的代码去理解他人的思路，Well You have fell into a terrible situation.

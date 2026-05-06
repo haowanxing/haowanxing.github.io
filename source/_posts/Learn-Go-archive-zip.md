@@ -1,6 +1,7 @@
 ---
 title: Go语言包-archive/zip
-categories: Learn-GO
+categories:
+  - 编程语言
 tags:
 abbrlink: 6200ba6d
 date: 2018-11-23 17:08:10

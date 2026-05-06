@@ -7,7 +7,8 @@ tags:
   - TLS
 abbrlink: 7e214f75
 date: 2019-04-22 18:18:33
-categories: 网络安全
+categories:
+  - 网络安全
 ---
 
 - 使用工具：CertBot https://certbot.eff.org

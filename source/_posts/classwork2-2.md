@@ -1,7 +1,8 @@
 ---
 title: 作业2-2（PHP表单数据提交与接收)
 id: 153
-categories: 学习笔记
+categories:
+  - 学习笔记
 abbrlink: 25b754f7
 date: 2015-05-07 22:44:02
 tags:

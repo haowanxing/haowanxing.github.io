@@ -1,9 +1,10 @@
 ---
 title: Hi! Github Pages
-tags: 
+tags:
 abbrlink: c956a8c9
 date: 2017-01-19 15:41:23
-categories: 杂谈
+categories:
+  - 杂谈
 ---
 
 |时间|事件|

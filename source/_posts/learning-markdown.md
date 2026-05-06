@@ -1,8 +1,9 @@
 ---
 title: Learning-Markdown
 tags:
-  - MarkDown
-categories: 学习笔记
+  - Markdown
+categories:
+  - 学习笔记
 abbrlink: bb4e3702
 date: 2017-01-19 16:57:03
 ---

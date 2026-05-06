@@ -5,7 +5,11 @@ categories:
   - Linux
 abbrlink: bc861775
 date: 2014-12-23 21:32:44
-tags: LAMP
+tags:
+  - Linux
+  - Apache
+  - MySQL
+  - PHP
 ---
 
 适用redhat于32位及64位，前提架设好本地源。在这里不再赘述。

@@ -1,7 +1,7 @@
 ---
 title: js判断两个块元素的相交与否
 tags:
-  - Javascript
+  - JavaScript
 id: 378
 categories:
   - Web

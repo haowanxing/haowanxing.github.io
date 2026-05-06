@@ -1,9 +1,11 @@
 ---
 title: 腾讯云物联网通信平台设备动态注册鉴权流程
-tags: Qcloud
+tags:
+  - Qcloud
 abbrlink: 4ede204f
 date: 2020-02-26 15:16:22
-categories: 开放平台
+categories:
+  - Web
 thumbnail: 
 #blogexcerpt: 抽空研究了一下腾讯物联网平台的设备接入功能的自动注册部分，由于官网只提供了C-SDK，所以在我开发的Go程序中只能自己动手去扒SDK的逻辑然后集成到现有项目。
 ---

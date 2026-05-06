@@ -1,7 +1,8 @@
 ---
 title: 作业2-1（PHP程序画n*n正方形矩阵)
 id: 146
-categories: 学习笔记
+categories:
+  - 学习笔记
 abbrlink: c36b92d2
 date: 2015-05-07 22:36:51
 tags:

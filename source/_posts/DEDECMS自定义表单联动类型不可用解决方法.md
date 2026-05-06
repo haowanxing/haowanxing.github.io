@@ -1,7 +1,8 @@
 ---
 title: 'DEDECMS自定义表单联动类型不可用的解决方法 - '
 id: 125
-categories: 学习笔记
+categories:
+  - 学习笔记
 abbrlink: 7dc4f555
 date: 2015-01-05 21:04:42
 tags:

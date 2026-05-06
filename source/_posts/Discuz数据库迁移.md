@@ -1,7 +1,8 @@
 ---
 title: Discuz的数据库的迁移
 id: 231
-categories: 学习笔记
+categories:
+  - 学习笔记
 abbrlink: 7a0a41b
 date: 2015-09-26 23:06:48
 tags:

@@ -5,7 +5,8 @@ tags:
   - Network
 abbrlink: ba6472f
 date: 2019-09-12 14:02:31
-categories: 开发板
+categories:
+  - 学习笔记
 ---
 
 > 有幸拿到可爱的小玩意儿“OrangePi_Zero”，也烧写了多个系统去体验，其中可以直接刷写OpenWrt，然后通过web管理界面启用WIFI功能。不过我需要的不是路由器，我需要的是能够连接WIFI的小型Server。

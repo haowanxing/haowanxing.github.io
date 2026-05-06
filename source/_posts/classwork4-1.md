@@ -1,7 +1,8 @@
 ---
 title: 作业4-1（简易留言板）
 id: 161
-categories: 学习笔记
+categories:
+  - 学习笔记
 abbrlink: aee0563f
 date: 2015-05-09 12:58:47
 tags:

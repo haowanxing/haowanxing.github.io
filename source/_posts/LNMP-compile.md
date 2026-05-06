@@ -1,9 +1,14 @@
 ---
 title: 完全源码编译LNMP环境
-tags: LNMP
+tags:
+  - Linux
+  - Nginx
+  - MySQL
+  - PHP
 abbrlink: 7db5313c
 date: 2017-11-06 15:45:46
-categories: 学习笔记
+categories:
+  - 学习笔记
 ---
 
 环境：

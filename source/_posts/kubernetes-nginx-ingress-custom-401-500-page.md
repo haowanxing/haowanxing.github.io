@@ -3,7 +3,8 @@ title: kubernetes nginx ingress custom 401/500 page
 categories:
   - 学习笔记
 author: 刘经济
-tags: k8s
+tags:
+  - k8s
 abbrlink: 4fa20f2
 date: 2022-02-21 14:30:41
 thumbnail:

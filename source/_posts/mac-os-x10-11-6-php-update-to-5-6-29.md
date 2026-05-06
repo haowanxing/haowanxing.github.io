@@ -2,9 +2,10 @@
 title: 我是如何将mac OS X(10.11.6)的PHP版本升级到5.6.29的
 tags:
   - MacOS
-  - php
+  - PHP
 id: 589
-categories: 学习笔记
+categories:
+  - 学习笔记
 abbrlink: 8ca39648
 date: 2017-01-16 18:52:38
 ---

@@ -5,7 +5,8 @@ tags:
   - 索引文件
 abbrlink: 9b10448
 date: 2019-05-15 15:05:47
-categories: 考试
+categories:
+  - 学习笔记
 ---
 
 【选择题】

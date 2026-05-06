@@ -4,7 +4,8 @@ tags:
   - Docker
 abbrlink: a05a90fb
 date: 2019-07-04 10:39:55
-categories: 学习笔记
+categories:
+  - 学习笔记
 ---
 
 ## 关于Docker以及Dockerfile
