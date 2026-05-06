@@ -1,0 +1,1033 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8" >
+    <meta http-equiv="X-UA-Compatible" content="IE=11,IE=10,IE=9,IE=8" >
+    <meta name="baidu-site-verification" content="dIcXMeY8Ya" />
+    
+    <title>斯人笔记本 - IMSRY - 个人博客 原创文章 学习笔记 技术分享</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" >
+    <meta name="keywords" content="Anthony, 刘经济, 技术博客, 个人博客, PHP, Golang, Linux, FullStack" >
+    <meta name="description" content="待人以儒墨，不热爱前端技术的后端开发不是一个好的吃货。" >
+
+    
+    <link rel="alternative" href="/atom.xml" title="斯人笔记本" type="application/atom+xml" >
+    
+    
+    <link rel="shortcut icon" href="/favicon.ico" >
+    
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!--[if lt IE 9]>
+    
+<script src="/js/html5.js"></script>
+
+    <![endif]-->
+    
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?d5ebf515ab530cfbdda5f5c85093fb41";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body class="home">
+    <!--[if lt IE 9]>
+    <div class="browsehappy">
+        当前网页 <strong>不支持</strong>
+        你正在使用的浏览器. 为了正常的访问, 请 <a href="http://browsehappy.com/">升级你的浏览器</a>.
+    </div>
+    <![endif]-->
+
+    <!-- 博客头部 -->
+    <header class="header">
+    <section class="container header-main">
+        <div class="logo">
+            <a href="/">
+                <div class="cover">
+                    <span class="name">斯人笔记本</span>
+                    <span class="description">IMSRY</span>
+                </div>
+            </a>
+        </div>
+        <div class="dropnav icon-paragraph-justify" id="JELON__btnDropNav"></div>
+        <ul class="menu hidden" id="JELON__menu">
+            
+            <li rel="/page/4/index.html" class="item ">
+                <a href="/" title="首页" class="icon-home">&nbsp;首页</a>
+            </li>
+            
+            <li rel="/page/4/index.html" class="item ">
+                <a href="/about/" title="关于" class="icon-about">&nbsp;关于</a>
+            </li>
+            
+            <li rel="/page/4/index.html" class="item ">
+                <a href="/comment/" title="留言" class="icon-comment">&nbsp;留言</a>
+            </li>
+            
+        </ul>
+        <div class="profile clearfix">
+            <div class="feeds fl">
+                
+                
+                <p class="links">
+                    
+                        <a href="https://github.com/haowanxing" target="_blank">Github</a>
+                        |
+                    
+                </p>
+                <p class="sns">
+                    
+                        <a href="http://weibo.com/u/2214092525" class="sinaweibo" target="_blank"><b>■</b> 新浪微博</a>
+                    
+                        <a href="https://www.facebook.com/imsry.cn/" class="qqweibo" target="_blank"><b>■</b> Facebook</a>
+                    
+                    <a href="javascript: void(0);" class="wechat">
+                        <b>■</b>
+                        公众号
+                        <span class="popover">
+                            <img src="/img/wechat_mp.jpg" width="120" height="120" alt="我的微信订阅号">
+                            <i class="arrow"></i>
+                        </span>
+                    </a>
+                </p>
+                
+            </div>
+            <div class="avatar fr">
+                <img src="/uploads/qiniu/marioodyssey.jpg" alt="avatar" title="Mario" >
+            </div>
+        </div>
+    </section>
+</header>
+
+
+    <!-- 博客正文 -->
+    <div class="container body clearfix">
+        <section class="content">
+            <div class="content-main widget">
+                <!-- 首页 -->
+
+    
+    <h3 class="widget-hd">
+        <strong>
+            
+                最近动态
+            
+        </strong>
+    </h3>
+    
+        <!-- 文章列表 item -->
+<article class="post">
+    <header>
+        <!-- 标签这有且只能显示一个 -->
+        
+        <a class="cat-link" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a>
+        
+        <!-- 文章标题 -->
+        
+    <h3 class="post-title">
+    	<a href="https://www.imsry.cn/posts/65123244.html">
+    		skip-name-resolve可以解决远程连接mysql数据库时候的缓慢或超时
+    	</a>
+    </h3>
+
+    </header>
+    <p class="post-meta">
+        Anthony 发表于
+        <time datetime="2018-03-22T10:18:39.000Z">2018-03-22 18:18:39</time>
+
+
+        &nbsp;&nbsp;
+        <span class="post-tags">
+            标签：
+            
+    
+        <a href="/tags/MySQL/" title="MySQL">MySQL</a>
+    
+
+        </span>
+    </p>
+
+    <div class="post-content">
+        <div class="post-excerpt">
+            
+                <p>　　咳咳，迁了新的机器，全新的机器但是环境还是跟以前一样，基本没变过什么配置。但是远程连接mysql却很慢，甚至10s超时都还没连上！！！ 当然，仅仅只是建立连接的时候，连接成功后一切操作都行如流水。</p>
+<p>　　所以最快最简单的方法就是直接在数据库的配置文件my.cnf|my.ini中添加一行<code>skip-name-resolve</code>来解决。</p>
+<p>　　其实mysql在用户登录建立连接的时候，会对客户端进行DNS反查，如果遇到服务器的DNS解析出现问题，那么就可能导致客户端迟迟连接不上。此方法可禁止mysql进行DNS反查从而解决了这个问题。</p>
+
+            
+            <p class="more">
+                <a href="https://www.imsry.cn/posts/65123244.html">阅读剩下更多</a>
+            </p>
+        </div>
+        <div class="post-thumbnail" data-img="">
+            <a href="https://www.imsry.cn/posts/65123244.html" title="skip-name-resolve可以解决远程连接mysql数据库时候的缓慢或超时">
+                
+                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/2.jpg" alt="默认配图" >
+                
+            </a>
+        </div>
+    </div>
+</article>
+
+    
+        <!-- 文章列表 item -->
+<article class="post">
+    <header>
+        <!-- 标签这有且只能显示一个 -->
+        
+        <a class="cat-link" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a>
+        
+        <!-- 文章标题 -->
+        
+    <h3 class="post-title">
+    	<a href="https://www.imsry.cn/posts/ac505287.html">
+    		Laravel5.5 发送邮件遇到Connection could not be established with host xxxxx
+    	</a>
+    </h3>
+
+    </header>
+    <p class="post-meta">
+        Anthony 发表于
+        <time datetime="2018-02-11T07:08:38.000Z">2018-02-11 15:08:38</time>
+
+
+        &nbsp;&nbsp;
+        <span class="post-tags">
+            标签：
+            
+    
+        <a href="/tags/Laravel/" title="Laravel">Laravel</a>
+    
+
+        </span>
+    </p>
+
+    <div class="post-content">
+        <div class="post-excerpt">
+            
+                <p>Laravel输出的错误页面如下图：<br><img src="/../uploads/qiniu/20180211151833306552899.png" alt="Laravel异常捕获-mail"></p>
+<p>服务器：阿里云香港节点（B区） CentOS6.8 64bit</p>
+<p>lamp环境：PHP7.2.1</p>
+<p>Laravel .env mail部分：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">MAIL_DRIVER=smtp</span><br><span class="line">MAIL_HOST=hwsmtp.exmail.qq.com</span><br><span class="line">MAIL_PORT=465</span><br><span class="line">MAIL_USERNAME=noreply@0x4f5da2.cn</span><br><span class="line">MAIL_PASSWORD=XXXXXXXX</span><br><span class="line">MAIL_FROM_ADDRESS=noreply@0x4f5da2.cn</span><br><span class="line">MAIL_FROM_NAME=noreply</span><br><span class="line">MAIL_ENCRYPTION=ssl</span><br></pre></td></tr></table></figure>
+
+<p>问题发生前景：本地测试完全正常，相同配置在服务器上就被抛出异常。</p>
+<p>因为之前遇到过由于端口没有放行而造成无法建立连接的问题，在此问题上我也做了一样的尝试，在安全组配置里面对465端口进行放行（无论是出口还是入口）。但是结果表示并不是这个问题，而我在没有配置放行的情况下，telnet host:port 是通的。</p>
+<p>经过大约两天的间接性排查和尝试，最终提交工单咨询阿里，他们给了我处理意见：尝试他们的Demo！</p>
+<p>尝试<a href="https://help.aliyun.com/knowledge_detail/60692.html">阿里云提供的Demo</a>测试发件是没有问题的，这就令我很纳闷的，于是我去看该Demo是如何建立连接的。</p>
+<p>通过一步一步的探索，发现该Demo也是同样使用了<code>stream_socket_client</code>方法来建立连接，那为什么它可以，Laravel内的却不行？说明不是该环境的问题！</p>
+<p>问题逐渐定位到了<code>stream_socket_client</code>这个方法上，查询<a href="http://php.net/manual/zh/function.stream-socket-client.php">PHP.NET</a>来认识一下它。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">resource <span class="title function_ invoke__">stream_socket_client</span> ( <span class="keyword">string</span> <span class="variable">$remote_socket</span> [, <span class="keyword">int</span> &amp;<span class="variable">$errno</span> [, <span class="keyword">string</span> &amp;<span class="variable">$errstr</span> [, <span class="keyword">float</span> <span class="variable">$timeout</span> = <span class="title function_ invoke__">ini_get</span>(<span class="string">&quot;default_socket_timeout&quot;</span>) [, <span class="keyword">int</span> <span class="variable">$flags</span> = STREAM_CLIENT_CONNECT [, resource <span class="variable">$context</span> ]]]]] )</span><br></pre></td></tr></table></figure>
+
+<p>方法描述上，只有一个参数可能会不一样，就是最后那个$context，它是一个Resource，由<code>stream_conntext_create</code>方法创建并返回。</p>
+<p>我注意到Laravel中使用的Swift_Mailer所引用的StreamBuffer类中，在<code>stream_socket_client</code>方法前面加上了<code>@</code>符号来屏蔽error，而在下面自己判断来抛出异常。</p>
+<p>那么我果断将<code>@</code>符号去掉！ 真正的错误爆出来了！！！！</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">stream_socket_enable_crypto(): SSL operation failed with code 1. OpenSSL Error messages:</span><br><span class="line">error:14090086:SSL routines:ssl3_get_server_certificate:certificate verify failed</span><br></pre></td></tr></table></figure>
+
+<p>乍眼一看，证书校验失败？？？？</p>
+<h3 id="上面的废话只是简单描述我遇到这个问题是如何应对的"><a href="#上面的废话只是简单描述我遇到这个问题是如何应对的" class="headerlink" title="上面的废话只是简单描述我遇到这个问题是如何应对的"></a>上面的废话只是简单描述我遇到这个问题是如何应对的</h3><p>解决方案来了！ 既然是走SSL协议(465端口)，且程序抛出错误为证书校验失败，那么就去直接搜索有关Laravel&#x2F;SwitEmailer的证书校验问题。</p>
+<p>在stackOverflow上找到两个相关的问题：</p>
+<ol>
+<li><a href="https://stackoverflow.com/questions/44423096/localhost-and-stream-socket-enable-crypto-ssl-operation-failed-with-code-1">localhost and “stream_socket_enable_crypto(): SSL operation failed with code 1”
+</a></li>
+<li><a href="https://stackoverflow.com/questions/30556773/how-to-fix-stream-socket-enable-crypto-ssl-operation-failed-with-code-1">how to fix stream_socket_enable_crypto(): SSL operation failed with code 1</a></li>
+</ol>
+<p>他们都提出了一个配置：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//	在/config/mail.php中增加</span></span><br><span class="line"></span><br><span class="line"><span class="string">&#x27;stream&#x27;</span> =&gt; [</span><br><span class="line">	<span class="string">&#x27;ssl&#x27;</span> =&gt; [</span><br><span class="line">	    <span class="string">&#x27;allow_self_signed&#x27;</span> =&gt; <span class="literal">true</span>,</span><br><span class="line">	    <span class="string">&#x27;verify_peer&#x27;</span> =&gt; <span class="literal">false</span>,</span><br><span class="line">	    <span class="string">&#x27;verify_peer_name&#x27;</span> =&gt; <span class="literal">false</span>,</span><br><span class="line">	],</span><br><span class="line">],</span><br></pre></td></tr></table></figure>
+
+<p>然后测试，Bingo！！！</p>
+<p>当然，既然是SSL必然使用校验才是最安全的，但是我这里仅满足能够发件即可，至于如何进行证书校验，请移步：<a href="https://www.cnblogs.com/wpjamer/p/7421304.html">使用PHPMailer 中的报错解决 “Connection failed. Error #2: stream_socket_client(): SSL operation failed with code 1. OpenSSL Error messages:”</a></p>
+
+            
+            <p class="more">
+                <a href="https://www.imsry.cn/posts/ac505287.html">阅读剩下更多</a>
+            </p>
+        </div>
+        <div class="post-thumbnail" data-img="">
+            <a href="https://www.imsry.cn/posts/ac505287.html" title="Laravel5.5 发送邮件遇到Connection could not be established with host xxxxx">
+                
+                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/1.jpg" alt="默认配图" >
+                
+            </a>
+        </div>
+    </div>
+</article>
+
+    
+        <!-- 文章列表 item -->
+<article class="post">
+    <header>
+        <!-- 标签这有且只能显示一个 -->
+        
+        <a class="cat-link" href="/categories/Linux/">Linux</a>
+        
+        <!-- 文章标题 -->
+        
+    <h3 class="post-title">
+    	<a href="https://www.imsry.cn/posts/b54dd86c.html">
+    		Apache设置目录的访问权限（用户名和密码）
+    	</a>
+    </h3>
+
+    </header>
+    <p class="post-meta">
+        Anthony 发表于
+        <time datetime="2018-02-01T06:58:17.000Z">2018-02-01 14:58:17</time>
+
+
+        &nbsp;&nbsp;
+        <span class="post-tags">
+            标签：
+            
+    
+        <a href="/tags/Apache/" title="Apache">Apache</a>
+    
+
+        </span>
+    </p>
+
+    <div class="post-content">
+        <div class="post-excerpt">
+            
+                <p>　　最近重新搞了个阿里云香港ECS用来科学上网，另外使用<a href="https://lamp.sh/">LAMP一键安装包</a>搭环境，搭建完成后开放云盾端口即可通过IP访问到web默认页，这默认页有些实用的小工具，如：探针、MyAdmin啥的。如图：</p>
+<p>　　<img src="/../uploads/qiniu/20180201151746870535154.png"></p>
+<p>　　然后我想让这默认页只有我自己能看到，其他人最好不要看到，毕竟其他人看到也没啥用，最多给服务器施压而已，然后就想弄个如下图的效果：</p>
+<p>　　<img src="/../uploads/qiniu/20180201151746846888519.png"></p>
+<p>　　下面来讲讲如何实现此效果的步骤，假设需要设置权限的目录(DIR)为”&#x2F;data&#x2F;www&#x2F;default”</p>
+<ul>
+<li>修改apache的配置文件（可以是httpd.conf，也可以是具体的vhost的单独配置文件）,内容如下：</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;Directory &quot;/data/www/default&quot;&gt;</span><br><span class="line">    Options Indexes</span><br><span class="line">    AllowOverride AuthConfig</span><br><span class="line">    Order allow,deny</span><br><span class="line">    Allow from all</span><br><span class="line">&lt;/Directory&gt;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>在DIR下新增.htaccess文件，内容如下</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">AuthName &quot;sys&quot;</span><br><span class="line">AuthType Basic</span><br><span class="line">AuthUserFile /data/www/default/.htpasswd</span><br><span class="line">require user username</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>使用Apache的htpasswd创建.htpasswd文件</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">/usr/local/apache/bin/htpasswd -c /data/www/default/.htpasswd username</span><br><span class="line">##这里会提示你输入两次密码##</span><br></pre></td></tr></table></figure>
+
+<p>　　完成上述步骤后，重启Apache即可</p>
+
+            
+            <p class="more">
+                <a href="https://www.imsry.cn/posts/b54dd86c.html">阅读剩下更多</a>
+            </p>
+        </div>
+        <div class="post-thumbnail" data-img="">
+            <a href="https://www.imsry.cn/posts/b54dd86c.html" title="Apache设置目录的访问权限（用户名和密码）">
+                
+                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/1.jpg" alt="默认配图" >
+                
+            </a>
+        </div>
+    </div>
+</article>
+
+    
+        <!-- 文章列表 item -->
+<article class="post">
+    <header>
+        <!-- 标签这有且只能显示一个 -->
+        
+        <a class="cat-link" href="/categories/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/">网络安全</a>
+        
+        <!-- 文章标题 -->
+        
+    <h3 class="post-title">
+    	<a href="https://www.imsry.cn/posts/a508b207.html">
+    		解决Chrome更新到63后.dev/.app后缀域名强制HTTPS的问题
+    	</a>
+    </h3>
+
+    </header>
+    <p class="post-meta">
+        Anthony 发表于
+        <time datetime="2017-12-11T06:57:18.000Z">2017-12-11 14:57:18</time>
+
+
+        &nbsp;&nbsp;
+        <span class="post-tags">
+            标签：
+            
+    
+        <a href="/tags/HTTPS/" title="HTTPS">HTTPS</a> / 
+    
+        <a href="/tags/Chrome/" title="Chrome">Chrome</a>
+    
+
+        </span>
+    </p>
+
+    <div class="post-content">
+        <div class="post-excerpt">
+            
+                <p>　　又是周一，上班的日子总是来的太快，来到公司的第一件事，打开IDE并更新代码库。看看上周做到哪里了，还有什么BUG是待修复的？</p>
+<p>　　然鹅，意想不到的事情就这么发生了，为什么本地环境访问不了？<br><img src="/../uploads/qiniu/20171211151297573775954.png" alt="请求被拒绝"></p>
+<p>　　localhost能访问，本地服务器没问题；其他的本地域名可以访问，Apache配置没动过应该不是这个问题；试了试公司项目的其他域名，都是同样的报错；然后我注意了一下URL，被加上了https协议，去掉s再回车没解决；换个浏览器，行了？？ 好吧，可能谷歌抽风了，我试了清空缓存和浏览历史，完全不行。后来发现问题没那么简单，网上也很难找到相关的结果，发现自己遇到了难题。</p>
+<p>　　然后我发现了<a href="https://segmentfault.com/q/1010000012339191">SegmentFault</a>有人问了相同的问题，才在回答里面找到了答案：</p>
+<p><img src="/../uploads/qiniu/20171211151297617476829.png" alt="Chrome update news"></p>
+<p>　　原文地址：<a href="https://laravel-news.com/chrome-63-now-forces-dev-domains-https">Chrome 63 now forces .dev domains to HTTPS</a></p>
+<p>　　既然如此，强大的谷歌对自己拥有的顶级域名（.dev和.app）进行了合法干涉，那么我们也只能认怂了吧。 默默的把原来的.dev改成了.local后缀。</p>
+<p>　　但是有强迫症的我有点不甘心，相信有很多人跟我一样，都是执着的没事干的人！不找出一个能在chrome上用.dev的后缀的方法，心里面还是稍微有那么一点难受的（^_-!）</p>
+<p>　　在github上有一个工具：<a href="https://github.com/Fishdrowned/ssl">Fishdrowned的自签泛域名证书</a>，<del>MacOS用户可以使用我FORK过来的<a href="https://github.com/haowanxing/ssl">修改版</a></del>(原作者已做兼容2018&#x2F;01&#x2F;02)</p>
+<p>　　咱们可以自己在本地生成一个xxx.dev的域名证书来直接让TA支持https访问！！！！ 具体的使用方法在上面链接有介绍</p>
+<p>　　服务器端如何配置支持https自行搜索，这里不做解释了。</p>
+<p>　　最终实现.dev的https访问，如图：</p>
+<p><img src="/../uploads/qiniu/2018010315149750616257.png" alt="url地址栏"></p>
+<p><img src="/../uploads/qiniu/2018010315149751936425.png" alt="浏览器证书">
+　　</p>
+
+            
+            <p class="more">
+                <a href="https://www.imsry.cn/posts/a508b207.html">阅读剩下更多</a>
+            </p>
+        </div>
+        <div class="post-thumbnail" data-img="">
+            <a href="https://www.imsry.cn/posts/a508b207.html" title="解决Chrome更新到63后.dev/.app后缀域名强制HTTPS的问题">
+                
+                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/1.jpg" alt="默认配图" >
+                
+            </a>
+        </div>
+    </div>
+</article>
+
+    
+        <!-- 文章列表 item -->
+<article class="post">
+    <header>
+        <!-- 标签这有且只能显示一个 -->
+        
+        <a class="cat-link" href="/categories/PHP/">PHP</a>
+        
+        <!-- 文章标题 -->
+        
+    <h3 class="post-title">
+    	<a href="https://www.imsry.cn/posts/25a92a3d.html">
+    		Pazzle on array_column
+    	</a>
+    </h3>
+
+    </header>
+    <p class="post-meta">
+        Anthony 发表于
+        <time datetime="2017-11-10T02:28:18.000Z">2017-11-10 10:28:18</time>
+
+
+        &nbsp;&nbsp;
+        <span class="post-tags">
+            标签：
+            
+    
+        <a href="/tags/PHP/" title="PHP">PHP</a>
+    
+
+        </span>
+    </p>
+
+    <div class="post-content">
+        <div class="post-excerpt">
+            
+                <p>　　在PHP中内置的对数组操作的方法（函数）有一个叫做’array_column’的非常实用，它可以用作返回一个二维数组的指定列。</p>
+<p>　　先介绍一下它！</p>
+<p>　　好比这样一个用法：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$students</span> = <span class="keyword">array</span>(</span><br><span class="line">	<span class="keyword">array</span>(</span><br><span class="line">		<span class="string">&#x27;id&#x27;</span>=&gt;<span class="number">1</span>,</span><br><span class="line">		<span class="string">&#x27;name&#x27;</span>=&gt;<span class="string">&#x27;Jerry&#x27;</span></span><br><span class="line">		),</span><br><span class="line">	<span class="keyword">array</span>(</span><br><span class="line">		<span class="string">&#x27;id&#x27;</span>=&gt;<span class="number">3</span>,</span><br><span class="line">		<span class="string">&#x27;name&#x27;</span>=&gt;<span class="string">&#x27;Tom&#x27;</span></span><br><span class="line">		),</span><br><span class="line">	<span class="keyword">array</span>(</span><br><span class="line">		<span class="string">&#x27;id&#x27;</span>=&gt;<span class="number">6</span>,</span><br><span class="line">		<span class="string">&#x27;name&#x27;</span>=&gt;<span class="string">&#x27;Lily&#x27;</span></span><br><span class="line">		),</span><br><span class="line">	<span class="keyword">array</span>(</span><br><span class="line">		<span class="string">&#x27;id&#x27;</span>=&gt;<span class="number">11</span>,</span><br><span class="line">		<span class="string">&#x27;name&#x27;</span>=&gt;<span class="string">&#x27;Bob&#x27;</span></span><br><span class="line">		),</span><br><span class="line">	);</span><br><span class="line"><span class="variable">$student_names</span> = <span class="title function_ invoke__">array_column</span>(<span class="variable">$students</span>,<span class="string">&#x27;name&#x27;</span>);</span><br><span class="line"><span class="title function_ invoke__">var_dump</span>(<span class="variable">$student_names</span>);</span><br></pre></td></tr></table></figure>
+
+<p>输出结果：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">array (size=4)</span><br><span class="line">  0 =&gt; string <span class="string">&#x27;Jerry&#x27;</span> (length=5)</span><br><span class="line">  1 =&gt; string <span class="string">&#x27;Tom&#x27;</span> (length=3)</span><br><span class="line">  2 =&gt; string <span class="string">&#x27;Lily&#x27;</span> (length=4)</span><br><span class="line">  3 =&gt; string <span class="string">&#x27;Bob&#x27;</span> (length=3)</span><br></pre></td></tr></table></figure>
+<p>　　这样就得到了一个所有名字的数组，想必对于一个PHPER来说并不陌生。但是今天要讲的重点是<code>array_column</code>的另外一个用法，如果给它第三个参数，那么它将以第三个参数对应的数组中的值作为返回数组的键，用例如下：</p>
+            
+            <p class="more">
+                <a href="https://www.imsry.cn/posts/25a92a3d.html">阅读剩下更多</a>
+            </p>
+        </div>
+        <div class="post-thumbnail" data-img="">
+            <a href="https://www.imsry.cn/posts/25a92a3d.html" title="Pazzle on array_column">
+                
+                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/0.jpg" alt="默认配图" >
+                
+            </a>
+        </div>
+    </div>
+</article>
+
+    
+        <!-- 文章列表 item -->
+<article class="post">
+    <header>
+        <!-- 标签这有且只能显示一个 -->
+        
+        <a class="cat-link" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a>
+        
+        <!-- 文章标题 -->
+        
+    <h3 class="post-title">
+    	<a href="https://www.imsry.cn/posts/7db5313c.html">
+    		完全源码编译LNMP环境
+    	</a>
+    </h3>
+
+    </header>
+    <p class="post-meta">
+        Anthony 发表于
+        <time datetime="2017-11-06T07:45:46.000Z">2017-11-06 15:45:46</time>
+
+
+        &nbsp;&nbsp;
+        <span class="post-tags">
+            标签：
+            
+    
+        <a href="/tags/Linux/" title="Linux">Linux</a> / 
+    
+        <a href="/tags/MySQL/" title="MySQL">MySQL</a> / 
+    
+        <a href="/tags/Nginx/" title="Nginx">Nginx</a> / 
+    
+        <a href="/tags/PHP/" title="PHP">PHP</a>
+    
+
+        </span>
+    </p>
+
+    <div class="post-content">
+        <div class="post-excerpt">
+            
+                <p>环境：</p>
+<ul>
+<li><a href="https://www.centos.org/download/">CentOS 7</a> (<a href="https://www.centos.org/">https://www.centos.org</a>)</li>
+</ul>
+<p>软件：</p>
+<ul>
+<li><a href="http://nginx.org/download/nginx-1.13.6.tar.gz">nginx-1.13.6.tar.gz</a> (<a href="http://nginx.org/">http://nginx.org</a>)</li>
+<li><a href="http://php.net/get/php-5.6.31.tar.gz/from/a/mirror">php-5.6.31.tar.gz</a> (<a href="http://php.net/">http://php.net</a>)</li>
+<li><a href="https://downloads.mariadb.org/interstitial/mariadb-10.2.10/source/mariadb-10.2.10.tar.gz">mariadb-10.2.10.tar.gz</a> (<a href="https://mariadb.org/">https://mariadb.org</a>)</li>
+</ul>
+<p>依赖软件：</p>
+<ul>
+<li><a href="https://www.openssl.org/source/">openssl-1.0.2m.tar.gz</a> (<a href="https://www.openssl.org/">https://www.openssl.org</a>)</li>
+<li><a href="ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre/pcre-8.38.tar.gz">pcre-8.39.tar.gz</a> (<a href="http://www.pcre.org/">http://www.pcre.org/</a>)</li>
+<li><a href="http://www.zlib.net/zlib-1.2.11.tar.gz">zlib-1.2.11.tar.gz</a> (<a href="http://www.zlib.net/">http://www.zlib.net/</a>)</li>
+<li><a href="https://cmake.org/files/v3.10/cmake-3.10.0-rc4.tar.gz">cmake-3.10.0-rc4.tar.gz</a> (<a href="https://cmake.org/">https://cmake.org</a>)</li>
+</ul>
+            
+            <p class="more">
+                <a href="https://www.imsry.cn/posts/7db5313c.html">阅读剩下更多</a>
+            </p>
+        </div>
+        <div class="post-thumbnail" data-img="">
+            <a href="https://www.imsry.cn/posts/7db5313c.html" title="完全源码编译LNMP环境">
+                
+                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/6.jpg" alt="默认配图" >
+                
+            </a>
+        </div>
+    </div>
+</article>
+
+    
+        <!-- 文章列表 item -->
+<article class="post">
+    <header>
+        <!-- 标签这有且只能显示一个 -->
+        
+        <a class="cat-link" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a>
+        
+        <!-- 文章标题 -->
+        
+    <h3 class="post-title">
+    	<a href="https://www.imsry.cn/posts/ab967d99.html">
+    		【干货】本地git对应多个远程仓库
+    	</a>
+    </h3>
+
+    </header>
+    <p class="post-meta">
+        Anthony 发表于
+        <time datetime="2017-07-24T02:18:41.000Z">2017-07-24 10:18:41</time>
+
+
+        &nbsp;&nbsp;
+        <span class="post-tags">
+            标签：
+            
+    
+        <a href="/tags/Git/" title="Git">Git</a>
+    
+
+        </span>
+    </p>
+
+    <div class="post-content">
+        <div class="post-excerpt">
+            
+                <blockquote>
+<p>当Githuber发现GitOSChina能发布项目演示，想把自己的项目也同步到OSChina上去时，同时维护两个本地仓库或者remote显得太过麻烦</p>
+</blockquote>
+<h2 id="提要"><a href="#提要" class="headerlink" title="提要"></a>提要</h2><p>　　首先，为本地git仓库添加远程仓库，我们使用命令：<code>git remote add origin [url]</code>，这样一来，本地仓库就对应有了一个远程仓库的地址，包括<code>push</code>和<code>fetch</code>源，如下图所示：</p>
+<p><img src="https://i.loli.net/2017/07/24/59755adb887fd.png" alt="remote-v"></p>
+<p>　　但是，我们如何才能做到既能将本地git仓库<code>PUSH</code>到Github，也能够<code>PUSH</code>到OSChina上呢？</p>
+<p>　　可能有以下方式是你想到的：</p>
+<ol>
+<li>本地创建两个仓库，一一对应（你不嫌麻烦的话的确可行）</li>
+<li>添加多个远程库，即<code>git remote add [another-origin]</code>(那每次都要<code>PUSH</code>两次咯？)</li>
+</ol>
+<p>　　其实，git的一个远程库本来就可以配置成多个地址，即一个origin拥有多个url。</p>
+<h2 id="敲黑板了（实现）"><a href="#敲黑板了（实现）" class="headerlink" title="敲黑板了（实现）"></a>敲黑板了（实现）</h2><p>　　前提条件是，我们已经为本地仓库添加了一个origin远程库（没有添加的自行添加，方法前面说了）。我们现在为本地库继续添加url地址：<code>https://git.oschina.net/anthony_box/hitools.git</code></p>
+<p>　　这个命令是：<code>git remote set-url --add origin [url]</code>（url替换成如上地址）</p>
+<p><img src="https://i.loli.net/2017/07/24/59755ea083267.png" alt="set-url"></p>
+<h2 id="擦黑板了（原理）"><a href="#擦黑板了（原理）" class="headerlink" title="擦黑板了（原理）"></a>擦黑板了（原理）</h2><p>　　其实该条命令执行就是在git项目的config文件里的<code>[remote &quot;origin&quot;]</code>配置新增一条记录，我们打开config文件看看，输入<code>git config -e</code>（文件路径:[repo]&#x2F;.git&#x2F;config）：</p>
+<p><img src="https://i.loli.net/2017/07/24/59755fe85b743.png" alt="config-e"></p>
+<p>　　所以说，执行<code>git remote set-url -add origin</code>和编辑<code>config文件</code>，一码子事。</p>
+
+            
+            <p class="more">
+                <a href="https://www.imsry.cn/posts/ab967d99.html">阅读剩下更多</a>
+            </p>
+        </div>
+        <div class="post-thumbnail" data-img="">
+            <a href="https://www.imsry.cn/posts/ab967d99.html" title="【干货】本地git对应多个远程仓库">
+                
+                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/4.jpg" alt="默认配图" >
+                
+            </a>
+        </div>
+    </div>
+</article>
+
+    
+        <!-- 文章列表 item -->
+<article class="post">
+    <header>
+        <!-- 标签这有且只能显示一个 -->
+        
+        <a class="cat-link" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a>
+        
+        <!-- 文章标题 -->
+        
+    <h3 class="post-title">
+    	<a href="https://www.imsry.cn/posts/ece045fd.html">
+    		神奇的空格符
+    	</a>
+    </h3>
+
+    </header>
+    <p class="post-meta">
+        Anthony 发表于
+        <time datetime="2017-07-20T02:25:44.000Z">2017-07-20 10:25:44</time>
+
+
+        &nbsp;&nbsp;
+        <span class="post-tags">
+            标签：
+            
+        </span>
+    </p>
+
+    <div class="post-content">
+        <div class="post-excerpt">
+            
+                <blockquote>
+<p>　　当我通过表单提交带空格的数据并保存到数据库，然后通过再次渲染出的页面修改该数据，意想不到的事情发生了，再也不同通过这个值检索到这条数据了。</p>
+</blockquote>
+<p>　　首先，我们先写一个PHP的测试文件：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">if(isset($_POST[&#x27;model&#x27;]))&#123;</span><br><span class="line">	echo $_POST[&#x27;model&#x27;];</span><br><span class="line">	echo &quot;&lt;br&gt;&quot;;</span><br><span class="line">	echo str_replace(&#x27; &#x27;,&#x27;&amp;nbsp;&#x27;,$_POST[&#x27;model&#x27;]);</span><br><span class="line">	echo &quot;&lt;br&gt;&quot;;</span><br><span class="line">	echo urlencode($_POST[&#x27;model&#x27;]);</span><br><span class="line">&#125;</span><br><span class="line">?&gt;</span><br><span class="line">&lt;form method=&#x27;post&#x27;&gt;</span><br><span class="line">&lt;input name=&#x27;model&#x27; value=&#x27;&#x27; /&gt;</span><br><span class="line">&lt;button type=&#x27;submit&#x27;&gt;ttttt&lt;/button&gt;</span><br><span class="line">&lt;/form&gt;</span><br></pre></td></tr></table></figure>
+
+<p>　　可以看到，这里面有个表单，提交到自己这个页面，然后由PHP获取到POST过来的参数<code>model</code>，第一行直接输出它的值，第二行输出防SQL注入对空格的转化后的值，第三行输出encode之后的值（为什么？我们最后说TA的用途^_^）。</p>
+<p>　　我们现在试着输入并提交<code>Sumsang S8</code>：</p>
+<p><img src="https://i.loli.net/2017/07/20/597048232aaf5.png" alt="结果1"></p>
+<p>　　由此可见，后台获取到的是一个<code>Sumsang</code>+<code>空格</code>+<code>S8</code>，第二行跟上面一样（显示一样，源码不一样），第三行空格变成加号是urlencode后的转义，那么看下源码：</p>
+<p><img src="https://i.loli.net/2017/07/20/5970485c97308.png" alt="源码1"></p>
+<p>　　当然，很多情况下，为了防止SQL注入，我们会将<code>空格</code>转化成<code>&amp;nbsp;</code>存库，然后取数据的时候在逆回来。</p>
+<hr>
+<p>　　紧接着，我们模拟数据的修改，基本过程是：从数据库取出这条数据–&gt;填充到input标签的value属性中（没有做逆处理）–&gt;渲染页面，渲染的页面源码如下：
+　　</p>
+            
+            <p class="more">
+                <a href="https://www.imsry.cn/posts/ece045fd.html">阅读剩下更多</a>
+            </p>
+        </div>
+        <div class="post-thumbnail" data-img="">
+            <a href="https://www.imsry.cn/posts/ece045fd.html" title="神奇的空格符">
+                
+                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/0.jpg" alt="默认配图" >
+                
+            </a>
+        </div>
+    </div>
+</article>
+
+    
+        <!-- 文章列表 item -->
+<article class="post">
+    <header>
+        <!-- 标签这有且只能显示一个 -->
+        
+        <a class="cat-link" href="/categories/%E6%9D%82%E8%B0%88/">杂谈</a>
+        
+        <!-- 文章标题 -->
+        
+    <h3 class="post-title">
+    	<a href="https://www.imsry.cn/posts/aa3d43ae.html">
+    		毕业了
+    	</a>
+    </h3>
+
+    </header>
+    <p class="post-meta">
+        Anthony 发表于
+        <time datetime="2017-07-13T06:41:43.000Z">2017-07-13 14:41:43</time>
+
+
+        &nbsp;&nbsp;
+        <span class="post-tags">
+            标签：
+            
+        </span>
+    </p>
+
+    <div class="post-content">
+        <div class="post-excerpt">
+            
+                <h3 id="转眼间，青春不再年华"><a href="#转眼间，青春不再年华" class="headerlink" title="转眼间，青春不再年华"></a>转眼间，青春不再年华</h3><p>　　其实，很早就要写这样一篇文章的，只是一直都不知道如何表达，即使现在也还是一样。 </p>
+<p>　　毕业，经历也不止那么一两次了，从来都没有感觉到有什么特别。人们总说，离别是伤感的，因为知道以后的相逢是微乎其微的，因为不知道的，太多了。我从来都没有想到，竟然在我即将离开校园的那一天，舍友一个个从宿舍离开的那一天，我热泪盈眶，竟说不出话来。一想到平日里我们朝夕相处，如今却落得个你南我北他中原。</p>
+<p>　　正式步入社会，成为万千就业者中的一员，也就是说，我们不得不考虑和选择更多的事情。入京工作已过半年之久，以前从未想过会来京都工作，我永远都会记得每一次面试当面试官问我想去哪个城市工作时，我的回答只强调了一个重点，那就是“除了北京”。原因很简单，离家太远和空气环境差，我更愿意去上海、深圳、成都甚至是长沙。但最终我实习和工作的地方，就是北京。Orz…</p>
+<p>　　既然来了，便也学会适应并努力完善自我，尽管生存环境不尽人意。相信自己能够在这个不曾向往的地方体现自我价值，创造人生价值。</p>
+<h3 id="两年，或许是个新开始"><a href="#两年，或许是个新开始" class="headerlink" title="两年，或许是个新开始"></a>两年，或许是个新开始</h3><p>　　是的，不管怎么样，我决定至少认真的对待这两年，其实两年对于一个刚刚毕业的菜鸟是很重要的一个过渡期，这意味着今后的路将怎么走，应当展望一个什么样的未来，找到自己所处的位置和自己将要达到的下一个高度。我希望两年后，我会是一个全新的我，完全从现在的自己蜕变而出，所及之处无遗憾，稳而渐入佳境。</p>
+<blockquote>
+<p>总有那么一个时刻，你背负着<em>Newbie</em>的称号。</p>
+</blockquote>
+            
+            <p class="more">
+                <a href="https://www.imsry.cn/posts/aa3d43ae.html">阅读剩下更多</a>
+            </p>
+        </div>
+        <div class="post-thumbnail" data-img="">
+            <a href="https://www.imsry.cn/posts/aa3d43ae.html" title="毕业了">
+                
+                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/3.jpg" alt="默认配图" >
+                
+            </a>
+        </div>
+    </div>
+</article>
+
+    
+        <!-- 文章列表 item -->
+<article class="post">
+    <header>
+        <!-- 标签这有且只能显示一个 -->
+        
+        <a class="cat-link" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a>
+        
+        <!-- 文章标题 -->
+        
+    <h3 class="post-title">
+    	<a href="https://www.imsry.cn/posts/91af55e9.html">
+    		The Problems When Python2.6 to 2.7 on CentOS6.5
+    	</a>
+    </h3>
+
+    </header>
+    <p class="post-meta">
+        Anthony 发表于
+        <time datetime="2017-04-24T08:41:20.000Z">2017-04-24 16:41:20</time>
+
+
+        &nbsp;&nbsp;
+        <span class="post-tags">
+            标签：
+            
+    
+        <a href="/tags/Python/" title="Python">Python</a>
+    
+
+        </span>
+    </p>
+
+    <div class="post-content">
+        <div class="post-excerpt">
+            
+                <blockquote>
+<p>当Python从2.6升级到2.7后，pip找不到了？</p>
+</blockquote>
+<p>　　对的，基本上都能遇到这个问题。我很暴力的直接去下载一个pip然后用Python去安装它。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python setup.py install</span><br></pre></td></tr></table></figure>
+
+<p>　　却被告知<code>ImportError: No module named setuptools</code>，想通过yum直接给安装，却出现下图所示：<br><img src="https://ooo.0o0.ooo/2017/04/24/58fdbbdb473ae.png"></p>
+<p>　　没办法，去下载一个setuptools的包自己来装吧(我试过了下载setuptools-35.0.1.zip，这个不适用)。所以下面的这个亲测有效：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">wget https://pypi.python.org/packages/2.7/s/setuptools/setuptools-0.6c11-py2.7.egg  --no-check-certificate</span><br><span class="line">sh setuptools-0.6c11-py2.7.egg</span><br></pre></td></tr></table></figure>
+            
+            <p class="more">
+                <a href="https://www.imsry.cn/posts/91af55e9.html">阅读剩下更多</a>
+            </p>
+        </div>
+        <div class="post-thumbnail" data-img="">
+            <a href="https://www.imsry.cn/posts/91af55e9.html" title="The Problems When Python2.6 to 2.7 on CentOS6.5">
+                
+                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/4.jpg" alt="默认配图" >
+                
+            </a>
+        </div>
+    </div>
+</article>
+
+    
+
+    
+    <nav class="page-navigator">
+        <a class="extend prev" rel="prev" href="/page/3/">前一页</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><a class="extend next" rel="next" href="/page/5/">后一页</a>
+    </nav>
+    
+
+
+
+
+            </div>
+
+        </section>
+        <!-- 侧栏部分 -->
+<aside class="sidebar">
+    
+    <section class="widget">
+        <h3 class="widget-hd"><strong>文章搜索</strong></h3>
+        <div class="search-form">
+  <form
+    id="searchForm"
+    method="GET"
+    action="https://www.baidu.com/s"
+    ectype="application/x-www-form-urlencoded"
+    target="_blank"
+    autocomplete="false"
+    onsubmit="javascript: return false;">
+    <input
+      id="searchKeyword"
+      type="text"
+      class="form-control"
+      placeholder="输入关键字搜索"
+      autocomplete="false"
+    />
+    <input id="searchKeywordHidden" type="hidden" name="wd" />
+    <input id="searchButton" class="btn" type="submit" value="搜索" />
+  </form>
+</div>
+    </section>
+    
+
+    <section class="widget">
+        <h3 class="widget-hd"><strong>文章分类</strong></h3>
+        <!-- 文章分类 -->
+<ul class="widget-bd">
+    
+    <li>
+        <a href="/categories/Linux/">Linux</a>
+        <span class="badge">(15)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a>
+        <span class="badge">(54)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/">网络安全</a>
+        <span class="badge">(2)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/Web/">Web</a>
+        <span class="badge">(3)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/">编程语言</a>
+        <span class="badge">(12)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/%E6%9D%82%E8%B0%88/">杂谈</a>
+        <span class="badge">(7)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/%E7%AE%97%E6%B3%95/">算法</a>
+        <span class="badge">(6)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/PHP/">PHP</a>
+        <span class="badge">(9)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a>
+        <span class="badge">(2)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/MacOS/">MacOS</a>
+        <span class="badge">(1)</span>
+    </li>
+    
+</ul>
+    </section>
+
+    
+    <section class="widget">
+        <h3 class="widget-hd"><strong>热门标签</strong></h3>
+        <!-- 文章标签 -->
+<div class="widget-bd tag-wrap">
+  
+    <a class="tag-item" href="/tags/Apache/" title="Apache">Apache (5)</a>
+  
+    <a class="tag-item" href="/tags/Linux/" title="Linux">Linux (8)</a>
+  
+    <a class="tag-item" href="/tags/Proxy/" title="Proxy">Proxy (1)</a>
+  
+    <a class="tag-item" href="/tags/firewall/" title="firewall">firewall (1)</a>
+  
+    <a class="tag-item" href="/tags/CentOS/" title="CentOS">CentOS (3)</a>
+  
+    <a class="tag-item" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" title="数据结构">数据结构 (1)</a>
+  
+    <a class="tag-item" href="/tags/HTTPS/" title="HTTPS">HTTPS (3)</a>
+  
+    <a class="tag-item" href="/tags/Chrome/" title="Chrome">Chrome (1)</a>
+  
+    <a class="tag-item" href="/tags/VPN/" title="VPN">VPN (1)</a>
+  
+    <a class="tag-item" href="/tags/Discuz/" title="Discuz">Discuz (1)</a>
+  
+    <a class="tag-item" href="/tags/Docker/" title="Docker">Docker (1)</a>
+  
+    <a class="tag-item" href="/tags/Network/" title="Network">Network (3)</a>
+  
+    <a class="tag-item" href="/tags/FFmpeg/" title="FFmpeg">FFmpeg (1)</a>
+  
+    <a class="tag-item" href="/tags/Glassfish/" title="Glassfish">Glassfish (1)</a>
+  
+    <a class="tag-item" href="/tags/Java/" title="Java">Java (2)</a>
+  
+    <a class="tag-item" href="/tags/MySQL/" title="MySQL">MySQL (12)</a>
+  
+    <a class="tag-item" href="/tags/Golang/" title="Golang">Golang (3)</a>
+  
+    <a class="tag-item" href="/tags/Nginx/" title="Nginx">Nginx (2)</a>
+  
+    <a class="tag-item" href="/tags/PHP/" title="PHP">PHP (16)</a>
+  
+    <a class="tag-item" href="/tags/Vim/" title="Vim">Vim (1)</a>
+  
+    <a class="tag-item" href="/tags/%E7%BD%91%E5%8D%A1/" title="网卡">网卡 (1)</a>
+  
+    <a class="tag-item" href="/tags/OrangePi/" title="OrangePi">OrangePi (1)</a>
+  
+    <a class="tag-item" href="/tags/%E7%AE%97%E6%B3%95/" title="算法">算法 (1)</a>
+  
+    <a class="tag-item" href="/tags/%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6/" title="时间复杂度">时间复杂度 (1)</a>
+  
+    <a class="tag-item" href="/tags/%E5%AE%9A%E7%90%86/" title="定理">定理 (1)</a>
+  
+    <a class="tag-item" href="/tags/RPC/" title="RPC">RPC (1)</a>
+  
+    <a class="tag-item" href="/tags/HTML/" title="HTML">HTML (2)</a>
+  
+    <a class="tag-item" href="/tags/JavaScript/" title="JavaScript">JavaScript (2)</a>
+  
+    <a class="tag-item" href="/tags/k8s/" title="k8s">k8s (1)</a>
+  
+    <a class="tag-item" href="/tags/Laravel/" title="Laravel">Laravel (1)</a>
+  
+    <a class="tag-item" href="/tags/Markdown/" title="Markdown">Markdown (1)</a>
+  
+    <a class="tag-item" href="/tags/MacOS/" title="MacOS">MacOS (5)</a>
+  
+    <a class="tag-item" href="/tags/Git/" title="Git">Git (1)</a>
+  
+    <a class="tag-item" href="/tags/Ngrok/" title="Ngrok">Ngrok (1)</a>
+  
+    <a class="tag-item" href="/tags/INI/" title="INI">INI (1)</a>
+  
+    <a class="tag-item" href="/tags/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/" title="排序算法">排序算法 (1)</a>
+  
+    <a class="tag-item" href="/tags/OpenSSL/" title="OpenSSL">OpenSSL (1)</a>
+  
+    <a class="tag-item" href="/tags/mcrypt/" title="mcrypt">mcrypt (1)</a>
+  
+    <a class="tag-item" href="/tags/xtea/" title="xtea">xtea (1)</a>
+  
+</div>
+    </section>
+    
+
+    
+
+    
+    <!-- 友情链接 -->
+    <section class="widget">
+        <h3 class="widget-hd"><strong>友情链接</strong></h3>
+        <!-- 文章分类 -->
+<ul class="widget-bd">
+    
+        <li>
+            <a href="https://imququ.com/" target="_blank" title="Jerry Qu">Jerry Qu</a>
+        </li>
+    
+        <li>
+            <a href="https://jelon.info/" target="_blank" title="Zhang Delong">Jelon</a>
+        </li>
+    
+        <li>
+            <a href="http://www.minghua.work/" target="_blank" title="智能硬件产品汪">Minghua Jia</a>
+        </li>
+    
+</ul>
+
+    </section>
+    
+</aside>
+<!-- / 侧栏部分 -->
+    </div>
+
+    <!-- 博客底部 -->
+    <footer class="footer">
+<div style="margin-bottom:1em;">
+
+        <!-- 不蒜子统计 -->
+        <span id="busuanzi_container_site_pv">
+                本站总访问量<span id="busuanzi_value_site_pv"></span>次
+        </span>
+        <span class="post-meta-divider">|</span>
+        <span id="busuanzi_container_site_uv" style='display:none'>
+                本站访客数<span id="busuanzi_value_site_uv"></span>人
+        </span>
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  
+</div>
+    &copy;
+    
+        2014-2026
+    
+
+    <a href="/">Best Wishes</a>
+</footer>
+<div class="back-to-top" id="JELON__backToTop" title="返回顶部">返回顶部</div>
+
+    <!--博客js脚本 -->
+    <!-- 这里放网站js脚本 -->
+
+<script src="/js/main.js?v=1778052557368.js"></script>
+
+</body>
+</html>

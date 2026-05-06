@@ -1,0 +1,1202 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8" >
+    <meta http-equiv="X-UA-Compatible" content="IE=11,IE=10,IE=9,IE=8" >
+    <meta name="baidu-site-verification" content="dIcXMeY8Ya" />
+    
+    <title>`学习笔记`分类下的文章 | 斯人笔记本 - IMSRY - 个人博客 原创文章 学习笔记 技术分享</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" >
+    <meta name="keywords" content="Anthony, 刘经济, 技术博客, 个人博客, PHP, Golang, Linux, FullStack" >
+    <meta name="description" content="待人以儒墨，不热爱前端技术的后端开发不是一个好的吃货。" >
+
+    
+    <link rel="alternative" href="/atom.xml" title="斯人笔记本" type="application/atom+xml" >
+    
+    
+    <link rel="shortcut icon" href="/favicon.ico" >
+    
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!--[if lt IE 9]>
+    
+<script src="/js/html5.js"></script>
+
+    <![endif]-->
+    
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?d5ebf515ab530cfbdda5f5c85093fb41";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body class="home">
+    <!--[if lt IE 9]>
+    <div class="browsehappy">
+        当前网页 <strong>不支持</strong>
+        你正在使用的浏览器. 为了正常的访问, 请 <a href="http://browsehappy.com/">升级你的浏览器</a>.
+    </div>
+    <![endif]-->
+
+    <!-- 博客头部 -->
+    <header class="header">
+    <section class="container header-main">
+        <div class="logo">
+            <a href="/">
+                <div class="cover">
+                    <span class="name">斯人笔记本</span>
+                    <span class="description">IMSRY</span>
+                </div>
+            </a>
+        </div>
+        <div class="dropnav icon-paragraph-justify" id="JELON__btnDropNav"></div>
+        <ul class="menu hidden" id="JELON__menu">
+            
+            <li rel="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/index.html" class="item ">
+                <a href="/" title="首页" class="icon-home">&nbsp;首页</a>
+            </li>
+            
+            <li rel="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/index.html" class="item ">
+                <a href="/about/" title="关于" class="icon-about">&nbsp;关于</a>
+            </li>
+            
+            <li rel="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/index.html" class="item ">
+                <a href="/comment/" title="留言" class="icon-comment">&nbsp;留言</a>
+            </li>
+            
+        </ul>
+        <div class="profile clearfix">
+            <div class="feeds fl">
+                
+                
+                <p class="links">
+                    
+                        <a href="https://github.com/haowanxing" target="_blank">Github</a>
+                        |
+                    
+                </p>
+                <p class="sns">
+                    
+                        <a href="http://weibo.com/u/2214092525" class="sinaweibo" target="_blank"><b>■</b> 新浪微博</a>
+                    
+                        <a href="https://www.facebook.com/imsry.cn/" class="qqweibo" target="_blank"><b>■</b> Facebook</a>
+                    
+                    <a href="javascript: void(0);" class="wechat">
+                        <b>■</b>
+                        公众号
+                        <span class="popover">
+                            <img src="/img/wechat_mp.jpg" width="120" height="120" alt="我的微信订阅号">
+                            <i class="arrow"></i>
+                        </span>
+                    </a>
+                </p>
+                
+            </div>
+            <div class="avatar fr">
+                <img src="/uploads/qiniu/marioodyssey.jpg" alt="avatar" title="Mario" >
+            </div>
+        </div>
+    </section>
+</header>
+
+
+    <!-- 博客正文 -->
+    <div class="container body clearfix">
+        <section class="content">
+            <div class="content-main widget">
+                <!-- 文章分类 -->
+
+    <h3 class="widget-hd">
+        <strong>
+            
+                `学习笔记`分类下的文章
+            
+        </strong>
+    </h3>
+    
+        <!-- 文章列表 item -->
+<article class="post">
+    <header>
+        <!-- 标签这有且只能显示一个 -->
+        
+        <a class="cat-link" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a>
+        
+        <!-- 文章标题 -->
+        
+    <h3 class="post-title">
+    	<a href="https://www.imsry.cn/posts/4fa20f2.html">
+    		kubernetes nginx ingress custom 401/500 page
+    	</a>
+    </h3>
+
+    </header>
+    <p class="post-meta">
+        刘经济 发表于
+        <time datetime="2022-02-21T06:30:41.000Z">2022-02-21 14:30:41</time>
+
+
+        &nbsp;&nbsp;
+        <span class="post-tags">
+            标签：
+            
+    
+        <a href="/tags/k8s/" title="k8s">k8s</a>
+    
+
+        </span>
+    </p>
+
+    <div class="post-content">
+        <div class="post-excerpt">
+            
+                <p>在k8s中，通常会使用ingress的方式将内部服务进行暴露，与此同时会加上鉴权的功能，如：Basic Auth、Oauth2和JWT等等。</p>
+<h4 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h4><p>在Ingress资源的metadata的annotations中增加<code>nginx.ingress.kubernetes.io/auth-url</code>来指定鉴权的地址。如：nginx.ingress.kubernetes.io&#x2F;auth-url: <a href="http://10.11.0.123:8081/api-auth">http://10.11.0.123:8081/api-auth</a></p>
+<p>这样一来，我们在编写<code>/api-auth</code>这个接口的时候，可以根据请求头拿到客户端的认证信息，进而判断是否对其请求进行放行，返回状态码为200即为放行，nginx会将客户端的请求转发到对应的后端服务；返回状态码为401即表示没有授权，nginx直接对其拦截，并返回给客户端默认的响应。</p>
+<p>响应Header头：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">HTTP/2 401</span><br><span class="line"><span class="built_in">date</span>: Mon,21 Feb 2022 06:42:41 GMT</span><br><span class="line">content-type: text/html</span><br><span class="line">content-length: 574</span><br></pre></td></tr></table></figure>
+
+<p>响应Body体：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;&lt;title&gt;401 Authorization Required&lt;/title&gt;&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;center&gt;&lt;h1&gt;401 Authorization Required&lt;/h1&gt;&lt;/center&gt;</span><br><span class="line">&lt;hr&gt;&lt;center&gt;nginx&lt;/center&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br><span class="line">&lt;!-- a padding to disable MSIE and Chrome friendly error page --&gt;</span><br><span class="line">&lt;!-- a padding to disable MSIE and Chrome friendly error page --&gt;</span><br><span class="line">&lt;!-- a padding to disable MSIE and Chrome friendly error page --&gt;</span><br><span class="line">&lt;!-- a padding to disable MSIE and Chrome friendly error page --&gt;</span><br><span class="line">&lt;!-- a padding to disable MSIE and Chrome friendly error page --&gt;</span><br><span class="line">&lt;!-- a padding to disable MSIE and Chrome friendly error page --&gt;</span><br></pre></td></tr></table></figure>
+
+<p>但是客户端仅知道请求是因为授权问题被拒绝了，但是不知道具体的原因，如果需要得知具体的拒绝原因，可以按照如下方法进行优化。</p>
+<h4 id="优化方法"><a href="#优化方法" class="headerlink" title="优化方法"></a>优化方法</h4><p>因为nginx中没有直接获取upsream返回结果的方法（可通过重新编译，用Lua实现），但是可获取到响应头，所以我们利用响应头来返回拒绝的原因。</p>
+<p>首先，在<code>/api-auth</code>中，增加一个响应头<code>my_auth_error</code>，内容可以直接填写您需要返回给客户端的原因，我这里会填入一个json串的Base64编码值。</p>
+<p>然后我们回到nginx-ingress的配置文件，增加两个声明：<code>nginx.ingress.kubernetes.io/configuration-snippet</code>和<code>nginx.ingress.kubernetes.io/server-snippet</code>。</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">metadata:</span></span><br><span class="line">  <span class="comment"># 此处省略N个字</span></span><br><span class="line">  <span class="attr">annotations:</span></span><br><span class="line">    <span class="attr">nginx.ingress.kubernetes.io/auth-url:</span> <span class="string">http://10.11.0.123:8081/api-auth</span></span><br><span class="line">    <span class="attr">nginx.ingress.kubernetes.io/configuration-snippet:</span> <span class="string">|</span></span><br><span class="line"><span class="string">      error_page 401 = @ingress_service_custom_error_401;</span></span><br><span class="line"><span class="string"></span>      </span><br><span class="line">      <span class="string">auth_request_set</span> <span class="string">$my_auth_error</span> <span class="string">$upstream_http_wwd_auth_error;</span></span><br><span class="line">      <span class="string">auth_request_set</span> <span class="string">$my_auth_error_content_type</span> <span class="string">$upstream_http_content_type;</span></span><br><span class="line">      <span class="string">auth_request_set</span> <span class="string">$my_auth_status</span> <span class="string">$upstream_status;</span></span><br><span class="line">    <span class="attr">nginx.ingress.kubernetes.io/server-snippet:</span> <span class="string">|</span></span><br><span class="line"><span class="string">      location @ingress_service_custom_error_401 &#123;</span></span><br><span class="line"><span class="string">        internal;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line">        <span class="comment"># Decode auth response header</span></span><br><span class="line">        <span class="string">set_decode_base64</span> <span class="string">$my_auth_error_decoded</span> <span class="string">$my_auth_error;</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># Return the error from auth service if any</span></span><br><span class="line">        <span class="string">if</span> <span class="string">($my_auth_error_decoded</span> <span class="type">!=</span> <span class="string">&quot;&quot;</span><span class="string">)&#123;</span></span><br><span class="line">          <span class="string">add_header</span> <span class="string">Content-Type</span> <span class="string">$my_auth_error_content_type</span> <span class="string">always;</span></span><br><span class="line">          <span class="string">return</span> <span class="number">401</span> <span class="string">$my_auth_error_decoded;</span></span><br><span class="line">        <span class="string">&#125;</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># Fall back to default nginx response</span></span><br><span class="line">        <span class="string">return</span> <span class="number">401</span><span class="string">;</span></span><br><span class="line">      <span class="string">&#125;</span></span><br><span class="line">  <span class="comment"># 此处省略N个字</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="配置解释"><a href="#配置解释" class="headerlink" title="配置解释"></a>配置解释</h4><p><code>configuration-snippet</code>用来对location进行自定义配置，上面对401的错误页面定义了一个<code>@ingress_service_custom_error_401</code>，然后增加了3个变量<code>my_auth_error</code>、<code>my_auth_error_content_type</code>和<code>my_auth_status</code>分别取值自定义响应头、响应类型和响应状态码。</p>
+<p><code>server-snippet</code>用来对server块进行自定义配置，上面相当于在server块增加了一个location，该location即为401时的默认响应，其中会对<code>my_auth_error</code>进行base64解码，然后判断解码内容，若其内容为空，则直接返回最初的默认401页面，否则在响应头中增加<code>Content-Type</code>为具体的自定义类型，并返回401状态码和自定义响应Body。</p>
+<p>如此一来，就可以实现nginx-ingress根据auth接口响应的结果来执行不同的行为。最终实现不同的效果。</p>
+<p>响应头：</p>
+<figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">HTTP/2 401</span><br><span class="line">date: Mon, 21 Feb 2022 07:14:36 GMT</span><br><span class="line">content-type: text/html</span><br><span class="line">content-length: 51</span><br><span class="line">content-type: application/json</span><br></pre></td></tr></table></figure>
+
+<p>响应Body体：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;message&quot;</span><span class="punctuation">:</span> <span class="string">&quot;用户未登录&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;code&quot;</span><span class="punctuation">:</span> <span class="number">14</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;data&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">null</span></span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h4><p><a href="https://stackoverflow.com/questions/65951602/custom-response-for-ingress-nginx-external-authentication?answertab=active#tab-top">Custom response for Ingress-Nginx External Authentication</a></p>
+
+            
+            <p class="more">
+                <a href="https://www.imsry.cn/posts/4fa20f2.html">阅读剩下更多</a>
+            </p>
+        </div>
+        <div class="post-thumbnail" data-img="">
+            <a href="https://www.imsry.cn/posts/4fa20f2.html" title="kubernetes nginx ingress custom 401/500 page">
+                
+                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/1.jpg" alt="默认配图" >
+                
+            </a>
+        </div>
+    </div>
+</article>
+
+    
+        <!-- 文章列表 item -->
+<article class="post">
+    <header>
+        <!-- 标签这有且只能显示一个 -->
+        
+        <a class="cat-link" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a>
+        
+        <!-- 文章标题 -->
+        
+    <h3 class="post-title">
+    	<a href="https://www.imsry.cn/posts/e6ef1b5e.html">
+    		记一次使用CGo的Golang项目交叉编译遇到的问题及解决步骤
+    	</a>
+    </h3>
+
+    </header>
+    <p class="post-meta">
+        刘经济 发表于
+        <time datetime="2021-10-18T02:08:41.000Z">2021-10-18 10:08:41</time>
+
+
+        &nbsp;&nbsp;
+        <span class="post-tags">
+            标签：
+            
+    
+        <a href="/tags/Linux/" title="Linux">Linux</a> / 
+    
+        <a href="/tags/Golang/" title="Golang">Golang</a> / 
+    
+        <a href="/tags/MacOS/" title="MacOS">MacOS</a> / 
+    
+        <a href="/tags/Arm64/" title="Arm64">Arm64</a>
+    
+
+        </span>
+    </p>
+
+    <div class="post-content">
+        <div class="post-excerpt">
+            
+                本篇文章对我在交叉编译EasyDarwin项目到Arrch64架构的Linux上做了简单的记录和总结，总体上遇到的问题分为那么几类： 1. 项目依赖库的缺失和更新 2. syscall.Dup2方法不存在 3. CGO的交叉编译支持 4. 执行二进制文件却提示：No such file or directory 
+            
+            <p class="more">
+                <a href="https://www.imsry.cn/posts/e6ef1b5e.html">阅读剩下更多</a>
+            </p>
+        </div>
+        <div class="post-thumbnail" data-img="">
+            <a href="https://www.imsry.cn/posts/e6ef1b5e.html" title="记一次使用CGo的Golang项目交叉编译遇到的问题及解决步骤">
+                
+                    <!--
+                    <img src="/../uploads/2021/10/18/image-20211018141948317.png" class="thumbnail">
+                    -->
+                    <img class="thumbnail" src="/img/default.png" data-echo="../uploads/2021/10/18/image-20211018141948317.png" alt="记一次使用CGo的Golang项目交叉编译遇到的问题及解决步骤" >
+                
+            </a>
+        </div>
+    </div>
+</article>
+
+    
+        <!-- 文章列表 item -->
+<article class="post">
+    <header>
+        <!-- 标签这有且只能显示一个 -->
+        
+        <a class="cat-link" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a>
+        
+        <!-- 文章标题 -->
+        
+    <h3 class="post-title">
+    	<a href="https://www.imsry.cn/posts/32c4930.html">
+    		利用FFmpeg处理鱼眼视频分成4个方向的视野画面
+    	</a>
+    </h3>
+
+    </header>
+    <p class="post-meta">
+        刘经济 发表于
+        <time datetime="2021-03-11T06:02:54.000Z">2021-03-11 14:02:54</time>
+
+
+        &nbsp;&nbsp;
+        <span class="post-tags">
+            标签：
+            
+    
+        <a href="/tags/FFmpeg/" title="FFmpeg">FFmpeg</a>
+    
+
+        </span>
+    </p>
+
+    <div class="post-content">
+        <div class="post-excerpt">
+            
+                <h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>首先，FFmpeg是一套可以用来记录、转换数字音频、视频，并能将其转化为流的开源计算机程序。它的功能强大，这里就不多做阐述了。</p>
+<p>本次实验主要是为了学习FFmpeg的Filter功能，它提供了很多音视频的特效处理，比如：视频的缩放、翻转、叠加等等。常用的Filter有：</p>
+<ul>
+<li>Scale：画面的缩放</li>
+<li>Overlay：画面的叠加</li>
+<li>Crop：画面的裁剪</li>
+<li>More：<a href="http://ffmpeg.org/ffmpeg-filters.html">查看更多</a></li>
+</ul>
+<p>我们可以通过命令查看全部Filter的简介：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -filters</span><br></pre></td></tr></table></figure>
+
+<h2 id="实验"><a href="#实验" class="headerlink" title="实验"></a>实验</h2><h3 id="原始材料"><a href="#原始材料" class="headerlink" title="原始材料"></a>原始材料</h3><p>我们手里现在有一段鱼眼镜头录制的视频源文件，命名：<code>original.mp4</code>。我们先来看看它长什么样子：</p>
+<p><img src="/../uploads/2021/03/11/fisheyeframe.jpeg" alt="out"></p>
+<h3 id="尝试球形转方形"><a href="#尝试球形转方形" class="headerlink" title="尝试球形转方形"></a>尝试球形转方形</h3><p>这一步，我暂时还没找到一个很好的方法把其展平成一个广角镜头全景的画面，但是我使用v360这个filter通过不断修改参数，得到了一个比较满意的部分画面的方形画面。</p>
+<p>该Filter的基本参数格式如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">v360=input:output:format_1:arg_name=value</span><br></pre></td></tr></table></figure>
+
+<p>其中<code>input</code>和<code>output</code>分别是原始投影格式和目标投影格式，这里我们是从<code>鱼眼</code>视频转换为<code>常规</code>视频，所以要填入的参数为：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">v360=input=fisheye:output=flat <span class="comment"># 都有哪些投影格式，可以通过ffmpeg -h filter=v360获取查看</span></span><br></pre></td></tr></table></figure>
+
+<p><code>format_1</code>是指具体要设置的格式，这里我并没有用到。<code>arg_name</code>和<code>value</code>指具体的参数项和值。</p>
+<p>我的使用例子：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">v360=input=fisheye:output=flat:ih_fov=180:iv_fov=180:h_fov=90:v_fov=60:w=720:h=360:pitch=45</span><br></pre></td></tr></table></figure>
+
+<p>解释一下，其中<code>ih_fov</code>和<code>iv_fov</code>分别表示设置的输入横向视野范围和输入纵向视野范围，我这里都设置为180度；<code>h_fov</code>和<code>v_fov</code>分别表示设置的输出横向视野范围和输出纵向视野范围，我这里设置横向90度，纵向60度。然后还设置了输出画面的宽高为720x360，俯仰旋转角（pitch）为45度。</p>
+<p>我的个人理解（个人瞎猜），就如同人眼可接受光的范围，理论上横向和纵向都能够覆盖180度的范围，但是我们在眼球不转动的情况下，有效的水平视野大概是90度，纵向视野60度。因为这个是我具体调参的出来的个人觉得比较好的参数条件，所以不具有权威性！哈哈！</p>
+<p>那么现在能输出一个什么样的画面呢？</p>
+<p><img src="/../uploads/2021/03/11/fisheyeframe-up.jpeg" alt="up"></p>
+<p>Nice！这就已经很像一个普通摄像头的画面了。那么如何得到其它几个方向的画面呢？前面我们有提到，FFmpeg可以使画面旋转！如果我先将原始画面旋转一下，让其它几个方向的画面都转到上面，然后转换画面不就行了吗？</p>
+<h3 id="画面旋转"><a href="#画面旋转" class="headerlink" title="画面旋转"></a>画面旋转</h3><p>FFmpeg有个Filter叫做<code>transpose</code>。它可以非常简单的完成画面的旋转或翻转：</p>
+<!---more--->
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 输入ffmpeg -h filter=transpose查一下说明</span></span><br><span class="line">Filter transpose</span><br><span class="line">  Transpose input video.</span><br><span class="line">    slice threading supported</span><br><span class="line">    Inputs:</span><br><span class="line">       <span class="comment">#0: default (video)</span></span><br><span class="line">    Outputs:</span><br><span class="line">       <span class="comment">#0: default (video)</span></span><br><span class="line">transpose AVOptions:</span><br><span class="line">  <span class="built_in">dir</span>               &lt;int&gt;        ..FV...... <span class="built_in">set</span> transpose direction (from 0 to 7) (default cclock_flip)</span><br><span class="line">     cclock_flip     0            ..FV...... rotate counter-clockwise with vertical flip</span><br><span class="line">     clock           1            ..FV...... rotate clockwise</span><br><span class="line">     cclock          2            ..FV...... rotate counter-clockwise</span><br><span class="line">     clock_flip      3            ..FV...... rotate clockwise with vertical flip</span><br><span class="line">  passthrough       &lt;int&gt;        ..FV...... <span class="keyword">do</span> not apply transposition <span class="keyword">if</span> the input matches the specified geometry (from 0 to INT_MAX) (default none)</span><br><span class="line">     none            0            ..FV...... always apply transposition</span><br><span class="line">     portrait        2            ..FV...... preserve portrait geometry</span><br><span class="line">     landscape       1            ..FV...... preserve landscape geometry</span><br></pre></td></tr></table></figure>
+
+<p>简单来说：</p>
+<ul>
+<li><code>transpose=0</code>逆时针旋转90度并纵向翻转一次</li>
+<li><code>transpose=1</code>顺时针旋转90度</li>
+<li><code>transpose=2</code>逆时针旋转90度</li>
+<li><code>transpose=3</code>顺时针旋转90度并纵向翻转一次</li>
+</ul>
+<p>我们分别使用如下参数，可获得的画面：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#顺时针旋转90度</span></span><br><span class="line">transpose=1,v360=input=fisheye:output=flat:ih_fov=180:iv_fov=180:h_fov=90:v_fov=60:w=720:h=360:pitch=45</span><br><span class="line"><span class="comment">#得到左方镜头画面</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="/../uploads/2021/03/11/fisheyeframe-left.png" alt="left"></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#逆时针旋转90度</span></span><br><span class="line">transpose=2,v360=input=fisheye:output=flat:ih_fov=180:iv_fov=180:h_fov=90:v_fov=60:w=720:h=360:pitch=45</span><br><span class="line"><span class="comment">#得到右方镜头画面</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="/../uploads/2021/03/11/fisheyeframe-right.png" alt="right"></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#顺时针旋转90度2次</span></span><br><span class="line">transpose=1,transpose=1,v360=input=fisheye:output=flat:ih_fov=180:iv_fov=180:h_fov=90:v_fov=60:w=720:h=360:pitch=45</span><br><span class="line"><span class="comment">#得到后方镜头画面</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="/Users/anthony/git/haowanxing.github.io/source/uploads/2021/03/11/fisheyeframe-down.png" alt="down"></p>
+<h3 id="画面拼接"><a href="#画面拼接" class="headerlink" title="画面拼接"></a>画面拼接</h3><p>做到上面的效果已经可以将鱼眼镜头的视频流拆分成4个不同方向的视频分别输出到4个流了，但是我还想将它们合成一个视频流，同时展示4个画面！</p>
+<p>这里我们就需要用到<code>overlay</code>（画面叠加）了！</p>
+<p>具体的思路如下：</p>
+<ol>
+<li>创建一张画布，大小为1440x720。</li>
+<li>将画布分成4个区域，分别叫做<code>upperleft</code>、<code>upperright</code>、<code>lowerleft</code>、<code>lowerright</code>，并放置视频的<code>左</code>、<code>上</code>、<code>右</code>、<code>下</code>。</li>
+</ol>
+<p>上面用到语法叫做<code>filterchain</code>，是将一个或多个<code>filter</code>用<code>,</code>号分隔，这里还需要用到的语法叫做：<code>filtergraph</code>，是将<code>filterchain</code>用<code>;</code>号分隔。</p>
+<p>最终的命令如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -i original.mp4 -filter_complex <span class="string">&quot;nullsrc=size=1440x720 [base]; [0:v] transpose=1,v360=input=fisheye:output=flat:ih_fov=180:iv_fov=180:h_fov=90:v_fov=60:w=720:h=360:pitch=45 [upperleft]; [0:v] v360=input=fisheye:output=flat:ih_fov=180:iv_fov=180:h_fov=90:v_fov=60:w=720:h=360:pitch=45 [upperright]; [0:v] transpose=2,v360=input=fisheye:output=flat:ih_fov=180:iv_fov=180:h_fov=90:v_fov=60:w=720:h=360:pitch=45 [lowerleft]; [0:v] transpose=1,transpose=1,v360=input=fisheye:output=flat:ih_fov=180:iv_fov=180:h_fov=90:v_fov=60:w=720:h=360:pitch=45 [lowerright]; [base][upperleft] overlay [tmp1]; [tmp1][upperright] overlay=720:0 [tmp2]; [tmp2][lowerleft] overlay=0:360 [tmp3];[tmp3][lowerright] overlay=720:360&quot;</span> -c:v libx264 -an -y out.mp4</span><br></pre></td></tr></table></figure>
+
+<p>叠加的步骤如下：</p>
+<ol>
+<li>创建一个空的画布[base]，size&#x3D;1440x720</li>
+<li>将输入的视频[0:v]分别通过<code>transpose</code>和<code>v360</code>转换成[upperleft]、[upperright]、[lowerlet]和[lowerright]4个流</li>
+<li>将[base]和[upperleft]叠加成[tmp1]，偏移量（x&#x3D;0, y&#x3D;0）</li>
+<li>将[tmp1]和[upperright]叠加成[tmp2]，偏移量（x&#x3D;720, y&#x3D;0）</li>
+<li>将[tmp2]和[lowerleft]叠加成[tmp3]，偏移量（x&#x3D;0, y&#x3D;360）</li>
+<li>将[tmp3]和[lowerright]叠加成最终视频，偏移量（x&#x3D;720, y&#x3D;360）</li>
+</ol>
+<p>最终画面展示：</p>
+<p><img src="/../uploads/2021/03/11/fisheyeframe-dewarp.png" alt="dewarp"></p>
+<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><ul>
+<li><a href="https://www.cnblogs.com/famhuai/p/10276081.html">ffmpeg 实现多宫格效果，视频拼接合成</a></li>
+<li><a href="https://www.jianshu.com/p/b16835da62ab">FFmpeg filter的使用介绍</a></li>
+<li><a href="https://www.mail-archive.com/ffmpeg-user@ffmpeg.org/msg28370.html">Does v360 filter support dewarping circular fisheye images?</a></li>
+</ul>
+
+            
+            <p class="more">
+                <a href="https://www.imsry.cn/posts/32c4930.html">阅读剩下更多</a>
+            </p>
+        </div>
+        <div class="post-thumbnail" data-img="">
+            <a href="https://www.imsry.cn/posts/32c4930.html" title="利用FFmpeg处理鱼眼视频分成4个方向的视野画面">
+                
+                    <!--
+                    <img src="/../uploads/2021/03/11/fisheyeframe.jpeg" class="thumbnail">
+                    -->
+                    <img class="thumbnail" src="/img/default.png" data-echo="../uploads/2021/03/11/fisheyeframe.jpeg" alt="利用FFmpeg处理鱼眼视频分成4个方向的视野画面" >
+                
+            </a>
+        </div>
+    </div>
+</article>
+
+    
+        <!-- 文章列表 item -->
+<article class="post">
+    <header>
+        <!-- 标签这有且只能显示一个 -->
+        
+        <a class="cat-link" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a>
+        
+        <!-- 文章标题 -->
+        
+    <h3 class="post-title">
+    	<a href="https://www.imsry.cn/posts/32476646.html">
+    		自建CA服务器学习笔记
+    	</a>
+    </h3>
+
+    </header>
+    <p class="post-meta">
+        Anthony 发表于
+        <time datetime="2020-07-17T10:29:05.000Z">2020-07-17 18:29:05</time>
+
+
+        &nbsp;&nbsp;
+        <span class="post-tags">
+            标签：
+            
+    
+        <a href="/tags/Linux/" title="Linux">Linux</a> / 
+    
+        <a href="/tags/HTTPS/" title="HTTPS">HTTPS</a> / 
+    
+        <a href="/tags/CA/" title="CA">CA</a>
+    
+
+        </span>
+    </p>
+
+    <div class="post-content">
+        <div class="post-excerpt">
+            
+                <p>​		我人生中的第一次遇到证书问题并加以解决，还是在大约3年前，那时还专门写了一篇文章<a href="/posts/a508b207.html">《解决Chrome更新到63后.dev&#x2F;.app后缀域名强制HTTPS的问题》</a>。当时是因为本地开发环境一直都是用的<code>.dev</code>后缀结尾的域名，一直都是以<code>http://www.test.dev</code>的方式进行本地web开发。那天浏览器突然提示访问不安全的网站，此处黑人问号？？ Chrome强制<code>.dev</code>后缀的域名都得走https，无奈之下，不想更换后缀的我走上了自签发https证书的道路，但当时直接使用了开源工具，并没有深入研究。</p>
+<p>​		日月如梭，今时今日的我已经不再是那个年少的小孩！日常工作中免不了与SSL&#x2F;TLS这玩意儿打交道，除了访问web用https外，只要与建立加密连接有关的统统都少不了证书和秘钥。这次需要自建CA服务器并签发下级证书以达到加密访问的目的，那么这次的笔记将会成为以后温习的主要文献了。（哈哈哈）</p>
+            
+            <p class="more">
+                <a href="https://www.imsry.cn/posts/32476646.html">阅读剩下更多</a>
+            </p>
+        </div>
+        <div class="post-thumbnail" data-img="">
+            <a href="https://www.imsry.cn/posts/32476646.html" title="自建CA服务器学习笔记">
+                
+                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/7.jpg" alt="默认配图" >
+                
+            </a>
+        </div>
+    </div>
+</article>
+
+    
+        <!-- 文章列表 item -->
+<article class="post">
+    <header>
+        <!-- 标签这有且只能显示一个 -->
+        
+        <a class="cat-link" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a>
+        
+        <!-- 文章标题 -->
+        
+    <h3 class="post-title">
+    	<a href="https://www.imsry.cn/posts/bf40eeb6.html">
+    		ESP-Touch智能配网是如何实现的
+    	</a>
+    </h3>
+
+    </header>
+    <p class="post-meta">
+        刘经济 发表于
+        <time datetime="2020-06-05T10:03:58.000Z">2020-06-05 18:03:58</time>
+
+
+        &nbsp;&nbsp;
+        <span class="post-tags">
+            标签：
+            
+    
+        <a href="/tags/Network/" title="Network">Network</a>
+    
+
+        </span>
+    </p>
+
+    <div class="post-content">
+        <div class="post-excerpt">
+            
+                <h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><p>近年来物联网发展迅速，目前依旧是比较热门的领域，现今世界处处都是物联网，可谓无处不物联（哈哈，扯远了！）。我接触物联网这块比较晚，去年才开始入门，最早的实战项目就是将传感器上云，借助腾讯的<a href="https://cloud.tencent.com/document/product/634">物联网通信平台</a>，我可以对传感器进行远程控制以及读取传感器采集到的数据。当然，这些都离不开网络（Internet）。设备上云的首要前提就是接入互联网，而接入互联网的方式有很多种（如：有线网络、无线WiFi、NB-IoT、移动蜂窝2G&#x2F;3G&#x2F;4G等），不同场景下自然有各自合适的网络接入方式。</p>
+<p>我们现在生活中的很多智能家电都是通过WiFi接入的，不用我说大家也能举很多例子（像小米智能家居有小爱同学、空气净化器、电视、冰箱、洗衣机等blablabla~），这些设备刚到手的时候你一般都需要按照指导说明去下载个APP，然后绑定设备给设备配网，给设备配网可不像给手机连上WiFi那么容易，毕竟你买的小爱同学不能接鼠标键盘，也没有操作系统给你用。那么配网是如何完成的呢？</p>
+<p><strong>快速配网的两种途径：</strong></p>
+<ol>
+<li>SoftAP配网</li>
+<li>SmartConfig配网</li>
+</ol>
+<p>第一种很好理解，就类似给自己家里的路由器配置网络，你首先通过WiFi或者网线连接你家路由器，然后进入<a href="#">http://192.168.xxx.xxx</a>进行Web可视化配置，也有一些小型单片机，自己搭载了一个WiFi模组以AP模式运行，你通过指定的APP就可以与其建立通信并发送配置信息过去。但是这种配网方式比较繁琐，用户体验较差。</p>
+<p>第二种就比较高级了，你只需要打开设备的配网开关，并在你的手机上连接即将给设备配置的WiFi网络，然后在App或者小程序上输入对应的密码并点击开始，设备能够在很短的时间内（大约7~30s）就可以完成网络的配置。</p>
+<p><strong>这篇文章我将以我自己的学习成果来讲述SmartConfig配网的整个过程</strong></p>
+            
+            <p class="more">
+                <a href="https://www.imsry.cn/posts/bf40eeb6.html">阅读剩下更多</a>
+            </p>
+        </div>
+        <div class="post-thumbnail" data-img="">
+            <a href="https://www.imsry.cn/posts/bf40eeb6.html" title="ESP-Touch智能配网是如何实现的">
+                
+                    <!--
+                    <img src="/../uploads/2020/06/image-20200603184756638.png" class="thumbnail">
+                    -->
+                    <img class="thumbnail" src="/img/default.png" data-echo="../uploads/2020/06/image-20200603184756638.png" alt="ESP-Touch智能配网是如何实现的" >
+                
+            </a>
+        </div>
+    </div>
+</article>
+
+    
+        <!-- 文章列表 item -->
+<article class="post">
+    <header>
+        <!-- 标签这有且只能显示一个 -->
+        
+        <a class="cat-link" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a>
+        
+        <!-- 文章标题 -->
+        
+    <h3 class="post-title">
+    	<a href="https://www.imsry.cn/posts/ba6472f.html">
+    		OrangePi Zero 简单连接WIFI的方法
+    	</a>
+    </h3>
+
+    </header>
+    <p class="post-meta">
+        Anthony 发表于
+        <time datetime="2019-09-12T06:02:31.000Z">2019-09-12 14:02:31</time>
+
+
+        &nbsp;&nbsp;
+        <span class="post-tags">
+            标签：
+            
+    
+        <a href="/tags/Network/" title="Network">Network</a> / 
+    
+        <a href="/tags/OrangePi/" title="OrangePi">OrangePi</a>
+    
+
+        </span>
+    </p>
+
+    <div class="post-content">
+        <div class="post-excerpt">
+            
+                <blockquote>
+<p>有幸拿到可爱的小玩意儿“OrangePi_Zero”，也烧写了多个系统去体验，其中可以直接刷写OpenWrt，然后通过web管理界面启用WIFI功能。不过我需要的不是路由器，我需要的是能够连接WIFI的小型Server。</p>
+</blockquote>
+<h2 id="首先"><a href="#首先" class="headerlink" title="首先"></a>首先</h2><p>通过ssh等方式登录server，然后查看无线网卡的名称。这里使用<code>iwconfig</code>命令，如果无线网卡正常安装且驱动正常的话，你能够看到一个以<code>wlan</code>开头+数字的的网卡，记住这个名字（我这里是<code>wlan5</code>)。</p>
+<h2 id="再者"><a href="#再者" class="headerlink" title="再者"></a>再者</h2><p>使用<code>vim</code>编辑文件<code>/etc/network/interfaces</code>，内容如下：</p>
+            
+            <p class="more">
+                <a href="https://www.imsry.cn/posts/ba6472f.html">阅读剩下更多</a>
+            </p>
+        </div>
+        <div class="post-thumbnail" data-img="">
+            <a href="https://www.imsry.cn/posts/ba6472f.html" title="OrangePi Zero 简单连接WIFI的方法">
+                
+                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/2.jpg" alt="默认配图" >
+                
+            </a>
+        </div>
+    </div>
+</article>
+
+    
+        <!-- 文章列表 item -->
+<article class="post">
+    <header>
+        <!-- 标签这有且只能显示一个 -->
+        
+        <a class="cat-link" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a>
+        
+        <!-- 文章标题 -->
+        
+    <h3 class="post-title">
+    	<a href="https://www.imsry.cn/posts/a05a90fb.html">
+    		利用Dockerfile创建PHP7.3环境镜像
+    	</a>
+    </h3>
+
+    </header>
+    <p class="post-meta">
+        Anthony 发表于
+        <time datetime="2019-07-04T02:39:55.000Z">2019-07-04 10:39:55</time>
+
+
+        &nbsp;&nbsp;
+        <span class="post-tags">
+            标签：
+            
+    
+        <a href="/tags/Docker/" title="Docker">Docker</a>
+    
+
+        </span>
+    </p>
+
+    <div class="post-content">
+        <div class="post-excerpt">
+            
+                <h2 id="关于Docker以及Dockerfile"><a href="#关于Docker以及Dockerfile" class="headerlink" title="关于Docker以及Dockerfile"></a>关于Docker以及Dockerfile</h2><p>Docker容器就不详细介绍了，把它理解成类似“虚拟机”的一种介质吧。至于如何创建一个镜像，主要有两种方法：1. 从现有的镜像基础上，创建容器并自定义后Commit成镜像；2. 利用Dockerfile，根据自己的需要，如同写shell脚本一般，将自己需要搭建的容器环境所需的指令一条一条的汇集成指令集，然后让Docker根据Dockerfile来自动创建你想要的镜像</p>
+<h2 id="创建自己的PHP7-3镜像"><a href="#创建自己的PHP7-3镜像" class="headerlink" title="创建自己的PHP7.3镜像"></a>创建自己的PHP7.3镜像</h2><p>下载PHP源码：<a href="https://www.php.net/downloads.php">https://www.php.net/downloads.php</a></p>
+<p>我这里下载了php-7.3.6.tar.bz2</p>
+            
+            <p class="more">
+                <a href="https://www.imsry.cn/posts/a05a90fb.html">阅读剩下更多</a>
+            </p>
+        </div>
+        <div class="post-thumbnail" data-img="">
+            <a href="https://www.imsry.cn/posts/a05a90fb.html" title="利用Dockerfile创建PHP7.3环境镜像">
+                
+                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/4.jpg" alt="默认配图" >
+                
+            </a>
+        </div>
+    </div>
+</article>
+
+    
+        <!-- 文章列表 item -->
+<article class="post">
+    <header>
+        <!-- 标签这有且只能显示一个 -->
+        
+        <a class="cat-link" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a>
+        
+        <!-- 文章标题 -->
+        
+    <h3 class="post-title">
+    	<a href="https://www.imsry.cn/posts/9b10448.html">
+    		软考选择题-索引文件地址项
+    	</a>
+    </h3>
+
+    </header>
+    <p class="post-meta">
+        Anthony 发表于
+        <time datetime="2019-05-15T07:05:47.000Z">2019-05-15 15:05:47</time>
+
+
+        &nbsp;&nbsp;
+        <span class="post-tags">
+            标签：
+            
+    
+        <a href="/tags/%E8%BD%AF%E8%80%83/" title="软考">软考</a> / 
+    
+        <a href="/tags/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6/" title="索引文件">索引文件</a>
+    
+
+        </span>
+    </p>
+
+    <div class="post-content">
+        <div class="post-excerpt">
+            
+                <p>【选择题】</p>
+<p>设文件索引节点中有8个地址项，每个地址项大小为4字节，其中5个地址项为直接地址索引，2个地址项是一级间接地址索引，1个地址项是二级间接地址索引，磁盘索引块和磁盘数据块大小为1KB。若要访问文件的逻辑块号分别为5和518，则系统应分别采用____；而且可表示的单个文件最大长度是____KB。</p>
+<p>第一空选项：</p>
+<ol>
+<li>直接地址索引和一级间接地址索引</li>
+<li>直接地址索引和二级间接地址索引</li>
+<li>一级间接地址索引和二级间接地址索引</li>
+<li>一级间接地址索引和一级间接地址索引</li>
+</ol>
+<p>第二空选项：</p>
+<ol>
+<li>517</li>
+<li>1029</li>
+<li>16513</li>
+<li>66053</li>
+</ol>
+<hr>
+<p>解答：</p>
+<p>由题所知，索引快大小1KB，每个地址项4Byte，则每个索引块包含地址项为1KB&#x2F;4Byte&#x3D;256个。</p>
+<p>直接地址索引实际拥有5*1个块，块号0~4</p>
+<p>一级间接地址索引实际拥有2*256个块，块号5<del>260,261</del>516</p>
+<p>二级间接地址索引实际拥有1*256*256个块，块号517~66052</p>
+<p>逻辑块号为5的在一级间接地址索引，逻辑块号为518的在二级间接地址索引。</p>
+<p>如上计算，文件索引节点中可以有66053个索引块，即最大文件长度为66053*1KB</p>
+
+            
+            <p class="more">
+                <a href="https://www.imsry.cn/posts/9b10448.html">阅读剩下更多</a>
+            </p>
+        </div>
+        <div class="post-thumbnail" data-img="">
+            <a href="https://www.imsry.cn/posts/9b10448.html" title="软考选择题-索引文件地址项">
+                
+                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/5.jpg" alt="默认配图" >
+                
+            </a>
+        </div>
+    </div>
+</article>
+
+    
+        <!-- 文章列表 item -->
+<article class="post">
+    <header>
+        <!-- 标签这有且只能显示一个 -->
+        
+        <a class="cat-link" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a>
+        
+        <!-- 文章标题 -->
+        
+    <h3 class="post-title">
+    	<a href="https://www.imsry.cn/posts/b37f5033.html">
+    		Go-Server/Client以及PHP-Client之间的GRPC初次尝试
+    	</a>
+    </h3>
+
+    </header>
+    <p class="post-meta">
+        Anthony 发表于
+        <time datetime="2018-12-02T05:47:24.000Z">2018-12-02 13:47:24</time>
+
+
+        &nbsp;&nbsp;
+        <span class="post-tags">
+            标签：
+            
+    
+        <a href="/tags/Golang/" title="Golang">Golang</a> / 
+    
+        <a href="/tags/PHP/" title="PHP">PHP</a> / 
+    
+        <a href="/tags/RPC/" title="RPC">RPC</a>
+    
+
+        </span>
+    </p>
+
+    <div class="post-content">
+        <div class="post-excerpt">
+            
+                <blockquote>
+<p>写这篇笔记的目的</p>
+</blockquote>
+<p>为了应对后续开发生涯中可能遇到的种种情况以及分布式计算的趋势（讲白了就是后续对工作会很有帮助）。如若总是依赖http-api&#x2F;restful编写并提供外部调用接口，当接口数量不断上升，文档内容不断增加，这给设计者和使用者都带来非常不好的体验，而RPC在这体就现出了非常大的优势。我将自己的理解和体会以及学习的过程记录在这里，以便今后遇到问题能够从这儿获得些许的线索以及提供一个参考给同道中人。</p>
+<blockquote>
+<p>前提</p>
+</blockquote>
+<p>不妨思考这样一个情形：作为接口设计者，我早已经定义好的接口的请求方式(RESTFul)和返回结构(json)，但是每个接口我还需要另外维护一个文档来说明各个接口的用法(请求参数)和解释返回的结果(字段描述)。而对于接口的调用者而言，不但要去文档中查找自己需要的接口并阅读说明，在实际调用中，还要以防接口提供者返回非既定结构的结果而导致的报错。</p>
+<!---more--->
+
+<blockquote>
+<p>介绍</p>
+</blockquote>
+<p>Remote Procedure Call（远程过程调用），简称RPC。它可以使得调用远程服务接口如同调用本地方法一样简单。虽然实质还是通过网络通信，但是相比http请求api的网络开销还是极小的，其原因简单来说，HTTP协议每次请求都需要建立TCP连接，就会涉及3次握手的网络开销问题以及冗余报文，而rpc直接使用TCP多路复用(gRPC基于HTTP&#x2F;2)无需重复建立连接。就文档方面而言，编写一份开发文档足矣，因为接口的定义由接口定义语言（IDL）来完成，而阅读IDL便可理解所有接口，并且通过编译器可以将IDL编译成不同的语言实现源码（gRPC通过protoc编译器将protobuf编译）。其他优点例如：注册、监控、发布等的这里不做论述。</p>
+<blockquote>
+<p>Go-Server</p>
+</blockquote>
+<p>GRPC的官方资源：<a href="google.golang.org/grpc">go get google.golang.org&#x2F;grpc</a></p>
+<p>GRPC的镜像资源：<a href="https://github.com/grpc/grpc">https://github.com/grpc/grpc</a></p>
+<p>官方的相关示列可以在grpc&#x2F;examples&#x2F;中找到。</p>
+<h4 id="定义服务"><a href="#定义服务" class="headerlink" title="定义服务"></a>定义服务</h4><p>使用<code>protocol buffers</code>去定义gRPC service和方法 request以及 response 的类型。</p>
+<p>新增并编辑文件：something.proto</p>
+<figure class="highlight protobuf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">syntax = <span class="string">&quot;proto3&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 声明包/作用域</span></span><br><span class="line"><span class="keyword">package</span> something;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 定义一个服务，名为Wiwider</span></span><br><span class="line"><span class="keyword">service </span><span class="title class_">Wiwider</span> &#123;</span><br><span class="line">  <span class="function"><span class="keyword">rpc</span> FindUser (UserRequest) <span class="keyword">returns</span> (UserReply) </span>&#123;&#125;	<span class="comment">// 声明一个方法</span></span><br><span class="line">  <span class="function"><span class="keyword">rpc</span> FindUsers (UserRequest) <span class="keyword">returns</span> (UsersReply) </span>&#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 定义一个请求消息</span></span><br><span class="line"><span class="keyword">message </span><span class="title class_">UserRequest</span> &#123;</span><br><span class="line">  <span class="type">string</span> name = <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 定义一个响应消息</span></span><br><span class="line"><span class="keyword">message </span><span class="title class_">UserReply</span> &#123;</span><br><span class="line">  <span class="type">int64</span> id = <span class="number">1</span>;</span><br><span class="line">  <span class="type">string</span> name = <span class="number">2</span>;</span><br><span class="line">  <span class="type">int32</span> age = <span class="number">3</span>;</span><br><span class="line">  sexes sex = <span class="number">4</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">enum </span><span class="title class_">sexes</span> &#123;</span><br><span class="line">    Male = <span class="number">0</span>;</span><br><span class="line">    Female = <span class="number">1</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 定义一个包含消息的消息</span></span><br><span class="line"><span class="keyword">message </span><span class="title class_">UsersReply</span> &#123;</span><br><span class="line">  <span class="keyword">repeated</span> UserReply users = <span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="生成代码"><a href="#生成代码" class="headerlink" title="生成代码"></a>生成代码</h4><blockquote>
+<p>Go-代码</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">protoc --go_out=plugins=grpc:. something.proto</span><br></pre></td></tr></table></figure>
+
+<p>运行这个命令后，会在当前目录生成一个<code>something.pb.go</code>文件，内容包含：</p>
+<ul>
+<li>所有用于填充，序列化和获取我们请求和响应消息类型的 protocol buffer 代码</li>
+<li>一个为客户端调用定义在Wiwider服务的方法的接口类型（或者 存根 ）</li>
+<li>一个为服务器使用定义在Wiwider服务的方法去实现的接口类型（或者 存根 ）</li>
+</ul>
+<blockquote>
+<p>PHP-代码</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">protoc --proto_path=./ --php_out=./ --grpc_out=./ --plugin=protoc-gen-grpc=/Users/anthony/git/grpc/bins/opt/grpc_php_plugin ./something.proto</span><br></pre></td></tr></table></figure>
+<p>其中<code>/Users/anthony/git/grpc/bins/opt/grpc_php_plugin</code>对应从git中获取的<code>&lt;grpc-git-path&gt;/bins/opt/grpc_php_plugin</code></p>
+<p>运行这个命令后，会在当前目录生成如下：</p>
+<ul>
+<li>GPBMetadata&#x2F;something.php</li>
+<li>Something&#x2F;UserReply&#x2F;sexes.php</li>
+<li>Something&#x2F;UserReply.php</li>
+<li>Something&#x2F;UserReply_sexes.php</li>
+<li>Something&#x2F;UserRequest.php</li>
+<li>Something&#x2F;UsersReply.php</li>
+<li>Something&#x2F;WiwiderClient.php</li>
+</ul>
+<h4 id="创建服务器"><a href="#创建服务器" class="headerlink" title="创建服务器"></a>创建服务器</h4><p>首先我们需要实现服务定义的服务接口：</p>
+<p><code>something/something.go</code>：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> something</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">&quot;Wiwide/cmi&quot;</span></span><br><span class="line">	<span class="string">&quot;context&quot;</span></span><br><span class="line">)</span><br><span class="line"><span class="keyword">type</span> UserServer <span class="keyword">struct</span> &#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(s *UserServer)</span></span> FindUser(ctx context.Context, in *UserRequest) (*UserReply, <span class="type">error</span>) &#123;</span><br><span class="line">	name := in.GetName()</span><br><span class="line">	rs, err := cmi.Db(<span class="string">&quot;local&quot;</span>).Table(<span class="string">&quot;users&quot;</span>).Where(<span class="string">&quot;name&quot;</span>, name).First()	<span class="comment">// 从数据库查询</span></span><br><span class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> || <span class="built_in">len</span>(rs) == <span class="number">0</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> &amp;UserReply&#123;&#125;,err</span><br><span class="line">	&#125;</span><br><span class="line">	rId := rs[<span class="string">&quot;id&quot;</span>].(<span class="type">int64</span>)</span><br><span class="line">	rName := rs[<span class="string">&quot;name&quot;</span>].(<span class="type">string</span>)</span><br><span class="line">	rAge := <span class="type">int32</span>(rs[<span class="string">&quot;age&quot;</span>].(<span class="type">int64</span>))</span><br><span class="line">	rSex := UserReplySexes(rs[<span class="string">&quot;sex&quot;</span>].(<span class="type">int64</span>))</span><br><span class="line">	rep := &amp;UserReply&#123;Id:rId,Name:rName,Age:rAge,Sex:rSex&#125;</span><br><span class="line">	<span class="keyword">return</span> rep, <span class="literal">nil</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(s *UserServer)</span></span> FindUsers(ctx context.Context, in *UserRequest) (*UsersReply, <span class="type">error</span>) &#123;</span><br><span class="line">	name := in.GetName()</span><br><span class="line">	rs, err := cmi.Db(<span class="string">&quot;local&quot;</span>).Table(<span class="string">&quot;users&quot;</span>).Where(<span class="string">&quot;name&quot;</span>,<span class="string">&quot;like&quot;</span>,<span class="string">&quot;%&quot;</span>+name+<span class="string">&quot;%&quot;</span>).Get()	<span class="comment">// 从数据库查询</span></span><br><span class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> &amp;UsersReply&#123;&#125;, err</span><br><span class="line">	&#125;</span><br><span class="line">	list := <span class="built_in">make</span>([]*UserReply, <span class="number">0</span>)</span><br><span class="line">	<span class="keyword">for</span> _, v := <span class="keyword">range</span> rs &#123;</span><br><span class="line">		rId := v[<span class="string">&quot;id&quot;</span>].(<span class="type">int64</span>)</span><br><span class="line">		rName := v[<span class="string">&quot;name&quot;</span>].(<span class="type">string</span>)</span><br><span class="line">		rAge := <span class="type">int32</span>(v[<span class="string">&quot;age&quot;</span>].(<span class="type">int64</span>))</span><br><span class="line">		rSex := UserReplySexes(v[<span class="string">&quot;sex&quot;</span>].(<span class="type">int64</span>))</span><br><span class="line">		list = <span class="built_in">append</span>(list, &amp;UserReply&#123;Id:rId,Name:rName,Age:rAge,Sex:rSex&#125;)</span><br><span class="line">	&#125;</span><br><span class="line">	rep := &amp;UsersReply&#123;Users: list&#125;</span><br><span class="line">	<span class="keyword">return</span> rep, <span class="literal">nil</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>然后运行一个gRPC服务器，注册我们的服务并监听来自客户端的请求：</p>
+<p><code>server.go</code>：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">&quot;Wiwide/rpc/something&quot;</span></span><br><span class="line">	<span class="string">&quot;context&quot;</span></span><br><span class="line">	<span class="string">&quot;google.golang.org/grpc&quot;</span></span><br><span class="line">	<span class="string">&quot;google.golang.org/grpc/reflection&quot;</span></span><br><span class="line">	<span class="string">&quot;log&quot;</span></span><br><span class="line">	<span class="string">&quot;net&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> (</span><br><span class="line">	port = <span class="string">&quot;:50051&quot;</span></span><br><span class="line">)</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	lis, err := net.Listen(<span class="string">&quot;tcp&quot;</span>, port)</span><br><span class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">		log.Fatalf(<span class="string">&quot;failed to listen: %v&quot;</span>, err)</span><br><span class="line">	&#125;</span><br><span class="line">	s := grpc.NewServer()</span><br><span class="line">	something.RegisterWiwiderServer(s, &amp;something.UserServer&#123;&#125;)</span><br><span class="line">	reflection.Register(s)</span><br><span class="line">	<span class="keyword">if</span> err := s.Serve(lis); err != <span class="literal">nil</span> &#123;</span><br><span class="line">		log.Fatalf(<span class="string">&quot;failed to serve: %v&quot;</span>, err)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="运行服务器"><a href="#运行服务器" class="headerlink" title="运行服务器"></a>运行服务器</h4><p>简单执行命令：<code>go run server.go</code>，然后等待客户端请求。</p>
+<h4 id="创建客户端"><a href="#创建客户端" class="headerlink" title="创建客户端"></a>创建客户端</h4><blockquote>
+<p>Go-Client</p>
+</blockquote>
+<p>创建文件<code>client.go</code>：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">&quot;Wiwide/rpc/something&quot;</span></span><br><span class="line">	<span class="string">&quot;context&quot;</span></span><br><span class="line">	<span class="string">&quot;google.golang.org/grpc&quot;</span></span><br><span class="line">	<span class="string">&quot;log&quot;</span></span><br><span class="line">	<span class="string">&quot;os&quot;</span></span><br><span class="line">	<span class="string">&quot;time&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span>(</span><br><span class="line">	address = <span class="string">&quot;localhost:50051&quot;</span></span><br><span class="line">	defaultName = <span class="string">&quot;World&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	conn, err := grpc.Dial(address, grpc.WithInsecure())</span><br><span class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">		log.Fatalf(<span class="string">&quot;did not connect: %v&quot;</span>, err)</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">defer</span> conn.Close()</span><br><span class="line"></span><br><span class="line">	name := defaultName</span><br><span class="line">	<span class="keyword">if</span> <span class="built_in">len</span>(os.Args) &gt; <span class="number">1</span> &#123;</span><br><span class="line">		name = os.Args[<span class="number">1</span>]</span><br><span class="line">	&#125;</span><br><span class="line">	ctx, cancel := context.WithTimeout(context.Background(), time.Second)</span><br><span class="line">	<span class="keyword">defer</span> cancel()</span><br><span class="line">	s := something.NewWiwiderClient(conn)</span><br><span class="line">	u, err := s.FindUser(ctx, &amp;something.UserRequest&#123;Name:name&#125;)</span><br><span class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">		log.Fatalf(<span class="string">&quot;could not Find: %v&quot;</span>, err)</span><br><span class="line">	&#125;</span><br><span class="line">	us, err := s.FindUsers(ctx, &amp;something.UserRequest&#123;Name:name&#125;)</span><br><span class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">		log.Fatalf(<span class="string">&quot;could not Find users: %v&quot;</span>, err)</span><br><span class="line">	&#125;</span><br><span class="line">	log.Printf(<span class="string">&quot;Find user: %v&quot;</span>, u)</span><br><span class="line">	log.Printf(<span class="string">&quot;Find users: %v&quot;</span>, us)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>PHP-Client</p>
+</blockquote>
+<p>PHP首先要安装grpc的php扩展，下载地址：<a href="http://pecl.php.net/package/gRPC">http://pecl.php.net/package/gRPC</a></p>
+<p>直接使用phpize安装:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">tar -zxf grpc-1.17.0.tgz</span><br><span class="line"><span class="built_in">cd</span> grpc-1.17.0</span><br><span class="line">phpize</span><br><span class="line">./configure --with-php-config=/usr/local/php/bin/php-config</span><br><span class="line">make</span><br><span class="line">make install</span><br><span class="line"><span class="comment"># 在php.ini中增加</span></span><br><span class="line">extension = grpc.so</span><br></pre></td></tr></table></figure>
+
+<p>执行php -m | grep grpc 应该会输出”grpc”，就代表成功了。</p>
+<p>创建客户端文件，这里需要用到composer获取两个包，其中composer.json内容为：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;grpc/grpc-demo&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;description&quot;</span><span class="punctuation">:</span> <span class="string">&quot;gRPC example for PHP&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;require&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;grpc/grpc&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^v1.3.0&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;google/protobuf&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^v3.3.0&quot;</span></span><br><span class="line">  <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p><code>something.php</code>：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="keyword">require</span> <span class="title function_ invoke__">dirname</span>(<span class="keyword">__FILE__</span>).<span class="string">&#x27;/vendor/autoload.php&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">include_once</span> <span class="title function_ invoke__">dirname</span>(<span class="keyword">__FILE__</span>).<span class="string">&#x27;/Something/UserReply.php&#x27;</span>;</span><br><span class="line"><span class="keyword">include_once</span> <span class="title function_ invoke__">dirname</span>(<span class="keyword">__FILE__</span>).<span class="string">&#x27;/Something/UsersReply.php&#x27;</span>;</span><br><span class="line"><span class="keyword">include_once</span> <span class="title function_ invoke__">dirname</span>(<span class="keyword">__FILE__</span>).<span class="string">&#x27;/Something/UserRequest.php&#x27;</span>;</span><br><span class="line"><span class="keyword">include_once</span> <span class="title function_ invoke__">dirname</span>(<span class="keyword">__FILE__</span>).<span class="string">&#x27;/Something/WiwiderClient.php&#x27;</span>;</span><br><span class="line"><span class="keyword">include_once</span> <span class="title function_ invoke__">dirname</span>(<span class="keyword">__FILE__</span>).<span class="string">&#x27;/GPBMetadata/Something.php&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="variable">$client</span> = <span class="keyword">new</span> <span class="title class_">Something\WiwiderClient</span>(<span class="string">&#x27;127.0.0.1:50051&#x27;</span>, [<span class="string">&#x27;credentials&#x27;</span> =&gt; <span class="title class_">Grpc\ChannelCredentials</span>::<span class="title function_ invoke__">createInsecure</span>()]);</span><br><span class="line"><span class="variable">$req</span> = <span class="keyword">new</span> <span class="title class_">Something\UserRequest</span>();</span><br><span class="line"><span class="variable">$name</span> = !<span class="keyword">empty</span>(<span class="variable">$argv</span>[<span class="number">1</span>]) ? <span class="variable">$argv</span>[<span class="number">1</span>] : <span class="string">&#x27;world&#x27;</span>;</span><br><span class="line"><span class="variable">$req</span>-&gt;<span class="title function_ invoke__">setName</span>(<span class="variable">$name</span>);</span><br><span class="line"><span class="keyword">list</span>(<span class="variable">$reply</span>, <span class="variable">$status</span>) = <span class="variable">$client</span>-&gt;<span class="title function_ invoke__">FindUser</span>(<span class="variable">$req</span>)-&gt;<span class="title function_ invoke__">wait</span>();</span><br><span class="line"><span class="title function_ invoke__">var_dump</span>(<span class="variable">$reply</span>-&gt;<span class="title function_ invoke__">getId</span>(), <span class="variable">$reply</span>-&gt;<span class="title function_ invoke__">getName</span>(), <span class="variable">$reply</span>-&gt;<span class="title function_ invoke__">getAge</span>(), <span class="variable">$reply</span>-&gt;<span class="title function_ invoke__">getSex</span>(), <span class="variable">$status</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">list</span>(<span class="variable">$reply</span>, <span class="variable">$status</span>) = <span class="variable">$client</span>-&gt;<span class="title function_ invoke__">FindUsers</span>(<span class="variable">$req</span>)-&gt;<span class="title function_ invoke__">wait</span>();</span><br><span class="line"><span class="variable">$uers</span> = <span class="variable">$reply</span>-&gt;<span class="title function_ invoke__">getUsers</span>();</span><br><span class="line"><span class="variable">$users</span> = <span class="keyword">array</span>();</span><br><span class="line"><span class="keyword">foreach</span> (<span class="variable">$uers</span> <span class="keyword">as</span> <span class="variable">$key</span> =&gt; <span class="variable">$value</span>) &#123;</span><br><span class="line">	<span class="title function_ invoke__">array_push</span>(<span class="variable">$users</span>, <span class="keyword">array</span>(<span class="string">&#x27;id&#x27;</span>=&gt;<span class="variable">$value</span>-&gt;<span class="title function_ invoke__">getId</span>(),<span class="string">&#x27;name&#x27;</span>=&gt;<span class="variable">$value</span>-&gt;<span class="title function_ invoke__">getName</span>(),<span class="string">&#x27;age&#x27;</span>=&gt;<span class="variable">$value</span>-&gt;<span class="title function_ invoke__">getAge</span>(),<span class="string">&#x27;sex&#x27;</span>=&gt;<span class="variable">$value</span>-&gt;<span class="title function_ invoke__">getSex</span>()));</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_ invoke__">var_dump</span>(<span class="variable">$users</span>);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h4 id="运行客户端"><a href="#运行客户端" class="headerlink" title="运行客户端"></a>运行客户端</h4><blockquote>
+<p>Go-Client</p>
+</blockquote>
+<p>我们先编译一下：<code>go build client.go</code>，输出可执行文件<code>client</code>，然后直接运行：</p>
+<ul>
+<li><code>./client Anthony</code></li>
+<li><code>./client ny</code></li>
+</ul>
+<p>分别输出如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">2018/12/02 13:40:15 Find user: id:1 name:&quot;Anthony&quot; age:24 sex:Female </span><br><span class="line">2018/12/02 13:40:15 Find users: users:&lt;id:1 name:&quot;Anthony&quot; age:24 sex:Female &gt;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">2018/12/02 13:40:25 Find user: </span><br><span class="line">2018/12/02 13:40:25 Find users: users:&lt;id:1 name:&quot;Anthony&quot; age:24 sex:Female &gt; users:&lt;id:4 name:&quot;funny&quot; age:15 sex:2 &gt; </span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>PHP-Client</p>
+</blockquote>
+<p>直接执行PHP文件：<code>php something.php Anthony</code>和<code>php something.php ny</code>，结果如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">int(1)</span><br><span class="line">string(7) &quot;Anthony&quot;</span><br><span class="line">int(24)</span><br><span class="line">int(1)</span><br><span class="line">object(stdClass)#8 (3) &#123;</span><br><span class="line">  [&quot;metadata&quot;]=&gt;</span><br><span class="line">  array(0) &#123;</span><br><span class="line">  &#125;</span><br><span class="line">  [&quot;code&quot;]=&gt;</span><br><span class="line">  int(0)</span><br><span class="line">  [&quot;details&quot;]=&gt;</span><br><span class="line">  string(0) &quot;&quot;</span><br><span class="line">&#125;</span><br><span class="line">array(1) &#123;</span><br><span class="line">  [0]=&gt;</span><br><span class="line">  array(4) &#123;</span><br><span class="line">    [&quot;id&quot;]=&gt;</span><br><span class="line">    int(1)</span><br><span class="line">    [&quot;name&quot;]=&gt;</span><br><span class="line">    string(7) &quot;Anthony&quot;</span><br><span class="line">    [&quot;age&quot;]=&gt;</span><br><span class="line">    int(24)</span><br><span class="line">    [&quot;sex&quot;]=&gt;</span><br><span class="line">    int(1)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">int(0)</span><br><span class="line">string(0) &quot;&quot;</span><br><span class="line">int(0)</span><br><span class="line">int(0)</span><br><span class="line">object(stdClass)#8 (3) &#123;</span><br><span class="line">  [&quot;metadata&quot;]=&gt;</span><br><span class="line">  array(0) &#123;</span><br><span class="line">  &#125;</span><br><span class="line">  [&quot;code&quot;]=&gt;</span><br><span class="line">  int(0)</span><br><span class="line">  [&quot;details&quot;]=&gt;</span><br><span class="line">  string(0) &quot;&quot;</span><br><span class="line">&#125;</span><br><span class="line">array(2) &#123;</span><br><span class="line">  [0]=&gt;</span><br><span class="line">  array(4) &#123;</span><br><span class="line">    [&quot;id&quot;]=&gt;</span><br><span class="line">    int(1)</span><br><span class="line">    [&quot;name&quot;]=&gt;</span><br><span class="line">    string(7) &quot;Anthony&quot;</span><br><span class="line">    [&quot;age&quot;]=&gt;</span><br><span class="line">    int(24)</span><br><span class="line">    [&quot;sex&quot;]=&gt;</span><br><span class="line">    int(1)</span><br><span class="line">  &#125;</span><br><span class="line">  [1]=&gt;</span><br><span class="line">  array(4) &#123;</span><br><span class="line">    [&quot;id&quot;]=&gt;</span><br><span class="line">    int(4)</span><br><span class="line">    [&quot;name&quot;]=&gt;</span><br><span class="line">    string(5) &quot;funny&quot;</span><br><span class="line">    [&quot;age&quot;]=&gt;</span><br><span class="line">    int(15)</span><br><span class="line">    [&quot;sex&quot;]=&gt;</span><br><span class="line">    int(2)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="结束"><a href="#结束" class="headerlink" title="结束"></a>结束</h3><p>本次笔记接近结尾了，内容很简单，主要记录使用grpc的大体流程。为后续的测试做一点点的准备。</p>
+<blockquote>
+<p>参考资料</p>
+</blockquote>
+<ul>
+<li><a href="http://doc.oschina.net/grpc">gRPC官方文档中文版v1.0</a></li>
+<li><a href="https://blog.csdn.net/xuduorui/article/details/77726393">grpc简易教程 go server+php client</a></li>
+<li><a href="https://blog.csdn.net/wangyunpeng0319/article/details/78651998">PRC服务和HTTP服务对比</a></li>
+<li><a href="https://grpc.io/">grpc官方网站</a></li>
+</ul>
+
+            
+            <p class="more">
+                <a href="https://www.imsry.cn/posts/b37f5033.html">阅读剩下更多</a>
+            </p>
+        </div>
+        <div class="post-thumbnail" data-img="">
+            <a href="https://www.imsry.cn/posts/b37f5033.html" title="Go-Server/Client以及PHP-Client之间的GRPC初次尝试">
+                
+                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/2.jpg" alt="默认配图" >
+                
+            </a>
+        </div>
+    </div>
+</article>
+
+    
+        <!-- 文章列表 item -->
+<article class="post">
+    <header>
+        <!-- 标签这有且只能显示一个 -->
+        
+        <a class="cat-link" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a>
+        
+        <!-- 文章标题 -->
+        
+    <h3 class="post-title">
+    	<a href="https://www.imsry.cn/posts/ae0c030a.html">
+    		判断IP地址是否内网IP
+    	</a>
+    </h3>
+
+    </header>
+    <p class="post-meta">
+        Anthony 发表于
+        <time datetime="2018-11-05T06:45:52.000Z">2018-11-05 14:45:52</time>
+
+
+        &nbsp;&nbsp;
+        <span class="post-tags">
+            标签：
+            
+    
+        <a href="/tags/Network/" title="Network">Network</a> / 
+    
+        <a href="/tags/PHP/" title="PHP">PHP</a>
+    
+
+        </span>
+    </p>
+
+    <div class="post-content">
+        <div class="post-excerpt">
+            
+                <blockquote>
+<p>当你的服务同时开放于公网和内网，子服务却仅允许内网访问，那么则会涉及到IP白名单的功能。但是如果名单太多或者服务进行了迁移，那么维护起来会相当的麻烦，最简单的就是判断访问的来源IP是否内网IP地址，从而直接屏蔽掉公网IP。</p>
+</blockquote>
+<p>首先，我们认识了3类私有地址：</p>
+<p>A类：10.0.0.0-10.255.255.255</p>
+<p>B类：172.16.0.0-172.31.255.255</p>
+<p>C类：192.168.0.0-192.168.255.255</p>
+<p>还有一个本机地址：127.0.0.1</p>
+<p>他们就是我们平时所谓的内网IP地址。</p>
+<h3 id="方法一：-PHP自带函数"><a href="#方法一：-PHP自带函数" class="headerlink" title="方法一： PHP自带函数"></a>方法一： PHP自带函数</h3><!---more--->
+
+<blockquote>
+<p>filter_var($IP, FILTER_VALIDATE_IP, FILTER_FLAG_NO_PRIV_RANGE | FILTER_FLAG_NO_RES_RANGE)</p>
+</blockquote>
+<p>如果$IP是内网IP则会返回<code>false</code>，否则返回ip字符串。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$IP</span> = <span class="title function_ invoke__">get_client_ip</span>(); <span class="comment">//该方法自己实现，返回客户端的IP地址</span></span><br><span class="line"><span class="variable">$is_publicIP</span> = <span class="title function_ invoke__">filter_var</span>(<span class="variable">$IP</span>, FILTER_VALIDATE_IP, FILTER_FLAG_NO_PRIV_RANGE | FILTER_FLAG_NO_RES_RANGE);</span><br><span class="line"><span class="keyword">if</span>(<span class="variable">$is_publicIP</span>)&#123;</span><br><span class="line">	<span class="keyword">echo</span> <span class="string">&#x27;公网IP&#x27;</span>;</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">	<span class="keyword">echo</span> <span class="string">&#x27;内网IP&#x27;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="方法二：-适合有网络基础的胖友阅读"><a href="#方法二：-适合有网络基础的胖友阅读" class="headerlink" title="方法二： 适合有网络基础的胖友阅读"></a>方法二： 适合有网络基础的胖友阅读</h3><p>关于IP地址的知识，这里就不讲太多了，下面的方法就是根据IP地址的定义和网段的划分等专业知识进行判定的。懂的就自然懂啦！</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">isLocal</span>(<span class="params"><span class="variable">$ip</span></span>)</span>&#123;</span><br><span class="line">        <span class="variable">$long</span>=<span class="title function_ invoke__">ip2long</span>(<span class="variable">$ip</span>);</span><br><span class="line">        <span class="variable">$data</span>=<span class="keyword">array</span>(</span><br><span class="line">                <span class="number">24</span>=&gt;<span class="string">&#x27;10.255.255.255&#x27;</span>,</span><br><span class="line">                <span class="number">20</span>=&gt;<span class="string">&#x27;172.31.255.255&#x27;</span>,</span><br><span class="line">                <span class="number">16</span>=&gt;<span class="string">&#x27;192.168.255.255&#x27;</span></span><br><span class="line">        );</span><br><span class="line">        <span class="keyword">foreach</span>(<span class="variable">$data</span> <span class="keyword">as</span> <span class="variable">$k</span>=&gt;<span class="variable">$v</span>)&#123;</span><br><span class="line">                <span class="keyword">if</span>(<span class="variable">$long</span> &gt;&gt; <span class="variable">$k</span> === <span class="title function_ invoke__">ip2long</span>(<span class="variable">$v</span>)&gt;&gt;<span class="variable">$k</span>)&#123;</span><br><span class="line">                        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">                &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="方法三：正则匹配"><a href="#方法三：正则匹配" class="headerlink" title="方法三：正则匹配"></a>方法三：正则匹配</h3><p>更加不用解释了。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">isLocal</span>(<span class="params"><span class="variable">$ip</span></span>)</span>&#123;        </span><br><span class="line">    <span class="keyword">return</span> <span class="title function_ invoke__">preg_match</span>(<span class="string">&#x27;%^127\.|10\.|192\.168|172\.(1[6-9]|2|3[01])%&#x27;</span>,<span class="variable">$ip</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>参考：</p>
+<ol>
+<li><a href="http://php.net/manual/zh/function.filter-var.php">http://php.net/manual/zh/function.filter-var.php</a></li>
+<li><a href="https://www.51-n.com/t-4360-1-1.html">https://www.51-n.com/t-4360-1-1.html</a></li>
+<li><a href="https://blog.csdn.net/z_qifa/article/details/75497577">https://blog.csdn.net/z_qifa&#x2F;article&#x2F;details&#x2F;75497577</a></li>
+</ol>
+
+            
+            <p class="more">
+                <a href="https://www.imsry.cn/posts/ae0c030a.html">阅读剩下更多</a>
+            </p>
+        </div>
+        <div class="post-thumbnail" data-img="">
+            <a href="https://www.imsry.cn/posts/ae0c030a.html" title="判断IP地址是否内网IP">
+                
+                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/5.jpg" alt="默认配图" >
+                
+            </a>
+        </div>
+    </div>
+</article>
+
+    
+
+    
+    <nav class="page-navigator">
+        <span class="page-number current">1</span><a class="page-number" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/page/2/">2</a><a class="page-number" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/page/6/">6</a><a class="extend next" rel="next" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/page/2/">后一页</a>
+    </nav>
+    
+
+
+            </div>
+
+        </section>
+        <!-- 侧栏部分 -->
+<aside class="sidebar">
+    
+    <section class="widget">
+        <h3 class="widget-hd"><strong>文章搜索</strong></h3>
+        <div class="search-form">
+  <form
+    id="searchForm"
+    method="GET"
+    action="https://www.baidu.com/s"
+    ectype="application/x-www-form-urlencoded"
+    target="_blank"
+    autocomplete="false"
+    onsubmit="javascript: return false;">
+    <input
+      id="searchKeyword"
+      type="text"
+      class="form-control"
+      placeholder="输入关键字搜索"
+      autocomplete="false"
+    />
+    <input id="searchKeywordHidden" type="hidden" name="wd" />
+    <input id="searchButton" class="btn" type="submit" value="搜索" />
+  </form>
+</div>
+    </section>
+    
+
+    <section class="widget">
+        <h3 class="widget-hd"><strong>文章分类</strong></h3>
+        <!-- 文章分类 -->
+<ul class="widget-bd">
+    
+    <li>
+        <a href="/categories/Linux/">Linux</a>
+        <span class="badge">(15)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a>
+        <span class="badge">(54)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/">网络安全</a>
+        <span class="badge">(2)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/Web/">Web</a>
+        <span class="badge">(3)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/">编程语言</a>
+        <span class="badge">(12)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/%E6%9D%82%E8%B0%88/">杂谈</a>
+        <span class="badge">(7)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/%E7%AE%97%E6%B3%95/">算法</a>
+        <span class="badge">(6)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/PHP/">PHP</a>
+        <span class="badge">(9)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a>
+        <span class="badge">(2)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/MacOS/">MacOS</a>
+        <span class="badge">(1)</span>
+    </li>
+    
+</ul>
+    </section>
+
+    
+    <section class="widget">
+        <h3 class="widget-hd"><strong>热门标签</strong></h3>
+        <!-- 文章标签 -->
+<div class="widget-bd tag-wrap">
+  
+    <a class="tag-item" href="/tags/Apache/" title="Apache">Apache (5)</a>
+  
+    <a class="tag-item" href="/tags/Linux/" title="Linux">Linux (8)</a>
+  
+    <a class="tag-item" href="/tags/Proxy/" title="Proxy">Proxy (1)</a>
+  
+    <a class="tag-item" href="/tags/firewall/" title="firewall">firewall (1)</a>
+  
+    <a class="tag-item" href="/tags/CentOS/" title="CentOS">CentOS (3)</a>
+  
+    <a class="tag-item" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" title="数据结构">数据结构 (1)</a>
+  
+    <a class="tag-item" href="/tags/HTTPS/" title="HTTPS">HTTPS (3)</a>
+  
+    <a class="tag-item" href="/tags/Chrome/" title="Chrome">Chrome (1)</a>
+  
+    <a class="tag-item" href="/tags/VPN/" title="VPN">VPN (1)</a>
+  
+    <a class="tag-item" href="/tags/Discuz/" title="Discuz">Discuz (1)</a>
+  
+    <a class="tag-item" href="/tags/Docker/" title="Docker">Docker (1)</a>
+  
+    <a class="tag-item" href="/tags/Network/" title="Network">Network (3)</a>
+  
+    <a class="tag-item" href="/tags/FFmpeg/" title="FFmpeg">FFmpeg (1)</a>
+  
+    <a class="tag-item" href="/tags/Glassfish/" title="Glassfish">Glassfish (1)</a>
+  
+    <a class="tag-item" href="/tags/Java/" title="Java">Java (2)</a>
+  
+    <a class="tag-item" href="/tags/MySQL/" title="MySQL">MySQL (12)</a>
+  
+    <a class="tag-item" href="/tags/Golang/" title="Golang">Golang (3)</a>
+  
+    <a class="tag-item" href="/tags/Nginx/" title="Nginx">Nginx (2)</a>
+  
+    <a class="tag-item" href="/tags/PHP/" title="PHP">PHP (16)</a>
+  
+    <a class="tag-item" href="/tags/Vim/" title="Vim">Vim (1)</a>
+  
+    <a class="tag-item" href="/tags/%E7%BD%91%E5%8D%A1/" title="网卡">网卡 (1)</a>
+  
+    <a class="tag-item" href="/tags/OrangePi/" title="OrangePi">OrangePi (1)</a>
+  
+    <a class="tag-item" href="/tags/%E7%AE%97%E6%B3%95/" title="算法">算法 (1)</a>
+  
+    <a class="tag-item" href="/tags/%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6/" title="时间复杂度">时间复杂度 (1)</a>
+  
+    <a class="tag-item" href="/tags/%E5%AE%9A%E7%90%86/" title="定理">定理 (1)</a>
+  
+    <a class="tag-item" href="/tags/RPC/" title="RPC">RPC (1)</a>
+  
+    <a class="tag-item" href="/tags/HTML/" title="HTML">HTML (2)</a>
+  
+    <a class="tag-item" href="/tags/JavaScript/" title="JavaScript">JavaScript (2)</a>
+  
+    <a class="tag-item" href="/tags/k8s/" title="k8s">k8s (1)</a>
+  
+    <a class="tag-item" href="/tags/Laravel/" title="Laravel">Laravel (1)</a>
+  
+    <a class="tag-item" href="/tags/Markdown/" title="Markdown">Markdown (1)</a>
+  
+    <a class="tag-item" href="/tags/MacOS/" title="MacOS">MacOS (5)</a>
+  
+    <a class="tag-item" href="/tags/Git/" title="Git">Git (1)</a>
+  
+    <a class="tag-item" href="/tags/Ngrok/" title="Ngrok">Ngrok (1)</a>
+  
+    <a class="tag-item" href="/tags/INI/" title="INI">INI (1)</a>
+  
+    <a class="tag-item" href="/tags/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/" title="排序算法">排序算法 (1)</a>
+  
+    <a class="tag-item" href="/tags/OpenSSL/" title="OpenSSL">OpenSSL (1)</a>
+  
+    <a class="tag-item" href="/tags/mcrypt/" title="mcrypt">mcrypt (1)</a>
+  
+    <a class="tag-item" href="/tags/xtea/" title="xtea">xtea (1)</a>
+  
+</div>
+    </section>
+    
+
+    
+
+    
+    <!-- 友情链接 -->
+    <section class="widget">
+        <h3 class="widget-hd"><strong>友情链接</strong></h3>
+        <!-- 文章分类 -->
+<ul class="widget-bd">
+    
+        <li>
+            <a href="https://imququ.com/" target="_blank" title="Jerry Qu">Jerry Qu</a>
+        </li>
+    
+        <li>
+            <a href="https://jelon.info/" target="_blank" title="Zhang Delong">Jelon</a>
+        </li>
+    
+        <li>
+            <a href="http://www.minghua.work/" target="_blank" title="智能硬件产品汪">Minghua Jia</a>
+        </li>
+    
+</ul>
+
+    </section>
+    
+</aside>
+<!-- / 侧栏部分 -->
+    </div>
+
+    <!-- 博客底部 -->
+    <footer class="footer">
+<div style="margin-bottom:1em;">
+
+        <!-- 不蒜子统计 -->
+        <span id="busuanzi_container_site_pv">
+                本站总访问量<span id="busuanzi_value_site_pv"></span>次
+        </span>
+        <span class="post-meta-divider">|</span>
+        <span id="busuanzi_container_site_uv" style='display:none'>
+                本站访客数<span id="busuanzi_value_site_uv"></span>人
+        </span>
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  
+</div>
+    &copy;
+    
+        2014-2026
+    
+
+    <a href="/">Best Wishes</a>
+</footer>
+<div class="back-to-top" id="JELON__backToTop" title="返回顶部">返回顶部</div>
+
+    <!--博客js脚本 -->
+    <!-- 这里放网站js脚本 -->
+
+<script src="/js/main.js?v=1778052557371.js"></script>
+
+</body>
+</html>

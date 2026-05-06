@@ -1,0 +1,1106 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8" >
+    <meta http-equiv="X-UA-Compatible" content="IE=11,IE=10,IE=9,IE=8" >
+    <meta name="baidu-site-verification" content="dIcXMeY8Ya" />
+    
+    <title>斯人笔记本 - IMSRY - 个人博客 原创文章 学习笔记 技术分享</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" >
+    <meta name="keywords" content="Anthony, 刘经济, 技术博客, 个人博客, PHP, Golang, Linux, FullStack" >
+    <meta name="description" content="待人以儒墨，不热爱前端技术的后端开发不是一个好的吃货。" >
+
+    
+    <link rel="alternative" href="/atom.xml" title="斯人笔记本" type="application/atom+xml" >
+    
+    
+    <link rel="shortcut icon" href="/favicon.ico" >
+    
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!--[if lt IE 9]>
+    
+<script src="/js/html5.js"></script>
+
+    <![endif]-->
+    
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?d5ebf515ab530cfbdda5f5c85093fb41";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body class="home">
+    <!--[if lt IE 9]>
+    <div class="browsehappy">
+        当前网页 <strong>不支持</strong>
+        你正在使用的浏览器. 为了正常的访问, 请 <a href="http://browsehappy.com/">升级你的浏览器</a>.
+    </div>
+    <![endif]-->
+
+    <!-- 博客头部 -->
+    <header class="header">
+    <section class="container header-main">
+        <div class="logo">
+            <a href="/">
+                <div class="cover">
+                    <span class="name">斯人笔记本</span>
+                    <span class="description">IMSRY</span>
+                </div>
+            </a>
+        </div>
+        <div class="dropnav icon-paragraph-justify" id="JELON__btnDropNav"></div>
+        <ul class="menu hidden" id="JELON__menu">
+            
+            <li rel="/page/10/index.html" class="item ">
+                <a href="/" title="首页" class="icon-home">&nbsp;首页</a>
+            </li>
+            
+            <li rel="/page/10/index.html" class="item ">
+                <a href="/about/" title="关于" class="icon-about">&nbsp;关于</a>
+            </li>
+            
+            <li rel="/page/10/index.html" class="item ">
+                <a href="/comment/" title="留言" class="icon-comment">&nbsp;留言</a>
+            </li>
+            
+        </ul>
+        <div class="profile clearfix">
+            <div class="feeds fl">
+                
+                
+                <p class="links">
+                    
+                        <a href="https://github.com/haowanxing" target="_blank">Github</a>
+                        |
+                    
+                </p>
+                <p class="sns">
+                    
+                        <a href="http://weibo.com/u/2214092525" class="sinaweibo" target="_blank"><b>■</b> 新浪微博</a>
+                    
+                        <a href="https://www.facebook.com/imsry.cn/" class="qqweibo" target="_blank"><b>■</b> Facebook</a>
+                    
+                    <a href="javascript: void(0);" class="wechat">
+                        <b>■</b>
+                        公众号
+                        <span class="popover">
+                            <img src="/img/wechat_mp.jpg" width="120" height="120" alt="我的微信订阅号">
+                            <i class="arrow"></i>
+                        </span>
+                    </a>
+                </p>
+                
+            </div>
+            <div class="avatar fr">
+                <img src="/uploads/qiniu/marioodyssey.jpg" alt="avatar" title="Mario" >
+            </div>
+        </div>
+    </section>
+</header>
+
+
+    <!-- 博客正文 -->
+    <div class="container body clearfix">
+        <section class="content">
+            <div class="content-main widget">
+                <!-- 首页 -->
+
+    
+    <h3 class="widget-hd">
+        <strong>
+            
+                最近动态
+            
+        </strong>
+    </h3>
+    
+        <!-- 文章列表 item -->
+<article class="post">
+    <header>
+        <!-- 标签这有且只能显示一个 -->
+        
+        <a class="cat-link" href="/categories/Linux/">Linux</a>
+        
+        <!-- 文章标题 -->
+        
+    <h3 class="post-title">
+    	<a href="https://www.imsry.cn/posts/bc861775.html">
+    		linux下使用yum安装Apache+php+Mysql+phpMyAdmin [转载]
+    	</a>
+    </h3>
+
+    </header>
+    <p class="post-meta">
+        Anthony 发表于
+        <time datetime="2014-12-23T13:32:44.000Z">2014-12-23 21:32:44</time>
+
+
+        &nbsp;&nbsp;
+        <span class="post-tags">
+            标签：
+            
+    
+        <a href="/tags/Apache/" title="Apache">Apache</a> / 
+    
+        <a href="/tags/Linux/" title="Linux">Linux</a> / 
+    
+        <a href="/tags/MySQL/" title="MySQL">MySQL</a> / 
+    
+        <a href="/tags/PHP/" title="PHP">PHP</a>
+    
+
+        </span>
+    </p>
+
+    <div class="post-content">
+        <div class="post-excerpt">
+            
+                <p>适用redhat于32位及64位，前提架设好本地源。在这里不再赘述。</p>
+<p>1 安装Apache+php+Mysql</p>
+<p>a、安装Apahce, PHP, Mysql, 以及php连接mysql库组件 yum -y install httpd php mysql mysql-server php-mysql</p>
+<p>b、安装mysql扩展    yum -y install mysql-connector-odbc mysql-devel libdbi-dbd-mysql</p>
+<p>或一次性粘贴安装:</p>
+<p>yum -y install httpd php mysql mysql-server php-mysql httpd-manual mod_ssl mod_perl mod_auth_mysql php-mcrypt php-gd php-xml php-mbstring php-ldap php-pear php-xmlrpc mysql-connector-odbc mysql-devel libdbi-dbd-mysql</p>
+<p>c、设置mysql数据库root帐号密码。<br>mysqladmin -u root password ‘newpassword’ [引号内填密码]</p>
+<p>d、 让mysql数据库更安全<br>mysql -u root -p [此时会要求你输入刚刚设置的密码，输入后回车即可</p>
+<p>mysql&gt; DROP DATABASE test; [删除test数据库]<br>mysql&gt; DELETE FROM mysql.user WHERE user &#x3D; ”; [删除匿名帐户]<br>mysql&gt; FLUSH PRIVILEGES; [重载权限]</p>
+<p>e、 按照以上的安装方式, 配置出来的默认站点目录为&#x2F;var&#x2F;www&#x2F;html&#x2F;新建一个php脚本:<br><?php
+phpinfo();
+?></p>
+<p>2、安装phpMyAdmin<br>进入phpMyAdmin官方下载(不要最新版本，下phpMyAdmin 2.11.9.5就行了,3.1以上需php 5.2以上)，上传到你的网站目录下，然后进行配置。只需几步即可搞定。<br>I. config.sample.inc.php更名为config.inc.php;<br>II. 打开config.inc.php文件，进行以下修改;<br>&#x2F;&#x2F; $cfg[‘Servers’][$i][‘controluser’] &#x3D; ‘pma’;<br>&#x2F;&#x2F; $cfg[‘Servers’][$i][‘controlpass’] &#x3D; ‘pmapass’;<br>&#x2F;&#x2F; $cfg[‘Servers’][$i][‘pmadb’] &#x3D; ‘phpmyadmin’;<br>&#x2F;&#x2F; $cfg[‘Servers’][$i][‘bookmarktable’] &#x3D; ‘pma_bookmark’;<br>&#x2F;&#x2F; $cfg[‘Servers’][$i][‘relation’] &#x3D; ‘pma_relation’;<br>&#x2F;&#x2F; $cfg[‘Servers’][$i][‘table_info’] &#x3D; ‘pma_table_info’;<br>&#x2F;&#x2F; $cfg[‘Servers’][$i][‘table_coords’] &#x3D; ‘pma_table_coords’;<br>&#x2F;&#x2F; $cfg[‘Servers’][$i][‘pdf_pages’] &#x3D; ‘pma_pdf_pages’;<br>&#x2F;&#x2F; $cfg[‘Servers’][$i][‘column_info’] &#x3D; ‘pma_column_info’;<br>&#x2F;&#x2F; $cfg[‘Servers’][$i][‘history’] &#x3D; ‘pma_history’;<br>&#x2F;&#x2F; $cfg[‘Servers’][$i][‘designer_coords’] &#x3D; ‘pma_designer_coords’;</p>
+<p>去掉每行前面的&#x2F;&#x2F;;<br>II.$cfg[‘blowfish_secret’] &#x3D; ”; |修改为| $cfg[‘blowfish_secret’] &#x3D; ‘http’;<br>IV.$cfg[‘Servers’][$i][‘controluser’] &#x3D; ‘pma’; |把’pma’修改为你的帐号|$cfg[‘Servers’][$i][‘controlpass’] &#x3D; ‘pmapass’; |把’pmapass设置为你的mysql登录密码|<br>V. $cfg[‘blowfish_secret’] &#x3D; ”; | 添加短语密码例如：$cfg[‘blowfish_secret’] &#x3D; ‘onohot’;</p>
+<p>3、&#x2F;&#x2F;安装php的扩展<br>yum -y install php-gd php-xml php-mbstring php-ldap php-pear php-xmlrpc</p>
+<p>4、&#x2F;&#x2F;安装apache扩展</p>
+<p>yum -y install httpd-manual mod_ssl mod_perl mod_auth_mysql</p>
+<p>5、 配置防火墙<br>添加允许访问HTTP、FTP端口</p>
+<p>iptables -I RH-Firewall-1-INPUT -m state –state NEW -m tcp -p tcp –dport 21 -j ACCEPTiptables -I RH-Firewall-1-INPUT -m state –state NEW -m tcp -p tcp –dport 80 -j ACCEPT<br>重启iptables: service iptables restart<br>转载于：<a href="http://heyh0520.iteye.com/blog/540851">linux下使用yum安装Apache+php+Mysql+phpMyAdmin - - ITeye技术网站</a>.</p>
+
+            
+            <p class="more">
+                <a href="https://www.imsry.cn/posts/bc861775.html">阅读剩下更多</a>
+            </p>
+        </div>
+        <div class="post-thumbnail" data-img="">
+            <a href="https://www.imsry.cn/posts/bc861775.html" title="linux下使用yum安装Apache+php+Mysql+phpMyAdmin [转载]">
+                
+                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/3.jpg" alt="默认配图" >
+                
+            </a>
+        </div>
+    </div>
+</article>
+
+    
+        <!-- 文章列表 item -->
+<article class="post">
+    <header>
+        <!-- 标签这有且只能显示一个 -->
+        
+        <a class="cat-link" href="/categories/Linux/">Linux</a>
+        
+        <!-- 文章标题 -->
+        
+    <h3 class="post-title">
+    	<a href="https://www.imsry.cn/posts/1beb1f62.html">
+    		Linux上vi(vim)编辑器使用教程 - 转载
+    	</a>
+    </h3>
+
+    </header>
+    <p class="post-meta">
+        Anthony 发表于
+        <time datetime="2014-11-29T15:29:48.000Z">2014-11-29 23:29:48</time>
+
+
+        &nbsp;&nbsp;
+        <span class="post-tags">
+            标签：
+            
+    
+        <a href="/tags/Vim/" title="Vim">Vim</a>
+    
+
+        </span>
+    </p>
+
+    <div class="post-content">
+        <div class="post-excerpt">
+            
+                <p>vi(vim)是上Linux非常常用的编辑器，很多Linux发行版都默认安装了vi(vim)。vi(vim)命令繁多但是如果使用灵活之后将会大大提高效率。vi是“visual interface”的缩写，vim是vi IMproved(增强版的vi)。在一般的系统管理维护中vi就够用，如果想使用代码加亮的话可以使用vim。下面vps侦探整理一下vi的使用教程：包含vi的基本介绍、使用模式、文件的打开关闭保存、插入文本或新建行、移动光标、删除、恢复字符或行、搜索等等，算是一篇比较适合新手学习vi的教程。</p>
+<p>vi有3个模式：插入模式、命令模式、低行模式。</p>
+<pre><code>插入模式：在此模式下可以输入字符，按ESC将回到命令模式。
+命令模式：可以移动光标、删除字符等。
+低行模式：可以保存文件、退出vi、设置vi、查找等功能(低行模式也可以看作是命令模式里的)。
+</code></pre>
+<p>一、打开文件、保存、关闭文件(vi命令模式下使用)</p>
+<pre lang="ruby" line="1" escaped="true">
+vi filename       //打开filename文件
+:w       //保存文件
+:w vpser.net //保存至vpser.net文件
+:q          //退出编辑器，如果文件已修改请使用下面的命令
+:q!        //退出编辑器，且不保存
+:wq         //退出编辑器，且保存文件
+</pre>
+
+<p>二、插入文本或行(vi命令模式下使用，执行下面命令后将进入插入模式，按ESC键可退出插入模式)</p>
+<pre lang="bash" line="1" escaped="true">
+
+a      //在当前光标位置的右边添加文本
+i       //在当前光标位置的左边添加文本
+A     //在当前行的末尾位置添加文本
+I      //在当前行的开始处添加文本(非空字符的行首)
+O     //在当前行的上面新建一行
+o     //在当前行的下面新建一行
+R    //替换(覆盖)当前光标位置及后面的若干文本
+J    //合并光标所在行及下一行为一行(依然在命令模式)
+</pre>
+
+<p>三、移动光标(vi命令模式下使用)</p>
+<p>1、使用上下左右方向键</p>
+<p>2、命令模式下：h   向左、j   向下 、k   向上、l  向右。<br>空格键 向右、Backspace  向左、Enter  移动到下一行首、-  移动到上一行首。<br>四、删除、恢复字符或行(vi命令模式下使用)</p>
+<pre lang="apache" line="1" escaped="true">
+
+x         //删除当前字符
+nx         //删除从光标开始的n个字符
+dd      //删除当前行
+ndd   //向下删除当前行在内的n行
+u       //撤销上一步操作
+U      //撤销对当前行的所有操作
+</pre>
+
+<p>五、搜索(vi命令模式下使用)</p>
+<pre lang="ruby" line="1" escaped="true">
+
+/vpser     //向光标下搜索vpser字符串
+?vpser     //向光标上搜索vpser字符串
+n           //向下搜索前一个搜素动作
+N         //向上搜索前一个搜索动作
+</pre>
+
+<p>六、跳至指定行(vi命令模式下使用)</p>
+<pre lang="ruby" line="1" escaped="true">
+
+n+        //向下跳n行
+n-         //向上跳n行
+nG        //跳到行号为n的行
+G           //跳至文件的底部
+</pre>
+
+<p>七、设置行号(vi命令模式下使用)</p>
+<pre lang="ruby" line="1" escaped="true">
+
+:set  nu     //显示行号
+:set nonu    //取消显示行号
+</pre>
+
+<p>八、复制、粘贴(vi命令模式下使用)</p>
+<pre lang="ruby" line="1" escaped="true">
+
+yy    //将当前行复制到缓存区，也可以用 "ayy 复制，"a 为缓冲区，a也可以替换为a到z的任意字母，可以完成多个复制任务。
+nyy   //将当前行向下n行复制到缓冲区，也可以用 "anyy 复制，"a 为缓冲区，a也可以替换为a到z的任意字母，可以完成多个复制任务。
+yw    //复制从光标开始到词尾的字符。
+nyw   //复制从光标开始的n个单词。
+y^      //复制从光标到行首的内容。  VPS侦探
+y$      //复制从光标到行尾的内容。
+p        //粘贴剪切板里的内容在光标后，如果使用了前面的自定义缓冲区，建议使用"ap 进行粘贴。
+P        //粘贴剪切板里的内容在光标前，如果使用了前面的自定义缓冲区，建议使用"aP 进行粘贴。
+</pre>
+
+<p>九、替换(vi命令模式下使用)</p>
+<pre lang="ruby" line="1" escaped="true">
+
+:s/old/new      //用new替换行中首次出现的old
+:s/old/new/g         //用new替换行中所有的old
+:n,m s/old/new/g     //用new替换从n到m行里所有的old
+:%s/old/new/g      //用new替换当前文件里所有的old
+</pre>
+
+<p>十、编辑其他文件</p>
+<pre lang="ruby" line="1" escaped="true">
+:e otherfilename    //编辑文件名为otherfilename的文件。
+</pre>
+
+<p>十一、修改文件格式</p>
+<pre lang="ruby" line="1" escaped="true">
+:set fileformat=unix   //将文件修改为unix格式，如win下面的文本文件在linux下会出现^M。
+</pre>
+
+<p>总结：vi(vim)教程虽然有比较多的命令，但是只要勤加练习，相信你会很快的熟练掌握，同时也会给你的工作或学习带来更高的效率。当如果不知道自己处在什么模式时可以按2次Esc键即可回到命令模式，会有最后提醒一点：注意大小写！！！<br>文章来源：<a href="http://www.vpser.net/manage/vi.html">Linux上vi(vim)编辑器使用教程 - VPS侦探</a>.</p>
+
+            
+            <p class="more">
+                <a href="https://www.imsry.cn/posts/1beb1f62.html">阅读剩下更多</a>
+            </p>
+        </div>
+        <div class="post-thumbnail" data-img="">
+            <a href="https://www.imsry.cn/posts/1beb1f62.html" title="Linux上vi(vim)编辑器使用教程 - 转载">
+                
+                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/9.jpg" alt="默认配图" >
+                
+            </a>
+        </div>
+    </div>
+</article>
+
+    
+        <!-- 文章列表 item -->
+<article class="post">
+    <header>
+        <!-- 标签这有且只能显示一个 -->
+        
+        <a class="cat-link" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a>
+        
+        <!-- 文章标题 -->
+        
+    <h3 class="post-title">
+    	<a href="https://www.imsry.cn/posts/aa11c9db.html">
+    		MySQL新建用户,授权,删除用户,修改密码 - 转载
+    	</a>
+    </h3>
+
+    </header>
+    <p class="post-meta">
+        Anthony 发表于
+        <time datetime="2014-11-29T13:17:26.000Z">2014-11-29 21:17:26</time>
+
+
+        &nbsp;&nbsp;
+        <span class="post-tags">
+            标签：
+            
+    
+        <a href="/tags/MySQL/" title="MySQL">MySQL</a>
+    
+
+        </span>
+    </p>
+
+    <div class="post-content">
+        <div class="post-excerpt">
+            
+                <p>首先要声明一下：一般情况下，修改MySQL密码，授权，是需要有mysql里的root权限的。</p>
+<p>注：本操作是在WIN命令提示符下，phpMyAdmin同样适用。<br>    用户：phplamp  用户数据库：phplampDB</p>
+<p>1.新建用户。</p>
+<pre lang="mysql" line="1" escaped="true">
+//登录MYSQL
+@>mysql -u root -p
+@>密码
+//创建用户
+mysql> insert into mysql.user(Host,User,Password) values("localhost","phplamp",password("1234"));
+//刷新系统权限表
+mysql>flush privileges;
+</pre>
+
+<p>这样就创建了一个名为：phplamp  密码为：1234  的用户。</p>
+<p>然后登录一下。</p>
+<pre lang="sql" line="1" escaped="true">
+mysql>exit;
+@>mysql -u phplamp -p
+@>输入密码
+</pre>
+<p>mysql&gt;登录成功</p>
+<p>2.为用户授权。</p>
+<pre lang="sql" line="1" escaped="true">
+
+//登录MYSQL（有ROOT权限）。我里我以ROOT身份登录.
+@>mysql -u root -p
+@>密码
+//首先为用户创建一个数据库(phplampDB)
+mysql>create database phplampDB;
+//授权phplamp用户拥有phplamp数据库的所有权限。
+>grant all privileges on phplampDB.* to phplamp@localhost identified by '1234';
+//刷新系统权限表
+mysql>flush privileges;
+mysql>其它操作
+
+/*
+如果想指定部分权限给一用户，可以这样来写:
+mysql>grant select,update on phplampDB.* to phplamp@localhost identified by '1234';
+//刷新系统权限表。
+mysql>flush privileges;
+*/
+</pre>
+
+<p>3.删除用户。</p>
+<pre lang="sql" line="1" escaped="true">
+@>mysql -u root -p
+@>密码
+mysql>DELETE FROM user WHERE User="phplamp" and Host="localhost";
+mysql>flush privileges;
+//删除用户的数据库
+mysql>drop database phplampDB;
+</pre>
+<p>4.修改指定用户密码。</p>
+<pre lang="sql" line="1" escaped="true">
+@>mysql -u root -p
+@>密码
+mysql>update mysql.user set password=password('新密码') where User="phplamp" and Host="localhost";
+mysql>flush privileges; 
+</pre>
+
+<p>转自：<a href="http://www.cnblogs.com/analyzer/articles/1045072.html">MySQL新建用户,授权,删除用户,修改密码 - analyzer - 博客园</a>.</p>
+
+            
+            <p class="more">
+                <a href="https://www.imsry.cn/posts/aa11c9db.html">阅读剩下更多</a>
+            </p>
+        </div>
+        <div class="post-thumbnail" data-img="">
+            <a href="https://www.imsry.cn/posts/aa11c9db.html" title="MySQL新建用户,授权,删除用户,修改密码 - 转载">
+                
+                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/9.jpg" alt="默认配图" >
+                
+            </a>
+        </div>
+    </div>
+</article>
+
+    
+        <!-- 文章列表 item -->
+<article class="post">
+    <header>
+        <!-- 标签这有且只能显示一个 -->
+        
+        <a class="cat-link" href="/categories/Linux/">Linux</a>
+        
+        <!-- 文章标题 -->
+        
+    <h3 class="post-title">
+    	<a href="https://www.imsry.cn/posts/8db5876f.html">
+    		linux下允许外网对mysql的访问
+    	</a>
+    </h3>
+
+    </header>
+    <p class="post-meta">
+        Anthony 发表于
+        <time datetime="2014-11-18T03:48:17.000Z">2014-11-18 11:48:17</time>
+
+
+        &nbsp;&nbsp;
+        <span class="post-tags">
+            标签：
+            
+    
+        <a href="/tags/Linux/" title="Linux">Linux</a> / 
+    
+        <a href="/tags/MySQL/" title="MySQL">MySQL</a>
+    
+
+        </span>
+    </p>
+
+    <div class="post-content">
+        <div class="post-excerpt">
+            
+                <p>从阿里云镜像市场安装的ubuntu(Apache+Mysql+VsFtp)里面Mysql默认是外网无法访问的，而在实际开发过程中需要对数据库的可视化比对操作，这样我们可以通过本地计算机来事实查改服务器的数据库。</p>
+<pre lang="mysql">
+
+1、修改表,登录mysql数据库,切换到mysql数据库,使用sql语句查看
+"select host,user from user ;"
+\mysql -u root -p
+\mysql>use mysql; 
+\mysql>update user set host = '%' where user ='root'; 
+\mysql>select host, user from user; 
+\mysql>flush privileges;  （使修改生效，必须执行）
+
+2、授权用户,你想root使用密码从任何主机连接到mysql服务器
+\mysql>GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' IDENTIFIED BY 'admin1234' WITH GRANT OPTION;
+\mysql>flush privileges;  （使修改生效，必须执行）
+
+</pre>
+            
+            <p class="more">
+                <a href="https://www.imsry.cn/posts/8db5876f.html">阅读剩下更多</a>
+            </p>
+        </div>
+        <div class="post-thumbnail" data-img="">
+            <a href="https://www.imsry.cn/posts/8db5876f.html" title="linux下允许外网对mysql的访问">
+                
+                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/8.jpg" alt="默认配图" >
+                
+            </a>
+        </div>
+    </div>
+</article>
+
+    
+        <!-- 文章列表 item -->
+<article class="post">
+    <header>
+        <!-- 标签这有且只能显示一个 -->
+        
+        <a class="cat-link" href="/categories/PHP/">PHP</a>
+        
+        <!-- 文章标题 -->
+        
+    <h3 class="post-title">
+    	<a href="https://www.imsry.cn/posts/178115be.html">
+    		上传Excel表格写入数据表（上传订单功能）
+    	</a>
+    </h3>
+
+    </header>
+    <p class="post-meta">
+        Anthony 发表于
+        <time datetime="2014-10-22T05:08:51.000Z">2014-10-22 13:08:51</time>
+
+
+        &nbsp;&nbsp;
+        <span class="post-tags">
+            标签：
+            
+    
+        <a href="/tags/Excel/" title="Excel">Excel</a>
+    
+
+        </span>
+    </p>
+
+    <div class="post-content">
+        <div class="post-excerpt">
+            
+                <p>代码包：<a href="http://zhanzhang.fandouzi.com/?attachment_id=105">ExcelToMysql</a><br>此项功能的实现依赖PHPExcelReader，下载压缩包可得。<br>下面贴出PHP主要实现代码：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">&lt;form id=&quot;form1&quot; name=&quot;form1&quot; method=&quot;post&quot; action=&quot;&quot;&gt;</span><br><span class="line">  &lt;label&gt;</span><br><span class="line">  &lt;input name=&quot;file&quot; type=&quot;file&quot; id=&quot;file13&quot;/&gt;</span><br><span class="line">  &lt;input type=&quot;submit&quot; name=&quot;Submit&quot; value=&quot;提交&quot; /&gt;</span><br><span class="line">  &lt;/label&gt;</span><br><span class="line">&lt;/form&gt;</span><br><span class="line">&lt;p&gt;</span><br><span class="line">&lt;?php</span><br><span class="line">require_once &#x27;reader.php&#x27;;  </span><br><span class="line">$Reader = new Spreadsheet_Excel_Reader(); </span><br><span class="line">$Reader-&gt;setOutputEncoding(&#x27;gbk&#x27;);</span><br><span class="line">$conn= mysql_connect(&#x27;localhost&#x27;,&#x27;root&#x27;,&#x27;root&#x27;) or die(&quot;Can not connect to database.&quot;);  </span><br><span class="line">mysql_query(&quot;set names &#x27;gbk&#x27;&quot;);//设置编码输出</span><br><span class="line">mysql_select_db(&#x27;my_db&#x27;); //选择数据库</span><br><span class="line">if($_POST[&#x27;Submit&#x27;])</span><br><span class="line">&#123;</span><br><span class="line">$Reader-&gt;read($_POST[&#x27;file&#x27;]);</span><br><span class="line"></span><br><span class="line">for ($i = 2; $i &lt;= $Reader-&gt;sheets[0][&#x27;numRows&#x27;]; $i++) &#123;</span><br><span class="line">	//将EXCEL里面从第二行开始写入数据表&#x27;my_table&#x27;中</span><br><span class="line">  $sql = &quot;INSERT INTO my_table VALUES (null,&#x27;&quot;.$Reader-&gt;sheets[0][&#x27;cells&#x27;][$i][1].&quot;&#x27;,&#x27;&quot;.$Reader-&gt;sheets[0][&#x27;cells&#x27;][$i][2].&quot;&#x27;,&#x27;&quot;.$Reader-&gt;sheets[0][&#x27;cells&#x27;][$i][3].&quot;&#x27;,&#x27;&quot;.$Reader-&gt;sheets[0][&#x27;cells&#x27;][$i][4].&quot;&#x27;,&#x27;&quot;.$Reader-&gt;sheets[0][&#x27;cells&#x27;][$i][5].&quot;&#x27;,&#x27;&quot;.$Reader-&gt;sheets[0][&#x27;cells&#x27;][$i][6].&quot;&#x27;,&#x27;&quot;.$Reader-&gt;sheets[0][&#x27;cells&#x27;][$i][7].&quot;&#x27;,&#x27;&quot;.$Reader-&gt;sheets[0][&#x27;cells&#x27;][$i][8].&quot;&#x27;,&#x27;&quot;.$Reader-&gt;sheets[0][&#x27;cells&#x27;][$i][9].&quot;&#x27;)&quot;; </span><br><span class="line"></span><br><span class="line">  $query=mysql_query($sql);</span><br><span class="line">  if($query)</span><br><span class="line">    &#123;</span><br><span class="line">     echo &quot;&lt;script type=\&quot;text/javascript\&quot;&gt;&lt;!--</span><br><span class="line">alert(&#x27;数据已经提交成功&#x27;);window.top.location=&#x27;a.php&#x27;</span><br><span class="line">// --&gt;&lt;/script&gt;&quot;;</span><br><span class="line">     &#125;else&#123;</span><br><span class="line">     echo &quot;&lt;script type=\&quot;text/javascript\&quot;&gt;&lt;!--</span><br><span class="line">alert(&#x27;数据已经提交失败&#x27;);window.top.location=&#x27;a.php&#x27;</span><br><span class="line">// --&gt;&lt;/script&gt;&quot;;</span><br><span class="line">     &#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">?&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+            
+            <p class="more">
+                <a href="https://www.imsry.cn/posts/178115be.html">阅读剩下更多</a>
+            </p>
+        </div>
+        <div class="post-thumbnail" data-img="">
+            <a href="https://www.imsry.cn/posts/178115be.html" title="上传Excel表格写入数据表（上传订单功能）">
+                
+                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/2.jpg" alt="默认配图" >
+                
+            </a>
+        </div>
+    </div>
+</article>
+
+    
+        <!-- 文章列表 item -->
+<article class="post">
+    <header>
+        <!-- 标签这有且只能显示一个 -->
+        
+        <a class="cat-link" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a>
+        
+        <!-- 文章标题 -->
+        
+    <h3 class="post-title">
+    	<a href="https://www.imsry.cn/posts/33921fa9.html">
+    		百度新闻代码（去LOGO方法）- JS实现
+    	</a>
+    </h3>
+
+    </header>
+    <p class="post-meta">
+        Anthony 发表于
+        <time datetime="2014-09-26T10:35:11.000Z">2014-09-26 18:35:11</time>
+
+
+        &nbsp;&nbsp;
+        <span class="post-tags">
+            标签：
+            
+        </span>
+    </p>
+
+    <div class="post-content">
+        <div class="post-excerpt">
+            
+                <p>获取代码请到：<a href="http://news.baidu.com/newscode.html">http://news.baidu.com/newscode.html</a> 按自己的需要获取</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">//展现新闻的DIV框架</span><br><span class="line">&lt;div id=&quot;news&quot;&gt;</span><br><span class="line">&lt;!-- @百度新闻代码 start! --&gt;</span><br><span class="line">    &lt;style type=text/css&gt;</span><br><span class="line">        div&#123;font-size:12px;font-family:arial&#125;.baidu&#123;font-size:12px;line-height:20px;font-family:arial&#125;</span><br><span class="line">        a,a:link&#123;color:#00bbbb;&#125; .baidu span&#123;color:#6f6f6f;font-size:12px&#125; a.more&#123;color:#008000;&#125;a.blk&#123;color:#000;font-weight:bold;&#125;</span><br><span class="line">    &lt;/style&gt;</span><br><span class="line">    &lt;script language=&quot;JavaScript&quot; type=&quot;text/JavaScript&quot; src=&quot;http://news.baidu.com/n?cmd=1&amp;class=socianews&amp;pn=1&amp;tn=newsbrofcu&quot;&gt;</span><br><span class="line">    &lt;/script&gt;</span><br><span class="line">&lt;!-- @百度新闻代码 end! --&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+
+<p><a href="http://wp-content/uploads/2014/09/QQ20140926-10.png"><img src="http://wp-content/uploads/2014/09/QQ20140926-10-300x249.png" alt="QQ20140926-10"></a></p>
+<p>这样不做修改的代码展现出来是带有百度新闻LOGO的，有时候我们不想这个LOGO出来，所以这里来教你们怎么去掉这个LOGO！<br>在页面中加入JS函数：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;script type=&quot;text/javascript&quot;&gt;</span><br><span class="line">    //函数定义（DIV框架ID，第i个子DIV框架）</span><br><span class="line">    function removebdlogo(obj, i) &#123;</span><br><span class="line">        a = document.getElementById(obj).getElementsByTagName(&quot;div&quot;);   //获取LOGO的DIV节点</span><br><span class="line">        a[i].style.display = &quot;none&quot;;   //将其设置为隐藏</span><br><span class="line">        return false;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<p>然后我们在id&#x3D;”news”的DIV框架外面执行这个函数：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- id=&#x27;news&#x27;框架下面的第0个DIV框架 --&gt;</span><br><span class="line">&lt;script type=&quot;text/javascript&quot; &gt;removebdlogo(&quot;news&quot;,0);&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<p>这样我们展现出来的效果就好多了！<br><a href="http://zhanzhang.fandouzi.com/wp-content/uploads/2014/09/QQ20140926-11.png"><img src="http://zhanzhang.fandouzi.com/wp-content/uploads/2014/09/QQ20140926-11-300x225.png" alt="QQ20140926-11"></a></p>
+<p>当然，我们也可以通过修改STYLE来改变一些元素属性，比如字体大小、颜色等等</p>
+
+            
+            <p class="more">
+                <a href="https://www.imsry.cn/posts/33921fa9.html">阅读剩下更多</a>
+            </p>
+        </div>
+        <div class="post-thumbnail" data-img="">
+            <a href="https://www.imsry.cn/posts/33921fa9.html" title="百度新闻代码（去LOGO方法）- JS实现">
+                
+                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/6.jpg" alt="默认配图" >
+                
+            </a>
+        </div>
+    </div>
+</article>
+
+    
+        <!-- 文章列表 item -->
+<article class="post">
+    <header>
+        <!-- 标签这有且只能显示一个 -->
+        
+        <a class="cat-link" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a>
+        
+        <!-- 文章标题 -->
+        
+    <h3 class="post-title">
+    	<a href="https://www.imsry.cn/posts/276126bb.html">
+    		做侧边菜单之弹出二级菜单-position定位不影响其他DIV
+    	</a>
+    </h3>
+
+    </header>
+    <p class="post-meta">
+        Anthony 发表于
+        <time datetime="2014-09-24T11:48:19.000Z">2014-09-24 19:48:19</time>
+
+
+        &nbsp;&nbsp;
+        <span class="post-tags">
+            标签：
+            
+    
+        <a href="/tags/HTML/" title="HTML">HTML</a>
+    
+
+        </span>
+    </p>
+
+    <div class="post-content">
+        <div class="post-excerpt">
+            
+                <p><img src="https://i.loli.net/2017/08/01/5980843667be0.png" alt="二级展现菜单"><br>常常使用position用于层的绝对定位，比如我们让一个层位于一个层内具体什么位置，为即可使用position:absolute和position:relative实现。</p>
+<p>position:absolute；position:relative绝对定位使用通常是父级定义position:relative定位，子级定义position:absolute绝对定位属性，并且子级使用left或right和top或bottom进行绝对定位。</p>
+<p>例子：<br>首先是JS实现二级菜单的展现</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">&lt;script language=&quot;javascript&quot;&gt;</span><br><span class="line">    function tab(tag, className, isDisplay) &#123;</span><br><span class="line">        var list = document.getElementsByTagName(tag);</span><br><span class="line">        for (var i = 0,</span><br><span class="line">        len = list.length; i &lt; len; i++) &#123;</span><br><span class="line">            if (list[i].className == className) &#123;</span><br><span class="line">                if (isDisplay == 1) &#123;</span><br><span class="line">                    list[i].style.display = &quot;block&quot;</span><br><span class="line">                &#125; else &#123;</span><br><span class="line">                    list[i].style.display = &quot;none&quot;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line">&lt;/pre&gt;</span><br><span class="line">页面代码：</span><br><span class="line">&lt;pre lang=&quot;html&quot; line=&quot;1&quot; escaped=&quot;true&quot;&gt;</span><br><span class="line">&lt;div style=&quot;float:left; position:relative&quot;&gt;</span><br><span class="line"></span><br><span class="line">##学校</span><br><span class="line">&lt;span class=&quot;bianh&quot;&gt;</span><br><span class="line">&lt;a herf=&quot;#&quot;&gt;[切换]&lt;/a&gt;&lt;/span&gt;</span><br><span class="line">&lt;div style=&quot;position:absolute; left:40px;&quot; onmousemove=&quot;tab(&#x27;div&#x27;,&#x27;selectschool&#x27;,1)&quot; onclick=&quot;tab(&#x27;div&#x27;,&#x27;selectschool&#x27;,2)&quot;&gt;</span><br><span class="line">&lt;a herf=&quot;#&quot;&gt;中南民族大学&lt;/a&gt;</span><br><span class="line">&lt;a herf=&quot;#&quot;&gt;XXXX大学&lt;/a&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+            
+            <p class="more">
+                <a href="https://www.imsry.cn/posts/276126bb.html">阅读剩下更多</a>
+            </p>
+        </div>
+        <div class="post-thumbnail" data-img="">
+            <a href="https://www.imsry.cn/posts/276126bb.html" title="做侧边菜单之弹出二级菜单-position定位不影响其他DIV">
+                
+                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/4.jpg" alt="默认配图" >
+                
+            </a>
+        </div>
+    </div>
+</article>
+
+    
+        <!-- 文章列表 item -->
+<article class="post">
+    <header>
+        <!-- 标签这有且只能显示一个 -->
+        
+        <a class="cat-link" href="/categories/MacOS/">MacOS</a>
+        
+        <!-- 文章标题 -->
+        
+    <h3 class="post-title">
+    	<a href="https://www.imsry.cn/posts/6c975ddb.html">
+    		删除Mac中所有 .DS_Store 隐藏文件&amp;不再产生.DS_Store文件
+    	</a>
+    </h3>
+
+    </header>
+    <p class="post-meta">
+        Anthony 发表于
+        <time datetime="2014-09-22T10:10:26.000Z">2014-09-22 18:10:26</time>
+
+
+        &nbsp;&nbsp;
+        <span class="post-tags">
+            标签：
+            
+    
+        <a href="/tags/DS-Store/" title=".DS_Store">.DS_Store</a>
+    
+
+        </span>
+    </p>
+
+    <div class="post-content">
+        <div class="post-excerpt">
+            
+                <p><img src="https://i.loli.net/2017/08/01/5980839a7e05a.png" alt="120031avxwmscar1wg6w1z">Mac OS X系统下，几乎绝大部分文件夹中都包含 .DS_Store 隐藏文件，这里保存着针对这个目录的特殊信息和设置配置，例如查看方式，图标大小以及这个目录的一些附属元数据。</p>
+<p>在Mac下这些 .DS_Store 文件默认是隐藏的，看不见。不过当将文件转移共享到Windows的时候，那么就是可见的了，并且感觉像是一些垃圾文件一样的存在。</p>
+<p>操作方法摘自<strong>Macx.cn</strong> 和 **onmac.net **</p>
+<p>**<br>1.删除系统中所有的.DS_Store文件：**<br>(a)、Spotlight搜索“终端”，打开[终端]程序<br>(b)、输入如下代码并回车：<br>sudo find &#x2F; -name “.DS_Store” -depth -exec rm {} ;<br>等待个1分钟左右，删除就完成了！</p>
+<p>**<br>2.不让系统生成.DS_Store文件：**<br>(a)、打开[终端]程序<br>(b)、输入以下代码并回车：(提示需要输入密码就输入 电脑密码)<br>defaults write com.apple.desktopservices DSDontWriteNetworkStores true<br>(c)、sudo cp Library&#x2F;Preferences&#x2F;com.apple.desktopservices.plist &#x2F;Library&#x2F;Preferences&#x2F;<br>(d)、sudo chmod 777 &#x2F;Library&#x2F;Preferences&#x2F;com.apple.desktopservices.plist<br>(e)、重新启动计算机。</p>
+<p>参考资料：<br><a href="http://forum.onmac.net/archive/index.php/t-334.html">http://forum.onmac.net/archive/index.php/t-334.html</a><br><a href="http://www.macx.cn/thread-2053938-1-1.html">http://www.macx.cn/thread-2053938-1-1.html</a></p>
+
+            
+            <p class="more">
+                <a href="https://www.imsry.cn/posts/6c975ddb.html">阅读剩下更多</a>
+            </p>
+        </div>
+        <div class="post-thumbnail" data-img="">
+            <a href="https://www.imsry.cn/posts/6c975ddb.html" title="删除Mac中所有 .DS_Store 隐藏文件&amp;不再产生.DS_Store文件">
+                
+                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/2.jpg" alt="默认配图" >
+                
+            </a>
+        </div>
+    </div>
+</article>
+
+    
+        <!-- 文章列表 item -->
+<article class="post">
+    <header>
+        <!-- 标签这有且只能显示一个 -->
+        
+        <a class="cat-link" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a>
+        
+        <!-- 文章标题 -->
+        
+    <h3 class="post-title">
+    	<a href="https://www.imsry.cn/posts/be7cd8d7.html">
+    		JS遍历Table的所有单元格内容 （转载）
+    	</a>
+    </h3>
+
+    </header>
+    <p class="post-meta">
+        Anthony 发表于
+        <time datetime="2014-08-19T08:48:06.000Z">2014-08-19 16:48:06</time>
+
+
+        &nbsp;&nbsp;
+        <span class="post-tags">
+            标签：
+            
+        </span>
+    </p>
+
+    <div class="post-content">
+        <div class="post-excerpt">
+            
+                <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">GetInfoFromTable</span>(<span class="params">tableid</span>) &#123;</span><br><span class="line"><span class="keyword">var</span> tableInfo = <span class="string">&quot;&quot;</span>;</span><br><span class="line"><span class="keyword">var</span> tableObj = <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(tableid);</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &amp;lt; tableObj.<span class="property">rows</span>.<span class="property">length</span>; i++) &#123;    <span class="comment">//遍历Table的所有Row</span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> j = <span class="number">0</span>; j &amp;lt; tableObj.<span class="property">rows</span>[i].<span class="property">cells</span>.<span class="property">length</span>; j++) &#123;   <span class="comment">//遍历Row中的每一列</span></span><br><span class="line">tableInfo += tableObj.<span class="property">rows</span>[i].<span class="property">cells</span>[j].<span class="property">innerText</span>;   <span class="comment">//获取Table中单元格的内容</span></span><br><span class="line">tableInfo += <span class="string">&quot;   &quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line">tableInfo += <span class="string">&quot;\n&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">return</span> tableInfo;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+            
+            <p class="more">
+                <a href="https://www.imsry.cn/posts/be7cd8d7.html">阅读剩下更多</a>
+            </p>
+        </div>
+        <div class="post-thumbnail" data-img="">
+            <a href="https://www.imsry.cn/posts/be7cd8d7.html" title="JS遍历Table的所有单元格内容 （转载）">
+                
+                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/9.jpg" alt="默认配图" >
+                
+            </a>
+        </div>
+    </div>
+</article>
+
+    
+        <!-- 文章列表 item -->
+<article class="post">
+    <header>
+        <!-- 标签这有且只能显示一个 -->
+        
+        <a class="cat-link" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a>
+        
+        <!-- 文章标题 -->
+        
+    <h3 class="post-title">
+    	<a href="https://www.imsry.cn/posts/e38058a2.html">
+    		js 获得多个同name 的input输入框的值 （转载）
+    	</a>
+    </h3>
+
+    </header>
+    <p class="post-meta">
+        Anthony 发表于
+        <time datetime="2014-08-19T08:08:11.000Z">2014-08-19 16:08:11</time>
+
+
+        &nbsp;&nbsp;
+        <span class="post-tags">
+            标签：
+            
+        </span>
+    </p>
+
+    <div class="post-content">
+        <div class="post-excerpt">
+            
+                <p>js 获得多个同name 的input输入框的值</p>
+<p>起初是使用document.all.id.length获得输入框的个数，但时而正常，时而显示undefined，效果不是很好，网上信息说document.all不是兼容所有浏览器的,现在似乎是只支持IE。</p>
+<p>解决方法是如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">var</span> <span class="variable">els</span> <span class="operator">=</span>document.getElementsByName(<span class="string">&quot;search&quot;</span>);</span><br><span class="line"><span class="keyword">for</span> (<span class="type">var</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>, j = els.length; i &amp;lt; j; i++)&#123;</span><br><span class="line">alert(els[i].value);</span><br></pre></td></tr></table></figure>
+            
+            <p class="more">
+                <a href="https://www.imsry.cn/posts/e38058a2.html">阅读剩下更多</a>
+            </p>
+        </div>
+        <div class="post-thumbnail" data-img="">
+            <a href="https://www.imsry.cn/posts/e38058a2.html" title="js 获得多个同name 的input输入框的值 （转载）">
+                
+                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/9.jpg" alt="默认配图" >
+                
+            </a>
+        </div>
+    </div>
+</article>
+
+    
+
+    
+    <nav class="page-navigator">
+        <a class="extend prev" rel="prev" href="/page/9/">前一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="page-number" href="/page/9/">9</a><span class="page-number current">10</span><a class="page-number" href="/page/11/">11</a><a class="page-number" href="/page/12/">12</a><a class="extend next" rel="next" href="/page/11/">后一页</a>
+    </nav>
+    
+
+
+
+
+            </div>
+
+        </section>
+        <!-- 侧栏部分 -->
+<aside class="sidebar">
+    
+    <section class="widget">
+        <h3 class="widget-hd"><strong>文章搜索</strong></h3>
+        <div class="search-form">
+  <form
+    id="searchForm"
+    method="GET"
+    action="https://www.baidu.com/s"
+    ectype="application/x-www-form-urlencoded"
+    target="_blank"
+    autocomplete="false"
+    onsubmit="javascript: return false;">
+    <input
+      id="searchKeyword"
+      type="text"
+      class="form-control"
+      placeholder="输入关键字搜索"
+      autocomplete="false"
+    />
+    <input id="searchKeywordHidden" type="hidden" name="wd" />
+    <input id="searchButton" class="btn" type="submit" value="搜索" />
+  </form>
+</div>
+    </section>
+    
+
+    <section class="widget">
+        <h3 class="widget-hd"><strong>文章分类</strong></h3>
+        <!-- 文章分类 -->
+<ul class="widget-bd">
+    
+    <li>
+        <a href="/categories/Linux/">Linux</a>
+        <span class="badge">(15)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a>
+        <span class="badge">(54)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/">网络安全</a>
+        <span class="badge">(2)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/Web/">Web</a>
+        <span class="badge">(3)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/">编程语言</a>
+        <span class="badge">(12)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/%E6%9D%82%E8%B0%88/">杂谈</a>
+        <span class="badge">(7)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/%E7%AE%97%E6%B3%95/">算法</a>
+        <span class="badge">(6)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/PHP/">PHP</a>
+        <span class="badge">(9)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a>
+        <span class="badge">(2)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/MacOS/">MacOS</a>
+        <span class="badge">(1)</span>
+    </li>
+    
+</ul>
+    </section>
+
+    
+    <section class="widget">
+        <h3 class="widget-hd"><strong>热门标签</strong></h3>
+        <!-- 文章标签 -->
+<div class="widget-bd tag-wrap">
+  
+    <a class="tag-item" href="/tags/Apache/" title="Apache">Apache (5)</a>
+  
+    <a class="tag-item" href="/tags/Linux/" title="Linux">Linux (8)</a>
+  
+    <a class="tag-item" href="/tags/Proxy/" title="Proxy">Proxy (1)</a>
+  
+    <a class="tag-item" href="/tags/firewall/" title="firewall">firewall (1)</a>
+  
+    <a class="tag-item" href="/tags/CentOS/" title="CentOS">CentOS (3)</a>
+  
+    <a class="tag-item" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" title="数据结构">数据结构 (1)</a>
+  
+    <a class="tag-item" href="/tags/HTTPS/" title="HTTPS">HTTPS (3)</a>
+  
+    <a class="tag-item" href="/tags/Chrome/" title="Chrome">Chrome (1)</a>
+  
+    <a class="tag-item" href="/tags/VPN/" title="VPN">VPN (1)</a>
+  
+    <a class="tag-item" href="/tags/Discuz/" title="Discuz">Discuz (1)</a>
+  
+    <a class="tag-item" href="/tags/Docker/" title="Docker">Docker (1)</a>
+  
+    <a class="tag-item" href="/tags/Network/" title="Network">Network (3)</a>
+  
+    <a class="tag-item" href="/tags/FFmpeg/" title="FFmpeg">FFmpeg (1)</a>
+  
+    <a class="tag-item" href="/tags/Glassfish/" title="Glassfish">Glassfish (1)</a>
+  
+    <a class="tag-item" href="/tags/Java/" title="Java">Java (2)</a>
+  
+    <a class="tag-item" href="/tags/MySQL/" title="MySQL">MySQL (12)</a>
+  
+    <a class="tag-item" href="/tags/Golang/" title="Golang">Golang (3)</a>
+  
+    <a class="tag-item" href="/tags/Nginx/" title="Nginx">Nginx (2)</a>
+  
+    <a class="tag-item" href="/tags/PHP/" title="PHP">PHP (16)</a>
+  
+    <a class="tag-item" href="/tags/Vim/" title="Vim">Vim (1)</a>
+  
+    <a class="tag-item" href="/tags/%E7%BD%91%E5%8D%A1/" title="网卡">网卡 (1)</a>
+  
+    <a class="tag-item" href="/tags/OrangePi/" title="OrangePi">OrangePi (1)</a>
+  
+    <a class="tag-item" href="/tags/%E7%AE%97%E6%B3%95/" title="算法">算法 (1)</a>
+  
+    <a class="tag-item" href="/tags/%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6/" title="时间复杂度">时间复杂度 (1)</a>
+  
+    <a class="tag-item" href="/tags/%E5%AE%9A%E7%90%86/" title="定理">定理 (1)</a>
+  
+    <a class="tag-item" href="/tags/RPC/" title="RPC">RPC (1)</a>
+  
+    <a class="tag-item" href="/tags/HTML/" title="HTML">HTML (2)</a>
+  
+    <a class="tag-item" href="/tags/JavaScript/" title="JavaScript">JavaScript (2)</a>
+  
+    <a class="tag-item" href="/tags/k8s/" title="k8s">k8s (1)</a>
+  
+    <a class="tag-item" href="/tags/Laravel/" title="Laravel">Laravel (1)</a>
+  
+    <a class="tag-item" href="/tags/Markdown/" title="Markdown">Markdown (1)</a>
+  
+    <a class="tag-item" href="/tags/MacOS/" title="MacOS">MacOS (5)</a>
+  
+    <a class="tag-item" href="/tags/Git/" title="Git">Git (1)</a>
+  
+    <a class="tag-item" href="/tags/Ngrok/" title="Ngrok">Ngrok (1)</a>
+  
+    <a class="tag-item" href="/tags/INI/" title="INI">INI (1)</a>
+  
+    <a class="tag-item" href="/tags/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/" title="排序算法">排序算法 (1)</a>
+  
+    <a class="tag-item" href="/tags/OpenSSL/" title="OpenSSL">OpenSSL (1)</a>
+  
+    <a class="tag-item" href="/tags/mcrypt/" title="mcrypt">mcrypt (1)</a>
+  
+    <a class="tag-item" href="/tags/xtea/" title="xtea">xtea (1)</a>
+  
+</div>
+    </section>
+    
+
+    
+
+    
+    <!-- 友情链接 -->
+    <section class="widget">
+        <h3 class="widget-hd"><strong>友情链接</strong></h3>
+        <!-- 文章分类 -->
+<ul class="widget-bd">
+    
+        <li>
+            <a href="https://imququ.com/" target="_blank" title="Jerry Qu">Jerry Qu</a>
+        </li>
+    
+        <li>
+            <a href="https://jelon.info/" target="_blank" title="Zhang Delong">Jelon</a>
+        </li>
+    
+        <li>
+            <a href="http://www.minghua.work/" target="_blank" title="智能硬件产品汪">Minghua Jia</a>
+        </li>
+    
+</ul>
+
+    </section>
+    
+</aside>
+<!-- / 侧栏部分 -->
+    </div>
+
+    <!-- 博客底部 -->
+    <footer class="footer">
+<div style="margin-bottom:1em;">
+
+        <!-- 不蒜子统计 -->
+        <span id="busuanzi_container_site_pv">
+                本站总访问量<span id="busuanzi_value_site_pv"></span>次
+        </span>
+        <span class="post-meta-divider">|</span>
+        <span id="busuanzi_container_site_uv" style='display:none'>
+                本站访客数<span id="busuanzi_value_site_uv"></span>人
+        </span>
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  
+</div>
+    &copy;
+    
+        2014-2026
+    
+
+    <a href="/">Best Wishes</a>
+</footer>
+<div class="back-to-top" id="JELON__backToTop" title="返回顶部">返回顶部</div>
+
+    <!--博客js脚本 -->
+    <!-- 这里放网站js脚本 -->
+
+<script src="/js/main.js?v=1778052557370.js"></script>
+
+</body>
+</html>

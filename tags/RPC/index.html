@@ -1,0 +1,535 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8" >
+    <meta http-equiv="X-UA-Compatible" content="IE=11,IE=10,IE=9,IE=8" >
+    <meta name="baidu-site-verification" content="dIcXMeY8Ya" />
+    
+    <title>`RPC`标签下的文章 | 斯人笔记本 - IMSRY - 个人博客 原创文章 学习笔记 技术分享</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" >
+    <meta name="keywords" content="Anthony, 刘经济, 技术博客, 个人博客, PHP, Golang, Linux, FullStack" >
+    <meta name="description" content="待人以儒墨，不热爱前端技术的后端开发不是一个好的吃货。" >
+
+    
+    <link rel="alternative" href="/atom.xml" title="斯人笔记本" type="application/atom+xml" >
+    
+    
+    <link rel="shortcut icon" href="/favicon.ico" >
+    
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!--[if lt IE 9]>
+    
+<script src="/js/html5.js"></script>
+
+    <![endif]-->
+    
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?d5ebf515ab530cfbdda5f5c85093fb41";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body class="home">
+    <!--[if lt IE 9]>
+    <div class="browsehappy">
+        当前网页 <strong>不支持</strong>
+        你正在使用的浏览器. 为了正常的访问, 请 <a href="http://browsehappy.com/">升级你的浏览器</a>.
+    </div>
+    <![endif]-->
+
+    <!-- 博客头部 -->
+    <header class="header">
+    <section class="container header-main">
+        <div class="logo">
+            <a href="/">
+                <div class="cover">
+                    <span class="name">斯人笔记本</span>
+                    <span class="description">IMSRY</span>
+                </div>
+            </a>
+        </div>
+        <div class="dropnav icon-paragraph-justify" id="JELON__btnDropNav"></div>
+        <ul class="menu hidden" id="JELON__menu">
+            
+            <li rel="/tags/RPC/index.html" class="item ">
+                <a href="/" title="首页" class="icon-home">&nbsp;首页</a>
+            </li>
+            
+            <li rel="/tags/RPC/index.html" class="item ">
+                <a href="/about/" title="关于" class="icon-about">&nbsp;关于</a>
+            </li>
+            
+            <li rel="/tags/RPC/index.html" class="item ">
+                <a href="/comment/" title="留言" class="icon-comment">&nbsp;留言</a>
+            </li>
+            
+        </ul>
+        <div class="profile clearfix">
+            <div class="feeds fl">
+                
+                
+                <p class="links">
+                    
+                        <a href="https://github.com/haowanxing" target="_blank">Github</a>
+                        |
+                    
+                </p>
+                <p class="sns">
+                    
+                        <a href="http://weibo.com/u/2214092525" class="sinaweibo" target="_blank"><b>■</b> 新浪微博</a>
+                    
+                        <a href="https://www.facebook.com/imsry.cn/" class="qqweibo" target="_blank"><b>■</b> Facebook</a>
+                    
+                    <a href="javascript: void(0);" class="wechat">
+                        <b>■</b>
+                        公众号
+                        <span class="popover">
+                            <img src="/img/wechat_mp.jpg" width="120" height="120" alt="我的微信订阅号">
+                            <i class="arrow"></i>
+                        </span>
+                    </a>
+                </p>
+                
+            </div>
+            <div class="avatar fr">
+                <img src="/uploads/qiniu/marioodyssey.jpg" alt="avatar" title="Mario" >
+            </div>
+        </div>
+    </section>
+</header>
+
+
+    <!-- 博客正文 -->
+    <div class="container body clearfix">
+        <section class="content">
+            <div class="content-main widget">
+                <!-- 按标签分类 -->
+
+    <h3 class="widget-hd">
+        <strong>
+            
+                `RPC`标签下的文章
+            
+        </strong>
+    </h3>
+    
+        <!-- 文章列表 item -->
+<article class="post">
+    <header>
+        <!-- 标签这有且只能显示一个 -->
+        
+        <a class="cat-link" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a>
+        
+        <!-- 文章标题 -->
+        
+    <h3 class="post-title">
+    	<a href="https://www.imsry.cn/posts/b37f5033.html">
+    		Go-Server/Client以及PHP-Client之间的GRPC初次尝试
+    	</a>
+    </h3>
+
+    </header>
+    <p class="post-meta">
+        Anthony 发表于
+        <time datetime="2018-12-02T05:47:24.000Z">2018-12-02 13:47:24</time>
+
+
+        &nbsp;&nbsp;
+        <span class="post-tags">
+            标签：
+            
+    
+        <a href="/tags/Golang/" title="Golang">Golang</a> / 
+    
+        <a href="/tags/PHP/" title="PHP">PHP</a> / 
+    
+        <a href="/tags/RPC/" title="RPC">RPC</a>
+    
+
+        </span>
+    </p>
+
+    <div class="post-content">
+        <div class="post-excerpt">
+            
+                <blockquote>
+<p>写这篇笔记的目的</p>
+</blockquote>
+<p>为了应对后续开发生涯中可能遇到的种种情况以及分布式计算的趋势（讲白了就是后续对工作会很有帮助）。如若总是依赖http-api&#x2F;restful编写并提供外部调用接口，当接口数量不断上升，文档内容不断增加，这给设计者和使用者都带来非常不好的体验，而RPC在这体就现出了非常大的优势。我将自己的理解和体会以及学习的过程记录在这里，以便今后遇到问题能够从这儿获得些许的线索以及提供一个参考给同道中人。</p>
+<blockquote>
+<p>前提</p>
+</blockquote>
+<p>不妨思考这样一个情形：作为接口设计者，我早已经定义好的接口的请求方式(RESTFul)和返回结构(json)，但是每个接口我还需要另外维护一个文档来说明各个接口的用法(请求参数)和解释返回的结果(字段描述)。而对于接口的调用者而言，不但要去文档中查找自己需要的接口并阅读说明，在实际调用中，还要以防接口提供者返回非既定结构的结果而导致的报错。</p>
+<!---more--->
+
+<blockquote>
+<p>介绍</p>
+</blockquote>
+<p>Remote Procedure Call（远程过程调用），简称RPC。它可以使得调用远程服务接口如同调用本地方法一样简单。虽然实质还是通过网络通信，但是相比http请求api的网络开销还是极小的，其原因简单来说，HTTP协议每次请求都需要建立TCP连接，就会涉及3次握手的网络开销问题以及冗余报文，而rpc直接使用TCP多路复用(gRPC基于HTTP&#x2F;2)无需重复建立连接。就文档方面而言，编写一份开发文档足矣，因为接口的定义由接口定义语言（IDL）来完成，而阅读IDL便可理解所有接口，并且通过编译器可以将IDL编译成不同的语言实现源码（gRPC通过protoc编译器将protobuf编译）。其他优点例如：注册、监控、发布等的这里不做论述。</p>
+<blockquote>
+<p>Go-Server</p>
+</blockquote>
+<p>GRPC的官方资源：<a href="google.golang.org/grpc">go get google.golang.org&#x2F;grpc</a></p>
+<p>GRPC的镜像资源：<a href="https://github.com/grpc/grpc">https://github.com/grpc/grpc</a></p>
+<p>官方的相关示列可以在grpc&#x2F;examples&#x2F;中找到。</p>
+<h4 id="定义服务"><a href="#定义服务" class="headerlink" title="定义服务"></a>定义服务</h4><p>使用<code>protocol buffers</code>去定义gRPC service和方法 request以及 response 的类型。</p>
+<p>新增并编辑文件：something.proto</p>
+<figure class="highlight protobuf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">syntax = <span class="string">&quot;proto3&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 声明包/作用域</span></span><br><span class="line"><span class="keyword">package</span> something;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 定义一个服务，名为Wiwider</span></span><br><span class="line"><span class="keyword">service </span><span class="title class_">Wiwider</span> &#123;</span><br><span class="line">  <span class="function"><span class="keyword">rpc</span> FindUser (UserRequest) <span class="keyword">returns</span> (UserReply) </span>&#123;&#125;	<span class="comment">// 声明一个方法</span></span><br><span class="line">  <span class="function"><span class="keyword">rpc</span> FindUsers (UserRequest) <span class="keyword">returns</span> (UsersReply) </span>&#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 定义一个请求消息</span></span><br><span class="line"><span class="keyword">message </span><span class="title class_">UserRequest</span> &#123;</span><br><span class="line">  <span class="type">string</span> name = <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 定义一个响应消息</span></span><br><span class="line"><span class="keyword">message </span><span class="title class_">UserReply</span> &#123;</span><br><span class="line">  <span class="type">int64</span> id = <span class="number">1</span>;</span><br><span class="line">  <span class="type">string</span> name = <span class="number">2</span>;</span><br><span class="line">  <span class="type">int32</span> age = <span class="number">3</span>;</span><br><span class="line">  sexes sex = <span class="number">4</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">enum </span><span class="title class_">sexes</span> &#123;</span><br><span class="line">    Male = <span class="number">0</span>;</span><br><span class="line">    Female = <span class="number">1</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 定义一个包含消息的消息</span></span><br><span class="line"><span class="keyword">message </span><span class="title class_">UsersReply</span> &#123;</span><br><span class="line">  <span class="keyword">repeated</span> UserReply users = <span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="生成代码"><a href="#生成代码" class="headerlink" title="生成代码"></a>生成代码</h4><blockquote>
+<p>Go-代码</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">protoc --go_out=plugins=grpc:. something.proto</span><br></pre></td></tr></table></figure>
+
+<p>运行这个命令后，会在当前目录生成一个<code>something.pb.go</code>文件，内容包含：</p>
+<ul>
+<li>所有用于填充，序列化和获取我们请求和响应消息类型的 protocol buffer 代码</li>
+<li>一个为客户端调用定义在Wiwider服务的方法的接口类型（或者 存根 ）</li>
+<li>一个为服务器使用定义在Wiwider服务的方法去实现的接口类型（或者 存根 ）</li>
+</ul>
+<blockquote>
+<p>PHP-代码</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">protoc --proto_path=./ --php_out=./ --grpc_out=./ --plugin=protoc-gen-grpc=/Users/anthony/git/grpc/bins/opt/grpc_php_plugin ./something.proto</span><br></pre></td></tr></table></figure>
+<p>其中<code>/Users/anthony/git/grpc/bins/opt/grpc_php_plugin</code>对应从git中获取的<code>&lt;grpc-git-path&gt;/bins/opt/grpc_php_plugin</code></p>
+<p>运行这个命令后，会在当前目录生成如下：</p>
+<ul>
+<li>GPBMetadata&#x2F;something.php</li>
+<li>Something&#x2F;UserReply&#x2F;sexes.php</li>
+<li>Something&#x2F;UserReply.php</li>
+<li>Something&#x2F;UserReply_sexes.php</li>
+<li>Something&#x2F;UserRequest.php</li>
+<li>Something&#x2F;UsersReply.php</li>
+<li>Something&#x2F;WiwiderClient.php</li>
+</ul>
+<h4 id="创建服务器"><a href="#创建服务器" class="headerlink" title="创建服务器"></a>创建服务器</h4><p>首先我们需要实现服务定义的服务接口：</p>
+<p><code>something/something.go</code>：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> something</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">&quot;Wiwide/cmi&quot;</span></span><br><span class="line">	<span class="string">&quot;context&quot;</span></span><br><span class="line">)</span><br><span class="line"><span class="keyword">type</span> UserServer <span class="keyword">struct</span> &#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(s *UserServer)</span></span> FindUser(ctx context.Context, in *UserRequest) (*UserReply, <span class="type">error</span>) &#123;</span><br><span class="line">	name := in.GetName()</span><br><span class="line">	rs, err := cmi.Db(<span class="string">&quot;local&quot;</span>).Table(<span class="string">&quot;users&quot;</span>).Where(<span class="string">&quot;name&quot;</span>, name).First()	<span class="comment">// 从数据库查询</span></span><br><span class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> || <span class="built_in">len</span>(rs) == <span class="number">0</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> &amp;UserReply&#123;&#125;,err</span><br><span class="line">	&#125;</span><br><span class="line">	rId := rs[<span class="string">&quot;id&quot;</span>].(<span class="type">int64</span>)</span><br><span class="line">	rName := rs[<span class="string">&quot;name&quot;</span>].(<span class="type">string</span>)</span><br><span class="line">	rAge := <span class="type">int32</span>(rs[<span class="string">&quot;age&quot;</span>].(<span class="type">int64</span>))</span><br><span class="line">	rSex := UserReplySexes(rs[<span class="string">&quot;sex&quot;</span>].(<span class="type">int64</span>))</span><br><span class="line">	rep := &amp;UserReply&#123;Id:rId,Name:rName,Age:rAge,Sex:rSex&#125;</span><br><span class="line">	<span class="keyword">return</span> rep, <span class="literal">nil</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(s *UserServer)</span></span> FindUsers(ctx context.Context, in *UserRequest) (*UsersReply, <span class="type">error</span>) &#123;</span><br><span class="line">	name := in.GetName()</span><br><span class="line">	rs, err := cmi.Db(<span class="string">&quot;local&quot;</span>).Table(<span class="string">&quot;users&quot;</span>).Where(<span class="string">&quot;name&quot;</span>,<span class="string">&quot;like&quot;</span>,<span class="string">&quot;%&quot;</span>+name+<span class="string">&quot;%&quot;</span>).Get()	<span class="comment">// 从数据库查询</span></span><br><span class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> &amp;UsersReply&#123;&#125;, err</span><br><span class="line">	&#125;</span><br><span class="line">	list := <span class="built_in">make</span>([]*UserReply, <span class="number">0</span>)</span><br><span class="line">	<span class="keyword">for</span> _, v := <span class="keyword">range</span> rs &#123;</span><br><span class="line">		rId := v[<span class="string">&quot;id&quot;</span>].(<span class="type">int64</span>)</span><br><span class="line">		rName := v[<span class="string">&quot;name&quot;</span>].(<span class="type">string</span>)</span><br><span class="line">		rAge := <span class="type">int32</span>(v[<span class="string">&quot;age&quot;</span>].(<span class="type">int64</span>))</span><br><span class="line">		rSex := UserReplySexes(v[<span class="string">&quot;sex&quot;</span>].(<span class="type">int64</span>))</span><br><span class="line">		list = <span class="built_in">append</span>(list, &amp;UserReply&#123;Id:rId,Name:rName,Age:rAge,Sex:rSex&#125;)</span><br><span class="line">	&#125;</span><br><span class="line">	rep := &amp;UsersReply&#123;Users: list&#125;</span><br><span class="line">	<span class="keyword">return</span> rep, <span class="literal">nil</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>然后运行一个gRPC服务器，注册我们的服务并监听来自客户端的请求：</p>
+<p><code>server.go</code>：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">&quot;Wiwide/rpc/something&quot;</span></span><br><span class="line">	<span class="string">&quot;context&quot;</span></span><br><span class="line">	<span class="string">&quot;google.golang.org/grpc&quot;</span></span><br><span class="line">	<span class="string">&quot;google.golang.org/grpc/reflection&quot;</span></span><br><span class="line">	<span class="string">&quot;log&quot;</span></span><br><span class="line">	<span class="string">&quot;net&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> (</span><br><span class="line">	port = <span class="string">&quot;:50051&quot;</span></span><br><span class="line">)</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	lis, err := net.Listen(<span class="string">&quot;tcp&quot;</span>, port)</span><br><span class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">		log.Fatalf(<span class="string">&quot;failed to listen: %v&quot;</span>, err)</span><br><span class="line">	&#125;</span><br><span class="line">	s := grpc.NewServer()</span><br><span class="line">	something.RegisterWiwiderServer(s, &amp;something.UserServer&#123;&#125;)</span><br><span class="line">	reflection.Register(s)</span><br><span class="line">	<span class="keyword">if</span> err := s.Serve(lis); err != <span class="literal">nil</span> &#123;</span><br><span class="line">		log.Fatalf(<span class="string">&quot;failed to serve: %v&quot;</span>, err)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="运行服务器"><a href="#运行服务器" class="headerlink" title="运行服务器"></a>运行服务器</h4><p>简单执行命令：<code>go run server.go</code>，然后等待客户端请求。</p>
+<h4 id="创建客户端"><a href="#创建客户端" class="headerlink" title="创建客户端"></a>创建客户端</h4><blockquote>
+<p>Go-Client</p>
+</blockquote>
+<p>创建文件<code>client.go</code>：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">&quot;Wiwide/rpc/something&quot;</span></span><br><span class="line">	<span class="string">&quot;context&quot;</span></span><br><span class="line">	<span class="string">&quot;google.golang.org/grpc&quot;</span></span><br><span class="line">	<span class="string">&quot;log&quot;</span></span><br><span class="line">	<span class="string">&quot;os&quot;</span></span><br><span class="line">	<span class="string">&quot;time&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span>(</span><br><span class="line">	address = <span class="string">&quot;localhost:50051&quot;</span></span><br><span class="line">	defaultName = <span class="string">&quot;World&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	conn, err := grpc.Dial(address, grpc.WithInsecure())</span><br><span class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">		log.Fatalf(<span class="string">&quot;did not connect: %v&quot;</span>, err)</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">defer</span> conn.Close()</span><br><span class="line"></span><br><span class="line">	name := defaultName</span><br><span class="line">	<span class="keyword">if</span> <span class="built_in">len</span>(os.Args) &gt; <span class="number">1</span> &#123;</span><br><span class="line">		name = os.Args[<span class="number">1</span>]</span><br><span class="line">	&#125;</span><br><span class="line">	ctx, cancel := context.WithTimeout(context.Background(), time.Second)</span><br><span class="line">	<span class="keyword">defer</span> cancel()</span><br><span class="line">	s := something.NewWiwiderClient(conn)</span><br><span class="line">	u, err := s.FindUser(ctx, &amp;something.UserRequest&#123;Name:name&#125;)</span><br><span class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">		log.Fatalf(<span class="string">&quot;could not Find: %v&quot;</span>, err)</span><br><span class="line">	&#125;</span><br><span class="line">	us, err := s.FindUsers(ctx, &amp;something.UserRequest&#123;Name:name&#125;)</span><br><span class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">		log.Fatalf(<span class="string">&quot;could not Find users: %v&quot;</span>, err)</span><br><span class="line">	&#125;</span><br><span class="line">	log.Printf(<span class="string">&quot;Find user: %v&quot;</span>, u)</span><br><span class="line">	log.Printf(<span class="string">&quot;Find users: %v&quot;</span>, us)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>PHP-Client</p>
+</blockquote>
+<p>PHP首先要安装grpc的php扩展，下载地址：<a href="http://pecl.php.net/package/gRPC">http://pecl.php.net/package/gRPC</a></p>
+<p>直接使用phpize安装:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">tar -zxf grpc-1.17.0.tgz</span><br><span class="line"><span class="built_in">cd</span> grpc-1.17.0</span><br><span class="line">phpize</span><br><span class="line">./configure --with-php-config=/usr/local/php/bin/php-config</span><br><span class="line">make</span><br><span class="line">make install</span><br><span class="line"><span class="comment"># 在php.ini中增加</span></span><br><span class="line">extension = grpc.so</span><br></pre></td></tr></table></figure>
+
+<p>执行php -m | grep grpc 应该会输出”grpc”，就代表成功了。</p>
+<p>创建客户端文件，这里需要用到composer获取两个包，其中composer.json内容为：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;grpc/grpc-demo&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;description&quot;</span><span class="punctuation">:</span> <span class="string">&quot;gRPC example for PHP&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;require&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;grpc/grpc&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^v1.3.0&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;google/protobuf&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^v3.3.0&quot;</span></span><br><span class="line">  <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p><code>something.php</code>：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="keyword">require</span> <span class="title function_ invoke__">dirname</span>(<span class="keyword">__FILE__</span>).<span class="string">&#x27;/vendor/autoload.php&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">include_once</span> <span class="title function_ invoke__">dirname</span>(<span class="keyword">__FILE__</span>).<span class="string">&#x27;/Something/UserReply.php&#x27;</span>;</span><br><span class="line"><span class="keyword">include_once</span> <span class="title function_ invoke__">dirname</span>(<span class="keyword">__FILE__</span>).<span class="string">&#x27;/Something/UsersReply.php&#x27;</span>;</span><br><span class="line"><span class="keyword">include_once</span> <span class="title function_ invoke__">dirname</span>(<span class="keyword">__FILE__</span>).<span class="string">&#x27;/Something/UserRequest.php&#x27;</span>;</span><br><span class="line"><span class="keyword">include_once</span> <span class="title function_ invoke__">dirname</span>(<span class="keyword">__FILE__</span>).<span class="string">&#x27;/Something/WiwiderClient.php&#x27;</span>;</span><br><span class="line"><span class="keyword">include_once</span> <span class="title function_ invoke__">dirname</span>(<span class="keyword">__FILE__</span>).<span class="string">&#x27;/GPBMetadata/Something.php&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="variable">$client</span> = <span class="keyword">new</span> <span class="title class_">Something\WiwiderClient</span>(<span class="string">&#x27;127.0.0.1:50051&#x27;</span>, [<span class="string">&#x27;credentials&#x27;</span> =&gt; <span class="title class_">Grpc\ChannelCredentials</span>::<span class="title function_ invoke__">createInsecure</span>()]);</span><br><span class="line"><span class="variable">$req</span> = <span class="keyword">new</span> <span class="title class_">Something\UserRequest</span>();</span><br><span class="line"><span class="variable">$name</span> = !<span class="keyword">empty</span>(<span class="variable">$argv</span>[<span class="number">1</span>]) ? <span class="variable">$argv</span>[<span class="number">1</span>] : <span class="string">&#x27;world&#x27;</span>;</span><br><span class="line"><span class="variable">$req</span>-&gt;<span class="title function_ invoke__">setName</span>(<span class="variable">$name</span>);</span><br><span class="line"><span class="keyword">list</span>(<span class="variable">$reply</span>, <span class="variable">$status</span>) = <span class="variable">$client</span>-&gt;<span class="title function_ invoke__">FindUser</span>(<span class="variable">$req</span>)-&gt;<span class="title function_ invoke__">wait</span>();</span><br><span class="line"><span class="title function_ invoke__">var_dump</span>(<span class="variable">$reply</span>-&gt;<span class="title function_ invoke__">getId</span>(), <span class="variable">$reply</span>-&gt;<span class="title function_ invoke__">getName</span>(), <span class="variable">$reply</span>-&gt;<span class="title function_ invoke__">getAge</span>(), <span class="variable">$reply</span>-&gt;<span class="title function_ invoke__">getSex</span>(), <span class="variable">$status</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">list</span>(<span class="variable">$reply</span>, <span class="variable">$status</span>) = <span class="variable">$client</span>-&gt;<span class="title function_ invoke__">FindUsers</span>(<span class="variable">$req</span>)-&gt;<span class="title function_ invoke__">wait</span>();</span><br><span class="line"><span class="variable">$uers</span> = <span class="variable">$reply</span>-&gt;<span class="title function_ invoke__">getUsers</span>();</span><br><span class="line"><span class="variable">$users</span> = <span class="keyword">array</span>();</span><br><span class="line"><span class="keyword">foreach</span> (<span class="variable">$uers</span> <span class="keyword">as</span> <span class="variable">$key</span> =&gt; <span class="variable">$value</span>) &#123;</span><br><span class="line">	<span class="title function_ invoke__">array_push</span>(<span class="variable">$users</span>, <span class="keyword">array</span>(<span class="string">&#x27;id&#x27;</span>=&gt;<span class="variable">$value</span>-&gt;<span class="title function_ invoke__">getId</span>(),<span class="string">&#x27;name&#x27;</span>=&gt;<span class="variable">$value</span>-&gt;<span class="title function_ invoke__">getName</span>(),<span class="string">&#x27;age&#x27;</span>=&gt;<span class="variable">$value</span>-&gt;<span class="title function_ invoke__">getAge</span>(),<span class="string">&#x27;sex&#x27;</span>=&gt;<span class="variable">$value</span>-&gt;<span class="title function_ invoke__">getSex</span>()));</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_ invoke__">var_dump</span>(<span class="variable">$users</span>);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h4 id="运行客户端"><a href="#运行客户端" class="headerlink" title="运行客户端"></a>运行客户端</h4><blockquote>
+<p>Go-Client</p>
+</blockquote>
+<p>我们先编译一下：<code>go build client.go</code>，输出可执行文件<code>client</code>，然后直接运行：</p>
+<ul>
+<li><code>./client Anthony</code></li>
+<li><code>./client ny</code></li>
+</ul>
+<p>分别输出如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">2018/12/02 13:40:15 Find user: id:1 name:&quot;Anthony&quot; age:24 sex:Female </span><br><span class="line">2018/12/02 13:40:15 Find users: users:&lt;id:1 name:&quot;Anthony&quot; age:24 sex:Female &gt;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">2018/12/02 13:40:25 Find user: </span><br><span class="line">2018/12/02 13:40:25 Find users: users:&lt;id:1 name:&quot;Anthony&quot; age:24 sex:Female &gt; users:&lt;id:4 name:&quot;funny&quot; age:15 sex:2 &gt; </span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>PHP-Client</p>
+</blockquote>
+<p>直接执行PHP文件：<code>php something.php Anthony</code>和<code>php something.php ny</code>，结果如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">int(1)</span><br><span class="line">string(7) &quot;Anthony&quot;</span><br><span class="line">int(24)</span><br><span class="line">int(1)</span><br><span class="line">object(stdClass)#8 (3) &#123;</span><br><span class="line">  [&quot;metadata&quot;]=&gt;</span><br><span class="line">  array(0) &#123;</span><br><span class="line">  &#125;</span><br><span class="line">  [&quot;code&quot;]=&gt;</span><br><span class="line">  int(0)</span><br><span class="line">  [&quot;details&quot;]=&gt;</span><br><span class="line">  string(0) &quot;&quot;</span><br><span class="line">&#125;</span><br><span class="line">array(1) &#123;</span><br><span class="line">  [0]=&gt;</span><br><span class="line">  array(4) &#123;</span><br><span class="line">    [&quot;id&quot;]=&gt;</span><br><span class="line">    int(1)</span><br><span class="line">    [&quot;name&quot;]=&gt;</span><br><span class="line">    string(7) &quot;Anthony&quot;</span><br><span class="line">    [&quot;age&quot;]=&gt;</span><br><span class="line">    int(24)</span><br><span class="line">    [&quot;sex&quot;]=&gt;</span><br><span class="line">    int(1)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">int(0)</span><br><span class="line">string(0) &quot;&quot;</span><br><span class="line">int(0)</span><br><span class="line">int(0)</span><br><span class="line">object(stdClass)#8 (3) &#123;</span><br><span class="line">  [&quot;metadata&quot;]=&gt;</span><br><span class="line">  array(0) &#123;</span><br><span class="line">  &#125;</span><br><span class="line">  [&quot;code&quot;]=&gt;</span><br><span class="line">  int(0)</span><br><span class="line">  [&quot;details&quot;]=&gt;</span><br><span class="line">  string(0) &quot;&quot;</span><br><span class="line">&#125;</span><br><span class="line">array(2) &#123;</span><br><span class="line">  [0]=&gt;</span><br><span class="line">  array(4) &#123;</span><br><span class="line">    [&quot;id&quot;]=&gt;</span><br><span class="line">    int(1)</span><br><span class="line">    [&quot;name&quot;]=&gt;</span><br><span class="line">    string(7) &quot;Anthony&quot;</span><br><span class="line">    [&quot;age&quot;]=&gt;</span><br><span class="line">    int(24)</span><br><span class="line">    [&quot;sex&quot;]=&gt;</span><br><span class="line">    int(1)</span><br><span class="line">  &#125;</span><br><span class="line">  [1]=&gt;</span><br><span class="line">  array(4) &#123;</span><br><span class="line">    [&quot;id&quot;]=&gt;</span><br><span class="line">    int(4)</span><br><span class="line">    [&quot;name&quot;]=&gt;</span><br><span class="line">    string(5) &quot;funny&quot;</span><br><span class="line">    [&quot;age&quot;]=&gt;</span><br><span class="line">    int(15)</span><br><span class="line">    [&quot;sex&quot;]=&gt;</span><br><span class="line">    int(2)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="结束"><a href="#结束" class="headerlink" title="结束"></a>结束</h3><p>本次笔记接近结尾了，内容很简单，主要记录使用grpc的大体流程。为后续的测试做一点点的准备。</p>
+<blockquote>
+<p>参考资料</p>
+</blockquote>
+<ul>
+<li><a href="http://doc.oschina.net/grpc">gRPC官方文档中文版v1.0</a></li>
+<li><a href="https://blog.csdn.net/xuduorui/article/details/77726393">grpc简易教程 go server+php client</a></li>
+<li><a href="https://blog.csdn.net/wangyunpeng0319/article/details/78651998">PRC服务和HTTP服务对比</a></li>
+<li><a href="https://grpc.io/">grpc官方网站</a></li>
+</ul>
+
+            
+            <p class="more">
+                <a href="https://www.imsry.cn/posts/b37f5033.html">阅读剩下更多</a>
+            </p>
+        </div>
+        <div class="post-thumbnail" data-img="">
+            <a href="https://www.imsry.cn/posts/b37f5033.html" title="Go-Server/Client以及PHP-Client之间的GRPC初次尝试">
+                
+                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/2.jpg" alt="默认配图" >
+                
+            </a>
+        </div>
+    </div>
+</article>
+
+    
+
+    
+    <nav class="page-navigator">
+        <span class="page-number current">1</span>
+    </nav>
+    
+
+
+            </div>
+
+        </section>
+        <!-- 侧栏部分 -->
+<aside class="sidebar">
+    
+    <section class="widget">
+        <h3 class="widget-hd"><strong>文章搜索</strong></h3>
+        <div class="search-form">
+  <form
+    id="searchForm"
+    method="GET"
+    action="https://www.baidu.com/s"
+    ectype="application/x-www-form-urlencoded"
+    target="_blank"
+    autocomplete="false"
+    onsubmit="javascript: return false;">
+    <input
+      id="searchKeyword"
+      type="text"
+      class="form-control"
+      placeholder="输入关键字搜索"
+      autocomplete="false"
+    />
+    <input id="searchKeywordHidden" type="hidden" name="wd" />
+    <input id="searchButton" class="btn" type="submit" value="搜索" />
+  </form>
+</div>
+    </section>
+    
+
+    <section class="widget">
+        <h3 class="widget-hd"><strong>文章分类</strong></h3>
+        <!-- 文章分类 -->
+<ul class="widget-bd">
+    
+    <li>
+        <a href="/categories/Linux/">Linux</a>
+        <span class="badge">(15)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a>
+        <span class="badge">(54)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/">网络安全</a>
+        <span class="badge">(2)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/Web/">Web</a>
+        <span class="badge">(3)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/">编程语言</a>
+        <span class="badge">(12)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/%E6%9D%82%E8%B0%88/">杂谈</a>
+        <span class="badge">(7)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/%E7%AE%97%E6%B3%95/">算法</a>
+        <span class="badge">(6)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/PHP/">PHP</a>
+        <span class="badge">(9)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a>
+        <span class="badge">(2)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/MacOS/">MacOS</a>
+        <span class="badge">(1)</span>
+    </li>
+    
+</ul>
+    </section>
+
+    
+    <section class="widget">
+        <h3 class="widget-hd"><strong>热门标签</strong></h3>
+        <!-- 文章标签 -->
+<div class="widget-bd tag-wrap">
+  
+    <a class="tag-item" href="/tags/Apache/" title="Apache">Apache (5)</a>
+  
+    <a class="tag-item" href="/tags/Linux/" title="Linux">Linux (8)</a>
+  
+    <a class="tag-item" href="/tags/Proxy/" title="Proxy">Proxy (1)</a>
+  
+    <a class="tag-item" href="/tags/firewall/" title="firewall">firewall (1)</a>
+  
+    <a class="tag-item" href="/tags/CentOS/" title="CentOS">CentOS (3)</a>
+  
+    <a class="tag-item" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" title="数据结构">数据结构 (1)</a>
+  
+    <a class="tag-item" href="/tags/HTTPS/" title="HTTPS">HTTPS (3)</a>
+  
+    <a class="tag-item" href="/tags/Chrome/" title="Chrome">Chrome (1)</a>
+  
+    <a class="tag-item" href="/tags/VPN/" title="VPN">VPN (1)</a>
+  
+    <a class="tag-item" href="/tags/Discuz/" title="Discuz">Discuz (1)</a>
+  
+    <a class="tag-item" href="/tags/Docker/" title="Docker">Docker (1)</a>
+  
+    <a class="tag-item" href="/tags/Network/" title="Network">Network (3)</a>
+  
+    <a class="tag-item" href="/tags/FFmpeg/" title="FFmpeg">FFmpeg (1)</a>
+  
+    <a class="tag-item" href="/tags/Glassfish/" title="Glassfish">Glassfish (1)</a>
+  
+    <a class="tag-item" href="/tags/Java/" title="Java">Java (2)</a>
+  
+    <a class="tag-item" href="/tags/MySQL/" title="MySQL">MySQL (12)</a>
+  
+    <a class="tag-item" href="/tags/Golang/" title="Golang">Golang (3)</a>
+  
+    <a class="tag-item" href="/tags/Nginx/" title="Nginx">Nginx (2)</a>
+  
+    <a class="tag-item" href="/tags/PHP/" title="PHP">PHP (16)</a>
+  
+    <a class="tag-item" href="/tags/Vim/" title="Vim">Vim (1)</a>
+  
+    <a class="tag-item" href="/tags/%E7%BD%91%E5%8D%A1/" title="网卡">网卡 (1)</a>
+  
+    <a class="tag-item" href="/tags/OrangePi/" title="OrangePi">OrangePi (1)</a>
+  
+    <a class="tag-item" href="/tags/%E7%AE%97%E6%B3%95/" title="算法">算法 (1)</a>
+  
+    <a class="tag-item" href="/tags/%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6/" title="时间复杂度">时间复杂度 (1)</a>
+  
+    <a class="tag-item" href="/tags/%E5%AE%9A%E7%90%86/" title="定理">定理 (1)</a>
+  
+    <a class="tag-item" href="/tags/RPC/" title="RPC">RPC (1)</a>
+  
+    <a class="tag-item" href="/tags/HTML/" title="HTML">HTML (2)</a>
+  
+    <a class="tag-item" href="/tags/JavaScript/" title="JavaScript">JavaScript (2)</a>
+  
+    <a class="tag-item" href="/tags/k8s/" title="k8s">k8s (1)</a>
+  
+    <a class="tag-item" href="/tags/Laravel/" title="Laravel">Laravel (1)</a>
+  
+    <a class="tag-item" href="/tags/Markdown/" title="Markdown">Markdown (1)</a>
+  
+    <a class="tag-item" href="/tags/MacOS/" title="MacOS">MacOS (5)</a>
+  
+    <a class="tag-item" href="/tags/Git/" title="Git">Git (1)</a>
+  
+    <a class="tag-item" href="/tags/Ngrok/" title="Ngrok">Ngrok (1)</a>
+  
+    <a class="tag-item" href="/tags/INI/" title="INI">INI (1)</a>
+  
+    <a class="tag-item" href="/tags/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/" title="排序算法">排序算法 (1)</a>
+  
+    <a class="tag-item" href="/tags/OpenSSL/" title="OpenSSL">OpenSSL (1)</a>
+  
+    <a class="tag-item" href="/tags/mcrypt/" title="mcrypt">mcrypt (1)</a>
+  
+    <a class="tag-item" href="/tags/xtea/" title="xtea">xtea (1)</a>
+  
+</div>
+    </section>
+    
+
+    
+
+    
+    <!-- 友情链接 -->
+    <section class="widget">
+        <h3 class="widget-hd"><strong>友情链接</strong></h3>
+        <!-- 文章分类 -->
+<ul class="widget-bd">
+    
+        <li>
+            <a href="https://imququ.com/" target="_blank" title="Jerry Qu">Jerry Qu</a>
+        </li>
+    
+        <li>
+            <a href="https://jelon.info/" target="_blank" title="Zhang Delong">Jelon</a>
+        </li>
+    
+        <li>
+            <a href="http://www.minghua.work/" target="_blank" title="智能硬件产品汪">Minghua Jia</a>
+        </li>
+    
+</ul>
+
+    </section>
+    
+</aside>
+<!-- / 侧栏部分 -->
+    </div>
+
+    <!-- 博客底部 -->
+    <footer class="footer">
+<div style="margin-bottom:1em;">
+
+        <!-- 不蒜子统计 -->
+        <span id="busuanzi_container_site_pv">
+                本站总访问量<span id="busuanzi_value_site_pv"></span>次
+        </span>
+        <span class="post-meta-divider">|</span>
+        <span id="busuanzi_container_site_uv" style='display:none'>
+                本站访客数<span id="busuanzi_value_site_uv"></span>人
+        </span>
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  
+</div>
+    &copy;
+    
+        2014-2026
+    
+
+    <a href="/">Best Wishes</a>
+</footer>
+<div class="back-to-top" id="JELON__backToTop" title="返回顶部">返回顶部</div>
+
+    <!--博客js脚本 -->
+    <!-- 这里放网站js脚本 -->
+
+<script src="/js/main.js?v=1778052557380.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,964 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8" >
+    <meta http-equiv="X-UA-Compatible" content="IE=11,IE=10,IE=9,IE=8" >
+    <meta name="baidu-site-verification" content="dIcXMeY8Ya" />
+    
+    <title>斯人笔记本 - IMSRY - 个人博客 原创文章 学习笔记 技术分享</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" >
+    <meta name="keywords" content="Anthony, 刘经济, 技术博客, 个人博客, PHP, Golang, Linux, FullStack" >
+    <meta name="description" content="待人以儒墨，不热爱前端技术的后端开发不是一个好的吃货。" >
+
+    
+    <link rel="alternative" href="/atom.xml" title="斯人笔记本" type="application/atom+xml" >
+    
+    
+    <link rel="shortcut icon" href="/favicon.ico" >
+    
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!--[if lt IE 9]>
+    
+<script src="/js/html5.js"></script>
+
+    <![endif]-->
+    
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?d5ebf515ab530cfbdda5f5c85093fb41";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body class="home">
+    <!--[if lt IE 9]>
+    <div class="browsehappy">
+        当前网页 <strong>不支持</strong>
+        你正在使用的浏览器. 为了正常的访问, 请 <a href="http://browsehappy.com/">升级你的浏览器</a>.
+    </div>
+    <![endif]-->
+
+    <!-- 博客头部 -->
+    <header class="header">
+    <section class="container header-main">
+        <div class="logo">
+            <a href="/">
+                <div class="cover">
+                    <span class="name">斯人笔记本</span>
+                    <span class="description">IMSRY</span>
+                </div>
+            </a>
+        </div>
+        <div class="dropnav icon-paragraph-justify" id="JELON__btnDropNav"></div>
+        <ul class="menu hidden" id="JELON__menu">
+            
+            <li rel="/page/5/index.html" class="item ">
+                <a href="/" title="首页" class="icon-home">&nbsp;首页</a>
+            </li>
+            
+            <li rel="/page/5/index.html" class="item ">
+                <a href="/about/" title="关于" class="icon-about">&nbsp;关于</a>
+            </li>
+            
+            <li rel="/page/5/index.html" class="item ">
+                <a href="/comment/" title="留言" class="icon-comment">&nbsp;留言</a>
+            </li>
+            
+        </ul>
+        <div class="profile clearfix">
+            <div class="feeds fl">
+                
+                
+                <p class="links">
+                    
+                        <a href="https://github.com/haowanxing" target="_blank">Github</a>
+                        |
+                    
+                </p>
+                <p class="sns">
+                    
+                        <a href="http://weibo.com/u/2214092525" class="sinaweibo" target="_blank"><b>■</b> 新浪微博</a>
+                    
+                        <a href="https://www.facebook.com/imsry.cn/" class="qqweibo" target="_blank"><b>■</b> Facebook</a>
+                    
+                    <a href="javascript: void(0);" class="wechat">
+                        <b>■</b>
+                        公众号
+                        <span class="popover">
+                            <img src="/img/wechat_mp.jpg" width="120" height="120" alt="我的微信订阅号">
+                            <i class="arrow"></i>
+                        </span>
+                    </a>
+                </p>
+                
+            </div>
+            <div class="avatar fr">
+                <img src="/uploads/qiniu/marioodyssey.jpg" alt="avatar" title="Mario" >
+            </div>
+        </div>
+    </section>
+</header>
+
+
+    <!-- 博客正文 -->
+    <div class="container body clearfix">
+        <section class="content">
+            <div class="content-main widget">
+                <!-- 首页 -->
+
+    
+    <h3 class="widget-hd">
+        <strong>
+            
+                最近动态
+            
+        </strong>
+    </h3>
+    
+        <!-- 文章列表 item -->
+<article class="post">
+    <header>
+        <!-- 标签这有且只能显示一个 -->
+        
+        <a class="cat-link" href="/categories/PHP/">PHP</a>
+        
+        <!-- 文章标题 -->
+        
+    <h3 class="post-title">
+    	<a href="https://www.imsry.cn/posts/82527d05.html">
+    		array_walk中的$this报错
+    	</a>
+    </h3>
+
+    </header>
+    <p class="post-meta">
+        Anthony 发表于
+        <time datetime="2017-04-14T08:46:59.000Z">2017-04-14 16:46:59</time>
+
+
+        &nbsp;&nbsp;
+        <span class="post-tags">
+            标签：
+            
+        </span>
+    </p>
+
+    <div class="post-content">
+        <div class="post-excerpt">
+            
+                <blockquote>
+<p>Fatal Error:Using $this when not in object context on line 54</p>
+</blockquote>
+<p>　　今天在完成一个小功能开发并提交SVN后，收到前端的求助，说是更新了我的代码后页面打不开了。很着急啊，我这里都是测试成功才提交版本的。现在只能麻溜的跑过查看了。</p>
+<p>　　首先，出现的情况是空白页面（对，没有任何输出）。报错肯定没打开，帮他打开E_ALL后就看到了今天的重点报错提示了。说是在54行有个<code>$this</code>不在对象环境中？</p>
+<p>　　然后我去看了，那个<code>$this</code>出现在array_walk方法的function中，从语句上来看是完全没有问题的，在类的方法里面用<code>$this</code>肯定没毛病啊，可是为什么他那里就报错呢？</p>
+<p>　　我突然想起来，如果要在array_walk里面使用外面的变量的时候需要使用<code>use</code>方法。所以改进一下:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$user_id = $this-&gt;user-&gt;id;</span><br><span class="line">array_walk($arr,function(&amp;$v) use($user_id) &#123;</span><br><span class="line">	$v[&#x27;user_id&#x27;]=$user_id;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>　　这样就没毛病了。看来这个<code>array_walk</code>还挺调皮啊，不得不说这个方法的使用还真有许多需要注意的地方呢。</p>
+<p>　　通过查资料，得知这个$this在PHP版本低于5.4的情况下是会出现问题的。高版本的不会出现。</p>
+<p>参考：<a href="http://stackoverflow.com/questions/19033184/using-this-when-not-in-object-context-error-within-array-walk">Using $this when not in object context error within array_walk</a></p>
+
+            
+            <p class="more">
+                <a href="https://www.imsry.cn/posts/82527d05.html">阅读剩下更多</a>
+            </p>
+        </div>
+        <div class="post-thumbnail" data-img="">
+            <a href="https://www.imsry.cn/posts/82527d05.html" title="array_walk中的$this报错">
+                
+                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/4.jpg" alt="默认配图" >
+                
+            </a>
+        </div>
+    </div>
+</article>
+
+    
+        <!-- 文章列表 item -->
+<article class="post">
+    <header>
+        <!-- 标签这有且只能显示一个 -->
+        
+        <a class="cat-link" href="/categories/PHP/">PHP</a>
+        
+        <!-- 文章标题 -->
+        
+    <h3 class="post-title">
+    	<a href="https://www.imsry.cn/posts/b9f89962.html">
+    		PHP时区默认为Europe/zurich且修改php.ini无效的困惑
+    	</a>
+    </h3>
+
+    </header>
+    <p class="post-meta">
+        Anthony 发表于
+        <time datetime="2017-03-21T09:03:57.000Z">2017-03-21 17:03:57</time>
+
+
+        &nbsp;&nbsp;
+        <span class="post-tags">
+            标签：
+            
+    
+        <a href="/tags/PHP/" title="PHP">PHP</a>
+    
+
+        </span>
+    </p>
+
+    <div class="post-content">
+        <div class="post-excerpt">
+            
+                <blockquote>
+<p>为何我的date(“Y&#x2F;m&#x2F;d H:i:s”)相差了7个小时？</p>
+</blockquote>
+<p><code>环境：MacOS X EI Capitan / PHP5.6.25</code></p>
+<p>　　今天在校验Crontab的计划执行时，利用PHP输出执行时间却发现输出的时间和当地事件相差了7个小时，对！是7不是8，并不是默认的UTC，呵呵了～</p>
+<p>　　好吧，一贯思路，我去把php.ini中的<code>date.timezone</code>修改成<code>PRC</code>。嗯，肯定正常了吧。</p>
+<p>　　要能正常我也不会写本文了^_~!</p>
+<p>　　不论是修改成<code>PRC</code>还是<code>Asia/Shanghai</code>又或者<code>UTC</code>，全都未然。
+　　</p>
+<hr>
+<ol>
+<li>apache输出phpinfo()，查看date区域它的Default Timezone还是没变。<br><img src="https://ooo.0o0.ooo/2017/03/21/58d0f0703d97a.png" alt="Phpinfo的date区域"></li>
+<li>在控制台查看<code>php -i | grep zone</code>也还是同样没变<br><img src="https://ooo.0o0.ooo/2017/03/21/58d0f0feb930b.png" alt="控制台输出timezone"></li>
+<li>核对加载的php.ini文件是否正确并且配置信息格式是否正确<br><img src="https://ooo.0o0.ooo/2017/03/21/58d0f15632504.png"><br><img src="https://ooo.0o0.ooo/2017/03/21/58d0f17079823.png"></li>
+<li>控制台使用<code>php -a</code>交互模式，调用<code>ini_get(&#39;date.timezone&#39;)</code>，检查配置的INI是否生效<br><img src="https://ooo.0o0.ooo/2017/03/21/58d0f6227df7c.png"></li>
+</ol>
+<p>　　全都没有任何问题啊！！！为什么结果却出乎意料呢？？百度，谷歌我都问遍了，大家没人出现我这样的情况啊。正当我发愁的时候，小伙伴过来给我支招了。</p>
+            
+            <p class="more">
+                <a href="https://www.imsry.cn/posts/b9f89962.html">阅读剩下更多</a>
+            </p>
+        </div>
+        <div class="post-thumbnail" data-img="">
+            <a href="https://www.imsry.cn/posts/b9f89962.html" title="PHP时区默认为Europe/zurich且修改php.ini无效的困惑">
+                
+                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/1.jpg" alt="默认配图" >
+                
+            </a>
+        </div>
+    </div>
+</article>
+
+    
+        <!-- 文章列表 item -->
+<article class="post">
+    <header>
+        <!-- 标签这有且只能显示一个 -->
+        
+        <a class="cat-link" href="/categories/PHP/">PHP</a>
+        
+        <!-- 文章标题 -->
+        
+    <h3 class="post-title">
+    	<a href="https://www.imsry.cn/posts/f0dc176.html">
+    		php上传进度之uploadprogress
+    	</a>
+    </h3>
+
+    </header>
+    <p class="post-meta">
+        Anthony 发表于
+        <time datetime="2017-02-07T03:29:13.000Z">2017-02-07 11:29:13</time>
+
+
+        &nbsp;&nbsp;
+        <span class="post-tags">
+            标签：
+            
+    
+        <a href="/tags/%E4%B8%8A%E4%BC%A0%E8%BF%9B%E5%BA%A6/" title="上传进度">上传进度</a>
+    
+
+        </span>
+    </p>
+
+    <div class="post-content">
+        <div class="post-excerpt">
+            
+                <blockquote>
+<p>我的学习是项目驱动，这次遇到的需求是上传进度条。</p>
+</blockquote>
+<p><code>注意：此方法仅在Apache下运行PHP时有效，如果您采用FastCGI方式(如：Nginx+fpm)，这个不适用！</code></p>
+<p>通过查PHP手册，了解到PHP版本5.4+有一个新特性<code>uploadprogress</code>，也可以说是新扩展吧！</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">当 session.upload_progress.enabled INI 选项开启时，PHP 能够在每一个文件上传时监测上传进度。 这个信息对上传请求自身并没有什么帮助，但在文件上传时应用可以发送一个POST请求到终端（例如通过XHR）来检查这个状态</span><br><span class="line">当一个上传在处理中，同时POST一个与INI中设置的session.upload_progress.name同名变量时，上传进度可以在$_SESSION中获得。 当PHP检测到这种POST请求时，它会在$_SESSION中添加一组数据, 索引是 session.upload_progress.prefix 与 session.upload_progress.name连接在一起的值。</span><br></pre></td></tr></table></figure>
+
+<p>将这个扩展启用，需要开启PHP.INI支持：</p>
+<pre><code>session.upload_progress.enabled = On
+session.upload_progress.cleanup = On
+session.upload_progress.prefix = &quot;upload_progress_&quot;
+session.upload_progress.name = &quot;PHP_SESSION_UPLOAD_PROGRESS&quot;
+session.upload_progress.freq = &quot;1%&quot;
+session.upload_progress.min_freq = &quot;1&quot;
+</code></pre>
+<p>　　当然，我按照官方的示例操作了N久，就是读不到此类session的值。一开始以为是公司框架的问题，后来自己在本地单独写文件来测试，结果还是一样！</p>
+<p>　　在网上查找各种此类问题的解决办法，虽说有相同提问的，但是解答问题的人根本就没找到根本的原因。其实很简单：<code>上传的文件Size太小</code></p>
+            
+            <p class="more">
+                <a href="https://www.imsry.cn/posts/f0dc176.html">阅读剩下更多</a>
+            </p>
+        </div>
+        <div class="post-thumbnail" data-img="">
+            <a href="https://www.imsry.cn/posts/f0dc176.html" title="php上传进度之uploadprogress">
+                
+                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/7.jpg" alt="默认配图" >
+                
+            </a>
+        </div>
+    </div>
+</article>
+
+    
+        <!-- 文章列表 item -->
+<article class="post">
+    <header>
+        <!-- 标签这有且只能显示一个 -->
+        
+        <a class="cat-link" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a>
+        
+        <!-- 文章标题 -->
+        
+    <h3 class="post-title">
+    	<a href="https://www.imsry.cn/posts/bb4e3702.html">
+    		Learning-Markdown
+    	</a>
+    </h3>
+
+    </header>
+    <p class="post-meta">
+        Anthony 发表于
+        <time datetime="2017-01-19T08:57:03.000Z">2017-01-19 16:57:03</time>
+
+
+        &nbsp;&nbsp;
+        <span class="post-tags">
+            标签：
+            
+    
+        <a href="/tags/Markdown/" title="Markdown">Markdown</a>
+    
+
+        </span>
+    </p>
+
+    <div class="post-content">
+        <div class="post-excerpt">
+            
+                <h1 id="MarkDown的学习"><a href="#MarkDown的学习" class="headerlink" title="MarkDown的学习"></a>MarkDown的学习</h1><blockquote>
+<p>这里面就是一些简单的MarkDown语法，提供给我自己看一下，刚开始还是需要不断练习来接受这种语法，必然能够在码字的过程中体验乐趣！</p>
+</blockquote>
+<p>下面开始啦：</p>
+            
+            <p class="more">
+                <a href="https://www.imsry.cn/posts/bb4e3702.html">阅读剩下更多</a>
+            </p>
+        </div>
+        <div class="post-thumbnail" data-img="">
+            <a href="https://www.imsry.cn/posts/bb4e3702.html" title="Learning-Markdown">
+                
+                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/9.jpg" alt="默认配图" >
+                
+            </a>
+        </div>
+    </div>
+</article>
+
+    
+        <!-- 文章列表 item -->
+<article class="post">
+    <header>
+        <!-- 标签这有且只能显示一个 -->
+        
+        <a class="cat-link" href="/categories/%E6%9D%82%E8%B0%88/">杂谈</a>
+        
+        <!-- 文章标题 -->
+        
+    <h3 class="post-title">
+    	<a href="https://www.imsry.cn/posts/c956a8c9.html">
+    		Hi! Github Pages
+    	</a>
+    </h3>
+
+    </header>
+    <p class="post-meta">
+        Anthony 发表于
+        <time datetime="2017-01-19T07:41:23.000Z">2017-01-19 15:41:23</time>
+
+
+        &nbsp;&nbsp;
+        <span class="post-tags">
+            标签：
+            
+        </span>
+    </p>
+
+    <div class="post-content">
+        <div class="post-excerpt">
+            
+                <table>
+<thead>
+<tr>
+<th align="left">时间</th>
+<th align="left">事件</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">2017&#x2F;01&#x2F;17</td>
+<td align="left">考虑到服务器5个月后到期，无法提供一个月65元的费用（因为性价比），寻求新的方式</td>
+</tr>
+<tr>
+<td align="left">2017&#x2F;01&#x2F;18</td>
+<td align="left">快速学习Hexo与Github Pages，初步学习如此方式的博客</td>
+</tr>
+<tr>
+<td align="left">2017&#x2F;01&#x2F;19</td>
+<td align="left">配置Hexo和域名解析，完成以前的文章的迁移（图片还没找到合适的方法），imsry.cn域名正式使用！</td>
+</tr>
+</tbody></table>
+<p>感谢大家的支持与厚爱！</p>
+<blockquote>
+<p>注：dshui.wang暂时并存一段时间，以免部分朋友找不到入口。请大家记住新的地址（<a href="http://www.imsry.cn/">www.imsry.cn</a> –对不起.cn&#x2F;抱歉.cn&#x2F;我是抱歉.cn）</p>
+</blockquote>
+
+            
+            <p class="more">
+                <a href="https://www.imsry.cn/posts/c956a8c9.html">阅读剩下更多</a>
+            </p>
+        </div>
+        <div class="post-thumbnail" data-img="">
+            <a href="https://www.imsry.cn/posts/c956a8c9.html" title="Hi! Github Pages">
+                
+                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/9.jpg" alt="默认配图" >
+                
+            </a>
+        </div>
+    </div>
+</article>
+
+    
+        <!-- 文章列表 item -->
+<article class="post">
+    <header>
+        <!-- 标签这有且只能显示一个 -->
+        
+        <a class="cat-link" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a>
+        
+        <!-- 文章标题 -->
+        
+    <h3 class="post-title">
+    	<a href="https://www.imsry.cn/posts/8ca39648.html">
+    		我是如何将mac OS X(10.11.6)的PHP版本升级到5.6.29的
+    	</a>
+    </h3>
+
+    </header>
+    <p class="post-meta">
+        Anthony 发表于
+        <time datetime="2017-01-16T10:52:38.000Z">2017-01-16 18:52:38</time>
+
+
+        &nbsp;&nbsp;
+        <span class="post-tags">
+            标签：
+            
+    
+        <a href="/tags/PHP/" title="PHP">PHP</a> / 
+    
+        <a href="/tags/MacOS/" title="MacOS">MacOS</a>
+    
+
+        </span>
+    </p>
+
+    <div class="post-content">
+        <div class="post-excerpt">
+            
+                <p><img src="/../uploads/qiniu/20170116148456405447908.jpg?imageView2/0/format/jpg"><br>由于项目和学习的需要，本机曾经升级到了5.5.38已经不够折腾了，所以时候升级一波5.6了（没必要到7的时候，我是不会去升级的）。<br>首先直接去搜索引擎找便捷的方法呗，直接就选中了一款来自“简书”的文章，因为它就简单的一条命令：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -s http://php-osx.liip.ch/install.sh | bash -s 5.6</span><br></pre></td></tr></table></figure>
+<p>看到这个地址，我心里就放心了！因为上一个版本也是liip的。<br>我首先看了一下这个install.sh的内容，确定没有什么危险，里面其实就是检测一下设备的系统版本和cpu类型是否可以升级。<br>环境检测没问题就去下载了一个叫做“packager.tgz”的压缩包，然后解压，运行里面的pythony脚本。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#TYPE = 5.6-10.10</span><br><span class="line">sudo packager.py install $TYPE-frontenddev</span><br></pre></td></tr></table></figure>
+            
+            <p class="more">
+                <a href="https://www.imsry.cn/posts/8ca39648.html">阅读剩下更多</a>
+            </p>
+        </div>
+        <div class="post-thumbnail" data-img="">
+            <a href="https://www.imsry.cn/posts/8ca39648.html" title="我是如何将mac OS X(10.11.6)的PHP版本升级到5.6.29的">
+                
+                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/6.jpg" alt="默认配图" >
+                
+            </a>
+        </div>
+    </div>
+</article>
+
+    
+        <!-- 文章列表 item -->
+<article class="post">
+    <header>
+        <!-- 标签这有且只能显示一个 -->
+        
+        <a class="cat-link" href="/categories/%E6%9D%82%E8%B0%88/">杂谈</a>
+        
+        <!-- 文章标题 -->
+        
+    <h3 class="post-title">
+    	<a href="https://www.imsry.cn/posts/5fc11633.html">
+    		2017年的开篇，居然是这个！
+    	</a>
+    </h3>
+
+    </header>
+    <p class="post-meta">
+        Anthony 发表于
+        <time datetime="2016-12-31T16:13:27.000Z">2017-01-01 00:13:27</time>
+
+
+        &nbsp;&nbsp;
+        <span class="post-tags">
+            标签：
+            
+        </span>
+    </p>
+
+    <div class="post-content">
+        <div class="post-excerpt">
+            
+                <p>今天一天其实可以说，相～当～累！ 因为去了一趟八达岭长城，徒步北长城让我精疲力竭。回来已经晚上9点了，收拾收拾东西，洗漱完。坐着等2017的到来。<br>然后就干了这么一件事：<br><img src="/../uploads/qiniu/20170206148636027922625.png" alt="20170206148636027922625.png"></p>
+<p>然后产生的结果是：<br><img src="/../uploads/qiniu/20170206148636024291000.png" alt="20170206148636024291000.png"></p>
+<p>对于这个，2017年1月1日 00时00分01秒，我露出了无奈的笑容～</p>
+
+            
+            <p class="more">
+                <a href="https://www.imsry.cn/posts/5fc11633.html">阅读剩下更多</a>
+            </p>
+        </div>
+        <div class="post-thumbnail" data-img="">
+            <a href="https://www.imsry.cn/posts/5fc11633.html" title="2017年的开篇，居然是这个！">
+                
+                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/1.jpg" alt="默认配图" >
+                
+            </a>
+        </div>
+    </div>
+</article>
+
+    
+        <!-- 文章列表 item -->
+<article class="post">
+    <header>
+        <!-- 标签这有且只能显示一个 -->
+        
+        <a class="cat-link" href="/categories/%E6%9D%82%E8%B0%88/">杂谈</a>
+        
+        <!-- 文章标题 -->
+        
+    <h3 class="post-title">
+    	<a href="https://www.imsry.cn/posts/d8424cb6.html">
+    		JetBrains家的IDEA真不便宜
+    	</a>
+    </h3>
+
+    </header>
+    <p class="post-meta">
+        Anthony 发表于
+        <time datetime="2016-12-21T03:40:36.000Z">2016-12-21 11:40:36</time>
+
+
+        &nbsp;&nbsp;
+        <span class="post-tags">
+            标签：
+            
+        </span>
+    </p>
+
+    <div class="post-content">
+        <div class="post-excerpt">
+            
+                <p>先贴出来<a href="https://www.jetbrains.com/idea/buy/">正版购买链接</a>！</p>
+<p>JetBrains公司的那些IDE真的是非常的好用，No.1的水准！一直都非常喜欢这家的产品，也难怪价格会稍微贵那么不止一点点了！<br>IntelliJ IDEA专为Java打造，当然还有为PHP打造的PHPStorm，为javascript打造的WebStorm，为Python打造的PyCharm等等。<br>不过今天不是来吹嘘JetBrains家的产品的，我是来吐槽自己买不起的事实。[&#x2F;摊手]</p>
+            
+            <p class="more">
+                <a href="https://www.imsry.cn/posts/d8424cb6.html">阅读剩下更多</a>
+            </p>
+        </div>
+        <div class="post-thumbnail" data-img="">
+            <a href="https://www.imsry.cn/posts/d8424cb6.html" title="JetBrains家的IDEA真不便宜">
+                
+                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/1.jpg" alt="默认配图" >
+                
+            </a>
+        </div>
+    </div>
+</article>
+
+    
+        <!-- 文章列表 item -->
+<article class="post">
+    <header>
+        <!-- 标签这有且只能显示一个 -->
+        
+        <a class="cat-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a>
+        
+        <!-- 文章标题 -->
+        
+    <h3 class="post-title">
+    	<a href="https://www.imsry.cn/posts/432477cb.html">
+    		初探MongoDB安全之RBAC（基于角色的访问控制）
+    	</a>
+    </h3>
+
+    </header>
+    <p class="post-meta">
+        Anthony 发表于
+        <time datetime="2016-11-04T11:37:07.000Z">2016-11-04 19:37:07</time>
+
+
+        &nbsp;&nbsp;
+        <span class="post-tags">
+            标签：
+            
+    
+        <a href="/tags/MongoDB/" title="MongoDB">MongoDB</a> / 
+    
+        <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" title="数据库">数据库</a>
+    
+
+        </span>
+    </p>
+
+    <div class="post-content">
+        <div class="post-excerpt">
+            
+                <blockquote>
+<p>写在开头的一段话：我是一名忠实的SQL玩家，虽说MySQL并没有达到精通的级别，但在日常使用中还是会经常出现“这个表要是NoSQL的话就好办多了”的想法。所以说，我认为无论是站在关系型数据库还是非关系性数据库的立场上，二者并不是相对立的，而且我觉得应该用“相辅相成”来形容二者的关系。</p>
+</blockquote>
+<p>通过在<a href="http://www.runoob.com/mongodb/mongodb-tutorial.html">《MongoDB 教程|菜鸟教程》</a>轻量级的了解了一下MongoDB的基础知识，我在自己电脑上安装并使用了这款NoSQL软件。很明显地，读别人的教程只能是迅速的、简单的和容易理解的。也正是这样，我发现了其中有一块并没有提及！那就是并没有说要登录数据库啊。</p>
+            
+            <p class="more">
+                <a href="https://www.imsry.cn/posts/432477cb.html">阅读剩下更多</a>
+            </p>
+        </div>
+        <div class="post-thumbnail" data-img="">
+            <a href="https://www.imsry.cn/posts/432477cb.html" title="初探MongoDB安全之RBAC（基于角色的访问控制）">
+                
+                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/4.jpg" alt="默认配图" >
+                
+            </a>
+        </div>
+    </div>
+</article>
+
+    
+        <!-- 文章列表 item -->
+<article class="post">
+    <header>
+        <!-- 标签这有且只能显示一个 -->
+        
+        <a class="cat-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a>
+        
+        <!-- 文章标题 -->
+        
+    <h3 class="post-title">
+    	<a href="https://www.imsry.cn/posts/28c3b503.html">
+    		实现寻找两个字符串的最大公子串的方法
+    	</a>
+    </h3>
+
+    </header>
+    <p class="post-meta">
+        Anthony 发表于
+        <time datetime="2016-10-27T07:32:50.000Z">2016-10-27 15:32:50</time>
+
+
+        &nbsp;&nbsp;
+        <span class="post-tags">
+            标签：
+            
+    
+        <a href="/tags/PHP/" title="PHP">PHP</a>
+    
+
+        </span>
+    </p>
+
+    <div class="post-content">
+        <div class="post-excerpt">
+            
+                <p>昨天在做某兔的校招笔试题的时候遇到的题目，就这一个编程题，然而当时却没有拿下，把它和字符串匹配中的子串包含给弄混了，哎！<br>废话少说，上代码！</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">function MaxSubCommonStr($str1,$str2)&#123;</span><br><span class="line">    $a = str_split($str1);	//字符串分割成数组</span><br><span class="line">    $b = str_split($str2);</span><br><span class="line">    $len1 = strlen($str1);	//字符串的长度</span><br><span class="line">    $len2 = strlen($str2);</span><br><span class="line">    $maxlen = 0;	//最大计数器</span><br><span class="line">    for($i=0;$i&lt;$len1;$i++)&#123;</span><br><span class="line">        for($j=0;$j&lt;$len2;$j++)&#123;</span><br><span class="line">            if($a[$i] == $b[$j])&#123;	//找到第一个相等的字符</span><br><span class="line">                $as = $i;	//拷贝字符串1的起点</span><br><span class="line">                $bs = $j;	//拷贝字符串2的起点</span><br><span class="line">                $count = 1;	//有一个相等的字符了</span><br><span class="line">                while ($as + 1 &lt; $len1 &amp;&amp; $bs + 1 &lt; $len2 &amp;&amp; $a[++$as] == $b[++$bs])</span><br><span class="line">                    $count++;	//往后比较，每匹配一个计数+1，直到其中一个查完或者出现不相等</span><br><span class="line">                if($count &gt; $maxlen)&#123;	//当本次计数长度大于最大记录时</span><br><span class="line">                    $maxlen = $count;	//更新最大计数长度</span><br><span class="line">                    $start1 = $i;		//更新本次比较的字符串1起点</span><br><span class="line">                    $start2 = $j;		//更新本次比较的字符串2起点</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;    </span><br><span class="line">    return substr($str1,$start1,$maxlen);	//直接返回字符串1，从$start1起点往后$maxlen最大匹配长度个数的子串</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">$str1 = &#x27;abcdefgabc&#x27;;</span><br><span class="line">$str2 = &#x27;defghijabc&#x27;;</span><br><span class="line">echo MaxSubCommonStr($str1,$str2);</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+<p>没什么含金量，只是写出来练练手，思路照搬过来的。</p>
+
+            
+            <p class="more">
+                <a href="https://www.imsry.cn/posts/28c3b503.html">阅读剩下更多</a>
+            </p>
+        </div>
+        <div class="post-thumbnail" data-img="">
+            <a href="https://www.imsry.cn/posts/28c3b503.html" title="实现寻找两个字符串的最大公子串的方法">
+                
+                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/7.jpg" alt="默认配图" >
+                
+            </a>
+        </div>
+    </div>
+</article>
+
+    
+
+    
+    <nav class="page-navigator">
+        <a class="extend prev" rel="prev" href="/page/4/">前一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><a class="extend next" rel="next" href="/page/6/">后一页</a>
+    </nav>
+    
+
+
+
+
+            </div>
+
+        </section>
+        <!-- 侧栏部分 -->
+<aside class="sidebar">
+    
+    <section class="widget">
+        <h3 class="widget-hd"><strong>文章搜索</strong></h3>
+        <div class="search-form">
+  <form
+    id="searchForm"
+    method="GET"
+    action="https://www.baidu.com/s"
+    ectype="application/x-www-form-urlencoded"
+    target="_blank"
+    autocomplete="false"
+    onsubmit="javascript: return false;">
+    <input
+      id="searchKeyword"
+      type="text"
+      class="form-control"
+      placeholder="输入关键字搜索"
+      autocomplete="false"
+    />
+    <input id="searchKeywordHidden" type="hidden" name="wd" />
+    <input id="searchButton" class="btn" type="submit" value="搜索" />
+  </form>
+</div>
+    </section>
+    
+
+    <section class="widget">
+        <h3 class="widget-hd"><strong>文章分类</strong></h3>
+        <!-- 文章分类 -->
+<ul class="widget-bd">
+    
+    <li>
+        <a href="/categories/Linux/">Linux</a>
+        <span class="badge">(15)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a>
+        <span class="badge">(54)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/">网络安全</a>
+        <span class="badge">(2)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/Web/">Web</a>
+        <span class="badge">(3)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/">编程语言</a>
+        <span class="badge">(12)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/%E6%9D%82%E8%B0%88/">杂谈</a>
+        <span class="badge">(7)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/%E7%AE%97%E6%B3%95/">算法</a>
+        <span class="badge">(6)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/PHP/">PHP</a>
+        <span class="badge">(9)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a>
+        <span class="badge">(2)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/MacOS/">MacOS</a>
+        <span class="badge">(1)</span>
+    </li>
+    
+</ul>
+    </section>
+
+    
+    <section class="widget">
+        <h3 class="widget-hd"><strong>热门标签</strong></h3>
+        <!-- 文章标签 -->
+<div class="widget-bd tag-wrap">
+  
+    <a class="tag-item" href="/tags/Apache/" title="Apache">Apache (5)</a>
+  
+    <a class="tag-item" href="/tags/Linux/" title="Linux">Linux (8)</a>
+  
+    <a class="tag-item" href="/tags/Proxy/" title="Proxy">Proxy (1)</a>
+  
+    <a class="tag-item" href="/tags/firewall/" title="firewall">firewall (1)</a>
+  
+    <a class="tag-item" href="/tags/CentOS/" title="CentOS">CentOS (3)</a>
+  
+    <a class="tag-item" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" title="数据结构">数据结构 (1)</a>
+  
+    <a class="tag-item" href="/tags/HTTPS/" title="HTTPS">HTTPS (3)</a>
+  
+    <a class="tag-item" href="/tags/Chrome/" title="Chrome">Chrome (1)</a>
+  
+    <a class="tag-item" href="/tags/VPN/" title="VPN">VPN (1)</a>
+  
+    <a class="tag-item" href="/tags/Discuz/" title="Discuz">Discuz (1)</a>
+  
+    <a class="tag-item" href="/tags/Docker/" title="Docker">Docker (1)</a>
+  
+    <a class="tag-item" href="/tags/Network/" title="Network">Network (3)</a>
+  
+    <a class="tag-item" href="/tags/FFmpeg/" title="FFmpeg">FFmpeg (1)</a>
+  
+    <a class="tag-item" href="/tags/Glassfish/" title="Glassfish">Glassfish (1)</a>
+  
+    <a class="tag-item" href="/tags/Java/" title="Java">Java (2)</a>
+  
+    <a class="tag-item" href="/tags/MySQL/" title="MySQL">MySQL (12)</a>
+  
+    <a class="tag-item" href="/tags/Golang/" title="Golang">Golang (3)</a>
+  
+    <a class="tag-item" href="/tags/Nginx/" title="Nginx">Nginx (2)</a>
+  
+    <a class="tag-item" href="/tags/PHP/" title="PHP">PHP (16)</a>
+  
+    <a class="tag-item" href="/tags/Vim/" title="Vim">Vim (1)</a>
+  
+    <a class="tag-item" href="/tags/%E7%BD%91%E5%8D%A1/" title="网卡">网卡 (1)</a>
+  
+    <a class="tag-item" href="/tags/OrangePi/" title="OrangePi">OrangePi (1)</a>
+  
+    <a class="tag-item" href="/tags/%E7%AE%97%E6%B3%95/" title="算法">算法 (1)</a>
+  
+    <a class="tag-item" href="/tags/%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6/" title="时间复杂度">时间复杂度 (1)</a>
+  
+    <a class="tag-item" href="/tags/%E5%AE%9A%E7%90%86/" title="定理">定理 (1)</a>
+  
+    <a class="tag-item" href="/tags/RPC/" title="RPC">RPC (1)</a>
+  
+    <a class="tag-item" href="/tags/HTML/" title="HTML">HTML (2)</a>
+  
+    <a class="tag-item" href="/tags/JavaScript/" title="JavaScript">JavaScript (2)</a>
+  
+    <a class="tag-item" href="/tags/k8s/" title="k8s">k8s (1)</a>
+  
+    <a class="tag-item" href="/tags/Laravel/" title="Laravel">Laravel (1)</a>
+  
+    <a class="tag-item" href="/tags/Markdown/" title="Markdown">Markdown (1)</a>
+  
+    <a class="tag-item" href="/tags/MacOS/" title="MacOS">MacOS (5)</a>
+  
+    <a class="tag-item" href="/tags/Git/" title="Git">Git (1)</a>
+  
+    <a class="tag-item" href="/tags/Ngrok/" title="Ngrok">Ngrok (1)</a>
+  
+    <a class="tag-item" href="/tags/INI/" title="INI">INI (1)</a>
+  
+    <a class="tag-item" href="/tags/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/" title="排序算法">排序算法 (1)</a>
+  
+    <a class="tag-item" href="/tags/OpenSSL/" title="OpenSSL">OpenSSL (1)</a>
+  
+    <a class="tag-item" href="/tags/mcrypt/" title="mcrypt">mcrypt (1)</a>
+  
+    <a class="tag-item" href="/tags/xtea/" title="xtea">xtea (1)</a>
+  
+</div>
+    </section>
+    
+
+    
+
+    
+    <!-- 友情链接 -->
+    <section class="widget">
+        <h3 class="widget-hd"><strong>友情链接</strong></h3>
+        <!-- 文章分类 -->
+<ul class="widget-bd">
+    
+        <li>
+            <a href="https://imququ.com/" target="_blank" title="Jerry Qu">Jerry Qu</a>
+        </li>
+    
+        <li>
+            <a href="https://jelon.info/" target="_blank" title="Zhang Delong">Jelon</a>
+        </li>
+    
+        <li>
+            <a href="http://www.minghua.work/" target="_blank" title="智能硬件产品汪">Minghua Jia</a>
+        </li>
+    
+</ul>
+
+    </section>
+    
+</aside>
+<!-- / 侧栏部分 -->
+    </div>
+
+    <!-- 博客底部 -->
+    <footer class="footer">
+<div style="margin-bottom:1em;">
+
+        <!-- 不蒜子统计 -->
+        <span id="busuanzi_container_site_pv">
+                本站总访问量<span id="busuanzi_value_site_pv"></span>次
+        </span>
+        <span class="post-meta-divider">|</span>
+        <span id="busuanzi_container_site_uv" style='display:none'>
+                本站访客数<span id="busuanzi_value_site_uv"></span>人
+        </span>
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  
+</div>
+    &copy;
+    
+        2014-2026
+    
+
+    <a href="/">Best Wishes</a>
+</footer>
+<div class="back-to-top" id="JELON__backToTop" title="返回顶部">返回顶部</div>
+
+    <!--博客js脚本 -->
+    <!-- 这里放网站js脚本 -->
+
+<script src="/js/main.js?v=1778052557369.js"></script>
+
+</body>
+</html>
